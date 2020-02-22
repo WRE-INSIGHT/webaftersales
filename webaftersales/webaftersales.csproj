@@ -44,6 +44,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -162,6 +190,55 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AFTERSALESPROJ\ASmasterpage.Master.cs">
+      <DependentUpon>ASmasterpage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\ASmasterpage.Master.designer.cs">
+      <DependentUpon>ASmasterpage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\FRMassessment.aspx.cs">
+      <DependentUpon>FRMassessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\FRMassessment.aspx.designer.cs">
+      <DependentUpon>FRMassessment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\frmknogen.aspx.cs">
+      <DependentUpon>frmknogen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\frmknogen.aspx.designer.cs">
+      <DependentUpon>frmknogen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\frmReport.aspx.cs">
+      <DependentUpon>frmReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\frmReport.aspx.designer.cs">
+      <DependentUpon>frmReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\FRMservicingschedule.aspx.cs">
+      <DependentUpon>FRMservicingschedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\FRMservicingschedule.aspx.designer.cs">
+      <DependentUpon>FRMservicingschedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\FRMreporting.aspx.cs">
+      <DependentUpon>FRMreporting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\FRMreporting.aspx.designer.cs">
+      <DependentUpon>FRMreporting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\FRMselectkno.aspx.cs">
+      <DependentUpon>FRMselectkno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\FRMselectkno.aspx.designer.cs">
+      <DependentUpon>FRMselectkno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -180,6 +257,22 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
+    <Content Include="AFTERSALESPROJ\css\CSSmaster.css" />
+    <Content Include="AFTERSALESPROJ\css\CSSreporting.css" />
+    <Content Include="AFTERSALESPROJ\css\CSSservicing.css" />
+    <Content Include="AFTERSALESPROJ\FRMassessment.aspx" />
+    <Content Include="AFTERSALESPROJ\frmknogen.aspx" />
+    <Content Include="AFTERSALESPROJ\frmReport.aspx" />
+    <Content Include="AFTERSALESPROJ\FRMservicingschedule.aspx" />
+    <Content Include="AFTERSALESPROJ\FRMreporting.aspx" />
+    <Content Include="AFTERSALESPROJ\FRMselectkno.aspx" />
+    <Content Include="AFTERSALESPROJ\images\add.png" />
+    <Content Include="AFTERSALESPROJ\images\cancel.png" />
+    <Content Include="AFTERSALESPROJ\images\delete.png" />
+    <Content Include="AFTERSALESPROJ\images\edit-validated-icon[3].png" />
+    <Content Include="AFTERSALESPROJ\images\edit.png" />
+    <Content Include="AFTERSALESPROJ\images\save.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -188,6 +281,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AFTERSALESPROJ\ASmasterpage.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
