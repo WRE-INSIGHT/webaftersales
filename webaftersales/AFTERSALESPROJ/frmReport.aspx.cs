@@ -15,24 +15,24 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (!IsPostBack)
             {
-                Session["SID"] = 12;
+                Session["SID"] = 2;       
             }
 
         }
 
         protected void GridView2_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
-            //if (e.AffectedRows < 1)
-            //{
-            //    e.KeepInEditMode = true;
-            //    lblerror.Text = "not updated";
-            //    lblerror.ForeColor = System.Drawing.Color.Red;
-            //}
-            //else
-            //{
-            //    lblerror.Text = "updated successfully";
-            //    lblerror.ForeColor = System.Drawing.Color.Green;
-            //}
+            if (e.AffectedRows < 1)
+            {
+                e.KeepInEditMode = true;
+                lblerror.Text = "not updated";
+                lblerror.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                lblerror.Text = "updated successfully";
+                lblerror.ForeColor = System.Drawing.Color.Green;
+            }
         }
 
         protected void lbtninsert_click(object sender, EventArgs e)
@@ -68,5 +68,16 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
+        protected void GridView2_DataBound(object sender, EventArgs e)
+        {
+            if (GridView2.Rows.Count == 0)
+            {
+                Panel1.Visible = true;
+            }
+            else
+            {
+                Panel1.Visible = false;
+            }
+        }
     }
 }

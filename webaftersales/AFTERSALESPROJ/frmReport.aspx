@@ -10,10 +10,58 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Panel ID="Panel1" runat="server">
+                <table>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label8" runat="server" Text="Item#"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox CssClass="tboxinput" ID="tboxitemno" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label9" runat="server" Text="K#"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox CssClass="tboxinput" ID="tboxkno" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label10" runat="server" Text="Location"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox CssClass="tboxinput" ID="tboxlocation" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label11" runat="server" Text="Specification"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="dlistspecification" CssClass="tboxinput" runat="server">
+                                <asp:ListItem>Select Specification</asp:ListItem>
+                                <asp:ListItem>Window</asp:ListItem>
+                                <asp:ListItem>Door</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label12" runat="server" Text="Mobilization Cost"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox CssClass="tboxinput" ID="tboxmobilizationcost" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                </table>
+            </asp:Panel>
             <br />
             <br />
             <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
-                CellPadding="3" DataKeyNames="ID" DataSourceID="SqlDataSource1" EmptyDataText="NO RESULT" EnablePersistedSelection="True" GridLines="None" OnRowUpdated="GridView2_RowUpdated" ShowFooter="True" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="7" OnRowDataBound="GridView2_RowDataBound" ShowHeaderWhenEmpty="True" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1">
+                CellPadding="3" DataKeyNames="ID" DataSourceID="SqlDataSource1" EmptyDataText="NO RESULT" EnablePersistedSelection="True" GridLines="None" OnRowUpdated="GridView2_RowUpdated" ShowFooter="True" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="7" OnRowDataBound="GridView2_RowDataBound" ShowHeaderWhenEmpty="True" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1" OnDataBound="GridView2_DataBound">
                 <Columns>
                     <asp:CommandField ShowDeleteButton="true"
                         ControlStyle-CssClass="actionbtn"
