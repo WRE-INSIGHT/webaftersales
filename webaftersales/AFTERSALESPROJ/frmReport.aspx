@@ -1,17 +1,51 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmReport.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.frmReport" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
     <link href="css/CSSreporting.css" rel="stylesheet" />
+    <style type="text/css">
+        .Background {
+            background-color: Black;
+            filter: alpha(opacity=90);
+            opacity: 0.8;
+        }
+
+        .Popup {
+            background-color: #FFFFFF;
+            border-width: 3px;
+            border-style: solid;
+            border-color: black;
+            padding-top: 10px;
+            padding-left: 10px;
+            width: 400px;
+            height: 350px;
+        }
+
+        .lbl {
+            font-size: 16px;
+            font-style: italic;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+
+
+
     <form id="form1" runat="server">
         <div>
-            <asp:Panel ID="Panel1" runat="server">
-                <table>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server"
+                CancelControlID="btncancel" TargetControlID="btnaddnewreport" PopupControlID="pnl1"
+                BackgroundCssClass="Background">
+            </ajaxToolkit:ModalPopupExtender>
+            <asp:Panel runat="server" ID="pnl1" CssClass="Popup" align="center" Style="display: none">
+                 <table>
                     <tr>
                         <td>
                             <asp:Label ID="Label8" runat="server" Text="Item#"></asp:Label>
@@ -56,41 +90,50 @@
                             <asp:TextBox CssClass="tboxinput" ID="tboxmobilizationcost" runat="server"></asp:TextBox>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <asp:Button ID="addbtn" CssClass="btnsubmit" Width="200" runat="server" Text="add" OnClick="addbtn_Click" />
+                        </td>
+                        <td>
+                            <asp:Button ID="btncancel" runat="server" Text="Button" />
+                        </td>
+                    </tr>
                 </table>
             </asp:Panel>
+            <asp:Button ID="btnaddnewreport" runat="server" Text="Add New Report" />
+        </div>
+
+        <div>
+      
             <br />
             <br />
+            <asp:Label ID="lblerror" runat="server"></asp:Label>
             <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
-                CellPadding="3" DataKeyNames="ID" DataSourceID="SqlDataSource1" EmptyDataText="NO RESULT" EnablePersistedSelection="True" GridLines="None" OnRowUpdated="GridView2_RowUpdated" ShowFooter="True" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="7" OnRowDataBound="GridView2_RowDataBound" ShowHeaderWhenEmpty="True" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1" OnDataBound="GridView2_DataBound">
+                CellPadding="3" DataKeyNames="ID" DataSourceID="SqlDataSource1" EmptyDataText="NO RESULT" EnablePersistedSelection="True" GridLines="None" OnRowUpdated="GridView2_RowUpdated" ShowFooter="True" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="7" OnRowDataBound="GridView2_RowDataBound" ShowHeaderWhenEmpty="True" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="1" OnDataBound="GridView2_DataBound" OnRowCancelingEdit="GridView2_RowCancelingEdit">
                 <Columns>
                     <asp:CommandField ShowDeleteButton="true"
                         ControlStyle-CssClass="actionbtn"
                         EditImageUrl="~/AFTERSALESPROJ/images/edit.png"
                         DeleteImageUrl="~/AFTERSALESPROJ/images/delete.png"
-                        
                         CancelImageUrl="~/AFTERSALESPROJ/images/cancel.png"
                         UpdateImageUrl="~/AFTERSALESPROJ/images/save.png"
                         ShowEditButton="true">
                         <ControlStyle CssClass="actionbtn"></ControlStyle>
                     </asp:CommandField>
-                    <asp:TemplateField HeaderText="ID" SortExpression="ID">
+                    <asp:TemplateField HeaderText="" SortExpression="ID">
                         <EditItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                            <asp:Label ID="Label1" Visible="false" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                            <asp:Label ID="Label6" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                         </ItemTemplate>
-                        <FooterTemplate>
-                            <asp:ImageButton ID="ImageButton1" ImageUrl="~/AFTERSALESPROJ/images/add.png" OnClick="lbtninsert_click" runat="server" />
-                        </FooterTemplate>
-
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="SID" SortExpression="SID">
+                    <asp:TemplateField HeaderText="" SortExpression="SID">
                         <EditItemTemplate>
-                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
+                            <asp:Label ID="Label7" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
+                            <asp:Label ID="Label7" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ITEMNO" SortExpression="ITEMNO">
@@ -104,7 +147,7 @@
                         <FooterTemplate>
                             <asp:TextBox ID="tboxitemno" Width="50px" CssClass="tboxinput" runat="server"></asp:TextBox>
                         </FooterTemplate>
-                     
+
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="KNO" SortExpression="KNO">
                         <EditItemTemplate>
@@ -168,8 +211,11 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnassessment" CssClass="btnsubmit"  runat="server" Text="assessment" />
+                            <asp:Button ID="btnassessment" CssClass="btnsubmit" runat="server" Text="assessment" />
                         </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:ImageButton ID="ImageButton1" ValidationGroup="insertvalidation" ImageUrl="~/AFTERSALESPROJ/images/add.png" OnClick="lbtninsert_click" runat="server" />
+                        </FooterTemplate>
                     </asp:TemplateField>
                 </Columns>
                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
@@ -230,8 +276,15 @@
                     <asp:Parameter Name="original_MOBILIZATIONCOST" Type="Decimal" />
                 </UpdateParameters>
             </asp:SqlDataSource>
-            <asp:Label ID="lblerror" runat="server"></asp:Label>
+
+            <br />
+            <br />
+
+        </div>
+        <div>
+            <asp:Button ID="btngoback" PostBackUrl="~/AFTERSALESPROJ/FRMservicingschedule.aspx" runat="server" CssClass="btnsubmit" Text="go back" />
         </div>
     </form>
+
 </body>
 </html>

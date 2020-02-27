@@ -120,7 +120,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ViewState["servicingid"] = row.Cells[1].Text;
                 ViewState["servicingproject"] = row.Cells[4].Text;
                 ViewState["servicingaddress"] = row.Cells[5].Text;
-                Server.Transfer("~/AFTERSALESPROJ/FRMreporting.aspx");
+                Session["SID"] = ViewState["servicingid"];
+                Server.Transfer("~/AFTERSALESPROJ/FRMreport.aspx");
             }    
         }
 

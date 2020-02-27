@@ -15,7 +15,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (!IsPostBack)
             {
-                Session["SID"] = 2;       
+              
             }
 
         }
@@ -25,13 +25,12 @@ namespace webaftersales.AFTERSALESPROJ
             if (e.AffectedRows < 1)
             {
                 e.KeepInEditMode = true;
-                lblerror.Text = "not updated";
+                lblerror.Text = "not updated (row has been updated by another user)";
                 lblerror.ForeColor = System.Drawing.Color.Red;
             }
             else
             {
-                lblerror.Text = "updated successfully";
-                lblerror.ForeColor = System.Drawing.Color.Green;
+                lblerror.Visible = false;        
             }
         }
 
@@ -72,12 +71,42 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (GridView2.Rows.Count == 0)
             {
-                Panel1.Visible = true;
+                btnaddnewreport.Visible = true;
             }
             else
             {
-                Panel1.Visible = false;
+                btnaddnewreport.Visible = false;
             }
+        }
+
+        protected void addbtn_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+            string constr = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            using (SqlConnection sqlcon = new SqlConnection(constr))
+            {
+                string qry = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb)"+
+                    "insert into reporttb ([ID],[SID],[KNO],[ITEMNO],[LOCATION],[SPECIFICATION],[MOBILIZATIONCOST])"+
+                    "values(@id,'" + Session["SID"] + "','" + tboxkno.Text + "','" + tboxitemno.Text + "','" + tboxlocation.Text + "','" + dlistspecification.Text + "','" + tboxmobilizationcost.Text + "')";
+                sqlcon.Open();
+                SqlCommand sqlcmd = new SqlCommand(qry, sqlcon);
+                sqlcmd.ExecuteNonQuery();
+            }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+            finally
+            {
+                GridView2.DataBind();
+            }
+        }
+
+        protected void GridView2_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            lblerror.Visible = false;
         }
     }
 }

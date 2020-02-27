@@ -32,45 +32,46 @@ div {
 }*/
 
 .tboxinput {
-  /*width: 200px;*/
-  padding: 5px 10px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+    /*width: 200px;*/
+    padding: 5px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .btnsubmit {
-  width: 100px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 10px 10px 10px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    width: 100px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 10px 10px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.btnsubmit:hover {
-  background-color: #45a049;
-}
+    .btnsubmit:hover {
+        background-color: #45a049;
+    }
 
 .formdiv {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
 }
 
 .btnedit {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
-.actionbtn{
-    padding:0px 10px;
+
+.actionbtn {
+    padding: 0px 10px;
 }
