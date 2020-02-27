@@ -20,33 +20,45 @@ div.scrollmenu {
             background-color: #777;
         }
 
-nav{
-      position:fixed;
-      top:0px;
-      left:0px;
-      width:100%;
+nav {
+    font-family: Calibri;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
 }
+
 header {
-    margin-top:58px;
+    background-image: url('../images/unnamed.jpg');
+    background-size:auto;
+    margin-top:53px;
+    margin-left: 0px;
+    margin-right: 0px;
     background-color: #666;
     padding: 10px;
     text-align: center;
     font-size: 25px;
-    color: white; 
+    color: white;
 }
 
 article {
     padding: 30px;
-    background-color: #f1f1f1;
+    /*background-color: #f1f1f1;*/
+    background-color: white;
 }
 
 
 footer {
     bottom: 0px;
-    left:0px;
-    width:100%;
+    left: 0px;
+    width: 100%;
     background-color: #777;
     padding: 0px;
     text-align: center;
     color: white;
+}
+
+header {
+    font-family: Calibri;
+    height: 56px;
 }

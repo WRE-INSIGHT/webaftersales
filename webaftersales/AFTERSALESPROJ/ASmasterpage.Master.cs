@@ -13,9 +13,6 @@ namespace webaftersales.AFTERSALESPROJ
         {
 
         }
-        private void redirectpage()
-        {
-            Response.Redirect("~/AFTERSALESPROJ/FRMreporting.aspx");
-        }
+      
     }
 }

@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
         <header>
-            <asp:Label ID="lblheader" runat="server" Text="After Sales"></asp:Label>
+            <asp:Label ID="lblheader" runat="server" Text="After Sales" Font-Bold="True" Font-Size="30pt" ForeColor="#000099"></asp:Label>
         </header>
         <nav>
             <div class="scrollmenu">
@@ -27,9 +27,9 @@
             </asp:ContentPlaceHolder>
         </article>
 
-        <footer>
+      <%--  <footer>
             <p>Footer</p>
-        </footer>
+        </footer>--%>
     </form>
 </body>
 </html>

@@ -229,19 +229,19 @@
     <Compile Include="AFTERSALESPROJ\FRMservicingschedule.aspx.designer.cs">
       <DependentUpon>FRMservicingschedule.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AFTERSALESPROJ\FRMreporting.aspx.cs">
-      <DependentUpon>FRMreporting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AFTERSALESPROJ\FRMreporting.aspx.designer.cs">
-      <DependentUpon>FRMreporting.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AFTERSALESPROJ\FRMselectkno.aspx.cs">
       <DependentUpon>FRMselectkno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AFTERSALESPROJ\FRMselectkno.aspx.designer.cs">
       <DependentUpon>FRMselectkno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -269,14 +269,16 @@
     <Content Include="AFTERSALESPROJ\frmknogen.aspx" />
     <Content Include="AFTERSALESPROJ\frmReport.aspx" />
     <Content Include="AFTERSALESPROJ\FRMservicingschedule.aspx" />
-    <Content Include="AFTERSALESPROJ\FRMreporting.aspx" />
     <Content Include="AFTERSALESPROJ\FRMselectkno.aspx" />
     <Content Include="AFTERSALESPROJ\images\add.png" />
+    <Content Include="AFTERSALESPROJ\images\asbanner.jpg" />
     <Content Include="AFTERSALESPROJ\images\cancel.png" />
     <Content Include="AFTERSALESPROJ\images\delete.png" />
     <Content Include="AFTERSALESPROJ\images\edit-validated-icon[3].png" />
     <Content Include="AFTERSALESPROJ\images\edit.png" />
     <Content Include="AFTERSALESPROJ\images\save.png" />
+    <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
+    <Content Include="AFTERSALESPROJ\WebForm2.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />

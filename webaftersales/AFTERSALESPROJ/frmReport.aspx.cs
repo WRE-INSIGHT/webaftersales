@@ -15,11 +15,19 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (!IsPostBack)
             {
-              
+                Label l = this.Master.FindControl("lblheader") as Label;
+                l.Text = "Reporting";
+
+                Page lastpage = Page.PreviousPage;
+                if (lastpage is WebForm1)
+                {
+                    lblproject.Text = ((WebForm1)lastpage).project;
+                    lbladdress.Text = ((WebForm1)lastpage).address;
+                }
             }
 
         }
-
+      
         protected void GridView2_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
             if (e.AffectedRows < 1)
@@ -86,6 +94,10 @@ namespace webaftersales.AFTERSALESPROJ
             string constr = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
             using (SqlConnection sqlcon = new SqlConnection(constr))
             {
+                    if(tboxmobilizationcost.Text == "")
+                    {
+                        tboxmobilizationcost.Text = "0";
+                    }
                 string qry = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb)"+
                     "insert into reporttb ([ID],[SID],[KNO],[ITEMNO],[LOCATION],[SPECIFICATION],[MOBILIZATIONCOST])"+
                     "values(@id,'" + Session["SID"] + "','" + tboxkno.Text + "','" + tboxitemno.Text + "','" + tboxlocation.Text + "','" + dlistspecification.Text + "','" + tboxmobilizationcost.Text + "')";
