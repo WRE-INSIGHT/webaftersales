@@ -1,75 +1,52 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
 
 namespace webaftersales.AFTERSALESPROJ
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
-                getdata();
-              
-            }
 
+                byte[] barr = imgToBytearray(Image1);
+                ReportParameter param1 = new ReportParameter("imagebyte", Convert.ToBase64String(barr));
+                ReportViewer1.LocalReport.SetParameters(param1);
+            }
         }
-        private void getdata()
+
+        public byte[] imgToBytearray(System.Drawing.Image img)
         {
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+            using (MemoryStream mstream = new MemoryStream())
             {
-                sqlcon.Open();
-                SqlCommand sqlcmd = new SqlCommand("select * from reporttb",sqlcon);
-//                SqlCommand sqlcmd = new SqlCommand("SELECT * FROM ("+
-//"  select"+
-//"   a.ID, "+
-//"   a.sdate as [DATE], "+
-//"   a.SERVICING, "+
-//"   c.PROJECT_LABEL AS PROJECT, "+
-//"   c.FULLADD AS[ADDRESS] from"+
-//"  ((SERVICINGTB as a"+
-//"  left join CALLINTB as b"+
-//"  on a.CIN = b.CIN)"+
-//"  left join heretosave.dbo.ADDENDUM_TO_CONTRACT_TB as c"+
-//"  on b.jo = c.JOB_ORDER_NO)) AS TB"+
-//"  where project like '%%'", sqlcon);
-                GridView1.DataSource = sqlcmd.ExecuteReader();
-                GridView1.DataBind();
+                img.Save(mstream, System.Drawing.Imaging.ImageFormat.Bmp);
+                return mstream.ToArray();
             }
-            //try
-            //{
-            //    DataSet ds = new DataSet();
-            //    ds.Clear();
-            //    string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-            //    using (SqlConnection sqlcon = new SqlConnection(cs))
-            //    {
-            //        sqlcon.Open();
-            //        SqlCommand sqlcmd = sqlcon.CreateCommand();
-            //        sqlcmd.CommandText = "stpServicing";
-            //        sqlcmd.CommandType = CommandType.StoredProcedure;
-            //        sqlcmd.Parameters.AddWithValue("@project", "");
-            //        SqlDataAdapter da = new SqlDataAdapter();
-            //        da.SelectCommand = sqlcmd;
-            //        da.Fill(ds, "tb");
-            //        GridView1.DataSource = ds;
-            //        GridView1.DataBind();
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    Response.Write(e.ToString());
-            //}
         }
+        //public static byte[] ImageToByteArray(System.Drawing.Image img)
+        //{
+        //    try
+        //    {
+        //        MemoryStream mstImage = new MemoryStream();
+        //        img.Save(mstImage, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //        Byte[] bytImage = mstImage.GetBuffer();
+        //        return bytImage;
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-       
+        //    }
     }
+
+}
 }

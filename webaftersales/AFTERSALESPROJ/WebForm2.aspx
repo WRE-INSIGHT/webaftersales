@@ -1,53 +1,59 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.WebForm2" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.WebForm2" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <link href="css/CSSreporting.css" rel="stylesheet" />
-    <style type="text/css">
-        .Background {
-            background-color: Black;
-            filter: alpha(opacity=90);
-            opacity: 0.8;
-        }
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
-        .Popup {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
-            /*background-color: #FFFFFF;*/
-            border-width: 3px;
-            border-style: solid;
-            border-color: black;
-            /*padding-top: 10px;
-            padding-left: 10px;*/
-            width: 500px;
-            height: 500px;
-        }
+<!DOCTYPE html>
 
-        .lbl {
-            font-size: 16px;
-            font-style: italic;
-            font-weight: bold;
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="scripts/sign.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myCanvas').sign({
+                resetButton: $('#resetSign'),
+                lineWidth: 10
+            });
+        });
+    </script>
+    <style>
+        #myCanvas {
+            border: 4px solid #444;
+            border-radius: 15px;
         }
     </style>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false">
-            <Columns>
-               <%-- <asp:TemplateField>
-                    <ItemTemplate>
-                        <ItemTemplate>
-                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label>
-                    </ItemTemplate>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField HeaderText="PROJECT" DataField="PROJECT" />
-                     <asp:BoundField HeaderText="ADDRESS" DataField="ADDRESS" />--%>
-                    <asp:BoundField HeaderText="location" DataField="location" />
-                  <asp:BoundField HeaderText="specification" DataField="specification" />
-            </Columns>
-      </asp:GridView>
+    <script>
 
-      
-</asp:Content>
+    </script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <canvas id="myCanvas"></canvas>
+            <asp:Image ID="Image1" runat="server" />
+            <input type="button" value="Reset" id='resetSign' />
+            <script>
+                function storeimage() {
+                    var canvas = document.getElementById('myCanvas');
+                    var context = canvas.getContext('2d');
+                    var dataURL = canvas.toDataURL();
+                    document.getElementById('Image1').src = dataURL;
+                }
+            </script>
+        </div>
+        <br />
+        <br />
+        <asp:Button ID="Button1" OnClientClick="storeimage()" runat="server" Text="Button" />
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="629px">
+            <LocalReport ReportPath="AFTERSALESPROJ\report\Report1.rdlc">
+            </LocalReport>
+        </rsweb:ReportViewer>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+
+    </form>
+</body>
+</html>

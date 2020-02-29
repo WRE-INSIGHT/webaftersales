@@ -15,6 +15,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (!IsPostBack)
             {
+              
                 Label l = this.Master.FindControl("lblheader") as Label;
                 l.Text = "Reporting";
 
@@ -27,7 +28,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
 
         }
-      
+
         protected void GridView2_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
             if (e.AffectedRows < 1)
@@ -38,26 +39,34 @@ namespace webaftersales.AFTERSALESPROJ
             }
             else
             {
-                lblerror.Visible = false;        
+                lblerror.Visible = false;
             }
         }
 
         protected void lbtninsert_click(object sender, EventArgs e)
         {
+            string _kno, _itemno, _location, _specification, _mobilizationcost;
+            _kno = ((TextBox)GridView2.FooterRow.FindControl("tboxkno")).Text;
+            _itemno = ((TextBox)GridView2.FooterRow.FindControl("tboxitemno")).Text;
+            _location = ((TextBox)GridView2.FooterRow.FindControl("tboxlocation")).Text;
+            _specification = ((DropDownList)GridView2.FooterRow.FindControl("dlspecification")).Text;
+            _mobilizationcost = ((TextBox)GridView2.FooterRow.FindControl("tboxmobilizationcost")).Text;
+            if (_mobilizationcost == "")
+            {
+                _mobilizationcost = "0";
+            }
+            insertdata(_kno, _itemno, _location, _specification, _mobilizationcost);
+        }
+        private void insertdata(string _kno, string _itemno, string _location, string _specification, string _mobilizationcost)
+        {
             SqlDataSource1.InsertParameters["SID"].DefaultValue = Session["SID"].ToString();
-            SqlDataSource1.InsertParameters["kno"].DefaultValue =
-               ((TextBox)GridView2.FooterRow.FindControl("tboxkno")).Text;
-            SqlDataSource1.InsertParameters["itemno"].DefaultValue =
-               ((TextBox)GridView2.FooterRow.FindControl("tboxitemno")).Text;
-            SqlDataSource1.InsertParameters["location"].DefaultValue =
-               ((TextBox)GridView2.FooterRow.FindControl("tboxlocation")).Text;
-            SqlDataSource1.InsertParameters["specification"].DefaultValue =
-             ((DropDownList)GridView2.FooterRow.FindControl("dlspecification")).Text;
-            SqlDataSource1.InsertParameters["mobilizationcost"].DefaultValue =
-             ((TextBox)GridView2.FooterRow.FindControl("tboxmobilizationcost")).Text;
+            SqlDataSource1.InsertParameters["kno"].DefaultValue = _kno;
+            SqlDataSource1.InsertParameters["itemno"].DefaultValue = _itemno;
+            SqlDataSource1.InsertParameters["location"].DefaultValue = _location;
+            SqlDataSource1.InsertParameters["specification"].DefaultValue = _specification;
+            SqlDataSource1.InsertParameters["mobilizationcost"].DefaultValue = _mobilizationcost;
             SqlDataSource1.Insert();
         }
-
         protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView2.PageIndex = e.NewPageIndex;
@@ -65,10 +74,10 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if(e.Row.RowType == DataControlRowType.DataRow)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Control control = e.Row.Cells[0].Controls[2];
-                if(control is LinkButton && ((LinkButton)control).Text=="Delete")
+                if (control is LinkButton && ((LinkButton)control).Text == "Delete")
                 {
                     ((LinkButton)control).OnClientClick = "return confirm('Are you sure you want to delete this record?');";
                 }
@@ -89,36 +98,23 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void addbtn_Click(object sender, EventArgs e)
         {
-            try
-            { 
-            string constr = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(constr))
+            string _kno, _itemno, _location, _specification, _mobilizationcost;
+            _kno = tboxkno.Text;
+            _itemno = tboxitemno.Text;
+            _location = tboxlocation.Text;
+            _specification = dlistspecification.Text;
+            _mobilizationcost = tboxmobilizationcost.Text;
+            if (_mobilizationcost == "")
             {
-                    if(tboxmobilizationcost.Text == "")
-                    {
-                        tboxmobilizationcost.Text = "0";
-                    }
-                string qry = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb)"+
-                    "insert into reporttb ([ID],[SID],[KNO],[ITEMNO],[LOCATION],[SPECIFICATION],[MOBILIZATIONCOST])"+
-                    "values(@id,'" + Session["SID"] + "','" + tboxkno.Text + "','" + tboxitemno.Text + "','" + tboxlocation.Text + "','" + dlistspecification.Text + "','" + tboxmobilizationcost.Text + "')";
-                sqlcon.Open();
-                SqlCommand sqlcmd = new SqlCommand(qry, sqlcon);
-                sqlcmd.ExecuteNonQuery();
+                _mobilizationcost = "0";
             }
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.ToString());
-            }
-            finally
-            {
-                GridView2.DataBind();
-            }
+            insertdata(_kno, _itemno, _location, _specification, _mobilizationcost);
         }
 
         protected void GridView2_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             lblerror.Visible = false;
         }
+
     }
 }

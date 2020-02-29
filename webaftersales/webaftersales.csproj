@@ -81,6 +81,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -201,6 +202,11 @@
     <Compile Include="AFTERSALESPROJ\ASmasterpage.Master.designer.cs">
       <DependentUpon>ASmasterpage.Master</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\datasets\DSreport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSreport.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\FRMassessment.aspx.cs">
       <DependentUpon>FRMassessment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,8 +282,10 @@
     <Content Include="AFTERSALESPROJ\images\delete.png" />
     <Content Include="AFTERSALESPROJ\images\edit-validated-icon[3].png" />
     <Content Include="AFTERSALESPROJ\images\edit.png" />
+    <Content Include="AFTERSALESPROJ\images\kmdilogo.png" />
     <Content Include="AFTERSALESPROJ\images\save.png" />
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
+    <Content Include="AFTERSALESPROJ\scripts\sign.js" />
     <Content Include="AFTERSALESPROJ\WebForm2.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -291,6 +299,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="AFTERSALESPROJ\ASmasterpage.Master" />
+    <Content Include="AFTERSALESPROJ\datasets\DSreport.xsc">
+      <DependentUpon>DSreport.xsd</DependentUpon>
+    </Content>
+    <None Include="AFTERSALESPROJ\datasets\DSreport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSreport.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="AFTERSALESPROJ\datasets\DSreport.xss">
+      <DependentUpon>DSreport.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -348,6 +367,10 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AFTERSALESPROJ\report\Report1.rdlc" />
+    <EmbeddedResource Include="AFTERSALESPROJ\report\RPTassessment.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

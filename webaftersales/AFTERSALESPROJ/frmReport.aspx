@@ -2,8 +2,11 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
+<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/CSSreporting.css" rel="stylesheet" />
+   
     <style type="text/css">
         .Background {
             background-color: Black;
@@ -30,6 +33,7 @@
             font-style: italic;
             font-weight: bold;
         }
+       
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -55,6 +59,7 @@
                     <td>
                         <asp:TextBox CssClass="tboxinput" ID="tboxitemno" runat="server"></asp:TextBox>
                     </td>
+                       <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -63,6 +68,7 @@
                     <td>
                         <asp:TextBox CssClass="tboxinput" ID="tboxkno" runat="server"></asp:TextBox>
                     </td>
+                       <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -71,6 +77,7 @@
                     <td>
                         <asp:TextBox CssClass="tboxinput" ID="tboxlocation" runat="server"></asp:TextBox>
                     </td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -78,11 +85,13 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="dlistspecification" CssClass="tboxinput" runat="server">
-                            <asp:ListItem>Select Specification</asp:ListItem>
+                            <asp:ListItem>-</asp:ListItem>
                             <asp:ListItem>Window</asp:ListItem>
                             <asp:ListItem>Door</asp:ListItem>
                         </asp:DropDownList>
                     </td>
+                    <td>  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="validationpopup"
+                        ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator></td>
                 </tr>
                 <tr>
                     <td>
@@ -90,7 +99,9 @@
                     </td>
                     <td>
                         <asp:TextBox CssClass="tboxinput" ID="tboxmobilizationcost" runat="server"></asp:TextBox>
-                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Mobilization cost must be numeric only" Text="*"
+                    </td>
+                    <td>
+                          <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="invalid amount" Text="*"
                             ControlToValidate="tboxmobilizationcost" Type="Double" Operator="DataTypeCheck" ValidationGroup="validationpopup"
                             ForeColor="Red"></asp:CompareValidator>
                     </td>
@@ -99,7 +110,7 @@
             <div>
                  <asp:Button ID="Button1" ValidationGroup="validationpopup" CssClass="btn" Width="200" runat="server" Text="add" OnClick="addbtn_Click" />
             </div>
-            <asp:ValidationSummary ID="validationpopup" ValidationGroup="validationpopup" runat="server" />
+            <asp:ValidationSummary ID="validationpopup" ForeColor="Red" ValidationGroup="validationpopup" runat="server" />
         </asp:Panel>
         <br />
         <asp:Button ID="btnaddnewreport" CssClass="btnsubmit" runat="server" Text="Add New Report" Width="186px" />
@@ -177,21 +188,21 @@
             <asp:TemplateField HeaderText="SPECIFICATION" SortExpression="SPECIFICATION">
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownList1" CssClass="tboxinput" SelectedValue='<%# Bind("SPECIFICATION") %>' runat="server">
-                        <asp:ListItem>Select Specification</asp:ListItem>
+                        <asp:ListItem>-</asp:ListItem>
                         <asp:ListItem>Window</asp:ListItem>
                         <asp:ListItem>Door</asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1"
-                        ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="Select Specification"></asp:RequiredFieldValidator>
+                        ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <FooterTemplate>
                     <asp:DropDownList ID="dlspecification" CssClass="tboxinput" runat="server">
-                        <asp:ListItem>Select Specification</asp:ListItem>
+                        <asp:ListItem>-</asp:ListItem>
                         <asp:ListItem>Window</asp:ListItem>
                         <asp:ListItem>Door</asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="insertvalidation" runat="server" ControlToValidate="dlspecification"
-                        Text="*" ForeColor="Red" ErrorMessage="specification is required" InitialValue="Select Specification"></asp:RequiredFieldValidator>
+                        Text="*" ForeColor="Red" ErrorMessage="specification is required" InitialValue="-"></asp:RequiredFieldValidator>
                 </FooterTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("SPECIFICATION") %>'></asp:Label>
@@ -200,8 +211,8 @@
             <asp:TemplateField HeaderText="MOBILIZATIONCOST" SortExpression="MOBILIZATIONCOST">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox5" Width="70px" CssClass="tboxinput" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:TextBox>
-                    <asp:CompareValidator ID="CompareValidatoreditmobilization" runat="server" ControlToValidate="TextBox5" Text="*"
-                        Type="Double" Operator="DataTypeCheck" ErrorMessage="mobilization cost must be a valid number"></asp:CompareValidator>
+                    <asp:CompareValidator ID="CompareValidatoreditmobilization" runat="server" ForeColor="Red" ControlToValidate="TextBox5" Text="*"
+                        Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount"></asp:CompareValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:Label>
@@ -209,7 +220,7 @@
                 <FooterTemplate>
                     <asp:TextBox ID="tboxmobilizationcost" Width="70px" CssClass="tboxinput" runat="server"></asp:TextBox>
                     <asp:CompareValidator ID="CompareValidatorinsertmobilization" ValidationGroup="insertvalidation" runat="server" ControlToValidate="tboxmobilizationcost" Text="*"
-                        Type="Double" Operator="DataTypeCheck" ErrorMessage="mobilization cost must be a valid number" ForeColor="Red"></asp:CompareValidator>
+                        Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount" ForeColor="Red"></asp:CompareValidator>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
@@ -286,7 +297,27 @@
 
     <div>
         <asp:Button ID="btngoback" PostBackUrl="~/AFTERSALESPROJ/FRMservicingschedule.aspx" runat="server" CssClass="btnsubmit" Text="go back" />
+        <br />
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="SELECT * FROM [REPORTTB] WHERE ([SID] = @SID)">
+            <SelectParameters>
+                <asp:SessionParameter Name="SID" SessionField="SID" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <br />
     </div>
+    <div>
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%">
+            <LocalReport ReportPath="AFTERSALESPROJ\report\RPTassessment.rdlc">
+                <DataSources>
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet1" />
+                </DataSources>
+            </LocalReport>
+           
+        </rsweb:ReportViewer>
+
+    </div>
+  
+   
 </asp:Content>
 
 
