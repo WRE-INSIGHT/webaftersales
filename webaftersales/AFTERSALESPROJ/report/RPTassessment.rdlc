@@ -292,7 +292,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>0.06944in</Top>
         <Height>0.5in</Height>
-        <Width>5.14583in</Width>
+        <Width>5.14584in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -699,6 +699,21 @@
             </Border>
           </Style>
         </Line>
+        <Image Name="Image1">
+          <Source>Database</Source>
+          <Value>=Convert.FromBase64String(Parameters!imgparam.Value)</Value>
+          <MIMEType>image/png</MIMEType>
+          <Sizing>FitProportional</Sizing>
+          <Top>0.26611in</Top>
+          <Height>0.40923in</Height>
+          <Width>1.84375in</Width>
+          <ZIndex>10</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
       </ReportItems>
       <Style>
         <Border>
@@ -771,6 +786,14 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="imgparam">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <EmbeddedImages>
     <EmbeddedImage Name="kmdilogo">
       <MIMEType>image/png</MIMEType>

@@ -2,11 +2,12 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
-<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <link href="css/CSSreporting.css" rel="stylesheet" />
-   
+
     <style type="text/css">
         .Background {
             background-color: Black;
@@ -33,10 +34,12 @@
             font-style: italic;
             font-weight: bold;
         }
-       
     </style>
+   
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     
     <div>
         <asp:Label ID="lblproject" runat="server" Text="Sample Project Name" Font-Bold="True" Font-Names="Calibri" Font-Size="25pt" ForeColor="#FF3399"></asp:Label>
         <br />
@@ -50,7 +53,9 @@
             BackgroundCssClass="Background">
         </ajaxToolkit:ModalPopupExtender>
         <asp:Panel runat="server" ID="pnl1" CssClass="form-style-8" align="center" Style="display: none">
-            <div>   <asp:Button ID="btncancel" runat="server" CssClass="btncancel" Text="X" /></div>
+            <div>
+                <asp:Button ID="btncancel" runat="server" CssClass="btncancel" Text="X" />
+            </div>
             <table style="width: 500px">
                 <tr>
                     <td>
@@ -59,7 +64,7 @@
                     <td>
                         <asp:TextBox CssClass="tboxinput" ID="tboxitemno" runat="server"></asp:TextBox>
                     </td>
-                       <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -68,7 +73,7 @@
                     <td>
                         <asp:TextBox CssClass="tboxinput" ID="tboxkno" runat="server"></asp:TextBox>
                     </td>
-                       <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -90,8 +95,9 @@
                             <asp:ListItem>Door</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td>  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="validationpopup"
-                        ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator></td>
+                    <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="validationpopup"
+                            ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator></td>
                 </tr>
                 <tr>
                     <td>
@@ -101,14 +107,14 @@
                         <asp:TextBox CssClass="tboxinput" ID="tboxmobilizationcost" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                          <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="invalid amount" Text="*"
+                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="invalid amount" Text="*"
                             ControlToValidate="tboxmobilizationcost" Type="Double" Operator="DataTypeCheck" ValidationGroup="validationpopup"
                             ForeColor="Red"></asp:CompareValidator>
                     </td>
-                </tr>   
+                </tr>
             </table>
             <div>
-                 <asp:Button ID="Button1" ValidationGroup="validationpopup" CssClass="btn" Width="200" runat="server" Text="add" OnClick="addbtn_Click" />
+                <asp:Button ID="Button1" ValidationGroup="validationpopup" CssClass="btn" Width="200" runat="server" Text="add" OnClick="addbtn_Click" />
             </div>
             <asp:ValidationSummary ID="validationpopup" ForeColor="Red" ValidationGroup="validationpopup" runat="server" />
         </asp:Panel>
@@ -305,19 +311,22 @@
         </asp:SqlDataSource>
         <br />
     </div>
+ 
     <div>
+
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%">
             <LocalReport ReportPath="AFTERSALESPROJ\report\RPTassessment.rdlc">
                 <DataSources>
                     <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet1" />
                 </DataSources>
             </LocalReport>
-           
         </rsweb:ReportViewer>
-
+        <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
     </div>
-  
-   
+    
+     <div>
+          <iframe src="WebForm2.aspx" width="1000" height="1000" ></iframe>
+      </div>
 </asp:Content>
 
 

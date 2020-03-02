@@ -9,12 +9,11 @@
     <title></title>
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="scripts/sign.js"></script>
-
     <script>
         $(document).ready(function () {
             $('#myCanvas').sign({
                 resetButton: $('#resetSign'),
-                lineWidth: 10
+                lineWidth: 5
             });
         });
     </script>
@@ -33,26 +32,36 @@
     <form id="form1" runat="server">
         <div>
             <canvas id="myCanvas"></canvas>
-            <asp:Image ID="Image1" runat="server" />
+            <input type='hidden' id='myurl' name='myurl' />
             <input type="button" value="Reset" id='resetSign' />
             <script>
                 function storeimage() {
                     var canvas = document.getElementById('myCanvas');
                     var context = canvas.getContext('2d');
                     var dataURL = canvas.toDataURL();
-                    document.getElementById('Image1').src = dataURL;
+
+                    var h = document.getElementById('myurl');
+                    h.value = dataURL;
+                    //document.getElementById('Image1').src = dataURL;
                 }
             </script>
         </div>
         <br />
         <br />
-        <asp:Button ID="Button1" OnClientClick="storeimage()" runat="server" Text="Button" />
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="629px">
-            <LocalReport ReportPath="AFTERSALESPROJ\report\Report1.rdlc">
-            </LocalReport>
-        </rsweb:ReportViewer>
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+             
+              <%--  <asp:Button ID="Button1" runat="server" Text="gotoreport" OnClick="Button1_Click" />--%>
+                <asp:Button ID="Button2" OnClientClick="storeimage()" runat="server" Text="sendimage" OnClick="Button1_Click" />
+                <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="629px">
+                    <LocalReport ReportPath="AFTERSALESPROJ\report\Report1.rdlc">
+                    </LocalReport>
+                </rsweb:ReportViewer>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+   
 
     </form>
 </body>

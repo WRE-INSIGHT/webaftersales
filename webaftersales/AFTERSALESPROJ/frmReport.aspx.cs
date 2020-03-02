@@ -7,12 +7,15 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using Microsoft.Reporting.WebForms;
+
 namespace webaftersales.AFTERSALESPROJ
 {
     public partial class frmReport : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+          
             if (!IsPostBack)
             {
               
@@ -116,5 +119,10 @@ namespace webaftersales.AFTERSALESPROJ
             lblerror.Visible = false;
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            ReportParameter param1 = new ReportParameter("imgparam", Session["TestSession"].ToString().Replace("data:image/png;base64,", ""));
+            ReportViewer1.LocalReport.SetParameters(param1);
+        }
     }
 }
