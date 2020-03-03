@@ -31,6 +31,9 @@ div {
   padding: 20px;
 }*/
 
+.iframe{
+    width:100%;
+}
 .tboxinput {
     /*width: 200px;*/
     padding: 5px 10px;

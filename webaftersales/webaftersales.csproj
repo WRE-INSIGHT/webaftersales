@@ -242,12 +242,12 @@
     <Compile Include="AFTERSALESPROJ\FRMselectkno.aspx.designer.cs">
       <DependentUpon>FRMselectkno.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AFTERSALESPROJ\WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="AFTERSALESPROJ\FRMsignature.aspx.cs">
+      <DependentUpon>FRMsignature.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AFTERSALESPROJ\WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="AFTERSALESPROJ\FRMsignature.aspx.designer.cs">
+      <DependentUpon>FRMsignature.aspx</DependentUpon>
     </Compile>
     <Compile Include="AFTERSALESPROJ\WebForm4.aspx.cs">
       <DependentUpon>WebForm4.aspx</DependentUpon>
@@ -293,7 +293,7 @@
     <Content Include="AFTERSALESPROJ\images\save.png" />
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />
-    <Content Include="AFTERSALESPROJ\WebForm2.aspx" />
+    <Content Include="AFTERSALESPROJ\FRMsignature.aspx" />
     <Content Include="AFTERSALESPROJ\WebForm4.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -377,7 +377,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AFTERSALESPROJ\report\Report1.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTassessment.rdlc" />
   </ItemGroup>
   <PropertyGroup>

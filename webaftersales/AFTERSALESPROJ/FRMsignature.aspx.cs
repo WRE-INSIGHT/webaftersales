@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -21,13 +22,18 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
         protected void Button1_Click(object sender, EventArgs e)
-        {      
-            Session["TestSession"] = Request.Form["myurl"];
-            ReportParameter param1 = new ReportParameter("imagebyte", Session["TestSession"].ToString().Replace("data:image/png;base64,",""));
-            ReportViewer1.LocalReport.SetParameters(param1);
-
+        {     
            
+            Session["dataurlsignature"] = Request.Form["myurl"];
+            Session["inspectedby"]= tboxinspector.Text;
+            Session["inspecteddate"] = tboxinspectordate.Text;
         }
-    
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            Session["dataurlsignature1"] = Request.Form["myurl1"];
+            Session["monitoredby"] = tboxmonitored.Text;
+            Session["monitoreddate"] = tboxmonitoreddate.Text;
+        }
     }
 }
