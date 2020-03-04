@@ -306,6 +306,10 @@
 
         </ContentTemplate>
     </asp:UpdatePanel>
+
+   
+
+
     <div>
         <asp:Button ID="btngoback" PostBackUrl="~/AFTERSALESPROJ/FRMservicingschedule.aspx" runat="server" CssClass="btnsubmit" Text="go back" />
         <br />
@@ -314,16 +318,22 @@
                 <asp:SessionParameter Name="SID" SessionField="SID" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="SELECT * FROM [SERVICINGTB] WHERE ([ID] = @ID)">
+            <SelectParameters>
+                <asp:SessionParameter Name="ID" SessionField="SID" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <br />
     </div>
 
     <div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" OnReportRefresh="ReportViewer1_ReportRefresh">
+                <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="700px" OnReportRefresh="ReportViewer1_ReportRefresh">
                     <LocalReport ReportPath="AFTERSALESPROJ\report\RPTassessment.rdlc">
                         <DataSources>
                             <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet1" />
+                            <rsweb:ReportDataSource DataSourceId="SqlDataSource3" Name="DataSet2" />
                         </DataSources>
                     </LocalReport>
                 </rsweb:ReportViewer>
@@ -332,9 +342,10 @@
 
     </div>
 
-    <div>
+     <div>
         <iframe style="position: absolute; width: 80%; border: none" src="FRMsignature.aspx" height="700"></iframe>
     </div>
+
 </asp:Content>
 
 

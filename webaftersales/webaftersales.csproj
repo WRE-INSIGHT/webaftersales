@@ -275,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
+    <Content Include="AFTERSALESPROJ\css\CSSfrmsignature.css" />
     <Content Include="AFTERSALESPROJ\css\CSSmaster.css" />
     <Content Include="AFTERSALESPROJ\css\CSSreporting.css" />
     <Content Include="AFTERSALESPROJ\css\CSSservicing.css" />
