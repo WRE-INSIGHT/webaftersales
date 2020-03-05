@@ -20,15 +20,9 @@ namespace webaftersales.AFTERSALESPROJ
                 l.Text = "Servicing Schedule";
                 getdata();
             }
-
+            
         }
-        public string id
-        {
-            get
-            {
-                return ViewState["servicingid"].ToString();
-            }
-        }
+      
         public string project
         {
             get
@@ -41,6 +35,20 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return ViewState["servicingaddress"].ToString();
+            }
+        }
+        public string profilefinish
+        {
+            get
+            {
+               return ViewState["PROFILEFINISH"].ToString();
+            }
+        }
+        public string jo
+        {
+            get
+            {
+                return ViewState["JO"].ToString();
             }
         }
         private void getdata()
@@ -117,10 +125,11 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
                 GridView1.SelectedIndex = rowindex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                ViewState["servicingid"] = row.Cells[1].Text;
-                ViewState["servicingproject"] = row.Cells[4].Text;
-                ViewState["servicingaddress"] = row.Cells[5].Text;
-                Session["SID"] = ViewState["servicingid"];
+                Session["SID"] = row.Cells[1].Text;
+                ViewState["JO"] = row.Cells[4].Text;
+                ViewState["servicingproject"] = row.Cells[5].Text;
+                ViewState["servicingaddress"] = row.Cells[6].Text;
+                ViewState["PROFILEFINISH"] = row.Cells[7].Text;
                 Server.Transfer("~/AFTERSALESPROJ/FRMreport.aspx");
             }    
         }

@@ -8,7 +8,7 @@
 
     <asp:Label ID="lblsearch" runat="server" Text="find"></asp:Label>
     <asp:TextBox ID="tboxsearchkey" CssClass="tboxinput" runat="server"></asp:TextBox>
-    <asp:Button ID="btnsearch"  CssClass="myButton" runat="server" Text="search" OnClick="btnsearch_Click" />
+    <asp:Button ID="btnsearch" CssClass="myButton" runat="server" Text="search" OnClick="btnsearch_Click" />
     <br />
     <br />
     <div id="pageerror">
@@ -17,15 +17,15 @@
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AllowPaging="True"
         OnPageIndexChanging="GridView1_PageIndexChanging" Font-Names="Segoe UI" Font-Size="12px" Font-Strikeout="False"
         OnRowCommand="GridView1_RowCommand"
-        OnRowDataBound="GridView1_RowDataBound" DataKeyNames="ID" EmptyDataText="No result found." 
-        EnablePersistedSelection="True" OnPageIndexChanged="GridView1_PageIndexChanged" 
+        OnRowDataBound="GridView1_RowDataBound" DataKeyNames="ID" EmptyDataText="No result found."
+        EnablePersistedSelection="True" OnPageIndexChanged="GridView1_PageIndexChanged"
         CellPadding="3" GridLines="Vertical" ShowFooter="True" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" PageSize="5">
         <AlternatingRowStyle BackColor="#DCDCDC" />
         <Columns>
-             <asp:TemplateField>
-                <ItemTemplate>  
+            <asp:TemplateField>
+                <ItemTemplate>
                     <asp:CheckBox ID="CheckBoxselect" runat="server" CommandName="selectbtn" />
-                </ItemTemplate>      
+                </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField HeaderText="ID" DataField="ID" />
             <asp:BoundField HeaderText="DATE" DataField="DATE" ItemStyle-Width="100px">
@@ -34,12 +34,13 @@
             <asp:BoundField HeaderText="SERVICING" DataField="SERVICING" ItemStyle-Width="100px">
                 <ItemStyle Width="100px"></ItemStyle>
             </asp:BoundField>
+            <asp:BoundField HeaderText="JO" DataField="JO" />
             <asp:BoundField HeaderText="PROJECT" DataField="PROJECT" />
             <asp:BoundField HeaderText="ADDRESS" DataField="ADDRESS" />
-
+             <asp:BoundField HeaderText="PROFILE_FINISH" DataField="PROFILE_FINISH" />
             <asp:TemplateField ItemStyle-Width="100px">
                 <ItemTemplate>
-                    <asp:Button runat="server" Text="report" CommandName="report" CssClass="myButton"/>            
+                    <asp:Button runat="server" Text="report" CommandName="report" CssClass="myButton" />
                 </ItemTemplate>
                 <ItemStyle Width="100px"></ItemStyle>
             </asp:TemplateField>

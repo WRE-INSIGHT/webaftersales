@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace webaftersales.AFTERSALESPROJ
 {
-    public partial class WebForm4 : System.Web.UI.Page
+    public partial class FRMimportitems : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Label lbl = (Label)this.Master.FindControl("lblheader") as Label;
+            lbl.Text = "Import Item";
         }
     }
 }

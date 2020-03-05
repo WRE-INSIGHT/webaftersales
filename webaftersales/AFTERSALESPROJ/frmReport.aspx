@@ -45,6 +45,12 @@
         <br />
         <asp:Label ID="lbladdress" runat="server" Text="Address" Font-Names="Century Gothic" Font-Size="11pt" Font-Strikeout="False" ForeColor="#CC00CC"></asp:Label>
         <br />
+        <br />
+        <asp:Label ID="lbljo" runat="server" Text="Job Order No." Font-Names="Segoe UI" Font-Size="15pt" Font-Strikeout="False" ForeColor="#666699"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="lblprofilefinish" runat="server" Text="Profile finish" Font-Names="Calibri" Font-Size="12pt" Font-Strikeout="False" ForeColor="#666699"></asp:Label>
+        <br />
     </div>
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -120,6 +126,9 @@
         </asp:Panel>
         <br />
         <asp:Button ID="btnaddnewreport" CssClass="btnsubmit" runat="server" Text="Add New Report" Width="186px" />
+        <br />
+        <br />
+        <asp:Button ID="btnimportitem" runat="server" OnClick="btnimportitem_Click" Text="import items from system" />
         <br />
     </div>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -311,7 +320,7 @@
 
 
     <div>
-        <asp:Button ID="btngoback" PostBackUrl="~/AFTERSALESPROJ/FRMservicingschedule.aspx" runat="server" CssClass="btnsubmit" Text="go back" />
+        <asp:Button ID="btngoback" PostBackUrl="~/AFTERSALESPROJ/FRMservicingschedule.aspx" runat="server" CssClass="btnsubmit" Text="go to servicing schedule" />
         <br />
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="SELECT * FROM [REPORTTB] WHERE ([SID] = @SID)">
             <SelectParameters>

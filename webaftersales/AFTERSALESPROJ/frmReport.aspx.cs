@@ -34,11 +34,21 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     lblproject.Text = ((WebForm1)lastpage).project;
                     lbladdress.Text = ((WebForm1)lastpage).address;
+                    lbljo.Text = ((WebForm1)lastpage).jo;
+                    lblprofilefinish.Text = ((WebForm1)lastpage).profilefinish;
                 }
 
             }
 
 
+        }
+        public string jo
+        {
+            get
+            {
+                return lbljo.Text;
+            }
+          
         }
 
         protected void GridView2_RowUpdated(object sender, GridViewUpdatedEventArgs e)
@@ -135,6 +145,16 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void ReportViewer1_ReportRefresh(object sender, System.ComponentModel.CancelEventArgs e)
         {
+
+            ReportParameter[] repparam = new ReportParameter[3];
+            repparam[0] = new ReportParameter("project", lblproject.Text.ToString());
+            repparam[1] = new ReportParameter("address", lbladdress.Text.ToString());
+            repparam[2] = new ReportParameter("profilefinish", lblprofilefinish.Text.ToString());
+            for (int i = 0; i < 3; i++)
+            {
+                ReportViewer1.LocalReport.SetParameters(repparam[i]);
+            }
+
             if (Session["dataurlsignature"] != null)
             {
                 ReportParameter[] param = new ReportParameter[3];
@@ -158,6 +178,11 @@ namespace webaftersales.AFTERSALESPROJ
                 }
 
             }
+        }
+
+        protected void btnimportitem_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("~/AFTERSALESPROJ/FRMimportitems.aspx");
         }
     }
 }

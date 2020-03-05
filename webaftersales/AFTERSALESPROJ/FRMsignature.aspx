@@ -49,7 +49,7 @@
                     var dataURL = canvas.toDataURL();
                     var h = document.getElementById('myurl');
                     h.value = dataURL;
-                 
+
                     //document.getElementById('resetSign').click();
                     //document.getElementById('Image1').src = dataURL;
                 }
@@ -60,7 +60,7 @@
 
                     var h = document.getElementById('myurl1');
                     h.value = dataURL;
-                
+
                     //document.getElementById('resetSign').click();
                     //document.getElementById('Image1').src = dataURL;
                 }
@@ -96,7 +96,9 @@
                         <td>
                             <asp:CompareValidator ID="CompareValidator1" ControlToValidate="tboxinspectordate" ValidationGroup="g1"
                                 Type="Date" Operator="DataTypeCheck" runat="server" ErrorMessage="Invalid Date" Text="*" ForeColor="Red"></asp:CompareValidator>
-                        </td>  
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="date is required"
+                                ForeColor="Red" ValidationGroup="g1" ControlToValidate="tboxinspectordate" Text="*"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -121,6 +123,8 @@
                         <td>
                             <asp:CompareValidator ID="CompareValidator2" ControlToValidate="tboxmonitoreddate" ValidationGroup="g2"
                                 Type="Date" Operator="DataTypeCheck" runat="server" ErrorMessage="Invalid Date" Text="*" ForeColor="Red"></asp:CompareValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="date is required"
+                                ForeColor="Red" ControlToValidate="tboxmonitoreddate" ValidationGroup="g2" Text="*"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
