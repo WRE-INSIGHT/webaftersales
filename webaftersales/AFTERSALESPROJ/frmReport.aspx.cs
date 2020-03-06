@@ -35,7 +35,7 @@ namespace webaftersales.AFTERSALESPROJ
                     lblproject.Text = ((WebForm1)lastpage).project;
                     lbladdress.Text = ((WebForm1)lastpage).address;
                     lbljo.Text = ((WebForm1)lastpage).jo;
-                    lblprofilefinish.Text = ((WebForm1)lastpage).profilefinish;
+                    lblprofilefinish.Text = "("+((WebForm1)lastpage).profilefinish+") ";
                 }
 
             }

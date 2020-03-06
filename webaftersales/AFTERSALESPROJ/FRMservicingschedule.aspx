@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/CSSservicing.css" rel="stylesheet" />
-    <link href="css/CSSreporting.css" rel="stylesheet" />
+    <link href="css/gridcss.css" rel="stylesheet" />
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -40,7 +41,7 @@
              <asp:BoundField HeaderText="PROFILE_FINISH" DataField="PROFILE_FINISH" />
             <asp:TemplateField ItemStyle-Width="100px">
                 <ItemTemplate>
-                    <asp:Button runat="server" Text="report" CommandName="report" CssClass="myButton" />
+                    <asp:Button runat="server" Text="report" CommandName="report" CssClass="gridbtn" />
                 </ItemTemplate>
                 <ItemStyle Width="100px"></ItemStyle>
             </asp:TemplateField>

@@ -279,6 +279,7 @@
     <Content Include="AFTERSALESPROJ\css\CSSmaster.css" />
     <Content Include="AFTERSALESPROJ\css\CSSreporting.css" />
     <Content Include="AFTERSALESPROJ\css\CSSservicing.css" />
+    <Content Include="AFTERSALESPROJ\css\gridcss.css" />
     <Content Include="AFTERSALESPROJ\FRMassessment.aspx" />
     <Content Include="AFTERSALESPROJ\frmknogen.aspx" />
     <Content Include="AFTERSALESPROJ\frmReport.aspx" />

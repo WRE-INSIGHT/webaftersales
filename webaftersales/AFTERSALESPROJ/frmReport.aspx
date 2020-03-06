@@ -7,7 +7,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link href="css/CSSreporting.css" rel="stylesheet" />
-
+    <link href="css/gridcss.css" rel="stylesheet" />
     <style type="text/css">
         .Background {
             background-color: Black;
@@ -46,10 +46,9 @@
         <asp:Label ID="lbladdress" runat="server" Text="Address" Font-Names="Century Gothic" Font-Size="11pt" Font-Strikeout="False" ForeColor="#CC00CC"></asp:Label>
         <br />
         <br />
-        <asp:Label ID="lbljo" runat="server" Text="Job Order No." Font-Names="Segoe UI" Font-Size="15pt" Font-Strikeout="False" ForeColor="#666699"></asp:Label>
-        <br />
-        <br />
         <asp:Label ID="lblprofilefinish" runat="server" Text="Profile finish" Font-Names="Calibri" Font-Size="12pt" Font-Strikeout="False" ForeColor="#666699"></asp:Label>
+        <asp:Label ID="lbljo" runat="server" Text="Job Order No." Font-Names="Segoe UI" Font-Size="15pt" Font-Strikeout="False" ForeColor="#666699"></asp:Label>
+
         <br />
     </div>
     <div>
@@ -125,10 +124,10 @@
             <asp:ValidationSummary ID="validationpopup" ForeColor="Red" ValidationGroup="validationpopup" runat="server" />
         </asp:Panel>
         <br />
-        <asp:Button ID="btnaddnewreport" CssClass="btnsubmit" runat="server" Text="Add New Report" Width="186px" />
+        <asp:Button ID="btnaddnewreport" CssClass="btnsubmit" runat="server" Text="Add New Item" Width="186px" />
         <br />
         <br />
-        <asp:Button ID="btnimportitem" runat="server" OnClick="btnimportitem_Click" Text="import items from system" />
+        <asp:Button ID="btnimportitem" runat="server" OnClick="btnimportitem_Click" Text="import items" />
         <br />
     </div>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -243,7 +242,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnassessment" CssClass="btnsubmit" runat="server" Text="assessment" />
+                            <asp:Button ID="btnassessment" CssClass="gridbtn" runat="server" Text="assessment" />
                         </ItemTemplate>
                         <FooterTemplate>
                             <asp:ImageButton ID="ImageButton1" ValidationGroup="insertvalidation" ImageUrl="~/AFTERSALESPROJ/images/add.png" OnClick="lbtninsert_click" runat="server" />
@@ -311,16 +310,17 @@
             </asp:SqlDataSource>
 
             <br />
+         
             <br />
 
         </ContentTemplate>
     </asp:UpdatePanel>
 
-   
+
 
 
     <div>
-        <asp:Button ID="btngoback" PostBackUrl="~/AFTERSALESPROJ/FRMservicingschedule.aspx" runat="server" CssClass="btnsubmit" Text="go to servicing schedule" />
+           <asp:HyperLink ID="goback0" runat="server" NavigateUrl="~/AFTERSALESPROJ/FRMservicingschedule.aspx" Text="&lt;&lt; Servicing Schedule"></asp:HyperLink>
         <br />
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="SELECT * FROM [REPORTTB] WHERE ([SID] = @SID)">
             <SelectParameters>
@@ -351,7 +351,7 @@
 
     </div>
 
-     <div>
+    <div>
         <iframe style="position: absolute; width: 80%; border: none" src="FRMsignature.aspx" height="700"></iframe>
     </div>
 
