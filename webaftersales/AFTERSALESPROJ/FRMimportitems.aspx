@@ -6,13 +6,14 @@
     <link href="css/gridcss.css" rel="stylesheet" />
     <script>
         function successfulmessage() {
-            alert('Signature captured successfully!');
+            confirm('imported successfully!');
         }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Label ID="Label1" runat="server" Text="KMDI System data" Font-Bold="False" Font-Names="Century Gothic" Font-Size="24pt" ForeColor="#000066"></asp:Label>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <br />
     <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>

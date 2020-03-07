@@ -173,7 +173,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                //ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
                 Response.Redirect("~/AFTERSALESPROJ/FRMreport.aspx");
             }
 
