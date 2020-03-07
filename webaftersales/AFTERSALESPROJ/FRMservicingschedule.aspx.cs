@@ -22,33 +22,39 @@ namespace webaftersales.AFTERSALESPROJ
             }
             
         }
-      
+      public string sid
+        {
+            get
+            {
+                return Session["SID"].ToString();
+            }
+        }
         public string project
         {
             get
             {
-                return ViewState["servicingproject"].ToString();
+                return Session["servicingproject"].ToString();
             }
         }
         public string address
         {
             get
             {
-                return ViewState["servicingaddress"].ToString();
+                return Session["servicingaddress"].ToString();
             }
         }
         public string profilefinish
         {
             get
             {
-               return ViewState["PROFILEFINISH"].ToString();
+               return Session["PROFILEFINISH"].ToString();
             }
         }
         public string jo
         {
             get
             {
-                return ViewState["JO"].ToString();
+                return Session["JO"].ToString();
             }
         }
         private void getdata()
@@ -126,11 +132,11 @@ namespace webaftersales.AFTERSALESPROJ
                 GridView1.SelectedIndex = rowindex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["SID"] = row.Cells[1].Text;
-                ViewState["JO"] = row.Cells[4].Text;
-                ViewState["servicingproject"] = row.Cells[5].Text;
-                ViewState["servicingaddress"] = row.Cells[6].Text;
-                ViewState["PROFILEFINISH"] = row.Cells[7].Text;
-                Server.Transfer("~/AFTERSALESPROJ/FRMreport.aspx");
+                Session["JO"] = row.Cells[4].Text;
+                Session["servicingproject"] = row.Cells[5].Text;
+                Session["servicingaddress"] = row.Cells[6].Text;
+                Session["PROFILEFINISH"] = row.Cells[7].Text;
+                Response.Redirect("~/AFTERSALESPROJ/FRMreport.aspx");
             }    
         }
 

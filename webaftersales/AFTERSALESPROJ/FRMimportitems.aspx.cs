@@ -12,17 +12,16 @@ namespace webaftersales.AFTERSALESPROJ
 {
     public partial class FRMimportitems : System.Web.UI.Page
     {
+        DataSet ds = new DataSet();
+        DataTable tb;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 Label lbl = (Label)this.Master.FindControl("lblheader") as Label;
                 lbl.Text = "Import Item";
-                Page previouspage = Page.PreviousPage;
-                if (previouspage is frmReport)
-                {
-                    ViewState["jo"] = ((frmReport)previouspage).jo;
-                }
+                WebForm1 P = new WebForm1();
+                ViewState["jo"] = P.jo;
                 getdata();
             }
 
@@ -34,12 +33,19 @@ namespace webaftersales.AFTERSALESPROJ
                 return ViewState["jo"].ToString();
             }
         }
+        private DataTable mytb
+        {
+            get
+            {
+                return (DataTable)ViewState["tb"];
+            }
+        }
         private void getdata()
         {
             try
             {
-                DataSet ds = new DataSet();
-                ds.Clear();
+
+                tb = new DataTable();
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -48,9 +54,11 @@ namespace webaftersales.AFTERSALESPROJ
                     SqlCommand sqlcmd = new SqlCommand("select  row_number() OVER (order by kno) ID, kmdi_no,item_no,location from kmdi_fabrication_tb where job_order_no = '" + jo + "'", sqlcon);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
-                    da.Fill(ds, "kmdi_fabrication_tb");
-                    GridView1.DataSource = ds;
+                    da.Fill(tb);
+                    GridView1.DataSource = tb;
                     GridView1.DataBind();
+                    ViewState["tb"] = tb;
+
                 }
             }
             catch (Exception ex)
@@ -64,51 +72,49 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            List<int> rowlist = new List<int>();
-            if (ViewState["rowlist"] != null)
+            List<int> idlist = new List<int>();
+            if (ViewState["listid"] != null)
             {
-                rowlist = (List<int>)ViewState["rowlist"];
+                idlist = (List<int>)ViewState["listid"];
             }
 
-            foreach (GridViewRow row in GridView1.Rows)
+            foreach (GridViewRow row in this.GridView1.Rows)
             {
                 CheckBox cbx = (CheckBox)row.FindControl("cboxselect");
 
-                var selectedkey = row.RowIndex;
+                var selectedkey = int.Parse(GridView1.DataKeys[row.RowIndex].Value.ToString());
 
                 if (cbx.Checked)
                 {
-                    if (!rowlist.Contains(selectedkey))
+                    if (!idlist.Contains(selectedkey))
                     {
-                        rowlist.Add(selectedkey);
+                        idlist.Add(selectedkey);
                     }
                 }
                 else
                 {
-                    if (rowlist.Contains(selectedkey))
+                    if (idlist.Contains(selectedkey))
                     {
-                        rowlist.Remove(selectedkey);
+                        idlist.Remove(selectedkey);
                     }
                 }
             }
 
-            ViewState["rowlist"] = rowlist;
+            ViewState["listid"] = idlist;
             GridView1.PageIndex = e.NewPageIndex;
             getdata();
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            List<int> idlist = ViewState["listid"] as List<int>;
+            if (e.Row.RowType == DataControlRowType.DataRow && idlist != null)
             {
-                List<int> rowlist = ViewState["rowlist"] as List<int>;
-                if (e.Row.RowType == DataControlRowType.DataRow && rowlist != null)
+                var autoid = int.Parse(GridView1.DataKeys[e.Row.RowIndex].Value.ToString());
+                if (idlist.Contains(autoid))
                 {
-                    var autoid = e.Row.RowIndex;
-                    if (rowlist.Contains(autoid))
-                    {
-                        CheckBox cbx = (CheckBox)e.Row.FindControl("cboxselect");
-                        cbx.Checked = true;
-                    }
+                    CheckBox cbx = (CheckBox)e.Row.FindControl("cboxselect");
+                    cbx.Checked = true;
                 }
             }
         }
@@ -116,20 +122,20 @@ namespace webaftersales.AFTERSALESPROJ
         protected void btnimport_Click(object sender, EventArgs e)
         {
             List<int> l = new List<int>();
-            if ((List<int>)ViewState["rowlist"] == null)
+            if ((List<int>)ViewState["listid"] == null)
             {
                 l.Add(0);
             }
             else
             {
-                l = ViewState["rowlist"] as List<int>;
+                l = ViewState["listid"] as List<int>;
             }
             foreach (GridViewRow row in GridView1.Rows)
             {
                 CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
                 if (cbk.Checked == true)
                 {
-                    int x = row.RowIndex;
+                    int x = int.Parse(row.Cells[1].Text.ToString());
                     if (!l.Contains(x))
                     {
                         l.Add(x);
@@ -137,21 +143,59 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 else
                 {
-                    int x = row.RowIndex;
+                    int x = int.Parse(row.Cells[1].Text.ToString());
                     if (l.Contains(x))
                     {
                         l.Remove(x);
                     }
                 }
             }
-            ViewState["rowlist"] = l;
-            foreach (int i in l)
+            try
             {
-           
-                string x = GridView1.Rows[i].Cells[2].Text.ToString();
-                TextBox1.Text += x;
+                WebForm1 P = new WebForm1();
+                for (int i = 0; i <= mytb.Rows.Count - 1; i++)
+                {
+                    int id = Convert.ToInt32(mytb.Rows[i]["id"].ToString());
+                    if (l.Contains(id))
+                    {
+                        string sid, kno, itemno, location;
+                        sid = P.sid;
+                        kno = mytb.Rows[i]["kmdi_no"].ToString();
+                        itemno = mytb.Rows[i]["item_no"].ToString();
+                        location = mytb.Rows[i]["location"].ToString();
+                        insertrecord(sid, kno, itemno, location);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+            finally
+            {
+                //ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
+                Response.Redirect("~/AFTERSALESPROJ/FRMreport.aspx");
             }
 
+
+            ViewState["listid"] = l;
+
+
+
+        }
+        private void insertrecord(string sid, string kno, string itemno, string location)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            using (SqlConnection sqlcon = new SqlConnection(cs))
+            {
+                sqlcon.Open();
+                string qry = " declare @id as integer = (select max(id)+1 from reporttb) " +
+                    "insert into reporttb (id,sid,kno,itemno,location,specification)values" +
+                    "(@id,'" + sid + "','" + kno + "','" + itemno + "','" + location + "','Window')";
+
+                SqlCommand sqlcmd = new SqlCommand(qry, sqlcon);
+                sqlcmd.ExecuteNonQuery();
+            }
         }
     }
 }

@@ -29,27 +29,25 @@ namespace webaftersales.AFTERSALESPROJ
                 Label l = this.Master.FindControl("lblheader") as Label;
                 l.Text = "Reporting";
 
-                Page lastpage = Page.PreviousPage;
-                if (lastpage is WebForm1)
-                {
-                    lblproject.Text = ((WebForm1)lastpage).project;
-                    lbladdress.Text = ((WebForm1)lastpage).address;
-                    lbljo.Text = ((WebForm1)lastpage).jo;
-                    lblprofilefinish.Text = "("+((WebForm1)lastpage).profilefinish+") ";
-                }
+                //Page lastpage = Page.PreviousPage;
+                //if (lastpage is WebForm1)
+                //{
+                //    lblproject.Text = ((WebForm1)lastpage).project;
+                //    lbladdress.Text = ((WebForm1)lastpage).address;
+                //    lbljo.Text = ((WebForm1)lastpage).jo;
+                //    lblprofilefinish.Text = "("+((WebForm1)lastpage).profilefinish+") ";
+                //}
+                WebForm1 p = new WebForm1();
+                lblproject.Text = p.project;
+                lbladdress.Text =p.address;   
+                lbljo.Text = p.jo;
+                lblprofilefinish.Text = "(" + p.profilefinish + ") ";
 
             }
 
 
         }
-        public string jo
-        {
-            get
-            {
-                return lbljo.Text;
-            }
-          
-        }
+
 
         protected void GridView2_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
@@ -182,7 +180,7 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void btnimportitem_Click(object sender, EventArgs e)
         {
-            Server.Transfer("~/AFTERSALESPROJ/FRMimportitems.aspx");
+            Response.Redirect("~/AFTERSALESPROJ/FRMimportitems.aspx");
         }
     }
 }
