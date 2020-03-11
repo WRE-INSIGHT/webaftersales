@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
         <header>
-            <asp:Label ID="lblheader" runat="server" Text="After Sales" Font-Bold="True" Font-Size="30pt" ForeColor="#000099"></asp:Label>
+            <asp:Label ID="lblheader" runat="server" Text="After Sales" Font-Bold="False" Font-Size="35pt" ForeColor="#003300" Font-Names="Century Gothic"></asp:Label>
         </header>
         <nav>
             <div class="scrollmenu">

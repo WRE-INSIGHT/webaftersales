@@ -51,16 +51,16 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void GridView2_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
-            if (e.AffectedRows < 1)
-            {
-                e.KeepInEditMode = true;
-                lblerror.Text = "not updated (row has been updated by another user)";
-                lblerror.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                lblerror.Visible = false;
-            }
+            //if (e.AffectedRows < 1)
+            //{
+            //    e.KeepInEditMode = true;
+            //    lblerror.Text = "not updated (row has been updated by another user)";
+            //    lblerror.ForeColor = System.Drawing.Color.Red;
+            //}
+            //else
+            //{
+            //    lblerror.Visible = false;
+            //}
         }
 
         protected void lbtninsert_click(object sender, EventArgs e)

@@ -33,6 +33,13 @@ namespace webaftersales.AFTERSALESPROJ
                 return ViewState["jo"].ToString();
             }
         }
+        private string sid
+        {
+            get
+            {
+                return Session["SID"].ToString();   
+            }
+        }
         private DataTable mytb
         {
             get
@@ -46,12 +53,15 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 tb = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString.ToString();
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-
-                    SqlCommand sqlcmd = new SqlCommand("select  row_number() OVER (order by kno) ID, kmdi_no,item_no,location from kmdi_fabrication_tb where job_order_no = '" + jo + "'", sqlcon);
+                    SqlCommand sqlcmd = sqlcon.CreateCommand();
+                    sqlcmd.CommandText = "[stdImportItem]";
+                    sqlcmd.CommandType = CommandType.StoredProcedure;
+                    sqlcmd.Parameters.AddWithValue("@sid", sid);
+                    sqlcmd.Parameters.AddWithValue("@jo", jo);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(tb);
@@ -121,6 +131,8 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void btnimport_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "confimmessage();", true);
+          
             List<int> l = new List<int>();
             if ((List<int>)ViewState["listid"] == null)
             {
@@ -173,8 +185,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
-                Response.Redirect("~/AFTERSALESPROJ/FRMreport.aspx");
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "redirectme();", true);
             }
 
 

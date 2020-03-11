@@ -256,6 +256,13 @@
     <Compile Include="AFTERSALESPROJ\FRMimportitems.aspx.designer.cs">
       <DependentUpon>FRMimportitems.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -276,6 +283,7 @@
   <ItemGroup>
     <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
     <Content Include="AFTERSALESPROJ\css\CSSfrmsignature.css" />
+    <Content Include="AFTERSALESPROJ\css\CSSloginPage.css" />
     <Content Include="AFTERSALESPROJ\css\CSSmaster.css" />
     <Content Include="AFTERSALESPROJ\css\CSSreporting.css" />
     <Content Include="AFTERSALESPROJ\css\CSSservicing.css" />
@@ -287,13 +295,16 @@
     <Content Include="AFTERSALESPROJ\FRMselectkno.aspx" />
     <Content Include="AFTERSALESPROJ\images\add.png" />
     <Content Include="AFTERSALESPROJ\images\asbanner.jpg" />
+    <Content Include="AFTERSALESPROJ\images\backimage.jpg" />
     <Content Include="AFTERSALESPROJ\images\cancel.png" />
     <Content Include="AFTERSALESPROJ\images\delete.png" />
     <Content Include="AFTERSALESPROJ\images\edit-validated-icon[3].png" />
     <Content Include="AFTERSALESPROJ\images\edit.png" />
     <Content Include="AFTERSALESPROJ\images\kmdilogo.png" />
+    <Content Include="AFTERSALESPROJ\images\loginback.jpg" />
     <Content Include="AFTERSALESPROJ\images\save.png" />
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
+    <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />
     <Content Include="AFTERSALESPROJ\FRMsignature.aspx" />
     <Content Include="AFTERSALESPROJ\FRMimportitems.aspx" />
