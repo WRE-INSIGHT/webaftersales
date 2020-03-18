@@ -18,7 +18,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if(Session["username"] != null)
             {
-                Response.Redirect("~/AFTERSALESPROJ/FRMservicingschedule.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
             }
         }
 
@@ -28,7 +28,7 @@ namespace webaftersales.AFTERSALESPROJ
             using (SqlConnection sqlcon = new SqlConnection(cs))
             {
                 sqlcon.Open();
-                SqlCommand sqlcmd = new SqlCommand("select username from ACCTTB where username = @username and password = @password", sqlcon);
+                SqlCommand sqlcmd = new SqlCommand("select username,id from ACCTTB where username = @username and password = @password", sqlcon);
                 sqlcmd.Parameters.AddWithValue("@UserName", usernametbox.Text);
                 sqlcmd.Parameters.AddWithValue("@Password", passwordtbox.Text);
                 SqlDataReader rd = sqlcmd.ExecuteReader();
@@ -38,7 +38,8 @@ namespace webaftersales.AFTERSALESPROJ
                     while (rd.Read())
                     {
                         Session["username"] = rd[0].ToString();
-                        Response.Redirect("~/AFTERSALESPROJ/FRMservicingschedule.aspx");
+                        Session["userid"] = rd[1].ToString();
+                        Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
                     }
                     rd.Close();
                 }

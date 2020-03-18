@@ -195,6 +195,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AFTERSALESPROJ\accountPage.aspx.cs">
+      <DependentUpon>accountPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\accountPage.aspx.designer.cs">
+      <DependentUpon>accountPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\ASmasterpage.Master.cs">
       <DependentUpon>ASmasterpage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -256,6 +263,13 @@
     <Compile Include="AFTERSALESPROJ\FRMimportitems.aspx.designer.cs">
       <DependentUpon>FRMimportitems.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\homePage.aspx.cs">
+      <DependentUpon>homePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\homePage.aspx.designer.cs">
+      <DependentUpon>homePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -295,6 +309,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AFTERSALESPROJ\accountPage.aspx" />
     <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
     <Content Include="AFTERSALESPROJ\css\CSSfrmsignature.css" />
     <Content Include="AFTERSALESPROJ\css\CSSloginPage.css" />
@@ -305,9 +320,12 @@
     <Content Include="AFTERSALESPROJ\css\gridcss.css" />
     <Content Include="AFTERSALESPROJ\FRMassessment.aspx" />
     <Content Include="AFTERSALESPROJ\frmknogen.aspx" />
-    <Content Include="AFTERSALESPROJ\frmReport.aspx" />
+    <Content Include="AFTERSALESPROJ\frmReport.aspx">
+      <BrowseToURL>~/AFTERSALESPROJ/homePage.aspx</BrowseToURL>
+    </Content>
     <Content Include="AFTERSALESPROJ\FRMservicingschedule.aspx" />
     <Content Include="AFTERSALESPROJ\FRMselectkno.aspx" />
+    <Content Include="AFTERSALESPROJ\homePage.aspx" />
     <Content Include="AFTERSALESPROJ\images\add.png" />
     <Content Include="AFTERSALESPROJ\images\asbanner.jpg" />
     <Content Include="AFTERSALESPROJ\images\backimage.jpg" />
