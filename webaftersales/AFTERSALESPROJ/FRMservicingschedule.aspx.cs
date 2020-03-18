@@ -14,11 +14,18 @@ namespace webaftersales.AFTERSALESPROJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["username"] != null)
             {
-                Label l = this.Master.FindControl("lblheader") as Label;
-                l.Text = "Servicing Schedule";
-                getdata();
+                if (!IsPostBack)
+                {
+                    Label l = this.Master.FindControl("lblheader") as Label;
+                    l.Text = "Servicing Schedule";
+                    getdata();
+                }
+            }
+            else
+            {
+                Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
             
         }

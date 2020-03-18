@@ -15,37 +15,43 @@ namespace webaftersales.AFTERSALESPROJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
+            if (Session["username"] != null)
             {
-                Session["dataurlsignature"] = "";
-                Session["inspectedby"] = "";
-                Session["inspecteddate"] ="";
 
-                Session["dataurlsignature1"] = "";
-                Session["monitoredby"] ="";
-                Session["monitoreddate"] = "";
+                if (!IsPostBack)
+                {
+                    Session["dataurlsignature"] = "";
+                    Session["inspectedby"] = "";
+                    Session["inspecteddate"] = "";
 
-                Label l = this.Master.FindControl("lblheader") as Label;
-                l.Text = "Reporting";
+                    Session["dataurlsignature1"] = "";
+                    Session["monitoredby"] = "";
+                    Session["monitoreddate"] = "";
 
-                //Page lastpage = Page.PreviousPage;
-                //if (lastpage is WebForm1)
-                //{
-                //    lblproject.Text = ((WebForm1)lastpage).project;
-                //    lbladdress.Text = ((WebForm1)lastpage).address;
-                //    lbljo.Text = ((WebForm1)lastpage).jo;
-                //    lblprofilefinish.Text = "("+((WebForm1)lastpage).profilefinish+") ";
-                //}
-                WebForm1 p = new WebForm1();
-                lblproject.Text = p.project;
-                lbladdress.Text =p.address;   
-                lbljo.Text = p.jo;
-                lblprofilefinish.Text = "(" + p.profilefinish + ") ";
+                    Label l = this.Master.FindControl("lblheader") as Label;
+                    l.Text = "Reporting";
+
+                    //Page lastpage = Page.PreviousPage;
+                    //if (lastpage is WebForm1)
+                    //{
+                    //    lblproject.Text = ((WebForm1)lastpage).project;
+                    //    lbladdress.Text = ((WebForm1)lastpage).address;
+                    //    lbljo.Text = ((WebForm1)lastpage).jo;
+                    //    lblprofilefinish.Text = "("+((WebForm1)lastpage).profilefinish+") ";
+                    //}
+                    WebForm1 p = new WebForm1();
+                    lblproject.Text = p.project;
+                    lbladdress.Text = p.address;
+                    lbljo.Text = p.jo;
+                    lblprofilefinish.Text = "(" + p.profilefinish + ") ";
+
+                }
 
             }
-
-
+            else
+            {
+                Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
+            }
         }
 
 

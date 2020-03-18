@@ -1,45 +1,87 @@
 ﻿body {
     /*font-family: Arial, Helvetica, sans-serif;*/
-  
 }
-
-div.scrollmenu {
-    background-color: #333;
-    overflow: auto;
-    white-space: nowrap;
-}
-
-    div.scrollmenu a {
-        display: inline-block;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        text-decoration: none;
-    }
-
-        div.scrollmenu a:hover {
-            background-color: #777;
-        }
 
 nav {
-    font-family: Calibri;
     position: fixed;
-    top: 0px;
-    left: 0px;
+    left: 0;
+    top: 0;
     width: 100%;
 }
 
+.horizontalmenu {
+    background-color: #333;
+    overflow: auto;
+}
+
+    .horizontalmenu ul {
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+        text-decoration: none;
+        /*font-family: monospace, serif;*/
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.428571429;
+    }
+
+    .horizontalmenu li {
+        float: left;
+        padding-top: 20px;
+    }
+
+    .horizontalmenu a {
+        text-decoration: none;
+        color: silver;
+        padding: 20px;
+    }
+
+        .horizontalmenu a:hover {
+            /*background-color: black;*/
+            color: white;
+        }
+
+li.first {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-left: 150px;
+    font-variant-caps: all-petite-caps;
+    padding: 13px;
+    color: white;
+}
+
+
+li.last {
+    float: right;
+    margin-right: 150px;
+}
+
+    li.last #usernamelbl {
+        color: white;
+        margin-right: 25px;
+    }
+
+
 header {
-    background-image: url('../images/unnamed.jpg');
-    background-size:auto;
-    margin-top:53px;
+    /*background-image: url('../images/unnamed.jpg');*/
+    text-align: center;
+    background-size: auto;
+    margin-top: 60px;
     margin-left: 0px;
     margin-right: 0px;
-    background-color: #666;
-    padding: 10px;
-    text-align: center;
-    font-size: 25px;
-    color: white;
+    background-color: whitesmoke;
+    padding:10px;
+    font-size: 20px;
+    font-family: monospace, serif;
+    font-size: 15px;
+    width:100%;
+    color:black;
+    font-weight:bold;
+    line-height:22px;
+    left:-0.1em;
+    position:relative;
 }
 
 article {
@@ -53,13 +95,9 @@ footer {
     bottom: 0px;
     left: 0px;
     width: 100%;
-    background-color: #777;
+    background-color: black;
     padding: 0px;
     text-align: center;
     color: white;
-}
-
-header {
-    font-family: Calibri;
-    height: 56px;
+    height:300px;
 }

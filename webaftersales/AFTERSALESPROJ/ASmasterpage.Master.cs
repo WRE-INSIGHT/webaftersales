@@ -11,8 +11,13 @@ namespace webaftersales.AFTERSALESPROJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            usernamelbl.Text ="Hi, "+ Session["username"].ToString()+" ";
         }
-      
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
+        }
     }
 }

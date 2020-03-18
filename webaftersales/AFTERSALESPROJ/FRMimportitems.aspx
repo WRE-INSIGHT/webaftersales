@@ -18,6 +18,9 @@
     <asp:Label ID="Label1" runat="server" Text="KMDI System data" Font-Bold="False" Font-Names="Century Gothic" Font-Size="24pt" ForeColor="#000066"></asp:Label>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <br />
+    <div>
+
+    </div>
     <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>

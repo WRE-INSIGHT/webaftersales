@@ -3,21 +3,10 @@
 }
 
 body {
-    background-image: url('../images/loginback.jpg');
-    background-repeat: no-repeat;
     background-size: 100% 100%;
 }
-.tboxinput {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    margin-left: 10px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.form-style-8 {
+
+.signupform {
     left: 50%;
     position: fixed;
     margin-left: -19em;
@@ -26,8 +15,27 @@ body {
     margin-top: -9px;
     padding: 50px;
     font-family: 'Open Sans Condensed', arial, sans;
-    font-size:14px;
+    font-size: 14px;
+    /*/*font-family: 'Open Sans Condensed', arial, sans;
+            font-size: 14px;
+            padding: 50px;
+            background-color: #f5f8fa;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+            -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+            -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);*/ */;
 }
+
+.tboxinput {
+     width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    margin-left: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 .btn {
     box-shadow: 0px 10px 30px -7px #276873;
     background-color: #599bb3;
@@ -39,7 +47,7 @@ body {
     font-size: 14px;
     font-weight: normal;
     padding: 5px 24px;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
     .btn:hover {

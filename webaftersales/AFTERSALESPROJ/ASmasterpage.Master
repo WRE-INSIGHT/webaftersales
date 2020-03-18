@@ -12,22 +12,33 @@
 <body>
     <form id="form1" runat="server">
         <header>
-            <asp:Label ID="lblheader" runat="server" Text="After Sales" Font-Bold="False" Font-Size="35pt" ForeColor="#003300" Font-Names="Century Gothic"></asp:Label>
+            <asp:Label ID="lblheader" runat="server" Text="Title" Font-Bold="False"></asp:Label>
         </header>
+     
         <nav>
-            <div class="scrollmenu">
-                <a href="#home" onclick="">Home</a>
-                <a href="#" onclick="redirectpage">Schedule</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
+            <div class="horizontalmenu">
+                <ul>
+                    <li class="first">
+                        <asp:Label ID="Label1" runat="server" Text="AFTERSALES"></asp:Label>
+                    <li>
+                        <asp:LinkButton ID="LinkButton2" runat="server">Home</asp:LinkButton></li>
+                    <li>
+                        <asp:LinkButton ID="LinkButton3" runat="server">Contact</asp:LinkButton></li>
+                    <li>
+                        <asp:LinkButton ID="LinkButton4" runat="server">About</asp:LinkButton></li>
+                    <li class="last">
+                        <asp:Label ID="usernamelbl" runat="server"></asp:Label>
+                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton></li>
+                </ul>
             </div>
         </nav>
+
         <article>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </article>
 
-      <%--  <footer>
+  <%--        <footer>
             <p>Footer</p>
         </footer>--%>
     </form>

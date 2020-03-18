@@ -16,13 +16,20 @@ namespace webaftersales.AFTERSALESPROJ
         DataTable tb;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["username"] != null)
             {
-                Label lbl = (Label)this.Master.FindControl("lblheader") as Label;
-                lbl.Text = "Import Item";
-                WebForm1 P = new WebForm1();
-                ViewState["jo"] = P.jo;
-                getdata();
+                if (!IsPostBack)
+                {
+                    Label lbl = (Label)this.Master.FindControl("lblheader") as Label;
+                    lbl.Text = "Import Item";
+                    WebForm1 P = new WebForm1();
+                    ViewState["jo"] = P.jo;
+                    getdata();
+                }
+            }
+            else
+            {
+                Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
 
         }
