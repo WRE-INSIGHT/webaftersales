@@ -10,23 +10,16 @@ using System.Web.UI.WebControls;
 
 namespace webaftersales.AFTERSALESPROJ
 {
-    public partial class homePage : System.Web.UI.Page
+    public partial class ServicingschedulePage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] != null)
-            {
 
-            }
-            else
-            {
-                Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
-            }
         }
+
         protected void searcbtn_Click(object sender, EventArgs e)
         {
             getdata();
-            Label1.Visible = false;
         }
         private void getdata()
         {
@@ -65,15 +58,18 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (e.CommandName == "report")
             {
-                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
 
                 Session["SID"] = ((Label)row.Cells[0].FindControl("idlbl")).Text;
                 Session["JO"] = ((Label)row.Cells[0].FindControl("jolbl")).Text;
                 Session["PROJECT"] = ((LinkButton)row.Cells[0].FindControl("projectlbl")).Text;
                 Session["ADDRESS"] = ((Label)row.Cells[0].FindControl("addresslbl")).Text;
-                Session["COLOR"] = ((Label)row.Cells[0].FindControl("colorlbl")).Text;
-                Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
+                Session["COLOR"] = ((Label)row.Cells[0].FindControl("jolbl")).Text;
+                Response.Write(Session["SID"]);
+                Response.Write(Session["JO"]);
+                Response.Write(Session["PROJECT"]);
+
             }
         }
     }
