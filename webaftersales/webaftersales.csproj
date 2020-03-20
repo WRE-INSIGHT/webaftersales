@@ -329,6 +329,7 @@
     <Content Include="AFTERSALESPROJ\css\CSSloginPage.css" />
     <Content Include="AFTERSALESPROJ\css\CSSmaster.css" />
     <Content Include="AFTERSALESPROJ\css\CSSreporting.css" />
+    <Content Include="AFTERSALESPROJ\css\CSSreportPage.css" />
     <Content Include="AFTERSALESPROJ\css\CSSservicing.css" />
     <Content Include="AFTERSALESPROJ\css\CSSsignup.css" />
     <Content Include="AFTERSALESPROJ\css\gridcss.css" />

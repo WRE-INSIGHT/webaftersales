@@ -26,7 +26,7 @@
             font-family: 'Segoe UI';
             font-size: 14px;
             font-weight: normal;
-            padding: 12px;
+            padding: 11px;
             text-decoration: none;
         }
 
@@ -48,9 +48,7 @@
         <asp:Label ID="Label1" runat="server" Text="Welcome to After Sales Web App" Font-Bold="False" Font-Italic="False" Font-Names="Century Gothic"></asp:Label></h1>
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <asp:Panel ID="Panel1" runat="server" DefaultButton="searcbtn">
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+  
                     <div>
                         <asp:TextBox ID="searchtbox" placeholder="project name" CssClass="tboxinput" runat="server"></asp:TextBox>
                         <asp:Button ID="searcbtn" CssClass="btn" runat="server" Text="find" OnClick="searcbtn_Click" />
@@ -75,9 +73,7 @@
                         <EditRowStyle BorderStyle="None" BorderWidth="0px" />
                         <RowStyle Font-Names="Calibri" Font-Size="18pt" Height="120px" CssClass="rowstyle" />
                     </asp:GridView>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </asp:Panel>
+          
     </div>
 
 </asp:Content>

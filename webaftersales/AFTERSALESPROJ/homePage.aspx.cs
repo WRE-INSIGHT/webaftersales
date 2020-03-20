@@ -73,6 +73,8 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["PROJECT"] = ((LinkButton)row.Cells[0].FindControl("projectlbl")).Text;
                 Session["ADDRESS"] = ((Label)row.Cells[0].FindControl("addresslbl")).Text;
                 Session["COLOR"] = ((Label)row.Cells[0].FindControl("colorlbl")).Text;
+                Session["DATE"] = ((Label)row.Cells[0].FindControl("datelbl")).Text;
+                Session["TEAMID"] = ((Label)row.Cells[0].FindControl("teamlbl")).Text;
                 Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
             }
         }
