@@ -284,6 +284,13 @@
     <Compile Include="AFTERSALESPROJ\reportPage.aspx.designer.cs">
       <DependentUpon>reportPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\reportviewPage.aspx.cs">
+      <DependentUpon>reportviewPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\reportviewPage.aspx.designer.cs">
+      <DependentUpon>reportviewPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\ServicingschedulePage.aspx.cs">
       <DependentUpon>ServicingschedulePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -354,6 +361,7 @@
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
+    <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />
     <Content Include="AFTERSALESPROJ\FRMsignature.aspx" />
     <Content Include="AFTERSALESPROJ\FRMimportitems.aspx" />
