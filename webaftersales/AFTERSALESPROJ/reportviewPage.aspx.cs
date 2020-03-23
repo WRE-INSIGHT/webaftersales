@@ -24,8 +24,7 @@ namespace webaftersales.AFTERSALESPROJ
                     Session["dataurlsignature1"] = "";
                     Session["monitoredby"] = "";
                     Session["monitoreddate"] = "";
-                    Label l = this.Master.FindControl("lblheader") as Label;
-                    l.Text = "Reporting";
+                 
                 }
 
             }

@@ -26,7 +26,6 @@ namespace webaftersales.AFTERSALESPROJ
         protected void searcbtn_Click(object sender, EventArgs e)
         {
             getdata();
-            Label1.Visible = false;
         }
         private void getdata()
         {
@@ -77,6 +76,11 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["TEAMID"] = ((Label)row.Cells[0].FindControl("teamlbl")).Text;
                 Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
             }
+        }
+
+        protected void searchtbox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

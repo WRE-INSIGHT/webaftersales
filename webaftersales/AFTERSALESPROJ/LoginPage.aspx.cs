@@ -34,7 +34,7 @@ namespace webaftersales.AFTERSALESPROJ
                 SqlDataReader rd = sqlcmd.ExecuteReader();
                 if (rd.HasRows)
                 {
-                    errorlbl.Text = "";
+                 
                     while (rd.Read())
                     {
                         Session["username"] = rd[0].ToString();
@@ -45,7 +45,11 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 else
                 {
-                    errorlbl.Text = "Invalid login";
+                    CustomValidator err = new CustomValidator();
+                    err.ValidationGroup = "val1";
+                    err.IsValid = false;
+                    err.ErrorMessage = "invalid login";
+                    Page.Validators.Add(err);
                 }
             }
         }

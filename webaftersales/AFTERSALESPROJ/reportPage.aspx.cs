@@ -22,7 +22,7 @@ namespace webaftersales.AFTERSALESPROJ
                     lbladdress.Text = Session["ADDRESS"].ToString();
                     lbljo.Text = Session["JO"].ToString();
                     lblcolor.Text = Session["COLOR"].ToString();
-                    lbldate.Text = Session["DATE"].ToString();
+                    lbldate.Text = "  "+Session["DATE"].ToString();
                     getteam();
                 }
 
@@ -70,8 +70,8 @@ namespace webaftersales.AFTERSALESPROJ
                         servicing = rd[2].ToString();
                     }
                     lblteamname.Text = teamname;
-                    lblpersonnel.Text = personnel;
-                    lbldate.Text += " " + servicing;
+                    lblpersonnel.Text = personnel;  
+                    lblservicing.Text = servicing;
                 }
             }
             catch (Exception e)
