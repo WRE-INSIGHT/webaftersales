@@ -3,6 +3,11 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .tbl td {
+            padding-bottom: 10px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
@@ -14,7 +19,8 @@
         <footer>
             <h2>
                 <asp:Label ID="lbldate" runat="server" Text="Date"></asp:Label></h2>
-                <h4><small><asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h4>
+            <h4><small>
+                <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h4>
         </footer>
 
     </div>
@@ -146,10 +152,10 @@
                         <ItemTemplate>
                             <asp:Label ID="Label5" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:Label>
                         </ItemTemplate>
-                        <FooterTemplate>    
-                                <asp:TextBox ID="tboxmobilizationcost" CssClass="form-control" runat="server"></asp:TextBox>
-                                <asp:CompareValidator ID="CompareValidatorinsertmobilization" ValidationGroup="insertvalidation" runat="server" ControlToValidate="tboxmobilizationcost" Text="*"
-                                    Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount" ForeColor="Red"></asp:CompareValidator>     
+                        <FooterTemplate>
+                            <asp:TextBox ID="tboxmobilizationcost" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:CompareValidator ID="CompareValidatorinsertmobilization" ValidationGroup="insertvalidation" runat="server" ControlToValidate="tboxmobilizationcost" Text="*"
+                                Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount" ForeColor="Red"></asp:CompareValidator>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
@@ -215,14 +221,79 @@
                     <asp:Parameter Name="original_MOBILIZATIONCOST" Type="Decimal" />
                 </UpdateParameters>
             </asp:SqlDataSource>
-
-            <br />
-
-            <br />
-
+            <div>
+                <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="Add New Item" data-toggle="modal" data-target="#myModal" />
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 
-        <asp:LinkButton ID="LinkButton1" Width="100%" CssClass="btn btn-primary" runat="server" PostBackUrl="~/AFTERSALESPROJ/reportviewPage.aspx">VIEW REPORT</asp:LinkButton>
+
+
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">New Item</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <table class="tbl">
+                            <tr>
+                                <td>
+                                    <asp:TextBox CssClass="form-control" Height="40" placeholder="Item number" ID="tboxitemno" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:TextBox CssClass="form-control" Height="40" ID="tboxkno" placeholder="K number" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:TextBox CssClass="form-control" Height="40" ID="tboxlocation" placeholder="Location" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100%">
+                                    <asp:DropDownList ID="dlistspecification" Height="40" placeholder="Specification" CssClass="form-control" runat="server">
+                                        <asp:ListItem>-</asp:ListItem>
+                                        <asp:ListItem>Window</asp:ListItem>
+                                        <asp:ListItem>Door</asp:ListItem>
+                                    </asp:DropDownList></td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="validationpopup"
+                                        ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:TextBox CssClass="form-control" Height="40" ID="tboxmobilizationcost" placeholder="Mobilization Cost" runat="server"></asp:TextBox></td>
+                                <td>
+                                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="invalid amount" Text="*"
+                                        ControlToValidate="tboxmobilizationcost" Type="Double" Operator="DataTypeCheck" ValidationGroup="validationpopup"
+                                        ForeColor="Red"></asp:CompareValidator></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="form-group">
+                        <asp:ValidationSummary ID="validationpopup" class="alert alert-danger" ValidationGroup="validationpopup" runat="server" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="Button1" ValidationGroup="validationpopup" CssClass="btn btn-default" runat="server" Text=" Add " OnClick="addbtn_Click" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br />
+    <br />
+    <asp:LinkButton ID="LinkButton1" Width="100%" CssClass="btn btn-primary" runat="server" PostBackUrl="~/AFTERSALESPROJ/reportviewPage.aspx">VIEW REPORT</asp:LinkButton>
 
 </asp:Content>

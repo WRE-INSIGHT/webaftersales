@@ -45,12 +45,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-    <div class="jumbotron" style="top:0">
-        <h1>Kenneth and Mock<br /><h2><small>WINDOWS AND DOORS</small></h2></h1>
+    <div class="jumbotron">
+        <h1>Kenneth and Mock<small> WINDOWS AND DOORS</small></h1>
     </div>
-
-
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="container">

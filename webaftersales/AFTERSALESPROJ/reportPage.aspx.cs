@@ -22,7 +22,7 @@ namespace webaftersales.AFTERSALESPROJ
                     lbladdress.Text = Session["ADDRESS"].ToString();
                     lbljo.Text = Session["JO"].ToString();
                     lblcolor.Text = Session["COLOR"].ToString();
-                    lbldate.Text = "  "+Session["DATE"].ToString();
+                    lbldate.Text = "  " + Session["DATE"].ToString();
                     getteam();
                 }
 
@@ -70,7 +70,7 @@ namespace webaftersales.AFTERSALESPROJ
                         servicing = rd[2].ToString();
                     }
                     lblteamname.Text = teamname;
-                    lblpersonnel.Text = personnel;  
+                    lblpersonnel.Text = personnel;
                     lblservicing.Text = servicing;
                 }
             }
@@ -119,7 +119,20 @@ namespace webaftersales.AFTERSALESPROJ
                 }
             }
         }
-
+        protected void addbtn_Click(object sender, EventArgs e)
+        {
+            string _kno, _itemno, _location, _specification, _mobilizationcost;
+            _kno = tboxkno.Text;
+            _itemno = tboxitemno.Text;
+            _location = tboxlocation.Text;
+            _specification = dlistspecification.Text;
+            _mobilizationcost = tboxmobilizationcost.Text;
+            if (_mobilizationcost == "")
+            {
+                _mobilizationcost = "0";
+            }
+            insertdata(_kno, _itemno, _location, _specification, _mobilizationcost);
+        }
 
 
     }
