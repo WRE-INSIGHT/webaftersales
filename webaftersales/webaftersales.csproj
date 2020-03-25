@@ -209,6 +209,13 @@
     <Compile Include="AFTERSALESPROJ\ASmasterpage.Master.designer.cs">
       <DependentUpon>ASmasterpage.Master</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\contactusPage.aspx.cs">
+      <DependentUpon>contactusPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\contactusPage.aspx.designer.cs">
+      <DependentUpon>contactusPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\datasets\DSreport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,6 +276,13 @@
     </Compile>
     <Compile Include="AFTERSALESPROJ\homePage.aspx.designer.cs">
       <DependentUpon>homePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\importPage.aspx.cs">
+      <DependentUpon>importPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\importPage.aspx.designer.cs">
+      <DependentUpon>importPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="AFTERSALESPROJ\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
@@ -338,6 +352,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AFTERSALESPROJ\accountPage.aspx" />
+    <Content Include="AFTERSALESPROJ\contactusPage.aspx" />
     <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
     <Content Include="AFTERSALESPROJ\css\CSSfrmsignature.css" />
     <Content Include="AFTERSALESPROJ\css\CSSloginPage.css" />
@@ -366,6 +381,7 @@
     <Content Include="AFTERSALESPROJ\images\loginback.jpg" />
     <Content Include="AFTERSALESPROJ\images\save.png" />
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
+    <Content Include="AFTERSALESPROJ\importPage.aspx" />
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />

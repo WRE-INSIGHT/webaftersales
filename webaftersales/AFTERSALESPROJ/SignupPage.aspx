@@ -109,8 +109,7 @@
                             Kenneth&Mock™ with over 4,000 clients nationwide is known for 20 years of service excellence.
                         </p>
                         <footer>
-                            From Kenneth and Mock official
-                            <asp:HyperLink ID="HyperLink2" NavigateUrl="https://www.kennethandmock.com/" runat="server">website.</asp:HyperLink>
+                            <p><a class="btn btn-default" href="https://www.kennethandmock.com/">Learn more &raquo;</a></p>
                         </footer>
                     </blockquote>
 

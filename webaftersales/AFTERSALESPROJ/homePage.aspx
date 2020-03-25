@@ -45,7 +45,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="jumbotron">
+    <div class="page-header">
         <h1>Kenneth and Mock<small> WINDOWS AND DOORS</small></h1>
     </div>
 

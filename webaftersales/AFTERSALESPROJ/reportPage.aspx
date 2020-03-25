@@ -10,20 +10,16 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="well">
-        <h1>
-            <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label>
-        </h1>
-        <h4>
-            <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></h4>
-        <footer>
-            <h2>
-                <asp:Label ID="lbldate" runat="server" Text="Date"></asp:Label></h2>
-            <h4><small>
-                <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h4>
-        </footer>
-
+    <div class="page-header">
+        <h2>
+            <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label><br />
+            <small>
+                <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
     </div>
+       <h2>
+                <asp:Label ID="lbldate" runat="server" Text="Date"></asp:Label>
+                <small>
+                    <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h2>
 
     <table class="table table-striped">
         <tr>
@@ -291,6 +287,10 @@
             </div>
 
         </div>
+    </div>
+
+    <div class="container">
+        <asp:HyperLink ID="HyperLink1" CssClass="btn btn-primary" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">Import</asp:HyperLink>
     </div>
     <br />
     <br />

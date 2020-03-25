@@ -57,8 +57,7 @@
                         <p>
                             committed to do business with integrity by providing all our clientele with excellent quality products and exceptional service.
                         </p>
-                        <footer>From Kenneth and Mock official
-                            <asp:HyperLink ID="HyperLink2" NavigateUrl="https://www.kennethandmock.com/" runat="server">website.</asp:HyperLink></footer>
+                        <footer> <p><a class="btn btn-default" href="https://www.kennethandmock.com/">Learn more &raquo;</a></p></footer>
                     </blockquote>
                 </div>
                 <div class="col-sm-4">
@@ -68,8 +67,7 @@
                         <p>
                             at the forefront of the newest and most suitable window and door product and accessories in the Philippine market.
                         </p>
-                        <footer>From Kenneth and Mock official
-                            <asp:HyperLink ID="HyperLink3" NavigateUrl="https://www.kennethandmock.com/" runat="server">website.</asp:HyperLink></footer>
+                        <footer> <p><a class="btn btn-default" href="https://www.kennethandmock.com/">Learn more &raquo;</a></p></footer>
                     </blockquote>
                 </div>
             </div>

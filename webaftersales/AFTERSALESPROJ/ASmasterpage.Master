@@ -32,14 +32,14 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Home</asp:LinkButton></li>
-                        <li><a href="#">Contact</a></li>
+                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx">Home</asp:HyperLink></li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/contactusPage.aspx">Contact</asp:HyperLink></li>
                         <li><a href="#">About</a></li>
-                        <li><a href="#">Help</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <asp:LinkButton ID="acctlink" runat="server" PostBackUrl="~/AFTERSALESPROJ/accountPage.aspx">acctlink</asp:LinkButton></li>
+                            <asp:LinkButton ID="acctlink" runat="server" PostBackUrl="~/AFTERSALESPROJ/accountPage.aspx">Account</asp:LinkButton></li>
                         <li>
                             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton></li>
                     </ul>
@@ -53,7 +53,12 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-
+        <footer class="container-fluid text-center">
+            <br />
+            <br />
+            <br />
+            <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
+        </footer>
     </form>
 </body>
 </html>
