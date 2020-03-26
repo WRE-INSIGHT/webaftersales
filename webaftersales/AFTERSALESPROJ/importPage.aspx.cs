@@ -21,7 +21,8 @@ namespace webaftersales.AFTERSALESPROJ
                 errorlbl.Visible = false;
                 if (!IsPostBack)
                 {
-                    getdata();
+                    getdata("reload");
+                    getlocations();
                 }
             }
             else
@@ -50,7 +51,35 @@ namespace webaftersales.AFTERSALESPROJ
                 return (DataTable)ViewState["tb"];
             }
         }
-        private void getdata()
+        private void getlocations()
+        {
+            try
+            {
+
+              
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    SqlCommand sqlcmd = sqlcon.CreateCommand();
+                    sqlcmd.CommandText = "[stdImportItem]";
+                    sqlcmd.CommandType = CommandType.StoredProcedure;
+                    sqlcmd.Parameters.AddWithValue("@sid", sid);
+                    sqlcmd.Parameters.AddWithValue("@jo", jo);
+                    sqlcmd.Parameters.AddWithValue("@datarequest", "getlocation");
+                    sqlcmd.Parameters.AddWithValue("@location", locationdl.Text);
+                    locationdl.DataSource = sqlcmd.ExecuteReader();
+                    locationdl.DataTextField = "LOCATION";
+                    locationdl.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+
+            }
+        }
+        private void getdata(string datareq)
         {
             try
             {
@@ -65,13 +94,15 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.CommandType = CommandType.StoredProcedure;
                     sqlcmd.Parameters.AddWithValue("@sid", sid);
                     sqlcmd.Parameters.AddWithValue("@jo", jo);
+                    sqlcmd.Parameters.AddWithValue("@datarequest", datareq);
+                    sqlcmd.Parameters.AddWithValue("@location", locationdl.Text);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(tb);
                     GridView1.DataSource = tb;
                     GridView1.DataBind();
                     ViewState["tb"] = tb;
-
+                    ViewState["datareq"] = datareq;
                 }
             }
             catch (Exception ex)
@@ -115,7 +146,7 @@ namespace webaftersales.AFTERSALESPROJ
 
             ViewState["listid"] = idlist;
             GridView1.PageIndex = e.NewPageIndex;
-            getdata();
+            getdata(ViewState["datareq"].ToString());
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -190,10 +221,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alerme();", true);
             }
 
-
             ViewState["listid"] = l;
-
-
 
         }
         private void insertrecord(string sid, string kno, string itemno, string location)
@@ -218,6 +246,11 @@ namespace webaftersales.AFTERSALESPROJ
                 errorlbl.Text = ex.ToString();
             }
 
+        }
+
+        protected void searchbtn_Click(object sender, EventArgs e)
+        {
+            getdata("filter");
         }
     }
 }

@@ -134,6 +134,22 @@ namespace webaftersales.AFTERSALESPROJ
             insertdata(_kno, _itemno, _location, _specification, _mobilizationcost);
         }
 
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "assessment")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridView2.SelectedIndex = rowindex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                Session["KNO"]= ((Label)row.FindControl("Label2")).Text.ToString();
 
+                Response.Redirect("~/AFTERSALESPROJ/assessmentPage.aspx");
+            }
+        }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

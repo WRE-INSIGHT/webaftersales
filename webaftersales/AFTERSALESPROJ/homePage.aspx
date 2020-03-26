@@ -52,10 +52,13 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="container">
 
-        <div class="form-group">
+        <div class="input-group">
             <asp:TextBox ID="searchtbox" Height="40" CssClass="form-control" placeholder="project name" runat="server" OnTextChanged="searchtbox_TextChanged"></asp:TextBox>
+            <div class="input-group-btn">
+                  <asp:Button ID="searcbtn" height="40" CssClass="btn btn-primary" runat="server" Text="Find" OnClick="searcbtn_Click" />
+            </div>
         </div>
-        <asp:Button ID="searcbtn" Width="100%" CssClass="btn btn-primary" runat="server" Text="search" OnClick="searcbtn_Click" />
+      
 
     </div>
     <div class="container">

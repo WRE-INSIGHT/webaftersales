@@ -209,6 +209,13 @@
     <Compile Include="AFTERSALESPROJ\ASmasterpage.Master.designer.cs">
       <DependentUpon>ASmasterpage.Master</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\assessmentPage.aspx.cs">
+      <DependentUpon>assessmentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\assessmentPage.aspx.designer.cs">
+      <DependentUpon>assessmentPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\contactusPage.aspx.cs">
       <DependentUpon>contactusPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -352,6 +359,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AFTERSALESPROJ\accountPage.aspx" />
+    <Content Include="AFTERSALESPROJ\assessmentPage.aspx" />
     <Content Include="AFTERSALESPROJ\contactusPage.aspx" />
     <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
     <Content Include="AFTERSALESPROJ\css\CSSfrmsignature.css" />

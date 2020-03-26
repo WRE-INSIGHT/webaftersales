@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Import items</title>
-      <script>
+    <script>
         function confimmessage() {
             confirm('import selected items?');
         }
@@ -22,10 +22,18 @@
                 <asp:Label ID="Label1" runat="server" Text="KMDI System data"></asp:Label></h1>
         </div>
 
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
+
+                <div class="input-group">
+                    <asp:DropDownList ID="locationdl" Height="40" CssClass="form-control" runat="server"></asp:DropDownList>
+                    <div class="input-group-btn">
+                        <asp:Button ID="searchbtn" Height="40" CssClass="btn btn-primary" runat="server" Text="Find" OnClick="searchbtn_Click" />
+                    </div>
+                </div>
+                <br/>
                 <asp:GridView ID="GridView1" CssClass="table" runat="server" AutoGenerateColumns="False" EmptyDataText="No result found." AllowPaging="True" DataKeyNames="ID" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
 
@@ -40,40 +48,21 @@
                         <asp:BoundField HeaderText="LOCATION" DataField="LOCATION" />
                     </Columns>
                 </asp:GridView>
-                <br />
-                <br />
-                <asp:Button ID="btnimport" Width="100%" CssClass="btn btn-primary" runat="server" OnClick="btnimport_Click" Text="import selected rows" />
-
-            </ContentTemplate>
-        </asp:UpdatePanel>
-        <br />
-        <br />
-        <div>
-            <asp:HyperLink ID="HyperLink1" CssClass="btn btn-danger" Width="100%" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="&lt;&lt; back to report"></asp:HyperLink>
-        </div>
-        <div class="container">
-            <div class="alert alert-danger">
-                <asp:Label ID="errorlbl" runat="server" Text="Label"></asp:Label>
-            </div>
-        </div>
-
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Page says</h4>
+                <div class="container">
+                    <div class=" navbar-left">
+                        <asp:Button ID="btnimport" Width="160" CssClass="btn btn-success" runat="server" OnClick="btnimport_Click" Text="import selected items" />
                     </div>
-                    <div class="modal-body">
-                        <p>modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="navbar-right">
+                        <asp:HyperLink ID="HyperLink1" Width="160" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="&lt;&lt; back to report"></asp:HyperLink>
                     </div>
                 </div>
-            </div>
-        </div>
+                <br />
+                <br />
+                <br />
+                <div>
+                    <asp:Label ID="errorlbl" Visible="false" CssClass="alert alert-danger" runat="server" Text="Label"></asp:Label>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
 </asp:Content>

@@ -16,10 +16,10 @@
             <small>
                 <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
     </div>
-       <h2>
-                <asp:Label ID="lbldate" runat="server" Text="Date"></asp:Label>
-                <small>
-                    <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h2>
+    <h2>
+        <asp:Label ID="lbldate" runat="server" Text="Date"></asp:Label>
+        <small>
+            <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h2>
 
     <table class="table table-striped">
         <tr>
@@ -48,13 +48,17 @@
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
 
-            <div class="well-sm">
-                <strong>Report Table!</strong> List of items.
+            <div class="well">
+                <strong>Report Table!</strong> List of items.</div>
+            <div class="container">
+                <asp:HyperLink ID="HyperLink3" CssClass="btn btn-primary" runat="server" data-toggle="modal" data-target="#myModal">add new item</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink1" CssClass="btn btn-warning" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import items</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink2" CssClass="btn btn-success" runat="server" NavigateUrl="~/AFTERSALESPROJ/reportviewPage.aspx">view report</asp:HyperLink>
             </div>
             <asp:GridView ID="GridView2" class="table table-hover" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1"
                 EmptyDataText="NO RESULT" EnablePersistedSelection="True"
                 ShowFooter="True" OnPageIndexChanging="GridView2_PageIndexChanging"
-                PageSize="5" OnRowDataBound="GridView2_RowDataBound" HorizontalAlign="Center">
+                PageSize="5" OnRowDataBound="GridView2_RowDataBound" HorizontalAlign="Center" OnRowCommand="GridView2_RowCommand" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
                 <Columns>
                     <asp:CommandField ShowDeleteButton="true"
                         ControlStyle-CssClass="actionbtn"
@@ -155,9 +159,9 @@
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
-                        <%--   <ItemTemplate>
-                            <asp:LinkButton ID="LinkButton1" runat="server">assessment</asp:LinkButton>
-                        </ItemTemplate>--%>
+                           <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" CommandName="assessment" runat="server">assessment</asp:LinkButton>
+                        </ItemTemplate>
                         <FooterTemplate>
                             <asp:ImageButton ID="ImageButton1" ValidationGroup="insertvalidation" ImageUrl="~/AFTERSALESPROJ/images/add.png" OnClick="lbtninsert_click" runat="server" />
                         </FooterTemplate>
@@ -217,9 +221,6 @@
                     <asp:Parameter Name="original_MOBILIZATIONCOST" Type="Decimal" />
                 </UpdateParameters>
             </asp:SqlDataSource>
-            <div>
-                <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="Add New Item" data-toggle="modal" data-target="#myModal" />
-            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 
@@ -289,11 +290,5 @@
         </div>
     </div>
 
-    <div class="container">
-        <asp:HyperLink ID="HyperLink1" CssClass="btn btn-primary" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">Import</asp:HyperLink>
-    </div>
-    <br />
-    <br />
-    <asp:LinkButton ID="LinkButton1" Width="100%" CssClass="btn btn-primary" runat="server" PostBackUrl="~/AFTERSALESPROJ/reportviewPage.aspx">VIEW REPORT</asp:LinkButton>
 
 </asp:Content>
