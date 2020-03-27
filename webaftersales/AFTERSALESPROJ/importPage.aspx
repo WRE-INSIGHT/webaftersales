@@ -33,8 +33,12 @@
                         <asp:Button ID="searchbtn" Height="40" CssClass="btn btn-primary" runat="server" Text="Find" OnClick="searchbtn_Click" />
                     </div>
                 </div>
-                <br/>
-                <asp:GridView ID="GridView1" CssClass="table" runat="server" AutoGenerateColumns="False" EmptyDataText="No result found." AllowPaging="True" DataKeyNames="ID" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound">
+                <br />
+                <asp:GridView ID="GridView1" CssClass="table" runat="server" 
+                    AutoGenerateColumns="False" EmptyDataText="No result found." 
+                    AllowPaging="True" DataKeyNames="ID" 
+                     OnPageIndexChanging="GridView1_PageIndexChanging"
+                     OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
 
                         <asp:TemplateField>
@@ -46,6 +50,7 @@
                         <asp:BoundField HeaderText="K#" DataField="KMDI_NO" />
                         <asp:BoundField HeaderText="ITEM#" DataField="ITEM_NO" />
                         <asp:BoundField HeaderText="LOCATION" DataField="LOCATION" />
+                        <asp:BoundField HeaderText="JO" DataField="job_order_no" />
                     </Columns>
                 </asp:GridView>
                 <div class="container">

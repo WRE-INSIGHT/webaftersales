@@ -141,8 +141,10 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridView2.SelectedIndex = rowindex;
                 GridViewRow row = GridView2.Rows[rowindex];
+                Session["reportID"] = ((Label)row.FindControl("Label6")).Text.ToString();
                 Session["KNO"]= ((Label)row.FindControl("Label2")).Text.ToString();
-
+                Session["LOCATION"]= ((Label)row.FindControl("Label3")).Text.ToString();
+                Session["JOBORDERNO"]= ((Label)row.FindControl("Label600")).Text.ToString();
                 Response.Redirect("~/AFTERSALESPROJ/assessmentPage.aspx");
             }
         }

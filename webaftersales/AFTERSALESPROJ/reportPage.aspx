@@ -69,6 +69,7 @@
                         ShowEditButton="true">
                         <ControlStyle CssClass="actionbtn"></ControlStyle>
                     </asp:CommandField>
+                  
                     <asp:TemplateField HeaderText="" SortExpression="ID">
                         <EditItemTemplate>
                             <asp:Label ID="Label1" Visible="false" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
@@ -158,6 +159,15 @@
                                 Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount" ForeColor="Red"></asp:CompareValidator>
                         </FooterTemplate>
                     </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="" SortExpression="JO">
+                        <EditItemTemplate>
+                            <asp:Label ID="Label100" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label600" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField>
                            <ItemTemplate>
                             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" CommandName="assessment" runat="server">assessment</asp:LinkButton>
@@ -176,49 +186,35 @@
             <asp:ValidationSummary class="alert alert-danger" ID="ValidationSummary2" runat="server" />
 
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
-                DeleteCommand="DELETE FROM [REPORTTB] WHERE [ID] = @original_ID AND (([SID] = @original_SID) OR ([SID] IS NULL AND @original_SID IS NULL)) AND (([ITEMNO] = @original_ITEMNO) OR ([ITEMNO] IS NULL AND @original_ITEMNO IS NULL)) AND (([KNO] = @original_KNO) OR ([KNO] IS NULL AND @original_KNO IS NULL)) AND (([LOCATION] = @original_LOCATION) OR ([LOCATION] IS NULL AND @original_LOCATION IS NULL)) AND (([SPECIFICATION] = @original_SPECIFICATION) OR ([SPECIFICATION] IS NULL AND @original_SPECIFICATION IS NULL)) AND (([MOBILIZATIONCOST] = @original_MOBILIZATIONCOST) OR ([MOBILIZATIONCOST] IS NULL AND @original_MOBILIZATIONCOST IS NULL))"
-                InsertCommand="
-                declare @id as integer = (select max(id)+1 from reporttb)
-                INSERT INTO [REPORTTB] ([ID], [SID], [ITEMNO], [KNO], [LOCATION], [SPECIFICATION], [MOBILIZATIONCOST]) VALUES (@ID, @SID, @ITEMNO, @KNO, @LOCATION, @SPECIFICATION, @MOBILIZATIONCOST)"
-                OldValuesParameterFormatString="original_{0}"
-                SelectCommand="SELECT [ID], [SID], [ITEMNO], [KNO], [LOCATION], [SPECIFICATION], [MOBILIZATIONCOST] FROM [REPORTTB] WHERE ([SID] = @SID)"
-                UpdateCommand="UPDATE [REPORTTB] SET [SID] = @SID, [ITEMNO] = @ITEMNO, [KNO] = @KNO, [LOCATION] = @LOCATION, [SPECIFICATION] = @SPECIFICATION, [MOBILIZATIONCOST] = @MOBILIZATIONCOST WHERE [ID] = @original_ID AND (([SID] = @original_SID) OR ([SID] IS NULL AND @original_SID IS NULL)) AND (([ITEMNO] = @original_ITEMNO) OR ([ITEMNO] IS NULL AND @original_ITEMNO IS NULL)) AND (([KNO] = @original_KNO) OR ([KNO] IS NULL AND @original_KNO IS NULL)) AND (([LOCATION] = @original_LOCATION) OR ([LOCATION] IS NULL AND @original_LOCATION IS NULL)) AND (([SPECIFICATION] = @original_SPECIFICATION) OR ([SPECIFICATION] IS NULL AND @original_SPECIFICATION IS NULL)) AND (([MOBILIZATIONCOST] = @original_MOBILIZATIONCOST) OR ([MOBILIZATIONCOST] IS NULL AND @original_MOBILIZATIONCOST IS NULL))">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" 
+                DeleteCommand="DELETE FROM [REPORTTB] WHERE [ID] = @ID" InsertCommand="INSERT INTO [REPORTTB] ([ID], [SID], [KNO], [ITEMNO], [LOCATION], [SPECIFICATION], [MOBILIZATIONCOST], [JO]) VALUES (@ID, @SID, @KNO, @ITEMNO, @LOCATION, @SPECIFICATION, @MOBILIZATIONCOST, @JO)" 
+                SelectCommand="SELECT * FROM [REPORTTB] WHERE ([SID] = @SID)" 
+                UpdateCommand="UPDATE [REPORTTB] SET [SID] = @SID, [KNO] = @KNO, [ITEMNO] = @ITEMNO, [LOCATION] = @LOCATION, [SPECIFICATION] = @SPECIFICATION, [MOBILIZATIONCOST] = @MOBILIZATIONCOST, [JO] = @JO WHERE [ID] = @ID">
                 <DeleteParameters>
-                    <asp:Parameter Name="original_ID" Type="Int32" />
-                    <asp:Parameter Name="original_SID" Type="String" />
-                    <asp:Parameter Name="original_ITEMNO" Type="String" />
-                    <asp:Parameter Name="original_KNO" Type="String" />
-                    <asp:Parameter Name="original_LOCATION" Type="String" />
-                    <asp:Parameter Name="original_SPECIFICATION" Type="String" />
-                    <asp:Parameter Name="original_MOBILIZATIONCOST" Type="Decimal" />
+                    <asp:Parameter Name="ID" Type="Int32" />
                 </DeleteParameters>
                 <InsertParameters>
-                    <%--     <asp:Parameter Name="ID" Type="Int32" />--%>
+                    <asp:Parameter Name="ID" Type="Int32" />
                     <asp:Parameter Name="SID" Type="String" />
-                    <asp:Parameter Name="ITEMNO" Type="String" />
                     <asp:Parameter Name="KNO" Type="String" />
+                    <asp:Parameter Name="ITEMNO" Type="String" />
                     <asp:Parameter Name="LOCATION" Type="String" />
                     <asp:Parameter Name="SPECIFICATION" Type="String" />
                     <asp:Parameter Name="MOBILIZATIONCOST" Type="Decimal" />
+                    <asp:Parameter Name="JO" Type="String" />
                 </InsertParameters>
                 <SelectParameters>
-                    <asp:SessionParameter DefaultValue="" Name="SID" SessionField="SID" Type="String" />
+                    <asp:SessionParameter Name="SID" SessionField="SID" Type="String" />
                 </SelectParameters>
                 <UpdateParameters>
                     <asp:Parameter Name="SID" Type="String" />
-                    <asp:Parameter Name="ITEMNO" Type="String" />
                     <asp:Parameter Name="KNO" Type="String" />
+                    <asp:Parameter Name="ITEMNO" Type="String" />
                     <asp:Parameter Name="LOCATION" Type="String" />
                     <asp:Parameter Name="SPECIFICATION" Type="String" />
                     <asp:Parameter Name="MOBILIZATIONCOST" Type="Decimal" />
-                    <asp:Parameter Name="original_ID" Type="Int32" />
-                    <asp:Parameter Name="original_SID" Type="String" />
-                    <asp:Parameter Name="original_ITEMNO" Type="String" />
-                    <asp:Parameter Name="original_KNO" Type="String" />
-                    <asp:Parameter Name="original_LOCATION" Type="String" />
-                    <asp:Parameter Name="original_SPECIFICATION" Type="String" />
-                    <asp:Parameter Name="original_MOBILIZATIONCOST" Type="Decimal" />
+                    <asp:Parameter Name="JO" Type="String" />
+                    <asp:Parameter Name="ID" Type="Int32" />
                 </UpdateParameters>
             </asp:SqlDataSource>
         </ContentTemplate>

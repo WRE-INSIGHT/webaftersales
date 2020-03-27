@@ -12,7 +12,6 @@ namespace webaftersales.AFTERSALESPROJ
 {
     public partial class importPage : System.Web.UI.Page
     {
-        DataSet ds = new DataSet();
         DataTable tb;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,7 +55,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
 
-              
+
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -198,17 +197,18 @@ namespace webaftersales.AFTERSALESPROJ
             }
             try
             {
-              
+
                 for (int i = 0; i <= mytb.Rows.Count - 1; i++)
                 {
                     int id = Convert.ToInt32(mytb.Rows[i]["id"].ToString());
                     if (l.Contains(id))
                     {
-                        string kno, itemno, location;
+                        string joborder, kno, itemno, location;
+                        joborder = mytb.Rows[i]["job_order_no"].ToString();
                         kno = mytb.Rows[i]["kmdi_no"].ToString();
                         itemno = mytb.Rows[i]["item_no"].ToString();
                         location = mytb.Rows[i]["location"].ToString();
-                        insertrecord(sid, kno, itemno, location);
+                        insertrecord(sid, joborder, kno, itemno, location);
                     }
                 }
             }
@@ -224,7 +224,7 @@ namespace webaftersales.AFTERSALESPROJ
             ViewState["listid"] = l;
 
         }
-        private void insertrecord(string sid, string kno, string itemno, string location)
+        private void insertrecord(string sid, string joborder, string kno, string itemno, string location)
         {
             try
             {
@@ -233,8 +233,8 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     sqlcon.Open();
                     string qry = " declare @id as integer = (select max(id)+1 from reporttb) " +
-                        "insert into reporttb (id,sid,kno,itemno,location,specification)values" +
-                        "(@id,'" + sid + "','" + kno + "','" + itemno + "','" + location + "','Window')";
+                        "insert into reporttb (id,sid,jo,kno,itemno,location,specification)values" +
+                        "(@id,'" + sid + "','" + joborder + "','" + kno + "','" + itemno + "','" + location + "','Window')";
 
                     SqlCommand sqlcmd = new SqlCommand(qry, sqlcon);
                     sqlcmd.ExecuteNonQuery();
