@@ -21,7 +21,6 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     getcl();
                     getdata();
-                    getassessment();
                     lblkno.Text = kno;
                     lbllocation.Text = location;
                 }
@@ -212,36 +211,11 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        private void getassessment()
-        {
-            try
-            {
-                DataTable tbl = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
-                {
-
-                    sqlcon.Open();
-                    SqlCommand sqlcmd = sqlcon.CreateCommand();
-                    sqlcmd.CommandText = "stpassessment";
-                    sqlcmd.CommandType = CommandType.StoredProcedure;
-                    sqlcmd.Parameters.AddWithValue("@reportid", reportid);
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    da.SelectCommand = sqlcmd;
-                    da.Fill(tbl);
-                    GridView2.DataSource = tbl;
-                    GridView2.DataBind();  
-                }
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.ToString());
-            }
-        }
+       
 
         protected void importbtn_Click(object sender, EventArgs e)
         {
-         
+
             List<int> l = new List<int>();
             if ((List<int>)ViewState["listid"] == null)
             {
@@ -256,7 +230,7 @@ namespace webaftersales.AFTERSALESPROJ
                 CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
                 if (cbk.Checked == true)
                 {
-                    int x = int.Parse(row.Cells[1].Text.ToString());
+                    int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
                     if (!l.Contains(x))
                     {
                         l.Add(x);
@@ -264,7 +238,7 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 else
                 {
-                    int x = int.Parse(row.Cells[1].Text.ToString());
+                    int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
                     if (l.Contains(x))
                     {
                         l.Remove(x);
@@ -273,7 +247,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             try
             {
-               
+
                 for (int i = 0; i <= mytb.Rows.Count - 1; i++)
                 {
 
@@ -294,9 +268,9 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                getassessment();
+                GridView2.DataBind();
             }
-      
+
             ViewState["listid"] = l;
         }
         private void insertrecord(string stockno, string description)
@@ -317,9 +291,26 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-               Response.Write(ex.ToString());
+                Response.Write(ex.ToString());
             }
 
+        }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Control control = e.Row.Cells[0].Controls[2];
+                if (control is LinkButton && ((LinkButton)control).Text == "Delete")
+                {
+                    ((LinkButton)control).OnClientClick = "return confirm('Are you sure you want to delete this record?');";
+                }
+            }
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
         }
     }
 

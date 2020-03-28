@@ -162,10 +162,10 @@
 
                         <asp:TemplateField HeaderText="" SortExpression="JO">
                         <EditItemTemplate>
-                            <asp:Label ID="Label100" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
+                            <asp:Label ID="Label100" Visible="false" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label600" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                            <asp:Label ID="Label600" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
