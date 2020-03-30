@@ -2,6 +2,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Home</title>
     <%-- <style>
         .tboxinput {
             width: 500px;

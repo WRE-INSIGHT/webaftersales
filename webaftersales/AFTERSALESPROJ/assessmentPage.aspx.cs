@@ -145,6 +145,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.Parameters.AddWithValue("@kno", kno);
                     sqlcmd.Parameters.AddWithValue("@fcl", fcl);
                     sqlcmd.Parameters.AddWithValue("@jo", jo);
+                    sqlcmd.Parameters.AddWithValue("@find", findtbox.Text);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(tb);
@@ -252,13 +253,13 @@ namespace webaftersales.AFTERSALESPROJ
                 {
 
                     int id = Convert.ToInt32(mytb.Rows[i]["id"].ToString());
-                    Response.Write(id);
                     if (l.Contains(id))
                     {
                         string stockno, description;
                         stockno = mytb.Rows[i]["stockno"].ToString();
                         description = mytb.Rows[i]["description"].ToString();
-                        insertrecord(stockno, description);
+                        insertdata(stockno, description, "");
+                        SqlDataSource1.DataBind();
                     }
                 }
             }
@@ -268,34 +269,32 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                GridView2.DataBind();
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
+                    if (cbk.Checked == true)
+                    {
+                        int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
+                        if (l.Contains(x))
+                        {
+                            l.Remove(x);
+                            cbk.Checked = false;
+                        }
+                    }
+                }
             }
 
             ViewState["listid"] = l;
         }
-        private void insertrecord(string stockno, string description)
+        private void insertdata(string stockno, string description, string assessment)
         {
-            try
-            {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
-                {
-                    sqlcon.Open();
-                    string qry = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from tblassessment) " +
-                        "insert into tblassessment (id,reportid,stockno,description,assessment)values" +
-                        "(@id,'" + reportid + "','" + stockno + "','" + description + "','')";
-
-                    SqlCommand sqlcmd = new SqlCommand(qry, sqlcon);
-                    sqlcmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.ToString());
-            }
-
+            SqlDataSource1.InsertParameters["REPORTID"].DefaultValue = reportid;
+            SqlDataSource1.InsertParameters["STOCKNO"].DefaultValue = stockno;
+            SqlDataSource1.InsertParameters["DESCRIPTION"].DefaultValue = description;
+            SqlDataSource1.InsertParameters["ASSESSMENT"].DefaultValue = assessment;
+     
+            SqlDataSource1.Insert();
         }
-
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -311,6 +310,15 @@ namespace webaftersales.AFTERSALESPROJ
         protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView2.PageIndex = e.NewPageIndex;
+        }
+        protected void addnew(object sender, EventArgs e)
+        {
+            insertdata("", descriptiontbox.Text, assessmenttbox.Text);
+        }
+
+        protected void findbtn_Click(object sender, EventArgs e)
+        {
+            getdata();
         }
     }
 

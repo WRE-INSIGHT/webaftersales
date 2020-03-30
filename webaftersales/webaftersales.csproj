@@ -195,6 +195,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AFTERSALESPROJ\aboutusPage.aspx.cs">
+      <DependentUpon>aboutusPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\aboutusPage.aspx.designer.cs">
+      <DependentUpon>aboutusPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\accountPage.aspx.cs">
       <DependentUpon>accountPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -358,6 +365,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AFTERSALESPROJ\aboutusPage.aspx" />
     <Content Include="AFTERSALESPROJ\accountPage.aspx" />
     <Content Include="AFTERSALESPROJ\assessmentPage.aspx" />
     <Content Include="AFTERSALESPROJ\contactusPage.aspx" />
@@ -370,6 +378,7 @@
     <Content Include="AFTERSALESPROJ\css\CSSservicing.css" />
     <Content Include="AFTERSALESPROJ\css\CSSsignup.css" />
     <Content Include="AFTERSALESPROJ\css\gridcss.css" />
+    <Content Include="AFTERSALESPROJ\css\tablecss.css" />
     <Content Include="AFTERSALESPROJ\FRMassessment.aspx" />
     <Content Include="AFTERSALESPROJ\frmknogen.aspx" />
     <Content Include="AFTERSALESPROJ\frmReport.aspx">

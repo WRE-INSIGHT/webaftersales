@@ -3,11 +3,13 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Report</title>
     <style>
         .tbl td {
             padding-bottom: 10px;
-        }
+        }     
     </style>
+  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
@@ -49,13 +51,15 @@
         <ContentTemplate>
 
             <div class="well">
-                <strong>Report Table!</strong> List of items.</div>
+                <strong>Report Table!</strong> List of items.
+            </div>
             <div class="container">
                 <asp:HyperLink ID="HyperLink3" CssClass="btn btn-primary" runat="server" data-toggle="modal" data-target="#myModal">add new item</asp:HyperLink>
                 <asp:HyperLink ID="HyperLink1" CssClass="btn btn-warning" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import items</asp:HyperLink>
                 <asp:HyperLink ID="HyperLink2" CssClass="btn btn-success" runat="server" NavigateUrl="~/AFTERSALESPROJ/reportviewPage.aspx">view report</asp:HyperLink>
             </div>
-            <asp:GridView ID="GridView2" class="table table-hover" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1"
+            <br />
+            <asp:GridView ID="GridView2" class="table table-hover" GridLines="None" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1"
                 EmptyDataText="NO RESULT" EnablePersistedSelection="True"
                 ShowFooter="True" OnPageIndexChanging="GridView2_PageIndexChanging"
                 PageSize="5" OnRowDataBound="GridView2_RowDataBound" HorizontalAlign="Center" OnRowCommand="GridView2_RowCommand" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
@@ -69,7 +73,7 @@
                         ShowEditButton="true">
                         <ControlStyle CssClass="actionbtn"></ControlStyle>
                     </asp:CommandField>
-                  
+
                     <asp:TemplateField HeaderText="" SortExpression="ID">
                         <EditItemTemplate>
                             <asp:Label ID="Label1" Visible="false" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
@@ -160,17 +164,17 @@
                         </FooterTemplate>
                     </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="" SortExpression="JO">
+                    <asp:TemplateField HeaderText="" SortExpression="JO">
                         <EditItemTemplate>
-                            <asp:Label ID="Label100" Visible="false" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
+                            <asp:Label ID="Label100" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label600" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
-                           <ItemTemplate>
-                            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" CommandName="assessment" runat="server">assessment</asp:LinkButton>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" CommandName="assessment" runat="server">assessment</asp:LinkButton>
                         </ItemTemplate>
                         <FooterTemplate>
                             <asp:ImageButton ID="ImageButton1" ValidationGroup="insertvalidation" ImageUrl="~/AFTERSALESPROJ/images/add.png" OnClick="lbtninsert_click" runat="server" />
@@ -186,15 +190,18 @@
             <asp:ValidationSummary class="alert alert-danger" ID="ValidationSummary2" runat="server" />
 
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" 
-                DeleteCommand="DELETE FROM [REPORTTB] WHERE [ID] = @ID" InsertCommand="INSERT INTO [REPORTTB] ([ID], [SID], [KNO], [ITEMNO], [LOCATION], [SPECIFICATION], [MOBILIZATIONCOST], [JO]) VALUES (@ID, @SID, @KNO, @ITEMNO, @LOCATION, @SPECIFICATION, @MOBILIZATIONCOST, @JO)" 
-                SelectCommand="SELECT * FROM [REPORTTB] WHERE ([SID] = @SID)" 
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+                DeleteCommand="DELETE FROM [REPORTTB] WHERE [ID] = @ID"
+                InsertCommand="
+                declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb)
+                INSERT INTO [REPORTTB] ([ID], [SID], [KNO], [ITEMNO], [LOCATION], [SPECIFICATION], [MOBILIZATIONCOST], [JO]) VALUES (@ID, @SID, @KNO, @ITEMNO, @LOCATION, @SPECIFICATION, @MOBILIZATIONCOST, @JO)"
+                SelectCommand="SELECT * FROM [REPORTTB] WHERE ([SID] = @SID)"
                 UpdateCommand="UPDATE [REPORTTB] SET [SID] = @SID, [KNO] = @KNO, [ITEMNO] = @ITEMNO, [LOCATION] = @LOCATION, [SPECIFICATION] = @SPECIFICATION, [MOBILIZATIONCOST] = @MOBILIZATIONCOST, [JO] = @JO WHERE [ID] = @ID">
                 <DeleteParameters>
                     <asp:Parameter Name="ID" Type="Int32" />
                 </DeleteParameters>
                 <InsertParameters>
-                    <asp:Parameter Name="ID" Type="Int32" />
+
                     <asp:Parameter Name="SID" Type="String" />
                     <asp:Parameter Name="KNO" Type="String" />
                     <asp:Parameter Name="ITEMNO" Type="String" />

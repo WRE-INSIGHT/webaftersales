@@ -1,0 +1,41 @@
+﻿body {
+}
+
+.table100.ver1 th {
+    font-family: Calibri;
+    font-size: 15px;
+    color: #808080;
+    text-transform: uppercase;
+    background-color: #222222;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.table100.ver1 td {
+    font-family: Calibri;
+    font-size: 17px;
+    color: #808080;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.table100.ver1 tr {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+    .table100.ver1 tr:nth-child(2n+1) {
+        background-color: #f8f6ff;
+    }
+
+/*---------------------------------------------*/
+
+.table100.ver1 {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+    -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+}

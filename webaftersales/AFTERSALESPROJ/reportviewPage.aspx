@@ -12,7 +12,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-           <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="SELECT * FROM [REPORTTB] WHERE ([SID] = @SID)">
+           <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="
+               select kno,itemno,location,specification,reportid,[description],assessment from tblassessment as a
+left join reporttb as b
+on a.reportid = b.id where (b.[SID] = @SID)">
             <SelectParameters>
                 <asp:SessionParameter Name="SID" SessionField="SID" Type="String" />
             </SelectParameters>

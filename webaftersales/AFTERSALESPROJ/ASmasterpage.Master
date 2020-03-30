@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title></title>
+   
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.js"></script>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
@@ -32,16 +32,18 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx">Home</asp:HyperLink></li>
+                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx">
+                                 <span class="glyphicon glyphicon-home"></span>&nbsp;Home</asp:HyperLink></li>
                         <li>
-                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/contactusPage.aspx">Contact</asp:HyperLink></li>
-                        <li><a href="#">About</a></li>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/contactusPage.aspx">
+                                   <span class="glyphicon glyphicon-phone"></span>&nbsp;Contact</asp:HyperLink></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <asp:LinkButton ID="acctlink" runat="server" PostBackUrl="~/AFTERSALESPROJ/accountPage.aspx">Account</asp:LinkButton></li>
+                           <asp:LinkButton ID="acctlink" runat="server" PostBackUrl="~/AFTERSALESPROJ/accountPage.aspx"></asp:LinkButton></li>
                         <li>
-                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton></li>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon  glyphicon-log-out"></span>&nbsp;Logout</asp:LinkButton></li>
                     </ul>
                 </div>
             </div>

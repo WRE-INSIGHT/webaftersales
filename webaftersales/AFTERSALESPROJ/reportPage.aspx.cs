@@ -95,6 +95,7 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void insertdata(string _kno, string _itemno, string _location, string _specification, string _mobilizationcost)
         {
+
             SqlDataSource1.InsertParameters["SID"].DefaultValue = Session["SID"].ToString();
             SqlDataSource1.InsertParameters["kno"].DefaultValue = _kno;
             SqlDataSource1.InsertParameters["itemno"].DefaultValue = _itemno;

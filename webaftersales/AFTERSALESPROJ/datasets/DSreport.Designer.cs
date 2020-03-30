@@ -314,19 +314,19 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class REPORTTBDataTable : global::System.Data.TypedTableBase<REPORTTBRow> {
             
-            private global::System.Data.DataColumn columnID;
+            private global::System.Data.DataColumn columnkno;
             
-            private global::System.Data.DataColumn columnSID;
+            private global::System.Data.DataColumn columnitemno;
             
-            private global::System.Data.DataColumn columnKNO;
+            private global::System.Data.DataColumn columnlocation;
             
-            private global::System.Data.DataColumn columnITEMNO;
+            private global::System.Data.DataColumn columnspecification;
             
-            private global::System.Data.DataColumn columnLOCATION;
+            private global::System.Data.DataColumn columnreportid;
             
-            private global::System.Data.DataColumn columnSPECIFICATION;
+            private global::System.Data.DataColumn columndescription;
             
-            private global::System.Data.DataColumn columnMOBILIZATIONCOST;
+            private global::System.Data.DataColumn columnassessment;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -363,57 +363,57 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
+            public global::System.Data.DataColumn knoColumn {
                 get {
-                    return this.columnID;
+                    return this.columnkno;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SIDColumn {
+            public global::System.Data.DataColumn itemnoColumn {
                 get {
-                    return this.columnSID;
+                    return this.columnitemno;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn KNOColumn {
+            public global::System.Data.DataColumn locationColumn {
                 get {
-                    return this.columnKNO;
+                    return this.columnlocation;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ITEMNOColumn {
+            public global::System.Data.DataColumn specificationColumn {
                 get {
-                    return this.columnITEMNO;
+                    return this.columnspecification;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LOCATIONColumn {
+            public global::System.Data.DataColumn reportidColumn {
                 get {
-                    return this.columnLOCATION;
+                    return this.columnreportid;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SPECIFICATIONColumn {
+            public global::System.Data.DataColumn descriptionColumn {
                 get {
-                    return this.columnSPECIFICATION;
+                    return this.columndescription;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MOBILIZATIONCOSTColumn {
+            public global::System.Data.DataColumn assessmentColumn {
                 get {
-                    return this.columnMOBILIZATIONCOST;
+                    return this.columnassessment;
                 }
             }
             
@@ -454,16 +454,16 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public REPORTTBRow AddREPORTTBRow(string ID, string SID, string KNO, string ITEMNO, string LOCATION, string SPECIFICATION, string MOBILIZATIONCOST) {
+            public REPORTTBRow AddREPORTTBRow(string kno, string itemno, string location, string specification, string reportid, string description, string assessment) {
                 REPORTTBRow rowREPORTTBRow = ((REPORTTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
-                        SID,
-                        KNO,
-                        ITEMNO,
-                        LOCATION,
-                        SPECIFICATION,
-                        MOBILIZATIONCOST};
+                        kno,
+                        itemno,
+                        location,
+                        specification,
+                        reportid,
+                        description,
+                        assessment};
                 rowREPORTTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowREPORTTBRow);
                 return rowREPORTTBRow;
@@ -486,32 +486,32 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
-                this.columnSID = base.Columns["SID"];
-                this.columnKNO = base.Columns["KNO"];
-                this.columnITEMNO = base.Columns["ITEMNO"];
-                this.columnLOCATION = base.Columns["LOCATION"];
-                this.columnSPECIFICATION = base.Columns["SPECIFICATION"];
-                this.columnMOBILIZATIONCOST = base.Columns["MOBILIZATIONCOST"];
+                this.columnkno = base.Columns["kno"];
+                this.columnitemno = base.Columns["itemno"];
+                this.columnlocation = base.Columns["location"];
+                this.columnspecification = base.Columns["specification"];
+                this.columnreportid = base.Columns["reportid"];
+                this.columndescription = base.Columns["description"];
+                this.columnassessment = base.Columns["assessment"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnSID = new global::System.Data.DataColumn("SID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSID);
-                this.columnKNO = new global::System.Data.DataColumn("KNO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKNO);
-                this.columnITEMNO = new global::System.Data.DataColumn("ITEMNO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnITEMNO);
-                this.columnLOCATION = new global::System.Data.DataColumn("LOCATION", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLOCATION);
-                this.columnSPECIFICATION = new global::System.Data.DataColumn("SPECIFICATION", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSPECIFICATION);
-                this.columnMOBILIZATIONCOST = new global::System.Data.DataColumn("MOBILIZATIONCOST", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMOBILIZATIONCOST);
+                this.columnkno = new global::System.Data.DataColumn("kno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkno);
+                this.columnitemno = new global::System.Data.DataColumn("itemno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnitemno);
+                this.columnlocation = new global::System.Data.DataColumn("location", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlocation);
+                this.columnspecification = new global::System.Data.DataColumn("specification", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnspecification);
+                this.columnreportid = new global::System.Data.DataColumn("reportid", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreportid);
+                this.columndescription = new global::System.Data.DataColumn("description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescription);
+                this.columnassessment = new global::System.Data.DataColumn("assessment", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnassessment);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1027,198 +1027,198 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public string kno {
                 get {
                     try {
-                        return ((string)(this[this.tableREPORTTB.IDColumn]));
+                        return ((string)(this[this.tableREPORTTB.knoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'REPORTTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'kno\' in table \'REPORTTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableREPORTTB.IDColumn] = value;
+                    this[this.tableREPORTTB.knoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SID {
+            public string itemno {
                 get {
                     try {
-                        return ((string)(this[this.tableREPORTTB.SIDColumn]));
+                        return ((string)(this[this.tableREPORTTB.itemnoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SID\' in table \'REPORTTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'itemno\' in table \'REPORTTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableREPORTTB.SIDColumn] = value;
+                    this[this.tableREPORTTB.itemnoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string KNO {
+            public string location {
                 get {
                     try {
-                        return ((string)(this[this.tableREPORTTB.KNOColumn]));
+                        return ((string)(this[this.tableREPORTTB.locationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'KNO\' in table \'REPORTTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'location\' in table \'REPORTTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableREPORTTB.KNOColumn] = value;
+                    this[this.tableREPORTTB.locationColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ITEMNO {
+            public string specification {
                 get {
                     try {
-                        return ((string)(this[this.tableREPORTTB.ITEMNOColumn]));
+                        return ((string)(this[this.tableREPORTTB.specificationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ITEMNO\' in table \'REPORTTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'specification\' in table \'REPORTTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableREPORTTB.ITEMNOColumn] = value;
+                    this[this.tableREPORTTB.specificationColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string LOCATION {
+            public string reportid {
                 get {
                     try {
-                        return ((string)(this[this.tableREPORTTB.LOCATIONColumn]));
+                        return ((string)(this[this.tableREPORTTB.reportidColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LOCATION\' in table \'REPORTTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'reportid\' in table \'REPORTTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableREPORTTB.LOCATIONColumn] = value;
+                    this[this.tableREPORTTB.reportidColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SPECIFICATION {
+            public string description {
                 get {
                     try {
-                        return ((string)(this[this.tableREPORTTB.SPECIFICATIONColumn]));
+                        return ((string)(this[this.tableREPORTTB.descriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SPECIFICATION\' in table \'REPORTTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'description\' in table \'REPORTTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableREPORTTB.SPECIFICATIONColumn] = value;
+                    this[this.tableREPORTTB.descriptionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MOBILIZATIONCOST {
+            public string assessment {
                 get {
                     try {
-                        return ((string)(this[this.tableREPORTTB.MOBILIZATIONCOSTColumn]));
+                        return ((string)(this[this.tableREPORTTB.assessmentColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MOBILIZATIONCOST\' in table \'REPORTTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'assessment\' in table \'REPORTTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableREPORTTB.MOBILIZATIONCOSTColumn] = value;
+                    this[this.tableREPORTTB.assessmentColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableREPORTTB.IDColumn);
+            public bool IsknoNull() {
+                return this.IsNull(this.tableREPORTTB.knoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableREPORTTB.IDColumn] = global::System.Convert.DBNull;
+            public void SetknoNull() {
+                this[this.tableREPORTTB.knoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSIDNull() {
-                return this.IsNull(this.tableREPORTTB.SIDColumn);
+            public bool IsitemnoNull() {
+                return this.IsNull(this.tableREPORTTB.itemnoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSIDNull() {
-                this[this.tableREPORTTB.SIDColumn] = global::System.Convert.DBNull;
+            public void SetitemnoNull() {
+                this[this.tableREPORTTB.itemnoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsKNONull() {
-                return this.IsNull(this.tableREPORTTB.KNOColumn);
+            public bool IslocationNull() {
+                return this.IsNull(this.tableREPORTTB.locationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetKNONull() {
-                this[this.tableREPORTTB.KNOColumn] = global::System.Convert.DBNull;
+            public void SetlocationNull() {
+                this[this.tableREPORTTB.locationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsITEMNONull() {
-                return this.IsNull(this.tableREPORTTB.ITEMNOColumn);
+            public bool IsspecificationNull() {
+                return this.IsNull(this.tableREPORTTB.specificationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetITEMNONull() {
-                this[this.tableREPORTTB.ITEMNOColumn] = global::System.Convert.DBNull;
+            public void SetspecificationNull() {
+                this[this.tableREPORTTB.specificationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLOCATIONNull() {
-                return this.IsNull(this.tableREPORTTB.LOCATIONColumn);
+            public bool IsreportidNull() {
+                return this.IsNull(this.tableREPORTTB.reportidColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLOCATIONNull() {
-                this[this.tableREPORTTB.LOCATIONColumn] = global::System.Convert.DBNull;
+            public void SetreportidNull() {
+                this[this.tableREPORTTB.reportidColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSPECIFICATIONNull() {
-                return this.IsNull(this.tableREPORTTB.SPECIFICATIONColumn);
+            public bool IsdescriptionNull() {
+                return this.IsNull(this.tableREPORTTB.descriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSPECIFICATIONNull() {
-                this[this.tableREPORTTB.SPECIFICATIONColumn] = global::System.Convert.DBNull;
+            public void SetdescriptionNull() {
+                this[this.tableREPORTTB.descriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMOBILIZATIONCOSTNull() {
-                return this.IsNull(this.tableREPORTTB.MOBILIZATIONCOSTColumn);
+            public bool IsassessmentNull() {
+                return this.IsNull(this.tableREPORTTB.assessmentColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMOBILIZATIONCOSTNull() {
-                this[this.tableREPORTTB.MOBILIZATIONCOSTColumn] = global::System.Convert.DBNull;
+            public void SetassessmentNull() {
+                this[this.tableREPORTTB.assessmentColumn] = global::System.Convert.DBNull;
             }
         }
         
