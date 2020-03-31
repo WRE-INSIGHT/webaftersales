@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SignupPage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.SignupPage" %>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

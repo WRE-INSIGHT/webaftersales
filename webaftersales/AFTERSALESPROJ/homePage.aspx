@@ -2,6 +2,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <%-- <style>
         .tboxinput {
@@ -45,7 +46,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="page-header">
         <h1>Kenneth and Mock<small> WINDOWS AND DOORS</small></h1>
     </div>

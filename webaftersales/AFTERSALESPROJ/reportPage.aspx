@@ -7,9 +7,9 @@
     <style>
         .tbl td {
             padding-bottom: 10px;
-        }     
+        }
     </style>
-  
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
@@ -17,6 +17,9 @@
             <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label><br />
             <small>
                 <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
+        <div class="navbar-right">
+            <asp:HyperLink ID="HyperLink4" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx" runat="server" Text="back to home"></asp:HyperLink>
+        </div>
     </div>
     <h2>
         <asp:Label ID="lbldate" runat="server" Text="Date"></asp:Label>

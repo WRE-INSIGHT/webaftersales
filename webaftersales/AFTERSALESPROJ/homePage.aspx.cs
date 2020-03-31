@@ -16,7 +16,14 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (Session["username"] != null)
             {
-
+                if (!IsPostBack)
+                {
+                    if (Session["currentsearch"] != null)
+                    {
+                        searchtbox.Text = Session["currentsearch"].ToString();
+                    }
+                    getdata();
+                }
             }
             else
             {
@@ -25,6 +32,7 @@ namespace webaftersales.AFTERSALESPROJ
         }
         protected void searcbtn_Click(object sender, EventArgs e)
         {
+            Session["currentsearch"] = searchtbox.Text;
             getdata();
         }
         private void getdata()

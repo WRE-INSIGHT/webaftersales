@@ -20,9 +20,12 @@
         <div class="page-header">
             <h1>
                 <asp:Label ID="Label1" runat="server" Text="KMDI System data"></asp:Label></h1>
+            <div class="navbar-right">
+                <asp:HyperLink ID="HyperLink1" Width="160" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="&lt;&lt; back to report"></asp:HyperLink>
+            </div>
         </div>
 
-
+        <br />
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
@@ -34,11 +37,11 @@
                     </div>
                 </div>
                 <br />
-                <asp:GridView ID="GridView1" CssClass="table" runat="server" 
-                    AutoGenerateColumns="False" EmptyDataText="No result found." 
-                    AllowPaging="True" DataKeyNames="ID" 
-                     OnPageIndexChanging="GridView1_PageIndexChanging"
-                     OnRowDataBound="GridView1_RowDataBound">
+                <asp:GridView ID="GridView1" CssClass="table" runat="server"
+                    AutoGenerateColumns="False" EmptyDataText="No result found."
+                    AllowPaging="True" DataKeyNames="ID"
+                    OnPageIndexChanging="GridView1_PageIndexChanging"
+                    OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
 
                         <asp:TemplateField>
@@ -57,9 +60,7 @@
                     <div class=" navbar-left">
                         <asp:Button ID="btnimport" Width="160" CssClass="btn btn-success" runat="server" OnClick="btnimport_Click" Text="import selected items" />
                     </div>
-                    <div class="navbar-right">
-                        <asp:HyperLink ID="HyperLink1" Width="160" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="&lt;&lt; back to report"></asp:HyperLink>
-                    </div>
+
                 </div>
                 <br />
                 <br />
