@@ -17,6 +17,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (Session["username"] != null)
             {
+                successlbl.Visible = false;
                 errorlbl.Visible = false;
                 if (!IsPostBack)
                 {
@@ -180,7 +181,7 @@ namespace webaftersales.AFTERSALESPROJ
                 CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
                 if (cbk.Checked == true)
                 {
-                    int x = int.Parse(row.Cells[1].Text.ToString());
+                    int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
                     if (!l.Contains(x))
                     {
                         l.Add(x);
@@ -188,7 +189,7 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 else
                 {
-                    int x = int.Parse(row.Cells[1].Text.ToString());
+                    int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
                     if (l.Contains(x))
                     {
                         l.Remove(x);
@@ -218,7 +219,20 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alerme();", true);
+                successlbl.Visible = true;
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
+                    if (cbk.Checked == true)
+                    {
+                        int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
+                        if (l.Contains(x))
+                        {
+                            l.Remove(x);
+                            cbk.Checked = false;
+                        }
+                    }
+                }
             }
 
             ViewState["listid"] = l;

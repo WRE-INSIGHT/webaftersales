@@ -16,9 +16,13 @@ namespace webaftersales.AFTERSALESPROJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["username"] != null)
+            if (!IsPostBack)
             {
-                Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
+                if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+                {
+                    usernametbox.Text = Request.Cookies["UserName"].Value;
+                    passwordtbox.Attributes["value"] = Request.Cookies["Password"].Value;
+                }
             }
         }
 
@@ -34,13 +38,27 @@ namespace webaftersales.AFTERSALESPROJ
                 SqlDataReader rd = sqlcmd.ExecuteReader();
                 if (rd.HasRows)
                 {
-                 
+
                     while (rd.Read())
                     {
                         Session["username"] = rd[0].ToString();
                         Session["userid"] = rd[1].ToString();
+                        if (CheckBox1.Checked)
+                        {
+                            Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);
+                            Response.Cookies["Password"].Expires = DateTime.Now.AddDays(30);
+                        }
+                        else
+                        {
+                            Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
+                            Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+
+                        }
+                        Response.Cookies["UserName"].Value = usernametbox.Text.Trim();
+                        Response.Cookies["Password"].Value = passwordtbox.Text.Trim();
                         Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
                     }
+
                     rd.Close();
                 }
                 else
@@ -75,6 +93,6 @@ namespace webaftersales.AFTERSALESPROJ
         //    return clearText;
         //}
 
-     
+
     }
 }

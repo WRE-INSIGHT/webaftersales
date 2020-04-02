@@ -48,7 +48,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="page-header">
-        <h1>Kenneth and Mock<small> WINDOWS AND DOORS</small></h1>
+        <h3>Kenneth and Mock<small> WINDOWS AND DOORS</small></h3>
     </div>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -57,33 +57,39 @@
         <div class="input-group">
             <asp:TextBox ID="searchtbox" Height="40" CssClass="form-control" placeholder="project name" runat="server" OnTextChanged="searchtbox_TextChanged"></asp:TextBox>
             <div class="input-group-btn">
-                  <asp:Button ID="searcbtn" height="40" CssClass="btn btn-primary" runat="server" Text="Find" OnClick="searcbtn_Click" />
+                <asp:Button ID="searcbtn" Height="40" CssClass="btn btn-primary" runat="server" Text="Find" OnClick="searcbtn_Click" />
             </div>
         </div>
-      
 
+        
     </div>
+    <br/>
     <div class="container">
-        <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False" HorizontalAlign="Left" EmptyDataText="Sorry :( No Result Found.">
-            <Columns>
-                <asp:TemplateField HeaderText="">
-                    <ItemTemplate>
-                        <asp:Label ID="idlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                        <asp:Label ID="jolbl" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
-                        <asp:Label ID="teamlbl" Visible="false" runat="server" Text='<%# Bind("TEAMID") %>'></asp:Label>
-                        <asp:LinkButton ID="projectlbl" CommandName="report" runat="server" Text='<%# Bind("PROJECT") %>'></asp:LinkButton>
-                        <br />
-                        <asp:Label ID="addresslbl" Font-Size="15px" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="datelbl" Font-Size="20px" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
-                        <asp:Label ID="colorlbl" Visible="false" runat="server" Text='<%# Bind("PROFILE_FINISH") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <div>
+                    <h1><small>SERVICING SCHEDULE</small></h1>
+                </div>
+<br />
+                <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False" HorizontalAlign="Left" EmptyDataText="Sorry :( No Result Found.">
+                    <Columns>
+                        <asp:TemplateField HeaderText="">
+                            <ItemTemplate>
+                                <asp:Label ID="idlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                <asp:Label ID="jolbl" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                <asp:Label ID="teamlbl" Visible="false" runat="server" Text='<%# Bind("TEAMID") %>'></asp:Label>
+                                <asp:LinkButton ID="projectlbl" CommandName="report" runat="server" Text='<%# Bind("PROJECT") %>'></asp:LinkButton>
+                                <br />
+                                <asp:Label ID="addresslbl" Font-Size="15px" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label>
+                                <br />
+                                <asp:Label ID="datelbl" Font-Size="20px" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
+                                <asp:Label ID="colorlbl" Visible="false" runat="server" Text='<%# Bind("PROFILE_FINISH") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
-            </Columns>
-            <EditRowStyle BorderStyle="None" BorderWidth="0px" />
-            <RowStyle Font-Names="Calibri" Font-Size="18pt" Height="120px" CssClass="rowstyle" />
-        </asp:GridView>
+                    </Columns>
+                    <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                    <RowStyle Font-Names="Calibri" Font-Size="18pt" Height="120px" CssClass="rowstyle" />
+                </asp:GridView>
     </div>
 
 

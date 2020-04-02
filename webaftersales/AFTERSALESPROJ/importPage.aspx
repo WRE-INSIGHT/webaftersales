@@ -21,7 +21,7 @@
             <h1>
                 <asp:Label ID="Label1" runat="server" Text="KMDI System data"></asp:Label></h1>
             <div class="navbar-right">
-                <asp:HyperLink ID="HyperLink1" Width="160" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="&lt;&lt; back to report"></asp:HyperLink>
+                <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back to report"></asp:HyperLink>
             </div>
         </div>
 
@@ -37,7 +37,8 @@
                     </div>
                 </div>
                 <br />
-                <asp:GridView ID="GridView1" CssClass="table" runat="server"
+
+                <asp:GridView ID="GridView1" CssClass="table table-striped" runat="server"
                     AutoGenerateColumns="False" EmptyDataText="No result found."
                     AllowPaging="True" DataKeyNames="ID"
                     OnPageIndexChanging="GridView1_PageIndexChanging"
@@ -49,12 +50,18 @@
                                 <asp:CheckBox ID="cboxselect" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField HeaderText="ID" DataField="ID" />
+                        <asp:TemplateField HeaderText="ID">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" Visible="true" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField HeaderText="K#" DataField="KMDI_NO" />
                         <asp:BoundField HeaderText="ITEM#" DataField="ITEM_NO" />
                         <asp:BoundField HeaderText="LOCATION" DataField="LOCATION" />
                         <asp:BoundField HeaderText="JO" DataField="job_order_no" />
                     </Columns>
+                    <PagerSettings Position="TopAndBottom" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
                 </asp:GridView>
                 <div class="container">
                     <div class=" navbar-left">
@@ -65,8 +72,11 @@
                 <br />
                 <br />
                 <br />
-                <div>
-                    <asp:Label ID="errorlbl" Visible="false" CssClass="alert alert-danger" runat="server" Text="Label"></asp:Label>
+                <div class="alert alert-success">
+                    <asp:Label ID="successlbl" runat="server" Text="Selected Row(s) Impoerted Successfully"></asp:Label>
+                </div>
+                <div class="alert alert-danger">
+                    <asp:Label ID="errorlbl" Visible="false" runat="server" Text="Label"></asp:Label>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>

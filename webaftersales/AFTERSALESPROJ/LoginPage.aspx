@@ -39,9 +39,9 @@
                                     <asp:TextBox ID="passwordtbox" Height="40" CssClass="form-control" placeholder="Password" runat="server" TextMode="Password"></asp:TextBox>
                                 </div>
                                 <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">
-                                        Remember me</label>
+                                   
+                                        <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" />
+                                      
                                 </div>
 
                                 <asp:Button ID="loginbtn" Width="143px" class="btn btn-primary" runat="server" Text="Login" OnClick="loginbtn_Click" />

@@ -186,6 +186,7 @@
 
                 </Columns>
                 <PagerSettings Position="TopAndBottom" />
+                <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
                 <RowStyle Font-Names="Segoe UI" Font-Size="10pt" Height="35px" />
             </asp:GridView>
 

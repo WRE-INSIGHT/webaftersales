@@ -24,40 +24,6 @@
                 padding: 0px;
             }
 
-        .GridPager {
-            background-color: #fff;
-            padding: 2px;
-            margin: 2% auto;
-        }
-
-            .GridPager a {
-                margin: auto 1%;
-                border-radius: 5%;
-                background-color: #f5f5f5;
-                padding: 5px 10px 5px 10px;
-                color: black;
-                text-decoration: none;
-                -o-box-shadow: 1px 1px 1px #111;
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
-            }
-
-                .GridPager a:hover {
-                    background-color: #444;
-                    color: white;
-                }
-
-            .GridPager span {
-                background-color: #444;
-                color: white;
-                -o-box-shadow: 1px 1px 1px #111;
-                -moz-box-shadow: 1px 1px 1px #111;
-                -webkit-box-shadow: 1px 1px 1px #111;
-                box-shadow: 1px 1px 1px #111;
-                border-radius: 5%;
-                padding: 5px 10px 5px 10px;
-            }
     </style>
 </asp:Content>
 
