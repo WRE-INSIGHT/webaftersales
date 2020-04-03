@@ -326,6 +326,13 @@
     <Compile Include="AFTERSALESPROJ\ServicingschedulePage.aspx.designer.cs">
       <DependentUpon>ServicingschedulePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\signaturePage.aspx.cs">
+      <DependentUpon>signaturePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\signaturePage.aspx.designer.cs">
+      <DependentUpon>signaturePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\SignupPage.aspx.cs">
       <DependentUpon>SignupPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -406,6 +413,7 @@
     <Content Include="AFTERSALESPROJ\FRMsignature.aspx" />
     <Content Include="AFTERSALESPROJ\FRMimportitems.aspx" />
     <Content Include="AFTERSALESPROJ\ServicingschedulePage.aspx" />
+    <Content Include="AFTERSALESPROJ\signaturePage.aspx" />
     <Content Include="AFTERSALESPROJ\SignupPage.aspx" />
     <Content Include="AFTERSALESPROJ\WebForm4.aspx" />
     <Content Include="Content\bootstrap.css" />

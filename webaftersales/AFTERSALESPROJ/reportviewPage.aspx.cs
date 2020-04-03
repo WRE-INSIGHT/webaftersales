@@ -17,13 +17,13 @@ namespace webaftersales.AFTERSALESPROJ
 
                 if (!IsPostBack)
                 {
-                    Session["dataurlsignature"] = "";
-                    Session["inspectedby"] = "";
-                    Session["inspecteddate"] = "";
+                    //Session["dataurlsignature"] = "";
+                    //Session["inspectedby"] = "";
+                    //Session["inspecteddate"] = "";
 
-                    Session["dataurlsignature1"] = "";
-                    Session["monitoredby"] = "";
-                    Session["monitoreddate"] = "";
+                    //Session["dataurlsignature1"] = "";
+                    //Session["monitoredby"] = "";
+                    //Session["monitoreddate"] = "";
                  
                 }
 
@@ -68,6 +68,18 @@ namespace webaftersales.AFTERSALESPROJ
                 }
 
             }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["Signatureby"] = "panel1";
+            Response.Redirect("~/AFTERSALESPROJ/signaturePage.aspx");
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            Session["Signatureby"] = "panel2";
+            Response.Redirect("~/AFTERSALESPROJ/signaturePage.aspx");
         }
     }
 }
