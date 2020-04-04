@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="signaturePage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.signaturePage" %>
-
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html>
 
@@ -88,7 +88,7 @@
                                 <div class="page-header">
                                     <h1>
                                         <small>
-                                            <asp:Label ID="Label1" runat="server" Text="Sign here">
+                                            <asp:Label ID="Label1" runat="server" Text="Signature Form">
                                             </asp:Label></small></h1>
                                     <div class="navbar-right">
                                         <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportviewPage.aspx" runat="server" Text="back to report"></asp:HyperLink>
