@@ -87,6 +87,7 @@
 
                     </Columns>
                     <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                    <PagerSettings PageButtonCount="8" />
                     <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
                     <RowStyle Font-Names="Calibri" Font-Size="18pt" Height="120px" CssClass="rowstyle" />
                 </asp:GridView>
