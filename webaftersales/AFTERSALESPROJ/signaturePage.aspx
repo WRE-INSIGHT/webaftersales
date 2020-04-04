@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="signaturePage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.signaturePage" %>
- <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html>
 
@@ -38,18 +39,21 @@
 <body>
 
     <form id="form1" runat="server">
-
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <canvas id="myCanvas"></canvas>
-                    <input type='hidden' id='myurl' name='myurl' />
-                    <input type='hidden' id='myurl1' name='myurl1' />
-                    <br />
-                    <asp:Button runat="server" CssClass="btn btn-warning" Text="Reset Sign" ID='resetSign' />
-                    <br />
-                    <br />
-                    <br />
+                    
+                            <canvas id="myCanvas"></canvas>
+                            <input type='hidden' id='myurl' name='myurl' />
+                            <input type='hidden' id='myurl1' name='myurl1' />
+                            <br />
+                            <asp:Button runat="server" CssClass="btn btn-warning" Text="Reset Sign" ID='resetSign' />
+                            <br />
+                            <br />
+                            <br />
+                     
+
                     <script>
                         function successfulmessage() {
                             alert('Signature captured successfully!');
@@ -79,7 +83,7 @@
                     </script>
                 </div>
                 <div class="col-sm-6">
-                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
 

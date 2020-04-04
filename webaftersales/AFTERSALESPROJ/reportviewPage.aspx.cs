@@ -24,7 +24,8 @@ namespace webaftersales.AFTERSALESPROJ
                     //Session["dataurlsignature1"] = "";
                     //Session["monitoredby"] = "";
                     //Session["monitoreddate"] = "";
-                 
+                    getparameters();
+
                 }
 
             }
@@ -35,6 +36,10 @@ namespace webaftersales.AFTERSALESPROJ
         }
 
         protected void ReportViewer1_ReportRefresh(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            getparameters();
+        }
+        private void getparameters()
         {
             ReportParameter[] repparam = new ReportParameter[3];
             repparam[0] = new ReportParameter("project", Session["PROJECT"].ToString());

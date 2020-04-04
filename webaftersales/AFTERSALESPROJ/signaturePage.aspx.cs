@@ -11,16 +11,23 @@ namespace webaftersales.AFTERSALESPROJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["username"] != null)
             {
-                if (Session["Signatureby"].ToString() == "panel1")
+                if (!IsPostBack)
                 {
-                    Panel1.Visible = true;
+                    if (Session["Signatureby"].ToString() == "panel1")
+                    {
+                        Panel1.Visible = true;
+                    }
+                    else if (Session["Signatureby"].ToString() == "panel2")
+                    {
+                        Panel2.Visible = true;
+                    }
                 }
-                else if (Session["Signatureby"].ToString() == "panel2")
-                {
-                    Panel2.Visible = true;
-                }
+            }
+            else
+            {
+                Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
         }
         protected void Button2_Click(object sender, EventArgs e)
@@ -31,7 +38,8 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["dataurlsignature"] = Request.Form["myurl"];
                 Session["inspectedby"] = tboxinspector.Text;
                 Session["inspecteddate"] = tboxinspectordate.Text;
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
+                //ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
+                Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
             }
         }
 
@@ -42,7 +50,8 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["dataurlsignature1"] = Request.Form["myurl1"];
                 Session["monitoredby"] = tboxmonitored.Text;
                 Session["monitoreddate"] = tboxmonitoreddate.Text;
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
+                //ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
+                Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
             }
 
         }
