@@ -48,7 +48,8 @@ on a.reportid = b.id where (b.[SID] = @SID)">
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <rsweb:ReportViewer CssClass="report" BorderStyle="Solid" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="True" ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" OnReportRefresh="ReportViewer1_ReportRefresh">
+                <rsweb:ReportViewer CssClass="report" BorderStyle="Solid" Width="100%" Height="800"
+                     ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" OnReportRefresh="ReportViewer1_ReportRefresh">
                     <LocalReport ReportPath="AFTERSALESPROJ\report\RPTassessment.rdlc">
                         <DataSources>
                             <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet1" />
