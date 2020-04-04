@@ -17,15 +17,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                 if (!IsPostBack)
                 {
-                    //Session["dataurlsignature"] = "";
-                    //Session["inspectedby"] = "";
-                    //Session["inspecteddate"] = "";
-
-                    //Session["dataurlsignature1"] = "";
-                    //Session["monitoredby"] = "";
-                    //Session["monitoreddate"] = "";
                     getparameters();
-
                 }
 
             }
