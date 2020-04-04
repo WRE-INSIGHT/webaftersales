@@ -39,17 +39,14 @@
 
     <form id="form1" runat="server">
 
-        <div class="container-fluid">
-
-            <div class="page-header">
+        <div class="container-fluid"> 
                 <h1>
                     <small>
                         <asp:Label ID="Label1" runat="server" Text="Sign here">
                         </asp:Label></small></h1>
                 <div class="navbar-right">
                     <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportviewPage.aspx" runat="server" Text="back to report"></asp:HyperLink>
-                </div>
-            </div>
+                </div>       
             <br/>
             <div class="row">
                 <div class="col-sm-6">
