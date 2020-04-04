@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="page-header">
             <h2>
-                <asp:Label ID="Label1" ForeColor="Red" runat="server" Text="Report Viewer"></asp:Label></h2>
+                <asp:Label ID="Label1" runat="server" Text="Report Viewer"></asp:Label></h2>
             
             <div class="navbar-right">
                 <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back to report"></asp:HyperLink>
