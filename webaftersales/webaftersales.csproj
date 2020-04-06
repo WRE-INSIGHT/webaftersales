@@ -305,6 +305,13 @@
     <Compile Include="AFTERSALESPROJ\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\manageAccountsPage.aspx.cs">
+      <DependentUpon>manageAccountsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\manageAccountsPage.aspx.designer.cs">
+      <DependentUpon>manageAccountsPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\reportPage.aspx.cs">
       <DependentUpon>reportPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -407,6 +414,7 @@
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
     <Content Include="AFTERSALESPROJ\importPage.aspx" />
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
+    <Content Include="AFTERSALESPROJ\manageAccountsPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />

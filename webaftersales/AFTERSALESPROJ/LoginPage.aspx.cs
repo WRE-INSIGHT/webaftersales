@@ -32,7 +32,7 @@ namespace webaftersales.AFTERSALESPROJ
             using (SqlConnection sqlcon = new SqlConnection(cs))
             {
                 sqlcon.Open();
-                SqlCommand sqlcmd = new SqlCommand("select username,id from ACCTTB where username = @username and password = @password", sqlcon);
+                SqlCommand sqlcmd = new SqlCommand("select username,ID,PID,accttype from ACCTTB where username = @username and password = @password", sqlcon);
                 sqlcmd.Parameters.AddWithValue("@UserName", usernametbox.Text);
                 sqlcmd.Parameters.AddWithValue("@Password", passwordtbox.Text);
                 SqlDataReader rd = sqlcmd.ExecuteReader();
@@ -43,6 +43,8 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         Session["username"] = rd[0].ToString();
                         Session["userid"] = rd[1].ToString();
+                        Session["userpid"] = rd[2].ToString();
+                        Session["useraccount"] = rd[3].ToString();
                         if (CheckBox1.Checked)
                         {
                             Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);
@@ -56,7 +58,22 @@ namespace webaftersales.AFTERSALESPROJ
                         }
                         Response.Cookies["UserName"].Value = usernametbox.Text.Trim();
                         Response.Cookies["Password"].Value = passwordtbox.Text.Trim();
-                        Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
+                        if (Session["useraccount"].ToString() == "Admin")
+                        {
+                            Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
+                        }
+                        else
+                        {
+                            if (Session["userpid"].ToString() == "")
+                            {
+                                CustomValidator err = new CustomValidator();
+                                err.ValidationGroup = "val1";
+                                err.IsValid = false;
+                                err.ErrorMessage = "account not verified";
+                                Page.Validators.Add(err);
+                            }
+                        }
+                     
                     }
 
                     rd.Close();

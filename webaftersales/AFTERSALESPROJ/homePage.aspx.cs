@@ -30,6 +30,20 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
         }
+        private string userpid
+        {
+            get
+            {
+                return Session["userpid"].ToString();
+            }
+        }
+        private string useraccount
+        {
+            get
+            {
+                return Session["useraccount"].ToString();
+            }
+        }
         protected void searcbtn_Click(object sender, EventArgs e)
         {
             Session["currentsearch"] = searchtbox.Text;
@@ -49,6 +63,8 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.CommandText = "stpServicing";
                     sqlcmd.CommandType = CommandType.StoredProcedure;
                     sqlcmd.Parameters.AddWithValue("@project", searchtbox.Text);
+                    sqlcmd.Parameters.AddWithValue("@useraccount", useraccount);
+                    sqlcmd.Parameters.AddWithValue("@userpid", userpid);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(ds, "tb");
