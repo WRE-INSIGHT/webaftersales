@@ -21,7 +21,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     getrequestdata();
                     getuserdata();
-                
+                    getpersonnel("", "", "");
                 }
             }
             else
@@ -90,9 +90,8 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridView1.SelectedIndex = rowindex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                ViewState["id"] = ((Label)row.FindControl("Label1")).Text;
-                Response.Write(ViewState["id"].ToString());
-
+                ViewState["id"] = ((Label)row.FindControl("lblid")).Text;
+                deleterequest();
 
             }
             else if (e.CommandName == "myverification")
@@ -100,17 +99,39 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridView1.SelectedIndex = rowindex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                ViewState["id"] = ((Label)row.FindControl("Label1")).Text;
-                Label2.Text = ViewState["id"].ToString();
-                getpersonnel();
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "fncsave();", true);
+                ViewState["id"] = ((Label)row.FindControl("lblid")).Text;
+                getpersonnel(((Label)row.FindControl("lbllastname")).Text, ((Label)row.FindControl("lblfirstname")).Text, "");
+                Panel1.Visible = true;
+
             }
         }
-        protected void savebtnclick(object sender, EventArgs e)
+        private void deleterequest()
         {
-            Label2.Text = ViewState["id"].ToString();
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("delete from ACCTTB where id = '" + ViewState["id"].ToString() + "'", sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Response.Write(e.ToString());
+            }
+            finally
+            {
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alertme()", true);
+                ViewState["id"] = null;
+                GridView1.SelectedIndex = -1;
+                getrequestdata();
+            }
         }
-        private void getpersonnel()
+        private void getpersonnel(string lastname, string firstname, string find)
         {
 
             try
@@ -121,21 +142,171 @@ namespace webaftersales.AFTERSALESPROJ
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    using (SqlCommand sqlcmd = new SqlCommand("select * from tblpersonnel", sqlcon))
+
+                    string a, b, c;
+
+
+
+                    if (lastname == "")
                     {
+                        a = " fullname = fullname ";
+                    }
+                    else
+                    {
+                        a = " fullname like '%" + lastname + "%'";
+                    }
+
+                    if (firstname == "")
+                    {
+                        b = " fullname = fullname ";
+                    }
+                    else
+                    {
+                        b = " fullname like '%" + firstname + "%'";
+                    }
+
+                    if (find == "")
+                    {
+                        c = " fullname = fullname ";
+                    }
+                    else
+                    {
+                        c = " fullname like '%" + find + "%'";
+                    }
+                    string btnvisibility;
+                    if (ViewState["id"] != null)
+                    {
+                        btnvisibility = "1";
+                    }
+                    else
+                    {
+                        btnvisibility = "";
+                    }
+
+                    using (SqlCommand sqlcmd = new SqlCommand("select PID,FULLNAME,POSITION,'" + btnvisibility + "' AS A from tblpersonnel where (" + a + " or " + b + ") and " + c + " ", sqlcon))
+                    {
+
                         SqlDataAdapter da = new SqlDataAdapter();
+
                         da.SelectCommand = sqlcmd;
                         da.Fill(ds, "tlpersonnel");
-                        personneldl.DataSource = ds;
-                        personneldl.DataValueField = "pid";
-                        personneldl.DataTextField = "Fullname";
-                        personneldl.DataBind();
+                        GridView3.DataSource = ds;
+                        GridView3.DataBind();
+
+                        ViewState["searchedlastname"] = lastname;
+                        ViewState["searchedfirstname"] = firstname;
+                        ViewState["searchedfind"] = find;
+
+                        lblresultdirstname.Text = firstname;
+                        lblresultlastname.Text = lastname;
                     }
                 }
             }
             catch (Exception e)
             {
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "fncsave();", true);
+                Response.Write(e.ToString());
+            }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            getrequestdata();
+        }
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            getuserdata();
+        }
+        protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView3.PageIndex = e.NewPageIndex;
+            getpersonnel(ViewState["searchedlastname"].ToString(),
+            ViewState["searchedfirstname"].ToString(),
+            ViewState["searchedfind"].ToString());
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            getpersonnel("", "", tboxfind.Text);
+            Panel1.Visible = false;
+        }
+
+        protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "validate")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView3.Rows[rowindex];
+                validaterequest(((Label)row.FindControl("pidlbl")).Text);
+            }
+        }
+        private void validaterequest(string pid)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("UPDATE ACCTTB SET PID = '" + pid + "' where id = '" + ViewState["id"].ToString() + "'", sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Response.Write(e.ToString());
+            }
+            finally
+            {
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alertme()", true);
+                ViewState["id"] = null;
+                GridView1.SelectedIndex = -1;
+                getrequestdata();
+                getpersonnel(ViewState["searchedlastname"].ToString(),
+            ViewState["searchedfirstname"].ToString(),
+            ViewState["searchedfind"].ToString());
+            }
+        }
+
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                deleteaccount(((Label)row.FindControl("lblid")).Text);
+            }
+        }
+        private void deleteaccount(string id)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("delete from ACCTTB where id = '" + id + "'", sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                Response.Write(e.ToString());
+            }
+            finally
+            {
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alertme()", true);
+                getuserdata();
             }
         }
 

@@ -7,7 +7,7 @@
             confirm('import selected items?');
         }
         function alerme() {
-            alert("data save successfully");
+            alert("data saved successfully");
         }
         //function redirectme()
         //{
