@@ -230,6 +230,8 @@
     <Compile Include="AFTERSALESPROJ\contactusPage.aspx.designer.cs">
       <DependentUpon>contactusPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\dal\scheduledal.cs" />
+    <Compile Include="AFTERSALESPROJ\dal\servicedal.cs" />
     <Compile Include="AFTERSALESPROJ\datasets\DSreport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

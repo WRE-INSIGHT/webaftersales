@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.LoginPage" %>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!DOCTYPE html>
 
@@ -39,9 +40,9 @@
                                     <asp:TextBox ID="passwordtbox" Height="40" CssClass="form-control" placeholder="Password" runat="server" TextMode="Password"></asp:TextBox>
                                 </div>
                                 <div class="checkbox">
-                                   
-                                        <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" Checked="True" />
-                                      
+
+                                    <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" Checked="True" />
+
                                 </div>
 
                                 <asp:Button ID="loginbtn" Width="143px" class="btn btn-primary" runat="server" Text="Login" OnClick="loginbtn_Click" />
@@ -57,7 +58,9 @@
                         <p>
                             committed to do business with integrity by providing all our clientele with excellent quality products and exceptional service.
                         </p>
-                        <footer> <p><a class="btn btn-default" href="https://www.kennethandmock.com/">Learn more &raquo;</a></p></footer>
+                        <footer>
+                            <p><a class="btn btn-default" href="https://www.kennethandmock.com/">Learn more &raquo;</a></p>
+                        </footer>
                     </blockquote>
                 </div>
                 <div class="col-sm-4">
@@ -67,16 +70,20 @@
                         <p>
                             at the forefront of the newest and most suitable window and door product and accessories in the Philippine market.
                         </p>
-                        <footer> <p><a class="btn btn-default" href="https://www.kennethandmock.com/">Learn more &raquo;</a></p></footer>
+                        <footer>
+                            <p><a class="btn btn-default" href="https://www.kennethandmock.com/">Learn more &raquo;</a></p>
+                        </footer>
                     </blockquote>
                 </div>
             </div>
         </div>
         <footer class="container-fluid text-center">
-            <br />
-            <br />
-            <br />
-            <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
+            <div class="well">
+                <br />
+                <br />
+                <br />
+                <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
+            </div>
         </footer>
 
     </form>
