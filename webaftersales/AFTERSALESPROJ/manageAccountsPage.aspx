@@ -11,6 +11,9 @@
         function alertme() {
             alert("action successfully executed");
         }
+        function invalidaccess() {
+            alert("invalid access!");
+        }
     </script>
 </asp:Content>
 
@@ -83,10 +86,11 @@
                     </div>
                     <asp:Panel ID="Panel1" Visible="false" CssClass="alert alert-success" runat="server">
                         <h2>
-                            <small>Result(s) for</small>
+                            <small>all names where </small>
                             <asp:Label ID="lblresultlastname" runat="server" Text="Label"></asp:Label>
                             <small>or</small>
                             <asp:Label ID="lblresultdirstname" runat="server" Text="Label"></asp:Label>
+                            <small> word is present in the record.</small>
                         </h2>
                     </asp:Panel>
 
@@ -146,7 +150,7 @@
                             <div class="input-group">
                                 <asp:TextBox ID="tboxfinduser" CssClass="form-control" runat="server"></asp:TextBox>
                                 <div class=" input-group-btn">
-                                    <asp:LinkButton ID="LinkButton4" CssClass="btn btn-primary" runat="server" OnClick="LinkButton3_Click">Find</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" CssClass="btn btn-primary" runat="server" OnClick="LinkButton4_Click">Find</asp:LinkButton>
                                 </div>
                             </div>
                             <asp:GridView ID="GridView2" CssClass="table table-stripped" AllowPaging="true" PageSize="10"

@@ -72,6 +72,10 @@ namespace webaftersales.AFTERSALESPROJ
                                 err.ErrorMessage = "account not verified";
                                 Page.Validators.Add(err);
                             }
+                            else
+                            {
+                                Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
+                            }
                         }
                      
                     }

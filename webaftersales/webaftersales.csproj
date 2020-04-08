@@ -298,6 +298,13 @@
     <Compile Include="AFTERSALESPROJ\importPage.aspx.designer.cs">
       <DependentUpon>importPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\invalidaccessPage.aspx.cs">
+      <DependentUpon>invalidaccessPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\invalidaccessPage.aspx.designer.cs">
+      <DependentUpon>invalidaccessPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -413,6 +420,7 @@
     <Content Include="AFTERSALESPROJ\images\save.png" />
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
     <Content Include="AFTERSALESPROJ\importPage.aspx" />
+    <Content Include="AFTERSALESPROJ\invalidaccessPage.aspx" />
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\manageAccountsPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />

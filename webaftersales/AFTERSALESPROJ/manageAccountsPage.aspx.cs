@@ -15,20 +15,26 @@ namespace webaftersales.AFTERSALESPROJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] != null && Session["useraccount"].ToString() == "Admin")
+            if (Session["username"] != null)
             {
-                if (!IsPostBack)
+                if (Session["useraccount"].ToString() == "Admin")
                 {
-                    getrequestdata();
-                    getuserdata();
-                    getpersonnel("", "", "");
+                    if (!IsPostBack)
+                    {
+                        getrequestdata();
+                        getuserdata();
+                        getpersonnel("", "", "");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/AFTERSALESPROJ/invalidaccessPage.aspx");
                 }
             }
             else
             {
-                Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
-
         }
         private void getrequestdata()
         {
@@ -44,6 +50,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.CommandText = "[stpmanageaccount]";
                     sqlcmd.CommandType = CommandType.StoredProcedure;
                     sqlcmd.Parameters.AddWithValue("@datatype", "requestdata");
+                    sqlcmd.Parameters.AddWithValue("@key", "");
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(ds, "ACCTTB");
@@ -70,6 +77,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.CommandText = "[stpmanageaccount]";
                     sqlcmd.CommandType = CommandType.StoredProcedure;
                     sqlcmd.Parameters.AddWithValue("@datatype", "userdata");
+                    sqlcmd.Parameters.AddWithValue("@key", tboxfinduser.Text);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(ds, "ACCTTB");
@@ -236,6 +244,10 @@ namespace webaftersales.AFTERSALESPROJ
             getpersonnel("", "", tboxfind.Text);
             Panel1.Visible = false;
         }
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+            getuserdata();
+        }
 
         protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -299,7 +311,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Response.Write(e.ToString());
             }

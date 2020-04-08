@@ -14,7 +14,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
         <h2>
-            <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label><br />
+            <strong>
+                <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
             <small>
                 <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
         <div class="navbar-right">
@@ -56,143 +57,153 @@
             <div class="well">
                 <strong>Report Table!</strong> List of items.
             </div>
-            <div class="container">
-                <asp:HyperLink ID="HyperLink3" CssClass="btn btn-primary" runat="server" data-toggle="modal" data-target="#myModal">add new item</asp:HyperLink>
+          
+            <br />
+            <div class="panel panel-primary">
+                <div class=" panel-heading">
+                   <div class="container">
+                <asp:HyperLink ID="HyperLink3" CssClass="btn btn-default" runat="server" data-toggle="modal" data-target="#myModal">add new item</asp:HyperLink>
                 <asp:HyperLink ID="HyperLink1" CssClass="btn btn-warning" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import items</asp:HyperLink>
                 <asp:HyperLink ID="HyperLink2" CssClass="btn btn-success" runat="server" NavigateUrl="~/AFTERSALESPROJ/reportviewPage.aspx">view report</asp:HyperLink>
             </div>
-            <br />
-            <asp:GridView ID="GridView2" class="table table-hover" GridLines="None" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1"
-                EmptyDataText="NO RESULT" EnablePersistedSelection="True"
-                ShowFooter="True" OnPageIndexChanging="GridView2_PageIndexChanging"
-                PageSize="5" OnRowDataBound="GridView2_RowDataBound" HorizontalAlign="Center" OnRowCommand="GridView2_RowCommand" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
-                <Columns>
-                    <asp:CommandField ShowDeleteButton="true"
-                        ControlStyle-CssClass="actionbtn"
-                        EditImageUrl="~/AFTERSALESPROJ/images/edit.png"
-                        DeleteImageUrl="~/AFTERSALESPROJ/images/delete.png"
-                        CancelImageUrl="~/AFTERSALESPROJ/images/cancel.png"
-                        UpdateImageUrl="~/AFTERSALESPROJ/images/save.png"
-                        ShowEditButton="true">
-                        <ControlStyle CssClass="actionbtn"></ControlStyle>
-                    </asp:CommandField>
+                </div>
+                <div class="panel-body">
 
-                    <asp:TemplateField HeaderText="" SortExpression="ID">
-                        <EditItemTemplate>
-                            <asp:Label ID="Label1" Visible="false" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label6" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="" SortExpression="SID">
-                        <EditItemTemplate>
-                            <asp:Label ID="Label7" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label7" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ITEMNO" SortExpression="ITEMNO">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Text='<%# Bind("ITEMNO") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("ITEMNO") %>'></asp:Label>
-                        </ItemTemplate>
 
-                        <FooterTemplate>
-                            <asp:TextBox ID="tboxitemno" CssClass="form-control" runat="server"></asp:TextBox>
-                        </FooterTemplate>
+                    <asp:GridView ID="GridView2" class="table table-hover" GridLines="None" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1"
+                        EmptyDataText="NO RESULT" EnablePersistedSelection="True"
+                        ShowFooter="True" OnPageIndexChanging="GridView2_PageIndexChanging"
+                        PageSize="5" OnRowDataBound="GridView2_RowDataBound" HorizontalAlign="Center" OnRowCommand="GridView2_RowCommand" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+                        <Columns>
+                            <asp:CommandField ShowDeleteButton="true"
+                                ControlStyle-CssClass="actionbtn"
+                                EditImageUrl="~/AFTERSALESPROJ/images/edit.png"
+                                DeleteImageUrl="~/AFTERSALESPROJ/images/delete.png"
+                                CancelImageUrl="~/AFTERSALESPROJ/images/cancel.png"
+                                UpdateImageUrl="~/AFTERSALESPROJ/images/save.png"
+                                ShowEditButton="true">
+                                <ControlStyle CssClass="actionbtn"></ControlStyle>
+                            </asp:CommandField>
 
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="KNO" SortExpression="KNO">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" Text='<%# Bind("KNO") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("KNO") %>'></asp:Label>
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="tboxkno" CssClass="form-control" runat="server"></asp:TextBox>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="LOCATION" SortExpression="LOCATION">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox3" CssClass="form-control" runat="server" Text='<%# Bind("LOCATION") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="tboxlocation" CssClass="form-control" runat="server"></asp:TextBox>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="SPECIFICATION" SortExpression="SPECIFICATION">
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownList1" CssClass="form-control" SelectedValue='<%# Bind("SPECIFICATION") %>' runat="server">
-                                <asp:ListItem>-</asp:ListItem>
-                                <asp:ListItem>Window</asp:ListItem>
-                                <asp:ListItem>Door</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1"
-                                ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                            <asp:DropDownList ID="dlspecification" CssClass="form-control" runat="server">
-                                <asp:ListItem>-</asp:ListItem>
-                                <asp:ListItem>Window</asp:ListItem>
-                                <asp:ListItem>Door</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="insertvalidation" runat="server" ControlToValidate="dlspecification"
-                                Text="*" ForeColor="Red" ErrorMessage="specification is required" InitialValue="-"></asp:RequiredFieldValidator>
-                        </FooterTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("SPECIFICATION") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="MOB COST" SortExpression="MOBILIZATIONCOST">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox5" CssClass="form-control" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:TextBox>
-                            <asp:CompareValidator ID="CompareValidatoreditmobilization" runat="server" ForeColor="Red" ControlToValidate="TextBox5" Text="*"
-                                Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount"></asp:CompareValidator>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:Label>
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="tboxmobilizationcost" CssClass="form-control" runat="server"></asp:TextBox>
-                            <asp:CompareValidator ID="CompareValidatorinsertmobilization" ValidationGroup="insertvalidation" runat="server" ControlToValidate="tboxmobilizationcost" Text="*"
-                                Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount" ForeColor="Red"></asp:CompareValidator>
-                        </FooterTemplate>
-                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="" SortExpression="ID">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label1" Visible="false" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label6" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="" SortExpression="SID">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label7" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label7" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ITEMNO" SortExpression="ITEMNO">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Text='<%# Bind("ITEMNO") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("ITEMNO") %>'></asp:Label>
+                                </ItemTemplate>
 
-                    <asp:TemplateField HeaderText="" SortExpression="JO">
-                        <EditItemTemplate>
-                            <asp:Label ID="Label100" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label600" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" CommandName="assessment" runat="server">assessment</asp:LinkButton>
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            <asp:ImageButton ID="ImageButton1" ValidationGroup="insertvalidation" ImageUrl="~/AFTERSALESPROJ/images/add.png" OnClick="lbtninsert_click" runat="server" />
-                        </FooterTemplate>
-                    </asp:TemplateField>
+                                <FooterTemplate>
+                                    <asp:TextBox ID="tboxitemno" CssClass="form-control" runat="server"></asp:TextBox>
+                                </FooterTemplate>
 
-                </Columns>
-                <PagerSettings Position="TopAndBottom" />
-                <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
-                <RowStyle Font-Names="Segoe UI" Font-Size="10pt" Height="35px" />
-            </asp:GridView>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="KNO" SortExpression="KNO">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" Text='<%# Bind("KNO") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("KNO") %>'></asp:Label>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:TextBox ID="tboxkno" CssClass="form-control" runat="server"></asp:TextBox>
+                                </FooterTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="LOCATION" SortExpression="LOCATION">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox3" CssClass="form-control" runat="server" Text='<%# Bind("LOCATION") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:TextBox ID="tboxlocation" CssClass="form-control" runat="server"></asp:TextBox>
+                                </FooterTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="SPECIFICATION" SortExpression="SPECIFICATION">
+                                <EditItemTemplate>
+                                    <asp:DropDownList ID="DropDownList1" CssClass="form-control" SelectedValue='<%# Bind("SPECIFICATION") %>' runat="server">
+                                        <asp:ListItem>-</asp:ListItem>
+                                        <asp:ListItem>Window</asp:ListItem>
+                                        <asp:ListItem>Door</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1"
+                                        ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator>
+                                </EditItemTemplate>
+                                <FooterTemplate>
+                                    <asp:DropDownList ID="dlspecification" CssClass="form-control" runat="server">
+                                        <asp:ListItem>-</asp:ListItem>
+                                        <asp:ListItem>Window</asp:ListItem>
+                                        <asp:ListItem>Door</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="insertvalidation" runat="server" ControlToValidate="dlspecification"
+                                        Text="*" ForeColor="Red" ErrorMessage="specification is required" InitialValue="-"></asp:RequiredFieldValidator>
+                                </FooterTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("SPECIFICATION") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="MOB COST" SortExpression="MOBILIZATIONCOST">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox5" CssClass="form-control" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:TextBox>
+                                    <asp:CompareValidator ID="CompareValidatoreditmobilization" runat="server" ForeColor="Red" ControlToValidate="TextBox5" Text="*"
+                                        Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount"></asp:CompareValidator>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:Label>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:TextBox ID="tboxmobilizationcost" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:CompareValidator ID="CompareValidatorinsertmobilization" ValidationGroup="insertvalidation" runat="server" ControlToValidate="tboxmobilizationcost" Text="*"
+                                        Type="Double" Operator="DataTypeCheck" ErrorMessage="invalid amount" ForeColor="Red"></asp:CompareValidator>
+                                </FooterTemplate>
+                            </asp:TemplateField>
 
-            <asp:ValidationSummary class="alert alert-danger" ID="ValidationSummary1" ValidationGroup="insertvalidation" runat="server" />
-            <asp:ValidationSummary class="alert alert-danger" ID="ValidationSummary2" runat="server" />
+                            <asp:TemplateField HeaderText="" SortExpression="JO">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label100" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label600" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" CommandName="assessment" runat="server">assessment</asp:LinkButton>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:ImageButton ID="ImageButton1" ValidationGroup="insertvalidation" ImageUrl="~/AFTERSALESPROJ/images/add.png" OnClick="lbtninsert_click" runat="server" />
+                                </FooterTemplate>
+                            </asp:TemplateField>
 
+                        </Columns>
+                        <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
+                        <RowStyle Font-Names="Segoe UI" Font-Size="10pt" Height="35px" />
+                    </asp:GridView>
+
+                    <asp:ValidationSummary class="alert alert-danger" ID="ValidationSummary1" ValidationGroup="insertvalidation" runat="server" />
+                    <asp:ValidationSummary class="alert alert-danger" ID="ValidationSummary2" runat="server" />
+                </div>
+                <div class="panel-footer">
+                    Footer
+                </div>
+            </div>
 
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
                 DeleteCommand="DELETE FROM [REPORTTB] WHERE [ID] = @ID"

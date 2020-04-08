@@ -15,7 +15,7 @@
     <form id="fomr1" runat="server">
         <div class="container-fluid">
             <div class="jumbotron">
-                <h1>Kenneth and Mock <small>WINDOWS AND DOORS</small></h1>
+                <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
 
             </div>
         </div>
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="checkbox">
                                    
-                                        <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" />
+                                        <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" Checked="True" />
                                       
                                 </div>
 

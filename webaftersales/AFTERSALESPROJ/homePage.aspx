@@ -48,7 +48,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="page-header">
-        <h3>Kenneth and Mock<small> WINDOWS AND DOORS</small></h3>
+        <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
     </div>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -66,10 +66,12 @@
     <br/>
     <div class="container">
                 <div>
-                    <h1><small>SERVICING SCHEDULE up</small></h1>
+                    <h1><small>SERVICING SCHEDULE</small></h1>
                 </div>
 <br />
-                <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False" HorizontalAlign="Left" EmptyDataText="Sorry :( No Result Found.">
+                <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True" 
+                    OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False" 
+                    HorizontalAlign="Left">
                     <Columns>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>
@@ -83,9 +85,19 @@
                                 <asp:Label ID="datelbl" Font-Size="20px" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
                                 <asp:Label ID="colorlbl" Visible="false" runat="server" Text='<%# Bind("PROFILE_FINISH") %>'></asp:Label>
                             </ItemTemplate>
+                            
+                             
+                        
                         </asp:TemplateField>
 
                     </Columns>
+                    <EmptyDataTemplate>
+                           <div class="alert alert-danger">
+                                    <h2><strong>Sorry, you havo no schedule!</strong>
+                                        <small>0 result found</small>
+                                    </h2>
+                                </div>
+                    </EmptyDataTemplate>
                     <EditRowStyle BorderStyle="None" BorderWidth="0px" />
                     <PagerSettings PageButtonCount="8" />
                     <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />

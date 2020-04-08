@@ -40,7 +40,7 @@
                                    <span class="glyphicon glyphicon-phone"></span>&nbsp;Contact</asp:HyperLink></li>
                         <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;About</a></li>
                         <li>
-                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/AFTERSALESPROJ/manageAccountsPage.aspx">
+                            <asp:HyperLink ID="HyperLink3" runat="server" Visible='<%# acctlink.Text=="Admin" ? true : false %>' NavigateUrl="~/AFTERSALESPROJ/manageAccountsPage.aspx">
                                      <span class="glyphicon glyphicon-user"></span>&nbsp;Accounts</asp:HyperLink></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
