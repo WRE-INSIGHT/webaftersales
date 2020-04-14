@@ -26,9 +26,9 @@
         <div class="page-header">
             <h2>
                 <asp:Label ID="Label1" runat="server" Text="Report Viewer"></asp:Label></h2>
-            
+
             <div class="navbar-right">
-                <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back to report"></asp:HyperLink>
+                <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click">back</asp:LinkButton>
             </div>
         </div>
         <br />
@@ -50,7 +50,7 @@ on a.reportid = b.id where (b.[SID] = @SID)">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <rsweb:ReportViewer CssClass="report" BorderStyle="Solid" Width="100%" Height="800"
-                     ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" OnReportRefresh="ReportViewer1_ReportRefresh">
+                    ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" OnReportRefresh="ReportViewer1_ReportRefresh">
                     <LocalReport ReportPath="AFTERSALESPROJ\report\RPTassessment.rdlc">
                         <DataSources>
                             <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet1" />
@@ -60,16 +60,16 @@ on a.reportid = b.id where (b.[SID] = @SID)">
                 </rsweb:ReportViewer>
             </ContentTemplate>
         </asp:UpdatePanel>
-
         <br />
-        <div class="panel panel-default">
-            <div class="panel-heading">Sign Signature</div>
-            <div class="panel-body">
-                <asp:LinkButton ID="LinkButton1" runat="server" Width="300" CssClass="btn btn-primary" OnClick="LinkButton1_Click">Inspected and Assessed by</asp:LinkButton>
-                <asp:LinkButton ID="LinkButton2" runat="server" Width="300" CssClass="btn btn-primary" OnClick="LinkButton2_Click">Assessment Monitored and Accepted by</asp:LinkButton>
+        <asp:Panel ID="Panel1" runat="server">
+            <div class="panel panel-default">
+                <div class="panel-heading">Sign Signature</div>
+                <div class="panel-body">
+                    <asp:LinkButton ID="LinkButton1" runat="server" Width="300" CssClass="btn btn-primary" OnClick="LinkButton1_Click">Inspected and Assessed by</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton2" runat="server" Width="300" CssClass="btn btn-primary" OnClick="LinkButton2_Click">Assessment Monitored and Accepted by</asp:LinkButton>
+                </div>
             </div>
-        </div>
-
+        </asp:Panel>
     </div>
 </asp:Content>
 

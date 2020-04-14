@@ -10,6 +10,7 @@ namespace webaftersales.AFTERSALESPROJ
 {
     public partial class reportviewPage : System.Web.UI.Page
     {
+     
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)
@@ -18,6 +19,14 @@ namespace webaftersales.AFTERSALESPROJ
                 if (!IsPostBack)
                 {
                     getparameters();
+                    if (Session["link"].ToString() == "s1")
+                    {
+                        Panel1.Visible = false;
+                    }
+                    else if (Session["link"].ToString() == "s2")
+                    {
+                        Panel1.Visible = true;
+                    }
                 }
 
             }
@@ -77,6 +86,20 @@ namespace webaftersales.AFTERSALESPROJ
         {
             Session["Signatureby"] = "panel2";
             Response.Redirect("~/AFTERSALESPROJ/signaturePage.aspx");
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            string prevpage = Session["link"].ToString();
+            if (prevpage == "s1")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/ServicingschedulePage.aspx");
+            }
+            else if (prevpage == "s2")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
+            }
+
         }
     }
 }

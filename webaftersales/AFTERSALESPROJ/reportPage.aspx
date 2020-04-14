@@ -57,15 +57,16 @@
             <div class="well">
                 <strong>Report Table!</strong> List of items.
             </div>
-          
+
             <br />
             <div class="panel panel-primary">
                 <div class=" panel-heading">
-                   <div class="container">
-                <asp:HyperLink ID="HyperLink3" CssClass="btn btn-default" runat="server" data-toggle="modal" data-target="#myModal">add new item</asp:HyperLink>
-                <asp:HyperLink ID="HyperLink1" CssClass="btn btn-warning" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import items</asp:HyperLink>
-                <asp:HyperLink ID="HyperLink2" CssClass="btn btn-success" runat="server" NavigateUrl="~/AFTERSALESPROJ/reportviewPage.aspx">view report</asp:HyperLink>
-            </div>
+                    <div class="container">
+                        <asp:HyperLink ID="HyperLink3" CssClass="btn btn-default" runat="server" data-toggle="modal" data-target="#myModal">add new item</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink1" CssClass="btn btn-warning" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import items</asp:HyperLink>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-success" OnClick="LinkButton2_Click">view report</asp:LinkButton>
+
+                    </div>
                 </div>
                 <div class="panel-body">
 

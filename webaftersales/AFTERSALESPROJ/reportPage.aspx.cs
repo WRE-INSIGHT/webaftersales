@@ -154,5 +154,11 @@ namespace webaftersales.AFTERSALESPROJ
         {
 
         }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            Session["link"] = "s2";
+            Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
+        }
     }
 }

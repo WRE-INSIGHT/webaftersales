@@ -10,8 +10,14 @@
     </div>
     <div class="container">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
-        <asp:GridView ID="GridView1" runat="server" PageSize="8" GridLines="None" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
+        <div class="input-group">
+            <asp:TextBox ID="servicingkeytbox" CssClass="form-control" runat="server"></asp:TextBox>
+            <div class="input-group-btn">
+                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary" OnClick="LinkButton2_Click">Find</asp:LinkButton>
+            </div>
+        </div>
+        <asp:GridView ID="GridView1" runat="server" PageSize="8" GridLines="None" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" 
+            AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
@@ -38,13 +44,22 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                <ContentTemplate>
-                                                    <asp:GridView ID="GridView2" ShowHeader="False" runat="server" DataSource='<%# Bind("schedule") %>' AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+                                         <%--   <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                <ContentTemplate>--%>
+                                                    <asp:GridView ID="GridView2" ShowHeader="False" runat="server" DataSource='<%# Bind("schedule") %>'  OnRowCommand="GridView2_RowCommand"
+                                                        AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
                                                         <Columns>
+                                                       
                                                             <asp:BoundField HeaderText="" DataField="STATUS" />
                                                             <asp:BoundField HeaderText="" DataField="SERVICING" />
                                                             <asp:BoundField HeaderText="" DataField="SDATE" />
+                                                            <asp:TemplateField>
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="Label5" runat="server" Visible="false" Text='<%# Eval("ID") %>'></asp:Label>
+                                                                    <asp:Label ID="Label6" runat="server" Visible="false" Text='<%# Eval("callin") %>'></asp:Label>
+                                                                    <asp:LinkButton ID="LinkButton1" CommandName="viewreport" CssClass="btn btn-warning" runat="server">report</asp:LinkButton>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
                                                         </Columns>
                                                         <FooterStyle BackColor="White" ForeColor="#333333" />
                                                         <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
@@ -56,8 +71,8 @@
                                                         <SortedDescendingCellStyle BackColor="#E5E5E5" />
                                                         <SortedDescendingHeaderStyle BackColor="#275353" />
                                                     </asp:GridView>
-                                                </ContentTemplate>
-                                            </asp:UpdatePanel>
+                                              <%--  </ContentTemplate>
+                                            </asp:UpdatePanel>--%>
                                         </td>
                                     </tr>
                                 </table>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -14,7 +15,7 @@ namespace webaftersales.AFTERSALESPROJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-         
+
             if (Session["username"] != null)
             {
                 if (!IsPostBack)
@@ -34,24 +35,57 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getdata()
         {
-            GridView1.DataSource = dal.servicedataaccesslayer.GetService();
+            GridView1.DataSource = dal.servicedataaccesslayer.GetService(servicingkeytbox.Text);
             GridView1.DataBind();
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "VIEWSCHEDULE")
+
+        }
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "viewreport")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-                GridViewRow row = GridView1.Rows[rowindex];
-              
-             
+                GridViewRow row = ((GridView)sender).Rows[rowindex];
+                Session["SID"] = ((Label)row.FindControl("Label5")).Text;
+                getdetails(((Label)row.FindControl("Label6")).Text);
+            }
+
+        }
+        private void getdetails(string callin)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            using (SqlConnection sqlcon = new SqlConnection(cs))
+            {
+                string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,PROFILE_FINISH from callintb as a " +
+                         "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
+                         "on a.jo = b.job_order_no " +
+                         "where a.cin = '" + callin + "'";
+                using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataReader rdr = sqlcmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Session["PROJECT"] = rdr[4].ToString();
+                        Session["ADDRESS"] = rdr[5].ToString();
+                        Session["COLOR"] = rdr[6].ToString();
+                    }
+                    Session["link"] = "s1";
+                    Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
+                }
             }
         }
-
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
+            getdata();
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
             getdata();
         }
     }

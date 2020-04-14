@@ -11,6 +11,6 @@
                 <strong>Invalid Access!</strong><small>unable to access this page</small>
             </h1>
         </div>
-       
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </div>
 </asp:Content>

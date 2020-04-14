@@ -26,7 +26,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
     }
     public class servicedataaccesslayer
     {
-        public static List<servicedal> GetService()
+        public static List<servicedal> GetService(string key)
         {
 
             List<servicedal> li = new List<servicedal>();
@@ -37,7 +37,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
                 string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD from callintb as a " +
                               "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
                               "on a.jo = b.job_order_no " +
-                              "where a.cin in (select cin from SERVICINGTB) " +
+                              "where a.cin in (select cin from SERVICINGTB) and (PROJECT_LABEL like '%" + key + "%') " +
                               "ORDER BY CIN DESC";
                 using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                 {
