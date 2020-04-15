@@ -2,13 +2,13 @@
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Servicing Records</title>
 </asp:Content>
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <div class="page-header">
         <h1><strong>Servicing Records</strong><small>as per call-in control#</small></h1>
     </div>
-    <div class="container">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="input-group">
             <asp:TextBox ID="servicingkeytbox" CssClass="form-control" runat="server"></asp:TextBox>
@@ -16,7 +16,7 @@
                 <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary" OnClick="LinkButton2_Click">Find</asp:LinkButton>
             </div>
         </div>
-        <asp:GridView ID="GridView1" runat="server" PageSize="8" GridLines="None" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" 
+        <asp:GridView ID="GridView1" runat="server" GridLines="None" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" 
             AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
             <Columns>
                 <asp:TemplateField>
@@ -85,7 +85,9 @@
                 </asp:TemplateField>
             </Columns>
             
+            <PagerSettings PageButtonCount="8" />
+            
             <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
         </asp:GridView>
-    </div>
+  
 </asp:Content>

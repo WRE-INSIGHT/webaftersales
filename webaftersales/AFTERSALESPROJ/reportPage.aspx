@@ -19,7 +19,7 @@
             <small>
                 <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
         <div class="navbar-right">
-            <asp:HyperLink ID="HyperLink4" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx" runat="server" Text="back to home"></asp:HyperLink>
+            <asp:HyperLink ID="HyperLink4" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx" runat="server" Text="back"></asp:HyperLink>
         </div>
     </div>
     <h2>
@@ -58,6 +58,9 @@
                 <strong>Report Table!</strong> List of items.
             </div>
 
+        
+
+
             <br />
             <div class="panel panel-primary">
                 <div class=" panel-heading">
@@ -65,7 +68,7 @@
                         <asp:HyperLink ID="HyperLink3" CssClass="btn btn-default" runat="server" data-toggle="modal" data-target="#myModal">add new item</asp:HyperLink>
                         <asp:HyperLink ID="HyperLink1" CssClass="btn btn-warning" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import items</asp:HyperLink>
                         <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-success" OnClick="LinkButton2_Click">view report</asp:LinkButton>
-
+                        <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-danger" OnClick="LinkButton3_Click">see photos</asp:LinkButton>
                     </div>
                 </div>
                 <div class="panel-body">

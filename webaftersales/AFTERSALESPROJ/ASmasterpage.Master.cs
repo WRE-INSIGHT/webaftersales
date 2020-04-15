@@ -11,6 +11,7 @@ namespace webaftersales.AFTERSALESPROJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             acctlink.Text = "Hi, " + Session["username"].ToString() + " ";
         }
 
