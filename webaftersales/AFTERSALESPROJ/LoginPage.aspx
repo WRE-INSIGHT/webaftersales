@@ -78,12 +78,10 @@
             </div>
         </div>
         <footer class="container-fluid text-center">
-            <div class="well">
                 <br />
                 <br />
                 <br />
                 <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
-            </div>
         </footer>
 
     </form>

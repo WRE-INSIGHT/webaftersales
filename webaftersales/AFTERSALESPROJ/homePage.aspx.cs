@@ -90,7 +90,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                  int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-
+                Session["CID"] = ((Label)row.Cells[0].FindControl("cidlbl")).Text;
                 Session["SID"] = ((Label)row.Cells[0].FindControl("idlbl")).Text;
                 Session["JO"] = ((Label)row.Cells[0].FindControl("jolbl")).Text;
                 Session["PROJECT"] = ((LinkButton)row.Cells[0].FindControl("projectlbl")).Text;

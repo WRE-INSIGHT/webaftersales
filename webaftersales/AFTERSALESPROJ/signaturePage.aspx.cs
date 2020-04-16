@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -30,6 +32,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
         }
+        private string sid
+        {
+            get
+            {
+                return Session["SID"].ToString() +"/";
+            }
+        }
         protected void Button2_Click(object sender, EventArgs e)
         {
             Console.WriteLine("still running here");
@@ -38,11 +47,30 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["dataurlsignature"] = Request.Form["myurl"];
                 Session["inspectedby"] = tboxinspector.Text;
                 Session["inspecteddate"] = tboxinspectordate.Text;
+                string filepath = "~/Uploads/ASuploads/" + Session["CID"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
+                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
+                if (!IsExists)
+                {
+                    System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
+                }
+                UploadImage(Request.Form["myurl"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath + "inspectedby.jpg"));
                 //ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
                 Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
             }
         }
+        public static void UploadImage(string imageData,string fileNameWitPath)
+        {
+            using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
+            {
+                using (BinaryWriter bw = new BinaryWriter(fs))
 
+                {
+                    byte[] data = Convert.FromBase64String(imageData);
+                    bw.Write(data);
+                    bw.Close();
+                }
+            }
+        }
         protected void Button1_Click1(object sender, EventArgs e)
         {
             if (IsValid)
@@ -50,6 +78,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["dataurlsignature1"] = Request.Form["myurl1"];
                 Session["monitoredby"] = tboxmonitored.Text;
                 Session["monitoreddate"] = tboxmonitoreddate.Text;
+                string filepath = "~/Uploads/ASuploads/" + Session["CID"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
+                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
+                if (!IsExists)
+                {
+                    System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
+                }
+                UploadImage(Request.Form["myurl1"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath + "monitoredby.jpg"));
                 //ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
                 Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
             }

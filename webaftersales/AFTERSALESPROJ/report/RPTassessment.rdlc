@@ -695,8 +695,8 @@
           </Style>
         </Line>
         <Image Name="Image1">
-          <Source>Database</Source>
-          <Value>=Convert.FromBase64String(Parameters!imgparam.Value)</Value>
+          <Source>External</Source>
+          <Value>=Parameters!imgparam.Value</Value>
           <MIMEType>image/png</MIMEType>
           <Sizing>Fit</Sizing>
           <Top>0.31939in</Top>
@@ -711,8 +711,8 @@
           </Style>
         </Image>
         <Image Name="Image2">
-          <Source>Database</Source>
-          <Value>=Convert.FromBase64String(Parameters!imgparam1.Value)</Value>
+          <Source>External</Source>
+          <Value>=Parameters!imgparam1.Value</Value>
           <MIMEType>image/png</MIMEType>
           <Sizing>Fit</Sizing>
           <Top>0.31939in</Top>

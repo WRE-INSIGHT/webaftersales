@@ -10,7 +10,7 @@ namespace webaftersales.AFTERSALESPROJ
 {
     public partial class reportviewPage : System.Web.UI.Page
     {
-     
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)
@@ -42,38 +42,43 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getparameters()
         {
-            ReportParameter[] repparam = new ReportParameter[3];
+            ReportViewer1.LocalReport.EnableExternalImages = true;
+            string imgparam = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CID"].ToString() + "/" + Session["SID"].ToString() + "/signature/inspectedby.jpg")).AbsoluteUri;
+            string imgparam1 = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CID"].ToString() + "/" + Session["SID"].ToString() + "/signature/monitoredby.jpg")).AbsoluteUri;
+            ReportParameter[] repparam = new ReportParameter[5];
             repparam[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             repparam[1] = new ReportParameter("address", Session["ADDRESS"].ToString());
             repparam[2] = new ReportParameter("profilefinish", Session["COLOR"].ToString());
-            for (int i = 0; i < 3; i++)
+            repparam[3] = new ReportParameter("imgparam", imgparam);
+            repparam[4] = new ReportParameter("imgparam1", imgparam1);
+            for (int i = 0; i < 5; i++)
             {
                 ReportViewer1.LocalReport.SetParameters(repparam[i]);
             }
 
-            if (Session["dataurlsignature"] != null)
-            {
-                ReportParameter[] param = new ReportParameter[3];
-                param[0] = new ReportParameter("imgparam", Session["dataurlsignature"].ToString().Replace("data:image/png;base64,", ""));
-                param[1] = new ReportParameter("inspectedby", Session["inspectedby"].ToString());
-                param[2] = new ReportParameter("inspecteddate", Session["inspecteddate"].ToString());
-                for (int i = 0; i < 3; i++)
-                {
-                    ReportViewer1.LocalReport.SetParameters(param[i]);
-                }
-            }
-            if (Session["dataurlsignature1"] != null)
-            {
-                ReportParameter[] param = new ReportParameter[3];
-                param[0] = new ReportParameter("imgparam1", Session["dataurlsignature1"].ToString().Replace("data:image/png;base64,", ""));
-                param[1] = new ReportParameter("monitoredby", Session["monitoredby"].ToString());
-                param[2] = new ReportParameter("monitoreddate", Session["monitoreddate"].ToString());
-                for (int i = 0; i < 3; i++)
-                {
-                    ReportViewer1.LocalReport.SetParameters(param[i]);
-                }
+            //if (Session["dataurlsignature"] != null)
+            //{
+            //    ReportParameter[] param = new ReportParameter[3];
+            //    param[0] = new ReportParameter("imgparam",imgparam);
+            //    param[1] = new ReportParameter("inspectedby", Session["inspectedby"].ToString());
+            //    param[2] = new ReportParameter("inspecteddate", Session["inspecteddate"].ToString());
+            //    for (int i = 0; i < 3; i++)
+            //    {
+            //        ReportViewer1.LocalReport.SetParameters(param[i]);
+            //    }
+            //}
+            //if (Session["dataurlsignature1"] != null)
+            //{
+            //    ReportParameter[] param = new ReportParameter[3];
+            //    param[0] = new ReportParameter("imgparam1", Session["dataurlsignature1"].ToString().Replace("data:image/png;base64,", ""));
+            //    param[1] = new ReportParameter("monitoredby", Session["monitoredby"].ToString());
+            //    param[2] = new ReportParameter("monitoreddate", Session["monitoreddate"].ToString());
+            //    for (int i = 0; i < 3; i++)
+            //    {
+            //        ReportViewer1.LocalReport.SetParameters(param[i]);
+            //    }
 
-            }
+            //}
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)

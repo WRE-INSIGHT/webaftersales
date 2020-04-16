@@ -11,15 +11,15 @@ namespace webaftersales.AFTERSALESPROJ
     public partial class sidgalleryPage : System.Web.UI.Page
     {
 
-        string filepath = "~/Uploads/ASuploads/SIDreport/";
+        string filepath = "~/Uploads/ASuploads/";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)
             {
-                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath + sid));
+                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath + cid + sid));
                 if (!IsExists)
                 {
-                    System.IO.Directory.CreateDirectory(Server.MapPath(filepath + sid));
+                    System.IO.Directory.CreateDirectory(Server.MapPath(filepath + cid + sid));
                 }
                 loadimages();
                 if (!IsPostBack)
@@ -41,11 +41,18 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
         }
+        private string cid
+        {
+            get
+            {
+                return Session["CID"].ToString() + "/";
+            }
+        }
         private string sid
         {
             get
             {
-                return Session["SID"].ToString() + "/";
+                return Session["SID"].ToString() + "/photos/";
             }
         }
         protected void Button1_Click(object sender, EventArgs e)
@@ -63,12 +70,12 @@ namespace webaftersales.AFTERSALESPROJ
                         double filesize = thefile.ContentLength;
                         if (filesize < 2097152.00)
                         {
-                            thefile.SaveAs(Server.MapPath(filepath + sid + thefile.FileName));
+                            thefile.SaveAs(Server.MapPath(filepath + cid + sid + thefile.FileName));
                             Session["ErrorMessage"] = null;
                         }
                         else
                         {
-                            CustomValidator err = new CustomValidator();  
+                            CustomValidator err = new CustomValidator();
                             Session["ErrorMessage"] = "You can only upload files of size lesser than 2 MB, but you are uploading a file of " + Math.Round((filesize / 1048576.00), 2) + " MB";
                         }
                     }
@@ -88,11 +95,11 @@ namespace webaftersales.AFTERSALESPROJ
         private void loadimages()
         {
 
-            foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath + sid)))
+            foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath + cid + sid)))
             {
                 ImageButton imgbutton = new ImageButton();
                 FileInfo fileinfo = new FileInfo(strfilename);
-                imgbutton.ImageUrl = filepath + sid + fileinfo.Name;
+                imgbutton.ImageUrl = filepath + cid + sid + fileinfo.Name;
                 imgbutton.Width = Unit.Pixel(200);
                 imgbutton.Height = Unit.Pixel(200);
                 imgbutton.Style.Add("margin", "5px");

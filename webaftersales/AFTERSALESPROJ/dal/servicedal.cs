@@ -15,6 +15,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
         public string jo { set; get; }
         public string project { set; get; }
         public string fulladd { set; get; }
+        public string caller { set; get; }
         public List<scheduledal> schedule
         {
             get
@@ -34,7 +35,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
           
             using (SqlConnection sqlcon = new SqlConnection(cs))
             {
-                string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD from callintb as a " +
+                string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,CALLER from callintb as a " +
                               "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
                               "on a.jo = b.job_order_no " +
                               "where a.cin in (select cin from SERVICINGTB) and (PROJECT_LABEL like '%" + key + "%') " +
@@ -52,7 +53,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
                         dal.jo = dr[3].ToString();
                         dal.project = dr[4].ToString();
                         dal.fulladd = dr[5].ToString();
-
+                        dal.caller = dr[6].ToString();
                         li.Add(dal);
                     }
                 }
