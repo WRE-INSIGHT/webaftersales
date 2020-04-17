@@ -17,16 +17,17 @@
             Site Photos
         </div>
         <div class="panel-body">
-
-            <div class="navbar-left">
-                <label class="btn btn-default">
-                    <span><strong>Upload Image</strong></span>
-                    <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="True"></asp:FileUpload>
-                </label>
-            </div>
-            <div class="navbar-right">
-                <asp:Button ID="Button1" runat="server" Text="Upload Image" ValidationGroup="g1" CssClass="btn btn-default" OnClick="Button1_Click" />
-            </div>
+            <asp:Panel ID="Panel3" runat="server">
+                <div class="navbar-left">
+                    <label class="btn btn-default">
+                        <span><strong>Upload Image</strong></span>
+                        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="True"></asp:FileUpload>
+                    </label>
+                </div>
+                <div class="navbar-right">
+                    <asp:Button ID="Button1" runat="server" Text="Upload Image" ValidationGroup="g1" CssClass="btn btn-default" OnClick="Button1_Click" />
+                </div>
+            </asp:Panel>
             <br />
             <br />
 

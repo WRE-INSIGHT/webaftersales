@@ -15,6 +15,14 @@ namespace webaftersales.AFTERSALESPROJ
             if (Session["username"] != null)
             {
                 Image1.ImageUrl = Request.QueryString["ImageUrl"];
+                if (Session["link"].ToString() == "s1")
+                {
+                    Button1.Visible = false;
+                }
+                else if (Session["link"].ToString() == "s2")
+                {
+                    Button1.Visible = true;
+                }
             }
             else
             {

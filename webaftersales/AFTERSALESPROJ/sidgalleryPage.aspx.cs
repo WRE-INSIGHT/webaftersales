@@ -16,6 +16,14 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (Session["username"] != null)
             {
+                if (Session["link"].ToString() == "s1")
+                {
+                    Panel3.Visible = false;
+                }
+                else if (Session["link"].ToString() == "s2")
+                {
+                    Panel3.Visible = true;
+                }
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath + cid + sid));
                 if (!IsExists)
                 {
@@ -120,7 +128,15 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
+            string prevpage = Session["link"].ToString();
+            if (prevpage == "s1")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/ServicingschedulePage.aspx");
+            }
+            else if (prevpage == "s2")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
+            }
         }
     }
 }

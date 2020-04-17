@@ -661,9 +661,13 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnTEAMID;
             
-            private global::System.Data.DataColumn columninspectorsign;
+            private global::System.Data.DataColumn columnINSPECTEDBY;
             
-            private global::System.Data.DataColumn columnmonitorsign;
+            private global::System.Data.DataColumn columnINSDATE;
+            
+            private global::System.Data.DataColumn columnMONITOREDBY;
+            
+            private global::System.Data.DataColumn columnMONDATE;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -764,17 +768,33 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn inspectorsignColumn {
+            public global::System.Data.DataColumn INSPECTEDBYColumn {
                 get {
-                    return this.columninspectorsign;
+                    return this.columnINSPECTEDBY;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn monitorsignColumn {
+            public global::System.Data.DataColumn INSDATEColumn {
                 get {
-                    return this.columnmonitorsign;
+                    return this.columnINSDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MONITOREDBYColumn {
+                get {
+                    return this.columnMONITOREDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MONDATEColumn {
+                get {
+                    return this.columnMONDATE;
                 }
             }
             
@@ -815,7 +835,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SERVICINGTBRow AddSERVICINGTBRow(string ID, string CIN, string STATUS, string STATUSDATE, string SERVICING, string SDATE, string REMARKS, string TEAMID, string inspectorsign, string monitorsign) {
+            public SERVICINGTBRow AddSERVICINGTBRow(string ID, string CIN, string STATUS, string STATUSDATE, string SERVICING, string SDATE, string REMARKS, string TEAMID, string INSPECTEDBY, string INSDATE, string MONITOREDBY, string MONDATE) {
                 SERVICINGTBRow rowSERVICINGTBRow = ((SERVICINGTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -826,8 +846,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         SDATE,
                         REMARKS,
                         TEAMID,
-                        inspectorsign,
-                        monitorsign};
+                        INSPECTEDBY,
+                        INSDATE,
+                        MONITOREDBY,
+                        MONDATE};
                 rowSERVICINGTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSERVICINGTBRow);
                 return rowSERVICINGTBRow;
@@ -858,8 +880,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnSDATE = base.Columns["SDATE"];
                 this.columnREMARKS = base.Columns["REMARKS"];
                 this.columnTEAMID = base.Columns["TEAMID"];
-                this.columninspectorsign = base.Columns["inspectorsign"];
-                this.columnmonitorsign = base.Columns["monitorsign"];
+                this.columnINSPECTEDBY = base.Columns["INSPECTEDBY"];
+                this.columnINSDATE = base.Columns["INSDATE"];
+                this.columnMONITOREDBY = base.Columns["MONITOREDBY"];
+                this.columnMONDATE = base.Columns["MONDATE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -881,10 +905,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnREMARKS);
                 this.columnTEAMID = new global::System.Data.DataColumn("TEAMID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTEAMID);
-                this.columninspectorsign = new global::System.Data.DataColumn("inspectorsign", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columninspectorsign);
-                this.columnmonitorsign = new global::System.Data.DataColumn("monitorsign", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmonitorsign);
+                this.columnINSPECTEDBY = new global::System.Data.DataColumn("INSPECTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnINSPECTEDBY);
+                this.columnINSDATE = new global::System.Data.DataColumn("INSDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnINSDATE);
+                this.columnMONITOREDBY = new global::System.Data.DataColumn("MONITOREDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMONITOREDBY);
+                this.columnMONDATE = new global::System.Data.DataColumn("MONDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMONDATE);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1366,33 +1394,65 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string inspectorsign {
+            public string INSPECTEDBY {
                 get {
                     try {
-                        return ((string)(this[this.tableSERVICINGTB.inspectorsignColumn]));
+                        return ((string)(this[this.tableSERVICINGTB.INSPECTEDBYColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'inspectorsign\' in table \'SERVICINGTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'INSPECTEDBY\' in table \'SERVICINGTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSERVICINGTB.inspectorsignColumn] = value;
+                    this[this.tableSERVICINGTB.INSPECTEDBYColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string monitorsign {
+            public string INSDATE {
                 get {
                     try {
-                        return ((string)(this[this.tableSERVICINGTB.monitorsignColumn]));
+                        return ((string)(this[this.tableSERVICINGTB.INSDATEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'monitorsign\' in table \'SERVICINGTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'INSDATE\' in table \'SERVICINGTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSERVICINGTB.monitorsignColumn] = value;
+                    this[this.tableSERVICINGTB.INSDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MONITOREDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableSERVICINGTB.MONITOREDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MONITOREDBY\' in table \'SERVICINGTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSERVICINGTB.MONITOREDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MONDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableSERVICINGTB.MONDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MONDATE\' in table \'SERVICINGTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSERVICINGTB.MONDATEColumn] = value;
                 }
             }
             
@@ -1494,26 +1554,50 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsinspectorsignNull() {
-                return this.IsNull(this.tableSERVICINGTB.inspectorsignColumn);
+            public bool IsINSPECTEDBYNull() {
+                return this.IsNull(this.tableSERVICINGTB.INSPECTEDBYColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetinspectorsignNull() {
-                this[this.tableSERVICINGTB.inspectorsignColumn] = global::System.Convert.DBNull;
+            public void SetINSPECTEDBYNull() {
+                this[this.tableSERVICINGTB.INSPECTEDBYColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsmonitorsignNull() {
-                return this.IsNull(this.tableSERVICINGTB.monitorsignColumn);
+            public bool IsINSDATENull() {
+                return this.IsNull(this.tableSERVICINGTB.INSDATEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetmonitorsignNull() {
-                this[this.tableSERVICINGTB.monitorsignColumn] = global::System.Convert.DBNull;
+            public void SetINSDATENull() {
+                this[this.tableSERVICINGTB.INSDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMONITOREDBYNull() {
+                return this.IsNull(this.tableSERVICINGTB.MONITOREDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMONITOREDBYNull() {
+                this[this.tableSERVICINGTB.MONITOREDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMONDATENull() {
+                return this.IsNull(this.tableSERVICINGTB.MONDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMONDATENull() {
+                this[this.tableSERVICINGTB.MONDATEColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -20,6 +20,10 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (!IsPostBack)
                 {
+                    if (Session["currentsearch1"] != null)
+                    {
+                        servicingkeytbox.Text = Session["currentsearch1"].ToString();
+                    }
                     getdata();
                 }
             }
@@ -31,6 +35,7 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void searcbtn_Click(object sender, EventArgs e)
         {
+            Session["currentsearch1"] = servicingkeytbox.Text;
             getdata();
         }
         private void getdata()
@@ -52,6 +57,15 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["SID"] = ((Label)row.FindControl("Label5")).Text;
                 Session["CID"] = ((Label)row.FindControl("Label6")).Text;
                 getdetails(Session["CID"].ToString());
+            }
+            else if (e.CommandName == "viewphoto")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = ((GridView)sender).Rows[rowindex];
+                Session["SID"] = ((Label)row.FindControl("Label5")).Text;
+                Session["CID"] = ((Label)row.FindControl("Label6")).Text;
+                Session["link"] = "s1";
+                Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
             }
 
         }

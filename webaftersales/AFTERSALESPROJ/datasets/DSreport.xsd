@@ -12,7 +12,7 @@
   <xs:element name="DSreport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSreport" msprop:Generator_UserDSName="DSreport">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="REPORTTB" msprop:Generator_TableClassName="REPORTTBDataTable" msprop:Generator_TableVarName="tableREPORTTB" msprop:Generator_TablePropName="REPORTTB" msprop:Generator_RowDeletingName="REPORTTBRowDeleting" msprop:Generator_RowChangingName="REPORTTBRowChanging" msprop:Generator_RowEvHandlerName="REPORTTBRowChangeEventHandler" msprop:Generator_RowDeletedName="REPORTTBRowDeleted" msprop:Generator_UserTableName="REPORTTB" msprop:Generator_RowChangedName="REPORTTBRowChanged" msprop:Generator_RowEvArgName="REPORTTBRowChangeEvent" msprop:Generator_RowClassName="REPORTTBRow">
+        <xs:element name="REPORTTB" msprop:Generator_TableClassName="REPORTTBDataTable" msprop:Generator_TableVarName="tableREPORTTB" msprop:Generator_RowChangedName="REPORTTBRowChanged" msprop:Generator_TablePropName="REPORTTB" msprop:Generator_RowDeletingName="REPORTTBRowDeleting" msprop:Generator_RowChangingName="REPORTTBRowChanging" msprop:Generator_RowEvHandlerName="REPORTTBRowChangeEventHandler" msprop:Generator_RowDeletedName="REPORTTBRowDeleted" msprop:Generator_RowClassName="REPORTTBRow" msprop:Generator_UserTableName="REPORTTB" msprop:Generator_RowEvArgName="REPORTTBRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="kno" msprop:Generator_ColumnVarNameInTable="columnkno" msprop:Generator_ColumnPropNameInRow="kno" msprop:Generator_ColumnPropNameInTable="knoColumn" msprop:Generator_UserColumnName="kno" type="xs:string" minOccurs="0" />
@@ -25,7 +25,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SERVICINGTB" msprop:Generator_TableClassName="SERVICINGTBDataTable" msprop:Generator_TableVarName="tableSERVICINGTB" msprop:Generator_RowChangedName="SERVICINGTBRowChanged" msprop:Generator_TablePropName="SERVICINGTB" msprop:Generator_RowDeletingName="SERVICINGTBRowDeleting" msprop:Generator_RowChangingName="SERVICINGTBRowChanging" msprop:Generator_RowEvHandlerName="SERVICINGTBRowChangeEventHandler" msprop:Generator_RowDeletedName="SERVICINGTBRowDeleted" msprop:Generator_RowClassName="SERVICINGTBRow" msprop:Generator_UserTableName="SERVICINGTB" msprop:Generator_RowEvArgName="SERVICINGTBRowChangeEvent">
+        <xs:element name="SERVICINGTB" msprop:Generator_TableClassName="SERVICINGTBDataTable" msprop:Generator_TableVarName="tableSERVICINGTB" msprop:Generator_TablePropName="SERVICINGTB" msprop:Generator_RowDeletingName="SERVICINGTBRowDeleting" msprop:Generator_RowChangingName="SERVICINGTBRowChanging" msprop:Generator_RowEvHandlerName="SERVICINGTBRowChangeEventHandler" msprop:Generator_RowDeletedName="SERVICINGTBRowDeleted" msprop:Generator_UserTableName="SERVICINGTB" msprop:Generator_RowChangedName="SERVICINGTBRowChanged" msprop:Generator_RowEvArgName="SERVICINGTBRowChangeEvent" msprop:Generator_RowClassName="SERVICINGTBRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" minOccurs="0" />
@@ -36,8 +36,10 @@
               <xs:element name="SDATE" msprop:Generator_ColumnVarNameInTable="columnSDATE" msprop:Generator_ColumnPropNameInRow="SDATE" msprop:Generator_ColumnPropNameInTable="SDATEColumn" msprop:Generator_UserColumnName="SDATE" type="xs:string" minOccurs="0" />
               <xs:element name="REMARKS" msprop:Generator_ColumnVarNameInTable="columnREMARKS" msprop:Generator_ColumnPropNameInRow="REMARKS" msprop:Generator_ColumnPropNameInTable="REMARKSColumn" msprop:Generator_UserColumnName="REMARKS" type="xs:string" minOccurs="0" />
               <xs:element name="TEAMID" msprop:Generator_ColumnVarNameInTable="columnTEAMID" msprop:Generator_ColumnPropNameInRow="TEAMID" msprop:Generator_ColumnPropNameInTable="TEAMIDColumn" msprop:Generator_UserColumnName="TEAMID" type="xs:string" minOccurs="0" />
-              <xs:element name="inspectorsign" msprop:Generator_ColumnVarNameInTable="columninspectorsign" msprop:Generator_ColumnPropNameInRow="inspectorsign" msprop:Generator_ColumnPropNameInTable="inspectorsignColumn" msprop:Generator_UserColumnName="inspectorsign" type="xs:string" minOccurs="0" />
-              <xs:element name="monitorsign" msprop:Generator_ColumnVarNameInTable="columnmonitorsign" msprop:Generator_ColumnPropNameInRow="monitorsign" msprop:Generator_ColumnPropNameInTable="monitorsignColumn" msprop:Generator_UserColumnName="monitorsign" type="xs:string" minOccurs="0" />
+              <xs:element name="INSPECTEDBY" msprop:Generator_ColumnVarNameInTable="columnINSPECTEDBY" msprop:Generator_ColumnPropNameInRow="INSPECTEDBY" msprop:Generator_ColumnPropNameInTable="INSPECTEDBYColumn" msprop:Generator_UserColumnName="INSPECTEDBY" type="xs:string" minOccurs="0" />
+              <xs:element name="INSDATE" msprop:Generator_ColumnVarNameInTable="columnINSDATE" msprop:Generator_ColumnPropNameInRow="INSDATE" msprop:Generator_ColumnPropNameInTable="INSDATEColumn" msprop:Generator_UserColumnName="INSDATE" type="xs:string" minOccurs="0" />
+              <xs:element name="MONITOREDBY" msprop:Generator_ColumnVarNameInTable="columnMONITOREDBY" msprop:Generator_ColumnPropNameInRow="MONITOREDBY" msprop:Generator_ColumnPropNameInTable="MONITOREDBYColumn" msprop:Generator_UserColumnName="MONITOREDBY" type="xs:string" minOccurs="0" />
+              <xs:element name="MONDATE" msprop:Generator_ColumnVarNameInTable="columnMONDATE" msprop:Generator_ColumnPropNameInRow="MONDATE" msprop:Generator_ColumnPropNameInTable="MONDATEColumn" msprop:Generator_UserColumnName="MONDATE" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

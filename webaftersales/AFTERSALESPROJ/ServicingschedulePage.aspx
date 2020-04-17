@@ -51,7 +51,7 @@
                                                         <asp:Label ID="Label5" runat="server" Visible="false" Text='<%# Eval("ID") %>'></asp:Label>
                                                         <asp:Label ID="Label6" runat="server" Visible="false" Text='<%# Eval("callin") %>'></asp:Label>
                                                         <asp:LinkButton ID="LinkButton1" CommandName="viewreport" Width="70" CssClass="btn btn-warning" runat="server">report</asp:LinkButton>
-                                                         <asp:LinkButton ID="LinkButton3" CommandName="viewphotos" width="70" CssClass="btn btn-warning" runat="server">photo</asp:LinkButton>
+                                                         <asp:LinkButton ID="LinkButton3" CommandName="viewphoto" width="70" CssClass="btn btn-warning" runat="server">photo</asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>

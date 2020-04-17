@@ -733,7 +733,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Parameters!monitoreddate.Value</Value>
+                  <Value>=First(Fields!MONDATE.Value, "DataSet2")</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                   </Style>
@@ -767,7 +767,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Parameters!monitoredby.Value</Value>
+                  <Value>=First(Fields!MONITOREDBY.Value, "DataSet2")</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                   </Style>
@@ -801,7 +801,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Parameters!inspecteddate.Value</Value>
+                  <Value>=First(Fields!INSDATE.Value, "DataSet2")</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                   </Style>
@@ -835,7 +835,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Parameters!inspectedby.Value</Value>
+                  <Value>=First(Fields!INSPECTEDBY.Value, "DataSet2")</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                   </Style>
@@ -971,12 +971,20 @@
           <DataField>TEAMID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="inspectorsign">
-          <DataField>inspectorsign</DataField>
+        <Field Name="INSPECTEDBY">
+          <DataField>INSPECTEDBY</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="monitorsign">
-          <DataField>monitorsign</DataField>
+        <Field Name="INSDATE">
+          <DataField>INSDATE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MONITOREDBY">
+          <DataField>MONITOREDBY</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MONDATE">
+          <DataField>MONDATE</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -998,30 +1006,6 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="imgparam1">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="monitoredby">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="monitoreddate">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="inspectedby">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="inspecteddate">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>

@@ -4,12 +4,6 @@
 <html>
 
 <head runat="server">
-
-    <style>
-        body{
-            background-color:red;
-        }
-    </style>
     <script src="../Scripts/bootstrap.js"></script>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
@@ -42,7 +36,7 @@
                                  <span class="glyphicon glyphicon-home"></span>&nbsp;Home</asp:HyperLink></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-large"></span>&nbsp;Menu<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Call-in</a></li>
+                                <li><a href="#">About Us</a></li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AFTERSALESPROJ/ServicingschedulePage.aspx">Servicing Records</asp:HyperLink></li>
                             </ul>
