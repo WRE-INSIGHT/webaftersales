@@ -77,13 +77,14 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <asp:Label ID="Label1" Font-Size="15px" runat="server" Text='<%# Bind("SERVICING") %>'></asp:Label>
-                                  <asp:Label ID="cidlbl" CssClass="navbar-right" Font-Size="13px" runat="server" Text='<%# Bind("CIN") %>'></asp:Label>
+                                <asp:Label ID="cidlbl" CssClass="navbar-right" Font-Size="13px" runat="server" Text='<%# Bind("CIN") %>'></asp:Label>
                             </div>
                             <div class="panel-body">
                                 <asp:Label ID="idlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                 <asp:Label ID="jolbl" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
                                 <asp:Label ID="teamlbl" Visible="false" runat="server" Text='<%# Bind("TEAMID") %>'></asp:Label>
-                                <strong><asp:LinkButton ID="projectlbl" Font-Size="20px" CommandName="report" runat="server" Text='<%# Bind("PROJECT") %>'></asp:LinkButton></strong>
+                                <strong>
+                                    <asp:LinkButton ID="projectlbl" Font-Size="20px" CommandName="report" runat="server" Text='<%# Bind("PROJECT") %>'></asp:LinkButton></strong>
                                 <br />
                                 <asp:Label ID="addresslbl" Font-Size="15px" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label>
                                 <br />
@@ -92,8 +93,8 @@
                             </div>
                             <div class="panel-footer">
                                 <asp:Label ID="Label2" Font-Size="13px" runat="server" Text='<%# Bind("CALLER") %>'></asp:Label>
-                                
-                                  
+
+
                             </div>
                         </div>
 
@@ -114,7 +115,7 @@
             <EditRowStyle BorderStyle="None" BorderWidth="0px" />
             <PagerSettings PageButtonCount="8" />
             <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-         <%--   <RowStyle Font-Names="Segoe UI" Font-Size="10pt" Height="120px" CssClass="rowstyle" />--%>
+            <%--   <RowStyle Font-Names="Segoe UI" Font-Size="10pt" Height="120px" CssClass="rowstyle" />--%>
         </asp:GridView>
     </div>
 

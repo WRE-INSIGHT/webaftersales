@@ -209,6 +209,13 @@
     <Compile Include="AFTERSALESPROJ\accountPage.aspx.designer.cs">
       <DependentUpon>accountPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\addservicing.aspx.cs">
+      <DependentUpon>addservicing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\addservicing.aspx.designer.cs">
+      <DependentUpon>addservicing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\ASmasterpage.Master.cs">
       <DependentUpon>ASmasterpage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -328,6 +335,13 @@
     <Compile Include="AFTERSALESPROJ\manageAccountsPage.aspx.designer.cs">
       <DependentUpon>manageAccountsPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\newcallin.aspx.cs">
+      <DependentUpon>newcallin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\newcallin.aspx.designer.cs">
+      <DependentUpon>newcallin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\reportPage.aspx.cs">
       <DependentUpon>reportPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -425,6 +439,7 @@
   <ItemGroup>
     <Content Include="AFTERSALESPROJ\aboutusPage.aspx" />
     <Content Include="AFTERSALESPROJ\accountPage.aspx" />
+    <Content Include="AFTERSALESPROJ\addservicing.aspx" />
     <Content Include="AFTERSALESPROJ\assessmentPage.aspx" />
     <Content Include="AFTERSALESPROJ\CallinPage.aspx" />
     <Content Include="AFTERSALESPROJ\contactusPage.aspx" />
@@ -461,6 +476,7 @@
     <Content Include="AFTERSALESPROJ\invalidaccessPage.aspx" />
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\manageAccountsPage.aspx" />
+    <Content Include="AFTERSALESPROJ\newcallin.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />

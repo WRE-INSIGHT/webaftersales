@@ -70,6 +70,41 @@ namespace webaftersales.AFTERSALESPROJ
             GridView1.PageIndex = e.NewPageIndex;
             getdata();
         }
-    }
 
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            Session["managecallinsender"] = "New";
+            Response.Redirect("~/AFTERSALESPROJ/newcallin.aspx");
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
+                Session["callinTelno"] = ((Label)row.FindControl("telnolbl")).Text;
+                Session["callinFaxno"] = ((Label)row.FindControl("faxnolbl")).Text;
+                Session["callinDate"] = ((Label)row.FindControl("datelbl")).Text;
+                Session["callinCaller"] = ((Label)row.FindControl("callerlbl")).Text;
+                Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
+                Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
+                Session["callinConcern"] = ((Label)row.FindControl("concernlbl")).Text;
+                Session["callinConversation"] = ((Label)row.FindControl("conversationlbl")).Text;
+                Session["managecallinsender"] = "Edit";
+                Response.Redirect("~/AFTERSALESPROJ/newcallin.aspx");
+            }
+            else if (e.CommandName == "myservicing")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
+                Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
+                Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
+            }
+        }
+    }
 }
