@@ -244,6 +244,13 @@
     <Compile Include="AFTERSALESPROJ\contactusPage.aspx.designer.cs">
       <DependentUpon>contactusPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\createteam.aspx.cs">
+      <DependentUpon>createteam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\createteam.aspx.designer.cs">
+      <DependentUpon>createteam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\dal\scheduledal.cs" />
     <Compile Include="AFTERSALESPROJ\dal\servicedal.cs" />
     <Compile Include="AFTERSALESPROJ\datasets\DSreport.Designer.cs">
@@ -443,6 +450,7 @@
     <Content Include="AFTERSALESPROJ\assessmentPage.aspx" />
     <Content Include="AFTERSALESPROJ\CallinPage.aspx" />
     <Content Include="AFTERSALESPROJ\contactusPage.aspx" />
+    <Content Include="AFTERSALESPROJ\createteam.aspx" />
     <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
     <Content Include="AFTERSALESPROJ\css\CSSfrmsignature.css" />
     <Content Include="AFTERSALESPROJ\css\CSSloginPage.css" />

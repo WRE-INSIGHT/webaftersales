@@ -25,9 +25,25 @@ namespace webaftersales.AFTERSALESPROJ
                 }
             }
         }
-
+        private void errorrmessage(string message)
+        {
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "val1";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
+        }
         protected void loginbtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+           
             string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
             using (SqlConnection sqlcon = new SqlConnection(cs))
             {

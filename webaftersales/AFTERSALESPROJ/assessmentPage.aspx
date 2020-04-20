@@ -34,7 +34,7 @@
                 <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label><small>
                     <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label></small></h1>
             <div class="navbar-right">
-                <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back to report"></asp:HyperLink>
+                <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back"></asp:HyperLink>
             </div>
         </div>
     </div>

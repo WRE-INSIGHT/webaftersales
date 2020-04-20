@@ -19,7 +19,7 @@ namespace webaftersales.AFTERSALESPROJ
                 if (!IsPostBack)
                 {
                     getparameters();
-                    if (Session["link"].ToString() == "s1")
+                    if (Session["link"].ToString() == "s1" || Session["link"].ToString() == "s3")
                     {
                         Panel1.Visible = false;
                     }
@@ -103,6 +103,10 @@ namespace webaftersales.AFTERSALESPROJ
             else if (prevpage == "s2")
             {
                 Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
+            }
+            else if (prevpage == "s3")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
             }
 
         }

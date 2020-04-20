@@ -14,7 +14,7 @@ namespace webaftersales.AFTERSALESPROJ
     {
         int scount;
         string suffix = "";
-        string id;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)
@@ -22,9 +22,7 @@ namespace webaftersales.AFTERSALESPROJ
                 if (Session["useraccount"].ToString() == "Admin")
                 {
                     if (!IsPostBack)
-                    {
-                        submitbtn.Text = "add";
-                        cancelbtn.Visible = false;
+                    {             
                         lblproject.Text = Session["callinProject"].ToString();
                         lbladdress.Text = Session["callinAddress"].ToString();
                         getdata();
@@ -47,6 +45,13 @@ namespace webaftersales.AFTERSALESPROJ
                 return Session["callinnumber"].ToString();
             }
         }
+        private string sid
+        {
+            get
+            {
+                return Session["SID"].ToString();
+            }
+        }
         private void getdata()
         {
             try
@@ -57,20 +62,25 @@ namespace webaftersales.AFTERSALESPROJ
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     GridView1.SelectedIndex = -1;
-                    string str = "select a.ID," +
-                           " a.CIN," +
-                           " a.STATUS," +
-                           " a.STATUSDATE AS[STATUS DATE]," +
-                           " a.SERVICING," +
-                           " a.SDATE AS[SERVICING DATE]," +
-                           " a.REMARKS," +
-                           " a.teamid," +
-                           " b.TEAMNAME" +
-                           " from servicingtb as a" +
-                           " left join" +
-                           " tblteam as b" +
-                           " on a.teamid = b.tid" +
-                           " where a.cin = @cin ORDER BY a.SERVICING desc";
+                    string str = "  select a.ID, " +
+                        "  a.CIN, " +
+                        "  a.STATUS, " +
+                        "  a.STATUSDATE AS[STATUSDATE], " +
+                        "  a.SERVICING, " +
+                        "  a.SDATE AS[SERVICINGDATE], " +
+                        "  a.REMARKS, " +
+                        "  a.teamid, " +
+                        "  b.TEAMNAME," +
+                        " (select y.FULLNAME+ char(10) from TBLteamMember as x " +
+                        " 	left join tblpersonnel as y" +
+                        " 	on x.pid = y.pid" +
+                        " 	where x.tid= a.teamid" +
+                        " 	FOR XML PATH('')) AS MEMBERS" +
+                        "  from servicingtb as a " +
+                        "  left join " +
+                        "  tblteam as b " +
+                        "  on a.teamid = b.tid " +
+                        "  where a.cin = @cin ORDER BY a.SERVICING desc";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
@@ -80,6 +90,15 @@ namespace webaftersales.AFTERSALESPROJ
                         da.Fill(ds, "tb");
                         GridView1.DataSource = ds;
                         GridView1.DataBind();
+                        string member = "";
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            while (rd.Read())
+                            {
+                                member = rd[9].ToString();
+                            }
+                            lblsample.Text = member;
+                        }
                     }
                 }
             }
@@ -133,14 +152,9 @@ namespace webaftersales.AFTERSALESPROJ
         }
         protected void submitbtn_Click(object sender, EventArgs e)
         {
-            if (submitbtn.Text == "add")
-            {
+           
                 addfunction();
-            }
-            else if (submitbtn.Text == "save")
-            {
-                updatefunction();
-            }
+          
         }
         private void addfunction()
         {
@@ -210,21 +224,143 @@ namespace webaftersales.AFTERSALESPROJ
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
-        private void updatefunction()
+      
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridView1.SelectedIndex = rowindex;
+                GridViewRow row = GridView1.Rows[rowindex];
+
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                ((TextBox)row.FindControl("servicingdatetbox")).Text = ((Label)row.FindControl("servicingdatelbl")).Text;
+                ((TextBox)row.FindControl("remarkstbox")).Text = ((Label)row.FindControl("remarkslbl")).Text;
+                ((DropDownList)row.FindControl("DropDownList1")).Text = ((Label)row.FindControl("statuslbl")).Text;
+                ((TextBox)row.FindControl("statusdatetbox")).Text = ((Label)row.FindControl("statusdatelbl")).Text;
+
+                Panel pnl = ((Panel)row.FindControl("Panel2"));
+                pnl.Visible = true;
+            }
+            else if (e.CommandName == "mysave")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                ViewState["servicingdate"] = ((TextBox)row.FindControl("servicingdatetbox")).Text;
+                ViewState["remarks"] = ((TextBox)row.FindControl("remarkstbox")).Text;
+                ViewState["status"] = ((DropDownList)row.FindControl("DropDownList1")).Text;
+                ViewState["statusdate"] = ((TextBox)row.FindControl("statusdatetbox")).Text;
+                updatecurrentstatus();
+                Panel pnl = ((Panel)row.FindControl("Panel2"));
+                pnl.Visible = false;
+            }
+            else if (e.CommandName == "mycancel")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Panel pnl = ((Panel)row.FindControl("Panel2"));
+                pnl.Visible = false;
+            }
+            else if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+            
+                delete();
+            }
+            else if (e.CommandName == "myteam")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridView1.SelectedIndex = rowindex;
+                GridViewRow row = GridView1.Rows[rowindex];
+
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/createteam.aspx");
+            }
+            else if (e.CommandName == "viewreport")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridView1.SelectedIndex = rowindex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["CID"]= cin;
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                getdetails(cin);
+            }
+
+        }
+        private void getdetails(string callin)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            using (SqlConnection sqlcon = new SqlConnection(cs))
+            {
+                string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,PROFILE_FINISH from callintb as a " +
+                         "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
+                         "on a.jo = b.job_order_no " +
+                         "where a.cin = '" + callin + "'";
+                using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataReader rdr = sqlcmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        Session["PROJECT"] = rdr[4].ToString();
+                        Session["ADDRESS"] = rdr[5].ToString();
+                        Session["COLOR"] = rdr[6].ToString();
+                    }
+                    Session["link"] = "s3";
+                    Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
+                }
+            }
+        }
+        private void delete()
+        {
+          
             try
             {
-                string str = "update servicingtb set sdate=@sdate,remarks=@remarks where id = @id";
+                string str = "delete from servicingtb where id  = @id";
+
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@id", id);
-                        sqlcmd.Parameters.AddWithValue("@sdate", servicingdate.Text);
-                        sqlcmd.Parameters.AddWithValue("@remarks", remarks.Text);
+                        sqlcmd.Parameters.AddWithValue("@id", sid);
                         sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            finally
+            {
+                getdata();
+
+            }
+        }
+        private void updatecurrentstatus()
+        {
+            try
+            {
+                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,remarks=@remarks  where id = @id";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", sid);
+                        sqlcmd.Parameters.AddWithValue("@status", ViewState["status"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@statusdate", ViewState["statusdate"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@sdate", ViewState["servicingdate"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@remarks", ViewState["remarks"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+
                     }
                 }
             }
@@ -237,5 +373,18 @@ namespace webaftersales.AFTERSALESPROJ
                 getdata();
             }
         }
+   
+        private void cleanme()
+        {
+            GridView1.SelectedIndex = -1;
+            servicingdate.Text = "";
+            remarks.Text = "";
+        }
+
+        protected void servicingdate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
