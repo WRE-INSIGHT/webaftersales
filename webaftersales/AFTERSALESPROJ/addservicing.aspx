@@ -18,7 +18,7 @@
                 <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
             <small>
                 <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
-        <asp:Label ID="lblsample" runat="server" Text="Label"></asp:Label>
+       
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx" runat="server">back</asp:LinkButton>
         </div>
@@ -77,7 +77,7 @@
 
                                         <tr>
                                             <td>
-                                                <asp:Button ID="getteambtn" CommandName="myteam" runat="server" CssClass="btn btn-primary" Text='<%# Eval("TEAMNAME").ToString() == "" ? "Get team" : Eval("TEAMNAME") %>' /></td>
+                                                <asp:Button ID="getteambtn" CommandName="myteam" runat="server" CssClass="btn btn-default" Text='<%# Eval("TEAMNAME").ToString() == "" ? "Get team" : Eval("TEAMNAME") %>' /></td>
                                             <td colspan="2">
                                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
                                             </td>
@@ -103,7 +103,7 @@
                                     </asp:Panel>
                                 </div>
                                 <div class="panel-footer">
-                                    <asp:Button ID="Button2" runat="server" CommandName="viewreport" Text="view report" CssClass="btn btn-defaul" />
+                                    <asp:Button ID="Button2" runat="server" CommandName="viewreport" Text="view report" CssClass="btn btn-default" />
                                     <div class="navbar-right">
                                         <asp:LinkButton ID="LinkButton3" CommandName="mydelete" runat="server" OnClientClick="return confirm('Are you sure you want to delete this record?');" CssClass="btn btn-default"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
 

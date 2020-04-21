@@ -71,11 +71,11 @@ namespace webaftersales.AFTERSALESPROJ
                         "  a.REMARKS, " +
                         "  a.teamid, " +
                         "  b.TEAMNAME," +
-                        " (select y.FULLNAME+ char(10) from TBLteamMember as x " +
+                        "  STUFF((SELECT ', ' + y.FULLNAME+ char(10) from TBLteamMember as x " +
                         " 	left join tblpersonnel as y" +
                         " 	on x.pid = y.pid" +
                         " 	where x.tid= a.teamid" +
-                        " 	FOR XML PATH('')) AS MEMBERS" +
+                        " 	FOR XML PATH('')),1,2,'') AS MEMBERS" +
                         "  from servicingtb as a " +
                         "  left join " +
                         "  tblteam as b " +
@@ -90,21 +90,12 @@ namespace webaftersales.AFTERSALESPROJ
                         da.Fill(ds, "tb");
                         GridView1.DataSource = ds;
                         GridView1.DataBind();
-                        string member = "";
-                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
-                        {
-                            while (rd.Read())
-                            {
-                                member = rd[9].ToString();
-                            }
-                            lblsample.Text = member;
-                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
             finally
             {
@@ -147,7 +138,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
         }
         protected void submitbtn_Click(object sender, EventArgs e)
@@ -335,7 +326,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
             finally
             {
@@ -366,7 +357,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
             finally
             {

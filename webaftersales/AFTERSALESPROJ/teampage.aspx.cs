@@ -58,7 +58,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
         }
         private void getteams()
@@ -92,7 +92,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
         }
         private void errorrmessage(string message)
@@ -122,6 +122,7 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 ((Panel)row.FindControl("Panel1")).Visible = false;
+                GridView1.SelectedIndex = -1;
             }
             else if (e.CommandName == "savebtn")
             {
@@ -161,7 +162,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
             finally
             {
@@ -187,7 +188,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
             finally
             {
@@ -264,7 +265,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
         }
         private void addmember(string tid, string pid)
@@ -288,7 +289,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
         }
         private void getmembers(string tid, object sender)
@@ -314,7 +315,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
         }
         private void loaddl(object sender)
@@ -341,7 +342,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
         }
         protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -374,7 +375,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
         }
 
@@ -402,7 +403,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
             finally
             {
@@ -430,7 +431,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message);
             }
             finally
             {

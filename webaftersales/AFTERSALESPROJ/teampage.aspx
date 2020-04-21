@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="page-header">
-        <h3><strong>Teams</strong></h3>
+        <h3><strong>Team Management</strong></h3>
         <div class="navbar-right">
             <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="back" />
         </div>
@@ -71,7 +71,7 @@
                                                                 <div class="panel-footer">
                                                                     <asp:Button ID="Button3" CommandName="cancelbtn" CssClass="btn btn-default" runat="server" Text="Close" />
                                                                     <div class="navbar-right">
-                                                                        <asp:LinkButton ID="LinkButton3" OnClientClick="confirm('Are you sure you want to delete this record?');" CommandName="mydelete" CssClass="btn btn-default" runat="server"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                                                        <asp:LinkButton ID="LinkButton3" OnClientClick="return confirm('Are you sure you want to delete this record?');" CommandName="mydelete" CssClass="btn btn-default" runat="server"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                                                                     </div>
                                                                 </div>
                                                             </div>

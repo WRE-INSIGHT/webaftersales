@@ -104,7 +104,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
             }
