@@ -38,74 +38,75 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
 
-            }
-            catch (Exception ex)
-            {
-                errorrmessage(ex.ToString());
-            }
-           
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
-            {
-                sqlcon.Open();
-                SqlCommand sqlcmd = new SqlCommand("select username,ID,PID,accttype from ACCTTB where username = @username and password = @password", sqlcon);
-                sqlcmd.Parameters.AddWithValue("@UserName", usernametbox.Text);
-                sqlcmd.Parameters.AddWithValue("@Password", passwordtbox.Text);
-                SqlDataReader rd = sqlcmd.ExecuteReader();
-                if (rd.HasRows)
+
+
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
-
-                    while (rd.Read())
+                    sqlcon.Open();
+                    SqlCommand sqlcmd = new SqlCommand("select username,ID,PID,accttype from ACCTTB where username = @username and password = @password", sqlcon);
+                    sqlcmd.Parameters.AddWithValue("@UserName", usernametbox.Text);
+                    sqlcmd.Parameters.AddWithValue("@Password", passwordtbox.Text);
+                    SqlDataReader rd = sqlcmd.ExecuteReader();
+                    if (rd.HasRows)
                     {
-                        Session["username"] = rd[0].ToString();
-                        Session["userid"] = rd[1].ToString();
-                        Session["userpid"] = rd[2].ToString();
-                        Session["useraccount"] = rd[3].ToString();
-                        if (CheckBox1.Checked)
-                        {
-                            Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);
-                            Response.Cookies["Password"].Expires = DateTime.Now.AddDays(30);
-                        }
-                        else
-                        {
-                            Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
-                            Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
 
-                        }
-                        Response.Cookies["UserName"].Value = usernametbox.Text.Trim();
-                        Response.Cookies["Password"].Value = passwordtbox.Text.Trim();
-                        if (Session["useraccount"].ToString() == "Admin")
+                        while (rd.Read())
                         {
-                            Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
-                        }
-                        else
-                        {
-                            if (Session["userpid"].ToString() == "")
+                            Session["username"] = rd[0].ToString();
+                            Session["userid"] = rd[1].ToString();
+                            Session["userpid"] = rd[2].ToString();
+                            Session["useraccount"] = rd[3].ToString();
+                            if (CheckBox1.Checked)
                             {
-                                CustomValidator err = new CustomValidator();
-                                err.ValidationGroup = "val1";
-                                err.IsValid = false;
-                                err.ErrorMessage = "account not verified";
-                                Page.Validators.Add(err);
+                                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);
+                                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(30);
                             }
                             else
                             {
+                                Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
+                                Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+
+                            }
+                            Response.Cookies["UserName"].Value = usernametbox.Text.Trim();
+                            Response.Cookies["Password"].Value = passwordtbox.Text.Trim();
+                            if (Session["useraccount"].ToString() == "Admin")
+                            {
                                 Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
                             }
-                        }
-                     
-                    }
+                            else
+                            {
+                                if (Session["userpid"].ToString() == "")
+                                {
+                                    CustomValidator err = new CustomValidator();
+                                    err.ValidationGroup = "val1";
+                                    err.IsValid = false;
+                                    err.ErrorMessage = "account not verified";
+                                    Page.Validators.Add(err);
+                                }
+                                else
+                                {
+                                    Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
+                                }
+                            }
 
-                    rd.Close();
+                        }
+
+                        rd.Close();
+                    }
+                    else
+                    {
+                        CustomValidator err = new CustomValidator();
+                        err.ValidationGroup = "val1";
+                        err.IsValid = false;
+                        err.ErrorMessage = "invalid login";
+                        Page.Validators.Add(err);
+                    }
                 }
-                else
-                {
-                    CustomValidator err = new CustomValidator();
-                    err.ValidationGroup = "val1";
-                    err.IsValid = false;
-                    err.ErrorMessage = "invalid login";
-                    Page.Validators.Add(err);
-                }
+            }
+            catch (SqlException ex)
+            {
+                errorrmessage(ex.Message.ToString());
             }
         }
         //public string Encrypt(string clearText)

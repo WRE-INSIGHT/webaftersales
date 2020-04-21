@@ -391,6 +391,13 @@
     <Compile Include="AFTERSALESPROJ\SignupPage.aspx.designer.cs">
       <DependentUpon>SignupPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\teampage.aspx.cs">
+      <DependentUpon>teampage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\teampage.aspx.designer.cs">
+      <DependentUpon>teampage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\viewimage.aspx.cs">
       <DependentUpon>viewimage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -494,6 +501,7 @@
     <Content Include="AFTERSALESPROJ\sidgalleryPage.aspx" />
     <Content Include="AFTERSALESPROJ\signaturePage.aspx" />
     <Content Include="AFTERSALESPROJ\SignupPage.aspx" />
+    <Content Include="AFTERSALESPROJ\teampage.aspx" />
     <Content Include="AFTERSALESPROJ\viewimage.aspx" />
     <Content Include="AFTERSALESPROJ\WebForm4.aspx" />
     <Content Include="AFTERSALESPROJ\WebForm5.aspx" />

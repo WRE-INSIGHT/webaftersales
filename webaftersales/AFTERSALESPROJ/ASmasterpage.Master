@@ -40,6 +40,8 @@
                                     <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/AFTERSALESPROJ/CallinPage.aspx">Call-in</asp:HyperLink></li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AFTERSALESPROJ/ServicingschedulePage.aspx">Servicing Records</asp:HyperLink></li>
+                                <li>
+                                      <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/AFTERSALESPROJ/teampage.aspx">Teams</asp:HyperLink></li>
                             </ul>
                         </li>
                         <li>
