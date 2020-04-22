@@ -38,7 +38,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
                 string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,CALLER from callintb as a " +
                               "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
                               "on a.jo = b.job_order_no " +
-                              "where a.cin in (select cin from SERVICINGTB) and (PROJECT_LABEL like '%" + key + "%') " +
+                              "where a.cin in (select cin from SERVICINGTB) and (PROJECT_LABEL like '%" + key + "%' or cin like '%" +key+ "%' or fulladd like '%"+key+"%' or CDATE like '%" + key + "%' or a.status like  '%" + key+"%' or caller like '%"+key+"%') " +
                               "ORDER BY CIN DESC";
                 using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                 {

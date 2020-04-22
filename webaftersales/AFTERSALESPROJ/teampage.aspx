@@ -7,10 +7,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="page-header">
+    <div class="well">
         <h3><strong>Team Management</strong></h3>
         <div class="navbar-right">
-            <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="back" />
+            <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="back" OnClick="Button1_Click" />
         </div>
     </div>
     <br />
@@ -135,7 +135,7 @@
                                             <asp:Label ID="teamnamelbl" Font-Size="Large" runat="server" Text='<%# Bind("TEAMNAME") %>'></asp:Label>
                                             <asp:LinkButton ID="LinkButton5" CommandName="myedit" runat="server">Edit</asp:LinkButton>
                                             <div class="navbar-right">
-                                                <asp:LinkButton ID="assignbtn" CommandName="myedit" runat="server">Assign</asp:LinkButton>
+                                                <asp:LinkButton ID="assignbtn" CommandName="assign" runat="server">Assign</asp:LinkButton>
                                             </div>
                                             <br />
                                             <table border="0" class="table">

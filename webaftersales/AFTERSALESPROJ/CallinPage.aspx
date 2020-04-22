@@ -7,20 +7,23 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="page-header">
-        <h3><strong>Call-in</strong></h3>
-        <div class="navbar-right">
-            <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-default" OnClick="LinkButton3_Click">new</asp:LinkButton>
+    <div class="well">
+            <table>
+                <tr>
+                    <td><h3><strong>Call-in Records</strong></h3></td>
+                    <td><asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">new</asp:LinkButton></td>
+                </tr>
+            </table>
+          
+        <div class="input-group">
+            <asp:TextBox ID="callinkey" CssClass="form-control" runat="server"></asp:TextBox>
+            <div class="input-group-btn">
+                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+            </div>
         </div>
     </div>
 
-    <br />
-    <div class="input-group">
-        <asp:TextBox ID="callinkey" CssClass="form-control" runat="server"></asp:TextBox>
-        <div class="input-group-btn">
-            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
-        </div>
-    </div>
+  
     <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
     <asp:GridView ID="GridView1" GridLines="None" runat="server" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
         <Columns>
@@ -39,12 +42,13 @@
                             <asp:Label ID="faxnolbl" runat="server" Visible="false" Text='<%# Eval("FAXNO") %>'></asp:Label>
 
 
-                           <asp:Label ID="jolbl" runat="server" Visible="false" Text='<%# Eval("JO") %>'></asp:Label>
-                             <strong><asp:Label ID="projectlbl" Font-Size="Large" runat="server" Text='<%# Bind("PROJECT") %>'></asp:Label></strong>
+                            <asp:Label ID="jolbl" runat="server" Visible="false" Text='<%# Eval("JO") %>'></asp:Label>
+                            <strong>
+                                <asp:Label ID="projectlbl" Font-Size="Large" runat="server" Text='<%# Bind("PROJECT") %>'></asp:Label></strong>
                             <br />
                             <asp:Label ID="addresslbl" Font-Size="Medium" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label>
                             <br />
-                            <asp:Label ID="datelbl"  Font-Size="X-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
+                            <asp:Label ID="datelbl" Font-Size="X-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
                             <br />
 
                             <div class="panel">
@@ -53,6 +57,7 @@
                                         <td>Status</td>
                                         <td>Concern</td>
                                         <td>Conversation</td>
+                                        <td>Color</td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -61,6 +66,9 @@
                                             <asp:Label ID="concernlbl" runat="server" Text='<%# Eval("CONCERN") %>'></asp:Label></td>
                                         <td>
                                             <asp:Label ID="conversationlbl" runat="server" Text='<%# Eval("CONVERSATION") %>'></asp:Label>
+                                        </td>
+                                        <td>
+                                           <asp:Label ID="Label1" runat="server" Text='<%# Eval("[PROFILE FINISH]") %>'></asp:Label>
                                         </td>
                                     </tr>
                                 </table>
@@ -75,13 +83,13 @@
 
             </asp:TemplateField>
         </Columns>
-         <EmptyDataTemplate>
-                    <div class="alert alert-danger">
-                        <h2><strong>Sorry, no data available!</strong>
-                            <small>0 result found</small>
-                        </h2>
-                    </div>
-                </EmptyDataTemplate>
+        <EmptyDataTemplate>
+            <div class="alert alert-danger">
+                <h2><strong>Sorry, no data available!</strong>
+                    <small>0 result found</small>
+                </h2>
+            </div>
+        </EmptyDataTemplate>
         <PagerSettings PageButtonCount="8" />
         <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
     </asp:GridView>

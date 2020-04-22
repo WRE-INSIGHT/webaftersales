@@ -40,8 +40,16 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getdata()
         {
-            GridView1.DataSource = dal.servicedataaccesslayer.GetService(servicingkeytbox.Text);
-            GridView1.DataBind();
+            try
+            {
+                GridView1.DataSource = dal.servicedataaccesslayer.GetService(servicingkeytbox.Text);
+                GridView1.DataBind();
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -102,6 +110,14 @@ namespace webaftersales.AFTERSALESPROJ
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             getdata();
+        }
+        private void errorrmessage(string message)
+        {
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "val1";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
         }
     }
 }

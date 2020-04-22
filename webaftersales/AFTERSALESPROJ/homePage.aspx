@@ -9,23 +9,20 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <div class="page-header">
+ <%--   <div class="page-header">
         <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
-    </div>
-
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="container">
-
-        <div class="input-group">
+    </div>--%>
+    <div class="well">
+    <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
+          <div class="input-group">
             <asp:TextBox ID="searchtbox" CssClass="form-control" placeholder="project name" runat="server" OnTextChanged="searchtbox_TextChanged"></asp:TextBox>
             <div class="input-group-btn">
                 <asp:LinkButton ID="searcbtn2"  CssClass="btn btn-primary" runat="server" OnClick="searcbtn_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
             </div>
         </div>
-        <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
-
     </div>
-    <br />
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>  
+        <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
     <div class="container">
         <div>
             <h4><small>SERVICING SCHEDULE</small></h4>

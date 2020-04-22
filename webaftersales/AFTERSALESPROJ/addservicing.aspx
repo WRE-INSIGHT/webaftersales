@@ -6,25 +6,23 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="page-header">
-        <h2>
-            <strong>
-                <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
-            <small>
-                <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
-
+    <div class="well">
+        <h3><strong>Manage schedule</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx" runat="server">back</asp:LinkButton>
         </div>
-
     </div>
-    <h4><strong>manage schedule</strong></h4>
+    <h2>
+        <strong>
+            <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
+        <small>
+            <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
     <br />
     <asp:Panel ID="Panel1" runat="server">
         <div class="form-group">
-            <table border="0" style="width:100%;">
+            <table border="0" style="width: 100%;">
                 <tr>
-                    <td style="width:70px">Date
+                    <td style="width: 70px">Date
                     </td>
                     <td>
                         <asp:TextBox ID="servicingdate" CssClass="form-control" runat="server" placeholder="mm/dd/yyyy" OnTextChanged="servicingdate_TextChanged"></asp:TextBox>
@@ -49,7 +47,7 @@
         </div>
     </asp:Panel>
     <asp:Button ID="submitbtn" CssClass="btn btn-primary" runat="server" Text="add" ValidationGroup="val1" OnClick="submitbtn_Click" />
-    <asp:Button ID="Button4"  CssClass="btn btn-default"  runat="server" Text="refresh" OnClick="Button4_Click" />
+    <asp:Button ID="Button4" CssClass="btn btn-default" runat="server" Text="refresh" OnClick="Button4_Click" />
     <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>

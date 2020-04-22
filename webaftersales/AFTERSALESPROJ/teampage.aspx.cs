@@ -244,10 +244,44 @@ namespace webaftersales.AFTERSALESPROJ
                 changename(tid, ((TextBox)row.FindControl("teamnametbox")).Text.ToString());
                 getteams();
             }
+            if (e.CommandName == "assign")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                string tid = ((Label)row.FindControl("tidlbl")).Text;
+                assignteam(tid, Session["SID"].ToString());
+            }
 
             if (e.CommandName == "myclose")
             {
                 getteams();
+            }
+        }
+        private void assignteam(string tid,string sid)
+        {
+            try
+            {
+
+                string str = "update servicingtb set teamid = @tid where id = @sid";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@tid", tid);
+                        sqlcmd.Parameters.AddWithValue("@sid", sid);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message);
+            }
+            finally
+            {
+                Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
             }
         }
         private void changename(string tid, string teamname)
@@ -454,6 +488,11 @@ namespace webaftersales.AFTERSALESPROJ
                     ((LinkButton)GridView2.Rows[i].FindControl("assignbtn")).Visible = false;
                 }
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
         }
     }
 }
