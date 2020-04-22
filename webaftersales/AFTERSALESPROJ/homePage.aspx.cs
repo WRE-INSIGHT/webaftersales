@@ -74,10 +74,17 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                Response.Write(e.ToString());
+                errorrmessage(e.Message.ToString());
             }
         }
-
+        private void errorrmessage(string message)
+        {
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "val1";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
+        }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
@@ -88,7 +95,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (e.CommandName == "report")
             {
-                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["CID"] = ((Label)row.Cells[0].FindControl("cidlbl")).Text;
                 Session["SID"] = ((Label)row.Cells[0].FindControl("idlbl")).Text;

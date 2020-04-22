@@ -52,6 +52,13 @@
                                 <PagerSettings PageButtonCount="8" />
                                 <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
                                 <SelectedRowStyle BackColor="#CCCCFF" Font-Bold="True" />
+                                <EmptyDataTemplate>
+                                    <div class="alert alert-danger">
+                                        <h2><strong>Sorry, no data available!</strong>
+                                            <small>0 result found</small>
+                                        </h2>
+                                    </div>
+                                </EmptyDataTemplate>
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -79,7 +86,7 @@
                     <div class="col-sm-4">
                         <br />
                         Date<br />
-                        <asp:TextBox ID="calldate" CssClass="form-control" placeholder="Date" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="calldate" CssClass="form-control" placeholder="mm/dd/yyyy" runat="server"></asp:TextBox>
                         <br />
                         Caller<br />
                         <asp:TextBox ID="callername" CssClass="form-control" placeholder="Caller" runat="server"></asp:TextBox>

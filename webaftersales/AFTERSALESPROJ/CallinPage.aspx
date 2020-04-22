@@ -18,9 +18,10 @@
     <div class="input-group">
         <asp:TextBox ID="callinkey" CssClass="form-control" runat="server"></asp:TextBox>
         <div class="input-group-btn">
-            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">Find</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
         </div>
     </div>
+    <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
     <asp:GridView ID="GridView1" GridLines="None" runat="server" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
         <Columns>
             <asp:TemplateField>
@@ -43,7 +44,7 @@
                             <br />
                             <asp:Label ID="addresslbl" Font-Size="Medium" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label>
                             <br />
-                            <asp:Label ID="datelbl" Font-Size="Medium" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
+                            <asp:Label ID="datelbl"  Font-Size="X-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
                             <br />
 
                             <div class="panel">
@@ -74,6 +75,13 @@
 
             </asp:TemplateField>
         </Columns>
+         <EmptyDataTemplate>
+                    <div class="alert alert-danger">
+                        <h2><strong>Sorry, no data available!</strong>
+                            <small>0 result found</small>
+                        </h2>
+                    </div>
+                </EmptyDataTemplate>
         <PagerSettings PageButtonCount="8" />
         <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
     </asp:GridView>

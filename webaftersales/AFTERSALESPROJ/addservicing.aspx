@@ -3,12 +3,6 @@
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>manage schedule</title>
-    <script>
-        function confimmessage() {
-            confirm('delete selected item?');
-        }
-
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -18,7 +12,7 @@
                 <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
             <small>
                 <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
-       
+
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx" runat="server">back</asp:LinkButton>
         </div>
@@ -26,16 +20,36 @@
     </div>
     <h4><strong>manage schedule</strong></h4>
     <br />
-    <asp:Panel ID="Panel1" runat="server" class="well">
+    <asp:Panel ID="Panel1" runat="server">
         <div class="form-group">
-            Date<br />
-            <asp:TextBox ID="servicingdate" CssClass="form-control" runat="server" OnTextChanged="servicingdate_TextChanged"></asp:TextBox><br />
-            Remarks<br />
-            <asp:TextBox ID="remarks" CssClass="form-control" runat="server"></asp:TextBox><br />
+            <table border="0" style="width:100%;">
+                <tr>
+                    <td style="width:70px">Date
+                    </td>
+                    <td>
+                        <asp:TextBox ID="servicingdate" CssClass="form-control" runat="server" placeholder="mm/dd/yyyy" OnTextChanged="servicingdate_TextChanged"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:CompareValidator ID="CompareValidator1" ControlToValidate="servicingdate" Type="Date" Operator="DataTypeCheck"
+                            ValidationGroup="val1" runat="server" ErrorMessage="Invalid date format!" ForeColor="Red">*</asp:CompareValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Date is required!"
+                            ControlToValidate="servicingdate" ValidationGroup="val1" ForeColor="Red">*</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Remarks
+                    </td>
+                    <td>
+                        <asp:TextBox ID="remarks" placeholder="remarks" CssClass="form-control" runat="server"></asp:TextBox>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
             <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
         </div>
     </asp:Panel>
-    <asp:Button ID="submitbtn" CssClass="btn btn-primary" runat="server" Text="add" OnClick="submitbtn_Click" />
+    <asp:Button ID="submitbtn" CssClass="btn btn-primary" runat="server" Text="add" ValidationGroup="val1" OnClick="submitbtn_Click" />
+    <asp:Button ID="Button4"  CssClass="btn btn-default"  runat="server" Text="refresh" OnClick="Button4_Click" />
     <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -115,6 +129,13 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
+                <EmptyDataTemplate>
+                    <div class="alert alert-danger">
+                        <h2><strong>Sorry, no data available!</strong>
+                            <small>0 result found</small>
+                        </h2>
+                    </div>
+                </EmptyDataTemplate>
                 <PagerSettings PageButtonCount="8" />
                 <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
             </asp:GridView>

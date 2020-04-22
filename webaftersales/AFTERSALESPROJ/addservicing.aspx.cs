@@ -67,7 +67,7 @@ namespace webaftersales.AFTERSALESPROJ
                         "  a.STATUS, " +
                         "  a.STATUSDATE AS[STATUSDATE], " +
                         "  a.SERVICING, " +
-                        "  a.SDATE AS[SERVICINGDATE], " +
+                        "  CASE WHEN ISDATE(a.SDATE)=1 THEN FORMAT(CAST(a.SDATE AS DATE),'MMM-dd-yyyy') ELSE a.SDATE END AS[SERVICINGDATE], " +
                         "  a.REMARKS, " +
                         "  a.teamid, " +
                         "  b.TEAMNAME," +
@@ -226,7 +226,13 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
 
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
-                ((TextBox)row.FindControl("servicingdatetbox")).Text = ((Label)row.FindControl("servicingdatelbl")).Text;
+                DateTime value;
+                string dt = ((Label)row.FindControl("servicingdatelbl")).Text;
+                if (DateTime.TryParse(dt, out value))
+                {
+                   dt = Convert.ToDateTime(dt).ToString("MM-dd-yyyy");
+                }
+                ((TextBox)row.FindControl("servicingdatetbox")).Text = dt;
                 ((TextBox)row.FindControl("remarkstbox")).Text = ((Label)row.FindControl("remarkslbl")).Text;
                 ((DropDownList)row.FindControl("DropDownList1")).Text = ((Label)row.FindControl("statuslbl")).Text;
                 ((TextBox)row.FindControl("statusdatetbox")).Text = ((Label)row.FindControl("statusdatelbl")).Text;
@@ -269,7 +275,8 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
 
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
-                Response.Redirect("~/AFTERSALESPROJ/createteam.aspx");
+                Session["teamsender"] = "servicing";
+                Response.Redirect("~/AFTERSALESPROJ/teampage.aspx");
             }
             else if (e.CommandName == "viewreport")
             {
@@ -377,5 +384,9 @@ namespace webaftersales.AFTERSALESPROJ
 
         }
 
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            getdata();
+        }
     }
 }

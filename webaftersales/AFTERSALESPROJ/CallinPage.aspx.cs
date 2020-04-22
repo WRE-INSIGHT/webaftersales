@@ -39,26 +39,40 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getdata()
         {
-            DataSet ds = new DataSet();
-            ds.Clear();
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+            try
             {
-                using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                DataSet ds = new DataSet();
+                ds.Clear();
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
-                    sqlcon.Open();
-                    sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlcmd.CommandText = "stdCallin";
-                    sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    da.SelectCommand = sqlcmd;
-                    da.Fill(ds, "tb");
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlcmd.CommandText = "stdCallin";
+                        sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(ds, "tb");
+                        GridView1.DataSource = ds;
+                        GridView1.DataBind();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
         }
-
+        private void errorrmessage(string message)
+        {
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "val1";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
+        }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Session["callinserachkey"] = callinkey.Text;

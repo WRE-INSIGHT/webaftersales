@@ -4,44 +4,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
-    <%-- <style>
-        .tboxinput {
-            width: 500px;
-            padding: 12px;
-            margin: 5px;
-            margin-right: 0px;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 0px;
-            box-sizing: border-box;
-        }
-
-        .btn {
-            /*box-shadow: 0px 10px 30px -7px #276873;*/
-            background-color: #599bb3;
-            margin: 5px;
-            margin-left: 0px;
-            border-radius: 0px;
-            display: inline-block;
-            cursor: pointer;
-            color: #ffffff;
-            font-family: 'Segoe UI';
-            font-size: 14px;
-            font-weight: normal;
-            padding: 11px;
-            text-decoration: none;
-        }
-
-            .btn:hover {
-                background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-                background-color: #408c99;
-            }
-
-            .btn:active {
-                position: relative;
-                top: 1px;
-            }
-    </style>--%>
 </asp:Content>
 
 
@@ -55,12 +17,12 @@
     <div class="container">
 
         <div class="input-group">
-            <asp:TextBox ID="searchtbox" Height="40" CssClass="form-control" placeholder="project name" runat="server" OnTextChanged="searchtbox_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="searchtbox" CssClass="form-control" placeholder="project name" runat="server" OnTextChanged="searchtbox_TextChanged"></asp:TextBox>
             <div class="input-group-btn">
-                <asp:Button ID="searcbtn" Height="40" CssClass="btn btn-primary" runat="server" Text="Find" OnClick="searcbtn_Click" />
+                <asp:LinkButton ID="searcbtn2"  CssClass="btn btn-primary" runat="server" OnClick="searcbtn_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
             </div>
         </div>
-
+        <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
 
     </div>
     <br />
@@ -107,7 +69,7 @@
             </Columns>
             <EmptyDataTemplate>
                 <div class="alert alert-danger">
-                    <h2><strong>Sorry, you havo no schedule!</strong>
+                    <h2><strong>Sorry, no data available!</strong>
                         <small>0 result found</small>
                     </h2>
                 </div>

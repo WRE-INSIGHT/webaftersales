@@ -25,7 +25,13 @@ namespace webaftersales.AFTERSALESPROJ
                             Button1.Text = "save";
                             cin.Text = Session["callinnumber"].ToString();
                             telno.Text = Session["callinTelno"].ToString();
-                            faxno.Text = Session["callinFaxno"].ToString(); ;
+                            faxno.Text = Session["callinFaxno"].ToString();
+                            DateTime value;
+                            if (DateTime.TryParse(Session["callinDate"].ToString(), out value))
+                            {
+                                Session["callinDate"] = Convert.ToDateTime(Session["callinDate"].ToString()).ToString("MM-dd-yyyy");
+                            }
+
                             calldate.Text = Session["callinDate"].ToString();
                             callername.Text = Session["callinCaller"].ToString();
                             projectname.Text = Session["callinProject"].ToString();
@@ -70,7 +76,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (li.Selected)
                 {
-                    concern += " " + li.Value.ToString();
+                    concern += " *" + li.Value.ToString();
                 }
             }
 
@@ -142,7 +148,7 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 catch (Exception ex)
                 {
-                    errorrmessage(ex.ToString());
+                    errorrmessage(ex.Message.ToString());
                 }
             }
         }
@@ -221,7 +227,7 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 catch (Exception ex)
                 {
-                    errorrmessage(ex.ToString());
+                    errorrmessage(ex.Message.ToString());
                 }
             }
         }
@@ -239,31 +245,38 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getdata()
         {
-            GridView1.SelectedIndex = -1;
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+            try
             {
-                string field = "(PROJECT_LABEL like @pl OR" +
-            " CLIENTS_NAME like @pl OR" +
-            " JOB_ORDER_NO like @pl OR" +
-            " SUB_JO like @pl OR" +
-            " JOB_ORDER_NO_DATE like @pl OR" +
-            " COMPANY_NAME like @pl OR" +
-            " FULLADD like @pl OR" +
-            " ACCT_EXEC_INCHARGE like @pl)";
-                string str = "select JOB_ORDER_NO AS JO, project_label as [PROJECT],FULLADD AS ADDRESS from addendum_to_contract_tb" +
-                              " where " + field + " and contract_type = 'original contract'";
-                using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                GridView1.SelectedIndex = -1;
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
-                    sqlcmd.Parameters.AddWithValue("@pl", "%" + keytbox.Text + "%");
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    da.SelectCommand = sqlcmd;
-                    da.Fill(ds);
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
+                    string field = "(PROJECT_LABEL like @pl OR" +
+                " CLIENTS_NAME like @pl OR" +
+                " JOB_ORDER_NO like @pl OR" +
+                " SUB_JO like @pl OR" +
+                " JOB_ORDER_NO_DATE like @pl OR" +
+                " COMPANY_NAME like @pl OR" +
+                " FULLADD like @pl OR" +
+                " ACCT_EXEC_INCHARGE like @pl)";
+                    string str = "select JOB_ORDER_NO AS JO, project_label as [PROJECT],FULLADD AS ADDRESS from addendum_to_contract_tb" +
+                                  " where " + field + " and contract_type = 'original contract'";
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@pl", "%" + keytbox.Text + "%");
+                        DataSet ds = new DataSet();
+                        ds.Clear();
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(ds);
+                        GridView1.DataSource = ds;
+                        GridView1.DataBind();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
             }
         }
         protected void faxno_TextChanged(object sender, EventArgs e)

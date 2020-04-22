@@ -16,11 +16,11 @@
     <br />
     <div class="row">
         <div class="col-sm-4">
-         
+
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
 
-                   
+
 
 
                     <div class="panel panel-primary">
@@ -86,6 +86,13 @@
 
                                 <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
                                 <SelectedRowStyle BackColor="#CCFFFF" />
+                                <EmptyDataTemplate>
+                                    <div class="alert alert-danger">
+                                        <h2><strong>Sorry, no data available!</strong>
+                                            <small>0 result found</small>
+                                        </h2>
+                                    </div>
+                                </EmptyDataTemplate>
                             </asp:GridView>
                         </div>
                         <div class="panel-footer">
@@ -94,16 +101,16 @@
                     </div>
                     <div class="panel">
                         <div class="container">
-                               Fullname<br />
-                                    <asp:TextBox ID="newfullnametbox" CssClass="form-control" placeholder="Fullname" runat="server"></asp:TextBox><br />
-                                    Position<br />
-                                    <asp:TextBox ID="newpositiontbox" CssClass="form-control" placeholder="Fullname" runat="server"></asp:TextBox><br />
-                                    <asp:Button ID="Button6" runat="server" CssClass="btn btn-primary" Text="add" OnClick="Button6_Click" />
+                            Fullname<br />
+                            <asp:TextBox ID="newfullnametbox" CssClass="form-control" placeholder="Fullname" runat="server"></asp:TextBox><br />
+                            Position<br />
+                            <asp:TextBox ID="newpositiontbox" CssClass="form-control" placeholder="Fullname" runat="server"></asp:TextBox><br />
+                            <asp:Button ID="Button6" runat="server" CssClass="btn btn-primary" Text="add" OnClick="Button6_Click" />
                         </div>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            
+
         </div>
 
         <div class="col-sm-8">
@@ -121,16 +128,20 @@
                                 </div>
                             </div>
                             <asp:GridView ID="GridView2" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="8"
-                                OnRowCommand="GridView2_RowCommand" OnPageIndexChanging="GridView2_PageIndexChanging">
+                                OnRowCommand="GridView2_RowCommand" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowDataBound="GridView2_RowDataBound">
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:Label ID="teamnamelbl" Font-Size="Large" runat="server" Text='<%# Bind("TEAMNAME") %>'></asp:Label>
                                             <asp:LinkButton ID="LinkButton5" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                                            <div class="navbar-right">
+                                                <asp:LinkButton ID="assignbtn" CommandName="myedit" runat="server">Assign</asp:LinkButton>
+                                            </div>
                                             <br />
                                             <table border="0" class="table">
                                                 <tr>
-                                                    <td style="width:80px;"><h4><small>Members:</small></h4
+                                                    <td style="width: 80px;">
+                                                        <h4><small>Members:</small></h4>
                                                     </td>
                                                     <td>
                                                         <asp:Label ID="memberlbl" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
@@ -191,6 +202,13 @@
                                 </Columns>
                                 <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
                                 <SelectedRowStyle BackColor="#CCFFFF" />
+                                <EmptyDataTemplate>
+                                    <div class="alert alert-danger">
+                                        <h2><strong>Sorry, no data available!</strong>
+                                            <small>0 result found</small>
+                                        </h2>
+                                    </div>
+                                </EmptyDataTemplate>
                             </asp:GridView>
                         </div>
                         <div class="panel-footer">

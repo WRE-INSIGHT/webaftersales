@@ -22,6 +22,10 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         getpersonnel();
                         getteams();
+                        if (Session["teamsender"] == null)
+                        {
+                            Button1.Visible = false;
+                        }
                     }
                 }
                 else
@@ -240,6 +244,7 @@ namespace webaftersales.AFTERSALESPROJ
                 changename(tid, ((TextBox)row.FindControl("teamnametbox")).Text.ToString());
                 getteams();
             }
+
             if (e.CommandName == "myclose")
             {
                 getteams();
@@ -437,6 +442,17 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 keytbox.Text = newfullnametbox.Text;
                 getpersonnel();
+            }
+        }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (Session["teamsender"] == null)
+            {
+                for (int i = 0; i <= GridView2.Rows.Count - 1; i++)
+                {
+                    ((LinkButton)GridView2.Rows[i].FindControl("assignbtn")).Visible = false;
+                }
             }
         }
     }

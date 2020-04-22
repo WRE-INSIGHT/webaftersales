@@ -31,13 +31,22 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.TextBox searchtbox;
         
         /// <summary>
-        /// searcbtn control.
+        /// searcbtn2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button searcbtn;
+        protected global::System.Web.UI.WebControls.LinkButton searcbtn2;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// GridView1 control.

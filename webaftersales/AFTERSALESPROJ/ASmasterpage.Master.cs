@@ -21,5 +21,10 @@ namespace webaftersales.AFTERSALESPROJ
             Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
         }
 
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            Session["teamsender"] = null;
+            Response.Redirect("~/AFTERSALESPROJ/teampage.aspx");
+        }
     }
 }
