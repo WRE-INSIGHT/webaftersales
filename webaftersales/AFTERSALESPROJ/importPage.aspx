@@ -35,9 +35,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="input-group">
-                            <asp:DropDownList ID="locationdl" Height="40" CssClass="form-control" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="locationdl" CssClass="form-control" runat="server"></asp:DropDownList>
                             <div class="input-group-btn">
-                                <asp:Button ID="searchbtn" Height="40" CssClass="btn btn-primary" runat="server" Text="Find" OnClick="searchbtn_Click" />
+                                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server"  OnClick="searchbtn_Click" ><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
                             </div>
                         </div>
                         <br />

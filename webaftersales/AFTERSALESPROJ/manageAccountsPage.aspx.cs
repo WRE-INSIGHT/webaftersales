@@ -60,8 +60,16 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                Response.Write(e.ToString());
+                errorrmessage(e.Message.ToString());
             }
+        }
+        private void errorrmessage(string message)
+        {
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "val1";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
         }
         private void getuserdata()
         {
@@ -87,7 +95,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                Response.Write(e.ToString());
+                errorrmessage(e.Message.ToString());
             }
         }
 
@@ -129,7 +137,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                Response.Write(e.ToString());
+                errorrmessage(e.Message.ToString());
             }
             finally
             {
@@ -212,7 +220,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                Response.Write(e.ToString());
+                errorrmessage(e.Message.ToString());
             }
         }
 
@@ -274,7 +282,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                Response.Write(e.ToString());
+                errorrmessage(e.Message.ToString());
             }
             finally
             {
@@ -313,7 +321,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                Response.Write(e.ToString());
+                errorrmessage(e.Message.ToString());
             }
             finally
             {

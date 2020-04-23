@@ -20,10 +20,10 @@
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="page-header">
-        <h2><small>Manage Accounts</small></h2>
+    <div class="well">
+        <h3><strong>Manage Accounts</strong></h3>
     </div>
-
+    <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="panel panel-default">
