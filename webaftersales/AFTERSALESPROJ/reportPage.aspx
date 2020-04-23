@@ -12,7 +12,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="page-header">
+    <div class="well">
         <h2>
             <strong>
                 <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
@@ -58,7 +58,7 @@
                 <strong>Report Table!</strong> List of items.
             </div>
 
-        
+
 
 
             <br />
@@ -199,6 +199,13 @@
                         </Columns>
                         <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
                         <RowStyle Font-Names="Segoe UI" Font-Size="10pt" Height="35px" />
+                        <EmptyDataTemplate>
+                            <div class="alert alert-danger">
+                                <h2><strong>Sorry, no data available!</strong>
+                                    <small>0 result found</small>
+                                </h2>
+                            </div>
+                        </EmptyDataTemplate>
                     </asp:GridView>
 
                     <asp:ValidationSummary class="alert alert-danger" ID="ValidationSummary1" ValidationGroup="insertvalidation" runat="server" />

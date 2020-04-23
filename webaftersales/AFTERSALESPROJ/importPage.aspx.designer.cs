@@ -85,21 +85,12 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.Button btnimport;
         
         /// <summary>
-        /// successlbl control.
+        /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label successlbl;
-        
-        /// <summary>
-        /// errorlbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorlbl;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
     }
 }

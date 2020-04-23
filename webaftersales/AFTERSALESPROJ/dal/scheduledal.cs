@@ -17,16 +17,26 @@ namespace webaftersales.AFTERSALESPROJ.dal
     }
     public class scheduledataaccesslayer
     {
-        public static List<scheduledal> GetScheduleByCin(string cin)
+        public static List<scheduledal> GetScheduleByCin(string cin,string pid,string useracct)
         {
             List<scheduledal> li = new List<scheduledal>();
             string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
             using (SqlConnection sqlcon = new SqlConnection(cs))
             {
-                string str = "SELECT id,[STATUS],SERVICING,SDATE,CIN FROM SERVICINGTB WHERE CIN='" + cin + "' order by SERVICING asc";
+                string str;
+                if (useracct == "Admin")
+                {
+                    str = "SELECT id,[STATUS],SERVICING,SDATE,CIN FROM SERVICINGTB WHERE  CIN='" + cin + "' order by SERVICING asc";
+                }
+                else
+                {
+                    str = "SELECT id,[STATUS],SERVICING,SDATE,CIN FROM SERVICINGTB WHERE  TEAMID in (select tid from tblteamMember where PID = @pid) and CIN='" + cin + "' order by SERVICING asc";
+                }
+           
                 using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                 {
                     sqlcon.Open();
+                    sqlcmd.Parameters.AddWithValue("@pid", pid);
                     SqlDataReader dr = sqlcmd.ExecuteReader();
                     while (dr.Read())
                     {

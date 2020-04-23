@@ -76,8 +76,16 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                Response.Write(e.ToString());
+                errorrmessage(e.Message.ToString());
             }
+        }
+        private void errorrmessage(string message)
+        {
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "insertvalidation";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
         }
         protected void lbtninsert_click(object sender, EventArgs e)
         {

@@ -16,10 +16,10 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
-        <div class="page-header">
-            <h1>
-                <asp:Label ID="Label1" runat="server" Text="KMDI System data"></asp:Label></h1>
+  
+        <div class="well">
+            <h3><strong>
+                <asp:Label ID="Label1" runat="server" Text="KMDI System data"></asp:Label></strong></h3>
             <div class="navbar-right">
                 <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back"></asp:HyperLink>
             </div>
@@ -64,6 +64,13 @@
                                 <asp:BoundField HeaderText="JO" DataField="job_order_no" />
                             </Columns>
                             <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
+                            <EmptyDataTemplate>
+                                <div class="alert alert-danger">
+                                    <h2><strong>Sorry, no data available!</strong>
+                                        <small>0 result found</small>
+                                    </h2>
+                                </div>
+                            </EmptyDataTemplate>
                         </asp:GridView>
                     </div>
                     <div class="panel-footer">
@@ -72,18 +79,11 @@
                 <div class=" navbar-left">
                     <asp:Button ID="btnimport" CssClass="btn btn-primary" runat="server" OnClick="btnimport_Click" Text="import" />
                 </div>
-                <div class="container">
-                </div>
-                <br />
-                <br />
-                <br />
-                <div class="alert alert-success">
-                    <asp:Label ID="successlbl" runat="server" Text="Selected Row(s) Imported Successfully"></asp:Label>
-                </div>
-                <div class="alert alert-danger">
-                    <asp:Label ID="errorlbl" Visible="false" runat="server" Text="Label"></asp:Label>
-                </div>
+               
+                <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
+
+            
             </ContentTemplate>
         </asp:UpdatePanel>
-    </div>
+  
 </asp:Content>

@@ -23,23 +23,22 @@
             .table00.v1 footer {
                 padding: 0px;
             }
-
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="page-header">
-            <h1>
+        <div class="well">
+            <h2>
                 <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label><small>
-                    <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label></small></h1>
+                    <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label></small></h2>
             <div class="navbar-right">
                 <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back"></asp:HyperLink>
             </div>
         </div>
     </div>
     <div class="container">
-        <br/>
+        <br />
 
 
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -47,14 +46,14 @@
             <ContentTemplate>
                 <div class="well">
                     <h4>Cutting List</h4>
-                     <div class=" input-group">
-                    <asp:TextBox ID="findtbox" Height="40" CssClass="form-control" runat="server"></asp:TextBox>
-                    <div class="input-group-btn">
-                        <asp:Button ID="Button1" runat="server" Height="40" OnClick="findbtn_Click" CssClass="btn btn-primary" Text="Find" />
+                    <div class=" input-group">
+                        <asp:TextBox ID="findtbox" Height="40" CssClass="form-control" runat="server"></asp:TextBox>
+                        <div class="input-group-btn">
+                            <asp:Button ID="Button1" runat="server" Height="40" OnClick="findbtn_Click" CssClass="btn btn-primary" Text="Find" />
+                        </div>
                     </div>
                 </div>
-                </div>
-               
+
                 <br />
                 <asp:GridView ID="GridView1" CssClass="table table-striped" GridLines="None" runat="server"
                     AutoGenerateColumns="False" EmptyDataText="No result found."
@@ -90,17 +89,24 @@
                     </Columns>
                     <PagerStyle HorizontalAlign="Center" CssClass="GridPager" />
                     <RowStyle Font-Names="Segoe UI" Font-Size="10pt" Height="35px" />
+                    <EmptyDataTemplate>
+                        <div class="alert alert-danger">
+                            <h2><strong>Sorry, no data available!</strong>
+                                <small>0 result found</small>
+                            </h2>
+                        </div>
+                    </EmptyDataTemplate>
                 </asp:GridView>
 
             </ContentTemplate>
         </asp:UpdatePanel>
-
+        <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <%--    <asp:Button ID="importbtn" CssClass="btn btn-default" runat="server" Text="Import selected items" OnClick="importbtn_Click" />--%>
 
-                <div class="page-header">
-                    <h3>Assessment</h3>
+                <div class="well">
+                    <h3><string>Assessment</string></h3>
                 </div>
 
 
@@ -161,6 +167,13 @@
                     <SortedAscendingHeaderStyle BackColor="#506C8C" />
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                    <EmptyDataTemplate>
+                        <div class="alert alert-danger">
+                            <h2><strong>Sorry, no data available!</strong>
+                                <small>0 result found</small>
+                            </h2>
+                        </div>
+                    </EmptyDataTemplate>
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
                     DeleteCommand="DELETE FROM [TBLassessment] WHERE [ID] = @ID"

@@ -16,33 +16,52 @@ namespace webaftersales.AFTERSALESPROJ.dal
         public string project { set; get; }
         public string fulladd { set; get; }
         public string caller { set; get; }
+        public string pid { set; get; }
+        public string useracct { set; get; }
         public List<scheduledal> schedule
         {
             get
             {
-                return scheduledataaccesslayer.GetScheduleByCin(this.cin);
+                return scheduledataaccesslayer.GetScheduleByCin(this.cin,this.pid,this.useracct);
             }
         }
 
     }
     public class servicedataaccesslayer
     {
-        public static List<servicedal> GetService(string key)
+        public static List<servicedal> GetService(string key,string pid,string useracct)
         {
 
             List<servicedal> li = new List<servicedal>();
             string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-          
+
             using (SqlConnection sqlcon = new SqlConnection(cs))
             {
-                string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,CALLER from callintb as a " +
-                              "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
-                              "on a.jo = b.job_order_no " +
-                              "where a.cin in (select cin from SERVICINGTB) and (PROJECT_LABEL like '%" + key + "%' or cin like '%" +key+ "%' or fulladd like '%"+key+"%' or CDATE like '%" + key + "%' or a.status like  '%" + key+"%' or caller like '%"+key+"%') " +
-                              "ORDER BY CIN DESC";
+                string str;
+                if (useracct == "Admin")
+                {
+                    str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,CALLER from callintb as a " +
+                             "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
+                             "on a.jo = b.job_order_no " +
+                             "where a.cin in (select cin from SERVICINGTB) and " +
+                             "(PROJECT_LABEL like '%" + key + "%' or cin like '%" + key + "%' or fulladd like '%" + key + "%' or CDATE like '%" + key + "%' or a.status like  '%" + key + "%' or caller like '%" + key + "%') " +
+                             "ORDER BY CIN DESC";
+                }
+                else
+                {
+                    str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,CALLER from callintb as a " +
+                             "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
+                             "on a.jo = b.job_order_no " +
+                             "where a.cin in (select cin from SERVICINGTB where TEAMID in (select tid from tblteamMember where PID = @pid)) and " +
+                             "(PROJECT_LABEL like '%" + key + "%' or cin like '%" + key + "%' or fulladd like '%" + key + "%' or CDATE like '%" + key + "%' or a.status like  '%" + key + "%' or caller like '%" + key + "%') " +
+                             "ORDER BY CIN DESC";
+                }
+            
                 using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                 {
                     sqlcon.Open();
+                    sqlcmd.Parameters.AddWithValue("@pid", pid);
+                    
                     SqlDataReader dr = sqlcmd.ExecuteReader();
                     while (dr.Read())
                     {
@@ -54,6 +73,8 @@ namespace webaftersales.AFTERSALESPROJ.dal
                         dal.project = dr[4].ToString();
                         dal.fulladd = dr[5].ToString();
                         dal.caller = dr[6].ToString();
+                        dal.useracct = useracct;
+                        dal.pid = pid;
                         li.Add(dal);
                     }
                 }

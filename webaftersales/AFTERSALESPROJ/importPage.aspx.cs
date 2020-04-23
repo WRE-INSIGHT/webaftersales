@@ -17,8 +17,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (Session["username"] != null)
             {
-                successlbl.Visible = false;
-                errorlbl.Visible = false;
+           
                 if (!IsPostBack)
                 {
                     getdata("reload");
@@ -75,9 +74,17 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                Response.Write(ex.ToString());
+                errorrmessage(ex.Message.ToString());
 
             }
+        }
+        private void errorrmessage(string message)
+        {
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "val1";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
         }
         private void getdata(string datareq)
         {
@@ -107,7 +114,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                Response.Write(ex.ToString());
+                errorrmessage(ex.Message.ToString());
 
             }
 
@@ -215,11 +222,16 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                Response.Write(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
             finally
             {
-                successlbl.Visible = true;
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "val1";
+                err.IsValid = false;
+                err.ErrorMessage = "Data imported successfully!";
+                ValidationSummary1.CssClass = "alert alert-success";
+                Page.Validators.Add(err);
                 foreach (GridViewRow row in GridView1.Rows)
                 {
                     CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
@@ -256,8 +268,8 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorlbl.Visible = true;
-                errorlbl.Text = ex.ToString();
+             
+              errorrmessage(ex.Message.ToString());
             }
 
         }

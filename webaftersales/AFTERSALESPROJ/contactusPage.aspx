@@ -6,8 +6,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="page-header">
-            <h1>Contact Us</h1>
+        <div class="well">
+            <h3><strong>Contact Us</strong></h3>
         </div>
     </div>
     <div class="alert alert-info">

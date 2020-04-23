@@ -15,7 +15,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (!IsPostBack)
                 {
-                    Label1.Text = Session["PROJECT"].ToString();
+              
                 }
             }
             else

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    <form id="form1" runat="server" style="width: 100%; height: 100%; background-color:ghostwhite">
+    <form id="form1" runat="server" style="width: 100%; height: 100%; background-color: ghostwhite">
 
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -48,14 +48,19 @@
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/contactusPage.aspx">
                                    <span class="glyphicon glyphicon-phone"></span>&nbsp;Contact</asp:HyperLink></li>
                         <li>
-                            <asp:HyperLink ID="HyperLink3" runat="server" Visible='<%# acctlink.Text=="Admin" ? true : false %>' NavigateUrl="~/AFTERSALESPROJ/manageAccountsPage.aspx">
+                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/AFTERSALESPROJ/manageAccountsPage.aspx">
                                      <span class="glyphicon glyphicon-user"></span>&nbsp;Accounts</asp:HyperLink></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <asp:LinkButton ID="acctlink" runat="server" PostBackUrl="~/AFTERSALESPROJ/accountPage.aspx"></asp:LinkButton></li>
-                        <li>
-                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon  glyphicon-log-out"></span>&nbsp;Logout</asp:LinkButton></li>
+                        <li></li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><asp:Label ID="username" runat="server" Text="acctlink"></asp:Label><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/AFTERSALESPROJ/accountPage.aspx"><span class="glyphicon glyphicon-cog"></span>&nbsp;Change password</asp:HyperLink></li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon  glyphicon-log-out"></span>&nbsp;Logout</asp:LinkButton></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -64,15 +69,15 @@
         <br />
         <br />
 
-        <div class="container" style="background-color:white;padding-bottom:25px;margin-bottom:0px;">
+        <div class="container" style="background-color: white; padding-bottom: 25px; margin-bottom: 0px;">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <footer class="container-fluid text-center" style="background-color:white;margin-top:0px;"> 
-                <br />
-                <br />
-                <br />
-                <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
+        <footer class="container-fluid text-center" style="background-color: white; margin-top: 0px;">
+            <br />
+            <br />
+            <br />
+            <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
         </footer>
     </form>
 </body>

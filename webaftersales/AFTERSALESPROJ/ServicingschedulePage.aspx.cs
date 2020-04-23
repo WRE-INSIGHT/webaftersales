@@ -42,7 +42,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                GridView1.DataSource = dal.servicedataaccesslayer.GetService(servicingkeytbox.Text);
+                GridView1.DataSource = dal.servicedataaccesslayer.GetService(servicingkeytbox.Text, Session["userpid"].ToString(), Session["useraccount"].ToString());
                 GridView1.DataBind();
             }
             catch (Exception ex)

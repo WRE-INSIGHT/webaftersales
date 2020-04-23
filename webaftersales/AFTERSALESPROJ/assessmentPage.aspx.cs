@@ -122,12 +122,20 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 catch (Exception e)
                 {
-                    Response.Write(e.ToString());
+                    errorrmessage(e.Message.ToString());
                 }
 
 
             }
 
+        }
+        private void errorrmessage(string message)
+        {
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "val1";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
         }
         private void getdata()
         {
@@ -156,7 +164,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                Response.Write(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
 
         }
@@ -265,7 +273,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                Response.Write(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
             finally
             {
