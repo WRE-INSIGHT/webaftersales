@@ -251,8 +251,41 @@ namespace webaftersales.AFTERSALESPROJ
                 string tid = ((Label)row.FindControl("tidlbl")).Text;
                 assignteam(tid, Session["SID"].ToString());
             }
+            if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                string tid = ((Label)row.FindControl("tidlbl")).Text;
+                deleteteam(tid);
+            }
 
             if (e.CommandName == "myclose")
+            {
+                getteams();
+            }
+        }
+        private void deleteteam(string tid)
+        {
+            try
+            {
+
+                string str = "delete from tblteam where tid =  @tid delete from tblteammember where tid = @tid";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@tid", tid);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message);
+            }
+            finally
             {
                 getteams();
             }

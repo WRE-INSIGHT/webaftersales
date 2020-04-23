@@ -10,11 +10,15 @@
 
     <div class="well">
         <h3><strong>Manage call-in</strong></h3>
+        <div class="navbar-right">
+              <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx" runat="server">back</asp:LinkButton>
+        </div>
     </div>
-      <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx" runat="server">back</asp:LinkButton>
+    
         <div class="navbar-right">
             <asp:TextBox ID="cin" CssClass="form-control" placeholder="CIN" runat="server"></asp:TextBox>
         </div>
+    <br />
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading">

@@ -193,6 +193,9 @@
                                                     </div>
                                                     <div class="panel-footer">
                                                         <asp:Button ID="Button5" CommandName="myclose" CssClass="btn btn-default" runat="server" Text="Close" />
+                                                        <div class="navbar-right">
+                                                            <asp:LinkButton ID="LinkButton8" CssClass="btn btn-default" CommandName="mydelete" OnClientClick="return confirm('Do you want to delete this team?');" runat="server"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </asp:Panel>

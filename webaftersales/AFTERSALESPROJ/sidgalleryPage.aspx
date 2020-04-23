@@ -6,8 +6,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
-    <div class="page-header">
-        <h2><small><strong>Photos</strong></small></h2>
+    <div class="well">
+        <h3><strong>Photos</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click">back</asp:LinkButton>
         </div>
