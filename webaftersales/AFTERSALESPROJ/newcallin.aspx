@@ -15,9 +15,11 @@
         </div>
     </div>
     
-        <div class="navbar-right">
-            <asp:TextBox ID="cin" CssClass="form-control" placeholder="CIN" runat="server"></asp:TextBox>
-        </div>
+      <div class="navbar-left">
+             <asp:TextBox ID="cin" CssClass="form-control" placeholder="CIN" runat="server"></asp:TextBox>
+      </div>
+         
+     <br />
     <br />
     <div class="panel-group">
         <div class="panel panel-primary">

@@ -15,5 +15,5 @@
     </div>
     <asp:Image ID="Image1" runat="server" />
     <br/>
-    <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" Text="delete" OnClick="Button1_Click" />
+    <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" OnClientClick="return confirm('delete this image?');" Text="delete" OnClick="Button1_Click" />
 </asp:Content>
