@@ -44,13 +44,13 @@
                                 <div class="col-sm-6">
                                     <asp:Label ID="callinidlbl" runat="server" Visible="false" Text='<%# Eval("AUTONUM") %>'></asp:Label>
 
-                                  
+
                                     <strong>
                                         <asp:Label ID="projectlbl" Font-Size="Large" runat="server" Text='<%# Bind("PROJECT") %>'></asp:Label></strong>
                                     <br />
                                     <asp:Label ID="addresslbl" Font-Size="Medium" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label>
                                     <br />
-                                      <table border="0" class="table">
+                                    <table border="0" class="table">
                                         <tr>
                                             <th>JO
                                             </th>
@@ -59,7 +59,8 @@
                                             </th>
                                         </tr>
                                         <tr>
-                                            <td><asp:Label ID="jolbl" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
+                                            <td>
+                                                <asp:Label ID="jolbl" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label10" runat="server" Text='<%# Bind("JODATE") %>'></asp:Label>
@@ -67,7 +68,7 @@
                                         </tr>
                                     </table>
                                     <asp:Label ID="datelbl" Font-Size="XX-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
-                                    <br /> 
+                                    <br />
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="panel panel-default">
@@ -87,25 +88,33 @@
                                             <tr>
                                                 <td colspan="2">
                                                     <table border="1" class="table">
-                                                        <tr class="text-muted">
-                                                            <td >Status</td>
-                                                            <td>Concern</td>
-                                                            <td>Conversation</td>
-                                                            <td>Color</td>
-                                                        </tr>
+
                                                         <tr>
+                                                            <td class="text-muted"><small>Status</small> </td>
                                                             <td>
                                                                 <asp:Label ID="statuslbl" Font-Size="Medium" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label></td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-muted"><small>Concern</small></td>
+
                                                             <td>
-                                                                <asp:Label ID="concernlbl" runat="server" Text='<%# Eval("CONCERN") %>'></asp:Label></td>
+                                                                <asp:Label ID="concernlbl" runat="server" Text='<%# Eval("CONCERN") %>'></asp:Label>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-muted"><small>Conversation</small> </td>
                                                             <td>
                                                                 <asp:Label ID="conversationlbl" runat="server" Text='<%# Eval("CONVERSATION") %>'></asp:Label>
                                                             </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-muted"><small>Color</small> </td>
                                                             <td>
                                                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("[PROFILE FINISH]") %>'></asp:Label>
                                                             </td>
                                                         </tr>
-
                                                     </table>
                                                 </td>
                                             </tr>
@@ -137,7 +146,8 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <asp:Label ID="Label4" CssClass="text-muted" runat="server" Text="caller "></asp:Label> <asp:Label ID="callerlbl" Font-Size="15px" runat="server" Text='<%# Bind("CALLER") %>'></asp:Label>
+                            <asp:Label ID="Label4" CssClass="text-muted" runat="server" Text="caller "></asp:Label>
+                            <asp:Label ID="callerlbl" Font-Size="15px" runat="server" Text='<%# Bind("CALLER") %>'></asp:Label>
                         </div>
                     </div>
                 </ItemTemplate>
