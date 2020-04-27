@@ -23,6 +23,7 @@ namespace webaftersales.AFTERSALESPROJ
                     lbljo.Text = Session["JO"].ToString();
                     lblcolor.Text = Session["COLOR"].ToString();
                     lbldate.Text = "  " + Session["DATE"].ToString();
+                    getdata();
                     getteam();
                 }
 
@@ -44,6 +45,33 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return Session["TEAMID"].ToString();
+            }
+        }
+        private void getdata()
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                ds.Clear();
+                string str = "select * from reporttb where sid = @sid";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@sid", sid);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(ds);
+                        GridView1.DataSource = ds;
+                        GridView1.DataBind();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                errorrmessage(e.Message.ToString());
             }
         }
         private void getteam()
@@ -151,9 +179,9 @@ namespace webaftersales.AFTERSALESPROJ
                 GridView2.SelectedIndex = rowindex;
                 GridViewRow row = GridView2.Rows[rowindex];
                 Session["reportID"] = ((Label)row.FindControl("Label6")).Text.ToString();
-                Session["KNO"]= ((Label)row.FindControl("Label2")).Text.ToString();
-                Session["LOCATION"]= ((Label)row.FindControl("Label3")).Text.ToString();
-                Session["JOBORDERNO"]= ((Label)row.FindControl("Label600")).Text.ToString();
+                Session["KNO"] = ((Label)row.FindControl("Label2")).Text.ToString();
+                Session["LOCATION"] = ((Label)row.FindControl("Label3")).Text.ToString();
+                Session["JOBORDERNO"] = ((Label)row.FindControl("Label600")).Text.ToString();
                 Response.Redirect("~/AFTERSALESPROJ/assessmentPage.aspx");
             }
         }
@@ -173,6 +201,87 @@ namespace webaftersales.AFTERSALESPROJ
         {
             Session["link"] = "s2";
             Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridView1.SelectedIndex = rowindex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((TextBox)row.FindControl("tboxitemno")).Text = ((Label)row.FindControl("lblitemno")).Text;
+                ((TextBox)row.FindControl("tboxkno")).Text = ((Label)row.FindControl("lblkno")).Text;
+                ((TextBox)row.FindControl("tboxlocation")).Text = ((Label)row.FindControl("lbllocation")).Text;
+                ((DropDownList)row.FindControl("dlistspecification")).Text = ((Label)row.FindControl("lblspecification")).Text;
+                ((TextBox)row.FindControl("tboxmobilizationcost")).Text = ((Label)row.FindControl("lblmobilization")).Text;
+                ((Panel)row.FindControl("panel1")).Visible = true;
+            }
+            if (e.CommandName == "mycancel")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((Panel)row.FindControl("panel1")).Visible = false;
+                GridView1.SelectedIndex = -1;
+            }
+            if (e.CommandName == "mysave")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ViewState["id"] = ((Label)row.FindControl("lblid")).Text.ToString();
+                ViewState["itemno"] = ((TextBox)row.FindControl("tboxitemno")).Text;
+                ViewState["kno"] = ((TextBox)row.FindControl("tboxkno")).Text;
+                ViewState["location"] = ((TextBox)row.FindControl("tboxlocation")).Text;
+                ViewState["specification"] = ((DropDownList)row.FindControl("dlistspecification")).Text;
+                ViewState["mobilization"] = ((TextBox)row.FindControl("tboxmobilizationcost")).Text;
+                myupdate(ViewState["id"].ToString(),
+                           ViewState["itemno"].ToString(),
+                           ViewState["kno"].ToString(),
+                           ViewState["location"].ToString(),
+                           ViewState["specification"].ToString(),
+                           ViewState["mobilization"].ToString());
+            }
+            if (e.CommandName == "myassessment")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridView1.SelectedIndex = rowindex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["reportID"] = ((Label)row.FindControl("lblid")).Text.ToString();
+                Session["KNO"] = ((Label)row.FindControl("lblkno")).Text.ToString();
+                Session["LOCATION"] = ((Label)row.FindControl("lbllocation")).Text.ToString();
+                Session["JOBORDERNO"] = ((Label)row.FindControl("lbljo")).Text.ToString();
+                Response.Redirect("~/AFTERSALESPROJ/assessmentPage.aspx");
+            }
+        }
+        private void myupdate(string id, string itemno, string kno, string location, string specification, string mobilization)
+        {
+            try
+            {
+                string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,mobilizationcost=@mobilization where id = @id";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@itemno", itemno);
+                        sqlcmd.Parameters.AddWithValue("@kno", kno);
+                        sqlcmd.Parameters.AddWithValue("@location", location);
+                        sqlcmd.Parameters.AddWithValue("@specification", specification);
+                        sqlcmd.Parameters.AddWithValue("@mobilization", mobilization);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            finally
+            {
+                getdata();
+            }
         }
     }
 }

@@ -2,12 +2,12 @@
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>manage schedule</title>
+    <title>manage job order</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="well">
-        <h3><strong>Manage schedule</strong></h3>
+        <h3><strong>Manage job order</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx" runat="server">back</asp:LinkButton>
         </div>
@@ -19,10 +19,10 @@
             <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
     <br />
     <asp:Panel ID="Panel1" runat="server">
-        <div class="form-group">
-            <table border="0" style="width: 100%;">
+        <div class="panel">
+            <table border="0" style="width:100%">
                 <tr>
-                    <td style="width: 70px">Date
+                    <td style="width: 100px">Date
                     </td>
                     <td>
                         <asp:TextBox ID="servicingdate" CssClass="form-control" runat="server" placeholder="mm/dd/yyyy" OnTextChanged="servicingdate_TextChanged"></asp:TextBox>
@@ -35,12 +35,28 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Specified Job
+                    </td>
+                    <td>
+                        <asp:TextBox ID="specifiedjobtbox" placeholder="Specified Job" CssClass="form-control" runat="server"></asp:TextBox>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Instruction
+                    </td>
+                    <td>
+                        <asp:TextBox ID="instructiontbox" placeholder="Instruction" CssClass="form-control" runat="server"></asp:TextBox>
+                    </td>
+
+                </tr>
+                <tr>
                     <td>Remarks
                     </td>
                     <td>
                         <asp:TextBox ID="remarks" placeholder="remarks" CssClass="form-control" runat="server"></asp:TextBox>
                     </td>
-                    <td></td>
+
                 </tr>
             </table>
             <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
@@ -72,20 +88,30 @@
                                     <asp:Label ID="Label2" runat="server" Font-Size="Large" Text='<%# Bind("SERVICING") %>'></asp:Label>
                                     <table class="table" border="1">
                                         <tr>
-                                            <th>Status</th>
-                                            <th>Status date</th>
-                                            <th>Remarks</th>
-                                        </tr>
-                                        <tr>
+
                                             <td>
                                                 <asp:Label ID="statuslbl" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
                                             </td>
-                                            <td>
+                                            <td colspan="2">
                                                 <asp:Label ID="statusdatelbl" runat="server" Text='<%# Bind("STATUSDATE") %>'></asp:Label>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Specified job</td>
+                                            <td>
+                                                <asp:Label ID="specifiedjoblbl" runat="server" Text='<%# Bind("SPECIFIEDJOB") %>'></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Instruction</td>
+                                            <td>
+                                                <asp:Label ID="instructionlbl" runat="server" Text='<%# Bind("INSTRUCTION") %>'></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Remarks</td>
                                             <td>
                                                 <asp:Label ID="remarkslbl" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label></td>
                                         </tr>
+
 
                                         <tr>
                                             <td>
@@ -98,6 +124,10 @@
                                     <asp:Panel ID="Panel2" Visible="false" CssClass="well" runat="server">
                                         Servicing date:<br />
                                         <asp:TextBox ID="servicingdatetbox" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                        Instruction:<br />
+                                        <asp:TextBox ID="instructiontbox" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                        Specified job:<br />
+                                        <asp:TextBox ID="specifiedjobtbox" CssClass="form-control" runat="server"></asp:TextBox><br />
                                         Remarks:<br />
                                         <asp:TextBox ID="remarkstbox" CssClass="form-control" runat="server"></asp:TextBox><br />
                                         Status:<br />

@@ -13,11 +13,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h2>
-            <strong>
-                <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
-            <small>
-                <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
+
+        <strong>
+            <asp:Label ID="lblproject" Font-Size="X-Large" runat="server" Text="Project Name"></asp:Label></strong><br />
+
+        <asp:Label ID="lbladdress" Font-Size="Medium" CssClass="text-info" runat="server" Text="Address"></asp:Label><br />
+        <asp:Label ID="lbljo" Font-Size="Medium" runat="server" Text="Job Order No."></asp:Label><br />
         <div class="navbar-right">
             <asp:HyperLink ID="HyperLink4" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx" runat="server" Text="back"></asp:HyperLink>
         </div>
@@ -30,21 +31,16 @@
     <table class="table table-striped">
         <tr>
             <th>Status</th>
-            <th>Job Order No.</th>
             <th>Color</th>
-            <th>Assigned Team</th>
-            <th>Members</th>
+            <th>Team</th>
         </tr>
         <tr>
             <td>
                 <asp:Label ID="lblstatus" runat="server" Text="Status"></asp:Label></td>
             <td>
-                <asp:Label ID="lbljo" runat="server" Text="Job Order No."></asp:Label></td>
-            <td>
                 <asp:Label ID="lblcolor" runat="server" Text="Profile finish"></asp:Label></td>
             <td>
-                <asp:Label ID="lblteamname" runat="server" Text="teamname"></asp:Label></td>
-            <td>
+                <asp:Label ID="lblteamname" runat="server" CssClass="text-center" Text="teamname"></asp:Label><br />
                 <asp:Label ID="lblpersonnel" runat="server" Text="personnel"></asp:Label></td>
         </tr>
     </table>
@@ -58,7 +54,83 @@
                 <strong>Report Table!</strong> List of items.
             </div>
 
+            <div class="panel">
+                <asp:GridView ID="GridView1" Visible="false" OnRowCommand="GridView1_RowCommand" ShowHeader="false" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <asp:Label ID="lbllocation" Font-Size="Large" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
+                                        <asp:LinkButton ID="LinkButton4" CommandName="myedit" CssClass="text-right" runat="server">Edit</asp:LinkButton>
+                                    </div>
+                                    <div class="panel-body">
+                                        <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                        <asp:Label ID="lblsid" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
+                                        <asp:Label ID="lbljo" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                        <asp:Label ID="lblspecification" Font-Size="Medium" runat="server" Text='<%# Bind("SPECIFICATION") %>'></asp:Label><br />
+                                        <table class="table" border="1">
+                                            <tr>
+                                                <th>Item#</th>
+                                                <th>K#</th>
+                                                <th>Mobilization cost</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="lblitemno" runat="server" Text='<%# Bind("ITEMNO") %>'></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="lblkno" runat="server" Text='<%# Bind("KNO") %>'></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="lblmobilization" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:Label></td>
+                                            </tr>
+                                        </table>
+                                        <asp:Button ID="Button2" CssClass="btn btn-default" CommandName="myassessment" runat="server" Text="assessment" />
+                                
+                                                <asp:Panel ID="Panel1" Visible="false" runat="server">
+                                                    <div class="well">
+                                                        Item#<br />
+                                                        <asp:TextBox ID="tboxitemno" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                        K#<br />
+                                                        <asp:TextBox ID="tboxkno" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                        Location<br />
+                                                        <asp:TextBox ID="tboxlocation" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                        Specification 
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="editval"
+                                                    ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
+                                                        <asp:DropDownList ID="dlistspecification" placeholder="Specification" CssClass="form-control" runat="server">
+                                                            <asp:ListItem>-</asp:ListItem>
+                                                            <asp:ListItem>Window</asp:ListItem>
+                                                            <asp:ListItem>Door</asp:ListItem>
+                                                        </asp:DropDownList><br />
 
+                                                        Mobilization cost 
+                                                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="invalid amount" Text="*"
+                                                    ControlToValidate="tboxmobilizationcost" Type="Double" Operator="DataTypeCheck" ValidationGroup="editval"
+                                                    ForeColor="Red"></asp:CompareValidator><br />
+                                                        <asp:TextBox ID="tboxmobilizationcost" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                        <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup="editval" CssClass="aler alert-danger" runat="server" />
+                                                        <asp:Button ID="Button3" CommandName="mysave" CssClass="btn btn-primary" ValidationGroup="editval" runat="server" Text="save" />
+                                                        <asp:Button ID="Button4" CommandName="mycancel" CssClass="btn btn-default" runat="server" Text="cancel" />
+                                                    </div>
+                                                </asp:Panel>
+                                 
+
+                                    </div>
+
+                                </div>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
+                    <EmptyDataTemplate>
+                        <div class="alert alert-danger">
+                            <h2><strong>Sorry, no data available!</strong>
+                                <small>0 result found</small>
+                            </h2>
+                        </div>
+                    </EmptyDataTemplate>
+                </asp:GridView>
+            </div>
 
 
             <br />

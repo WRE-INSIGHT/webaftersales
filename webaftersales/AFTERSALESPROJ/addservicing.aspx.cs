@@ -68,7 +68,7 @@ namespace webaftersales.AFTERSALESPROJ
                         "  a.STATUSDATE AS[STATUSDATE], " +
                         "  a.SERVICING, " +
                         "  CASE WHEN ISDATE(a.SDATE)=1 THEN FORMAT(CAST(a.SDATE AS DATE),'MMM-dd-yyyy') ELSE a.SDATE END AS[SERVICINGDATE], " +
-                        "  a.REMARKS, " +
+                        "  a.REMARKS,a.SPECIFIEDJOB,a.INSTRUCTION, " +
                         "  a.teamid, " +
                         "  b.TEAMNAME," +
                         "  STUFF((SELECT ', ' + y.FULLNAME+ char(10) from TBLteamMember as x " +
@@ -154,7 +154,7 @@ namespace webaftersales.AFTERSALESPROJ
                 string str = " declare @id as integer = (select isnull(max(id),0)+1 from servicingtb)" +
                                      " declare @sss as integer = (select isnull(max(id), 0) from servicingtb where cin = @cin)" +
                                      " update servicingtb set[status] = 'Reschedule',statusdate = @sdate where id = @sss" +
-                                     " insert into servicingtb(id, cin, servicing, sdate, remarks, status)values(@id, @cin, @servicing, @sdate, @remarks, 'Scheduled')";
+                                     " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks, status)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks, 'Scheduled')";
                 string str2 = "select isnull(count(id),0)+1 from servicingtb where cin = @cin";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
@@ -193,6 +193,8 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@cin", cin);
                         sqlcmd.Parameters.AddWithValue("@servicing", suffix);
                         sqlcmd.Parameters.AddWithValue("@sdate", servicingdate.Text);
+                        sqlcmd.Parameters.AddWithValue("@specifiedjob", specifiedjobtbox.Text);
+                        sqlcmd.Parameters.AddWithValue("@instruction", instructiontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@remarks", remarks.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
@@ -234,6 +236,8 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 ((TextBox)row.FindControl("servicingdatetbox")).Text = dt;
                 ((TextBox)row.FindControl("remarkstbox")).Text = ((Label)row.FindControl("remarkslbl")).Text;
+                ((TextBox)row.FindControl("specifiedjobtbox")).Text = ((Label)row.FindControl("specifiedjoblbl")).Text;
+                ((TextBox)row.FindControl("instructiontbox")).Text = ((Label)row.FindControl("instructionlbl")).Text;
                 ((DropDownList)row.FindControl("DropDownList1")).Text = ((Label)row.FindControl("statuslbl")).Text;
                 ((TextBox)row.FindControl("statusdatetbox")).Text = ((Label)row.FindControl("statusdatelbl")).Text;
 
@@ -247,6 +251,8 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
                 ViewState["servicingdate"] = ((TextBox)row.FindControl("servicingdatetbox")).Text;
                 ViewState["remarks"] = ((TextBox)row.FindControl("remarkstbox")).Text;
+                ViewState["specifiedjob"] = ((TextBox)row.FindControl("specifiedjobtbox")).Text;
+                ViewState["instruction"] = ((TextBox)row.FindControl("instructiontbox")).Text;
                 ViewState["status"] = ((DropDownList)row.FindControl("DropDownList1")).Text;
                 ViewState["statusdate"] = ((TextBox)row.FindControl("statusdatetbox")).Text;
                 updatecurrentstatus();
@@ -345,7 +351,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,remarks=@remarks  where id = @id";
+                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks  where id = @id";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -357,6 +363,8 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@statusdate", ViewState["statusdate"].ToString());
                         sqlcmd.Parameters.AddWithValue("@sdate", ViewState["servicingdate"].ToString());
                         sqlcmd.Parameters.AddWithValue("@remarks", ViewState["remarks"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@specifiedjob", ViewState["specifiedjob"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@instruction", ViewState["instruction"].ToString());
                         sqlcmd.ExecuteNonQuery();
 
                     }

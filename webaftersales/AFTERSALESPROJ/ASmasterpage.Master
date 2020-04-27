@@ -42,6 +42,8 @@
                                     <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AFTERSALESPROJ/ServicingschedulePage.aspx">Servicing Records</asp:HyperLink></li>
                                 <li>
                                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Teams</asp:LinkButton></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/AFTERSALESPROJ/pricelist.aspx">Price List</asp:HyperLink></li>
                             </ul>
                         </li>
                         <li>
@@ -53,7 +55,8 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li></li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><asp:Label ID="username" runat="server" Text="acctlink"></asp:Label><span class="caret"></span></a>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <asp:Label ID="username" runat="server" Text="acctlink"></asp:Label><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/AFTERSALESPROJ/accountPage.aspx"><span class="glyphicon glyphicon-cog"></span>&nbsp;Change password</asp:HyperLink></li>

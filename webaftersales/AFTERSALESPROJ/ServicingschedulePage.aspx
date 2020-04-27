@@ -25,31 +25,29 @@
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <div class='<%# Eval("STATUS").ToString() == "Done" ? "panel panel-primary" : "panel panel-default" %>'>
+                    <div class='<%# Eval("STATUS").ToString() == "Done" ? "panel panel-success" : "panel panel-danger" %>'>
                         <div class="panel-heading">
                             <asp:Label ID="Label4" runat="server" Font-Size="15px" Text='<%# Bind("CIN")  %>'></asp:Label>
                             <asp:Label ID="Label3" CssClass="navbar-right" Font-Size="15px" runat="server" Text='<%# Bind("CDATE") %>'></asp:Label>
                         </div>
                         <div class="panel-body">
-                            <table class="table" border="0">
-                                <tr>
-                                    <td>
-                                        <strong>
-                                            <asp:Label ID="Label1" Font-Size="20px" runat="server" Text='<%# Bind("PROJECT")  %>'></asp:Label></strong>
-                                        <br />
-                                        <asp:Label ID="Label2" Font-Size="15px" runat="server" Text='<%# Bind("FULLADD")  %>'></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <%--   <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                <ContentTemplate>--%>
-                                        <asp:GridView ID="GridView2" ShowHeader="False" runat="server" DataSource='<%# Bind("schedule") %>' OnRowCommand="GridView2_RowCommand"
-                                            AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <strong>
+                                        <asp:Label ID="Label1" Font-Size="20px" runat="server" Text='<%# Bind("PROJECT")  %>'></asp:Label></strong>
+                                    <br />
+                                    <asp:Label ID="Label2" Font-Size="15px" runat="server" Text='<%# Bind("FULLADD")  %>'></asp:Label>
+                                    <br />
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="panel">
+                                       <asp:GridView ID="GridView2" runat="server" DataSource='<%# Bind("schedule") %>' OnRowCommand="GridView2_RowCommand"
+                                            AutoGenerateColumns="False" CssClass="table">
                                             <Columns>
-                                                <asp:BoundField HeaderText="" DataField="STATUS" />
-                                                <asp:BoundField HeaderText="" DataField="SERVICING" />
-                                                <asp:BoundField HeaderText="" DataField="SDATE" />
+                                                <asp:BoundField HeaderText="Status" DataField="STATUS" />
+                                                <asp:BoundField HeaderText="Servicing" DataField="SERVICING" />
+                                                <asp:BoundField HeaderText="Date" DataField="SDATE" />
+                                                
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
                                                         <asp:Label ID="Label5" runat="server" Visible="false" Text='<%# Eval("ID") %>'></asp:Label>
@@ -58,25 +56,14 @@
                                                         <asp:LinkButton ID="LinkButton3" CommandName="viewphoto" Width="70" CssClass="btn btn-default" runat="server">photo</asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                            </Columns>
-                                            <FooterStyle BackColor="White" ForeColor="#333333" />
-                                            <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
-                                            <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
-                                            <RowStyle BackColor="White" ForeColor="#333333" />
-                                            <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
-                                            <SortedAscendingCellStyle BackColor="#F7F7F7" />
-                                            <SortedAscendingHeaderStyle BackColor="#487575" />
-                                            <SortedDescendingCellStyle BackColor="#E5E5E5" />
-                                            <SortedDescendingHeaderStyle BackColor="#275353" />
+                                            </Columns>     
                                         </asp:GridView>
-                                        <%--  </ContentTemplate>
-                                            </asp:UpdatePanel>--%>
-                                    </td>
-                                </tr>
-                            </table>
+                                       </div>
+                                </div>
+                            </div>            
                         </div>
                         <div class="panel-footer">
-                            <asp:Label ID="Label7" Font-Size="15px" runat="server" Text='<%# Bind("CALLER") %>'></asp:Label>
+                            <asp:Label ID="Label8" CssClass="text-muted" runat="server" Text="caller "></asp:Label> <asp:Label ID="Label7" Font-Size="15px" runat="server" Text='<%# Bind("CALLER") %>'></asp:Label>
                         </div>
                     </div>
                 </ItemTemplate>

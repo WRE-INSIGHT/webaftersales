@@ -19,10 +19,6 @@
 
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
-
-
-
-
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             Human resources

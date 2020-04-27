@@ -11,15 +11,15 @@
     <div class="well">
         <h3><strong>Manage call-in</strong></h3>
         <div class="navbar-right">
-              <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx" runat="server">back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx" runat="server">back</asp:LinkButton>
         </div>
     </div>
-    
-      <div class="navbar-left">
-             <asp:TextBox ID="cin" CssClass="form-control" placeholder="CIN" runat="server"></asp:TextBox>
-      </div>
-         
-     <br />
+
+    <div class="navbar-left">
+        <asp:TextBox ID="cin" CssClass="form-control" placeholder="CIN" runat="server"></asp:TextBox>
+    </div>
+
+    <br />
     <br />
     <div class="panel-group">
         <div class="panel panel-primary">
@@ -97,6 +97,9 @@
                         <asp:TextBox ID="callername" CssClass="form-control" placeholder="Caller" runat="server"></asp:TextBox>
                     </div>
                     <div class="col-sm-4">
+                        <br />
+                        Contact person<br />
+                        <asp:TextBox ID="contactpersontbox" CssClass="form-control" placeholder="Contact person" runat="server"></asp:TextBox>
                         <br />
                         Telephone number<br />
                         <asp:TextBox ID="telno" CssClass="form-control" placeholder="Telephone number" runat="server"></asp:TextBox>

@@ -24,6 +24,7 @@ namespace webaftersales.AFTERSALESPROJ
                         {
                             Button1.Text = "save";
                             cin.Text = Session["callinnumber"].ToString();
+                            contactpersontbox.Text= Session["callinContactperson"].ToString();
                             telno.Text = Session["callinTelno"].ToString();
                             faxno.Text = Session["callinFaxno"].ToString();
                             DateTime value;
@@ -113,6 +114,7 @@ namespace webaftersales.AFTERSALESPROJ
                                " cin, " +
                                " caller, " +
                                " jo, " +
+                               " contactperson, " +
                                " TELNO, " +
                                " FAXNO, " +
                                " concern, " +
@@ -123,6 +125,7 @@ namespace webaftersales.AFTERSALESPROJ
                                " ((left(CONVERT([varchar](7), @autonum), (2)) + '-')+right(CONVERT([varchar](7), @autonum),(5))),  " +
                                " @caller," +
                                " @jo," +
+                               " @contactperson," +
                                " @TELNO," +
                                " @FAXNO," +
                                " @concern," +
@@ -131,6 +134,7 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         sqlcon.Open();
                         sqlcmd.Parameters.AddWithValue("@jo", jo.Text);
+                        sqlcmd.Parameters.AddWithValue("@contactperson", contactpersontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@cdate", calldate.Text);
                         sqlcmd.Parameters.AddWithValue("@caller", callername.Text);
                         sqlcmd.Parameters.AddWithValue("@TELNO", telno.Text);
@@ -195,6 +199,7 @@ namespace webaftersales.AFTERSALESPROJ
                          " cdate = @cdate," +
                          " caller = @caller," +
                          " jo = @jo," +
+                         " contactperson = @contactperson," +
                          " TELNO = @TELNO," +
                          " FAXNO = @FAXNO," +
                          " concern = @concern," +
@@ -209,6 +214,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@cdate", calldate.Text);
                         sqlcmd.Parameters.AddWithValue("@caller", callername.Text);
                         sqlcmd.Parameters.AddWithValue("@jo", jo.Text);
+                        sqlcmd.Parameters.AddWithValue("@contactperson", contactpersontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@cin", Session["callinnumber"].ToString());
                         sqlcmd.Parameters.AddWithValue("@newcin", cin.Text);
                         sqlcmd.Parameters.AddWithValue("@anum", anum);
