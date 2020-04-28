@@ -148,6 +148,15 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.TextBox callername;
         
         /// <summary>
+        /// CheckBoxList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+        
+        /// <summary>
         /// contactpersontbox control.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,33 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.TextBox telno;
         
         /// <summary>
+        /// emailtbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox emailtbox;
+        
+        /// <summary>
+        /// vibertbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox vibertbox;
+        
+        /// <summary>
+        /// whatsapptbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox whatsapptbox;
+        
+        /// <summary>
         /// faxno control.
         /// </summary>
         /// <remarks>
@@ -173,15 +209,6 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox faxno;
-        
-        /// <summary>
-        /// CheckBoxList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
         
         /// <summary>
         /// conversation control.

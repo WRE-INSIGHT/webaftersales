@@ -26,6 +26,9 @@ namespace webaftersales.AFTERSALESPROJ
                             cin.Text = Session["callinnumber"].ToString();
                             contactpersontbox.Text= Session["callinContactperson"].ToString();
                             telno.Text = Session["callinTelno"].ToString();
+                            emailtbox.Text = Session["callinEmail"].ToString();
+                            vibertbox.Text = Session["callinViber"].ToString();
+                            whatsapptbox.Text = Session["callinWhatsapp"].ToString();
                             faxno.Text = Session["callinFaxno"].ToString();
                             DateTime value;
                             if (DateTime.TryParse(Session["callinDate"].ToString(), out value))
@@ -116,6 +119,9 @@ namespace webaftersales.AFTERSALESPROJ
                                " jo, " +
                                " contactperson, " +
                                " TELNO, " +
+                               " email, " +
+                               " viber, " +
+                               " whatsapp, " +
                                " FAXNO, " +
                                " concern, " +
                                " conversation)" +
@@ -127,6 +133,9 @@ namespace webaftersales.AFTERSALESPROJ
                                " @jo," +
                                " @contactperson," +
                                " @TELNO," +
+                               " @email," +
+                               " @viber," +
+                               " @whatsapp," +
                                " @FAXNO," +
                                " @concern," +
                                " @conversation)";
@@ -138,6 +147,9 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@cdate", calldate.Text);
                         sqlcmd.Parameters.AddWithValue("@caller", callername.Text);
                         sqlcmd.Parameters.AddWithValue("@TELNO", telno.Text);
+                        sqlcmd.Parameters.AddWithValue("@email", emailtbox.Text);
+                        sqlcmd.Parameters.AddWithValue("@viber", vibertbox.Text);
+                        sqlcmd.Parameters.AddWithValue("@whatsapp", whatsapptbox.Text);
                         sqlcmd.Parameters.AddWithValue("@FAXNO", faxno.Text);
                         sqlcmd.Parameters.AddWithValue("@concern", concern);
                         sqlcmd.Parameters.AddWithValue("@conversation", conversation.Text);
@@ -201,6 +213,9 @@ namespace webaftersales.AFTERSALESPROJ
                          " jo = @jo," +
                          " contactperson = @contactperson," +
                          " TELNO = @TELNO," +
+                         " email = @email," +
+                         " viber = @viber," +
+                         " whatsapp = @whatsapp," +
                          " FAXNO = @FAXNO," +
                          " concern = @concern," +
                          " conversation = @conversation" +
@@ -219,6 +234,9 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@newcin", cin.Text);
                         sqlcmd.Parameters.AddWithValue("@anum", anum);
                         sqlcmd.Parameters.AddWithValue("@TELNO", telno.Text);
+                        sqlcmd.Parameters.AddWithValue("@email", emailtbox.Text);
+                        sqlcmd.Parameters.AddWithValue("@viber", vibertbox.Text);
+                        sqlcmd.Parameters.AddWithValue("@whatsapp", whatsapptbox.Text);
                         sqlcmd.Parameters.AddWithValue("@FAXNO", faxno.Text);
                         sqlcmd.Parameters.AddWithValue("@concern", concern);
                         sqlcmd.Parameters.AddWithValue("@conversation", conversation.Text);

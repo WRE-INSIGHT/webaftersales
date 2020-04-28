@@ -99,6 +99,9 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
                 Session["callinTelno"] = ((Label)row.FindControl("telnolbl")).Text;
+                Session["callinEmail"] = ((Label)row.FindControl("emaillbl")).Text;
+                Session["callinViber"] = ((Label)row.FindControl("viberlbl")).Text;
+                Session["callinWhatsapp"] = ((Label)row.FindControl("whatsapplbl")).Text;
                 Session["callinFaxno"] = ((Label)row.FindControl("faxnolbl")).Text;
                 Session["callinDate"] = ((Label)row.FindControl("datelbl")).Text;
                 Session["callinCaller"] = ((Label)row.FindControl("callerlbl")).Text;

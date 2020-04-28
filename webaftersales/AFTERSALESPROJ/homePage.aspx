@@ -58,17 +58,55 @@
                                             </th>
                                         </tr>
                                         <tr>
-                                            <td>  <asp:Label ID="jolbl" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                            <td>
+                                                <asp:Label ID="jolbl" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label10" runat="server" Text='<%# Bind("JODATE") %>'></asp:Label>
                                             </td>
                                         </tr>
                                     </table>
-                         
-                                    <asp:Label ID="datelbl"  Font-Size="XX-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label><br />
 
+                                    <asp:Label ID="datelbl" Font-Size="XX-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label><br />
+                                    <table class="table" border="1">
+
+                                        <tr>
+                                            <td colspan="2" class="text-center">
+                                                <asp:Label ID="Label7" CssClass="text-info" runat="server" Text='<%# Bind("TEAMNAME") %>'></asp:Label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-center">
+                                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center"><small class="text-muted">Specified Job</small>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("SPECIFIEDJOB") %>'></asp:Label></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center"><small class="text-muted">Instruction</small>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("INSTRUCTION") %>'></asp:Label></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center"><small class="text-muted">Remarks</small></td>
+                                            <td>
+                                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center"><small class="text-muted">Color</small></td>
+                                            <td>
+                                                <asp:Label ID="colorlbl" runat="server" Text='<%# Bind("PROFILE_FINISH") %>'></asp:Label></td>
+                                        </tr>
+                                    </table>
                                     <br />
+
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="panel panel-default">
@@ -87,49 +125,6 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
-
-
-                                                    <table class="table" border="1">
-
-                                                        <tr>
-                                                            <td colspan="2" class="text-center">
-                                                                <asp:Label ID="Label7" CssClass="text-info" runat="server" Text='<%# Bind("TEAMNAME") %>'></asp:Label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2" class="text-center">
-                                                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-center"><small class="text-muted">Specified Job</small>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("SPECIFIEDJOB") %>'></asp:Label></td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-center"><small class="text-muted">Instruction</small>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("INSTRUCTION") %>'></asp:Label></td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-center"><small class="text-muted">Remarks</small></td>
-                                                            <td>
-                                                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-center"><small class="text-muted">Color</small></td>
-                                                            <td>
-                                                                <asp:Label ID="colorlbl" runat="server" Text='<%# Bind("PROFILE_FINISH") %>'></asp:Label></td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
                                                     <table>
                                                         <tr>
                                                             <td class="text-muted">Contact person</td>
@@ -141,6 +136,21 @@
                                                             <td>
                                                                 <asp:Label ID="telnolbl" runat="server" Text='<%# Eval("TELNO") %>'></asp:Label>
                                                             </td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td class="text-muted">Email</td>
+                                                            <td>
+                                                                <asp:Label ID="emaillbl" runat="server" Text='<%# Eval("EMAIL") %>'></asp:Label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-muted">Viber</td>
+                                                            <td>
+                                                                <asp:Label ID="viberlbl" runat="server" Text='<%# Eval("VIBER") %>'></asp:Label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-muted">WhatsApp</td>
+                                                            <td>
+                                                                <asp:Label ID="whatsapplbl" runat="server" Text='<%# Eval("WHATSAPP") %>'></asp:Label></td>
                                                         </tr>
                                                         <tr>
                                                             <td class="text-muted">Fax #</td>

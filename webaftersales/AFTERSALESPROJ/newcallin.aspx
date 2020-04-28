@@ -20,7 +20,7 @@
     </div>
 
     <br />
-    <br />
+    <h3>Project Details</h3>
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -77,8 +77,7 @@
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                Project Details:<br />
-                <br />
+
                 <asp:TextBox ID="projectname" CssClass="form-control" placeholder="Project Name" runat="server" Enabled="False"></asp:TextBox>
                 <br />
                 <asp:TextBox ID="address" CssClass="form-control" placeholder="Address" runat="server" Enabled="False"></asp:TextBox>
@@ -88,28 +87,15 @@
                 <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click">clear project</asp:LinkButton>
                 <br />
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <br />
                         Date<br />
                         <asp:TextBox ID="calldate" CssClass="form-control" placeholder="mm/dd/yyyy" runat="server"></asp:TextBox>
                         <br />
                         Caller<br />
-                        <asp:TextBox ID="callername" CssClass="form-control" placeholder="Caller" runat="server"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-4">
+                        <asp:TextBox ID="callername" CssClass="form-control" placeholder="Caller" runat="server"></asp:TextBox><br />
+                        <h3>Concern</h3>
                         <br />
-                        Contact person<br />
-                        <asp:TextBox ID="contactpersontbox" CssClass="form-control" placeholder="Contact person" runat="server"></asp:TextBox>
-                        <br />
-                        Telephone number<br />
-                        <asp:TextBox ID="telno" CssClass="form-control" placeholder="Telephone number" runat="server"></asp:TextBox>
-                        <br />
-                        Fax number<br />
-                        <asp:TextBox ID="faxno" CssClass="form-control" placeholder="Fax number" runat="server" OnTextChanged="faxno_TextChanged"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-4">
-                        <br />
-                        Concern<br />
                         <asp:CheckBoxList ID="CheckBoxList1" runat="server">
                             <asp:ListItem Value="Window"> Window </asp:ListItem>
                             <asp:ListItem Value="Screen"> Screen </asp:ListItem>
@@ -119,11 +105,34 @@
                             <asp:ListItem Value="Not specified"> Not specified </asp:ListItem>
                         </asp:CheckBoxList>
                     </div>
+                    <div class="col-sm-6">
+                        <h3>Contact Details</h3>
+                        <br />
+                        Contact person<br />
+                        <asp:TextBox ID="contactpersontbox" CssClass="form-control" placeholder="Contact person" runat="server"></asp:TextBox>
+                        <br />
+                        Telephone number<br />
+                        <asp:TextBox ID="telno" CssClass="form-control" placeholder="Telephone number" runat="server"></asp:TextBox>
+                        <br />
+                        Email address<br />
+                        <asp:TextBox ID="emailtbox" CssClass="form-control" placeholder="Email address" runat="server"></asp:TextBox>
+                        <br />
+                        Viber account number<br />
+                        <asp:TextBox ID="vibertbox" CssClass="form-control" placeholder="Viber account number" runat="server"></asp:TextBox>
+                        <br />
+                        WhatsApp account number<br />
+                        <asp:TextBox ID="whatsapptbox" CssClass="form-control" placeholder="WhatsApp account number" runat="server"></asp:TextBox>
+                        <br />
+                        Fax number<br />
+                        <asp:TextBox ID="faxno" CssClass="form-control" placeholder="Fax number" runat="server" OnTextChanged="faxno_TextChanged"></asp:TextBox>
+                    </div>
+
                 </div>
 
                 <br />
                 <br />
-                Conversation:<br />
+                <h3>Conversation</h3>
+                <br />
                 <asp:TextBox ID="conversation" CssClass="form-control" placeholder="Conversation" runat="server" Rows="10" TextMode="MultiLine"></asp:TextBox>
                 <br />
                 <asp:Button ID="Button1" ValidationGroup="val1" runat="server" CssClass="btn btn-primary" Text="Button" OnClick="Button1_Click" />

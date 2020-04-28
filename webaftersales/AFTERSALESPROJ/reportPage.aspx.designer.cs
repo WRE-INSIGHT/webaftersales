@@ -121,24 +121,6 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// HyperLink3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
-        
-        /// <summary>
         /// HyperLink1 control.
         /// </summary>
         /// <remarks>
@@ -166,15 +148,6 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
         
         /// <summary>
-        /// GridView2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
-        
-        /// <summary>
         /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
@@ -184,102 +157,111 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// ValidationSummary2 control.
+        /// UpdatePanel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// HyperLink2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
         
         /// <summary>
-        /// tboxitemno control.
+        /// newtboxitemno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxitemno;
+        protected global::System.Web.UI.WebControls.TextBox newtboxitemno;
         
         /// <summary>
-        /// tboxkno control.
+        /// newtboxkno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxkno;
+        protected global::System.Web.UI.WebControls.TextBox newtboxkno;
         
         /// <summary>
-        /// tboxlocation control.
+        /// newtboxlocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxlocation;
+        protected global::System.Web.UI.WebControls.TextBox newtboxlocation;
         
         /// <summary>
-        /// dlistspecification control.
+        /// newdlistspecificationvalidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlistspecification;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator newdlistspecificationvalidator;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// newdlistspecification control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.DropDownList newdlistspecification;
         
         /// <summary>
-        /// tboxmobilizationcost control.
+        /// newtboxmobilizationcostvalidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxmobilizationcost;
+        protected global::System.Web.UI.WebControls.CompareValidator newtboxmobilizationcostvalidator;
         
         /// <summary>
-        /// CompareValidator1 control.
+        /// newtboxmobilizationcost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
+        protected global::System.Web.UI.WebControls.TextBox newtboxmobilizationcost;
         
         /// <summary>
-        /// validationpopup control.
+        /// newbtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary validationpopup;
+        protected global::System.Web.UI.WebControls.Button newbtn;
         
         /// <summary>
-        /// Button1 control.
+        /// valsummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.ValidationSummary valsummary;
+        
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }
