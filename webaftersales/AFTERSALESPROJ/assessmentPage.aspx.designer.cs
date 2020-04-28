@@ -58,6 +58,15 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// UpdatePanel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+        
+        /// <summary>
         /// findtbox control.
         /// </summary>
         /// <remarks>
@@ -67,13 +76,13 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.TextBox findtbox;
         
         /// <summary>
-        /// Button1 control.
+        /// LinkButton3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
         
         /// <summary>
         /// GridView1 control.
@@ -83,6 +92,15 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
         /// ValidationSummary1 control.

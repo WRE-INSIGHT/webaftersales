@@ -223,6 +223,13 @@
     <Compile Include="AFTERSALESPROJ\ASmasterpage.Master.designer.cs">
       <DependentUpon>ASmasterpage.Master</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\assessmentmade.aspx.cs">
+      <DependentUpon>assessmentmade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\assessmentmade.aspx.designer.cs">
+      <DependentUpon>assessmentmade.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\assessmentPage.aspx.cs">
       <DependentUpon>assessmentPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -454,6 +461,7 @@
     <Content Include="AFTERSALESPROJ\aboutusPage.aspx" />
     <Content Include="AFTERSALESPROJ\accountPage.aspx" />
     <Content Include="AFTERSALESPROJ\addservicing.aspx" />
+    <Content Include="AFTERSALESPROJ\assessmentmade.aspx" />
     <Content Include="AFTERSALESPROJ\assessmentPage.aspx" />
     <Content Include="AFTERSALESPROJ\CallinPage.aspx" />
     <Content Include="AFTERSALESPROJ\contactusPage.aspx" />

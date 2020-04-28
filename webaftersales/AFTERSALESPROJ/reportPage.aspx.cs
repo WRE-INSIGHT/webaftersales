@@ -180,7 +180,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["KNO"] = ((Label)row.FindControl("lblkno")).Text.ToString();
                 Session["LOCATION"] = ((Label)row.FindControl("lbllocation")).Text.ToString();
                 Session["JOBORDERNO"] = ((Label)row.FindControl("lbljo")).Text.ToString();
-                Response.Redirect("~/AFTERSALESPROJ/assessmentPage.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/assessmentmade.aspx");
             }
             if (e.CommandName == "mydelete")
             {

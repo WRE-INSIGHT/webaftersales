@@ -3,6 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Report</title>
     <style>
         .tbl td {
@@ -13,16 +14,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-
-        <strong>
-            <asp:Label ID="lblproject" Font-Size="X-Large" runat="server" Text="Project Name"></asp:Label></strong><br />
-
-        <asp:Label ID="lbladdress" Font-Size="Medium" CssClass="text-info" runat="server" Text="Address"></asp:Label><br />
-        <asp:Label ID="lbljo" Font-Size="Medium" runat="server" Text="Job Order No."></asp:Label><br />
+        <h3><strong>Report</strong></h3>
         <div class="navbar-right">
             <asp:HyperLink ID="HyperLink4" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx" runat="server" Text="back"></asp:HyperLink>
         </div>
     </div>
+
+    <strong>
+        <asp:Label ID="lblproject" Font-Size="X-Large" runat="server" Text="Project Name"></asp:Label></strong><br />
+    <asp:Label ID="lbladdress" Font-Size="Medium" runat="server" Text="Address"></asp:Label><br />
+    <asp:Label ID="lbljo" Font-Size="Medium" runat="server" Text="Job Order No."></asp:Label><br />
     <h2>
         <asp:Label ID="lbldate" runat="server" Text="Date"></asp:Label>
         <small>
@@ -73,9 +74,9 @@
                                     Item#<br />
                                     <asp:TextBox ID="newtboxitemno" placeholder="Item number" CssClass="form-control" runat="server"></asp:TextBox><br />
                                     K#<br />
-                                    <asp:TextBox ID="newtboxkno"  placeholder="k number" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                    <asp:TextBox ID="newtboxkno" placeholder="k number" CssClass="form-control" runat="server"></asp:TextBox><br />
                                     Location<br />
-                                    <asp:TextBox ID="newtboxlocation"  placeholder="Location" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                    <asp:TextBox ID="newtboxlocation" placeholder="Location" CssClass="form-control" runat="server"></asp:TextBox><br />
                                     Specification 
                                                 <asp:RequiredFieldValidator ID="newdlistspecificationvalidator" runat="server" ControlToValidate="newdlistspecification" ValidationGroup="newval"
                                                     ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
@@ -89,7 +90,7 @@
                                                 <asp:CompareValidator ID="newtboxmobilizationcostvalidator" runat="server" ErrorMessage="invalid amount" Text="*"
                                                     ControlToValidate="newtboxmobilizationcost" Type="Double" Operator="DataTypeCheck" ValidationGroup="newval"
                                                     ForeColor="Red"></asp:CompareValidator><br />
-                                    <asp:TextBox ID="newtboxmobilizationcost"  placeholder="Mobilization cost" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                    <asp:TextBox ID="newtboxmobilizationcost" placeholder="Mobilization cost" CssClass="form-control" runat="server"></asp:TextBox><br />
 
                                     <asp:Button ID="newbtn" OnClick="newbtn_click" CssClass="btn btn-primary" ValidationGroup="newval" runat="server" Text="add" />
                                     <asp:ValidationSummary ID="valsummary" ValidationGroup="newval" CssClass="alert alert-danger" runat="server" />
@@ -131,11 +132,11 @@
                                                 <td>
                                                     <asp:Label ID="lblmobilization" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:Label></td>
                                                 <td>
-                                                       <asp:Button ID="Button2" CssClass="btn btn-default" CommandName="myassessment" runat="server" Text="assessment" />
+                                                    <asp:Button ID="Button2" CssClass="btn btn-default" CommandName="myassessment" runat="server" Text="assessment" />
                                                 </td>
                                             </tr>
                                         </table>
-                                     
+
                                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                             <ContentTemplate>
                                                 <asp:Panel ID="Panel1" Visible="false" runat="server">
@@ -182,6 +183,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
+                    <PagerSettings PageButtonCount="8" />
                     <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
                     <EmptyDataTemplate>
                         <div class="alert alert-danger">
