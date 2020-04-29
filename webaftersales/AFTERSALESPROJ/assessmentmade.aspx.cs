@@ -122,7 +122,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             if (e.CommandName == "mydelete")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 deletefunction(((Label)row.FindControl("idlbl")).Text);
             }

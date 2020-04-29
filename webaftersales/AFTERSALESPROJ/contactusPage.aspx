@@ -6,11 +6,11 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+  
         <div class="well">
             <h3><strong>Contact Us</strong></h3>
         </div>
-    </div>
+  
     <div class="alert alert-info">
         <p>For inquiries, comments or suggestions, please call or e-mail us through our Manila and/or Cebu contact information. We will be glad to be of service.</p>
     </div>

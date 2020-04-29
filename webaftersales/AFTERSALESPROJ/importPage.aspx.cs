@@ -188,7 +188,7 @@ namespace webaftersales.AFTERSALESPROJ
                 CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
                 if (cbk.Checked == true)
                 {
-                    int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
+                    int x = int.Parse(((Label)row.FindControl("Label6")).Text.ToString());
                     if (!l.Contains(x))
                     {
                         l.Add(x);
@@ -196,7 +196,7 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 else
                 {
-                    int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
+                    int x = int.Parse(((Label)row.FindControl("Label6")).Text.ToString());
                     if (l.Contains(x))
                     {
                         l.Remove(x);
@@ -226,25 +226,27 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                CustomValidator err = new CustomValidator();
-                err.ValidationGroup = "val1";
-                err.IsValid = false;
-                err.ErrorMessage = "Data imported successfully!";
-                ValidationSummary1.CssClass = "alert alert-success";
-                Page.Validators.Add(err);
-                foreach (GridViewRow row in GridView1.Rows)
-                {
-                    CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
-                    if (cbk.Checked == true)
-                    {
-                        int x = int.Parse(((Label)row.FindControl("Label1")).Text.ToString());
-                        if (l.Contains(x))
-                        {
-                            l.Remove(x);
-                            cbk.Checked = false;
-                        }
-                    }
-                }
+                Response.Redirect("~/AFTERSALESPROJ/reportpage.aspx");
+                //CustomValidator err = new CustomValidator();
+                //err.ValidationGroup = "val1";
+                //err.IsValid = false;
+                //err.ErrorMessage = "Data imported successfully!";
+                //ValidationSummary1.CssClass = "alert alert-success";
+                //Page.Validators.Add(err);
+
+                //foreach (GridViewRow row in GridView1.Rows)
+                //{
+                //    CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
+                //    if (cbk.Checked == true)
+                //    {
+                //        int x = int.Parse(((Label)row.FindControl("Label6")).Text.ToString());
+                //        if (l.Contains(x))
+                //        {
+                //            l.Remove(x);
+                //            cbk.Checked = false;
+                //        }
+                //    }
+                //}
             }
 
             ViewState["listid"] = l;

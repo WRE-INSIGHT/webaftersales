@@ -17,6 +17,9 @@
         <div class="panel-heading">
             <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label>
             <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label>&nbsp;assessment
+            <div class="navbar-right">
+                <asp:LinkButton ForeColor="Yellow" ID="LinkButton3" runat="server" PostBackUrl="~/AFTERSALESPROJ/assessmentPage.aspx">import from cutting list</asp:LinkButton>
+            </div>
         </div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">

@@ -107,10 +107,10 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <div class="panel panel-default">
+                                <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <asp:Label ID="lbllocation" Font-Size="Large" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
-                                        <asp:LinkButton ID="LinkButton4" CommandName="myedit" CssClass="text-right" runat="server">Edit</asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" ForeColor="Yellow" CommandName="myedit" CssClass="text-right" runat="server">Edit</asp:LinkButton>
                                     </div>
                                     <div class="panel-body">
                                         <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>

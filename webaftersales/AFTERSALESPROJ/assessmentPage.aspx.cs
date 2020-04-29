@@ -101,22 +101,17 @@ namespace webaftersales.AFTERSALESPROJ
                 try
                 {
                     sqlcon.Open();
-                    SqlCommand sqlcmd = new SqlCommand("select clno from kmdi_fabrication_tb where KMDI_NO='" + kno + "' AND JOB_ORDER_NO = '" + jo + "'", sqlcon);
+                    string str = " declare @f as varchar(100) = (select isnull(clno,'') from kmdi_fabrication_tb where KMDI_NO='" + kno + "' AND JOB_ORDER_NO = '" + jo + "')"+
+                                    " declare @s as varchar(100) = (select isnull(clno,'') from KMDI_SCREENFAB_TB where KMDI_NO='" + kno + "' AND JOB_ORDER_NO = '" + jo + "')"+
+                                    " select @f,@s";
+
+                    SqlCommand sqlcmd = new SqlCommand(str, sqlcon);
                     using (SqlDataReader rd = sqlcmd.ExecuteReader())
                     {
                         while (rd.Read())
                         {
                             ViewState["FCL"] = rd[0].ToString();
-                        }
-                    }
-
-
-                    SqlCommand sqlcmd1 = new SqlCommand("select clno from KMDI_SCREENFAB_TB where KMDI_NO='" + kno + "' AND JOB_ORDER_NO = '" + jo + "'", sqlcon);
-                    using (SqlDataReader rd1 = sqlcmd1.ExecuteReader())
-                    {
-                        while (rd1.Read())
-                        {
-                            ViewState["SCL"] = rd1[0].ToString();
+                            ViewState["SCL"] = rd[1].ToString();
                         }
                     }
                 }
@@ -152,6 +147,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.CommandType = CommandType.StoredProcedure;
                     sqlcmd.Parameters.AddWithValue("@kno", kno);
                     sqlcmd.Parameters.AddWithValue("@fcl", fcl);
+                    sqlcmd.Parameters.AddWithValue("@scl", scl);
                     sqlcmd.Parameters.AddWithValue("@jo", jo);
                     sqlcmd.Parameters.AddWithValue("@find", findtbox.Text);
                     SqlDataAdapter da = new SqlDataAdapter();
@@ -267,7 +263,6 @@ namespace webaftersales.AFTERSALESPROJ
                         stockno = mytb.Rows[i]["stockno"].ToString();
                         description = mytb.Rows[i]["description"].ToString();
                         insertdata(stockno, description, "");
-                        SqlDataSource1.DataBind();
                     }
                 }
             }
@@ -296,34 +291,32 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void insertdata(string stockno, string description, string assessment)
         {
-            SqlDataSource1.InsertParameters["REPORTID"].DefaultValue = reportid;
-            SqlDataSource1.InsertParameters["STOCKNO"].DefaultValue = stockno;
-            SqlDataSource1.InsertParameters["DESCRIPTION"].DefaultValue = description;
-            SqlDataSource1.InsertParameters["ASSESSMENT"].DefaultValue = assessment;
-     
-            SqlDataSource1.Insert();
-        }
-        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                Control control = e.Row.Cells[0].Controls[2];
-                if (control is LinkButton && ((LinkButton)control).Text == "Delete")
+                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment) insert into [TBLassessment] (id,reportid,stockno,assessment,description)values(@id,@reportid,@stockno,@assessment,@description)";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
-                    ((LinkButton)control).OnClientClick = "return confirm('Are you sure you want to delete this record?');";
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@reportid", reportid);
+                        sqlcmd.Parameters.AddWithValue("@stockno", stockno);
+                        sqlcmd.Parameters.AddWithValue("@description", description);
+                        sqlcmd.Parameters.AddWithValue("@assessment", assessment);
+                        sqlcmd.ExecuteNonQuery();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                Response.Redirect("~/AFTERSALESPROJ/assessmentmade.aspx");
+            }
         }
-
-        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView2.PageIndex = e.NewPageIndex;
-        }
-        protected void addnew(object sender, EventArgs e)
-        {
-            insertdata("", descriptiontbox.Text, assessmenttbox.Text);
-        }
-
         protected void findbtn_Click(object sender, EventArgs e)
         {
             getdata();

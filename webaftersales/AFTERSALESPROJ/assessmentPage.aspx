@@ -1,26 +1,26 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" AutoEventWireup="true" CodeBehind="assessmentPage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.assessmentPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Assessment</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cutting list</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h2>
-            <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label><small>
-                <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label></small></h2>
+        <h3><strong>Cutting list</strong></h3>
         <div class="navbar-right">
-            <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back"></asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/assessmentmade.aspx" runat="server" Text="back"></asp:HyperLink>
         </div>
     </div>
-
+    <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    Cutting list
+                    <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label>&nbsp;cutting list
                 </div>
 
                 <div class="panel-body">
@@ -42,45 +42,39 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label1" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                             <asp:Label ID="Label6" Visible="false" runat="server" Text='<%# Bind("STOCKNO") %>'></asp:Label>
-                                            <div class="panel panel-primary">
+                                            <div class="panel panel-success">
+                                                <div class="panel-heading">
+                                                      <asp:CheckBox ID="cboxselect" CssClass="btn btn-default" runat="server" />  <asp:Label ID="Label11" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
+                                                </div>
                                                 <div class="panel-body">
-                                                    <table>
+                                                    <table class="table" border="1">
+                                                       
+                           
                                                         <tr>
-                                                            <td rowspan="6">
-                                                                <asp:CheckBox ID="cboxselect" CssClass="form-control" runat="server" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Header</td>
+                                                            <td  class="text-muted"><strong>Header</strong></td>
                                                             <td>
                                                                 <asp:Label ID="Label7" runat="server" Text='<%# Bind("HEADER") %>'></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Costhead</td>
+                                                            <td  class="text-muted"><strong>Costhead</strong></td>
                                                             <td>
                                                                 <asp:Label ID="Label8" runat="server" Text='<%# Bind("COSTHEAD") %>'></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Color</td>
+                                                            <td  class="text-muted"><strong>Color</strong></td>
                                                             <td>
                                                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("TYPECOLOR") %>'></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Article #</td>
+                                                            <td class="text-muted"><strong>Article #</strong></td>
                                                             <td>
                                                                 <asp:Label ID="Label10" runat="server" Text='<%# Bind("ARTICLENO") %>'></asp:Label>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Description</td>
-
-                                                            <td>
-                                                                <asp:Label ID="Label11" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
-                                                            </td>
-                                                        </tr>
+                                                      
 
                                                     </table>
                                                 </div>
@@ -104,152 +98,8 @@
                 <div class="panel-footer">Footer</div>
             </div>
 
-
-
-
             <br />
-            <asp:LinkButton ID="LinkButton1" CLASS="btn btn-default" OnClick="importbtn_Click" runat="server">import</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" CLASS="btn btn-primary" OnClick="importbtn_Click" runat="server">import</asp:LinkButton>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <br />
-    <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
-    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-        <ContentTemplate>
-            <%--    <asp:Button ID="importbtn" CssClass="btn btn-default" runat="server" Text="Import selected items" OnClick="importbtn_Click" />--%>
-
-            <div class="well">
-                <h3>
-                    <string>Assessment</string>
-                </h3>
-            </div>
-
-
-            <asp:GridView ID="GridView2" CssClass="table00 v1 table" GridLines="None" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowDataBound="GridView2_RowDataBound" CellPadding="4" ForeColor="#333333" PageSize="5">
-
-                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-
-                <Columns>
-                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                    <asp:TemplateField HeaderText="" SortExpression="">
-                        <EditItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Visible="false" Text='<%# Eval("ID") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label5" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="" SortExpression="">
-                        <EditItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Visible="false" Text='<%# Bind("REPORTID") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Visible="false" Text='<%# Bind("REPORTID") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="STOCKNO" SortExpression="STOCKNO">
-                        <EditItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("STOCKNO") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("STOCKNO") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="DESCRIPTION" SortExpression="DESCRIPTION">
-                        <EditItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ASSESSMENT" SortExpression="ASSESSMENT">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" CssClass="form-control" TextMode="MultiLine" Rows="10" runat="server" Text='<%# Bind("ASSESSMENT") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("ASSESSMENT") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-
-
-                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                <PagerStyle HorizontalAlign="Center" CssClass="GridPager" />
-                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#F7F6F3" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                <EmptyDataTemplate>
-                    <div class="alert alert-danger">
-                        <h2><strong>Sorry, no data available!</strong>
-                            <small>0 result found</small>
-                        </h2>
-                    </div>
-                </EmptyDataTemplate>
-            </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
-                DeleteCommand="DELETE FROM [TBLassessment] WHERE [ID] = @ID"
-                InsertCommand="
-                        declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from tblassessment)
-                        INSERT INTO [TBLassessment] ([ID], [REPORTID], [STOCKNO], [DESCRIPTION], [ASSESSMENT]) VALUES (@ID, @REPORTID, @STOCKNO, @DESCRIPTION, @ASSESSMENT)"
-                SelectCommand="SELECT * FROM [TBLassessment] WHERE ([REPORTID] = @REPORTID)"
-                UpdateCommand="UPDATE [TBLassessment] SET [REPORTID] = @REPORTID, [STOCKNO] = @STOCKNO, [DESCRIPTION] = @DESCRIPTION, [ASSESSMENT] = @ASSESSMENT WHERE [ID] = @ID">
-                <DeleteParameters>
-                    <asp:Parameter Name="ID" Type="Int32" />
-                </DeleteParameters>
-                <InsertParameters>
-
-                    <asp:Parameter Name="REPORTID" Type="Int32" />
-                    <asp:Parameter Name="STOCKNO" Type="Int32" />
-                    <asp:Parameter Name="DESCRIPTION" Type="String" />
-                    <asp:Parameter Name="ASSESSMENT" Type="String" />
-                </InsertParameters>
-                <SelectParameters>
-                    <asp:SessionParameter Name="REPORTID" SessionField="reportID" Type="Int32" />
-                </SelectParameters>
-                <UpdateParameters>
-                    <asp:Parameter Name="REPORTID" Type="Int32" />
-                    <asp:Parameter Name="STOCKNO" Type="Int32" />
-                    <asp:Parameter Name="DESCRIPTION" Type="String" />
-                    <asp:Parameter Name="ASSESSMENT" Type="String" />
-                    <asp:Parameter Name="ID" Type="Int32" />
-                </UpdateParameters>
-            </asp:SqlDataSource>
-
-
-        </ContentTemplate>
-    </asp:UpdatePanel>
-    <div class="navbar-right">
-        <asp:HyperLink ID="HyperLink2" runat="server" class="btn btn-success" data-toggle="modal" data-target="#myModal">new</asp:HyperLink>
-    </div>
-
-
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">NEW ITEM</h4>
-                </div>
-                <div class="modal-body">
-                    <div class=" form-group">
-                        <asp:TextBox ID="descriptiontbox" placeholder="Description" Height="40" CssClass="form-control" runat="server"></asp:TextBox><br />
-                        <asp:TextBox ID="assessmenttbox" placeholder="Assessment" Rows="10" TextMode="MultiLine" CssClass="form-control" runat="server"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="addnew" CssClass="btn btn-success"><span class="glyphicon glyphicon-save"></span>Add</asp:LinkButton>
-                    <button type="button" class="btn btn-default btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
 </asp:Content>
