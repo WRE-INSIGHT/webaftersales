@@ -125,33 +125,27 @@
                                                     <br />
                                                     <table>
                                                         <tr>
-                                                            <td class="text-muted">Contact person</td>
-                                                            <td>
+                                                            <td><small class="text-muted">Contact person :&nbsp;</small>
                                                                 <asp:Label ID="contactpersonlbl" runat="server" Text='<%# Eval("CONTACTPERSON") %>'></asp:Label></td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="text-muted">Tel #</td>
-                                                            <td>
+                                                            <td><small class="text-muted">Tel #</small> :&nbsp;</small>
                                                                 <asp:Label ID="telnolbl" runat="server" Text='<%# Eval("TELNO") %>'></asp:Label></td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="text-muted">Email</td>
-                                                            <td>
+                                                            <td><small class="text-muted">Email</small> :&nbsp;</small>
                                                                 <asp:Label ID="emaillbl" runat="server" Text='<%# Eval("EMAIL") %>'></asp:Label></td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="text-muted">Viber</td>
-                                                            <td>
+                                                            <td><small class="text-muted">Viber</small> :&nbsp;</small>
                                                                 <asp:Label ID="viberlbl" runat="server" Text='<%# Eval("VIBER") %>'></asp:Label></td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="text-muted">WhatsApp</td>
-                                                            <td>
+                                                            <td><small class="text-muted">WhatsApp</small>  :&nbsp;</small>
                                                                 <asp:Label ID="whatsapplbl" runat="server" Text='<%# Eval("WHATSAPP") %>'></asp:Label></td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="text-muted">Fax #</td>
-                                                            <td>
+                                                            <td><small class="text-muted">Fax #</small>  :&nbsp;</small>
                                                                 <asp:Label ID="faxnolbl" runat="server" Text='<%# Eval("FAXNO") %>'></asp:Label></td>
                                                         </tr>
                                                     </table>
@@ -160,7 +154,8 @@
                                         </table>
 
                                     </div>
-                                    <asp:LinkButton ID="LinkButton4" CommandName="myservicing" CssClass="btn btn-primary" runat="server">manage job order</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" Width ="" CommandName="myservicing" CssClass="btn btn-primary" runat="server">job order</asp:LinkButton>
+                                         <asp:LinkButton ID="LinkButton5" CommandName="myquotation" CssClass="btn btn-primary" runat="server">quotation</asp:LinkButton>
                                 </div>
                             </div>
 

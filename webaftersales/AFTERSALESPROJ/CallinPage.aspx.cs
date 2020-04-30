@@ -123,6 +123,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
                 Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
             }
+            else if (e.CommandName == "myquotation")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
+            }
         }
     }
 }
