@@ -10,6 +10,12 @@
     <div class="well">
         <h3><strong>Quotation</strong></h3>
     </div>
+    <h2>
+        <strong>
+            <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
+        <small>
+            <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
+    <br />
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
@@ -59,15 +65,12 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-
-                                            <asp:LinkButton ID="LinkButton1" CommandName="myedit" runat="server">Edit</asp:LinkButton>
-                                        </div>
-
+                               
                                         <div class="panel-body">
-                                            <asp:Label ID="idlbl" Visible="false" Font-Size="Large" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                            <asp:Label ID="asenolbl" Font-Size="Large" runat="server" Text='<%# Bind("ASENO") %>'></asp:Label>&nbsp;
-                            <asp:Label ID="datelbl" Font-Size="Medium" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
+                                            <asp:Label ID="idlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                            <asp:Label ID="asenolbl" Font-Size="XX-Large" runat="server" Text='<%# Bind("ASENO") %>'></asp:Label>     
+                                            <asp:LinkButton ID="LinkButton1" CommandName="myedit" runat="server">Edit</asp:LinkButton><br />
+                                            <asp:Label ID="datelbl" Font-Size="Medium" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
 
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -88,7 +91,7 @@
                                                 <div class="col-sm-4">
                                                     <table class="table" border="0">
                                                         <tr>
-                                                            <th>Other charges</th>
+                                                            <th>Other_charges</th>
                                                             <th>Particular</th>
                                                         </tr>
                                                         <td>
@@ -139,9 +142,9 @@
                                                                 Accepted date:<asp:CompareValidator ID="CompareValidator2" ControlToValidate="editaccepteddatetbox" Type="Date" Operator="DataTypeCheck"
                                                                     ValidationGroup="editval" runat="server" ErrorMessage="Invalid date format!" ForeColor="Red">*</asp:CompareValidator><br />
                                                                 <asp:TextBox ID="editaccepteddatetbox" placeholder="mm/dd/yyyy" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                  <asp:Button ID="Button2" runat="server" CommandName="mysave" ValidationGroup="editval" CssClass="btn btn-primary" Text="save" />
+                                                                <asp:Button ID="Button2" runat="server" CommandName="mysave" ValidationGroup="editval" CssClass="btn btn-primary" Text="save" />
                                                             </div>
-                                                        </div>              
+                                                        </div>
                                                         <asp:ValidationSummary ID="editvalsummary" ValidationGroup="editval" CssClass="alert alert-danger" runat="server" />
 
                                                     </div>
@@ -153,6 +156,9 @@
                                                     </div>
                                                 </div>
                                             </asp:Panel>
+
+                                          
+
                                         </div>
 
                                     </div>

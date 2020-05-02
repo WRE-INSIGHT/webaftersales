@@ -21,6 +21,8 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
+                        lblproject.Text = Session["callinProject"].ToString();
+                        lbladdress.Text = Session["callinAddress"].ToString();
                         getdata();
                     }
                 }
@@ -207,38 +209,76 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 deletefunction(((Label)row.FindControl("idlbl")).Text);
             }
+            if (e.CommandName == "myitem")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["aseno"] = ((Label)row.FindControl("asenolbl")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/quotationitem.aspx");
+            }
         }
 
         private void updatefunction(string id, string accepted, string qdate, string aseno, string paritular, string othercharges)
         {
             try
             {
-
+                string find = "select * from quotationtb where not id = @id and aseno = @aseno";
                 string str = " update quotationtb set accepted=@accepted, aseno=@aseno, qdate =@qdate, particular=@particular, othercharges=@othercharges where id = @id";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    bool x;
+
+                    using (SqlCommand cmd = new SqlCommand(find, sqlcon))
                     {
-                        sqlcmd.Parameters.AddWithValue("@id", id);
-                        sqlcmd.Parameters.AddWithValue("@accepted", accepted);
-                        sqlcmd.Parameters.AddWithValue("@qdate", qdate);
-                        sqlcmd.Parameters.AddWithValue("@aseno", aseno);
-                        sqlcmd.Parameters.AddWithValue("@particular", paritular);
-                        sqlcmd.Parameters.AddWithValue("@othercharges", othercharges);
-                        sqlcmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@aseno", aseno);
+                        using (SqlDataReader rd = cmd.ExecuteReader())
+                        {
+                            if (rd.HasRows)
+                            {
+                                x = true;
+                            }
+                            else
+                            {
+                                x = false;
+                            }
+                        }
                     }
+
+                    if (x == true)
+                    {
+                        CustomValidator err = new CustomValidator();
+                        err.ValidationGroup = "editval";
+                        err.IsValid = false;
+                        err.ErrorMessage = "duplicate ASE NO!";
+                        Page.Validators.Add(err);
+                    }
+                    else
+                    {
+                        using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                        {
+                            sqlcmd.Parameters.AddWithValue("@id", id);
+                            sqlcmd.Parameters.AddWithValue("@accepted", accepted);
+                            sqlcmd.Parameters.AddWithValue("@qdate", qdate);
+                            sqlcmd.Parameters.AddWithValue("@aseno", aseno);
+                            sqlcmd.Parameters.AddWithValue("@particular", paritular);
+                            sqlcmd.Parameters.AddWithValue("@othercharges", othercharges);
+                            sqlcmd.ExecuteNonQuery();
+                            getdata();
+                        }
+                    }
+
+
+
                 }
             }
             catch (Exception ex)
             {
                 errorrmessage(ex.ToString());
             }
-            finally
-            {
-                getdata();
-            }
+
         }
 
         private void deletefunction(string id)

@@ -251,6 +251,8 @@
     <Compile Include="AFTERSALESPROJ\contactusPage.aspx.designer.cs">
       <DependentUpon>contactusPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\dal\qukno.cs" />
+    <Compile Include="AFTERSALESPROJ\dal\quknoparts.cs" />
     <Compile Include="AFTERSALESPROJ\dal\scheduledal.cs" />
     <Compile Include="AFTERSALESPROJ\dal\servicedal.cs" />
     <Compile Include="AFTERSALESPROJ\datasets\DSreport.Designer.cs">
@@ -362,6 +364,13 @@
     </Compile>
     <Compile Include="AFTERSALESPROJ\quotation.aspx.designer.cs">
       <DependentUpon>quotation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationitem.aspx.cs">
+      <DependentUpon>quotationitem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationitem.aspx.designer.cs">
+      <DependentUpon>quotationitem.aspx</DependentUpon>
     </Compile>
     <Compile Include="AFTERSALESPROJ\reportPage.aspx.cs">
       <DependentUpon>reportPage.aspx</DependentUpon>
@@ -508,6 +517,7 @@
     <Content Include="AFTERSALESPROJ\newcallin.aspx" />
     <Content Include="AFTERSALESPROJ\pricelist.aspx" />
     <Content Include="AFTERSALESPROJ\quotation.aspx" />
+    <Content Include="AFTERSALESPROJ\quotationitem.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />

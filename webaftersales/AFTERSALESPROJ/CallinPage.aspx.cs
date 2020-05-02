@@ -128,6 +128,8 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
+                Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
+                Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
                 Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
             }
         }
