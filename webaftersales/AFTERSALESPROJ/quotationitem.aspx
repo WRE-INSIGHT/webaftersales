@@ -6,46 +6,55 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <asp:scriptmanager runat="server"></asp:scriptmanager>
     <div class="well">
         <h3><strong>Quotation items</strong></h3>
         <div class="navbar-right">
-            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotation.aspx">back</asp:LinkButton>
+            <asp:linkbutton id="LinkButton1" cssclass="btn btn-default" runat="server" postbackurl="~/AFTERSALESPROJ/quotation.aspx">back</asp:linkbutton>
         </div>
     </div>
-     <h2>
+    <h2>
         <strong>
-            <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
+            <asp:label id="lblproject" runat="server" text="Project Name"></asp:label>
+        </strong>
+        <br />
         <small>
-            <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
-    <asp:Label ID="lblaseno" Font-Size="XX-Large" runat="server" Text="Label"></asp:Label>
+            <asp:label id="lbladdress" runat="server" text="Address"></asp:label>
+        </small></h2>
+    <asp:label id="lblaseno" font-size="XX-Large" runat="server" text="Label"></asp:label>
     <br />
-    <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
+    <asp:validationsummary validationgroup="val1" cssclass="alert alert-danger" id="ValidationSummary1" runat="server" />
+    <asp:updatepanel runat="server">
+   <ContentTemplate>
 
+  
     <div class="well">
-       
-            <div class="row">
-                <div class="col-sm-4">
-                    Item #<br />
-                    <asp:TextBox ID="itemnotbox" CssClass="form-control" runat="server"></asp:TextBox><br />
-                </div>
-                <div class="col-sm-4">
-                    K #<br />
-                    <asp:TextBox ID="knotbox" CssClass="form-control" runat="server"></asp:TextBox><br />
-                </div>
-                <div class="col-sm-4">
-                    Location<br />
-                    <asp:TextBox ID="locationtbox" CssClass="form-control" runat="server"></asp:TextBox><br />
-                </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                Item #<br />
+                <asp:textbox id="itemnotbox" cssclass="form-control" runat="server"></asp:textbox>
+                <br />
             </div>
-             <asp:Button ID="Button1" runat="server" Text="add" CssClass="btn btn-primary" OnClick="Button1_Click" />
-       
+            <div class="col-sm-4">
+                K #<br />
+                <asp:textbox id="knotbox" cssclass="form-control" runat="server"></asp:textbox>
+                <br />
+            </div>
+            <div class="col-sm-4">
+                Location<br />
+                <asp:textbox id="locationtbox" cssclass="form-control" runat="server"></asp:textbox>
+                <br />
+            </div>
+        </div>
+        <asp:button id="Button1" runat="server" text="add" cssclass="btn btn-primary" onclick="Button1_Click" />
+
     </div>
 
     <div class="panel panel-primary">
 
         <div class="panel-body">
-            <asp:GridView ID="GridView1" GridLines="None" AutoGenerateColumns="false" runat="server" OnRowCommand="GridView1_RowCommand">
+            <asp:gridview id="GridView1" gridlines="None" autogeneratecolumns="false" runat="server" onrowcommand="GridView1_RowCommand">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -101,36 +110,61 @@
                                         </div>
                                     </asp:Panel>
 
-                                    <asp:GridView ID="GridView2" AutoGenerateColumns="false" ShowHeader="false" GridLines="None" DataSource='<%# Bind("thisparts") %>' runat="server">
+                                    <asp:GridView ID="GridView2" AutoGenerateColumns="false" ShowHeader="false" GridLines="None" DataSource='<%# Bind("thisparts") %>' runat="server" OnRowCommand="GridView2_RowCommand">
                                         <Columns>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
+                                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                        <ContentTemplate>
 
-                                                    <asp:Label ID="Label2" Font-Size="Large" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label><br />
-                                                    Article #:&nbsp;<asp:Label ID="Label3" runat="server" Text='<%# Bind("ARTICLENO") %>'></asp:Label><br />
-                                                    <table class="table" border="1">
-                                                        <tr>
-                                                            <th>mark up</th>
-                                                            <th>unit price</th>
-                                                            <th>qty</th>
-                                                            <th>net price</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("MARKUP") %>'></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("UNITPRICE") %>'></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("QTY") %>'></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("netamount") %>'></asp:Label>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
 
+                                                            <asp:Label ID="partsidlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                                            <asp:Label ID="Label2" Font-Size="Large" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label><br />
+                                                            Article #:&nbsp;<asp:Label ID="Label3" runat="server" Text='<%# Bind("ARTICLENO") %>'></asp:Label><br />
+                                                            <asp:LinkButton runat="server" CommandName="g2myedit">Edit</asp:LinkButton>&nbsp;
+                                                    <asp:LinkButton runat="server" CommandName="g2mydelete" OnClientClick="return confirm('delete this record?')">Delete</asp:LinkButton>
+                                                            <table class="table" border="1">
+                                                                <tr>
+                                                                    <th><small>mark up</small> </th>
+                                                                    <th><small>unit price</small> </th>
+                                                                    <th><small>qty</small> </th>
+                                                                    <th><small>net price</small> </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <small>
+                                                                            <asp:Label ID="markuplbl" runat="server" Text='<%# Bind("MARKUP") %>'></asp:Label></small>
+                                                                    </td>
+                                                                    <td>
+                                                                        <small>
+                                                                            <asp:Label ID="unitpricelbl" runat="server" Text='<%# Bind("UNITPRICE") %>'></asp:Label></small>
+                                                                    </td>
+                                                                    <td>
+                                                                        <small>
+                                                                            <asp:Label ID="qtylbl" runat="server" Text='<%# Bind("QTY") %>'></asp:Label></small>
+                                                                    </td>
+                                                                    <td>
+                                                                        <small>
+                                                                            <asp:Label ID="netamountlbl" runat="server" Text='<%# Bind("netamount") %>'></asp:Label></small>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <asp:Panel ID="Panel2" Visible="false" runat="server">
+                                                                <div class="well">
+                                                                Mark up<br />
+                                                                <asp:TextBox ID="markuptbox" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                Unit price<br />
+                                                                <asp:TextBox ID="unitpricetbox" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                Qty<br />
+                                                                <asp:TextBox ID="qtytbox" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                Net amount<br />
+                                                                <asp:TextBox ID="netamounttbox" CssClass="form-control" Enabled="false" runat="server"></asp:TextBox><br />
+                                                                    <asp:Button runat="server" CssClass="btn btn-primary" CommandName="g2mysave" Text="save"></asp:Button>&nbsp;       
+                                                                              <asp:Button runat="server" CssClass="btn btn-default" CommandName="g2myclose" Text="close"></asp:Button>
+                                                                    </div>
+                                                            </asp:Panel>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
@@ -143,8 +177,10 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-            </asp:GridView>
+            </asp:gridview>
 
         </div>
     </div>
+        </ContentTemplate>
+    </asp:updatepanel>
 </asp:Content>

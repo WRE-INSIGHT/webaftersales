@@ -17,13 +17,26 @@
                     <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">new</asp:LinkButton></td>
             </tr>
         </table>
-
-        <div class="input-group">
-            <asp:TextBox ID="callinkey" CssClass="form-control" runat="server"></asp:TextBox>
-            <div class="input-group-btn">
-                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        Province
+                    </div>
+                    <asp:DropDownList ID="provinceddl" CssClass="form-control" runat="server"></asp:DropDownList><br />
+                </div>
             </div>
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <asp:TextBox ID="callinkey" CssClass="form-control" runat="server"></asp:TextBox>
+                    <div class="input-group-btn">
+                        <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton><br />
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
 
 
@@ -53,18 +66,30 @@
                                     <br />
                                     <table border="0" class="table">
                                         <tr>
-                                            <th>JO
+                                            <th><small>JO</small>
                                             </th>
-                                            <th>JO DATE
-                                              
+                                            <th><small>JO DATE</small>
+
+                                            </th>
+                                            <th>
+                                                <small>%PAYMENT</small>
+                                            </th>
+                                            <th>
+                                                <small>Turn Over</small>
                                             </th>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Label ID="jolbl" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
+                                                <asp:Label ID="jolbl" Font-Size="Small" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="Label10" runat="server" Text='<%# Bind("JODATE") %>'></asp:Label>
+                                                <asp:Label ID="Label10" Font-Size="Small" runat="server" Text='<%# Bind("JODATE") %>'></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="paymentperlbl" Font-Size="Small" CssClass="text-warning" runat="server" Text='<%# Bind("PAYMENTPER") %>'></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="turnoverlbl" Font-Size="Small" runat="server" Text='<%# Eval("TURNOVER").ToString() == "0" ? "Yes" : "No" %>'></asp:Label>
                                             </td>
                                         </tr>
                                     </table>
@@ -125,6 +150,11 @@
                                                     <br />
                                                     <table>
                                                         <tr>
+                                                            <td><small class="text-muted">Caller :&nbsp;</small>
+                                                                <asp:Label ID="callerlbl" Font-Size="15px" runat="server" Text='<%# Bind("CALLER") %>'></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
                                                             <td><small class="text-muted">Contact person :&nbsp;</small>
                                                                 <asp:Label ID="contactpersonlbl" runat="server" Text='<%# Eval("CONTACTPERSON") %>'></asp:Label></td>
                                                         </tr>
@@ -154,15 +184,11 @@
                                         </table>
 
                                     </div>
-                                    <asp:LinkButton ID="LinkButton4" Width ="" CommandName="myservicing" CssClass="btn btn-primary" runat="server">job order</asp:LinkButton>
-                                         <asp:LinkButton ID="LinkButton5" CommandName="myquotation" CssClass="btn btn-primary" runat="server">quotation</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" Width="" CommandName="myservicing" CssClass="btn btn-primary" runat="server">job order</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton5" CommandName="myquotation" Visible="false" CssClass="btn btn-primary" runat="server">quotation</asp:LinkButton>
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="panel-footer">
-                            <asp:Label ID="Label4" CssClass="text-muted" runat="server" Text="caller "></asp:Label>
-                            <asp:Label ID="callerlbl" Font-Size="15px" runat="server" Text='<%# Bind("CALLER") %>'></asp:Label>
                         </div>
                     </div>
                 </ItemTemplate>

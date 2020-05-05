@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" AutoEventWireup="true" CodeBehind="homePage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.homePage" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +23,7 @@
             </div>
         </div>
     </div>
+  
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
 
@@ -78,6 +81,14 @@
                                         <tr>
                                             <td colspan="2" class="text-center">
                                                 <asp:Label ID="Label6" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                           
+                                                 <td class="text-center"><small class="text-muted">Status</small>
+                                            </td>
+                                            <td>
+                                                 <strong><asp:Label ID="Label12" CssClass=" text-warning" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label></strong>  </td>
                                             </td>
                                         </tr>
                                         <tr>

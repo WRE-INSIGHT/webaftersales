@@ -25,12 +25,40 @@ namespace webaftersales.AFTERSALESPROJ
                     lbldate.Text = "  " + Session["DATE"].ToString();
                     getdata();
                     getteam();
+                    getstatus();
                 }
 
             }
             else
             {
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
+            }
+        }
+        private void getstatus()
+        {
+            try
+            {
+                string str = "select [status] from servicingtb where id = @sid";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@sid", sid);
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            while (rd.Read())
+                            {
+                                lblstatus.Text = rd[0].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
             }
         }
         private string sid
@@ -115,7 +143,7 @@ namespace webaftersales.AFTERSALESPROJ
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
-  
+
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -184,7 +212,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             if (e.CommandName == "mydelete")
             {
-                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex; 
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 deletefunction(((Label)row.FindControl("lblid")).Text.ToString());
             }
@@ -230,7 +258,7 @@ namespace webaftersales.AFTERSALESPROJ
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@id", id);  
+                        sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -244,7 +272,7 @@ namespace webaftersales.AFTERSALESPROJ
                 getdata();
             }
         }
-        protected void newbtn_click(object sender,EventArgs e)
+        protected void newbtn_click(object sender, EventArgs e)
         {
             try
             {
@@ -260,11 +288,11 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         sqlcon.Open();
                         sqlcmd.Parameters.AddWithValue("@sid", sid);
-                        sqlcmd.Parameters.AddWithValue("@item",newtboxitemno.Text);
-                        sqlcmd.Parameters.AddWithValue("@kno",newtboxkno.Text);
-                        sqlcmd.Parameters.AddWithValue("@location",newtboxlocation.Text);
-                        sqlcmd.Parameters.AddWithValue("@mobilization",newtboxmobilizationcost.Text);
-                        sqlcmd.Parameters.AddWithValue("@specification",newdlistspecification.Text);
+                        sqlcmd.Parameters.AddWithValue("@item", newtboxitemno.Text);
+                        sqlcmd.Parameters.AddWithValue("@kno", newtboxkno.Text);
+                        sqlcmd.Parameters.AddWithValue("@location", newtboxlocation.Text);
+                        sqlcmd.Parameters.AddWithValue("@mobilization", newtboxmobilizationcost.Text);
+                        sqlcmd.Parameters.AddWithValue("@specification", newdlistspecification.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -283,6 +311,69 @@ namespace webaftersales.AFTERSALESPROJ
         {
             GridView1.PageIndex = e.NewPageIndex;
             getdata();
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Panel2.Visible = true;
+        }
+
+        protected void closebtn_Click(object sender, EventArgs e)
+        {
+            Panel2.Visible = false;
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string str = " update servicingtb set [status] = @status where id = @sid";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@sid", sid);
+                        sqlcmd.Parameters.AddWithValue("@status", statusddl.Text);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            finally
+            {
+                updatestatus();
+                Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
+            }
+        }
+        private void updatestatus()
+        {
+            try
+            {
+                string str = " SELECT * INTO #TBL FROM( " +
+                            " SELECT TOP 1 [STATUS],id, x=SUBSTRING(servicing, PATINDEX('%[0-9]%', servicing), PATINDEX('%[0-9][^0-9]%', servicing + 't') - PATINDEX('%[0-9]%'," +
+                            " servicing) +1)" +
+                            " FROM SERVICINGTB where cin = @cin order by x DESC ) AS TBL" +
+                            " update callintb set [status] = (SELECT  case when [status] is null then '' else [status] end FROM #TBL) where cin = @cin";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@cin", Session["CID"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
         }
     }
 }

@@ -9,6 +9,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
         <h3><strong>Quotation</strong></h3>
+        <div class="navbar-right">
+            <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx">back</asp:LinkButton>
+        </div>
     </div>
     <h2>
         <strong>

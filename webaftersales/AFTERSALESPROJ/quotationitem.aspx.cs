@@ -184,5 +184,97 @@ namespace webaftersales.AFTERSALESPROJ
                 getdata();
             }
         }
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "g2myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = ((GridView)sender).Rows[rowindex];
+                ((TextBox)row.FindControl("markuptbox")).Text = ((Label)row.FindControl("markuplbl")).Text;
+                ((TextBox)row.FindControl("unitpricetbox")).Text = ((Label)row.FindControl("unitpricelbl")).Text;
+                ((TextBox)row.FindControl("qtytbox")).Text = ((Label)row.FindControl("qtylbl")).Text;
+                ((TextBox)row.FindControl("netamounttbox")).Text = ((Label)row.FindControl("netamountlbl")).Text;
+                ((Panel)row.FindControl("Panel2")).Visible = true;
+            }
+            if (e.CommandName == "g2myclose")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = ((GridView)sender).Rows[rowindex];
+                ((Panel)row.FindControl("Panel2")).Visible = false;
+            }
+            if (e.CommandName == "g2mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = ((GridView)sender).Rows[rowindex];
+                deleteprice(((Label)row.FindControl("partsidlbl")).Text);
+            }
+            if (e.CommandName == "g2mysave")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = ((GridView)sender).Rows[rowindex];
+                udateprice(((Label)row.FindControl("partsidlbl")).Text,
+                  ((TextBox)row.FindControl("markuptbox")).Text,
+                ((TextBox)row.FindControl("unitpricetbox")).Text,
+                ((TextBox)row.FindControl("qtytbox")).Text,
+                ((TextBox)row.FindControl("netamounttbox")).Text);
+            }
+        }
+
+        private void deleteprice(string id)
+        {
+            try
+            {
+                string str = "delete from  partstb where id = @id";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                getdata();
+            }
+        }
+
+        private void udateprice(string id, string markup, string unitprice, string qty, string netamount)
+        {
+            try
+            {
+                string str = "update partstb set markup=@markup,unitprice=@unitprice,qty=@qty,netamount=@netamount  where id = @id";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@markup", markup);
+                        sqlcmd.Parameters.AddWithValue("@unitprice", unitprice);
+                        sqlcmd.Parameters.AddWithValue("@qty", qty);
+                        sqlcmd.Parameters.AddWithValue("@netamount", netamount);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                getdata();
+            }
+        }
     }
 }

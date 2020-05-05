@@ -106,31 +106,17 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string c = "";
-                string str = "SELECT id , x=SUBSTRING(servicing, PATINDEX('%[0-9]%', servicing), PATINDEX('%[0-9][^0-9]%', servicing + 't') - PATINDEX('%[0-9]%'," +
-                     " servicing) +1)" +
-                     " FROM SERVICINGTB where cin = @cin order by x asc ";
+                string str = " SELECT * INTO #TBL FROM( " +
+                            " SELECT TOP 1 [STATUS],id, x=SUBSTRING(servicing, PATINDEX('%[0-9]%', servicing), PATINDEX('%[0-9][^0-9]%', servicing + 't') - PATINDEX('%[0-9]%'," +
+                            " servicing) +1)" +
+                            " FROM SERVICINGTB where cin = @cin order by x DESC ) AS TBL" +
+                            " update callintb set [status] = (SELECT  case when [status] is null then '' else [status] end FROM #TBL) where cin = @cin";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
-                        sqlcmd.Parameters.AddWithValue("@cin", cin);
-                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
-                        {
-                            while (rd.Read())
-                            {
-                                c = rd[0].ToString();
-                            }
-                        }
-                    }
-                    string str2 = " declare @status as varchar(100) = (select case when status is null then '' else status end from servicingtb where id = @id)" +
-                                   " update callintb set status = @status where cin = @cin" +
-                                   " update callintb set status = '' where status is null";
-                    using (SqlCommand sqlcmd = new SqlCommand(str2, sqlcon))
-                    {
-                        sqlcmd.Parameters.AddWithValue("id", c);
                         sqlcmd.Parameters.AddWithValue("@cin", cin);
                         sqlcmd.ExecuteNonQuery();
                     }

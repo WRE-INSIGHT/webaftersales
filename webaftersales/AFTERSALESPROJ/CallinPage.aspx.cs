@@ -20,9 +20,13 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
+                    
+                        getprovinces();
+
                         if (Session["callinserachkey"] != null)
                         {
                             callinkey.Text = Session["callinserachkey"].ToString();
+                            provinceddl.Text= Session["provincekey"].ToString();
                         }
                         getdata();
                     }
@@ -35,6 +39,27 @@ namespace webaftersales.AFTERSALESPROJ
             else
             {
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
+            }
+        }
+        private void getprovinces()
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("select distinct province from addendum_to_contract_tb order by province asc", sqlcon))
+                    {
+                        sqlcon.Open();
+                        provinceddl.DataSource = sqlcmd.ExecuteReader();
+                        provinceddl.DataTextField = "PROVINCE";
+                        provinceddl.DataBind();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
             }
         }
         private void getdata()
@@ -52,6 +77,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
                         sqlcmd.CommandText = "stdCallin";
                         sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@province", provinceddl.Text);
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(ds, "tb");
@@ -76,11 +102,14 @@ namespace webaftersales.AFTERSALESPROJ
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Session["callinserachkey"] = callinkey.Text;
+            Session["provincekey"] = provinceddl.Text;
             getdata();
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            Session["callinserachkey"] = callinkey.Text;
+            Session["provincekey"] = provinceddl.Text;
             GridView1.PageIndex = e.NewPageIndex;
             getdata();
         }
@@ -118,10 +147,31 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
-                Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
-                Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
-                Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
+
+                if (((Label)row.FindControl("turnoverlbl")).Text=="Yes")
+                {
+
+                    Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
+                    Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
+                    Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                    Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
+                }
+                else
+                {
+                    if ( Convert.ToDecimal(((Label)row.FindControl("paymentperlbl")).Text) >= 100)
+                    {
+                        Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
+                        Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
+                        Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                        Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('Sorry unable to create new JO, account is not fully paid')",true);
+                    }
+                }
+
+            
             }
             else if (e.CommandName == "myquotation")
             {

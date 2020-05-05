@@ -19,7 +19,7 @@
             <asp:HyperLink ID="HyperLink4" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx" runat="server" Text="back"></asp:HyperLink>
         </div>
     </div>
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <strong>
         <asp:Label ID="lblproject" Font-Size="X-Large" runat="server" Text="Project Name"></asp:Label></strong><br />
     <asp:Label ID="lbladdress" Font-Size="Medium" runat="server" Text="Address"></asp:Label><br />
@@ -29,6 +29,7 @@
         <small>
             <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h2>
 
+
     <table class="table table-striped">
         <tr>
             <th>Status</th>
@@ -37,7 +38,27 @@
         </tr>
         <tr>
             <td>
-                <asp:Label ID="lblstatus" runat="server" Text="Status"></asp:Label></td>
+              
+
+                        <asp:Label ID="lblstatus" runat="server" Text="Status"></asp:Label>
+                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Edit</asp:LinkButton>
+                        <br />
+                        <asp:Panel ID="Panel2" Visible="false" runat="server">
+
+                            <div class="well">
+                                <asp:DropDownList ID="statusddl" Height="35" CssClass="form-control" runat="server">
+                                    <asp:ListItem>Scheduled
+                                    </asp:ListItem>
+                                    <asp:ListItem>Pending For Reschedule
+                                    </asp:ListItem>
+                                </asp:DropDownList>
+                                <br />
+                                <asp:Button ID="Button1" Height="35" CssClass="btn btn-default" OnClientClick="return confirm('save changes?')" runat="server" Text="save" OnClick="Button1_Click" />
+                                <asp:Button ID="closebtn" Height="35" CssClass="btn btn-default" runat="server" Text="close" OnClick="closebtn_Click" />
+                            </div>
+                        </asp:Panel>
+               
+            </td>
             <td>
                 <asp:Label ID="lblcolor" runat="server" Text="Profile finish"></asp:Label></td>
             <td>
@@ -47,7 +68,7 @@
     </table>
 
 
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
 
