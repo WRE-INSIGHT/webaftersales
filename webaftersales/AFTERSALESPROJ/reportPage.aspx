@@ -16,7 +16,8 @@
     <div class="well">
         <h3><strong>Report</strong></h3>
         <div class="navbar-right">
-            <asp:HyperLink ID="HyperLink4" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/homePage.aspx" runat="server" Text="back"></asp:HyperLink>
+            <asp:LinkButton ID="LinkButton6" CssClass="btn btn-default" runat="server" OnClick="LinkButton6_Click">back</asp:LinkButton>
+
         </div>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -29,7 +30,6 @@
         <small>
             <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h2>
 
-
     <table class="table table-striped">
         <tr>
             <th>Status</th>
@@ -38,32 +38,41 @@
         </tr>
         <tr>
             <td>
-              
-
-                        <asp:Label ID="lblstatus" runat="server" Text="Status"></asp:Label>
-                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Edit</asp:LinkButton>
-                        <br />
-                        <asp:Panel ID="Panel2" Visible="false" runat="server">
-
-                            <div class="well">
-                                <asp:DropDownList ID="statusddl" Height="35" CssClass="form-control" runat="server">
-                                    <asp:ListItem>Scheduled
-                                    </asp:ListItem>
-                                    <asp:ListItem>Pending For Reschedule
-                                    </asp:ListItem>
-                                </asp:DropDownList>
-                                <br />
-                                <asp:Button ID="Button1" Height="35" CssClass="btn btn-default" OnClientClick="return confirm('save changes?')" runat="server" Text="save" OnClick="Button1_Click" />
-                                <asp:Button ID="closebtn" Height="35" CssClass="btn btn-default" runat="server" Text="close" OnClick="closebtn_Click" />
-                            </div>
-                        </asp:Panel>
-               
+                <asp:Label ID="lblstatus" runat="server" Text="Status"></asp:Label>
+                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Edit</asp:LinkButton>
             </td>
             <td>
                 <asp:Label ID="lblcolor" runat="server" Text="Profile finish"></asp:Label></td>
             <td>
                 <asp:Label ID="lblteamname" runat="server" CssClass="text-center" Text="teamname"></asp:Label><br />
                 <asp:Label ID="lblpersonnel" runat="server" Text="personnel"></asp:Label></td>
+        </tr>
+        <tr>
+            <td>
+                <small>Remarks</small>
+            </td>
+            <td colspan="2">
+                <asp:Label ID="lblremarks" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <asp:Panel ID="Panel2" Visible="false" runat="server">
+
+                    <div class="well">
+                        Status:<br />
+                        <asp:DropDownList ID="statusddl" Height="35" CssClass="form-control" runat="server">
+                            <asp:ListItem>Scheduled</asp:ListItem>
+                            <asp:ListItem>Pending For Reschedule</asp:ListItem>
+                        </asp:DropDownList>
+                        <br />
+                        Remarks:<br />
+                        <asp:TextBox ID="reasontbox" runat="server" TextMode="MultiLine" Rows="4" CssClass=" form-control"></asp:TextBox><br />
+                        <asp:Button ID="Button1" Height="35" CssClass="btn btn-default" OnClientClick="return confirm('save changes?')" runat="server" Text="save" OnClick="Button1_Click" />
+                        <asp:Button ID="closebtn" Height="35" CssClass="btn btn-default" runat="server" Text="close" OnClick="closebtn_Click" />
+                    </div>
+                </asp:Panel>
+            </td>
         </tr>
     </table>
 
@@ -80,7 +89,7 @@
                     <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import</asp:HyperLink>
                     <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click">report</asp:LinkButton>
                     <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click">photos</asp:LinkButton>
-
+                    <asp:LinkButton ID="LinkButton7" CssClass="btn btn-danger" runat="server" OnClick="LinkButton7_Click">JO</asp:LinkButton>
 
                 </div>
             </div>
@@ -102,6 +111,10 @@
                                     <asp:TextBox ID="newtboxkno" placeholder="k number" CssClass="form-control" runat="server"></asp:TextBox><br />
                                     Location<br />
                                     <asp:TextBox ID="newtboxlocation" placeholder="Location" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                    Width<br />
+                                    <asp:TextBox ID="newtboxwidth" placeholder="Width" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                    Height<br />
+                                    <asp:TextBox ID="newtboxheight" placeholder="Height" CssClass="form-control" runat="server"></asp:TextBox><br />
                                     Specification 
                                                 <asp:RequiredFieldValidator ID="newdlistspecificationvalidator" runat="server" ControlToValidate="newdlistspecification" ValidationGroup="newval"
                                                     ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
@@ -160,6 +173,13 @@
                                                         <asp:Label ID="lblmobilization" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
+                                                    <td>Dimension</td>
+                                                    <td colspan="2">
+                                                        <asp:Label ID="lblwidth" runat="server" Text='<%# Bind("WIDTH") %>'></asp:Label>&nbsp;x&nbsp;  
+                                                        <asp:Label ID="lblheight" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <td colspan="3">
                                                         <asp:Button ID="Button2" CssClass="btn btn-default" CommandName="myassessment" runat="server" Text="assessment" />
                                                     </td>
@@ -177,6 +197,10 @@
                                                                 <asp:TextBox ID="tboxkno" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                                 Location<br />
                                                                 <asp:TextBox ID="tboxlocation" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                Width<br />
+                                                                <asp:TextBox ID="tboxwidth" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                Height<br />
+                                                                <asp:TextBox ID="tboxheight" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                                 Specification 
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="editval"
                                                     ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />

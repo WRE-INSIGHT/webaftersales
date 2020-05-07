@@ -382,5 +382,17 @@ namespace webaftersales.AFTERSALESPROJ
         {
             getdata();
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            if (Session["servicingsource"].ToString() == "report")
+            { 
+                Response.Redirect("~/AFTERSALESPROJ/reportpage.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/AFTERSALESPROJ/callinpage.aspx");
+            }
+        }
     }
 }

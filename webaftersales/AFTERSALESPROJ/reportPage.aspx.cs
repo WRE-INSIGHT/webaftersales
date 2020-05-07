@@ -26,6 +26,14 @@ namespace webaftersales.AFTERSALESPROJ
                     getdata();
                     getteam();
                     getstatus();
+                    if (Convert.ToBoolean(Session["pendingSOURCE"]))
+                    {
+                        LinkButton7.Visible = true;
+                    }
+                    else
+                    {
+                        LinkButton7.Visible = false;
+                    }
                 }
 
             }
@@ -38,7 +46,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "select [status] from servicingtb where id = @sid";
+                string str = "select [status],REMARKS,CIN from servicingtb where id = @sid";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -51,6 +59,8 @@ namespace webaftersales.AFTERSALESPROJ
                             while (rd.Read())
                             {
                                 lblstatus.Text = rd[0].ToString();
+                                lblremarks.Text = rd[1].ToString();
+                                Session["cin"] = rd[2].ToString();
                             }
                         }
                     }
@@ -171,6 +181,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxitemno")).Text = ((Label)row.FindControl("lblitemno")).Text;
                 ((TextBox)row.FindControl("tboxkno")).Text = ((Label)row.FindControl("lblkno")).Text;
                 ((TextBox)row.FindControl("tboxlocation")).Text = ((Label)row.FindControl("lbllocation")).Text;
+                ((TextBox)row.FindControl("tboxwidth")).Text = ((Label)row.FindControl("lblwidth")).Text;
+                ((TextBox)row.FindControl("tboxheight")).Text = ((Label)row.FindControl("lblheight")).Text;
                 ((DropDownList)row.FindControl("dlistspecification")).Text = ((Label)row.FindControl("lblspecification")).Text;
                 ((TextBox)row.FindControl("tboxmobilizationcost")).Text = ((Label)row.FindControl("lblmobilization")).Text;
                 ((Panel)row.FindControl("panel1")).Visible = true;
@@ -190,6 +202,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ViewState["itemno"] = ((TextBox)row.FindControl("tboxitemno")).Text;
                 ViewState["kno"] = ((TextBox)row.FindControl("tboxkno")).Text;
                 ViewState["location"] = ((TextBox)row.FindControl("tboxlocation")).Text;
+                ViewState["width"] = ((TextBox)row.FindControl("tboxwidth")).Text;
+                ViewState["height"] = ((TextBox)row.FindControl("tboxheight")).Text;
                 ViewState["specification"] = ((DropDownList)row.FindControl("dlistspecification")).Text;
                 ViewState["mobilization"] = ((TextBox)row.FindControl("tboxmobilizationcost")).Text;
                 myupdate(ViewState["id"].ToString(),
@@ -197,7 +211,9 @@ namespace webaftersales.AFTERSALESPROJ
                            ViewState["kno"].ToString(),
                            ViewState["location"].ToString(),
                            ViewState["specification"].ToString(),
-                           ViewState["mobilization"].ToString());
+                           ViewState["mobilization"].ToString(),
+                           ViewState["width"].ToString(),
+                           ViewState["height"].ToString());
             }
             if (e.CommandName == "myassessment")
             {
@@ -217,11 +233,11 @@ namespace webaftersales.AFTERSALESPROJ
                 deletefunction(((Label)row.FindControl("lblid")).Text.ToString());
             }
         }
-        private void myupdate(string id, string itemno, string kno, string location, string specification, string mobilization)
+        private void myupdate(string id, string itemno, string kno, string location, string specification, string mobilization,string width,string height)
         {
             try
             {
-                string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,mobilizationcost=@mobilization where id = @id";
+                string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,mobilizationcost=@mobilization,width=@width,height=@height where id = @id";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -232,6 +248,8 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@itemno", itemno);
                         sqlcmd.Parameters.AddWithValue("@kno", kno);
                         sqlcmd.Parameters.AddWithValue("@location", location);
+                        sqlcmd.Parameters.AddWithValue("@width", width);
+                        sqlcmd.Parameters.AddWithValue("@height", height);
                         sqlcmd.Parameters.AddWithValue("@specification", specification);
                         sqlcmd.Parameters.AddWithValue("@mobilization", mobilization);
                         sqlcmd.ExecuteNonQuery();
@@ -280,7 +298,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     newtboxmobilizationcost.Text = "0";
                 }
-                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb) insert into reporttb (sid,id,itemno,kno,location,specification,mobilizationcost)values(@sid,@id,@item,@kno,@location,@specification,@mobilization)";
+                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb) insert into reporttb (sid,id,itemno,kno,location,specification,mobilizationcost,width,height)values(@sid,@id,@item,@kno,@location,@specification,@mobilization,@width,@height)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -293,6 +311,8 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@location", newtboxlocation.Text);
                         sqlcmd.Parameters.AddWithValue("@mobilization", newtboxmobilizationcost.Text);
                         sqlcmd.Parameters.AddWithValue("@specification", newdlistspecification.Text);
+                        sqlcmd.Parameters.AddWithValue("@width", newtboxwidth.Text);
+                        sqlcmd.Parameters.AddWithValue("@height", newtboxheight.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -315,6 +335,8 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
+            reasontbox.Text = lblremarks.Text;
+           
             Panel2.Visible = true;
         }
 
@@ -327,7 +349,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = " update servicingtb set [status] = @status where id = @sid";
+                string str = " update servicingtb set [status] = @status,REMARKS=@REMARKS where id = @sid";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -336,6 +358,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcon.Open();
                         sqlcmd.Parameters.AddWithValue("@sid", sid);
                         sqlcmd.Parameters.AddWithValue("@status", statusddl.Text);
+                        sqlcmd.Parameters.AddWithValue("@REMARKS", reasontbox.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -374,6 +397,28 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 errorrmessage(ex.Message.ToString());
             }
+        }
+
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToBoolean(Session["pendingSOURCE"]))
+            {
+                Response.Redirect("~/AFTERSALESPROJ/PENDINGPAGE.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/AFTERSALESPROJ/HOMEPAGE.aspx");
+            }
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            Session["callinnumber"] = Session["CIN"].ToString();
+            Session["callinProject"] = Session["PROJECT"].ToString();
+            Session["callinAddress"] = Session["ADDRESS"].ToString();
+            Session["servicingsource"] = "report";
+            Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
+
         }
     }
 }

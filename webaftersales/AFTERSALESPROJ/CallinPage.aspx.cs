@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -66,31 +67,36 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                DataSet ds = new DataSet();
-                ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
-                {
-                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+               
+                    DataSet ds = new DataSet();
+                    ds.Clear();
+                    string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                    using (SqlConnection sqlcon = new SqlConnection(cs))
                     {
-                        sqlcon.Open();
-                        sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        sqlcmd.CommandText = "stdCallin";
-                        sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
-                        sqlcmd.Parameters.AddWithValue("@province", provinceddl.Text);
-                        SqlDataAdapter da = new SqlDataAdapter();
-                        da.SelectCommand = sqlcmd;
-                        da.Fill(ds, "tb");
-                        GridView1.DataSource = ds;
-                        GridView1.DataBind();
+                        using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                        {
+                            sqlcon.Open();
+                            sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
+                            sqlcmd.CommandText = "stdCallin";
+                            sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
+                            sqlcmd.Parameters.AddWithValue("@province", provinceddl.Text);
+                            SqlDataAdapter da = new SqlDataAdapter();
+                            da.SelectCommand = sqlcmd;
+                            da.Fill(ds, "tb");
+
+                            GridView1.DataSource = ds;
+                            GridView1.DataBind();
+                        }
                     }
-                }
+                
             }
             catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
             }
         }
+
+     
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -103,6 +109,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             Session["callinserachkey"] = callinkey.Text;
             Session["provincekey"] = provinceddl.Text;
+            Cache.Remove("callintb");
             getdata();
         }
 
@@ -147,7 +154,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-
+                Session["servicingsource"] = "callin";
                 if (((Label)row.FindControl("turnoverlbl")).Text=="Yes")
                 {
 

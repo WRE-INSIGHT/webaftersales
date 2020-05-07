@@ -351,6 +351,13 @@
     <Compile Include="AFTERSALESPROJ\newcallin.aspx.designer.cs">
       <DependentUpon>newcallin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\pendingpage.aspx.cs">
+      <DependentUpon>pendingpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\pendingpage.aspx.designer.cs">
+      <DependentUpon>pendingpage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\pricelist.aspx.cs">
       <DependentUpon>pricelist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -515,6 +522,7 @@
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\manageAccountsPage.aspx" />
     <Content Include="AFTERSALESPROJ\newcallin.aspx" />
+    <Content Include="AFTERSALESPROJ\pendingpage.aspx" />
     <Content Include="AFTERSALESPROJ\pricelist.aspx" />
     <Content Include="AFTERSALESPROJ\quotation.aspx" />
     <Content Include="AFTERSALESPROJ\quotationitem.aspx" />

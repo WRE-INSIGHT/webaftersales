@@ -44,6 +44,9 @@
                                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Teams</asp:LinkButton></li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/AFTERSALESPROJ/pricelist.aspx">Price List</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/AFTERSALESPROJ/pendingpage.aspx" >Pending JO</asp:HyperLink>
+                                </li>
                             </ul>
                         </li>
                         <li>

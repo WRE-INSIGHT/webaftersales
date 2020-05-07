@@ -10,44 +10,69 @@ using System.Web.UI.WebControls;
 
 namespace webaftersales.AFTERSALESPROJ
 {
-    public partial class homePage : System.Web.UI.Page
+    public partial class pendingpage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)
             {
-                if (!IsPostBack)
+                if (Session["useraccount"].ToString() == "Admin")
                 {
-                    if (Session["currentsearch"] != null)
+                    if (!IsPostBack)
                     {
-                        searchtbox.Text = Session["currentsearch"].ToString();
+                        if (Session["pendingsearch"] != null)
+                        {
+                            searchtbox.Text = Session["pendingsearch"].ToString();
+                        }
+                        getpendingcount();
+                        getdata();
                     }
-                    getdata();
+                }
+                else
+                {
+                    Response.Redirect("~/AFTERSALESPROJ/invalidaccessPage.aspx");
                 }
             }
             else
             {
-                Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
-        private string userpid
+
+        private void getpendingcount()
         {
-            get
+            try
             {
-                return Session["userpid"].ToString();
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("select count(id) from servicingtb where [status] = 'Pending For Reschedule'", sqlcon))
+                    {
+                        sqlcon.Open();
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            while (rd.Read())
+                            {
+                                lblpendingcout.Text = rd[0].ToString();
+                            }
+                        }
+                    }
+                 
+                }
             }
-        }
-        private string useraccount
-        {
-            get
+            catch (Exception e)
             {
-                return Session["useraccount"].ToString();
+                errorrmessage(e.Message.ToString());
             }
         }
-        protected void searcbtn_Click(object sender, EventArgs e)
+
+        private void errorrmessage(string message)
         {
-            Session["currentsearch"] = searchtbox.Text;
-            getdata();
+            CustomValidator err = new CustomValidator();
+            err.ValidationGroup = "val1";
+            err.IsValid = false;
+            err.ErrorMessage = message;
+            Page.Validators.Add(err);
         }
         private void getdata()
         {
@@ -60,11 +85,9 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = sqlcon.CreateCommand();
-                    sqlcmd.CommandText = "stpServicing";
+                    sqlcmd.CommandText = "stpPending";
                     sqlcmd.CommandType = CommandType.StoredProcedure;
                     sqlcmd.Parameters.AddWithValue("@project", searchtbox.Text);
-                    sqlcmd.Parameters.AddWithValue("@useraccount", useraccount);
-                    sqlcmd.Parameters.AddWithValue("@userpid", userpid);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(ds, "tb");
@@ -76,19 +99,6 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 errorrmessage(e.Message.ToString());
             }
-        }
-        private void errorrmessage(string message)
-        {
-            CustomValidator err = new CustomValidator();
-            err.ValidationGroup = "val1";
-            err.IsValid = false;
-            err.ErrorMessage = message;
-            Page.Validators.Add(err);
-        }
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            getdata();
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -105,14 +115,22 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["COLOR"] = ((Label)row.Cells[0].FindControl("colorlbl")).Text;
                 Session["DATE"] = ((Label)row.Cells[0].FindControl("datelbl")).Text;
                 Session["TEAMID"] = ((Label)row.Cells[0].FindControl("teamlbl")).Text;
-                Session["pendingSOURCE"] = false;
+                Session["pendingSOURCE"] = true;
                 Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
             }
         }
 
-        protected void searchtbox_TextChanged(object sender, EventArgs e)
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            GridView1.PageIndex = e.NewPageIndex;
+            Session["pendingsearch"] = searchtbox.Text;
+            getdata();
+        }
 
+        protected void searcbtn_Click(object sender, EventArgs e)
+        {
+            Session["pendingsearch"] = searchtbox.Text;
+            getdata();
         }
     }
 }

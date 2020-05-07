@@ -45,7 +45,7 @@
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <div class="panel panel-success">
+                    <div class='<%# Eval("TURNOVER").ToString() == "0" ? "panel panel-success" : "panel panel-default" %>'>
                         <div class="panel-heading">
                             <asp:LinkButton ID="LinkButton2" CommandName="myedit" Font-Size="Medium" runat="server">Edit</asp:LinkButton>
                             <div class="navbar-right">
@@ -184,8 +184,8 @@
                                         </table>
 
                                     </div>
-                                    <asp:LinkButton ID="LinkButton4" Width="" CommandName="myservicing" CssClass="btn btn-primary" runat="server">job order</asp:LinkButton>
-                                    <asp:LinkButton ID="LinkButton5" CommandName="myquotation" Visible="false" CssClass="btn btn-primary" runat="server">quotation</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" Width="" CommandName="myservicing" CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary" : "btn btn-default" %>' runat="server">job order</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton5" CommandName="myquotation" Visible="false" CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary" : "btn btn-default" %>' runat="server">quotation</asp:LinkButton>
                                 </div>
                             </div>
 
