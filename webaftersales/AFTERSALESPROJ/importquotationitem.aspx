@@ -14,12 +14,11 @@
     </div>
     <asp:Label ID="lblaseno" runat="server" Font-Size="X-Large" Text="Label"></asp:Label>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
-    <div class="panle panel-default">
-        <div class="panel-body">
+ 
             <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal">
                 <small>
-                    <asp:GridView ID="GridView1" GridLines="Vertical" CssClass="table" runat="server" AllowPaging="True" AutoGenerateColumns="False" PageSize="8" 
-                        DataKeyNames="ID" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound">
+                    <asp:GridView ID="GridView1" CssClass="table" runat="server" AllowPaging="True" AutoGenerateColumns="False" PageSize="8" 
+                        DataKeyNames="ID" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                         <Columns>
                             <asp:TemplateField HeaderText="K #">
                                 <ItemTemplate>
@@ -69,14 +68,19 @@
                                 </h2>
                             </div>
                         </EmptyDataTemplate>
-                        <HeaderStyle Wrap="False" BorderStyle="None" BorderWidth="0px" />
-                        <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-                        <RowStyle Wrap="False" />
+                        <FooterStyle BackColor="#CCCCCC" />
+                        <HeaderStyle Wrap="False" BorderStyle="None" BorderWidth="0px" BackColor="Black" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle CssClass="GridPager" HorizontalAlign="Left" BackColor="#CCCCCC" ForeColor="Black" />
+                        <RowStyle Wrap="False" BackColor="White" />
+                        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#808080" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#383838" />
                     </asp:GridView>
                 </small>
             </asp:Panel>
             <br />
             <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="import" OnClick="Button1_Click" />
-        </div>
-    </div>
+      
 </asp:Content>
