@@ -265,15 +265,6 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.TextBox newtboxkno;
         
         /// <summary>
-        /// newtboxlocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox newtboxlocation;
-        
-        /// <summary>
         /// newtboxwidth control.
         /// </summary>
         /// <remarks>
@@ -290,6 +281,15 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox newtboxheight;
+        
+        /// <summary>
+        /// newtboxlocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox newtboxlocation;
         
         /// <summary>
         /// newdlistspecificationvalidator control.

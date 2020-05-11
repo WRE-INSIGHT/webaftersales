@@ -185,7 +185,6 @@
 
                                     </div>
                                     <asp:LinkButton ID="LinkButton4" Width="" CommandName="myservicing" CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary" : "btn btn-default" %>' runat="server">job order</asp:LinkButton>
-                                    <asp:LinkButton ID="LinkButton5" CommandName="myquotation" Visible="false" CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary" : "btn btn-default" %>' runat="server">quotation</asp:LinkButton>
                                 </div>
                             </div>
 

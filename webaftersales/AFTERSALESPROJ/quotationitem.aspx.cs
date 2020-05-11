@@ -130,6 +130,13 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("editknotbox")).Text,
                 ((TextBox)row.FindControl("editlocationtbox")).Text);
             }
+            if (e.CommandName == "parts")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["IID"] = ((Label)row.FindControl("idlbl")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/importparts.aspx");
+            }
         }
         private void deletefunction(string id)
         {
@@ -275,6 +282,11 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 getdata();
             }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AFTERSALESPROJ/importquotationitem.aspx");
         }
     }
 }

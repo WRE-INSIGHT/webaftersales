@@ -26,7 +26,7 @@ namespace webaftersales.AFTERSALESPROJ
                     getdata();
                     getteam();
                     getstatus();
-                    if (Convert.ToBoolean(Session["pendingSOURCE"]))
+                    if (Session["useraccount"].ToString() == "Admin")
                     {
                         LinkButton7.Visible = true;
                     }
@@ -388,7 +388,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
-                        sqlcmd.Parameters.AddWithValue("@cin", Session["CID"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@cin", Session["CIN"].ToString());
                         sqlcmd.ExecuteNonQuery();
                     }
                 }

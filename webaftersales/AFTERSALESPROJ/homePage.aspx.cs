@@ -18,12 +18,18 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (!IsPostBack)
                 {
+                    if(useraccount != "Admin")
+                    {
+                        datetbox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                    }
+                 
                     if (Session["currentsearch"] != null)
                     {
                         searchtbox.Text = Session["currentsearch"].ToString();
                     }
                     getdata();
                 }
+             
             }
             else
             {
@@ -65,6 +71,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.Parameters.AddWithValue("@project", searchtbox.Text);
                     sqlcmd.Parameters.AddWithValue("@useraccount", useraccount);
                     sqlcmd.Parameters.AddWithValue("@userpid", userpid);
+                    sqlcmd.Parameters.AddWithValue("@datekey", datetbox.Text);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(ds, "tb");
@@ -97,7 +104,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                Session["CID"] = ((Label)row.Cells[0].FindControl("cidlbl")).Text;
+                Session["CIN"] = ((Label)row.Cells[0].FindControl("cidlbl")).Text;
                 Session["SID"] = ((Label)row.Cells[0].FindControl("idlbl")).Text;
                 Session["JO"] = ((Label)row.Cells[0].FindControl("jolbl")).Text;
                 Session["PROJECT"] = ((LinkButton)row.Cells[0].FindControl("projectlbl")).Text;
@@ -110,9 +117,8 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        protected void searchtbox_TextChanged(object sender, EventArgs e)
-        {
 
-        }
+
+      
     }
 }

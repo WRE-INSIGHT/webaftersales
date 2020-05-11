@@ -90,7 +90,7 @@
                     <div class="col-sm-6">
                         <br />
                         Date<br />
-                        <asp:TextBox ID="calldate" CssClass="form-control" placeholder="mm/dd/yyyy" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="calldate" CssClass="form-control" TextMode="Date" placeholder="mm/dd/yyyy" runat="server"></asp:TextBox>
                         <br />
                         Caller<br />
                         <asp:TextBox ID="callername" CssClass="form-control" placeholder="Caller" runat="server"></asp:TextBox><br />

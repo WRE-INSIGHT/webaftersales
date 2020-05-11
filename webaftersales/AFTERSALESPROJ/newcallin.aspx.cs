@@ -33,7 +33,7 @@ namespace webaftersales.AFTERSALESPROJ
                             DateTime value;
                             if (DateTime.TryParse(Session["callinDate"].ToString(), out value))
                             {
-                                Session["callinDate"] = Convert.ToDateTime(Session["callinDate"].ToString()).ToString("MM-dd-yyyy");
+                                Session["callinDate"] = Convert.ToDateTime(Session["callinDate"].ToString()).ToString("yyyy-MM-dd");
                             }
 
                             calldate.Text = Session["callinDate"].ToString();

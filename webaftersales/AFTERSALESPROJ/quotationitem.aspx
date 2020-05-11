@@ -48,7 +48,7 @@
             </div>
         </div>
         <asp:button id="Button1" runat="server" text="add" cssclass="btn btn-primary" onclick="Button1_Click" />
-
+           <asp:button id="Button3" runat="server" text="import" cssclass="btn btn-default" OnClick="Button3_Click"/>
     </div>
 
     <div class="panel panel-primary">
@@ -116,8 +116,6 @@
                                                 <ItemTemplate>
                                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                         <ContentTemplate>
-
-
                                                             <asp:Label ID="partsidlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                                             <asp:Label ID="Label2" Font-Size="Large" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label><br />
                                                             Article #:&nbsp;<asp:Label ID="Label3" runat="server" Text='<%# Bind("ARTICLENO") %>'></asp:Label><br />
@@ -171,6 +169,7 @@
                                     </asp:GridView>
                                 </div>
                                 <div class="panel-footer">
+                                    <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" runat="server" CommandName="parts">parts</asp:LinkButton>
                                     <asp:LinkButton ID="LinkButton3" CssClass="btn btn-danger" runat="server" OnClientClick="return confirm('delete this record?')" CommandName="mydelete"><span class="glyphicon glyphicon-trash">&nbsp;Delete</span></asp:LinkButton>
                                 </div>
                             </div>

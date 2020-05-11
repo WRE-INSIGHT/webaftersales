@@ -16,12 +16,25 @@
     </div>--%>
     <div class="well">
         <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
-        <div class="input-group">
-            <asp:TextBox ID="searchtbox" CssClass="form-control" placeholder="project name" runat="server" OnTextChanged="searchtbox_TextChanged"></asp:TextBox>
-            <div class="input-group-btn">
-                <asp:LinkButton ID="searcbtn2" CssClass="btn btn-primary" runat="server" OnClick="searcbtn_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        Date
+                    </div>
+                    <asp:TextBox ID="datetbox" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <asp:TextBox ID="searchtbox" CssClass="form-control" placeholder="project name" runat="server"></asp:TextBox>
+                    <div class="input-group-btn">
+                        <asp:LinkButton ID="searcbtn2" CssClass="btn btn-default" runat="server" OnClick="searcbtn_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -72,10 +85,16 @@
 
                                     <asp:Label ID="datelbl" Font-Size="XX-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label><br />
                                     <table class="table" border="1">
-
                                         <tr>
-                                            <td colspan="2" class="text-center">
-                                                <asp:Label ID="Label7" CssClass="text-info" runat="server" Text='<%# Bind("TEAMNAME") %>'></asp:Label>
+                                             <td class="text-center"><small class="text-muted">Plate #</small>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label11" CssClass=" text-success" runat="server" Text='<%# Bind("PLATENO") %>'></asp:Label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-center"><strong>
+                                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("TEAMNAME") %>'></asp:Label></strong>
                                             </td>
                                         </tr>
                                         <tr>

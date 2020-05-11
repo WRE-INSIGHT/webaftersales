@@ -30,7 +30,7 @@
         <small>
             <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h2>
 
-    <table class="table table-striped">
+    <table class="table" border="1">
         <tr>
             <th>Status</th>
             <th>Color</th>
@@ -97,7 +97,7 @@
             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                 <ContentTemplate>
                     <div class="panel-group">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <asp:HyperLink ID="HyperLink2" runat="server" data-toggle="collapse" href="#collapse1"><span class="glyphicon glyphicon-resize-vertical"></span>&nbsp;add new item</asp:HyperLink>
@@ -105,32 +105,40 @@
                             </div>
                             <div id="collapse1" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    Item#<br />
-                                    <asp:TextBox ID="newtboxitemno" placeholder="Item number" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                    K#<br />
-                                    <asp:TextBox ID="newtboxkno" placeholder="k number" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                    Location<br />
-                                    <asp:TextBox ID="newtboxlocation" placeholder="Location" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                    Width<br />
-                                    <asp:TextBox ID="newtboxwidth" placeholder="Width" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                    Height<br />
-                                    <asp:TextBox ID="newtboxheight" placeholder="Height" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                    Specification 
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            Item#<br />
+                                            <asp:TextBox ID="newtboxitemno" placeholder="Item number" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                            K#<br />
+                                            <asp:TextBox ID="newtboxkno" placeholder="k number" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                            Width<br />
+                                            <asp:TextBox ID="newtboxwidth" placeholder="Width" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                            Height<br />
+                                            <asp:TextBox ID="newtboxheight" placeholder="Height" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            Location<br />
+                                            <asp:TextBox ID="newtboxlocation" placeholder="Location" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                            Specification 
                                                 <asp:RequiredFieldValidator ID="newdlistspecificationvalidator" runat="server" ControlToValidate="newdlistspecification" ValidationGroup="newval"
                                                     ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
-                                    <asp:DropDownList ID="newdlistspecification" placeholder="Specification" CssClass="form-control" runat="server">
-                                        <asp:ListItem>-</asp:ListItem>
-                                        <asp:ListItem>Window</asp:ListItem>
-                                        <asp:ListItem>Door</asp:ListItem>
-                                    </asp:DropDownList><br />
+                                            <asp:DropDownList ID="newdlistspecification" placeholder="Specification" CssClass="form-control" runat="server">
+                                                <asp:ListItem>-</asp:ListItem>
+                                                <asp:ListItem>Window</asp:ListItem>
+                                                <asp:ListItem>Door</asp:ListItem>
+                                            </asp:DropDownList><br />
 
-                                    Mobilization cost 
+                                            Mobilization cost 
                                                 <asp:CompareValidator ID="newtboxmobilizationcostvalidator" runat="server" ErrorMessage="invalid amount" Text="*"
                                                     ControlToValidate="newtboxmobilizationcost" Type="Double" Operator="DataTypeCheck" ValidationGroup="newval"
                                                     ForeColor="Red"></asp:CompareValidator><br />
-                                    <asp:TextBox ID="newtboxmobilizationcost" placeholder="Mobilization cost" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                            <asp:TextBox ID="newtboxmobilizationcost" placeholder="Mobilization cost" CssClass="form-control" runat="server"></asp:TextBox><br />
 
-                                    <asp:Button ID="newbtn" OnClick="newbtn_click" CssClass="btn btn-primary" ValidationGroup="newval" runat="server" Text="add" />
+                                            <asp:Button ID="newbtn" OnClick="newbtn_click" CssClass="btn btn-primary" ValidationGroup="newval" runat="server" Text="add" />
+                                        </div>
+                                    </div>
+
+
                                     <asp:ValidationSummary ID="valsummary" ValidationGroup="newval" CssClass="alert alert-danger" runat="server" />
                                 </div>
                                 <div class="panel-footer">Footer</div>
@@ -148,11 +156,12 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
+
+                                        <div class="panel-body">
                                             <asp:Label ID="lbllocation" Font-Size="Large" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
                                             <asp:LinkButton ID="LinkButton4" CommandName="myedit" CssClass="text-right" runat="server">Edit</asp:LinkButton>
-                                        </div>
-                                        <div class="panel-body">
+                                            <br />
+                                            <br />
                                             <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                             <asp:Label ID="lblsid" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
                                             <asp:Label ID="lbljo" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>

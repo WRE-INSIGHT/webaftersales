@@ -21,8 +21,8 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
-                        lblproject.Text = Session["callinProject"].ToString();
-                        lbladdress.Text = Session["callinAddress"].ToString();
+                        lblproject.Text = Session["PROJECT"].ToString();
+                        lbladdress.Text = Session["ADDRESS"].ToString();
                         getdata();
                     }
                 }
@@ -36,11 +36,18 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+        private string sid
+        {
+            get
+            {
+                return Session["SID"].ToString();
+            }
+        }
         private string cin
         {
             get
             {
-                return Session["callinnumber"].ToString();
+                return Session["CIN"].ToString();
             }
         }
         private void getdata()
@@ -57,7 +64,7 @@ namespace webaftersales.AFTERSALESPROJ
                           "   case when isdate(ACCEPTED)=1 then format(cast(ACCEPTED as date),'MMM-dd-yyyy') else ACCEPTED end as ACCEPTED," +
                           "   format(NETPRICE, 'n2') as NETPRICE," +
                           "   format(Actualprice, 'n2') as [ACTUAL PRICE]" +
-                          "   from quotationtb where cin = @cin";
+                          "   from quotationtb where sid = @sid";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -65,7 +72,7 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         sqlcon.Open();
                         DataSet ds = new DataSet();
-                        sqlcmd.Parameters.AddWithValue("@CIN", cin);
+                        sqlcmd.Parameters.AddWithValue("@sid", sid);
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(ds);
@@ -126,9 +133,10 @@ namespace webaftersales.AFTERSALESPROJ
                     if (!duplicate)
                     {
                         string str = " declare @id as integer = (select isnull(max(id), 0) + 1 from quotationtb)" +
-                          " insert into quotationtb (id, cin, aseno, qdate, particular, othercharges)values(@id, @cin, @aseno, @qdate, @particular, @othercharges)";
+                          " insert into quotationtb (id, cin,sid, aseno, qdate, particular, othercharges)values(@id, @cin,@sid, @aseno, @qdate, @particular, @othercharges)";
                         using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                         {
+                            sqlcmd.Parameters.AddWithValue("@sid", sid);
                             sqlcmd.Parameters.AddWithValue("@cin", cin);
                             sqlcmd.Parameters.AddWithValue("@qdate", datetbox.Text);
                             sqlcmd.Parameters.AddWithValue("@aseno", asetbox.Text);
@@ -169,7 +177,7 @@ namespace webaftersales.AFTERSALESPROJ
                     DateTime value;
                     if (DateTime.TryParse(x, out value))
                     {
-                        x = Convert.ToDateTime(x).ToString("MM-dd-yyyy");
+                        x = Convert.ToDateTime(x).ToString("yyyy-MM-dd");
                     }
                 }
 
@@ -178,7 +186,7 @@ namespace webaftersales.AFTERSALESPROJ
                 DateTime v;
                 if (DateTime.TryParse(((Label)row.FindControl("datelbl")).Text, out v))
                 {
-                    ((Label)row.FindControl("datelbl")).Text = Convert.ToDateTime(((Label)row.FindControl("datelbl")).Text).ToString("MM-dd-yyyy");
+                    ((Label)row.FindControl("datelbl")).Text = Convert.ToDateTime(((Label)row.FindControl("datelbl")).Text).ToString("yyyy-MM-dd");
                 }
                 ((TextBox)row.FindControl("editdatetbox")).Text = ((Label)row.FindControl("datelbl")).Text;
                 ((TextBox)row.FindControl("editasenotbox")).Text = ((Label)row.FindControl("asenolbl")).Text;

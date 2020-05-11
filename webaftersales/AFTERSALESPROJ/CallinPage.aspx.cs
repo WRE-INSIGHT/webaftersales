@@ -174,21 +174,13 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('Sorry unable to create new JO, account is not fully paid')",true);
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('Sorry unable to open JO, account is not fully paid')",true);
                     }
                 }
 
             
             }
-            else if (e.CommandName == "myquotation")
-            {
-                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-                GridViewRow row = GridView1.Rows[rowindex];
-                Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
-                Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
-                Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
-                Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
-            }
+           
         }
     }
 }

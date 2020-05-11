@@ -65,12 +65,13 @@ namespace webaftersales.AFTERSALESPROJ
                     string str = "  select a.ID, " +
                         "  a.CIN, " +
                         "  a.STATUS, " +
-                        "  a.STATUSDATE AS[STATUSDATE], " +
+                        "  CASE WHEN ISDATE(a.STATUSDATE)=1 THEN FORMAT(CAST(a.STATUSDATE AS DATE),'MMM-dd-yyyy') ELSE a.STATUSDATE END AS [STATUSDATE], " +
                         "  a.SERVICING, " +
                         "  CASE WHEN ISDATE(a.SDATE)=1 THEN FORMAT(CAST(a.SDATE AS DATE),'MMM-dd-yyyy') ELSE a.SDATE END AS[SERVICINGDATE], " +
                         "  a.REMARKS,a.SPECIFIEDJOB,a.INSTRUCTION, " +
                         "  a.teamid, " +
                         "  b.TEAMNAME," +
+                        " a.plateno,"+
                         "  STUFF((SELECT ', ' + y.FULLNAME+ char(10) from TBLteamMember as x " +
                         " 	left join tblpersonnel as y" +
                         " 	on x.pid = y.pid" +
@@ -140,7 +141,7 @@ namespace webaftersales.AFTERSALESPROJ
                 string str = " declare @id as integer = (select isnull(max(id),0)+1 from servicingtb)" +
                                      " declare @sss as integer = (select isnull(max(id), 0) from servicingtb where cin = @cin)" +
                                      " update servicingtb set[status] = 'Reschedule',statusdate = @sdate where id = @sss" +
-                                     " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks, status)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks, 'Scheduled')";
+                                     " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks,plateno, status)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks,@plateno, 'Scheduled')";
                 string str2 = "select isnull(count(id),0)+1 from servicingtb where cin = @cin";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
@@ -182,6 +183,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@specifiedjob", specifiedjobtbox.Text);
                         sqlcmd.Parameters.AddWithValue("@instruction", instructiontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@remarks", remarks.Text);
+                        sqlcmd.Parameters.AddWithValue("@plateno", plateno.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -218,14 +220,22 @@ namespace webaftersales.AFTERSALESPROJ
                 string dt = ((Label)row.FindControl("servicingdatelbl")).Text;
                 if (DateTime.TryParse(dt, out value))
                 {
-                   dt = Convert.ToDateTime(dt).ToString("MM-dd-yyyy");
+                    dt = Convert.ToDateTime(dt).ToString("yyyy-MM-dd");
                 }
                 ((TextBox)row.FindControl("servicingdatetbox")).Text = dt;
                 ((TextBox)row.FindControl("remarkstbox")).Text = ((Label)row.FindControl("remarkslbl")).Text;
+                ((TextBox)row.FindControl("platenotbox")).Text = ((Label)row.FindControl("platenolbl")).Text;
                 ((TextBox)row.FindControl("specifiedjobtbox")).Text = ((Label)row.FindControl("specifiedjoblbl")).Text;
                 ((TextBox)row.FindControl("instructiontbox")).Text = ((Label)row.FindControl("instructionlbl")).Text;
                 ((DropDownList)row.FindControl("DropDownList1")).Text = ((Label)row.FindControl("statuslbl")).Text;
-                ((TextBox)row.FindControl("statusdatetbox")).Text = ((Label)row.FindControl("statusdatelbl")).Text;
+                DateTime Svalue;
+                string Sdt = ((Label)row.FindControl("statusdatelbl")).Text;
+                if (DateTime.TryParse(Sdt, out Svalue))
+                {
+                    Sdt = Convert.ToDateTime(Sdt).ToString("yyyy-MM-dd");
+                }
+
+                ((TextBox)row.FindControl("statusdatetbox")).Text = Sdt;
 
                 Panel pnl = ((Panel)row.FindControl("Panel2"));
                 pnl.Visible = true;
@@ -237,6 +247,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
                 ViewState["servicingdate"] = ((TextBox)row.FindControl("servicingdatetbox")).Text;
                 ViewState["remarks"] = ((TextBox)row.FindControl("remarkstbox")).Text;
+                ViewState["plateno"] = ((TextBox)row.FindControl("platenotbox")).Text;
                 ViewState["specifiedjob"] = ((TextBox)row.FindControl("specifiedjobtbox")).Text;
                 ViewState["instruction"] = ((TextBox)row.FindControl("instructiontbox")).Text;
                 ViewState["status"] = ((DropDownList)row.FindControl("DropDownList1")).Text;
@@ -275,9 +286,21 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
                 GridView1.SelectedIndex = rowindex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                Session["CID"]= cin;
+                Session["CIN"]= cin;
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
                 getdetails(cin);
+                Session["link"] = "s3";
+                Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
+            }
+            else if (e.CommandName == "quotation")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridView1.SelectedIndex = rowindex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["CIN"] = cin;
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                getdetails(cin);
+                Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
             }
 
         }
@@ -300,8 +323,7 @@ namespace webaftersales.AFTERSALESPROJ
                         Session["ADDRESS"] = rdr[5].ToString();
                         Session["COLOR"] = rdr[6].ToString();
                     }
-                    Session["link"] = "s3";
-                    Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
+                   
                 }
             }
         }
@@ -337,7 +359,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks  where id = @id";
+                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks,plateno=@plateno  where id = @id";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -349,6 +371,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@statusdate", ViewState["statusdate"].ToString());
                         sqlcmd.Parameters.AddWithValue("@sdate", ViewState["servicingdate"].ToString());
                         sqlcmd.Parameters.AddWithValue("@remarks", ViewState["remarks"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@plateno", ViewState["plateno"].ToString());
                         sqlcmd.Parameters.AddWithValue("@specifiedjob", ViewState["specifiedjob"].ToString());
                         sqlcmd.Parameters.AddWithValue("@instruction", ViewState["instruction"].ToString());
                         sqlcmd.ExecuteNonQuery();
@@ -373,10 +396,7 @@ namespace webaftersales.AFTERSALESPROJ
             remarks.Text = "";
         }
 
-        protected void servicingdate_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         protected void Button4_Click(object sender, EventArgs e)
         {

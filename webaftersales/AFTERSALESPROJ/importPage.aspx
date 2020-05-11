@@ -25,6 +25,7 @@
     </div>
 
     <br />
+    <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -51,76 +52,73 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <br />
-                <asp:GridView ID="GridView1" GridLines="None" runat="server"
-                    AutoGenerateColumns="False" EmptyDataText="No result found."
-                    AllowPaging="True" DataKeyNames="ID"
-                    OnPageIndexChanging="GridView1_PageIndexChanging"
-                    OnRowDataBound="GridView1_RowDataBound">
-                    <Columns>
 
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <div class="panel panel-success">
-                                    <div class="panel-heading">
-                                        <asp:CheckBox CssClass="btn btn-default" Visible="true" ID="cboxselect" runat="server" />
-                                        <asp:Label ID="Label1" Font-Size="Large" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
+                    <br />
+                    <asp:GridView ID="GridView1" GridLines="None" runat="server"
+                        AutoGenerateColumns="False" EmptyDataText="No result found."
+                        AllowPaging="True" DataKeyNames="ID"
+                        OnPageIndexChanging="GridView1_PageIndexChanging"
+                        OnRowDataBound="GridView1_RowDataBound">
+                        <Columns>
+
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-body">
+                                            <asp:CheckBox CssClass="btn btn-default" Visible="true" ID="cboxselect" runat="server" />
+                                            <asp:Label ID="Label1" Font-Size="Large" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
+                                            <br />
+                                            <br />
+                                            <asp:Label ID="Label6" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                            <table border="1" class="table">
+                                                <tr>
+                                                    <th>K#</th>
+                                                    <th>Item#</th>
+                                                    <th>JO</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("KMDI_NO") %>'></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("ITEM_NO") %>'></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("job_order_no") %>'></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dimension</td>
+                                                    <td colspan="2">
+                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("WIDTH") %>'></asp:Label>&nbsp;x&nbsp;<asp:Label ID="Label7" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label></td>
+
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <asp:Label ID="Label6" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                        <table border="1" class="table">
-                                            <tr>
-                                                <th>K#</th>
-                                                <th>Item#</th>
-                                                <th>JO</th>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("KMDI_NO") %>'></asp:Label></td>
-                                                <td>
-                                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("ITEM_NO") %>'></asp:Label></td>
-                                                <td>
-                                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("job_order_no") %>'></asp:Label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Dimension</td>
-                                                <td colspan="2">
-                                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("WIDTH") %>'></asp:Label>&nbsp;x&nbsp;<asp:Label ID="Label7" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label></td>
 
-                                            </tr>
-                                        </table>
-                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                                </div>
-
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <%--   <asp:BoundField HeaderText="K#" DataField="KMDI_NO" />
+                            <%--   <asp:BoundField HeaderText="K#" DataField="KMDI_NO" />
                             <asp:BoundField HeaderText="ITEM#" DataField="ITEM_NO" />
                             <asp:BoundField HeaderText="LOCATION" DataField="LOCATION" />
                             <asp:BoundField HeaderText="JO" DataField="job_order_no" />--%>
-                    </Columns>
-                    <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
-                    <EmptyDataTemplate>
-                        <div class="alert alert-danger">
-                            <h2><strong>Sorry, no data available!</strong>
-                                <small>0 result found</small>
-                            </h2>
-                        </div>
-                    </EmptyDataTemplate>
-                </asp:GridView>
-            </div>
-            </div>
-                <div class="panel-footer">
+                        </Columns>
+                        <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
+                        <EmptyDataTemplate>
+                            <div class="alert alert-danger">
+                                <h2><strong>Sorry, no data available!</strong>
+                                    <small>0 result found</small>
+                                </h2>
+                            </div>
+                        </EmptyDataTemplate>
+                    </asp:GridView>
                 </div>
+
+                <asp:Button ID="btnimport" CssClass="btn btn-primary" runat="server" OnClick="btnimport_Click" Text="import" />
             </div>
 
-            <asp:Button ID="btnimport" CssClass="btn btn-primary" runat="server" OnClick="btnimport_Click" Text="import" />
 
-            <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
+
 
 
         </ContentTemplate>

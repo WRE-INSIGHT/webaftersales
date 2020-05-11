@@ -323,6 +323,20 @@
     <Compile Include="AFTERSALESPROJ\importPage.aspx.designer.cs">
       <DependentUpon>importPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\importparts.aspx.cs">
+      <DependentUpon>importparts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\importparts.aspx.designer.cs">
+      <DependentUpon>importparts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\importquotationitem.aspx.cs">
+      <DependentUpon>importquotationitem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\importquotationitem.aspx.designer.cs">
+      <DependentUpon>importquotationitem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\invalidaccessPage.aspx.cs">
       <DependentUpon>invalidaccessPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -518,6 +532,8 @@
     <Content Include="AFTERSALESPROJ\images\save.png" />
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
     <Content Include="AFTERSALESPROJ\importPage.aspx" />
+    <Content Include="AFTERSALESPROJ\importparts.aspx" />
+    <Content Include="AFTERSALESPROJ\importquotationitem.aspx" />
     <Content Include="AFTERSALESPROJ\invalidaccessPage.aspx" />
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\manageAccountsPage.aspx" />
