@@ -77,9 +77,9 @@
                                             <asp:Label ID="itemnolbl" runat="server" Text='<%# Bind("itemno") %>'></asp:Label>
                                         </td>
                                         <td>
-                                            <asp:LinkButton ID="LinkButton2" Font-Size="Larger" runat="server" CommandName="myedit">Edit</asp:LinkButton>
-                                            <asp:LinkButton ID="LinkButton3" Font-Size="Larger"  runat="server" OnClientClick="return confirm('delete this record?')" CommandName="mydelete">Delete</asp:LinkButton>
-                                            <asp:LinkButton ID="LinkButton4" Font-Size="Larger" runat="server" CommandName="parts">Import</asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-default" CommandName="myedit">Edit</asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-default" OnClientClick="return confirm('delete this record?')" CommandName="mydelete">Delete</asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton4" runat="server" CssClass="btn btn-default" CommandName="parts">Import</asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr>

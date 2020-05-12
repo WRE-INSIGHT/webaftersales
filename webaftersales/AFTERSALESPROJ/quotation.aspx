@@ -10,7 +10,7 @@
     <div class="well">
         <h3><strong>Quotation</strong></h3>
         <div class="navbar-right">
-            <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" PostBackUrl="~/AFTERSALESPROJ/CallinPage.aspx">back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click">back</asp:LinkButton>
         </div>
     </div>
     <h2>
@@ -23,123 +23,97 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
 
-   
 
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            Quotation List
-        </div>
-        <div class="panel-body">
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>
+            <asp:Panel ID="Panel2" ScrollBars="Horizontal" runat="server">
+                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" runat="server" OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="editlink" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                                <asp:LinkButton ID="deletelink" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
+                                <asp:LinkButton ID="updatelink" Visible="false" CommandName="mysave" runat="server">Update</asp:LinkButton>
+                                <asp:LinkButton ID="cancellink" Visible="false" CommandName="mycancel"  runat="server">Cancel</asp:LinkButton><br />
+                                    <asp:ValidationSummary ID="editvalsummary" ValidationGroup="editval" Visible="false" CssClass="alert alert-danger" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                    <asp:LinkButton ID="items" runat="server" CommandName="myitem">Items</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="ASE #">
+                            <ItemTemplate>
+                                <asp:Label ID="idlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                <asp:Label ID="asenolbl" runat="server" Text='<%# Bind("ASENO") %>'></asp:Label>
+                                <asp:TextBox ID="editasenotbox"  Visible="false"  Text='<%# Eval("ASENO") %>'  placeholder="ASE" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="DATE">
+                            <ItemTemplate>
+                                <asp:Label ID="datelbl" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
+                                <asp:RequiredFieldValidator ID="editRequiredFieldValidator1" runat="server" ErrorMessage="Date is required!"
+                                    ControlToValidate="editdatetbox" ValidationGroup="editval" ForeColor="Red">*</asp:RequiredFieldValidator>
+                                <asp:TextBox ID="editdatetbox"  Visible="false" TextMode="Date"  runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="STATUS">
+                            <ItemTemplate>
+                                <asp:Label ID="acceptedlbl" runat="server" Text='<%# Eval("ACCEPTED").ToString() == "" ? "Pending" : Eval("ACCEPTED") %>'></asp:Label>
+                                <asp:TextBox ID="editaccepteddatetbox"  Visible="false" TextMode="Date" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="OTHER CHARGER">
+                            <ItemTemplate>
+                                <asp:Label ID="otherlbl" runat="server" Text='<%# Bind("[OTHER CHARGES]") %>'></asp:Label>
+                                <asp:TextBox ID="editothertbox"  Visible="false" placeholder="Other charges" Text='<%# Eval("[OTHER CHARGES]") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="PARTICULAR">
+                            <ItemTemplate>
+                                <asp:Label ID="particularlbl" runat="server" Text='<%# Bind("PARTICULAR") %>'></asp:Label>
+                                <asp:TextBox ID="editparticulartbox"  Visible="false" placeholder="Particular" Text='<%# Eval("PARTICULAR") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="NET PRICE">
+                            <ItemTemplate>
+                                <asp:Label ID="netpricelbl" runat="server" Text='<%# Bind("NETPRICE") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="ACTUAL PRICE">
+                            <ItemTemplate>
+                                <asp:Label ID="actualpricelbl" runat="server" Text='<%# Bind("[ACTUAL PRICE]") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                      
+                    </Columns>
+                    <RowStyle Wrap="False" BackColor="#FFF7E7" ForeColor="#8C4510" />
+                    <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                    <HeaderStyle Wrap="False" BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+                    <PagerSettings PageButtonCount="8" />
+                    <PagerStyle CssClass="GridPager" ForeColor="#8C4510" HorizontalAlign="Left" />
+                    <EmptyDataTemplate>
+                        <div class="alert alert-danger">
+                            <h2><strong>Sorry, no data available!</strong>
+                                <small>0 result found</small>
+                            </h2>
+                        </div>
+                    </EmptyDataTemplate>
+                    <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                    <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                    <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                    <SortedDescendingHeaderStyle BackColor="#93451F" />
+                </asp:GridView>
+            </asp:Panel>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
-            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                <ContentTemplate>
-                    <asp:Panel ID="Panel2" ScrollBars="Horizontal" runat="server">
-                        <asp:GridView ID="GridView1" GridLines="None" AutoGenerateColumns="false" runat="server" OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
-                            <Columns>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <div class="panel panel-default">
-
-                                            <div class="panel-body">
-                                                <asp:Label ID="idlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                                <asp:Label ID="asenolbl" Font-Size="XX-Large" runat="server" Text='<%# Bind("ASENO") %>'></asp:Label>
-                                                <asp:LinkButton ID="LinkButton1" CommandName="myedit" runat="server">Edit</asp:LinkButton><br />
-                                                <asp:Label ID="datelbl" Font-Size="Medium" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
-
-
-                                                <small>
-                                                    <table class="table" border="1">
-                                                        <tr>
-                                                            <th>Status</th>
-                                                            <th>Other Charger</th>
-                                                            <th>Particular</th>
-                                                            <th>Net price</th>
-                                                            <th>Actual price</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <asp:Label ID="acceptedlbl" runat="server" Text='<%# Eval("ACCEPTED").ToString() == "" ? "Pending" : Eval("ACCEPTED") %>'></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="otherlbl" runat="server" Text='<%# Bind("[OTHER CHARGES]") %>'></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="particularlbl" runat="server" Text='<%# Bind("PARTICULAR") %>'></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="netpricelbl" runat="server" Text='<%# Bind("NETPRICE") %>'></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="actualpricelbl" runat="server" Text='<%# Bind("[ACTUAL PRICE]") %>'></asp:Label></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="5">
-                                                                <asp:Button ID="items" CommandName="myitem" runat="server" CssClass="btn btn-default" Text="items" />
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </small>
-
-                                                <asp:Panel ID="Panel1" Visible="false" runat="server">
-                                                    <small>
-                                                        <div class="panel panel-primary">
-                                                            <div class="panel-body">
-                                                                <div class="row">
-
-                                                                    <div class="col-sm-4">
-                                                                        ASE#<br />
-                                                                        <asp:TextBox ID="editasenotbox" placeholder="ASE" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                        Quotation date
-                                                                <asp:RequiredFieldValidator ID="editRequiredFieldValidator1" runat="server" ErrorMessage="Date is required!"
-                                                                    ControlToValidate="editdatetbox" ValidationGroup="editval" ForeColor="Red">*</asp:RequiredFieldValidator><br />
-                                                                        <asp:TextBox ID="editdatetbox" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        Other charges<br />
-                                                                        <asp:TextBox ID="editothertbox" placeholder="Other charges" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                        Particular<br />
-                                                                        <asp:TextBox ID="editparticulartbox" placeholder="Particular" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        Accepted date:<br />
-                                                                        <asp:TextBox ID="editaccepteddatetbox" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                        <asp:Button ID="Button2" runat="server" CommandName="mysave" ValidationGroup="editval" CssClass="btn btn-primary" Text="save" />
-                                                                    </div>
-                                                                </div>
-                                                                <asp:ValidationSummary ID="editvalsummary" ValidationGroup="editval" CssClass="alert alert-danger" runat="server" />
-
-                                                            </div>
-                                                            <div class="panel-footer">
-                                                                <asp:Button ID="Button3" runat="server" CommandName="mycancel" CssClass="btn btn-default" Text="cancel" />
-                                                                <div class="navbar-right">
-                                                                    <asp:LinkButton ID="LinkButton2" CommandName="mydelete" CssClass="btn btn-default" OnClientClick="return confirm('delete this record?')" runat="server"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </small>
-                                                </asp:Panel>
-                                            </div>
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                            <RowStyle Wrap="False" />
-                            <SelectedRowStyle BackColor="#CCCCFF" />
-                            <PagerSettings PageButtonCount="8" />
-                            <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-                            <EmptyDataTemplate>
-                                <div class="alert alert-danger">
-                                    <h2><strong>Sorry, no data available!</strong>
-                                        <small>0 result found</small>
-                                    </h2>
-                                </div>
-                            </EmptyDataTemplate>
-                        </asp:GridView>
-                    </asp:Panel>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-    </div>
 
     <br />
-     <div class="panel panel-default">
+    <div class="panel panel-default">
         <div class="panel-body">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>

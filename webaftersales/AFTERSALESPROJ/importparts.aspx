@@ -97,41 +97,67 @@
     </asp:Panel>
     <br />
     <asp:Label ID="Label5" runat="server" Font-Size="X-Large" Text="Saved data"></asp:Label>
-    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-        <ContentTemplate>
-            <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal">
-                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnPageIndexChanging="GridView1_PageIndexChanging">
+
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal">
+        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <ContentTemplate>
+                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
                     <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton6" runat="server" CommandName="myedit">Edit</asp:LinkButton>
+                                  <asp:LinkButton ID="LinkButton9" runat="server" CommandName="mydelete" OnClientClick="return confirm('delete this row?')">Delete</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton7" Visible="false" CommandName="myupdate" ValidationGroup="editval" runat="server">Update</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton8" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
+                            </ItemTemplate>
+
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Article #">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" Visible="false" runat="server" Text='<%# Bind("id") %>'></asp:Label>
+                                <asp:Label ID="id" Visible="false" runat="server" Text='<%# Bind("id") %>'></asp:Label>
                                 <asp:Label ID="Label2" Visible="false" runat="server" Text='<%# Bind("iid") %>'></asp:Label>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("articleno") %>'></asp:Label>
+                                <asp:Label ID="articleno" runat="server" Text='<%# Bind("articleno") %>'></asp:Label>
+                                <asp:TextBox ID="articlenotboxedit" Visible="false" Text='<%# Eval("articleno") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
+
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Description">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("description") %>'></asp:Label>
+                                <asp:Label ID="description" runat="server" Text='<%# Bind("description") %>'></asp:Label>
+                                <asp:TextBox ID="descriptiontboxedit"  Visible="false"  Text='<%# Eval("description") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
+
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="%Markup">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("markup") %>'></asp:Label>
+                                <asp:Label ID="markup" runat="server" Text='<%# Bind("markup") %>'></asp:Label>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" ControlToValidate="markuptboxedit" ValidationGroup="editval" runat="server" ErrorMessage="">*</asp:RequiredFieldValidator>
+                                <asp:TextBox ID="markuptboxedit"  Visible="false"  OnTextChanged="edittboxunitprice_TextChanged" Width="90" AutoPostBack="true" TextMode="Number" Text='<%# Eval("markup") %>' runat="server"></asp:TextBox>
+                               
                             </ItemTemplate>
+
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Unit price">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("unitprice") %>'></asp:Label>
+                                <asp:Label ID="unitprice" runat="server" Text='<%# Bind("unitprice") %>'></asp:Label>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="unitpricetboxedit" ValidationGroup="editval" runat="server" ErrorMessage="">*</asp:RequiredFieldValidator>
+                                <asp:TextBox ID="unitpricetboxedit"  Visible="false"  OnTextChanged="edittboxunitprice_TextChanged" Width="90" AutoPostBack="true" TextMode="Number" Text='<%# Eval("unitprice") %>' runat="server"></asp:TextBox>
+                               
                             </ItemTemplate>
+
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Qty">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("qty") %>'></asp:Label>
+                                <asp:Label ID="qty" runat="server" Text='<%# Bind("qty") %>'></asp:Label>
+                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="qtytboxedit" ValidationGroup="editval" runat="server" ErrorMessage="">*</asp:RequiredFieldValidator>
+                                <asp:TextBox ID="qtytboxedit"  Visible="false"  OnTextChanged="edittboxunitprice_TextChanged" Width="90" AutoPostBack="true" TextMode="Number" Text='<%# Eval("qty") %>' runat="server"></asp:TextBox>
+                             
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Net price">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("netamount") %>'></asp:Label>
+                                <asp:Label ID="netamount" runat="server" Text='<%# Bind("netamount") %>'></asp:Label>
+                                <asp:TextBox ID="netamounttboxedit"  Visible="false"  Enabled="false" Text='<%# Eval("netamount") %>' Width="90" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -153,8 +179,11 @@
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
-            </asp:Panel>
-
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </asp:Panel>
+    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+        <ContentTemplate>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
@@ -164,7 +193,6 @@
                             <asp:TextBox ID="tboxarticle" CssClass="form-control" runat="server"></asp:TextBox><br />
                             Description<br />
                             <asp:TextBox ID="tboxdescription" CssClass="form-control" runat="server"></asp:TextBox><br />
-
                         </div>
                         <div class="col-sm-6">
                             <table class="table" border="0">

@@ -164,8 +164,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                GridView1.SelectedIndex = rowindex;
-                ((Panel)row.FindControl("Panel1")).Visible = true;
+           
                 string x;
                 if (((Label)row.FindControl("acceptedlbl")).Text == "Pending")
                 {
@@ -189,20 +188,51 @@ namespace webaftersales.AFTERSALESPROJ
                     ((Label)row.FindControl("datelbl")).Text = Convert.ToDateTime(((Label)row.FindControl("datelbl")).Text).ToString("yyyy-MM-dd");
                 }
                 ((TextBox)row.FindControl("editdatetbox")).Text = ((Label)row.FindControl("datelbl")).Text;
-                ((TextBox)row.FindControl("editasenotbox")).Text = ((Label)row.FindControl("asenolbl")).Text;
-                ((TextBox)row.FindControl("editparticulartbox")).Text = ((Label)row.FindControl("particularlbl")).Text;
-                ((TextBox)row.FindControl("editothertbox")).Text = ((Label)row.FindControl("otherlbl")).Text;
+
+                ((LinkButton)row.FindControl("updatelink")).Visible = true;
+                ((LinkButton)row.FindControl("cancellink")).Visible = true;
+                ((TextBox)row.FindControl("editdatetbox")).Visible = true;
+                ((TextBox)row.FindControl("editaccepteddatetbox")).Visible = true;
+                ((TextBox)row.FindControl("editasenotbox")).Visible = true;
+                ((TextBox)row.FindControl("editparticulartbox")).Visible = true;
+                ((TextBox)row.FindControl("editothertbox")).Visible = true;
+                ((ValidationSummary)row.FindControl("editvalsummary")).Visible = true;
+
+                ((LinkButton)row.FindControl("editlink")).Visible = false;
+                ((LinkButton)row.FindControl("deletelink")).Visible = false;
+                ((Label)row.FindControl("datelbl")).Visible = false;
+                ((Label)row.FindControl("acceptedlbl")).Visible = false;
+                ((Label)row.FindControl("asenolbl")).Visible = false;
+                ((Label)row.FindControl("particularlbl")).Visible = false;
+                ((Label)row.FindControl("otherlbl")).Visible = false;
             }
             if (e.CommandName == "mycancel")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                GridView1.SelectedIndex = -1;
-                ((Panel)row.FindControl("Panel1")).Visible = false;
+            
+                ((LinkButton)row.FindControl("updatelink")).Visible = false;
+                ((LinkButton)row.FindControl("cancellink")).Visible = false;
+                ((TextBox)row.FindControl("editdatetbox")).Visible = false;
+                ((TextBox)row.FindControl("editaccepteddatetbox")).Visible = false;
+                ((TextBox)row.FindControl("editasenotbox")).Visible = false;
+                ((TextBox)row.FindControl("editparticulartbox")).Visible = false;
+                ((TextBox)row.FindControl("editothertbox")).Visible = false;
+                ((ValidationSummary)row.FindControl("editvalsummary")).Visible = false;
+
+                ((LinkButton)row.FindControl("editlink")).Visible = true;
+                ((LinkButton)row.FindControl("deletelink")).Visible = true;
+                ((Label)row.FindControl("datelbl")).Visible = true;
+                ((Label)row.FindControl("acceptedlbl")).Visible = true;
+                ((Label)row.FindControl("asenolbl")).Visible = true;
+                ((Label)row.FindControl("particularlbl")).Visible = true;
+                ((Label)row.FindControl("otherlbl")).Visible = true;
+           
+
             }
             if (e.CommandName == "mysave")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 updatefunction(((Label)row.FindControl("idlbl")).Text,
                 ((TextBox)row.FindControl("editaccepteddatetbox")).Text,
@@ -219,7 +249,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             if (e.CommandName == "myitem")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["aseno"] = ((Label)row.FindControl("asenolbl")).Text;
                 Response.Redirect("~/AFTERSALESPROJ/quotationitem.aspx");
@@ -320,6 +350,11 @@ namespace webaftersales.AFTERSALESPROJ
         {
             GridView1.PageIndex = e.NewPageIndex;
             getdata();
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+           Response.Redirect(Request.UrlReferrer.ToString());
         }
     }
 }
