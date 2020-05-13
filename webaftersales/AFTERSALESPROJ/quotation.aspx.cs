@@ -194,8 +194,6 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("editdatetbox")).Visible = true;
                 ((TextBox)row.FindControl("editaccepteddatetbox")).Visible = true;
                 ((TextBox)row.FindControl("editasenotbox")).Visible = true;
-                ((TextBox)row.FindControl("editparticulartbox")).Visible = true;
-                ((TextBox)row.FindControl("editothertbox")).Visible = true;
                 ((ValidationSummary)row.FindControl("editvalsummary")).Visible = true;
 
                 ((LinkButton)row.FindControl("editlink")).Visible = false;
@@ -203,8 +201,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("datelbl")).Visible = false;
                 ((Label)row.FindControl("acceptedlbl")).Visible = false;
                 ((Label)row.FindControl("asenolbl")).Visible = false;
-                ((Label)row.FindControl("particularlbl")).Visible = false;
-                ((Label)row.FindControl("otherlbl")).Visible = false;
+      
             }
             if (e.CommandName == "mycancel")
             {
@@ -216,16 +213,12 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("editdatetbox")).Visible = false;
                 ((TextBox)row.FindControl("editaccepteddatetbox")).Visible = false;
                 ((TextBox)row.FindControl("editasenotbox")).Visible = false;
-                ((TextBox)row.FindControl("editparticulartbox")).Visible = false;
-                ((TextBox)row.FindControl("editothertbox")).Visible = false;
                 ((ValidationSummary)row.FindControl("editvalsummary")).Visible = false;
 
                 ((LinkButton)row.FindControl("editlink")).Visible = true;
                 ((LinkButton)row.FindControl("deletelink")).Visible = true;
                 ((Label)row.FindControl("datelbl")).Visible = true;
                 ((Label)row.FindControl("acceptedlbl")).Visible = true;
-                ((Label)row.FindControl("asenolbl")).Visible = true;
-                ((Label)row.FindControl("particularlbl")).Visible = true;
                 ((Label)row.FindControl("otherlbl")).Visible = true;
            
 
@@ -237,9 +230,7 @@ namespace webaftersales.AFTERSALESPROJ
                 updatefunction(((Label)row.FindControl("idlbl")).Text,
                 ((TextBox)row.FindControl("editaccepteddatetbox")).Text,
                 ((TextBox)row.FindControl("editdatetbox")).Text,
-                ((TextBox)row.FindControl("editasenotbox")).Text,
-                ((TextBox)row.FindControl("editparticulartbox")).Text,
-                ((TextBox)row.FindControl("editothertbox")).Text);
+                ((TextBox)row.FindControl("editasenotbox")).Text);
             }
             if (e.CommandName == "mydelete")
             {
@@ -256,12 +247,12 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        private void updatefunction(string id, string accepted, string qdate, string aseno, string paritular, string othercharges)
+        private void updatefunction(string id, string accepted, string qdate, string aseno)
         {
             try
             {
                 string find = "select * from quotationtb where not id = @id and aseno = @aseno";
-                string str = " update quotationtb set accepted=@accepted, aseno=@aseno, qdate =@qdate, particular=@particular, othercharges=@othercharges where id = @id";
+                string str = " update quotationtb set accepted=@accepted, aseno=@aseno, qdate =@qdate where id = @id";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -301,8 +292,6 @@ namespace webaftersales.AFTERSALESPROJ
                             sqlcmd.Parameters.AddWithValue("@accepted", accepted);
                             sqlcmd.Parameters.AddWithValue("@qdate", qdate);
                             sqlcmd.Parameters.AddWithValue("@aseno", aseno);
-                            sqlcmd.Parameters.AddWithValue("@particular", paritular);
-                            sqlcmd.Parameters.AddWithValue("@othercharges", othercharges);
                             sqlcmd.ExecuteNonQuery();
                             getdata();
                         }

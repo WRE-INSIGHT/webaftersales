@@ -14,6 +14,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
         public string itemno { get; set; }
         public string kno { get; set; }
         public string location { get; set; }
+        public string netprice { get; set; }
         public List<quknoparts> thisparts
         {
             get
@@ -33,7 +34,8 @@ namespace webaftersales.AFTERSALESPROJ.dal
                             " ASENO," +
                             " ITEM," +
                             " KNO AS[K#]," +
-                            " WDWLOC as [WDW / DOOR LOCATION] " +
+                            " WDWLOC as [WDW / DOOR LOCATION], " +
+                            " NETPRICE " +
                             " from itemtb where aseno = @aseno";
             string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
             using (SqlConnection sqlcon = new SqlConnection(cs))
@@ -52,6 +54,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
                         k.itemno = rd[2].ToString();
                         k.kno = rd[3].ToString();
                         k.location = rd[4].ToString();
+                        k.netprice = rd[5].ToString();
                         li.Add(k);
                     }
                 }

@@ -22,6 +22,7 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         getdata();
                         getpricelist();
+                        getdetails();
                     }
                 }
                 else
@@ -34,6 +35,33 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+
+        private void getdetails()
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+             
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    string str = "select wdwloc AS LOCATION, ITEM,kno AS K#, FORMAT(netprice,'N2') AS [NET PRICE] from itemtb where id = @iid ";
+
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@iid", iid);
+                        GridView3.DataSource = sqlcmd.ExecuteReader();
+                        GridView3.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+
+        }
+
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -47,6 +75,13 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return Session["IID"].ToString();
+            }
+        }
+        private string aseno
+        {
+            get
+            {
+                return Session["aseno"].ToString();
             }
         }
         private void getpricelist()
@@ -83,7 +118,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
         }
         private void getdata()
@@ -109,8 +144,9 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
+         
         }
 
 
@@ -145,13 +181,18 @@ namespace webaftersales.AFTERSALESPROJ
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string str = "  declare @id as integer = (select isnull(max(id),0)+1 from partstb) " +
                   "  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount) " +
-                  "  values(@id, @iid, @articleno, @description, @markup, @unitprice, @qty, @netamount)";
+                  "  values(@id, @iid, @articleno, @description, @markup, @unitprice, @qty, @netamount)" +
+                  " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
+                             " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
+                             " update itemtb set netprice = @x where id = @iid " +
+                             " update [QUOTATIONTB] set netprice = @y where aseno = @aseno ";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
 
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@aseno", aseno);
                         sqlcmd.Parameters.AddWithValue("@iid", iid);
                         sqlcmd.Parameters.AddWithValue("@articleno", articleno);
                         sqlcmd.Parameters.AddWithValue("@description", description);
@@ -171,6 +212,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 getpricelist();
                 getdata();
+                getdetails();
             }
         }
         protected void LinkButton2_Click(object sender, EventArgs e)
@@ -340,12 +382,18 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = "update partstb set articleno=@articleno, description= @description, markup = @markup, unitprice = @unitprice, qty = @qty, netamount = @netamount where id = @id";
+                string str = " update partstb set articleno=@articleno, description= @description, markup = @markup, unitprice = @unitprice, qty = @qty, netamount = @netamount where id = @id" +
+                             " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
+                             " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
+                             " update itemtb set netprice = @x where id = @iid " +
+                             " update [QUOTATIONTB] set netprice = @y where aseno = @aseno ";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@aseno", aseno);
+                        sqlcmd.Parameters.AddWithValue("@iid", iid);
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@articleno", articleno);
                         sqlcmd.Parameters.AddWithValue("@description", description);
@@ -364,6 +412,7 @@ namespace webaftersales.AFTERSALESPROJ
             finally
             {
                 getdata();
+                getdetails();
             }
         }
 

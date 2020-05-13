@@ -68,13 +68,13 @@
                         <asp:TemplateField HeaderText="OTHER CHARGER">
                             <ItemTemplate>
                                 <asp:Label ID="otherlbl" runat="server" Text='<%# Bind("[OTHER CHARGES]") %>'></asp:Label>
-                                <asp:TextBox ID="editothertbox"  Visible="false" placeholder="Other charges" Text='<%# Eval("[OTHER CHARGES]") %>' runat="server"></asp:TextBox>
+                             
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="PARTICULAR">
                             <ItemTemplate>
                                 <asp:Label ID="particularlbl" runat="server" Text='<%# Bind("PARTICULAR") %>'></asp:Label>
-                                <asp:TextBox ID="editparticulartbox"  Visible="false" placeholder="Particular" Text='<%# Eval("PARTICULAR") %>' runat="server"></asp:TextBox>
+                          
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="NET PRICE">
