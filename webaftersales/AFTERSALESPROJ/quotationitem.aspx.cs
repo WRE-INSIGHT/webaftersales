@@ -24,8 +24,8 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
-                        lblproject.Text = Session["callinProject"].ToString();
-                        lbladdress.Text = Session["callinAddress"].ToString();
+                        lblproject.Text = Session["PROJECT"].ToString();
+                        lbladdress.Text = Session["ADDRESS"].ToString();
                         getdetails();
                         getdata();
                     }

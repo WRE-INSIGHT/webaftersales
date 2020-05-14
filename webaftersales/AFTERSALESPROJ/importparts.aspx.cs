@@ -182,9 +182,9 @@ namespace webaftersales.AFTERSALESPROJ
                 string str = "  declare @id as integer = (select isnull(max(id),0)+1 from partstb) " +
                   "  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount) " +
                   "  values(@id, @iid, @articleno, @description, @markup, @unitprice, @qty, @netamount)" +
-                  " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
-                             " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
+                             " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
                              " update itemtb set netprice = @x where id = @iid " +
+                             " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
                              " update [QUOTATIONTB] set netprice = @y where aseno = @aseno ";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -356,13 +356,19 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = "delete from partstb where id = @id";
+                string str = "delete from partstb where id = @id"+
+                             " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
+                             " update itemtb set netprice = @x where id = @iid " +
+                             " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
+                             " update [QUOTATIONTB] set netprice = @y where aseno = @aseno "; ;
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
                         sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@iid", iid);
+                        sqlcmd.Parameters.AddWithValue("@aseno", aseno);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -384,8 +390,8 @@ namespace webaftersales.AFTERSALESPROJ
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string str = " update partstb set articleno=@articleno, description= @description, markup = @markup, unitprice = @unitprice, qty = @qty, netamount = @netamount where id = @id" +
                              " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
-                             " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
                              " update itemtb set netprice = @x where id = @iid " +
+                             " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
                              " update [QUOTATIONTB] set netprice = @y where aseno = @aseno ";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {

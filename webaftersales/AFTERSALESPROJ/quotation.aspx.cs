@@ -84,7 +84,7 @@ namespace webaftersales.AFTERSALESPROJ
 
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
         }
         private void errorrmessage(string message)
@@ -150,7 +150,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
             finally
             {
@@ -245,6 +245,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["aseno"] = ((Label)row.FindControl("asenolbl")).Text;
                 Response.Redirect("~/AFTERSALESPROJ/quotationitem.aspx");
             }
+            if (e.CommandName == "report")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["aseno"] = ((Label)row.FindControl("asenolbl")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/quotationreport.aspx");
+            }
         }
 
         private void updatefunction(string id, string accepted, string qdate, string aseno)
@@ -303,7 +310,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
 
         }
@@ -327,7 +334,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.Message.ToString());
             }
             finally
             {

@@ -107,7 +107,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton4" runat="server" CommandName="parts">Import</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton4" runat="server" CommandName="parts">Items</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="LOCATION">
