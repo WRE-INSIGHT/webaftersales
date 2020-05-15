@@ -94,25 +94,52 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 GridView1.SelectedIndex = rowindex;
+                ((LinkButton)row.FindControl("editbtn")).Visible = false;
+                ((LinkButton)row.FindControl("deletebtn")).Visible = false;
+                ((Label)row.FindControl("articlelbl")).Visible = false;
+                ((Label)row.FindControl("specificationlbl")).Visible = false;
+                ((Label)row.FindControl("descriptionlbl")).Visible = false;
+                ((Label)row.FindControl("unitlbl")).Visible = false;
+                ((Label)row.FindControl("unitpricelbl")).Visible = false;
+                ((Label)row.FindControl("remarkslbl")).Visible = false;
 
-                ((TextBox)row.FindControl("articletbox")).Text = ((Label)row.FindControl("articlelbl")).Text;
-                ((TextBox)row.FindControl("specificationtbox")).Text = ((Label)row.FindControl("specificationlbl")).Text;
-                ((TextBox)row.FindControl("descriptiontbox")).Text = ((Label)row.FindControl("descriptionlbl")).Text;
-                ((TextBox)row.FindControl("unittbox")).Text = ((Label)row.FindControl("unitlbl")).Text;
-                ((TextBox)row.FindControl("unitpricetbox")).Text = ((Label)row.FindControl("unitpricelbl")).Text;
-                ((TextBox)row.FindControl("remarkstbox")).Text = ((Label)row.FindControl("remarkslbl")).Text;
-                ((Panel)row.FindControl("Panel1")).Visible = true;
+                ((LinkButton)row.FindControl("updatebtn")).Visible = true;
+                ((LinkButton)row.FindControl("cancelbtn")).Visible = true;
+                ((TextBox)row.FindControl("articletbox")).Visible = true;
+                ((TextBox)row.FindControl("specificationtbox")).Visible = true;
+                ((TextBox)row.FindControl("descriptiontbox")).Visible = true;
+                ((TextBox)row.FindControl("unittbox")).Visible = true;
+                ((TextBox)row.FindControl("unitpricetbox")).Visible = true;
+                ((TextBox)row.FindControl("remarkstbox")).Visible = true;
+         
             }
             if (e.CommandName == "mycancel")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 GridView1.SelectedIndex = -1;
-                ((Panel)row.FindControl("Panel1")).Visible = false;
+                ((LinkButton)row.FindControl("editbtn")).Visible = true;
+                ((LinkButton)row.FindControl("deletebtn")).Visible = true;
+                ((Label)row.FindControl("articlelbl")).Visible = true;
+                ((Label)row.FindControl("specificationlbl")).Visible = true;
+                ((Label)row.FindControl("descriptionlbl")).Visible = true;
+                ((Label)row.FindControl("unitlbl")).Visible = true;
+                ((Label)row.FindControl("unitpricelbl")).Visible = true;
+                ((Label)row.FindControl("remarkslbl")).Visible = true;
+
+                ((LinkButton)row.FindControl("updatebtn")).Visible = false;
+                ((LinkButton)row.FindControl("cancelbtn")).Visible = false;
+                ((TextBox)row.FindControl("articletbox")).Visible = false;
+                ((TextBox)row.FindControl("specificationtbox")).Visible = false;
+                ((TextBox)row.FindControl("descriptiontbox")).Visible = false;
+                ((TextBox)row.FindControl("unittbox")).Visible = false;
+                ((TextBox)row.FindControl("unitpricetbox")).Visible = false;
+                ((TextBox)row.FindControl("remarkstbox")).Visible = false;
+
             }
             if (e.CommandName == "mysave")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 updatefunction(((Label)row.FindControl("idlbl")).Text,
                             ((TextBox)row.FindControl("articletbox")).Text,
@@ -195,7 +222,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-               
+
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from accessoriestb) insert into accessoriestb (id,ARTICLENO,SPECIFICATION,DESCRIPTION,UNIT,UNITPRICE,remarks)values(@id,@article,@specification,@description,@unit,@unitprice,@remarks)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
@@ -203,7 +230,7 @@ namespace webaftersales.AFTERSALESPROJ
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
-              
+
                         sqlcmd.Parameters.AddWithValue("@article", article);
                         sqlcmd.Parameters.AddWithValue("@specification", specification);
                         sqlcmd.Parameters.AddWithValue("@description", description);

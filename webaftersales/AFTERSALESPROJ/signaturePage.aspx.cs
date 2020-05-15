@@ -43,7 +43,7 @@ namespace webaftersales.AFTERSALESPROJ
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("still running here");
+          
             if (IsValid)
             {
                 //Session["dataurlsignature"] = Request.Form["myurl"];

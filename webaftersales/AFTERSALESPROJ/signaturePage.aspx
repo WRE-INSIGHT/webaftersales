@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Report Signature</title>
     <script src="../Scripts/bootstrap.js"></script>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />

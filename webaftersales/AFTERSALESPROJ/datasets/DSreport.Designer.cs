@@ -1524,6 +1524,12 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnTELNO;
             
+            private global::System.Data.DataColumn columnPREPAREDBY;
+            
+            private global::System.Data.DataColumn columnAPPROVEDBY;
+            
+            private global::System.Data.DataColumn columnACCEPTEDBY;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public QUOTATIONTBDataTable() {
@@ -1615,6 +1621,30 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PREPAREDBYColumn {
+                get {
+                    return this.columnPREPAREDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn APPROVEDBYColumn {
+                get {
+                    return this.columnAPPROVEDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ACCEPTEDBYColumn {
+                get {
+                    return this.columnACCEPTEDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1650,7 +1680,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO) {
+            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, string ACCEPTEDBY) {
                 QUOTATIONTBRow rowQUOTATIONTBRow = ((QUOTATIONTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ASENO,
@@ -1659,7 +1689,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         OTHERCHARGES,
                         NETPRICE,
                         ACTUALPRICE,
-                        TELNO};
+                        TELNO,
+                        PREPAREDBY,
+                        APPROVEDBY,
+                        ACCEPTEDBY};
                 rowQUOTATIONTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQUOTATIONTBRow);
                 return rowQUOTATIONTBRow;
@@ -1689,6 +1722,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnNETPRICE = base.Columns["NETPRICE"];
                 this.columnACTUALPRICE = base.Columns["ACTUALPRICE"];
                 this.columnTELNO = base.Columns["TELNO"];
+                this.columnPREPAREDBY = base.Columns["PREPAREDBY"];
+                this.columnAPPROVEDBY = base.Columns["APPROVEDBY"];
+                this.columnACCEPTEDBY = base.Columns["ACCEPTEDBY"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1708,6 +1744,12 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnACTUALPRICE);
                 this.columnTELNO = new global::System.Data.DataColumn("TELNO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTELNO);
+                this.columnPREPAREDBY = new global::System.Data.DataColumn("PREPAREDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPREPAREDBY);
+                this.columnAPPROVEDBY = new global::System.Data.DataColumn("APPROVEDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAPPROVEDBY);
+                this.columnACCEPTEDBY = new global::System.Data.DataColumn("ACCEPTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACCEPTEDBY);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3066,6 +3108,54 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PREPAREDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUOTATIONTB.PREPAREDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PREPAREDBY\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.PREPAREDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string APPROVEDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUOTATIONTB.APPROVEDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'APPROVEDBY\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.APPROVEDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ACCEPTEDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUOTATIONTB.ACCEPTEDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACCEPTEDBY\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.ACCEPTEDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsASENONull() {
                 return this.IsNull(this.tableQUOTATIONTB.ASENOColumn);
             }
@@ -3146,6 +3236,42 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTELNONull() {
                 this[this.tableQUOTATIONTB.TELNOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPREPAREDBYNull() {
+                return this.IsNull(this.tableQUOTATIONTB.PREPAREDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPREPAREDBYNull() {
+                this[this.tableQUOTATIONTB.PREPAREDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAPPROVEDBYNull() {
+                return this.IsNull(this.tableQUOTATIONTB.APPROVEDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAPPROVEDBYNull() {
+                this[this.tableQUOTATIONTB.APPROVEDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsACCEPTEDBYNull() {
+                return this.IsNull(this.tableQUOTATIONTB.ACCEPTEDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetACCEPTEDBYNull() {
+                this[this.tableQUOTATIONTB.ACCEPTEDBYColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -38,33 +38,35 @@
                                     <asp:LinkButton ID="LinkButton2" OnClick="LinkButton2click" CssClass="btn btn-primary" runat="server">Find</asp:LinkButton>
                                 </div>
                             </div>
-                            <asp:GridView ID="GridView1" GridLines="None" AutoGenerateColumns="false" CssClass="table" AllowPaging="true" PageSize="10" runat="server"
-                                OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
-                                <Columns>
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <div class="panel">
-                                                <asp:Button ID="bindProject" CommandName="myselect" Font-Size="Large" CssClass="btn btn-default" runat="server" Text='<%# Eval("PROJECT") %>' /><br />
-                                                <blockquote>
-                                                    <asp:Label ID="bindAddress" Font-Size="Small" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label><br />
-                                                    <asp:Label ID="bindJo" Font-Size="Medium" runat="server" Text='<%# Bind("JO") %>'></asp:Label><br />
-                                                </blockquote>
-                                            </div>
+                            <asp:Panel ID="Panel1" ScrollBars="Auto" runat="server">
+                                <asp:GridView ID="GridView1" GridLines="None" AutoGenerateColumns="false" CssClass="table" AllowPaging="true" PageSize="10" runat="server"
+                                    OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
+                                    <Columns>
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <div class="panel">
+                                                    <asp:Button ID="bindProject" CommandName="myselect" Font-Size="Large" CssClass="btn btn-default" runat="server" Text='<%# Eval("PROJECT") %>' /><br />
+                                                    <blockquote>
+                                                        <asp:Label ID="bindAddress" Font-Size="Small" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label><br />
+                                                        <asp:Label ID="bindJo" Font-Size="Medium" runat="server" Text='<%# Bind("JO") %>'></asp:Label><br />
+                                                    </blockquote>
+                                                </div>
 
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                                <PagerSettings PageButtonCount="8" />
-                                <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
-                                <SelectedRowStyle BackColor="#CCCCFF" Font-Bold="True" />
-                                <EmptyDataTemplate>
-                                    <div class="alert alert-danger">
-                                        <h2><strong>Sorry, no data available!</strong>
-                                            <small>0 result found</small>
-                                        </h2>
-                                    </div>
-                                </EmptyDataTemplate>
-                            </asp:GridView>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <PagerSettings PageButtonCount="8" />
+                                    <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
+                                    <SelectedRowStyle BackColor="#CCCCFF" Font-Bold="True" />
+                                    <EmptyDataTemplate>
+                                        <div class="alert alert-danger">
+                                            <h2><strong>Sorry, no data available!</strong>
+                                                <small>0 result found</small>
+                                            </h2>
+                                        </div>
+                                    </EmptyDataTemplate>
+                                </asp:GridView>
+                            </asp:Panel>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>

@@ -9,7 +9,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>Quotation Report</strong></h3>
+        <h3><strong>Quotation Report Viewer</strong></h3>
+        <div class="navbar-right">
+            <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotation.aspx">back</asp:LinkButton>
+        </div>
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -22,7 +25,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server"  ConnectionString="<%$ ConnectionStrings:sqlcon %>"
-        SelectCommand="select ASENO,QDATE,PARTICULAR,FORMAT(OTHERCHARGES,'n2') as OTHERCHARGES,format(NETPRICE,'n2') as NETPRICE,format(ACTUALPRICE,'n2') as ACTUALPRICE,TELNO from quotationtb as a
+        SelectCommand="select ASENO,QDATE,PARTICULAR,FORMAT(OTHERCHARGES,'n2') as OTHERCHARGES,format(NETPRICE,'n2') as NETPRICE,format(ACTUALPRICE,'n2') as ACTUALPRICE,TELNO,PREPAREDBY,APPROVEDBY,ACCEPTEDBY from quotationtb as a
 LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
          <SelectParameters>
             <asp:SessionParameter Name="ASENO" SessionField="aseno" Type="String" />
@@ -33,7 +36,7 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
     </asp:SqlDataSource>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <rsweb:ReportViewer ID="ReportViewer1" Width="100%" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+            <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
                 <LocalReport ReportPath="AFTERSALESPROJ\report\RPTquotation.rdlc">
                     <DataSources>
                         <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
@@ -42,6 +45,9 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
                     </DataSources>
                 </LocalReport>
             </rsweb:ReportViewer>
+            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;PREPARED BY</asp:LinkButton>
+              <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;APPROVED BY</asp:LinkButton>
+              <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;ACCEPTED BY</asp:LinkButton>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

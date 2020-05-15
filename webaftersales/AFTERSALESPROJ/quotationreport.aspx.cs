@@ -49,16 +49,17 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getparameters()
         {
-            //ReportViewer1.LocalReport.EnableExternalImages = true;
-            //string imgparam = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/inspectedby.jpg")).AbsoluteUri;
-            //string imgparam1 = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/monitoredby.jpg")).AbsoluteUri;
-            ReportParameter[] repparam = new ReportParameter[2];
+            ReportViewer1.LocalReport.EnableExternalImages = true;
+            string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString()+"/" + Session["aseno"].ToString()+ "/signature/PREPAREDBY.jpg")).AbsoluteUri;
+            string approved = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/APPROVEDBY.jpg")).AbsoluteUri;
+            string accepted = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/ACCEPTEDBY.jpg")).AbsoluteUri;
+            ReportParameter[] repparam = new ReportParameter[5];
             repparam[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             repparam[1] = new ReportParameter("address", Session["ADDRESS"].ToString());
-            //repparam[2] = new ReportParameter("profilefinish", Session["COLOR"].ToString());
-            //repparam[3] = new ReportParameter("imgparam", imgparam);
-            //repparam[4] = new ReportParameter("imgparam1", imgparam1);
-            for (int i = 0; i < 2; i++)
+            repparam[2] = new ReportParameter("prepared", prepared);
+            repparam[3] = new ReportParameter("approved", approved);
+            repparam[4] = new ReportParameter("accepted", accepted);
+            for (int i = 0; i < 5; i++)
             {
                 ReportViewer1.LocalReport.SetParameters(repparam[i]);
             }
@@ -66,5 +67,22 @@ namespace webaftersales.AFTERSALESPROJ
       
         }
 
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["columnname"] = "PREPAREDBY";
+            Response.Redirect("~/AFTERSALESPROJ/quotationsignature.aspx");
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            Session["columnname"] = "APPROVEDBY";
+            Response.Redirect("~/AFTERSALESPROJ/quotationsignature.aspx");
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            Session["columnname"] = "ACCEPTEDBY";
+            Response.Redirect("~/AFTERSALESPROJ/quotationsignature.aspx");
+        }
     }
 }
