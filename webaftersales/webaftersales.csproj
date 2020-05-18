@@ -407,6 +407,13 @@
     <Compile Include="AFTERSALESPROJ\quotationsignature.aspx.designer.cs">
       <DependentUpon>quotationsignature.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationsummary.aspx.cs">
+      <DependentUpon>quotationsummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationsummary.aspx.designer.cs">
+      <DependentUpon>quotationsummary.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\reportPage.aspx.cs">
       <DependentUpon>reportPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -492,6 +499,34 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DAILYHEALTHPROFILE\dhphome.aspx.cs">
+      <DependentUpon>dhphome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhphome.aspx.designer.cs">
+      <DependentUpon>dhphome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhplogin.aspx.cs">
+      <DependentUpon>dhplogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhplogin.aspx.designer.cs">
+      <DependentUpon>dhplogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\DHPmaster.Master.cs">
+      <DependentUpon>DHPmaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\DHPmaster.Master.designer.cs">
+      <DependentUpon>DHPmaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhpnew.aspx.cs">
+      <DependentUpon>dhpnew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhpnew.aspx.designer.cs">
+      <DependentUpon>dhpnew.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -558,6 +593,7 @@
     <Content Include="AFTERSALESPROJ\quotationitem.aspx" />
     <Content Include="AFTERSALESPROJ\quotationreport.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
+    <Content Include="AFTERSALESPROJ\quotationsummary.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />
@@ -574,6 +610,9 @@
     <Content Include="AFTERSALESPROJ\WebForm6.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DAILYHEALTHPROFILE\dhphome.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\dhplogin.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\dhpnew.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -595,6 +634,7 @@
     <Content Include="AFTERSALESPROJ\datasets\DSreport.xss">
       <DependentUpon>DSreport.xsd</DependentUpon>
     </Content>
+    <Content Include="DAILYHEALTHPROFILE\DHPmaster.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

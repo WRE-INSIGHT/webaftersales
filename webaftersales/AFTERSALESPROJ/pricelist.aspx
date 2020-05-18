@@ -35,37 +35,37 @@
                             <ItemTemplate>
                                 <asp:Label Visible="false" ID="idlbl" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                 <asp:Label ID="specificationlbl" runat="server" Text='<%# Bind("SPECIFICATION") %>'></asp:Label>
-                                <asp:TextBox ID="specificationtbox"  Visible="false" placeholder="Specification" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="specificationtbox"  Visible="false" placeholder="Specification" Text='<%# Eval("SPECIFICATION") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Description">
                             <ItemTemplate>
                                 <asp:Label ID="descriptionlbl" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
-                                <asp:TextBox ID="descriptiontbox"  Visible="false" placeholder="Description" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="descriptiontbox"  Visible="false" placeholder="Description" Text='<%# Eval("DESCRIPTION") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Article #">
                             <ItemTemplate>
                                 <asp:Label ID="articlelbl" runat="server" Text='<%# Bind("ARTICLENO") %>'></asp:Label>
-                                <asp:TextBox ID="articletbox"  Visible="false" placeholder="Article number" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="articletbox"  Visible="false" placeholder="Article number" Text='<%# Eval("ARTICLENO") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Unit">
                             <ItemTemplate>
                                 <asp:Label ID="unitlbl" runat="server" Text='<%# Bind("UNIT") %>'></asp:Label>
-                                <asp:TextBox ID="unittbox"  Visible="false" placeholder="Unit" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="unittbox"  Visible="false" placeholder="Unit" Text='<%# Eval("UNIT") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Unit price">
                             <ItemTemplate>
                                 <asp:Label ID="unitpricelbl" runat="server" Text='<%# Bind("[UNIT PRICE]") %>'></asp:Label>
-                                <asp:TextBox ID="unitpricetbox"  Visible="false" placeholder="Unit price" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="unitpricetbox"  Visible="false" placeholder="Unit price" Text='<%# Eval("[UNIT PRICE]") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Remarks">
                             <ItemTemplate>
                                 <asp:Label ID="remarkslbl" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label>
-                                <asp:TextBox ID="remarkstbox" Visible="false" placeholder="Remarks" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="remarkstbox" Visible="false" placeholder="Remarks"  Text='<%# Eval("REMARKS") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -105,7 +105,7 @@
             <asp:TextBox ID="unitpricetbox" CssClass="form-control" placeholder="Unit price" runat="server"></asp:TextBox><br />
             Remarks<br />
             <asp:TextBox ID="remarkstbox" CssClass="form-control" placeholder="Remarks" runat="server"></asp:TextBox><br />
-            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="save" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="add" OnClick="Button1_Click" />
         </div>
     </div>
 

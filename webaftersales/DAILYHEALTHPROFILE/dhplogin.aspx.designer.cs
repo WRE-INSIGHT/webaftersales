@@ -7,55 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace webaftersales.AFTERSALESPROJ {
+namespace webaftersales.DAILYHEALTHPROFILE {
     
     
-    public partial class LoginPage {
+    public partial class dhplogin {
         
         /// <summary>
-        /// fomr1 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm fomr1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// tboxempno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.TextBox tboxempno;
         
         /// <summary>
-        /// HyperLink1 control.
+        /// tboxpassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
-        /// <summary>
-        /// usernametbox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernametbox;
-        
-        /// <summary>
-        /// passwordtbox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordtbox;
+        protected global::System.Web.UI.WebControls.TextBox tboxpassword;
         
         /// <summary>
         /// CheckBox1 control.
@@ -67,13 +49,13 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
         
         /// <summary>
-        /// loginbtn control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginbtn;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// ValidationSummary1 control.

@@ -350,7 +350,14 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
-           Response.Redirect(Request.UrlReferrer.ToString());
+           if (Session["quotationsender"].ToString()=="report")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
+            }
+           else if (Session["quotationsender"].ToString() == "joborder")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
+            }
         }
     }
 }

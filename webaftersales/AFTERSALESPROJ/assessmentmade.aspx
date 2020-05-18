@@ -13,82 +13,66 @@
         </div>
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label>
-            <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label>&nbsp;assessment
-            <div class="navbar-right">
-                <asp:LinkButton ForeColor="Yellow" ID="LinkButton3" runat="server" PostBackUrl="~/AFTERSALESPROJ/assessmentPage.aspx">import from cutting list</asp:LinkButton>
-            </div>
-        </div>
+    <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/assessmentPage.aspx" OnClick="LinkButton3_Click">Import</asp:LinkButton><br />
+    <h4>
+    <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label>&nbsp;
+    <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label>&nbsp;assessment
+        </h4>
+   
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-                <div class="panel-body">
-                    <asp:GridView ID="GridView1" GridLines="None" AutoGenerateColumns="false" AllowPaging="true" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
-                        <Columns>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Label ID="idlbl" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
-                                    <asp:Label ID="Label2" runat="server" Visible="false" Text='<%# Bind("REPORTID") %>'></asp:Label>
-                                    <div class="panel panel-primary">
-                                        <div class="panel-body">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
 
-                                            <table border="0" class="table">
-                                                <tr>
-                                                    <th>Description</th>
-                                                    <th>Assessment</th>
-                                                    <th>
-                                                        <asp:LinkButton ID="LinkButton1" CommandName="myedit" runat="server">Edit</asp:LinkButton></th>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <asp:Label ID="descriptionlbl" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
-                                                    </td>
-                                                    <td>
-                                                        <asp:Label ID="assessmentlbl" runat="server" Text='<%# Bind("ASSESSMENT") %>'></asp:Label>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <asp:Panel ID="Panel1" Visible="false" runat="server">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-body">
-                                                        Description<br />
-                                                        <asp:TextBox ID="descriptiontbox" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                        Assessment<br />
-                                                        <asp:TextBox ID="assessmenttbox" TextMode="MultiLine" Rows="10" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                        <asp:Button ID="Button2" CommandName="mysave" CssClass="btn btn-primary" runat="server" Text="save" />
-                                                    </div>
-                                                    <div class="panel-footer">
-                                                        <asp:Button ID="Button1" CommandName="mycancel" CssClass="btn btn-default" runat="server" Text="cancel" />
-                                                        <div class="navbar-right">
-                                                            <asp:LinkButton ID="LinkButton2" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" CssClass="btn btn-default" runat="server"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </asp:Panel>
-                                        </div>
-                                    </div>
+            <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
+                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="editbtn" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                                <asp:LinkButton ID="deletebtn" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
+                                <asp:LinkButton ID="savebtn" Visible="false" CommandName="mysave" runat="server">Update</asp:LinkButton>
+                                <asp:LinkButton ID="cancelbtn" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
 
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Description">
+                            <ItemTemplate>
+                                <asp:Label ID="idlbl" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Visible="false" Text='<%# Bind("REPORTID") %>'></asp:Label>
+                                <asp:Label ID="descriptionlbl" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
+                                <asp:TextBox ID="descriptiontbox" TextMode="MultiLine" Rows="10" Width="400" Visible="false" Text='<%# Eval("DESCRIPTION") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Assessment">
+                            <ItemTemplate>
+                                <asp:Label ID="assessmentlbl" runat="server" Text='<%# Bind("ASSESSMENT") %>'></asp:Label>
+                                <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <FooterStyle BackColor="#CCCCCC" />
+                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                    <PagerSettings PageButtonCount="8" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" BackColor="#CCCCCC" ForeColor="Black" />
+                    <EmptyDataTemplate>
+                        <div class="alert alert-danger">
+                            <h2><strong>Sorry, no data available!</strong>
+                                <small>0 result found</small>
+                            </h2>
+                        </div>
+                    </EmptyDataTemplate>
+                    <RowStyle BackColor="White" Wrap="False" />
+                
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#808080" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#383838" />
+                </asp:GridView>
+            </asp:Panel>
 
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                        <PagerSettings PageButtonCount="8" />
-                        <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
-                        <EmptyDataTemplate>
-                            <div class="alert alert-danger">
-                                <h2><strong>Sorry, no data available!</strong>
-                                    <small>0 result found</small>
-                                </h2>
-                            </div>
-                        </EmptyDataTemplate>
-                    </asp:GridView>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
     <div class="well">
         <h3>New record</h3>
         Description<br />

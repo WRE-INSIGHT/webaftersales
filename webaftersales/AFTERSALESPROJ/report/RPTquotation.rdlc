@@ -1099,7 +1099,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>="PhP "+First(Fields!NETPRICE.Value, "DataSet2")</Value>
+                              <Value>="PhP "+First(Fields!ACTUALPRICE.Value, "DataSet2")</Value>
                               <Style>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>

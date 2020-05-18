@@ -413,11 +413,11 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton7_Click(object sender, EventArgs e)
         {
-            Session["callinnumber"] = Session["CIN"].ToString();
-            Session["callinProject"] = Session["PROJECT"].ToString();
-            Session["callinAddress"] = Session["ADDRESS"].ToString();
-            Session["servicingsource"] = "report";
-            Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
+         
+                Session["quotationsender"] = "report";
+                Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
+           
+     
 
         }
     }

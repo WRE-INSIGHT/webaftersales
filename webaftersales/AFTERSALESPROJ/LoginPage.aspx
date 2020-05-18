@@ -21,6 +21,7 @@
             </div>
         </div>
         <div class="container">
+            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhplogin.aspx" runat="server">Daily Health Profile</asp:LinkButton><br />
             <div class="row">
                 <div class="col-sm-4">
                     <div class="container">

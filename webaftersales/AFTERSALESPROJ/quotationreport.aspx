@@ -24,16 +24,15 @@
             <asp:SessionParameter Name="ASENO" SessionField="aseno" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server"  ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
         SelectCommand="select ASENO,QDATE,PARTICULAR,FORMAT(OTHERCHARGES,'n2') as OTHERCHARGES,format(NETPRICE,'n2') as NETPRICE,format(ACTUALPRICE,'n2') as ACTUALPRICE,TELNO,PREPAREDBY,APPROVEDBY,ACCEPTEDBY from quotationtb as a
 LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
-         <SelectParameters>
+        <SelectParameters>
             <asp:SessionParameter Name="ASENO" SessionField="aseno" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server"   ConnectionString="<%$ ConnectionStrings:sqlcon %>"
-       SelectCommand="select * from notetb" >
-    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+        SelectCommand="select * from notetb"></asp:SqlDataSource>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
@@ -45,9 +44,20 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
                     </DataSources>
                 </LocalReport>
             </rsweb:ReportViewer>
-            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;PREPARED BY</asp:LinkButton>
-              <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;APPROVED BY</asp:LinkButton>
-              <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;ACCEPTED BY</asp:LinkButton>
+            <div class="row">
+                <div class="col-sm-4">
+                    <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;PREPARED BY</asp:LinkButton>
+                </div>
+                <div class="col-sm-4">
+                    <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;APPROVED BY</asp:LinkButton>
+                </div>
+                <div class="col-sm-4">
+                    <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;ACCEPTED BY</asp:LinkButton>
+                </div>
+            </div>
+
+
+
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

@@ -22,7 +22,7 @@ namespace webaftersales.AFTERSALESPROJ
                 if (Session["useraccount"].ToString() == "Admin")
                 {
                     if (!IsPostBack)
-                    {             
+                    {
                         lblproject.Text = Session["callinProject"].ToString();
                         lbladdress.Text = Session["callinAddress"].ToString();
                         getdata();
@@ -71,7 +71,7 @@ namespace webaftersales.AFTERSALESPROJ
                         "  a.REMARKS,a.SPECIFIEDJOB,a.INSTRUCTION, " +
                         "  a.teamid, " +
                         "  b.TEAMNAME," +
-                        " a.plateno,"+
+                        " a.plateno," +
                         "  STUFF((SELECT ', ' + y.FULLNAME+ char(10) from TBLteamMember as x " +
                         " 	left join tblpersonnel as y" +
                         " 	on x.pid = y.pid" +
@@ -130,9 +130,9 @@ namespace webaftersales.AFTERSALESPROJ
         }
         protected void submitbtn_Click(object sender, EventArgs e)
         {
-           
-                addfunction();
-          
+
+            addfunction();
+
         }
         private void addfunction()
         {
@@ -205,7 +205,7 @@ namespace webaftersales.AFTERSALESPROJ
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
-      
+
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -268,7 +268,7 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
-            
+
                 delete();
             }
             else if (e.CommandName == "myteam")
@@ -286,7 +286,7 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
                 GridView1.SelectedIndex = rowindex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                Session["CIN"]= cin;
+                Session["CIN"] = cin;
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
                 getdetails(cin);
                 Session["link"] = "s3";
@@ -300,6 +300,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["CIN"] = cin;
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
                 getdetails(cin);
+                Session["quotationsender"] = "joborder";
                 Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
             }
 
@@ -323,13 +324,13 @@ namespace webaftersales.AFTERSALESPROJ
                         Session["ADDRESS"] = rdr[5].ToString();
                         Session["COLOR"] = rdr[6].ToString();
                     }
-                   
+
                 }
             }
         }
         private void delete()
         {
-          
+
             try
             {
                 string str = "delete from servicingtb where id  = @id";
@@ -388,7 +389,7 @@ namespace webaftersales.AFTERSALESPROJ
                 getdata();
             }
         }
-   
+
         private void cleanme()
         {
             GridView1.SelectedIndex = -1;
@@ -396,7 +397,7 @@ namespace webaftersales.AFTERSALESPROJ
             remarks.Text = "";
         }
 
- 
+
 
         protected void Button4_Click(object sender, EventArgs e)
         {
@@ -406,7 +407,7 @@ namespace webaftersales.AFTERSALESPROJ
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             if (Session["servicingsource"].ToString() == "report")
-            { 
+            {
                 Response.Redirect("~/AFTERSALESPROJ/reportpage.aspx");
             }
             else

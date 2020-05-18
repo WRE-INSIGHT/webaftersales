@@ -89,7 +89,7 @@
                     <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import</asp:HyperLink>
                     <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click">report</asp:LinkButton>
                     <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click">photos</asp:LinkButton>
-                    <asp:LinkButton ID="LinkButton7" CssClass="btn btn-danger" runat="server" OnClick="LinkButton7_Click">JO</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton7" CssClass="btn btn-default" runat="server" OnClick="LinkButton7_Click">quotation</asp:LinkButton>
 
                 </div>
             </div>

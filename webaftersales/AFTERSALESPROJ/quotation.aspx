@@ -28,7 +28,7 @@
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
             <asp:Panel ID="Panel2" ScrollBars="Auto" runat="server">
-                <small>
+             
                     <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" runat="server" OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
                         <Columns>
                             <asp:TemplateField>
@@ -113,7 +113,7 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-                </small>
+           
             </asp:Panel>
         </ContentTemplate>
     </asp:UpdatePanel>

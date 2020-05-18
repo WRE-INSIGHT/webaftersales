@@ -10,25 +10,7 @@
 namespace webaftersales.AFTERSALESPROJ {
     
     
-    public partial class assessmentPage {
-        
-        /// <summary>
-        /// HyperLink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+    public partial class quotationsummary {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -40,6 +22,33 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
+        /// searchkey control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox searchkey;
+        
+        /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
@@ -47,51 +56,6 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// lblkno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblkno;
-        
-        /// <summary>
-        /// lbllocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbllocation;
-        
-        /// <summary>
-        /// UpdatePanel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
-        /// <summary>
-        /// findtbox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox findtbox;
-        
-        /// <summary>
-        /// LinkButton3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
         
         /// <summary>
         /// Panel1 control.
@@ -110,14 +74,5 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
     }
 }

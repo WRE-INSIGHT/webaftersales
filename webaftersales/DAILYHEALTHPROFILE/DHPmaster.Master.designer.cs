@@ -7,28 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace webaftersales.AFTERSALESPROJ {
+namespace webaftersales.DAILYHEALTHPROFILE {
     
     
-    public partial class LoginPage {
+    public partial class DHPmaster {
         
         /// <summary>
-        /// fomr1 control.
+        /// head control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm fomr1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// HyperLink2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
         
         /// <summary>
         /// HyperLink1 control.
@@ -40,48 +49,39 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
         
         /// <summary>
-        /// usernametbox control.
+        /// HyperLink3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernametbox;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
         
         /// <summary>
-        /// passwordtbox control.
+        /// username control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordtbox;
+        protected global::System.Web.UI.WebControls.Label username;
         
         /// <summary>
-        /// CheckBox1 control.
+        /// LinkButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
-        /// loginbtn control.
+        /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginbtn;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
     }
 }

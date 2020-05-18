@@ -107,14 +107,21 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 GridView1.SelectedIndex = rowindex;
-                ((TextBox)row.FindControl("descriptiontbox")).Text = ((Label)row.FindControl("descriptionlbl")).Text;
-                ((TextBox)row.FindControl("assessmenttbox")).Text = ((Label)row.FindControl("assessmentlbl")).Text;
-                ((Panel)row.FindControl("Panel1")).Visible = true;
 
+                ((LinkButton)row.FindControl("editbtn")).Visible = false;
+                ((LinkButton)row.FindControl("deletebtn")).Visible = false;
+                ((Label)row.FindControl("descriptionlbl")).Visible=false;
+                ((Label)row.FindControl("assessmentlbl")).Visible = false;
+
+                ((LinkButton)row.FindControl("savebtn")).Visible = true;
+                ((LinkButton)row.FindControl("cancelbtn")).Visible = true;
+                ((TextBox)row.FindControl("descriptiontbox")).Visible = true;
+                ((TextBox)row.FindControl("assessmenttbox")).Visible = true;
+             
             }
             if (e.CommandName == "mysave")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 updatefunction(((Label)row.FindControl("idlbl")).Text,
                         ((TextBox)row.FindControl("descriptiontbox")).Text,
@@ -128,10 +135,19 @@ namespace webaftersales.AFTERSALESPROJ
             }
             if (e.CommandName == "mycancel")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 GridView1.SelectedIndex = -1;
-                ((Panel)row.FindControl("Panel1")).Visible = false;
+
+                ((LinkButton)row.FindControl("editbtn")).Visible = true;
+                ((LinkButton)row.FindControl("deletebtn")).Visible = true;
+                ((Label)row.FindControl("descriptionlbl")).Visible = true;
+                ((Label)row.FindControl("assessmentlbl")).Visible = true;
+
+                ((LinkButton)row.FindControl("savebtn")).Visible = false;
+                ((LinkButton)row.FindControl("cancelbtn")).Visible = false;
+                ((TextBox)row.FindControl("descriptiontbox")).Visible = false;
+                ((TextBox)row.FindControl("assessmenttbox")).Visible = false;
             }
 
         }
@@ -220,6 +236,11 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 getdata();
             }
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
