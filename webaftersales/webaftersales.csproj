@@ -499,6 +499,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DAILYHEALTHPROFILE\dhpchangepass.aspx.cs">
+      <DependentUpon>dhpchangepass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhpchangepass.aspx.designer.cs">
+      <DependentUpon>dhpchangepass.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAILYHEALTHPROFILE\dhphome.aspx.cs">
       <DependentUpon>dhphome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -610,6 +617,7 @@
     <Content Include="AFTERSALESPROJ\WebForm6.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DAILYHEALTHPROFILE\dhpchangepass.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhphome.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhplogin.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpnew.aspx" />

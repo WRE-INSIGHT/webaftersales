@@ -18,21 +18,29 @@
         <div class="jumbotron">
             <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
         </div>
-        <h1 class="text-center">Daily Health Profile </h1>
         <div class="container">
-            <div class="well">
-                <h1>Sign in</h1>
-                <br />
-                Employee No<br />
-                <asp:TextBox ID="tboxempno" CssClass="form-control" runat="server"></asp:TextBox>
-                <br />
-                Password<br />
-                <asp:TextBox ID="tboxpassword" CssClass="form-control" TextMode="Password" runat="server" OnTextChanged="tboxpassword_TextChanged"></asp:TextBox><br />
-                <div class="checkbox">
-                    <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" Checked="True" />
+
+            <h1 class="text-center">Daily Health Profile </h1>
+            <br />
+            <div class="row">
+                <div class="col-sm-6">
+                    <blockquote>
+                        Employee No<br />
+                        <asp:TextBox ID="tboxempno" CssClass="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        Password<br />
+                        <asp:TextBox ID="tboxpassword" CssClass="form-control" TextMode="Password" runat="server" OnTextChanged="tboxpassword_TextChanged"></asp:TextBox><br />
+                        <div class="checkbox">
+                            <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" Checked="True" />
+                        </div>
+                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Login" OnClick="Button1_Click" />
+                        <asp:ValidationSummary CssClass="alert alert-danger" ValidationGroup="val1" ID="ValidationSummary1" runat="server" />
+                    </blockquote>
                 </div>
-                <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Login" OnClick="Button1_Click" />
-                <asp:ValidationSummary CssClass="alert alert-danger" ValidationGroup="val1" ID="ValidationSummary1" runat="server" />
+                <div class="col-sm-6">
+                    <blockquote>
+                    </blockquote>
+                </div>
             </div>
         </div>
     </form>

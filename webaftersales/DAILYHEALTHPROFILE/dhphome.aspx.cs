@@ -146,8 +146,18 @@ namespace webaftersales.DAILYHEALTHPROFILE
             if (e.CommandName == "answersheet")
             {
                 Session["dhp_id"] =  ((Label)row.FindControl("lblid")).Text;
+                Session["dhpdate"] = ((Label)row.FindControl("lbldate")).Text;
+                Session["dhpname"] = ((Label)row.FindControl("lblname")).Text;
+                Session["dhpage"] = ((Label)row.FindControl("lblage")).Text;
+                Session["dhpempno"] = ((Label)row.FindControl("lblempno")).Text;
+                Session["dhpbirthday"] = ((Label)row.FindControl("lblbirthday")).Text;
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhpnew.aspx");
             }
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

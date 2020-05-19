@@ -13,6 +13,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
     public partial class dhpnew {
         
         /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
         /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
@@ -22,13 +31,13 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// lbldate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label lbldate;
         
         /// <summary>
         /// lblname control.
@@ -148,15 +157,6 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxevtr;
         
         /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
         /// Panel2 control.
         /// </summary>
         /// <remarks>
@@ -166,13 +166,22 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// cboxDCEX control.
+        /// DCEXyes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxDCEX;
+        protected global::System.Web.UI.WebControls.RadioButton DCEXyes;
+        
+        /// <summary>
+        /// DCEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton DCEXno;
         
         /// <summary>
         /// tboxDCDO control.
@@ -202,13 +211,22 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxDCRE;
         
         /// <summary>
-        /// cboxFEEX control.
+        /// FEEXyes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxFEEX;
+        protected global::System.Web.UI.WebControls.RadioButton FEEXyes;
+        
+        /// <summary>
+        /// FEEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton FEEXno;
         
         /// <summary>
         /// tboxFEDO control.
@@ -238,13 +256,22 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxFERE;
         
         /// <summary>
-        /// cboxMPEX control.
+        /// MPEXyes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxMPEX;
+        protected global::System.Web.UI.WebControls.RadioButton MPEXyes;
+        
+        /// <summary>
+        /// MPEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton MPEXno;
         
         /// <summary>
         /// tboxMPDO control.
@@ -274,13 +301,67 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxMPRE;
         
         /// <summary>
-        /// cboxDSEX control.
+        /// WEEXyes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxDSEX;
+        protected global::System.Web.UI.WebControls.RadioButton WEEXyes;
+        
+        /// <summary>
+        /// WEEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton WEEXno;
+        
+        /// <summary>
+        /// tboxWEDO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxWEDO;
+        
+        /// <summary>
+        /// tboxWEET control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxWEET;
+        
+        /// <summary>
+        /// tboxWERE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxWERE;
+        
+        /// <summary>
+        /// DSEXyes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton DSEXyes;
+        
+        /// <summary>
+        /// DSEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton DSEXno;
         
         /// <summary>
         /// tboxDSDO control.
@@ -310,13 +391,22 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxDSRE;
         
         /// <summary>
-        /// cboxDTEX control.
+        /// DTEXyes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxDTEX;
+        protected global::System.Web.UI.WebControls.RadioButton DTEXyes;
+        
+        /// <summary>
+        /// DTEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton DTEXno;
         
         /// <summary>
         /// tboxDTDO control.
@@ -346,13 +436,22 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxDTRE;
         
         /// <summary>
-        /// cboxDIEX control.
+        /// DIEXyes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxDIEX;
+        protected global::System.Web.UI.WebControls.RadioButton DIEXyes;
+        
+        /// <summary>
+        /// DIEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton DIEXno;
         
         /// <summary>
         /// tboxDIDO control.
@@ -382,13 +481,22 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxDIRE;
         
         /// <summary>
-        /// cboxDBEX control.
+        /// DBEXyes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxDBEX;
+        protected global::System.Web.UI.WebControls.RadioButton DBEXyes;
+        
+        /// <summary>
+        /// DBEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton DBEXno;
         
         /// <summary>
         /// tboxDBDO control.
@@ -418,13 +526,22 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxDBRE;
         
         /// <summary>
-        /// cboxLBEX control.
+        /// LBEXyes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxLBEX;
+        protected global::System.Web.UI.WebControls.RadioButton LBEXyes;
+        
+        /// <summary>
+        /// LBEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton LBEXno;
         
         /// <summary>
         /// tboxLBDO control.
@@ -454,13 +571,31 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxLBRE;
         
         /// <summary>
-        /// cboxOSEX control.
+        /// tboxOS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cboxOSEX;
+        protected global::System.Web.UI.WebControls.TextBox tboxOS;
+        
+        /// <summary>
+        /// OSEXyes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton OSEXyes;
+        
+        /// <summary>
+        /// OSEXno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton OSEXno;
         
         /// <summary>
         /// tboxOSDO control.
@@ -488,6 +623,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tboxOSRE;
+        
+        /// <summary>
+        /// tboxCOM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxCOM;
         
         /// <summary>
         /// Button2 control.
