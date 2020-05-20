@@ -143,7 +143,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
             GridViewRow row = GridView1.Rows[rowindex];
-            if (e.CommandName == "answersheet")
+            if (e.CommandName == "page1")
             {
                 Session["dhp_id"] =  ((Label)row.FindControl("lblid")).Text;
                 Session["dhpdate"] = ((Label)row.FindControl("lbldate")).Text;
@@ -152,6 +152,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Session["dhpempno"] = ((Label)row.FindControl("lblempno")).Text;
                 Session["dhpbirthday"] = ((Label)row.FindControl("lblbirthday")).Text;
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhpnew.aspx");
+            }
+            if (e.CommandName == "page2")
+            {
+                Session["dhp_id"] = ((Label)row.FindControl("lblid")).Text;
+                Session["dhpdate"] = ((Label)row.FindControl("lbldate")).Text;
+                Session["dhpname"] = ((Label)row.FindControl("lblname")).Text;
+                Session["dhpage"] = ((Label)row.FindControl("lblage")).Text;
+                Session["dhpempno"] = ((Label)row.FindControl("lblempno")).Text;
+                Session["dhpbirthday"] = ((Label)row.FindControl("lblbirthday")).Text;
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }
         }
 

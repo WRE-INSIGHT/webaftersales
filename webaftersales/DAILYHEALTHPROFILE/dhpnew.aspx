@@ -7,60 +7,50 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>NEW DHP</strong></h3>
+        <h3><strong>Page 1</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhphome.aspx" runat="server">back</asp:LinkButton>
         </div>
     </div>
-
-    <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
-    <br />
-    <div class="row">
-        <div class="col-6-sm">
-        </div>
-        <div class="col-6-sm">
-        </div>
-    </div>
+   
     <div class="panel">
-         <h3 class="text-info">EMPLOYEE DAILY HEALTH PROFILE</h3>
-       <h4>RECORD DATE: <asp:Label ID="lbldate" runat="server" Text="Label"></asp:Label></h4> 
-                            <blockquote>
-                              <h4><table border="0">
-
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-muted">NAME
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">EMPLOYEE NO.
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lblempno" runat="server" Text=""></asp:Label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">BIRTHDATE
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lblbirthday" runat="server" Text=""></asp:Label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">AGE
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lblage" runat="server" Text=""></asp:Label>
-                                        </td>
-                                    </tr>
-                                </table></h4>  
-                            </blockquote>
+        <h3 class="text-info">EMPLOYEE DAILY HEALTH PROFILE</h3>
+        <h4>RECORD DATE:
+            <asp:Label ID="lbldate" runat="server" Text="Label"></asp:Label></h4>
+        <blockquote>
+            <h4>
+                <table border="0">
+                    <tr>
+                        <td class="text-muted">NAME
+                        </td>
+                        <td>
+                            <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">EMPLOYEE NO.
+                        </td>
+                        <td>
+                            <asp:Label ID="lblempno" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">BIRTHDATE
+                        </td>
+                        <td>
+                            <asp:Label ID="lblbirthday" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">AGE
+                        </td>
+                        <td>
+                            <asp:Label ID="lblage" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </h4>
+        </blockquote>
         <br />
         <h4 class="text-info"><strong>Body Temperature Records for the day:</strong> </h4>
         <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
@@ -74,32 +64,43 @@
                     </th>
                 </tr>
                 <tr>
-                    <td>Morning (upon arrival at work)</td>
+                    <td>Morning <p class="text-danger">(upon arrival at work)</p></td>
                     <td>
-                        <asp:TextBox ID="tboxmoatt" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxmoatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxmotr" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxmotr" CssClass="form-control" Text="0" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ControlToValidate="tboxmotr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
+                            ID="RegularExpressionValidator4" runat="server" ValidationGroup="val1" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Midday (while at work)</td>
+                    <td>Midday <p class="text-danger">(while at work)</p></td>
                     <td>
-                        <asp:TextBox ID="tboxmiatt" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxmiatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxmitr" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxmitr" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
+                        <asp:RegularExpressionValidator  ControlToValidate="tboxmitr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
+                            ID="RegularExpressionValidator3" runat="server" ValidationGroup="val1" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Afternoon (while at work)</td>
+                    <td>Afternoon <p class="text-danger"> (while at work)</p></td>
                     <td>
-                        <asp:TextBox ID="tboxafatt" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxafatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxaftr" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxaftr" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
+                        <asp:RegularExpressionValidator ControlToValidate="tboxaftr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
+                            ID="RegularExpressionValidator2" runat="server" ValidationGroup="val1" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Afternoon / Evening (before leaving work)</td>
+                    <td>Afternoon / Evening <p class="text-danger">(before leaving work)</p></td>
                     <td>
-                        <asp:TextBox ID="tboxevatt" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxevatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxevtr" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxevtr" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
+                        <asp:RegularExpressionValidator ControlToValidate="tboxevtr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
+                         ID="RegularExpressionValidator1" runat="server" ValidationGroup="val1" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator></td>
                 </tr>
             </table>
         </asp:Panel>
@@ -149,7 +150,7 @@
                     <td>
                         <asp:TextBox ID="tboxDCDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxDCET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxDCET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxDCRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -164,7 +165,7 @@
                     <td>
                         <asp:TextBox ID="tboxFEDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxFEET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxFEET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxFERE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -178,7 +179,7 @@
                     <td>
                         <asp:TextBox ID="tboxMPDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxMPET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxMPET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxMPRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -192,7 +193,7 @@
                     <td>
                         <asp:TextBox ID="tboxWEDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxWEET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxWEET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxWERE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -208,7 +209,7 @@
                     <td>
                         <asp:TextBox ID="tboxDSDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxDSET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxDSET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxDSRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -224,7 +225,7 @@
                     <td>
                         <asp:TextBox ID="tboxDTDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxDTET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxDTET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxDTRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -239,7 +240,7 @@
                     <td>
                         <asp:TextBox ID="tboxDIDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxDIET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxDIET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxDIRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -255,7 +256,7 @@
                     <td>
                         <asp:TextBox ID="tboxDBDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxDBET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxDBET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxDBRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -272,7 +273,7 @@
                     <td>
                         <asp:TextBox ID="tboxLBDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxLBET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxLBET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxLBRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -290,7 +291,7 @@
                     <td>
                         <asp:TextBox ID="tboxOSDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
-                        <asp:TextBox ID="tboxOSET" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="tboxOSET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxOSRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
@@ -304,6 +305,7 @@
             <small class="text-info">(Nurse’s comments)</small><br />
             <asp:TextBox ID="tboxCOM" runat="server" TextMode="MultiLine" Rows="10" CssClass="form-control"></asp:TextBox>
         </div>
-        <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="save" OnClick="Button2_Click" />
+          <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
+        <asp:Button ID="Button2" ValidationGroup="val1" CssClass="btn btn-primary" runat="server" Text="save page 1" OnClick="Button2_Click" />
     </div>
 </asp:Content>

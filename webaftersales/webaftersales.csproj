@@ -534,6 +534,13 @@
     <Compile Include="DAILYHEALTHPROFILE\dhpnew.aspx.designer.cs">
       <DependentUpon>dhpnew.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhppage2.aspx.cs">
+      <DependentUpon>dhppage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhppage2.aspx.designer.cs">
+      <DependentUpon>dhppage2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -621,6 +628,7 @@
     <Content Include="DAILYHEALTHPROFILE\dhphome.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhplogin.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpnew.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\dhppage2.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

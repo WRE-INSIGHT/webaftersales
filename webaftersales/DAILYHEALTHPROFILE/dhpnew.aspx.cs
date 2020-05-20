@@ -267,7 +267,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     "@OSDO ," +
                                     "@OSET ," +
                                     "@OSRE , " +
-                                    " OS,COMMENT,@moatt,@motr,@miatt,@mitr,@afatt,@aftr,@evatt,@evtr) ";
+                                    " @OS,@COMMENT,@moatt,@motr,@miatt,@mitr,@afatt,@aftr,@evatt,@evtr) ";
                 string updatestr = " update ASNWERSHEETtbl set " +
                                     " DCEX = @DCEX , " +
                                     " DCEXno = @DCEXno , " +
@@ -372,6 +372,22 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private void setparam(SqlCommand sqlcmd)
         {
+            if (tboxmotr.Text == "")
+            {
+                tboxmotr.Text = "0";
+            }
+            if (tboxmitr.Text == "")
+            {
+                tboxmitr.Text = "0";
+            }
+            if (tboxaftr.Text == "")
+            {
+                tboxaftr.Text = "0";
+            }
+            if (tboxevtr.Text == "")
+            {
+                tboxevtr.Text = "0";
+            }
 
             sqlcmd.Parameters.AddWithValue("@empno", empno);
             sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
@@ -435,6 +451,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@aftr", tboxaftr.Text);
             sqlcmd.Parameters.AddWithValue("@evatt", tboxevatt.Text);
             sqlcmd.Parameters.AddWithValue("@evtr", tboxevtr.Text);
+
+          
             sqlcmd.ExecuteNonQuery();
         }
 
@@ -442,5 +460,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             insertanswersheet();
         }
+
+    
     }
 }

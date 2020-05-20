@@ -35,12 +35,11 @@
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                         </div>
                         <div class="panel-body">
-
-                           <asp:LinkButton ID="LinkButton2" Font-Size="XX-Large" CommandName="answersheet" Text='<%# Bind("DATE") %>' runat="server"></asp:LinkButton>
+                            <asp:Label ID="Label1" Font-Size="XX-Large" runat="server" CssClass="text-info" Text='<%# Bind("DATE") %>'></asp:Label>
                             <h5>KMDI EMPLOYEE DAILY HEALTH PROFILE</h5>
                             <blockquote>
                                 <table border="0">
@@ -78,6 +77,9 @@
                                     </tr>
                                 </table>
                             </blockquote>
+                            <asp:LinkButton ID="LinkButton4" CommandName="page1" CssClass='<%# Eval("page1").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-warning" %>' runat="server">Page 1</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton5" CommandName="page2" CssClass='<%# Eval("page2").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-warning" %>' runat="server">Page 2</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton6" CommandName="page3" CssClass="btn btn-warning" runat="server">Page 3</asp:LinkButton>
                         </div>
                         <div class="panel-footer">
                           
