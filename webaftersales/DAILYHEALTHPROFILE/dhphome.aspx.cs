@@ -145,26 +145,29 @@ namespace webaftersales.DAILYHEALTHPROFILE
             GridViewRow row = GridView1.Rows[rowindex];
             if (e.CommandName == "page1")
             {
-                Session["dhp_id"] =  ((Label)row.FindControl("lblid")).Text;
-                Session["dhpdate"] = ((Label)row.FindControl("lbldate")).Text;
-                Session["dhpname"] = ((Label)row.FindControl("lblname")).Text;
-                Session["dhpage"] = ((Label)row.FindControl("lblage")).Text;
-                Session["dhpempno"] = ((Label)row.FindControl("lblempno")).Text;
-                Session["dhpbirthday"] = ((Label)row.FindControl("lblbirthday")).Text;
+                setsession(row);
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhpnew.aspx");
             }
             if (e.CommandName == "page2")
             {
-                Session["dhp_id"] = ((Label)row.FindControl("lblid")).Text;
-                Session["dhpdate"] = ((Label)row.FindControl("lbldate")).Text;
-                Session["dhpname"] = ((Label)row.FindControl("lblname")).Text;
-                Session["dhpage"] = ((Label)row.FindControl("lblage")).Text;
-                Session["dhpempno"] = ((Label)row.FindControl("lblempno")).Text;
-                Session["dhpbirthday"] = ((Label)row.FindControl("lblbirthday")).Text;
+                setsession(row);
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }
+            if (e.CommandName == "page3")
+            {
+                setsession(row);
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhppage3.aspx");
+            }
         }
-
+        private void setsession(GridViewRow row)
+        {
+            Session["dhp_id"] = ((Label)row.FindControl("lblid")).Text;
+            Session["dhpdate"] = ((Label)row.FindControl("lbldate")).Text;
+            Session["dhpname"] = ((Label)row.FindControl("lblname")).Text;
+            Session["dhpage"] = ((Label)row.FindControl("lblage")).Text;
+            Session["dhpempno"] = ((Label)row.FindControl("lblempno")).Text;
+            Session["dhpbirthday"] = ((Label)row.FindControl("lblbirthday")).Text;
+        }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 

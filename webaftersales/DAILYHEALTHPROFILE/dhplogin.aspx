@@ -15,21 +15,19 @@
 <body>
     <form id="form1" runat="server">
 
-        <div class="jumbotron">
-            <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
+        <div class="jumbotron" style="background-color:#ff6600;">
+            <h1  style="color:white"><strong>Kenneth and Mock</strong> <small style="color:dimgray"> DAILY HEALTH PROFILE </small></h1>
         </div>
         <div class="container">
-
-            <h1 class="text-center">Daily Health Profile </h1>
             <br />
             <div class="row">
                 <div class="col-sm-6">
                     <blockquote>
                         Employee No<br />
-                        <asp:TextBox ID="tboxempno" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tboxempno" Height="40" CssClass="form-control" runat="server"></asp:TextBox>
                         <br />
                         Password<br />
-                        <asp:TextBox ID="tboxpassword" CssClass="form-control" TextMode="Password" runat="server" OnTextChanged="tboxpassword_TextChanged"></asp:TextBox><br />
+                        <asp:TextBox ID="tboxpassword" Height="40" CssClass="form-control" TextMode="Password" runat="server" OnTextChanged="tboxpassword_TextChanged"></asp:TextBox><br />
                         <div class="checkbox">
                             <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" Checked="True" />
                         </div>

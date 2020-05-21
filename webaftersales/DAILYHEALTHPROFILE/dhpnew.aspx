@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NEW DHP</title>
+    <title>DHP page 1</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -265,7 +265,7 @@
                     <td><strong>LOOSE BOWEL
                         <br />
                         MOVEMENT</strong><br />
-                        <small class="text-danger">()</small>
+                        <small class="text-danger">(pagtatae)</small>
                     </td>
                     <td>
                         <asp:RadioButton CssClass="btn btn-default" GroupName="LBEX" ID="LBEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="LBEX" ID="LBEXno" runat="server" />

@@ -9,15 +9,15 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-    <link href="css/gridcss.css" rel="stylesheet" />
+    <link href="../AFTERSALESPROJ/css/gridcss.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
 </head>
 <body>
-    <form id="form1" runat="server" style="width: 100%; height: 100%;">
-          <nav class="navbar navbar-inverse navbar-fixed-top">
+    <form id="form1" runat="server" style="width: 100%; height: 100%; background-color:whitesmoke">
+          <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -59,7 +59,7 @@
         <br />
         <br />
 
-      <div class="container" style="background-color: white; padding-bottom: 25px; margin-bottom: 0px;">
+      <div class="container" style="background-color:white; padding-bottom: 25px; margin-bottom: 0px;">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

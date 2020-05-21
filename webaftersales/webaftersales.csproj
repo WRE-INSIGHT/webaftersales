@@ -541,6 +541,20 @@
     <Compile Include="DAILYHEALTHPROFILE\dhppage2.aspx.designer.cs">
       <DependentUpon>dhppage2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhppage3.aspx.cs">
+      <DependentUpon>dhppage3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhppage3.aspx.designer.cs">
+      <DependentUpon>dhppage3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhpsignature.aspx.cs">
+      <DependentUpon>dhpsignature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhpsignature.aspx.designer.cs">
+      <DependentUpon>dhpsignature.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -629,6 +643,8 @@
     <Content Include="DAILYHEALTHPROFILE\dhplogin.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpnew.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhppage2.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\dhppage3.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\dhpsignature.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -14,6 +14,7 @@
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhphome.aspx" runat="server">back</asp:LinkButton>
         </div>
     </div>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <h3 class="text-info">EMPLOYEE DAILY HEALTH PROFILE</h3>
     <h4>RECORD DATE:
             <asp:Label ID="lbldate" runat="server" Text="Label"></asp:Label></h4>
@@ -93,12 +94,22 @@
                 </blockquote>
             </div>
             Patient Name:<asp:TextBox ID="tboxpatientname" CssClass="form-control" runat="server"></asp:TextBox><br />
-            Signature:
-            <asp:Image ID="Image1" CssClass="thumbnail" Width="200" Height="200" runat="server" /><br />
+            Signature:<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Sign here...</asp:LinkButton>
+            <asp:Panel ID="Panel1" runat="server"></asp:Panel>
+            <br />
         </div>
         <div class="col-sm-6">
-            Please attach photo of test result:
-          <asp:Image ID="Image2" CssClass="thumbnail" Width="300" Height="300" runat="server" />
+          
+                    <label class="btn btn-default">
+                        <span><strong>Please attach photo of test result:</strong></span>
+                        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="True"></asp:FileUpload>
+                    </label>
+
+                    <asp:ValidationSummary ValidationGroup="g1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
+                    <asp:Button ID="Button1" runat="server" Text="Upload Image" ValidationGroup="g1" CssClass="btn btn-default" OnClick="Button1_Click" />
+                    <asp:Panel ID="Panel2" runat="server" BackColor="#CCCCCC"></asp:Panel>
+      
+
             Confirming Physician:
             <asp:TextBox CssClass="form-control" ID="tboxphysician" runat="server"></asp:TextBox><br />
             Affirmed/Witnessed by:

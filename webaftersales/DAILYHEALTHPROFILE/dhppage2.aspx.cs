@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,11 +12,15 @@ namespace webaftersales.DAILYHEALTHPROFILE
 {
     public partial class dhppage2 : System.Web.UI.Page
     {
+        string filepath3 = "~/Uploads/DHPuploads/page2/testresult/";
         protected void Page_Load(object sender, EventArgs e)
+
         {
+           
             if (Session["dhp_EMPNO"] != null)
             {
-
+                loadimages();
+                loadsignature();
                 if (!IsPostBack)
                 {
                     lbldate.Text = Session["dhpdate"].ToString();
@@ -24,6 +29,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblage.Text = Session["dhpage"].ToString();
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                     getdata();
+                    signaturephoto();
+                    testresultphotos();
+                 
                 }
 
             }
@@ -46,10 +54,84 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 return Session["dhp_id"].ToString();
             }
         }
+        private void signaturephoto()
+        {
+        
+            string filepath = "~/Uploads/DHPuploads/page2/signature/" + empno + dhpid + "/";
+            Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
+            if (!IsExists)
+            {
+                System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
+            }
+          
+        }
+        private void testresultphotos()
+        {
+
+            string filepath2 = "~/Uploads/DHPuploads/page2/testresult/" + empno + dhpid + "/";
+            Boolean IsExists2 = System.IO.Directory.Exists(Server.MapPath(filepath2));
+            if (!IsExists2)
+            {
+                System.IO.Directory.CreateDirectory(Server.MapPath(filepath2));
+            }
+
+
+        }
+        private void loadsignature()
+        {
+            Panel1.Controls.Clear();
+            Image img = new Image();
+            string filepath = "~/Uploads/DHPuploads/page2/signature/" + empno + dhpid + "/";
+
+            foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath)))
+            {
+                ImageButton imgbutton = new ImageButton();
+                FileInfo fileinfo = new FileInfo(strfilename);
+                imgbutton.ImageUrl = filepath + fileinfo.Name;
+                imgbutton.Width = Unit.Pixel(350);
+                imgbutton.Height = Unit.Pixel(200);
+                imgbutton.Style.Add("margin", "5px");
+                imgbutton.CssClass = "img-thumbnail";
+                Panel1.Controls.Add(imgbutton);
+            }
+
+            //img.ImageUrl = filepath + empno + "page2.jpg";
+            //img.Width = Unit.Pixel(350);
+            //img.Height = Unit.Pixel(200);
+            //img.Style.Add("margin", "5px");
+            //img.CssClass = "img-thumbnail";
+            //Panel1.Controls.Add(img);
+        }
+        private void loadimages()
+        {
+            Panel2.Controls.Clear();
+            string filepath2 = "~/Uploads/DHPuploads/page2/testresult/" + empno + dhpid + "/";
+            foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath2)))
+            {
+                ImageButton imgbutton = new ImageButton();
+                FileInfo fileinfo = new FileInfo(strfilename);
+                imgbutton.ImageUrl = filepath2 + fileinfo.Name;
+                imgbutton.Width = Unit.Pixel(300);
+                imgbutton.Height = Unit.Pixel(300);
+                imgbutton.Style.Add("margin", "5px");
+                imgbutton.CssClass = "img-thumbnail";
+                imgbutton.Click += new ImageClickEventHandler(Imgbutton_Click);
+                Table tb = new Table();
+
+                Panel2.Controls.Add(imgbutton);
+            }
+        }
+        private void Imgbutton_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect(((ImageButton)sender).ImageUrl);
+            //File.Delete(Server.MapPath(((ImageButton)sender).ImageUrl));
+            //Session["imgpath"] = ((ImageButton)sender).ImageUrl.ToString();
+            //Response.Redirect("~/AFTERSALESPROJ/viewimage.aspx?ImageUrl=" + ((ImageButton)sender).ImageUrl);
+        }
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
-            err.ValidationGroup = "val1";
+            err.ValidationGroup = "g1";
             err.IsValid = false;
             err.ErrorMessage = message;
             Page.Validators.Add(err);
@@ -241,6 +323,49 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.ExecuteNonQuery();
         }
 
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
 
+            Session["dhp_pagesender"] = "page2";
+            Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            if (FileUpload1.HasFile)
+            {
+
+                foreach (HttpPostedFile thefile in FileUpload1.PostedFiles)
+                {
+                    string fileExtension = System.IO.Path.GetExtension(thefile.FileName).ToString().ToLower();
+
+                    if (fileExtension == ".jpg" || fileExtension == ".png" || fileExtension == ".jpeg" || fileExtension == ".gif")
+                    {
+                        double filesize = thefile.ContentLength;
+                        if (filesize < 4194304.00)
+                        {
+                            thefile.SaveAs(Server.MapPath(filepath3 +empno + dhpid + "/" + thefile.FileName));
+                            loadimages();
+                            loadsignature();
+                        }
+                        else
+                        {
+                            CustomValidator err = new CustomValidator();
+                            errorrmessage("You can only upload files of size lesser than 4 MB, but you are uploading a file of " + Math.Round((filesize / 1048576.00), 2) + " MB");
+                        }
+                    }
+                    else
+                    {
+                        errorrmessage("invalid file type");
+                    }
+                }
+            }
+            else
+            {
+                errorrmessage("select image first");
+            }
+          
+        }
     }
 }
