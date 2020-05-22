@@ -125,6 +125,13 @@
             <asp:CheckBox ID="cboxrecoother" Text="Others:" runat="server" /><asp:TextBox ID="tboxrecoother" CssClass="form-control" runat="server"></asp:TextBox><br />
         </blockquote>
     </div>
-    <asp:LinkButton ID="LinkButton2" CssClass="btn btn-primary" runat="server" OnClick="LinkButton2_Click">SAVE PAGE 2</asp:LinkButton>
+
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="val2" CssClass="alert alert-success" runat="server" />
+             <asp:LinkButton ID="LinkButton2" CssClass="btn btn-primary" runat="server" OnClick="LinkButton2_Click">save page 2</asp:LinkButton>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+   
 
 </asp:Content>

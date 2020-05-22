@@ -17,19 +17,14 @@ namespace webaftersales.AFTERSALESPROJ
 
             if (Session["username"] != null)
             {
-                if (Session["useraccount"].ToString() == "Admin")
-                {
+             
                     if (!IsPostBack)
                     {
                         lblkno.Text = kno;
                         lbllocation.Text = location;
                         getdata();
                     }
-                }
-                else
-                {
-                    Response.Redirect("~/AFTERSALESPROJ/invalidaccessPage.aspx");
-                }
+              
             }
             else
             {

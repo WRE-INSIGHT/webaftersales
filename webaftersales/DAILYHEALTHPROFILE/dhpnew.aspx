@@ -12,7 +12,7 @@
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhphome.aspx" runat="server">back</asp:LinkButton>
         </div>
     </div>
-   
+
     <div class="panel">
         <h3 class="text-info">EMPLOYEE DAILY HEALTH PROFILE</h3>
         <h4>RECORD DATE:
@@ -64,7 +64,9 @@
                     </th>
                 </tr>
                 <tr>
-                    <td>Morning <p class="text-danger">(upon arrival at work)</p></td>
+                    <td>Morning
+                        <p class="text-danger">(upon arrival at work)</p>
+                    </td>
                     <td>
                         <asp:TextBox ID="tboxmoatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox></td>
                     <td>
@@ -74,17 +76,21 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Midday <p class="text-danger">(while at work)</p></td>
+                    <td>Midday
+                        <p class="text-danger">(while at work)</p>
+                    </td>
                     <td>
                         <asp:TextBox ID="tboxmiatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxmitr" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
-                        <asp:RegularExpressionValidator  ControlToValidate="tboxmitr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
+                        <asp:RegularExpressionValidator ControlToValidate="tboxmitr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
                             ID="RegularExpressionValidator3" runat="server" ValidationGroup="val1" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
-                    <td>Afternoon <p class="text-danger"> (while at work)</p></td>
+                    <td>Afternoon
+                        <p class="text-danger">(while at work)</p>
+                    </td>
                     <td>
                         <asp:TextBox ID="tboxafatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox></td>
                     <td>
@@ -94,13 +100,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Afternoon / Evening <p class="text-danger">(before leaving work)</p></td>
+                    <td>Afternoon / Evening
+                        <p class="text-danger">(before leaving work)</p>
+                    </td>
                     <td>
                         <asp:TextBox ID="tboxevatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxevtr" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
                         <asp:RegularExpressionValidator ControlToValidate="tboxevtr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
-                         ID="RegularExpressionValidator1" runat="server" ValidationGroup="val1" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator></td>
+                            ID="RegularExpressionValidator1" runat="server" ValidationGroup="val1" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator></td>
                 </tr>
             </table>
         </asp:Panel>
@@ -305,7 +313,14 @@
             <small class="text-info">(Nurse’s comments)</small><br />
             <asp:TextBox ID="tboxCOM" runat="server" TextMode="MultiLine" Rows="10" CssClass="form-control"></asp:TextBox>
         </div>
-          <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
-        <asp:Button ID="Button2" ValidationGroup="val1" CssClass="btn btn-primary" runat="server" Text="save page 1" OnClick="Button2_Click" />
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
+                <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="val2" CssClass="alert alert-success" runat="server" />
+                <asp:Button ID="Button2" ValidationGroup="val1" CssClass="btn btn-primary" runat="server" Text="save page 1" OnClick="Button2_Click" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
     </div>
 </asp:Content>

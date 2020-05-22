@@ -77,10 +77,15 @@ namespace webaftersales.DAILYHEALTHPROFILE
             string filepath = "~/Uploads/DHPuploads/" + senderpage + "/" + "signature/" + empno + dhpid + "/";
             Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
             if (!IsExists)
-            {
-                System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
+            {     
+                System.IO.Directory.CreateDirectory(Server.MapPath(filepath));           
             }
-            UploadImage(Request.Form["myurl"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath + empno + senderpage + ".jpg"));
+            System.IO.DirectoryInfo folderInfo = new DirectoryInfo(Server.MapPath(filepath));
+            foreach (FileInfo file in folderInfo.GetFiles())
+            {
+                file.Delete();
+            }
+            UploadImage(Request.Form["myurl"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath + empno + senderpage + DateTime.Now.ToString("HH:mm:ss").Replace(":","") + ".jpg"));
             if (pagesender == "page2")
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");

@@ -368,6 +368,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 errorrmessage(ex.Message.ToString());
             }
+            finally
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "val2";
+                err.IsValid = false;
+                err.ErrorMessage = "page 1 saved successfully";
+                Page.Validators.Add(err);
+            }
 
         }
         private void setparam(SqlCommand sqlcmd)

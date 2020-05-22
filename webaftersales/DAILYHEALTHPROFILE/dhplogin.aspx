@@ -15,14 +15,15 @@
 <body>
     <form id="form1" runat="server">
 
-        <div class="jumbotron" style="background-color:#ff6600;">
-            <h1  style="color:white"><strong>Kenneth and Mock</strong> <small style="color:dimgray"> DAILY HEALTH PROFILE </small></h1>
+        <div class="jumbotron">
+            <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
         </div>
         <div class="container">
-            <br />
+          
             <div class="row">
                 <div class="col-sm-6">
                     <blockquote>
+                       <h3><strong>DAILY HEALTH PROFILE</strong> </h3><br />
                         Employee No<br />
                         <asp:TextBox ID="tboxempno" Height="40" CssClass="form-control" runat="server"></asp:TextBox>
                         <br />

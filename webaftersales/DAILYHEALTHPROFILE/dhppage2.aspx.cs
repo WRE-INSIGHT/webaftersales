@@ -170,14 +170,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 sendhome = rd["RECOSENDHOME"].ToString();
                             }
                         }
-                        for (int i = 0; i < cboxTRAVELHISTORY.Items.Count - 1; i++)
+                        for (int i = 0; i < cboxTRAVELHISTORY.Items.Count; i++)
                         {
                             if (travelhistory.Contains(cboxTRAVELHISTORY.Items[i].Value.ToString()))
                             {
                                 cboxTRAVELHISTORY.Items[i].Selected = true;
                             }
                         }
-                        for (int i = 0; i < cboxTESTRESULT.Items.Count - 1; i++)
+                        for (int i = 0; i < cboxTESTRESULT.Items.Count; i++)
                         {
                             if (testresult.Contains(cboxTESTRESULT.Items[i].Value.ToString()))
                             {
@@ -303,6 +303,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 errorrmessage(ex.Message.ToString());
             }
+            finally
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "val2";
+                err.IsValid = false;
+                err.ErrorMessage = "page 2 saved successfully";
+                Page.Validators.Add(err);
+            }
         }
         private void setparam(SqlCommand sqlcmd, string travelhistory, string testresult, string sendhome)
         {
@@ -325,7 +333,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
-
+            insert();
             Session["dhp_pagesender"] = "page2";
             Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
         }
