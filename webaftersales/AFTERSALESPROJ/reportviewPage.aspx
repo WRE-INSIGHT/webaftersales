@@ -3,7 +3,7 @@
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="scripts/sign.js"></script>
     <script>
         $(document).ready(function () {
@@ -49,7 +49,7 @@ on a.reportid = b.id where (b.[SID] = @SID)">
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <rsweb:ReportViewer CssClass="report" BorderStyle="Solid" Width="100%" Height="800"
+                <rsweb:ReportViewer CssClass="report" Width="100%" Height="800"
                     ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" OnReportRefresh="ReportViewer1_ReportRefresh">
                     <LocalReport ReportPath="AFTERSALESPROJ\report\RPTassessment.rdlc">
                         <DataSources>
@@ -61,12 +61,13 @@ on a.reportid = b.id where (b.[SID] = @SID)">
             </ContentTemplate>
         </asp:UpdatePanel>
         <br />
-        <asp:Panel ID="Panel1" runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">Sign Signature</div>
-                <div class="panel-body">
-                    <asp:LinkButton ID="LinkButton1" runat="server" Width="300" CssClass="btn btn-primary" OnClick="LinkButton1_Click">Inspected and Assessed by</asp:LinkButton>
-                    <asp:LinkButton ID="LinkButton2" runat="server" Width="300" CssClass="btn btn-primary" OnClick="LinkButton2_Click">Assessment Monitored and Accepted by</asp:LinkButton>
+        <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
+            <div class="row">
+                <div class="col-sm-6">
+                    <asp:LinkButton ID="LinkButton1" runat="server" Width="300" CssClass="btn btn-default" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;Inspected and Assessed by</asp:LinkButton>
+                </div>
+                <div class="col-sm-6">
+                    <asp:LinkButton ID="LinkButton2" runat="server" Width="300" CssClass="btn btn-default" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;Assessment Monitored and Accepted by</asp:LinkButton>
                 </div>
             </div>
         </asp:Panel>

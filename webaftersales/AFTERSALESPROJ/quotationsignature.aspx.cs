@@ -67,7 +67,7 @@ namespace webaftersales.AFTERSALESPROJ
             if (IsValid)
             {
 
-                string filepath = "~/Uploads/ASuploads/" + Session["CID"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/";
+                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/";
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                 if (!IsExists)
                 {

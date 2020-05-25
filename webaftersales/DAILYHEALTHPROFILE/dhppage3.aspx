@@ -58,7 +58,7 @@
         <ContentTemplate>
 
 
-            <asp:LinkButton ID="btnaddnewrecord" CssClass="btn btn-primary" runat="server" OnClick="btnaddnewrecord_Click">add new record</asp:LinkButton>
+            <asp:LinkButton ID="btnaddnewrecord" CssClass="btn btn-default" runat="server" OnClick="btnaddnewrecord_Click">add new record</asp:LinkButton>
             <asp:Panel ID="Panel1" Visible="false" runat="server">
                 <div class="container">
                     <blockquote>
@@ -116,44 +116,33 @@
                                 <asp:LinkButton ID="btnupdate" Visible="false" ValidationGroup="editval" CommandName="myupdate" runat="server">Update</asp:LinkButton>
                                 <asp:LinkButton ID="btncancel" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:LinkButton ID="btninsert" ValidationGroup="insertval" CommandName="myinsert" runat="server">Insert</asp:LinkButton>
-                            </FooterTemplate>
+
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Time Record </br> H:M">
+                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Time Record </br><span class='text-danger'>H:M</span>">
                             <ItemTemplate>
                                 <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                 <asp:Label ID="lbltimerecord" runat="server" Text='<%# Bind("TIMERECORD") %>'></asp:Label>
                                 <asp:TextBox ID="tboxedittimerecord" Visible="false" Text='<%# Bind("TIMERECORD") %>' TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox ID="tboxinserttimerecord" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox>
-                            </FooterTemplate>
+
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Body Temperature </br> (˚C)">
+                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Body Temperature </br><span class='text-danger'>(˚C)</span>">
                             <ItemTemplate>
                                 <asp:Label ID="lblbodytemp" runat="server" Text='<%# Bind("BODYTEMP") %>'></asp:Label>
                                 <asp:TextBox ID="tboxeditbodytemp" Visible="false" Text='<%# Bind("BODYTEMP") %>' CssClass="form-control" runat="server"></asp:TextBox>
                                 <asp:RegularExpressionValidator ControlToValidate="tboxeditbodytemp" Visible="false" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
                                     ID="RegularExpressionValidator33" runat="server" ValidationGroup="editval" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <footer></footer>
-                                <asp:TextBox ID="tboxinsertbodytemp" CssClass="form-control" runat="server"></asp:TextBox>
-                                <asp:RegularExpressionValidator ControlToValidate="tboxinsertbodytemp" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
-                                    ID="RegularExpressionValidator333" runat="server" ValidationGroup="insertval" ErrorMessage="temperature must be one decimal place"></asp:RegularExpressionValidator>
-                            </FooterTemplate>
+
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Oxygen<br> Saturation (%)">
+                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Oxygen<br> Saturation <span class='text-danger'>(%)</span>">
                             <ItemTemplate>
                                 <asp:Label ID="lbloxygensaturation" runat="server" Text='<%# Bind("OXYGENSATURATION") %>'></asp:Label>
                                 <asp:TextBox ID="tboxeditoxygensaturation" Visible="false" Text='<%# Bind("OXYGENSATURATION") %>' CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox ID="tboxinsertoxygensaturation" CssClass="form-control" runat="server"></asp:TextBox>
-                            </FooterTemplate>
+
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Chills (Yes/No)">
+                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Chills<span class='text-danger'> (Yes/No)</span>">
                             <ItemTemplate>
                                 <asp:Label ID="lblchills" runat="server" Text='<%# Bind("CHILLS") %>'></asp:Label>
                                 <asp:DropDownList ID="dleditchills" Visible="false" Text='<%# Bind("CHILLS") %>' CssClass="form-control" runat="server">
@@ -161,14 +150,9 @@
                                     <asp:ListItem Value="No">No</asp:ListItem>
                                 </asp:DropDownList>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:DropDownList ID="dlinsertchills" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="Yes">Yes</asp:ListItem>
-                                    <asp:ListItem Value="No">No</asp:ListItem>
-                                </asp:DropDownList>
-                            </FooterTemplate>
+
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Stomachache<br> (degree: 1 – 10)">
+                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Stomachache<br><span class='text-danger'> (degree: 1 – 10)</span>">
                             <ItemTemplate>
                                 <asp:Label ID="lblstomachache" runat="server" Text='<%# Bind("STOMACHACHE") %>'></asp:Label>
                                 <asp:DropDownList ID="dleditstomachache" Visible="false" Text='<%# Bind("STOMACHACHE") %>' CssClass="form-control" runat="server">
@@ -185,45 +169,28 @@
                                     <asp:ListItem Value="10">10</asp:ListItem>
                                 </asp:DropDownList>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:DropDownList ID="dlinsertstomachache" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="1">1</asp:ListItem>
-                                    <asp:ListItem Value="1">1</asp:ListItem>
-                                    <asp:ListItem Value="2">2</asp:ListItem>
-                                    <asp:ListItem Value="3">3</asp:ListItem>
-                                    <asp:ListItem Value="4">4</asp:ListItem>
-                                    <asp:ListItem Value="5">5</asp:ListItem>
-                                    <asp:ListItem Value="6">6</asp:ListItem>
-                                    <asp:ListItem Value="7">7</asp:ListItem>
-                                    <asp:ListItem Value="8">8</asp:ListItem>
-                                    <asp:ListItem Value="9">9</asp:ListItem>
-                                    <asp:ListItem Value="10">10</asp:ListItem>
-                                </asp:DropDownList>
-                            </FooterTemplate>
+
+
                         </asp:TemplateField>
                         <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="No. Vomiting </br> Episode(s)">
                             <ItemTemplate>
                                 <asp:Label ID="lblvomiting" runat="server" Text='<%# Bind("VOMITINGEPISODE") %>'></asp:Label>
                                 <asp:TextBox ID="tboxeditvomiting" Visible="false" TextMode="Number" Text='<%# Bind("VOMITINGEPISODE") %>' CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox ID="tboxinsertvomiting" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
-                            </FooterTemplate>
+
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Bowel Movement</br>(describe stool)">
+                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Bowel Movement</br><span class='text-danger'>(describe stool)</span>">
                             <ItemTemplate>
                                 <asp:Label ID="lblbowelmovement" runat="server" Text='<%# Bind("BOWELMOVEMENT") %>'></asp:Label>
                                 <asp:TextBox ID="tboxeditbowelmovement" Visible="false" Text='<%# Bind("BOWELMOVEMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox ID="tboxdeletebowelmovement" CssClass="form-control" runat="server"></asp:TextBox>
-                            </FooterTemplate>
+
                         </asp:TemplateField>
                     </Columns>
                     <HeaderStyle Wrap="False" />
                     <RowStyle Wrap="False" />
                     <EmptyDataTemplate>
-                        <div class="alert alert-danger">
+                        <div class="alert alert-info">
                             <h3><strong>Empty data!</strong>
                             </h3>
                         </div>
@@ -236,10 +203,99 @@
         </asp:UpdatePanel>
     </asp:Panel>
     <br />
+    <h3><strong>Relief Administration Records</strong> </h3>
+    <br />
+    <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+        <ContentTemplate>
+            <asp:Button ID="Button3" runat="server" CssClass="btn btn-default" Text="add new rocord" OnClick="Button3_Click1" />
+            <asp:Panel ID="Panel3" Visible="false" runat="server">
+                <div class="container">
+                    <blockquote>
+                        MEDICINE / DRUGS<br />
+                        <asp:TextBox ID="tboxmedicine" CssClass="form-control" runat="server"></asp:TextBox><br />
+                        TIME ADMINISTERED<br />
+                        <asp:TextBox ID="tboxtimeadministered" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox><br />
+                        DOSAGE<br />
+                        <asp:TextBox ID="tboxdosage" CssClass="form-control" runat="server"></asp:TextBox><br />
+                        PURPOSE<br />
+                        <asp:TextBox ID="tboxpurpose" CssClass="form-control" runat="server"></asp:TextBox><br />
+                        <asp:ValidationSummary ID="ValidationSummary4" CssClass="alert alert-danger" ValidationGroup="medval" runat="server" />
+                        <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="add" OnClick="Button4_Click" />
+                        <asp:Button ID="Button5" runat="server" CssClass="btn btn-default" Text="cancel" OnClick="Button5_Click" />
+                    </blockquote>
+                </div>
+            </asp:Panel>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+        <ContentTemplate>
+            <asp:GridView ID="GridView2" CssClass="table text-center" runat="server" AllowPaging="True" AutoGenerateColumns="False" OnRowCommand="GridView2_RowCommand">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lbtnedit" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                            <asp:LinkButton ID="lbtndelete" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
+                            <asp:LinkButton ID="lbtnupdate" Visible="false" ValidationGroup="editval" CommandName="myupdate" runat="server">Update</asp:LinkButton>
+                            <asp:LinkButton ID="lbtncancel" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="MEDICINE / DRUGS">
+                        <ItemTemplate>
+                            <asp:Label ID="lblid2" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                            <asp:Label ID="lblmedicine" runat="server" Text='<%# Bind("MEDICINE") %>'></asp:Label>
+                            <asp:TextBox ID="tboxeditmedicine" runat="server" Visible="false" CssClass="form-control" Text='<%# Bind("MEDICINE") %>'></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="TIME ADMINISTERED">
+                        <ItemTemplate>
+                            <asp:Label ID="lbltimeadministered" runat="server" Text='<%# Bind("TIMEADMINISTERED") %>'></asp:Label>
+                            <asp:TextBox ID="tboxedittimeadministered" TextMode="Time" Visible="false" CssClass="form-control" runat="server" Text='<%# Bind("TIMEADMINISTERED") %>'></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="DOSAGE">
+                        <ItemTemplate>
+                            <asp:Label ID="lbldosage" runat="server" Text='<%# Bind("DOSAGE") %>'></asp:Label>
+                            <asp:TextBox ID="tboxeditdosage" CssClass="form-control" Visible="false" runat="server" Text='<%# Bind("DOSAGE") %>'></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="PURPOSE">
+                        <ItemTemplate>
+                            <asp:Label ID="lblpurpose" runat="server" Text='<%# Bind("PURPOSE") %>'></asp:Label>
+                            <asp:TextBox ID="tboxeditpurpose" CssClass="form-control" Visible="false" runat="server" Text='<%# Bind("PURPOSE") %>'></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <HeaderStyle Wrap="False" />
+                <RowStyle Wrap="False" />
+                <EmptyDataTemplate>
+                    <div class="alert alert-info">
+                        <h3><strong>Empty data!</strong>
+                        </h3>
+                    </div>
+                </EmptyDataTemplate>
+                <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                <PagerSettings PageButtonCount="8" />
+                <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+            </asp:GridView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <br />
+
+    <div class="container">
+        <blockquote>
+            Attending Nurse / Physician / HR Personnel:<asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Sign here</asp:LinkButton><br />
+            <asp:Panel ID="Panel4" runat="server"></asp:Panel>
+            <asp:TextBox ID="tboxpersonnel" placeholder="(signature over printed name)" CssClass="form-control" runat="server"></asp:TextBox>
+            Date Collected:<br />
+            <asp:TextBox ID="tboxdatecollected" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
+            <asp:ValidationSummary ID="ValidationSummary5" CssClass="alert alert-danger" ValidationGroup="signerror" runat="server" />
+        </blockquote>
+    </div>
+    <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <asp:ValidationSummary ID="ValidationSummary2" CssClass="alert alert-success" runat="server" />
-            <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="Button" />
+            <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="success" CssClass="alert alert-success" runat="server" />
+            <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="save page 3" OnClick="Button2_Click" />
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

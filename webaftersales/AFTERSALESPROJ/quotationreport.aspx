@@ -18,7 +18,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
         SelectCommand="select 
-  a.ASENO,a.ITEM,a.KNO,a.WDWLOC,b.UNITPRICE,b.qty,b.NETAMOUNT,b.MARKUP,b.ARTICLENO,b.DESCRIPTION from ITEMTB as a
+  a.ASENO,a.ITEM,a.KNO,a.WDWLOC,b.UNITPRICE,b.QTY,b.NETAMOUNT,b.MARKUP,b.ARTICLENO,b.DESCRIPTION from ITEMTB as a
   inner join partstb as b on a.id = b.iid WHERE (a.[ASENO] = @ASENO)">
         <SelectParameters>
             <asp:SessionParameter Name="ASENO" SessionField="aseno" Type="String" />
@@ -52,7 +52,7 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
                     <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;APPROVED BY</asp:LinkButton>
                 </div>
                 <div class="col-sm-4">
-                    <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;ACCEPTED BY</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton3" Visible="false" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;ACCEPTED BY</asp:LinkButton>
                 </div>
             </div>
 

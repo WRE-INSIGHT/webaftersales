@@ -53,7 +53,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             get
             {
-                return Session["CID"].ToString() + "/";
+                return Session["CIN"].ToString() + "/";
             }
         }
         private string sid

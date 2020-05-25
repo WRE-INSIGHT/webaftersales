@@ -111,7 +111,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:TextBox ID="tboxinspectordate" Height="40" placeholder="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="tboxinspectordate" Height="40" TextMode="Date" placeholder="Date" CssClass="form-control" runat="server"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <asp:CompareValidator ID="CompareValidator1" ControlToValidate="tboxinspectordate" ValidationGroup="g1"
@@ -141,7 +141,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:TextBox ID="tboxmonitoreddate" Height="40" CssClass="form-control" placeholder="Date" runat="server"></asp:TextBox></td>
+                                                <asp:TextBox ID="tboxmonitoreddate"  TextMode="Date" Height="40" CssClass="form-control" placeholder="Date" runat="server"></asp:TextBox></td>
                                             <td>
                                                 <asp:CompareValidator ID="CompareValidator2" ControlToValidate="tboxmonitoreddate" ValidationGroup="g2"
                                                     Type="Date" Operator="DataTypeCheck" runat="server" ErrorMessage="Invalid Date" Text="*" ForeColor="Red"></asp:CompareValidator>

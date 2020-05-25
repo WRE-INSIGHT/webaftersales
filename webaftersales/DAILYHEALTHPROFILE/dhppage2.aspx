@@ -52,31 +52,84 @@
             </table>
         </h4>
     </blockquote>
+    
+    <asp:ValidationSummary  ID="ValidationSummary4" CssClass="alert alert-danger" ValidationGroup="mainval" runat="server" />
     <h4>(To be used when a sudden feeling/sensation or symptom is exhibited during working hours – before and during isolation as the case may be)</h4>
     <h3><strong>CONCISE CLINICAL HISTORY</strong></h3>
-
     <strong>Travel History/Record:</strong>&nbsp;<label class="text-success">(please indicate previous day’s sequence of movement)</label>
-    <div class="container">
-        <blockquote>
-            <asp:CheckBoxList ID="cboxTRAVELHISTORY" runat="server">
-                <asp:ListItem Value="home">home</asp:ListItem>
-                <asp:ListItem Value="school">school</asp:ListItem>
-                <asp:ListItem Value="work">work</asp:ListItem>
-                <asp:ListItem Value="drugstore">drugstore</asp:ListItem>
-                <asp:ListItem Value="hospital / clinic">hospital / clinic</asp:ListItem>
-                <asp:ListItem Value="wet market">wet market</asp:ListItem>
-                <asp:ListItem Value="grocery store">grocery store</asp:ListItem>
-                <asp:ListItem Value="gym">gym</asp:ListItem>
-                <asp:ListItem Value="church">church</asp:ListItem>
-            </asp:CheckBoxList>
-            <div class="input-group">
-                <div class="input-group-addon">Others</div>
-                <asp:TextBox ID="tboxother" CssClass="form-control" runat="server"></asp:TextBox>
+    <br />
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>
+            <div class=" container">
+                <div class="input-group">
+                    <asp:DropDownList CssClass="form-control" Height="35" ID="dltravelhistory" runat="server">
+                        <asp:ListItem Value="home">home</asp:ListItem>
+                        <asp:ListItem Value="school">school</asp:ListItem>
+                        <asp:ListItem Value="work">work</asp:ListItem>
+                        <asp:ListItem Value="drugstore">drugstore</asp:ListItem>
+                        <asp:ListItem Value="hospital / clinic">hospital / clinic</asp:ListItem>
+                        <asp:ListItem Value="wet market">wet market</asp:ListItem>
+                        <asp:ListItem Value="grocery store">grocery store</asp:ListItem>
+                        <asp:ListItem Value="gym">gym</asp:ListItem>
+                        <asp:ListItem Value="church">church</asp:ListItem>
+                    </asp:DropDownList>
+                    <div class="input-group-btn">
+                        <asp:LinkButton ID="LinkButton4" Height="35" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">add</asp:LinkButton>
+                    </div>
+                </div>
+                <br />
+                <div class="input-group">
+                    <div class="input-group-addon">Others</div>
+                    <asp:TextBox ID="tboxother" CssClass="form-control" runat="server"></asp:TextBox>
+                    <div class="input-group-btn">
+                        <asp:LinkButton ID="LinkButton5" CssClass="btn btn-default" runat="server" OnClick="LinkButton5_Click">add</asp:LinkButton>
+                    </div>
+                </div>
             </div>
 
-        </blockquote>
-    </div>
-    <strong>Possible Exposure to Virus:</strong>&nbsp;<label class="text-success">(Please record possible incident where the patient/ employee could’ve contracted the virus)</label>
+            <br />
+            <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup="travelval" CssClass="alert alert-danger" runat="server" />
+            <asp:GridView ID="GridView1" AllowPaging="true" CssClass="table" runat="server" AutoGenerateColumns="false" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton CommandName="myedit" ID="btnedit" runat="server">Edit</asp:LinkButton>
+                            <asp:LinkButton CommandName="mydelete" ID="btndelete" OnClientClick="return confirm('delete this record')" runat="server">Delete</asp:LinkButton>
+                            <asp:LinkButton CommandName="myupdate" ID="btnupdate" Visible="false" runat="server">Update</asp:LinkButton>
+                            <asp:LinkButton CommandName="mycancel" ID="btncancel" Visible="false" runat="server">Cancel</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Sorting">
+                        <ItemTemplate>
+                            <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                            <asp:Label ID="lblsorting" runat="server" Text='<%# Bind("SORTING") %>'></asp:Label>
+                            <asp:TextBox ID="tboxsorting" Visible="false" Width="70" TextMode="Number" CssClass="form-control" Text='<%# Bind("SORTING") %>' runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Travel History">
+                        <ItemTemplate>
+                            <asp:Label ID="lbltravelhistory" runat="server" Text='<%# Bind("TRAVELHISTORY") %>'></asp:Label>
+                            <asp:TextBox ID="tboxtravelhistory" Visible="false" CssClass="form-control" Text='<%# Bind("TRAVELHISTORY") %>' runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <EmptyDataTemplate>
+                    <div class="alert alert-info">
+                        <h3><strong>Travel History is Empty!</strong>
+                        </h3>
+                    </div>
+                </EmptyDataTemplate>
+                <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                <PagerSettings PageButtonCount="8" />
+                <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+            </asp:GridView>
+       
+         <div class="alert alert-success" style="text-wrap:avoid">
+            <h4><asp:Label ID="lbltravelsummary" runat="server"></asp:Label></h4> 
+         </div>   
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <strong>Possible Exposure to Virus:s:</strong>&nbsp;<label class="text-success">(Please record possible incident where the patient/ employee could’ve contracted the virus)</label>
     <asp:TextBox ID="tboxexposuretovirus" CssClass="form-control" TextMode="MultiLine" Rows="10" runat="server"></asp:TextBox>
     <h3>
         <label style="text-decoration: underline">TEST RESULTS (if applicable)</label></h3>
@@ -87,8 +140,9 @@
             <div class="container">
                 <blockquote>
                     <asp:CheckBoxList ID="cboxTESTRESULT" runat="server">
-                        <asp:ListItem Value="Negative">Negative</asp:ListItem>
+                        <asp:ListItem Value="IgM Negative">IgM Negative</asp:ListItem>
                         <asp:ListItem Value="IgM POSITIVE">IgM POSITIVE</asp:ListItem>
+                        <asp:ListItem Value="IgG Negative">IgG Negative</asp:ListItem>
                         <asp:ListItem Value="IgG POSITIVE">IgG POSITIVE</asp:ListItem>
                     </asp:CheckBoxList>
                 </blockquote>
@@ -99,21 +153,21 @@
             <br />
         </div>
         <div class="col-sm-6">
-          
-                    <label class="btn btn-default">
-                        <span><strong>Please attach photo of test result:</strong></span>
-                        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="True"></asp:FileUpload>
-                    </label>
 
-                    <asp:ValidationSummary ValidationGroup="g1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
-                    <asp:Button ID="Button1" runat="server" Text="Upload Image" ValidationGroup="g1" CssClass="btn btn-default" OnClick="Button1_Click" />
-                    <asp:Panel ID="Panel2" runat="server" BackColor="#CCCCCC"></asp:Panel>
-      
+            <label class="btn btn-default">
+                <span><strong>Please attach photo of test result:</strong></span>
+                <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="True"></asp:FileUpload>
+            </label>
+
+            <asp:ValidationSummary ValidationGroup="g1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
+            <asp:Button ID="Button1" runat="server" Text="Upload Image" ValidationGroup="g1" CssClass="btn btn-default" OnClick="Button1_Click" />
+            <asp:Panel ID="Panel2" runat="server" BackColor="#CCCCCC"></asp:Panel>
+
 
             Confirming Physician:
             <asp:TextBox CssClass="form-control" ID="tboxphysician" runat="server"></asp:TextBox><br />
-            Affirmed/Witnessed by:
-            <asp:TextBox CssClass="form-control" ID="tboxaffirmedwitness" runat="server"></asp:TextBox>
+            Test Administered by:
+            <asp:TextBox CssClass="form-control" ID="tboxadministeredby" runat="server"></asp:TextBox>
         </div>
     </div>
     <h3><strong>Possible Recommendation(s) after Isolation (if applicable)</strong> </h3>
@@ -129,9 +183,9 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="val2" CssClass="alert alert-success" runat="server" />
-             <asp:LinkButton ID="LinkButton2" CssClass="btn btn-primary" runat="server" OnClick="LinkButton2_Click">save page 2</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton2" CssClass="btn btn-primary" runat="server" OnClick="LinkButton2_Click">save page 2</asp:LinkButton>
         </ContentTemplate>
     </asp:UpdatePanel>
-   
+
 
 </asp:Content>

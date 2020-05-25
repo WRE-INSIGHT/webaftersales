@@ -60,7 +60,7 @@ namespace webaftersales.AFTERSALESPROJ
                             {
                                 lblstatus.Text = rd[0].ToString();
                                 lblremarks.Text = rd[1].ToString();
-                                Session["cin"] = rd[2].ToString();
+                                Session["CIN"] = rd[2].ToString();
                             }
                         }
                     }

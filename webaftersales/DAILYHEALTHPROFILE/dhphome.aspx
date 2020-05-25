@@ -79,7 +79,7 @@
                             </blockquote>
                             <asp:LinkButton ID="LinkButton4" CommandName="page1" CssClass='<%# Eval("page1").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-warning" %>' runat="server">Page 1</asp:LinkButton>
                             <asp:LinkButton ID="LinkButton5" CommandName="page2" CssClass='<%# Eval("page2").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-warning" %>' runat="server">Page 2</asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton6" CommandName="page3" CssClass="btn btn-warning" runat="server">Page 3</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton6" CommandName="page3" CssClass='<%# Eval("page3").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-warning" %>' runat="server">Page 3</asp:LinkButton>
                         </div>
                         <div class="panel-footer">
                           

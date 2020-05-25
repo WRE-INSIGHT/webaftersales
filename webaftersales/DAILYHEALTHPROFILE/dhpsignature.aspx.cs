@@ -12,7 +12,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["dhp_EMPNO"] != null)
+            if (Session["dhp_USERNAME"] != null)
             {
 
                 if (!IsPostBack)
@@ -43,7 +43,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             get
             {
-                return Session["dhp_EMPNO"].ToString();
+                return Session["dhpempno"].ToString();
             }
         }
         private string dhpid

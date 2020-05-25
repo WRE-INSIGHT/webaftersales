@@ -63,15 +63,15 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = ((GridView)sender).Rows[rowindex];
                 Session["SID"] = ((Label)row.FindControl("Label5")).Text;
-                Session["CID"] = ((Label)row.FindControl("Label6")).Text;
-                getdetails(Session["CID"].ToString());
+                Session["CIN"] = ((Label)row.FindControl("Label6")).Text;
+                getdetails(Session["CIN"].ToString());
             }
             else if (e.CommandName == "viewphoto")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = ((GridView)sender).Rows[rowindex];
                 Session["SID"] = ((Label)row.FindControl("Label5")).Text;
-                Session["CID"] = ((Label)row.FindControl("Label6")).Text;
+                Session["CIN"] = ((Label)row.FindControl("Label6")).Text;
                 Session["link"] = "s1";
                 Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
             }

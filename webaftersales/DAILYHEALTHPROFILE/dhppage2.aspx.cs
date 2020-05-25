@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -16,9 +17,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void Page_Load(object sender, EventArgs e)
 
         {
-           
-            if (Session["dhp_EMPNO"] != null)
+
+            if (Session["dhp_USERNAME"] != null)
             {
+                signaturephoto();
+                testresultphotos();
                 loadimages();
                 loadsignature();
                 if (!IsPostBack)
@@ -29,9 +32,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblage.Text = Session["dhpage"].ToString();
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                     getdata();
-                    signaturephoto();
-                    testresultphotos();
-                 
+
+                    gettravelhistory();
+                
                 }
 
             }
@@ -44,7 +47,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             get
             {
-                return Session["dhp_EMPNO"].ToString();
+                return Session["dhpempno"].ToString();
             }
         }
         private string dhpid
@@ -56,14 +59,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private void signaturephoto()
         {
-        
+
             string filepath = "~/Uploads/DHPuploads/page2/signature/" + empno + dhpid + "/";
             Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
             if (!IsExists)
             {
                 System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
             }
-          
+
         }
         private void testresultphotos()
         {
@@ -75,6 +78,46 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 System.IO.Directory.CreateDirectory(Server.MapPath(filepath2));
             }
 
+
+        }
+        private void gettravelsummary()
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = " select travelhistory from dhptravelhistory where empno=@empno and dhpid=@dhpid order by sorting asc";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            string co = "";
+                            string span = " <span class='glyphicon glyphicon-arrow-right'></span> ";
+                            while (rd.Read())
+                            {
+                                co += "<strong  class='text-info'>" + rd[0].ToString()+"</strong>" + span;
+                            }
+                            string complete = "From " + co;
+                            int colength = complete.Length - 55;
+
+                            lbltravelsummary.Text = complete.Substring(0,colength);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "mainval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
 
         }
         private void loadsignature()
@@ -141,7 +184,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " select ID,EMPNO,DHPID,TRAVELHISTORY,EXPOSURETOVIRUS,DATETESTDONE,TESTRESULT,PATIENTNAME,OTHER,AFFIRMEDWITNESS,PHYSICIAN,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER from dhppage2 where empno =@empno and dhpid=@dhpid";
+                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER from dhppage2 where empno =@empno and dhpid=@dhpid";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -150,7 +193,6 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
                         sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
                         string testresult = "";
-                        string travelhistory = "";
                         string sendhome = "";
                         using (SqlDataReader rd = sqlcmd.ExecuteReader())
                         {
@@ -159,24 +201,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxexposuretovirus.Text = rd["EXPOSURETOVIRUS"].ToString();
                                 tboxdatetestdone.Text = rd["DATETESTDONE"].ToString();
                                 tboxpatientname.Text = rd["PATIENTNAME"].ToString();
-                                tboxother.Text = rd["OTHER"].ToString();
-                                tboxaffirmedwitness.Text = rd["AFFIRMEDWITNESS"].ToString();
+                                tboxadministeredby.Text = rd["ADMINISTEREDBY"].ToString();
                                 tboxphysician.Text = rd["PHYSICIAN"].ToString();
                                 testresult = rd["TESTRESULT"].ToString();
-                                travelhistory = rd["TRAVELHISTORY"].ToString();
                                 tboxrecoendo.Text = rd["RECOENDO"].ToString();
                                 tboxrecocallin.Text = rd["RECOCALLIN"].ToString();
                                 tboxrecoother.Text = rd["RECOOTHER"].ToString();
                                 sendhome = rd["RECOSENDHOME"].ToString();
                             }
                         }
-                        for (int i = 0; i < cboxTRAVELHISTORY.Items.Count; i++)
-                        {
-                            if (travelhistory.Contains(cboxTRAVELHISTORY.Items[i].Value.ToString()))
-                            {
-                                cboxTRAVELHISTORY.Items[i].Selected = true;
-                            }
-                        }
+
                         for (int i = 0; i < cboxTESTRESULT.Items.Count; i++)
                         {
                             if (testresult.Contains(cboxTESTRESULT.Items[i].Value.ToString()))
@@ -219,14 +253,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
 
-                string travelhistory = "";
-                foreach (ListItem li in cboxTRAVELHISTORY.Items)
-                {
-                    if (li.Selected)
-                    {
-                        travelhistory += " *" + li.Value.ToString();
-                    }
-                }
+
                 string testresult = "";
                 foreach (ListItem li in cboxTESTRESULT.Items)
                 {
@@ -245,16 +272,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 bool exist = false;
                 string insertstr = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhppage2)" +
                                 " insert into dhppage2" +
-                                " (ID,EMPNO,DHPID,TRAVELHISTORY,EXPOSURETOVIRUS,DATETESTDONE,TESTRESULT,PATIENTNAME,OTHER,AFFIRMEDWITNESS,PHYSICIAN,recoendo,recocallin,recosendhome,recoother)" +
-                                " values(@id,@empno,@dhpid,@travelhistory,@exposuretovirus,@datetestdone,@testresult,@patientname,@other,@affirmedwitness,@physician,@recoendo,@recocallin,@recosendhome,@recoother)";
+                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,recoendo,recocallin,recosendhome,recoother)" +
+                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@testresult,@patientname,@administeredby,@physician,@recoendo,@recocallin,@recosendhome,@recoother)";
                 string updatestr = " update dhppage2 set				   " +
-                                " TRAVELHISTORY=@travelhistory,		   " +
                                 " EXPOSURETOVIRUS=@exposuretovirus,	   " +
                                 " DATETESTDONE=@datetestdone,		   " +
                                 " TESTRESULT=@testresult,			   " +
                                 " PATIENTNAME=@patientname,			   " +
-                                " OTHER=@other,						   " +
-                                " AFFIRMEDWITNESS=@affirmedwitness,	   " +
+                                " ADMINISTEREDBY=@administeredby,	   " +
                                 " PHYSICIAN=@physician,				   " +
                                 " recoendo=@recoendo,				   " +
                                 " recocallin=@recocallin,			   " +
@@ -287,14 +312,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(updatestr, sqlcon))
                         {
-                            setparam(sqlcmd, travelhistory, testresult, sendhome);
+                            setparam(sqlcmd, testresult, sendhome);
                         }
                     }
                     else
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(insertstr, sqlcon))
                         {
-                            setparam(sqlcmd, travelhistory, testresult, sendhome);
+                            setparam(sqlcmd, testresult, sendhome);
                         }
                     }
                 }
@@ -312,17 +337,15 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Page.Validators.Add(err);
             }
         }
-        private void setparam(SqlCommand sqlcmd, string travelhistory, string testresult, string sendhome)
+        private void setparam(SqlCommand sqlcmd, string testresult, string sendhome)
         {
             sqlcmd.Parameters.AddWithValue("@empno", empno);
             sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
             sqlcmd.Parameters.AddWithValue("@exposuretovirus", tboxexposuretovirus.Text);
             sqlcmd.Parameters.AddWithValue("@datetestdone", tboxdatetestdone.Text);
-            sqlcmd.Parameters.AddWithValue("@travelhistory", travelhistory);
             sqlcmd.Parameters.AddWithValue("@testresult", testresult);
             sqlcmd.Parameters.AddWithValue("@patientname", tboxpatientname.Text);
-            sqlcmd.Parameters.AddWithValue("@other", tboxother.Text);
-            sqlcmd.Parameters.AddWithValue("@affirmedwitness", tboxaffirmedwitness.Text);
+            sqlcmd.Parameters.AddWithValue("@administeredby",tboxadministeredby.Text);
             sqlcmd.Parameters.AddWithValue("@physician", tboxphysician.Text);
             sqlcmd.Parameters.AddWithValue("@recoendo", tboxrecoendo.Text);
             sqlcmd.Parameters.AddWithValue("@recocallin", tboxrecocallin.Text);
@@ -353,7 +376,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         double filesize = thefile.ContentLength;
                         if (filesize < 4194304.00)
                         {
-                            thefile.SaveAs(Server.MapPath(filepath3 +empno + dhpid + "/" + thefile.FileName));
+                            thefile.SaveAs(Server.MapPath(filepath3 + empno + dhpid + "/" + thefile.FileName));
                             loadimages();
                             loadsignature();
                         }
@@ -373,7 +396,199 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 errorrmessage("select image first");
             }
-          
+
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            gettravelhistory();
+        }
+
+        private void gettravelhistory()
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = "select * from dhptravelhistory where empno=@empno and dhpid=@dhpid order by sorting asc";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        DataTable tb = new DataTable();
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        GridView1.DataSource = tb;
+                        GridView1.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+
+            }
+            finally
+            {
+                gettravelsummary();
+            }
+        }
+        private void inserttravelhistory(string travelhistory)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhptravelhistory)" +
+                    "declare @sorting as integer = (select count(isnull(id,0))+1 from dhptravelhistory where empno=@empno and dhpid=@dhpid)" +
+                    " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        DataTable tb = new DataTable();
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@travelhistory", travelhistory);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "travelval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                gettravelhistory();
+            }
+        }
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+            inserttravelhistory(dltravelhistory.Text);
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((LinkButton)row.FindControl("btnedit")).Visible = false;
+                ((LinkButton)row.FindControl("btndelete")).Visible = false;
+                ((Label)row.FindControl("lblsorting")).Visible = false;
+                ((Label)row.FindControl("lbltravelhistory")).Visible = false;
+
+                ((LinkButton)row.FindControl("btnupdate")).Visible = true;
+                ((LinkButton)row.FindControl("btncancel")).Visible = true;
+                ((TextBox)row.FindControl("tboxsorting")).Visible = true;
+                ((TextBox)row.FindControl("tboxtravelhistory")).Visible = true;
+            }
+            else if (e.CommandName == "myupdate")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                updatetravelhistory(((Label)row.FindControl("lblid")).Text,
+                        ((TextBox)row.FindControl("tboxsorting")).Text,
+                ((TextBox)row.FindControl("tboxtravelhistory")).Text);
+            }
+            else if (e.CommandName == "mycancel")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((LinkButton)row.FindControl("btnedit")).Visible = true;
+                ((LinkButton)row.FindControl("btndelete")).Visible = true;
+                ((Label)row.FindControl("lblsorting")).Visible = true;
+                ((Label)row.FindControl("lbltravelhistory")).Visible = true;
+
+                ((LinkButton)row.FindControl("btnupdate")).Visible = false;
+                ((LinkButton)row.FindControl("btncancel")).Visible = false;
+                ((TextBox)row.FindControl("tboxsorting")).Visible = false;
+                ((TextBox)row.FindControl("tboxtravelhistory")).Visible = false;
+            }
+            else if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                deletetravelhistory(((Label)row.FindControl("lblid")).Text);
+            }
+        }
+
+        private void deletetravelhistory(string id)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = " delete from dhptravelhistory where id = @id";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        DataTable tb = new DataTable();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "travelval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                gettravelhistory();
+            }
+        }
+
+        private void updatetravelhistory(string id, string sorting, string travelhistory)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = " update dhptravelhistory set sorting=@sorting,travelhistory=@travelhistory where id = @id";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        DataTable tb = new DataTable();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@sorting", sorting);
+                        sqlcmd.Parameters.AddWithValue("@travelhistory", travelhistory);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "travelval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                gettravelhistory();
+            }
+        }
+
+        protected void LinkButton5_Click(object sender, EventArgs e)
+        {
+            inserttravelhistory(tboxother.Text);
         }
     }
 }
