@@ -32,15 +32,42 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblage.Text = Session["dhpage"].ToString();
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                     getdata();
-
                     gettravelhistory();
-                
+                    access();
                 }
 
             }
             else
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
+            }
+        }
+        private void access()
+        {
+            if (acct == "Admin")
+            {
+                pnl1.Visible = true;
+                pnl2.Enabled = true;
+                pnl3.Enabled = true;
+                pnl4.Enabled = true;
+        
+                tboxexposuretovirus.Enabled = true;            
+            }
+            else
+            {
+                pnl1.Visible = false;
+                pnl2.Enabled = false;
+                pnl3.Enabled = false;
+                pnl4.Enabled = false;
+           
+                tboxexposuretovirus.Enabled = false;
+            }
+        }
+        private string acct
+        {
+            get
+            {
+                return Session["dhp_USERACCT"].ToString();
             }
         }
         private string empno
@@ -100,9 +127,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                             string span = " <span class='glyphicon glyphicon-arrow-right'></span> ";
                             while (rd.Read())
                             {
-                                co += "<strong  class='text-info'>" + rd[0].ToString()+"</strong>" + span;
+                                co += "<strong class='text-info'>" + rd[0].ToString()+"</strong>" + span;
+                            }
+                            if (co == "")
+                            {
+                                co = span;
                             }
                             string complete = "From " + co;
+                            
                             int colength = complete.Length - 55;
 
                             lbltravelsummary.Text = complete.Substring(0,colength);
@@ -166,7 +198,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private void Imgbutton_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect(((ImageButton)sender).ImageUrl);
+            Session["dhpimgpath"] = ((ImageButton)sender).ImageUrl.ToString();
+            Response.Redirect("~/DAILYHEALTHPROFILE/dhpfullimage.aspx?dhpImageUrl=" + ((ImageButton)sender).ImageUrl);
             //File.Delete(Server.MapPath(((ImageButton)sender).ImageUrl));
             //Session["imgpath"] = ((ImageButton)sender).ImageUrl.ToString();
             //Response.Redirect("~/AFTERSALESPROJ/viewimage.aspx?ImageUrl=" + ((ImageButton)sender).ImageUrl);
@@ -424,6 +457,15 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
+                        if (acct == "Admin")
+                        {
+                            GridView1.Columns[0].Visible = true;
+                        }
+                        else
+                        {
+                            GridView1.Columns[0].Visible = false;
+                        }
+                       
                     }
                 }
             }

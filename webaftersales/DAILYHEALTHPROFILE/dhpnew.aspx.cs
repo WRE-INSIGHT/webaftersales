@@ -25,6 +25,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblage.Text = Session["dhpage"].ToString();
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                     getdata();
+                    if (acct == "Admin")
+                    {
+                        tboxCOM.Enabled = true;
+                    }
+                    else
+                    {
+                        tboxCOM.Enabled = false;
+                    }
                 }
 
             }
@@ -45,6 +53,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
             get
             {
                 return Session["dhp_id"].ToString();
+            }
+        }
+        private string acct
+        {
+            get
+            {
+                return Session["dhp_USERACCT"].ToString();
             }
         }
         private void errorrmessage(string message)
@@ -469,6 +484,6 @@ namespace webaftersales.DAILYHEALTHPROFILE
             insertanswersheet();
         }
 
-    
+
     }
 }

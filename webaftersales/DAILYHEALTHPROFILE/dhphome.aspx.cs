@@ -39,9 +39,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             get
             {
-                return Session["dhp_EMPNO"].ToString();
+                return Session["dhp_USERACCT"].ToString();
             }
         }
+
         private void getdata()
         {
             try
@@ -57,6 +58,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.CommandText = "DHPstp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@accttype", acct);
+                        sqlcmd.Parameters.AddWithValue("@searchkey", tboxsearchkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@date", tboxdate.Text);
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(tb);
@@ -168,9 +172,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
             Session["dhpempno"] = ((Label)row.FindControl("lblempno")).Text;
             Session["dhpbirthday"] = ((Label)row.FindControl("lblbirthday")).Text;
         }
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            getdata();
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            getdata();
         }
     }
 }

@@ -107,7 +107,7 @@
             <ContentTemplate>
 
 
-                <asp:GridView ID="GridView1" CssClass="table text-center" AutoGenerateColumns="false" runat="server" AllowPaging="True" OnRowCommand="GridView1_RowCommand">
+                <asp:GridView ID="GridView1" CssClass="table text-center" AutoGenerateColumns="false" runat="server" AllowPaging="True" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -229,68 +229,71 @@
     </asp:UpdatePanel>
     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
         <ContentTemplate>
-            <asp:GridView ID="GridView2" CssClass="table text-center" runat="server" AllowPaging="True" AutoGenerateColumns="False" OnRowCommand="GridView2_RowCommand">
-                <Columns>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lbtnedit" CommandName="myedit" runat="server">Edit</asp:LinkButton>
-                            <asp:LinkButton ID="lbtndelete" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
-                            <asp:LinkButton ID="lbtnupdate" Visible="false" ValidationGroup="editval" CommandName="myupdate" runat="server">Update</asp:LinkButton>
-                            <asp:LinkButton ID="lbtncancel" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="MEDICINE / DRUGS">
-                        <ItemTemplate>
-                            <asp:Label ID="lblid2" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                            <asp:Label ID="lblmedicine" runat="server" Text='<%# Bind("MEDICINE") %>'></asp:Label>
-                            <asp:TextBox ID="tboxeditmedicine" runat="server" Visible="false" CssClass="form-control" Text='<%# Bind("MEDICINE") %>'></asp:TextBox>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="TIME ADMINISTERED">
-                        <ItemTemplate>
-                            <asp:Label ID="lbltimeadministered" runat="server" Text='<%# Bind("TIMEADMINISTERED") %>'></asp:Label>
-                            <asp:TextBox ID="tboxedittimeadministered" TextMode="Time" Visible="false" CssClass="form-control" runat="server" Text='<%# Bind("TIMEADMINISTERED") %>'></asp:TextBox>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="DOSAGE">
-                        <ItemTemplate>
-                            <asp:Label ID="lbldosage" runat="server" Text='<%# Bind("DOSAGE") %>'></asp:Label>
-                            <asp:TextBox ID="tboxeditdosage" CssClass="form-control" Visible="false" runat="server" Text='<%# Bind("DOSAGE") %>'></asp:TextBox>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="PURPOSE">
-                        <ItemTemplate>
-                            <asp:Label ID="lblpurpose" runat="server" Text='<%# Bind("PURPOSE") %>'></asp:Label>
-                            <asp:TextBox ID="tboxeditpurpose" CssClass="form-control" Visible="false" runat="server" Text='<%# Bind("PURPOSE") %>'></asp:TextBox>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-                <HeaderStyle Wrap="False" />
-                <RowStyle Wrap="False" />
-                <EmptyDataTemplate>
-                    <div class="alert alert-info">
-                        <h3><strong>Empty data!</strong>
-                        </h3>
-                    </div>
-                </EmptyDataTemplate>
-                <EditRowStyle BorderStyle="None" BorderWidth="0px" />
-                <PagerSettings PageButtonCount="8" />
-                <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-            </asp:GridView>
+            <asp:Panel ID="Panel5" runat="server" ScrollBars="Auto">
+                <asp:GridView ID="GridView2" CssClass="table text-center" runat="server" AllowPaging="True" AutoGenerateColumns="False" OnRowCommand="GridView2_RowCommand" OnPageIndexChanging="GridView2_PageIndexChanging">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbtnedit" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                                <asp:LinkButton ID="lbtndelete" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
+                                <asp:LinkButton ID="lbtnupdate" Visible="false" ValidationGroup="editval" CommandName="myupdate" runat="server">Update</asp:LinkButton>
+                                <asp:LinkButton ID="lbtncancel" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="MEDICINE / DRUGS">
+                            <ItemTemplate>
+                                <asp:Label ID="lblid2" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                <asp:Label ID="lblmedicine" runat="server" Text='<%# Bind("MEDICINE") %>'></asp:Label>
+                                <asp:TextBox ID="tboxeditmedicine" runat="server" Visible="false" CssClass="form-control" Text='<%# Bind("MEDICINE") %>'></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="TIME ADMINISTERED">
+                            <ItemTemplate>
+                                <asp:Label ID="lbltimeadministered" runat="server" Text='<%# Bind("TIMEADMINISTERED") %>'></asp:Label>
+                                <asp:TextBox ID="tboxedittimeadministered" TextMode="Time" Visible="false" CssClass="form-control" runat="server" Text='<%# Bind("TIMEADMINISTERED") %>'></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="DOSAGE">
+                            <ItemTemplate>
+                                <asp:Label ID="lbldosage" runat="server" Text='<%# Bind("DOSAGE") %>'></asp:Label>
+                                <asp:TextBox ID="tboxeditdosage" CssClass="form-control" Visible="false" runat="server" Text='<%# Bind("DOSAGE") %>'></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="PURPOSE">
+                            <ItemTemplate>
+                                <asp:Label ID="lblpurpose" runat="server" Text='<%# Bind("PURPOSE") %>'></asp:Label>
+                                <asp:TextBox ID="tboxeditpurpose" CssClass="form-control" Visible="false" runat="server" Text='<%# Bind("PURPOSE") %>'></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <HeaderStyle Wrap="False" />
+                    <RowStyle Wrap="False" />
+                    <EmptyDataTemplate>
+                        <div class="alert alert-info">
+                            <h3><strong>Empty data!</strong>
+                            </h3>
+                        </div>
+                    </EmptyDataTemplate>
+                    <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                    <PagerSettings PageButtonCount="8" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                </asp:GridView>
+            </asp:Panel>
         </ContentTemplate>
     </asp:UpdatePanel>
     <br />
-
-    <div class="container">
-        <blockquote>
-            Attending Nurse / Physician / HR Personnel:<asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Sign here</asp:LinkButton><br />
-            <asp:Panel ID="Panel4" runat="server"></asp:Panel>
-            <asp:TextBox ID="tboxpersonnel" placeholder="(signature over printed name)" CssClass="form-control" runat="server"></asp:TextBox>
-            Date Collected:<br />
-            <asp:TextBox ID="tboxdatecollected" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
-            <asp:ValidationSummary ID="ValidationSummary5" CssClass="alert alert-danger" ValidationGroup="signerror" runat="server" />
-        </blockquote>
-    </div>
+    <asp:Panel ID="pnl1" runat="server">
+        <div class="container">
+            <blockquote>
+                Attending Nurse / Physician / HR Personnel:<asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Sign here</asp:LinkButton><br />
+                <asp:Panel ID="Panel4" runat="server"></asp:Panel>
+                <asp:TextBox ID="tboxpersonnel" placeholder="(signature over printed name)" CssClass="form-control" runat="server"></asp:TextBox>
+                Date Collected:<br />
+                <asp:TextBox ID="tboxdatecollected" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
+                <asp:ValidationSummary ID="ValidationSummary5" CssClass="alert alert-danger" ValidationGroup="signerror" runat="server" />
+            </blockquote>
+        </div>
+    </asp:Panel>
     <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>

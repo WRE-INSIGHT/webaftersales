@@ -29,6 +29,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     getdatatb1();
                     getdatatb2();
                     loaddhpage3();
+                    access();
                 }
 
             }
@@ -64,6 +65,30 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Panel4.Controls.Add(imgbutton);
             }
 
+        }
+        private void access()
+        {
+            if (acct == "Admin")
+            {
+                btnaddnewrecord.Visible = true;
+                Button3.Visible = true;
+                pnl1.Enabled = true;
+                Button2.Visible = true;
+            }
+            else
+            {
+                btnaddnewrecord.Visible = false;
+                Button3.Visible = false;
+                pnl1.Enabled = false;
+                Button2.Visible = false;
+            }
+        }
+        private string acct
+        {
+            get
+            {
+                return Session["dhp_USERACCT"].ToString();
+            }
         }
         private string empno
         {
@@ -176,7 +201,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
-
+                        if(acct == "Admin")
+                        {
+                            GridView1.Columns[0].Visible = true;
+                        }
+                        else
+                        {
+                            GridView1.Columns[0].Visible = false;
+                        }
                     }
                 }
             }
@@ -543,7 +575,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView2.DataSource = tb;
                         GridView2.DataBind();
-
+                        if (acct == "Admin")
+                        {
+                            GridView2.Columns[0].Visible = true;
+                        }
+                        else
+                        {
+                            GridView2.Columns[0].Visible = false;
+                        }
                     }
                 }
             }
@@ -665,6 +704,18 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 err.ErrorMessage = "page 3 saved successfully!";
                 Page.Validators.Add(err);
             }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            getdatatb1();
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            getdatatb2();
         }
     }
 }

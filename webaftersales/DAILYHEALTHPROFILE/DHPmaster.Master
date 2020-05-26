@@ -32,13 +32,6 @@
                         <li class="active">
                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/DAILYHEALTHPROFILE/dhphome.aspx">
                                  <span class="glyphicon glyphicon-home"></span>&nbsp;Home</asp:HyperLink></li>
-                    
-                        <li>
-                            <asp:HyperLink ID="HyperLink1" runat="server">
-                                   <span class="glyphicon glyphicon-phone"></span>&nbsp;Contact</asp:HyperLink></li>
-                        <li>
-                            <asp:HyperLink ID="HyperLink3" runat="server">
-                                     <span class="glyphicon glyphicon-user"></span>&nbsp;Accounts</asp:HyperLink></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li></li>

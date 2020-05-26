@@ -94,6 +94,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
+        /// pnl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl1;
+        
+        /// <summary>
         /// dltravelhistory control.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxexposuretovirus;
         
         /// <summary>
+        /// pnl2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl2;
+        
+        /// <summary>
         /// tboxdatetestdone control.
         /// </summary>
         /// <remarks>
@@ -211,6 +229,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// pnl5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl5;
+        
+        /// <summary>
         /// FileUpload1 control.
         /// </summary>
         /// <remarks>
@@ -247,6 +274,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
+        /// pnl3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl3;
+        
+        /// <summary>
         /// tboxphysician control.
         /// </summary>
         /// <remarks>
@@ -263,6 +299,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tboxadministeredby;
+        
+        /// <summary>
+        /// pnl4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl4;
         
         /// <summary>
         /// cboxrecoendo control.

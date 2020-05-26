@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daily Health Profile</title>
+    <title>Dgp PAGE 2</title>
 </asp:Content>
 
 <asp:Content ID="content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
@@ -52,8 +52,8 @@
             </table>
         </h4>
     </blockquote>
-    
-    <asp:ValidationSummary  ID="ValidationSummary4" CssClass="alert alert-danger" ValidationGroup="mainval" runat="server" />
+
+    <asp:ValidationSummary ID="ValidationSummary4" CssClass="alert alert-danger" ValidationGroup="mainval" runat="server" />
     <h4>(To be used when a sudden feeling/sensation or symptom is exhibited during working hours – before and during isolation as the case may be)</h4>
     <h3><strong>CONCISE CLINICAL HISTORY</strong></h3>
     <strong>Travel History/Record:</strong>&nbsp;<label class="text-success">(please indicate previous day’s sequence of movement)</label>
@@ -61,30 +61,32 @@
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
             <div class=" container">
-                <div class="input-group">
-                    <asp:DropDownList CssClass="form-control" Height="35" ID="dltravelhistory" runat="server">
-                        <asp:ListItem Value="home">home</asp:ListItem>
-                        <asp:ListItem Value="school">school</asp:ListItem>
-                        <asp:ListItem Value="work">work</asp:ListItem>
-                        <asp:ListItem Value="drugstore">drugstore</asp:ListItem>
-                        <asp:ListItem Value="hospital / clinic">hospital / clinic</asp:ListItem>
-                        <asp:ListItem Value="wet market">wet market</asp:ListItem>
-                        <asp:ListItem Value="grocery store">grocery store</asp:ListItem>
-                        <asp:ListItem Value="gym">gym</asp:ListItem>
-                        <asp:ListItem Value="church">church</asp:ListItem>
-                    </asp:DropDownList>
-                    <div class="input-group-btn">
-                        <asp:LinkButton ID="LinkButton4" Height="35" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">add</asp:LinkButton>
+                <asp:Panel ID="pnl1" runat="server">
+                    <div class="input-group">
+                        <asp:DropDownList CssClass="form-control" Height="35" ID="dltravelhistory" runat="server">
+                            <asp:ListItem Value="home">home</asp:ListItem>
+                            <asp:ListItem Value="school">school</asp:ListItem>
+                            <asp:ListItem Value="work">work</asp:ListItem>
+                            <asp:ListItem Value="drugstore">drugstore</asp:ListItem>
+                            <asp:ListItem Value="hospital / clinic">hospital / clinic</asp:ListItem>
+                            <asp:ListItem Value="wet market">wet market</asp:ListItem>
+                            <asp:ListItem Value="grocery store">grocery store</asp:ListItem>
+                            <asp:ListItem Value="gym">gym</asp:ListItem>
+                            <asp:ListItem Value="church">church</asp:ListItem>
+                        </asp:DropDownList>
+                        <div class="input-group-btn">
+                            <asp:LinkButton ID="LinkButton4" Height="35" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">add</asp:LinkButton>
+                        </div>
                     </div>
-                </div>
-                <br />
-                <div class="input-group">
-                    <div class="input-group-addon">Others</div>
-                    <asp:TextBox ID="tboxother" CssClass="form-control" runat="server"></asp:TextBox>
-                    <div class="input-group-btn">
-                        <asp:LinkButton ID="LinkButton5" CssClass="btn btn-default" runat="server" OnClick="LinkButton5_Click">add</asp:LinkButton>
+                    <br />
+                    <div class="input-group">
+                        <div class="input-group-addon">Others</div>
+                        <asp:TextBox ID="tboxother" CssClass="form-control" runat="server"></asp:TextBox>
+                        <div class="input-group-btn">
+                            <asp:LinkButton ID="LinkButton5" CssClass="btn btn-default" runat="server" OnClick="LinkButton5_Click">add</asp:LinkButton>
+                        </div>
                     </div>
-                </div>
+                </asp:Panel>
             </div>
 
             <br />
@@ -123,10 +125,11 @@
                 <PagerSettings PageButtonCount="8" />
                 <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
             </asp:GridView>
-       
-         <div class="alert alert-success" style="text-wrap:avoid">
-            <h4><asp:Label ID="lbltravelsummary" runat="server"></asp:Label></h4> 
-         </div>   
+
+            <div class="alert alert-success" style="text-wrap: avoid">
+                <h4>
+                    <asp:Label ID="lbltravelsummary" runat="server"></asp:Label></h4>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     <strong>Possible Exposure to Virus:s:</strong>&nbsp;<label class="text-success">(Please record possible incident where the patient/ employee could’ve contracted the virus)</label>
@@ -135,51 +138,56 @@
         <label style="text-decoration: underline">TEST RESULTS (if applicable)</label></h3>
     <div class="row">
         <div class="col-sm-6">
-            DATE OF TEST DONE
+            <asp:Panel ID="pnl2" runat="server">
+                DATE OF TEST DONE
             <asp:TextBox ID="tboxdatetestdone" TextMode="Date" runat="server"></asp:TextBox>
-            <div class="container">
-                <blockquote>
-                    <asp:CheckBoxList ID="cboxTESTRESULT" runat="server">
-                        <asp:ListItem Value="IgM Negative">IgM Negative</asp:ListItem>
-                        <asp:ListItem Value="IgM POSITIVE">IgM POSITIVE</asp:ListItem>
-                        <asp:ListItem Value="IgG Negative">IgG Negative</asp:ListItem>
-                        <asp:ListItem Value="IgG POSITIVE">IgG POSITIVE</asp:ListItem>
-                    </asp:CheckBoxList>
-                </blockquote>
-            </div>
+                <div class="container">
+                    <blockquote>
+                        <asp:CheckBoxList ID="cboxTESTRESULT" runat="server">
+                            <asp:ListItem Value="IgM Negative">IgM Negative</asp:ListItem>
+                            <asp:ListItem Value="IgM POSITIVE">IgM POSITIVE</asp:ListItem>
+                            <asp:ListItem Value="IgG Negative">IgG Negative</asp:ListItem>
+                            <asp:ListItem Value="IgG POSITIVE">IgG POSITIVE</asp:ListItem>
+                        </asp:CheckBoxList>
+                    </blockquote>
+                </div>
+            </asp:Panel>
             Patient Name:<asp:TextBox ID="tboxpatientname" CssClass="form-control" runat="server"></asp:TextBox><br />
             Signature:<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Sign here...</asp:LinkButton>
             <asp:Panel ID="Panel1" runat="server"></asp:Panel>
             <br />
         </div>
         <div class="col-sm-6">
+            <asp:Panel ID="pnl5" runat="server">
+                <label class="btn btn-default">
+                    <span><strong>Please attach photo of test result:</strong></span>
+                    <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="True"></asp:FileUpload>
+                </label>
 
-            <label class="btn btn-default">
-                <span><strong>Please attach photo of test result:</strong></span>
-                <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="True"></asp:FileUpload>
-            </label>
-
-            <asp:ValidationSummary ValidationGroup="g1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
-            <asp:Button ID="Button1" runat="server" Text="Upload Image" ValidationGroup="g1" CssClass="btn btn-default" OnClick="Button1_Click" />
+                <asp:ValidationSummary ValidationGroup="g1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
+                <asp:Button ID="Button1" runat="server" Text="Upload Image" ValidationGroup="g1" CssClass="btn btn-default" OnClick="Button1_Click" />
+            </asp:Panel>
             <asp:Panel ID="Panel2" runat="server" BackColor="#CCCCCC"></asp:Panel>
 
-
-            Confirming Physician:
+            <asp:Panel ID="pnl3" runat="server">
+                Confirming Physician:
             <asp:TextBox CssClass="form-control" ID="tboxphysician" runat="server"></asp:TextBox><br />
-            Test Administered by:
+                Test Administered by:
             <asp:TextBox CssClass="form-control" ID="tboxadministeredby" runat="server"></asp:TextBox>
+            </asp:Panel>
         </div>
     </div>
     <h3><strong>Possible Recommendation(s) after Isolation (if applicable)</strong> </h3>
-    <div class="container">
-        <blockquote>
-            <asp:CheckBox ID="cboxrecoendo" Text="Endorse to respective LGU : " runat="server" /><asp:TextBox ID="tboxrecoendo" CssClass="form-control" runat="server"></asp:TextBox><br />
-            <asp:CheckBox ID="cboxrecocallin" Text="Call in for medical Attention and / or endorsement to hospital specify:" runat="server" /><asp:TextBox ID="tboxrecocallin" CssClass="form-control" runat="server"></asp:TextBox><br />
-            <asp:CheckBox ID="cboxrecosendhome" Text="Send home" runat="server" /><br />
-            <asp:CheckBox ID="cboxrecoother" Text="Others:" runat="server" /><asp:TextBox ID="tboxrecoother" CssClass="form-control" runat="server"></asp:TextBox><br />
-        </blockquote>
-    </div>
-
+    <asp:Panel ID="pnl4" runat="server">
+        <div class="container">
+            <blockquote>
+                <asp:CheckBox ID="cboxrecoendo" Text="Endorse to respective LGU : " runat="server" /><asp:TextBox ID="tboxrecoendo" CssClass="form-control" runat="server"></asp:TextBox><br />
+                <asp:CheckBox ID="cboxrecocallin" Text="Call in for medical Attention and / or endorsement to hospital specify:" runat="server" /><asp:TextBox ID="tboxrecocallin" CssClass="form-control" runat="server"></asp:TextBox><br />
+                <asp:CheckBox ID="cboxrecosendhome" Text="Send home" runat="server" /><br />
+                <asp:CheckBox ID="cboxrecoother" Text="Others:" runat="server" /><asp:TextBox ID="tboxrecoother" CssClass="form-control" runat="server"></asp:TextBox><br />
+            </blockquote>
+        </div>
+    </asp:Panel>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="val2" CssClass="alert alert-success" runat="server" />
