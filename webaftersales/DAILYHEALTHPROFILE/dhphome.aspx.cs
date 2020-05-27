@@ -142,7 +142,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     }
                     if (exist)
                     {
-                        errorrmessage("One report per day only");
+                        errorrmessage("One report per day only!");
                     }
                     else
                     {

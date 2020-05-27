@@ -11,7 +11,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            username.Text = Session["dhp_USERACCT"].ToString() + " ";
+            username.Text = Session["dhp_USERNAME"].ToString() + " ";
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {

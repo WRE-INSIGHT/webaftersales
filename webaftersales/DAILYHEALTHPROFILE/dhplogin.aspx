@@ -1,10 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dhplogin.aspx.cs" Inherits="webaftersales.DAILYHEALTHPROFILE.dhplogin" %>
 
 <!DOCTYPE html>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+     
+    <title>Log in</title>
+  
     <script src="../Scripts/bootstrap.js"></script>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
@@ -19,11 +21,15 @@
             <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
         </div>
         <div class="container">
-          
+
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
+                    <h3><strong class="text-info text-center">DAILY HEALTH PROFILE</strong> </h3>
+                 
+                    <div class="alert alert-warning">If you have not logged in and changed your password, then you can use your employee number as a default username and password.<br />
+                       <strong>Format: 0000-000</strong>
+                    </div>
                     <blockquote>
-                       <h3><strong>DAILY HEALTH PROFILE</strong> </h3><br />
                         Employee No<br />
                         <asp:TextBox ID="tboxempno" Height="40" CssClass="form-control" runat="server"></asp:TextBox>
                         <br />
@@ -36,12 +42,15 @@
                         <asp:ValidationSummary CssClass="alert alert-danger" ValidationGroup="val1" ID="ValidationSummary1" runat="server" />
                     </blockquote>
                 </div>
-                <div class="col-sm-6">
-                    <blockquote>
-                    </blockquote>
-                </div>
+            
             </div>
         </div>
+        <footer class="container-fluid text-center" style="background-color: white; margin-top: 0px;">
+            <br />
+            <br />
+            <br />
+            <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
+        </footer>
     </form>
 </body>
 </html>

@@ -20,7 +20,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     Image1.ImageUrl = Request.QueryString["dhpImageUrl"];
                    
                 }
-
+                if (acct == "Admin")
+                {
+                    Button1.Visible = true;
+                }
+                else
+                {
+                    Button1.Visible = false;
+                }
             }
             else
             {

@@ -50,7 +50,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 pnl2.Enabled = true;
                 pnl3.Enabled = true;
                 pnl4.Enabled = true;
-        
+                pnl5.Visible = true;
                 tboxexposuretovirus.Enabled = true;            
             }
             else
@@ -59,7 +59,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 pnl2.Enabled = false;
                 pnl3.Enabled = false;
                 pnl4.Enabled = false;
-           
+                pnl5.Visible = false;
                 tboxexposuretovirus.Enabled = false;
             }
         }
