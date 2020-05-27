@@ -19,7 +19,12 @@
                 </div>
             </div>
             <div class="col-sm-6">
+
                 <div class="input-group">
+                    <div class="input-group-addon">
+                        <asp:CheckBox ID="cboxstatus" runat="server" />
+                        with yes
+                    </div>
                     <asp:TextBox ID="tboxsearchkey" CssClass="form-control" runat="server"></asp:TextBox>
                     <div class="input-group-btn">
                         <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-default" OnClick="LinkButton3_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
@@ -35,11 +40,12 @@
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <div class="panel panel-default">
+                    <div class='<%# Eval("status").ToString() ==  "yes" ? "panel panel-danger" : "panel panel-success" %>'>
                         <div class="panel-heading">
                         </div>
                         <div class="panel-body">
-                            <asp:Label ID="Label1" Font-Size="XX-Large" runat="server" CssClass="text-info" Text='<%# Bind("DATE") %>'></asp:Label>
+                            <asp:Label ID="Label1" Font-Size="XX-Large" runat="server" CssClass="text-info" Text='<%# Bind("DATE") %>'></asp:Label>&nbsp;  
+                            <asp:Label ID="Label3" CssClass="text-muted" runat="server" Text='<%# Bind("TIME") %>'></asp:Label>
                             <h5>KMDI EMPLOYEE DAILY HEALTH PROFILE</h5>
                             <blockquote>
                                 <table border="0">
@@ -51,7 +57,7 @@
                                         <td class="text-muted">NAME
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblname" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
+                                            <asp:Label ID="lblname" CssClass="text-info" Font-Size="Large" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -77,9 +83,9 @@
                                     </tr>
                                 </table>
                             </blockquote>
-                            <asp:LinkButton ID="LinkButton4" CommandName="page1" CssClass='<%# Eval("page1").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-warning" %>' runat="server">Page 1</asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton5" CommandName="page2" CssClass='<%# Eval("page2").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-warning" %>' runat="server">Page 2</asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton6" CommandName="page3" CssClass='<%# Eval("page3").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-warning" %>' runat="server">Page 3</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton4" CommandName="page1" CssClass='<%# Eval("page1").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 1</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton5" CommandName="page2" CssClass='<%# Eval("page2").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 2</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton6" CommandName="page3" CssClass='<%# Eval("page3").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 3</asp:LinkButton>
                         </div>
                         <div class="panel-footer">
                             <strong>NOTE/OBSERVATIONS</strong>
@@ -98,7 +104,7 @@
         </Columns>
         <EmptyDataTemplate>
             <div class="alert alert-info">
-                <h3><strong>DHP is Empty/ no result found!</strong>
+                <h3><strong>Empty Table!</strong>
                 </h3>
             </div>
         </EmptyDataTemplate>
@@ -106,4 +112,7 @@
         <PagerSettings PageButtonCount="8" />
         <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
     </asp:GridView>
+    <br />
+    <strong>
+        <asp:Label CssClass="text-muted" ID="lblcountrow" runat="server" Text="Label"></asp:Label></strong>
 </asp:Content>

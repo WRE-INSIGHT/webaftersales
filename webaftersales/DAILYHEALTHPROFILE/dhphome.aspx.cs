@@ -19,7 +19,20 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
                 if (!IsPostBack)
                 {
-                    getdata();
+              
+                    if (Session["dhpsearchkey"] != null)
+                    {
+                        tboxsearchkey.Text = Session["dhpsearchkey"].ToString();
+                    }
+                    if (Session["dhpdatekey"] != null)
+                    {
+                        tboxdate.Text = Session["dhpdatekey"].ToString();
+                    }
+                    if (Session["dhpcbox"] != null)
+                    {
+                        cboxstatus.Checked = Convert.ToBoolean(Session["dhpcbox"]);
+                    }
+                        getdata();
                 }
 
             }
@@ -54,6 +67,12 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 {
                     using (SqlCommand sqlcmd =sqlcon.CreateCommand())
                     {
+                        string stat = "no";
+                        if (cboxstatus.Checked)
+                        {
+                            stat = "yes";
+                        }
+                      
                         sqlcon.Open();
                         sqlcmd.CommandText = "DHPstp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
@@ -61,11 +80,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.Parameters.AddWithValue("@accttype", acct);
                         sqlcmd.Parameters.AddWithValue("@searchkey", tboxsearchkey.Text);
                         sqlcmd.Parameters.AddWithValue("@date", tboxdate.Text);
+                        sqlcmd.Parameters.AddWithValue("@status", stat);
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
+                        lblcountrow.Text = tb.Rows.Count.ToString() +" result(s) found";
+                        Session["dhpsearchkey"] = tboxsearchkey.Text;
+                        Session["dhpdatekey"] = tboxdate.Text;
+                        Session["dhpcbox"] = cboxstatus.Checked;
                     }
                 }
             }
@@ -93,7 +117,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhrtbl)" +
-                             " insert into dhrtbl (id,empno,rdate)values(@id,@empno,@rdate)";
+                             " insert into dhrtbl (id,empno,rdate,rtime)values(@id,@empno,@rdate,@rtime)";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
@@ -102,6 +126,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                        
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
                         sqlcmd.Parameters.AddWithValue("@rdate", DateTime.Now.ToString("MM-dd-yyyy"));
+                    
                         using (SqlDataReader rd = sqlcmd.ExecuteReader())
                         {
                             if (rd.HasRows)
@@ -126,10 +151,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
                           
                             sqlcmd.Parameters.AddWithValue("@empno", empno);
                             sqlcmd.Parameters.AddWithValue("@rdate", DateTime.Now.ToString("MM-dd-yyyy"));
+                            sqlcmd.Parameters.AddWithValue("@rtime", DateTime.Now.ToString("hh:mm:ss tt"));
                             sqlcmd.ExecuteNonQuery();
                         }
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -145,20 +171,25 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-            GridViewRow row = GridView1.Rows[rowindex];
+         
             if (e.CommandName == "page1")
             {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
                 setsession(row);
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhpnew.aspx");
             }
             if (e.CommandName == "page2")
             {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
                 setsession(row);
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }
             if (e.CommandName == "page3")
             {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
                 setsession(row);
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage3.aspx");
             }

@@ -62,7 +62,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
-            if (pagesender == "page2")
+            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered")
             {
                 senderbutton(pagesender);
             }
@@ -70,11 +70,29 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 senderbutton(pagesender);
             }
+        
 
         }
         private void senderbutton(string senderpage)
         {
-            string filepath = "~/Uploads/DHPuploads/" + senderpage + "/" + "signature/" + empno + dhpid + "/";
+            string filepath = "";
+
+            if(senderpage == "page2_physician")
+            {
+                filepath = "~/Uploads/DHPuploads/page2/signature/physician/" + empno + dhpid + "/";
+            }
+            else if(senderpage == "page2_administered")
+            {
+                filepath = "~/Uploads/DHPuploads/page2/signature/administered/" + empno + dhpid + "/";
+            }
+            else if (senderpage == "page2_patient")
+            {
+                filepath = "~/Uploads/DHPuploads/page2/signature/patient/" + empno + dhpid + "/";
+            }
+            else
+            {
+                filepath = "~/Uploads/DHPuploads/" + senderpage + "/" + "signature/" + empno + dhpid + "/";
+            }
             Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
             if (!IsExists)
             {     
@@ -86,7 +104,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 file.Delete();
             }
             UploadImage(Request.Form["myurl"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath + empno + senderpage + DateTime.Now.ToString("HH:mm:ss").Replace(":","") + ".jpg"));
-            if (pagesender == "page2")
+            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered")
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }
@@ -98,7 +116,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            if (pagesender == "page2")
+            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered")
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }

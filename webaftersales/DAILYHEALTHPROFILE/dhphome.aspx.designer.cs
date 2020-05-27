@@ -31,6 +31,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxdate;
         
         /// <summary>
+        /// cboxstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cboxstatus;
+        
+        /// <summary>
         /// tboxsearchkey control.
         /// </summary>
         /// <remarks>
@@ -65,5 +74,14 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// lblcountrow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcountrow;
     }
 }

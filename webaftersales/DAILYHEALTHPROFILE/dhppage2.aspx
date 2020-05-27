@@ -152,8 +152,8 @@
                     </blockquote>
                 </div>
             </asp:Panel>
-            Patient Name:<asp:TextBox ID="tboxpatientname" CssClass="form-control" runat="server"></asp:TextBox><br />
-            Signature:<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Sign here...</asp:LinkButton>
+            Patient Name:<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Sign here...</asp:LinkButton>
+            <asp:TextBox ID="tboxpatientname" CssClass="form-control" placeholder="Patient Name" runat="server"></asp:TextBox><br />
             <asp:Panel ID="Panel1" runat="server"></asp:Panel>
             <br />
         </div>
@@ -170,10 +170,12 @@
             <asp:Panel ID="Panel2" runat="server" BackColor="#CCCCCC"></asp:Panel>
 
             <asp:Panel ID="pnl3" runat="server">
-                Confirming Physician:
-            <asp:TextBox CssClass="form-control" ID="tboxphysician" runat="server"></asp:TextBox><br />
-                Test Administered by:
-            <asp:TextBox CssClass="form-control" ID="tboxadministeredby" runat="server"></asp:TextBox>
+                Confirming Physician:<asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Sign here...</asp:LinkButton><br />
+                <asp:Panel ID="pnlphysician" runat="server"></asp:Panel>
+            <asp:TextBox CssClass="form-control" ID="tboxphysician" placeholder="Confirming Physician" runat="server"></asp:TextBox><br />
+                Test Administered by:<asp:LinkButton ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">Sign here...</asp:LinkButton><br />
+                   <asp:Panel ID="pnladministered" runat="server"></asp:Panel>
+            <asp:TextBox CssClass="form-control" ID="tboxadministeredby" placeholder="Test Administered" runat="server"></asp:TextBox>
             </asp:Panel>
         </div>
     </div>

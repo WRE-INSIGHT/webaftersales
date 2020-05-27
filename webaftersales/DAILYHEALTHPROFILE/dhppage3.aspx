@@ -191,7 +191,7 @@
                     <RowStyle Wrap="False" />
                     <EmptyDataTemplate>
                         <div class="alert alert-info">
-                            <h3><strong>Empty data!</strong>
+                            <h3><strong>Empty Table!</strong>
                             </h3>
                         </div>
                     </EmptyDataTemplate>
@@ -270,7 +270,7 @@
                     <RowStyle Wrap="False" />
                     <EmptyDataTemplate>
                         <div class="alert alert-info">
-                            <h3><strong>Empty data!</strong>
+                            <h3><strong>Empty Table!</strong>
                             </h3>
                         </div>
                     </EmptyDataTemplate>

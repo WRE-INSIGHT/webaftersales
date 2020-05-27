@@ -86,14 +86,18 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private void signaturephoto()
         {
-
-            string filepath = "~/Uploads/DHPuploads/page2/signature/" + empno + dhpid + "/";
+            createsignaturepath("patient");
+            createsignaturepath("physician");
+            createsignaturepath("administered");
+        }
+        private void createsignaturepath(string foldername)
+        {
+            string filepath = "~/Uploads/DHPuploads/page2/signature/"+foldername+"/" + empno + dhpid + "/";
             Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
             if (!IsExists)
             {
                 System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
             }
-
         }
         private void testresultphotos()
         {
@@ -154,9 +158,15 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private void loadsignature()
         {
-            Panel1.Controls.Clear();
+            getimage(Panel1, "patient");
+            getimage(pnlphysician, "physician");
+            getimage(pnladministered, "administered");
+        }
+        private void getimage(Panel pnl,string foldername)
+        {
+            pnl.Controls.Clear();
             Image img = new Image();
-            string filepath = "~/Uploads/DHPuploads/page2/signature/" + empno + dhpid + "/";
+            string filepath = "~/Uploads/DHPuploads/page2/signature/"+foldername+"/" + empno + dhpid + "/";
 
             foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath)))
             {
@@ -167,15 +177,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 imgbutton.Height = Unit.Pixel(200);
                 imgbutton.Style.Add("margin", "5px");
                 imgbutton.CssClass = "img-thumbnail";
-                Panel1.Controls.Add(imgbutton);
+                pnl.Controls.Add(imgbutton);
             }
-
-            //img.ImageUrl = filepath + empno + "page2.jpg";
-            //img.Width = Unit.Pixel(350);
-            //img.Height = Unit.Pixel(200);
-            //img.Style.Add("margin", "5px");
-            //img.CssClass = "img-thumbnail";
-            //Panel1.Controls.Add(img);
         }
         private void loadimages()
         {
@@ -390,7 +393,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
             insert();
-            Session["dhp_pagesender"] = "page2";
+            Session["dhp_pagesender"] = "page2_patient";
             Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
         }
 
@@ -631,6 +634,20 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void LinkButton5_Click(object sender, EventArgs e)
         {
             inserttravelhistory(tboxother.Text);
+        }
+
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            insert();
+            Session["dhp_pagesender"] = "page2_physician";
+            Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            insert();
+            Session["dhp_pagesender"] = "page2_administered";
+            Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
         }
     }
 }
