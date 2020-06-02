@@ -26,8 +26,7 @@
                 <div class="col-sm-12">
                     <h3><strong class="text-info text-center">DAILY HEALTH PROFILE</strong> </h3>
                  
-                    <div class="alert alert-warning">If you have not logged in and changed your password, then you can use your employee number as a default username and password.<br />
-                       <strong>Format: 0000-000</strong>
+                    <div class="alert alert-warning"><strong class="text-info">Note!</strong> Use your first name and surname as your default username and password.
                     </div>
                     <blockquote>
                         Employee No<br />

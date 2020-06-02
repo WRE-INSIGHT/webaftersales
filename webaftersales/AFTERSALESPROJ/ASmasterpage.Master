@@ -49,6 +49,14 @@
                                 </li>
                             </ul>
                         </li>
+                           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-large"></span>&nbsp;Quotation<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/AFTERSALESPROJ/quotationforms/quotationForapproval.aspx">For approval</asp:HyperLink></li>
+                               <li>
+                                    <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/AFTERSALESPROJ/quotationsummary.aspx">Payment status</asp:HyperLink></li>
+                            </ul>
+                        </li>
                         <li>
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/contactusPage.aspx">
                                    <span class="glyphicon glyphicon-phone"></span>&nbsp;Contact</asp:HyperLink></li>

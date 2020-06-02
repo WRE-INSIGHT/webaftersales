@@ -84,5 +84,18 @@ namespace webaftersales.AFTERSALESPROJ
             Session["columnname"] = "ACCEPTEDBY";
             Response.Redirect("~/AFTERSALESPROJ/quotationsignature.aspx");
         }
+
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+
+            if (Session["qu_report_sender"].ToString() == "qu_sender_qu")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
+            }
+            else if (Session["qu_report_sender"].ToString() == "qu_sernder_approval")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/quotationforms/quotationForapproval.aspx");
+            }
+        }
     }
 }

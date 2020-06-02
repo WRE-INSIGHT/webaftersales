@@ -75,7 +75,7 @@
         <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
         <EmptyDataTemplate>
             <div class="alert alert-danger">
-                <h2><strong>Sorry, no data available!</strong>
+                <h2><strong>Empty Table!</strong>
                     <small>0 result found</small>
                 </h2>
             </div>

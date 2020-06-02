@@ -46,7 +46,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    SqlCommand sqlcmd = new SqlCommand("select EMPNO,SURENAME+', '+FIRSTNAME+' '+MI AS FULLNAME,BIRTHDAY,USERACCT,USERNAME from EMPTBL where USERNAME = @empno and PASSWORD = @Password", sqlcon);
+                    SqlCommand sqlcmd = new SqlCommand("select EMPNO,SURNAME+', '+FIRSTNAME+' '+MI AS FULLNAME,BIRTHDAY,USERACCT,USERNAME from EMPTBL where USERNAME = @empno and PASSWORD = @Password", sqlcon);
                     sqlcmd.Parameters.AddWithValue("@empno", tboxempno.Text);
                     sqlcmd.Parameters.AddWithValue("@Password", tboxpassword.Text);
                     SqlDataReader rd = sqlcmd.ExecuteReader();

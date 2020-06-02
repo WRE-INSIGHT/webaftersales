@@ -250,6 +250,7 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["aseno"] = ((Label)row.FindControl("asenolbl")).Text;
+                Session["qu_report_sender"] = "qu_sender_qu";
                 Response.Redirect("~/AFTERSALESPROJ/quotationreport.aspx");
             }
         }

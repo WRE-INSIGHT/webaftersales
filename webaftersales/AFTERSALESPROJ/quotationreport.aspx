@@ -11,7 +11,7 @@
     <div class="well">
         <h3><strong>Quotation Report Viewer</strong></h3>
         <div class="navbar-right">
-            <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotation.aspx">back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">back</asp:LinkButton>
         </div>
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />

@@ -47,30 +47,15 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 DataTable tb = new DataTable();
-                string str = "  select                                                                                         " +
-                            "  c.PROJECT_LABEL AS PROJECT,                                                                                               " +
-                            "  C.JOB_ORDER_NO AS JO,                                                                                                     " +
-                            "  a.ID,                                                                                                                     " +
-                            "  a.CIN,                                                                                                                    " +
-                            "  a.ASENO,                                                                                                                  " +
-                            "  case when isdate(a.QDATE) = 1 then format(cast(a.qdate as date), 'MMM-dd-yyyy') else a.qdate end as [DATE],               " +
-                            "  format(a.OTHERCHARGES, 'n2') as [OTHER CHARGES],                                                                          " +
-                            "  a.PARTICULAR,                                                                                                             " +
-                            "  case when isdate(a.ACCEPTED) = 1 then format(cast(a.ACCEPTED as date), 'MMM-dd-yyyy') else a.ACCEPTED end as ACCEPTED,    " +
-                            "  format(a.NETPRICE, 'n2') as NETPRICE,                                                                                     " +
-                            "  format(a.Actualprice, 'n2') as [ACTUAL PRICE]                                                                             " +
-                            "  from((quotationtb as a                                                                                                    " +
-                            "   left join CALLINTB as b                                                                                                  " +
-                            "  on a.cin = b.cin)                                                                                                         " +
-                            "  left join kmdidata.dbo.addendum_to_contract_tb as c                                                                       " +
-                            "  on b.JO = c.job_order_no)"+
-                            "  WHERE C.PROJECT_LABEL LIKE @searchkey or c.JOB_ORDER_NO like @searchkey or a.aseno like @searchkey or a.cin like @searchkey";
+           
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
+                        sqlcmd.CommandText = "std_quotationsummary";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@searchkey", "%" + searchkey.Text + "%");
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;

@@ -386,6 +386,13 @@
     <Compile Include="AFTERSALESPROJ\quotation.aspx.designer.cs">
       <DependentUpon>quotation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationforms\quotationForapproval.aspx.cs">
+      <DependentUpon>quotationForapproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationforms\quotationForapproval.aspx.designer.cs">
+      <DependentUpon>quotationForapproval.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\quotationitem.aspx.cs">
       <DependentUpon>quotationitem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -625,6 +632,7 @@
     <Content Include="AFTERSALESPROJ\pendingpage.aspx" />
     <Content Include="AFTERSALESPROJ\pricelist.aspx" />
     <Content Include="AFTERSALESPROJ\quotation.aspx" />
+    <Content Include="AFTERSALESPROJ\quotationforms\quotationForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\quotationitem.aspx" />
     <Content Include="AFTERSALESPROJ\quotationreport.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
