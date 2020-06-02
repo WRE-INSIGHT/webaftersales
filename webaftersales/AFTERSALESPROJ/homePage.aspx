@@ -15,7 +15,7 @@
         <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
     </div>--%>
     <div class="well">
-        <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS<asp:LinkButton ID="LinkButton1" PostBackUrl="~/AFTERSALESPROJ/quotationforms/quotationForapproval.aspx" runat="server">LinkButton</asp:LinkButton></small></h3>
+        <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
         <div class="row">
             <div class="col-sm-6">
                 <div class="input-group">

@@ -93,7 +93,8 @@
                                         ErrorMessage="Full name is required"></asp:RequiredFieldValidator>
                                     <br />
                                
-                                    <asp:Button ID="Button2" CssClass="btn btn-primary" ValidationGroup="g1" OnClientClick="storeimage()" runat="server" Text="capture signature" OnClick="Button2_Click" />
+                                    <asp:Button ID="Button2" CssClass="btn btn-primary" ValidationGroup="g1" OnClientClick="storeimage()" Width="200" runat="server" Text="capture signature" OnClick="Button2_Click" /><br />
+                                   <br /> <asp:Button ID="Button1" runat="server" Width="200" CssClass="btn btn-danger" Text="use my signature" OnClick="Button1_Click" />
                                     <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="g1" CssClass="alert alert-danger" runat="server" />
                                 </asp:Panel>
                             </div>

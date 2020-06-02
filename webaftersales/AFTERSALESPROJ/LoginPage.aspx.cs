@@ -44,7 +44,7 @@ namespace webaftersales.AFTERSALESPROJ
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    SqlCommand sqlcmd = new SqlCommand("select username,ID,PID,accttype from ACCTTB where username = @username and password = @password", sqlcon);
+                    SqlCommand sqlcmd = new SqlCommand("select username,ID,PID,accttype,Firstname+' '+lastname as fullname from ACCTTB where username = @username and password = @password", sqlcon);
                     sqlcmd.Parameters.AddWithValue("@UserName", usernametbox.Text);
                     sqlcmd.Parameters.AddWithValue("@Password", passwordtbox.Text);
                     SqlDataReader rd = sqlcmd.ExecuteReader();
@@ -53,10 +53,12 @@ namespace webaftersales.AFTERSALESPROJ
 
                         while (rd.Read())
                         {
+                         
                             Session["username"] = rd[0].ToString();
                             Session["userid"] = rd[1].ToString();
                             Session["userpid"] = rd[2].ToString();
                             Session["useraccount"] = rd[3].ToString();
+                            Session["userfullname"] = rd[4].ToString();
                             if (CheckBox1.Checked)
                             {
                                 Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);

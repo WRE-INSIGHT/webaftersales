@@ -10,8 +10,9 @@
     <div class="well">
         <h3><strong>Change password</strong></h3>
     </div>
-    <div class="panel">
-    <table>
+    <div class="row">
+        <div class="col-sm-6">
+              <table class="table">
 
         <tr>
             <td>New password:
@@ -59,5 +60,12 @@
             </td>
         </tr>
     </table>
+        </div>
+          <div class="col-sm-6" style="background-color:cadetblue">
+              <asp:Image ID="Image1" CssClass="img-thumbnail" Width="350" Height="250" runat="server" /><br />
+                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-warning" PostBackUrl="~/AFTERSALESPROJ/reqisterSign.aspx" runat="server" OnClick="LinkButton1_Click">register my signature</asp:LinkButton>
+        </div>
+  
+      
         </div>
 </asp:Content>

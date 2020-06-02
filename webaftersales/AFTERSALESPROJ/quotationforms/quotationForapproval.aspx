@@ -22,7 +22,7 @@
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
 
-    <asp:GridView ID="GridView1" GridLines="None" AutoGenerateColumns="false" runat="server" AllowPaging="True" OnRowCommand="GridView1_RowCommand">
+    <asp:GridView ID="GridView1" GridLines="None" AutoGenerateColumns="false" runat="server" AllowPaging="True" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>

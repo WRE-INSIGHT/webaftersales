@@ -106,5 +106,29 @@ namespace webaftersales.AFTERSALESPROJ
 
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (IsValid)
+            {
+
+                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/";
+                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
+                if (!IsExists)
+                {
+                    System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
+                }
+                string sourcepath = "~/Uploads/ASuploads/UserSignature/" + Session["userid"].ToString() + "/";
+                Boolean IsExists1 = System.IO.Directory.Exists(Server.MapPath(sourcepath));
+                if (!IsExists1)
+                {
+                    System.IO.Directory.CreateDirectory(Server.MapPath(sourcepath));
+                }
+                File.Copy(Server.MapPath(sourcepath+ "mysign.jpg"), Server.MapPath(filepath + columnname + ".jpg"),true);
+
+                string str = "update quotationtb set " + columnname + "='" + Session["userfullname"].ToString() + "' where aseno = @aseno";
+                updatetb(str);
+
+            }
+        }
     }
 }

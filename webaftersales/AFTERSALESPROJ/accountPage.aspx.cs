@@ -15,6 +15,10 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (Session["username"] != null)
             {
+                if (!IsPostBack)
+                {
+                    Image1.ImageUrl = "~/Uploads/ASuploads/UserSignature/" + Session["userid"].ToString() +"/mysign.jpg";
+                }
             }
             else
             {
@@ -80,5 +84,9 @@ namespace webaftersales.AFTERSALESPROJ
             return hasrow;
         }
 
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,20 +1,18 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dhpsignature.aspx.cs" Inherits="webaftersales.DAILYHEALTHPROFILE.dhpsignature" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="reqisterSign.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.reqisterSign" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html>
 
-<!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>DHP Signature</title>
+    <title>Regiater Signature</title>
     <script src="../Scripts/bootstrap.js"></script>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
-    <script src="../AFTERSALESPROJ/scripts/sign.js"></script>
+    <script src="scripts/sign.js"></script>
     <script>
         $(document).ready(function () {
             $('#myCanvas').sign({
@@ -41,7 +39,6 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-sm-6">
 
@@ -70,26 +67,25 @@
                             //document.getElementById('Image1').src = dataURL;
                         }
                     </script>
-
                 </div>
                 <div class="col-sm-6">
+
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
+
+
                             <div class="container">
                                 <div class="page-header">
                                     <h1>
                                         <small>
                                             <asp:Label ID="Label1" runat="server" Text="Signature Form">
                                             </asp:Label></small></h1>
-                                    <div class="navbar-right">
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-default" OnClick="LinkButton1_Click">back</asp:LinkButton>
-                                    </div>
-                                </div>
-                                <asp:Panel ID="Panel1" runat="server">
 
+                                    <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/accountpage.aspx" runat="server" Text="back"></asp:HyperLink>
                                     <asp:Button ID="Button2" CssClass="btn btn-primary" ValidationGroup="g1" OnClientClick="storeimage()" runat="server" Text="capture signature" OnClick="Button2_Click" />
+                                    <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="g1" CssClass="alert alert-danger" runat="server" />
+                                </div>
 
-                                </asp:Panel>
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
