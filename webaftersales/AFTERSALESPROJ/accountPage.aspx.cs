@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,7 +18,18 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (!IsPostBack)
                 {
-                    Image1.ImageUrl = "~/Uploads/ASuploads/UserSignature/" + Session["userid"].ToString() +"/mysign.jpg";
+                    string filepath = "~/Uploads/ASuploads/UserSignature/" + Session["userid"].ToString() + "/";
+                    Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
+                    if (!IsExists)
+                    {
+                        System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
+                    }
+                    foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath)))
+                    {        
+                        FileInfo fileinfo = new FileInfo(strfilename);
+                        Image1.ImageUrl = filepath + fileinfo.Name;
+                    }
+
                 }
             }
             else

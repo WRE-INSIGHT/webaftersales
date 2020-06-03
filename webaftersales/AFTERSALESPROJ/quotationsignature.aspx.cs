@@ -123,7 +123,13 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     System.IO.Directory.CreateDirectory(Server.MapPath(sourcepath));
                 }
-                File.Copy(Server.MapPath(sourcepath+ "mysign.jpg"), Server.MapPath(filepath + columnname + ".jpg"),true);
+
+                foreach (string strfilename in Directory.GetFiles(Server.MapPath(sourcepath)))
+                {
+                  
+                    FileInfo fileinfo = new FileInfo(strfilename);
+                    File.Copy(Server.MapPath(sourcepath + fileinfo.Name), Server.MapPath(filepath + columnname + ".jpg"), true);
+                }
 
                 string str = "update quotationtb set " + columnname + "='" + Session["userfullname"].ToString() + "' where aseno = @aseno";
                 updatetb(str);

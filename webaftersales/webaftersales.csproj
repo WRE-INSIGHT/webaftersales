@@ -344,6 +344,13 @@
     <Compile Include="AFTERSALESPROJ\invalidaccessPage.aspx.designer.cs">
       <DependentUpon>invalidaccessPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\joborderapproval.aspx.cs">
+      <DependentUpon>joborderapproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\joborderapproval.aspx.designer.cs">
+      <DependentUpon>joborderapproval.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -570,6 +577,7 @@
     <Content Include="AFTERSALESPROJ\importparts.aspx" />
     <Content Include="AFTERSALESPROJ\importquotationitem.aspx" />
     <Content Include="AFTERSALESPROJ\invalidaccessPage.aspx" />
+    <Content Include="AFTERSALESPROJ\joborderapproval.aspx" />
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\manageAccountsPage.aspx" />
     <Content Include="AFTERSALESPROJ\newcallin.aspx" />

@@ -124,6 +124,36 @@
                                             </td>
                                         </tr>
                                     </table>
+                                    <br />
+                                    <asp:LinkButton ID="LinkButton5" CommandName="requestcollection" CssClass='<%# Eval("REQUESTED").ToString() == "" ? "btn btn-danger form-control" : "btn btn-success form-control" %>'
+                                        Visible='<%# Eval("TURNOVER").ToString() == "0" ? false : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? false : true %>'
+                                        Text='<%# Eval("REQUESTED").ToString() == "" ? "request for jo approval" : Eval("REQUESTED") %>' runat="server">request for collection review</asp:LinkButton>
+                                    <asp:Panel ID="Panel1" runat="server" Visible='<%# Eval("TURNOVER").ToString() == "0" ? false : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? false : true %>'>
+                                        <table class="table">
+                                            <tr>
+                                                <th colspan="2">JO Approval Status
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>Approved</th>
+                                                <th>Disapproved</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="lblapproved" runat="server" Text='<%# Eval("[APPROVED]") %>'></asp:Label>
+
+                                                </td>
+                                                <td>
+                                                    <asp:Label ID="lbldisapproved" runat="server" Text='<%# Eval("[DISAPPROVED]") %>'></asp:Label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <asp:Label ID="lblmessage" runat="server" Text='<%# Eval("[MESSAGE]") %>'></asp:Label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </asp:Panel>
 
                                 </div>
                                 <div class="col-sm-6">
@@ -185,7 +215,7 @@
 
                                     </div>
                                     <asp:LinkButton ID="LinkButton4" CommandName="myservicing" CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary form-control" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "btn btn-primary form-control" : "btn btn-default form-control" %>' runat="server">job order</asp:LinkButton>
-                                    <asp:LinkButton ID="LinkButton5" CommandName="requestcollection" CssClass="btn btn-warning form-control" runat="server">request for collection review</asp:LinkButton>
+
                                 </div>
                             </div>
 

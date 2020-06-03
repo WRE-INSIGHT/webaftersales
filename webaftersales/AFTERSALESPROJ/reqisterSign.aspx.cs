@@ -48,9 +48,14 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
                 }
-                UploadImage(Request.Form["myurl"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath + "mysign.jpg"));
+                System.IO.DirectoryInfo folderInfo = new DirectoryInfo(Server.MapPath(filepath));
+                foreach (FileInfo file in folderInfo.GetFiles())
+                {
+                    file.Delete();
+                }
+                UploadImage(Request.Form["myurl"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath +"mysign"+ DateTime.Now.ToString("HH:mm:ss").Replace(":", "") + ".jpg"));
 
-         
+                Response.Redirect("~/AFTERSALESPROJ/accountpage.aspx");
 
             }
         }

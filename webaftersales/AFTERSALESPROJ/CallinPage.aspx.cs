@@ -190,9 +190,23 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings[""].ConnectionString.ToString();
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string find = " select * from RequestCollectionApproval where cin = @cin";
-                string str = " ";
+                string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from RequestCollectionApproval)" +
+                                " insert into RequestCollectionApproval     "+
+                                " (ID                                         "+
+                                " , CIN                                      "+
+                                " , REQUESTED                                "+
+                                " , APPROVED                                 "+
+                                " , DISAPPROVED                              "+
+                                " ,[MESSAGE])                                "+
+                                " values                                     "+
+                                "  (@id                                      "+
+                                " , @cin                                     "+
+                                " , getdate()                               "+
+                                " , ''                                "+
+                                " , ''                             "+
+                                " , '')                           ";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
@@ -213,11 +227,12 @@ namespace webaftersales.AFTERSALESPROJ
                             }
                         }
                     }
-                    if (bol)
+                    if (bol==false)
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                         {
                             sqlcmd.Parameters.AddWithValue("@cin", cin);
+                            
                             sqlcmd.ExecuteNonQuery();
                         }
                     }
@@ -231,6 +246,10 @@ namespace webaftersales.AFTERSALESPROJ
             catch(Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                getdata();
             }
         }
     }
