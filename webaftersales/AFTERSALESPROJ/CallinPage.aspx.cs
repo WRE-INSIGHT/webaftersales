@@ -177,10 +177,61 @@ namespace webaftersales.AFTERSALESPROJ
                         ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('Sorry unable to open JO, account is not fully paid')",true);
                     }
                 }
-
             
             }
-           
+            else if (e.CommandName == "requestcollection")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                insertrequest(((Label)row.FindControl("callinlbl")).Text);
+            }
+        }
+        private void insertrequest(string cin)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings[""].ConnectionString.ToString();
+                string find = " select * from RequestCollectionApproval where cin = @cin";
+                string str = " ";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    bool bol = false;
+                    using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))
+                    {
+
+                        sqlcmd.Parameters.AddWithValue("@cin", cin);
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            if (rd.HasRows)
+                            {
+                                bol = true;
+                            }
+                            else
+                            {
+                                bol = false;
+                            }
+                        }
+                    }
+                    if (bol)
+                    {
+                        using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                        {
+                            sqlcmd.Parameters.AddWithValue("@cin", cin);
+                            sqlcmd.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('Sorry unable to process your request, you already requested a collection review for this callin ')", true);
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
         }
     }
 }

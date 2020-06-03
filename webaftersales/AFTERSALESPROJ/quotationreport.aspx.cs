@@ -94,7 +94,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             else if (Session["qu_report_sender"].ToString() == "qu_sernder_approval")
             {
-                Response.Redirect("~/AFTERSALESPROJ/quotationforms/quotationForapproval.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/quotationForapproval.aspx");
             }
         }
     }

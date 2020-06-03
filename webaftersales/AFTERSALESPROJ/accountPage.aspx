@@ -61,7 +61,7 @@
         </tr>
     </table>
         </div>
-          <div class="col-sm-6" style="background-color:cadetblue">
+          <div class="col-sm-6" style="background-color:whitesmoke">
               <asp:Image ID="Image1" CssClass="img-thumbnail" Width="350" Height="250" runat="server" /><br />
                 <asp:LinkButton ID="LinkButton1" CssClass="btn btn-warning" PostBackUrl="~/AFTERSALESPROJ/reqisterSign.aspx" runat="server" OnClick="LinkButton1_Click">register my signature</asp:LinkButton>
         </div>

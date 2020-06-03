@@ -49,12 +49,14 @@
                                 </li>
                             </ul>
                         </li>
-                           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-large"></span>&nbsp;Quotation<span class="caret"></span></a>
+                           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                               <span class="glyphicon glyphicon-th-large"></span>&nbsp;Quotation<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/AFTERSALESPROJ/quotationforms/quotationForapproval.aspx">For approval</asp:HyperLink></li>
+                                    <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationForapproval.aspx">For approval</asp:LinkButton>
+                                   </li>
                                <li>
-                                    <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/AFTERSALESPROJ/quotationsummary.aspx">Payment status</asp:HyperLink></li>
+                                   <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationsummary.aspx">Payment status</asp:LinkButton></li>
                             </ul>
                         </li>
                         <li>

@@ -386,11 +386,11 @@
     <Compile Include="AFTERSALESPROJ\quotation.aspx.designer.cs">
       <DependentUpon>quotation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AFTERSALESPROJ\quotationforms\quotationForapproval.aspx.cs">
+    <Compile Include="AFTERSALESPROJ\quotationForapproval.aspx.cs">
       <DependentUpon>quotationForapproval.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AFTERSALESPROJ\quotationforms\quotationForapproval.aspx.designer.cs">
+    <Compile Include="AFTERSALESPROJ\quotationForapproval.aspx.designer.cs">
       <DependentUpon>quotationForapproval.aspx</DependentUpon>
     </Compile>
     <Compile Include="AFTERSALESPROJ\quotationitem.aspx.cs">
@@ -576,7 +576,7 @@
     <Content Include="AFTERSALESPROJ\pendingpage.aspx" />
     <Content Include="AFTERSALESPROJ\pricelist.aspx" />
     <Content Include="AFTERSALESPROJ\quotation.aspx" />
-    <Content Include="AFTERSALESPROJ\quotationforms\quotationForapproval.aspx" />
+    <Content Include="AFTERSALESPROJ\quotationForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\quotationitem.aspx" />
     <Content Include="AFTERSALESPROJ\quotationreport.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
@@ -668,6 +668,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AFTERSALESPROJ\quotationforms\" />
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
   </ItemGroup>

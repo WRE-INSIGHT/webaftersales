@@ -45,7 +45,7 @@
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <div class='<%# Eval("TURNOVER").ToString() == "0" ? "panel panel-success" : "panel panel-default" %>'>
+                    <div class='<%# Eval("TURNOVER").ToString() == "0" ? "panel panel-success" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "panel panel-success" : "panel panel-default" %>'>
                         <div class="panel-heading">
                             <asp:LinkButton ID="LinkButton2" CommandName="myedit" Font-Size="Medium" runat="server">Edit</asp:LinkButton>
                             <div class="navbar-right">
@@ -184,7 +184,8 @@
                                         </table>
 
                                     </div>
-                                    <asp:LinkButton ID="LinkButton4" Width="" CommandName="myservicing" CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary" : "btn btn-default" %>' runat="server">job order</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" CommandName="myservicing" CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary form-control" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "btn btn-primary form-control" : "btn btn-default form-control" %>' runat="server">job order</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton5" CommandName="requestcollection" CssClass="btn btn-warning form-control" runat="server">request for collection review</asp:LinkButton>
                                 </div>
                             </div>
 
