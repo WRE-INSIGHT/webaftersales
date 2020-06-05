@@ -50,7 +50,12 @@
                                 <asp:TextBox ID="tboxothercharges" Visible="false" TextMode="Number" Text='<%# Eval("OTHERCHARGES") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-
+                           <asp:TemplateField HeaderText="MOBILIZATION CHARGES">
+                            <ItemTemplate>
+                                <asp:Label ID="lblmobilization" runat="server" Text='<%# Bind("[MOBILIZATION]") %>'></asp:Label>
+                                <asp:TextBox ID="tboxmobilization" Visible="false" TextMode="Number" Text='<%# Eval("MOBILIZATION") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="NET PRICE">
                             <ItemTemplate>
                                 <asp:Label ID="lblnetprice" runat="server" Text='<%# Bind("[NETPRICE]") %>'></asp:Label>

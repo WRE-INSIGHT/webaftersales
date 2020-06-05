@@ -174,7 +174,18 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('Sorry unable to open JO, account is not fully paid')",true);
+                        if (((Label)row.FindControl("lblrstatus")).Text == "Approved")
+                        {
+                            Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
+                            Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
+                            Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                            Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('Sorry unable to open JO, account is not fully paid')", true);
+                        }
+                     
                     }
                 }
             

@@ -1528,6 +1528,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnAPPROVEDBY;
             
+            private global::System.Data.DataColumn columnMOBILIZATION;
+            
             private global::System.Data.DataColumn columnACCEPTEDBY;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1637,6 +1639,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MOBILIZATIONColumn {
+                get {
+                    return this.columnMOBILIZATION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn ACCEPTEDBYColumn {
                 get {
                     return this.columnACCEPTEDBY;
@@ -1680,7 +1690,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, string ACCEPTEDBY) {
+            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, string MOBILIZATION, string ACCEPTEDBY) {
                 QUOTATIONTBRow rowQUOTATIONTBRow = ((QUOTATIONTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ASENO,
@@ -1692,6 +1702,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         TELNO,
                         PREPAREDBY,
                         APPROVEDBY,
+                        MOBILIZATION,
                         ACCEPTEDBY};
                 rowQUOTATIONTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQUOTATIONTBRow);
@@ -1724,6 +1735,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnTELNO = base.Columns["TELNO"];
                 this.columnPREPAREDBY = base.Columns["PREPAREDBY"];
                 this.columnAPPROVEDBY = base.Columns["APPROVEDBY"];
+                this.columnMOBILIZATION = base.Columns["MOBILIZATION"];
                 this.columnACCEPTEDBY = base.Columns["ACCEPTEDBY"];
             }
             
@@ -1748,6 +1760,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnPREPAREDBY);
                 this.columnAPPROVEDBY = new global::System.Data.DataColumn("APPROVEDBY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAPPROVEDBY);
+                this.columnMOBILIZATION = new global::System.Data.DataColumn("MOBILIZATION", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOBILIZATION);
                 this.columnACCEPTEDBY = new global::System.Data.DataColumn("ACCEPTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnACCEPTEDBY);
             }
@@ -3140,6 +3154,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MOBILIZATION {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUOTATIONTB.MOBILIZATIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MOBILIZATION\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.MOBILIZATIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ACCEPTEDBY {
                 get {
                     try {
@@ -3260,6 +3290,18 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAPPROVEDBYNull() {
                 this[this.tableQUOTATIONTB.APPROVEDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMOBILIZATIONNull() {
+                return this.IsNull(this.tableQUOTATIONTB.MOBILIZATIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMOBILIZATIONNull() {
+                this[this.tableQUOTATIONTB.MOBILIZATIONColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
