@@ -50,9 +50,14 @@
                                 <asp:TextBox ID="tboxothercharges" Visible="false" TextMode="Number" Text='<%# Eval("OTHERCHARGES") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                           <asp:TemplateField HeaderText="MOBILIZATION CHARGES">
+                        <asp:TemplateField HeaderText="MOBILIZATION CHARGES">
                             <ItemTemplate>
                                 <asp:Label ID="lblmobilization" runat="server" Text='<%# Bind("[MOBILIZATION]") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlmobi" Visible="false" runat="server" OnSelectedIndexChanged="mobiselectedindexchange" AutoPostBack="true">
+                                    <asp:ListItem Value="1500">NCR</asp:ListItem>
+                                    <asp:ListItem Value="3000">Southern Luzon  until Quezon boundaries</asp:ListItem>
+                                    <asp:ListItem Value="3500">Northern Luzon</asp:ListItem>
+                                </asp:DropDownList>
                                 <asp:TextBox ID="tboxmobilization" Visible="false" TextMode="Number" Text='<%# Eval("MOBILIZATION") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -67,6 +72,12 @@
                                 <asp:Label ID="lblactualprice" runat="server" Text='<%# Bind("[ACTUALPRICE]") %>'></asp:Label>
                                 <asp:LinkButton ID="equalbtn" CommandName="equal" Visible="false" runat="server">=</asp:LinkButton>
                                 <asp:TextBox ID="tboxactualprice" Visible="false" TextMode="Number" Text='<%# Eval("ACTUALPRICE") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="FOC">
+                            <ItemTemplate>
+                                <asp:Label ID="lblfoc" runat="server" Text='<%# Bind("[FOC]") %>'></asp:Label>
+                                <asp:TextBox ID="tboxfoc" Visible="false" Text='<%# Eval("FOC") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

@@ -99,9 +99,9 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " select * into #ctb from(select cin from callintb where jo = @jo) as tbll"+
+                string str = " "+
                     " select [ID]   "+
-    ",[CIN]                        "+
+    ",A.[CIN]                        "+
     ",[ASENO]                      "+
     ",case when isdate(qdate)=1 then format(cast([QDATE] as date),'MMM-dd-yyyy') else qdate end as  QDATE                    " +
     ",[PARTICULAR]                 "+
@@ -113,7 +113,9 @@ namespace webaftersales.AFTERSALESPROJ
     ",[SID]                        "+
     ",[PREPAREDBY]                 "+
     ",[APPROVEDBY]                 "+
-    ",[ACCEPTEDBY] from quotationtb where cin in (select cin from #ctb) order by cast(qdate as date) asc";
+    ",[ACCEPTEDBY] " +
+     ",[STATUS] " +
+    ",FOC from quotationtb AS A LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE B.JO = @jo order by cast(qdate as date) asc";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd=new SqlCommand(str,sqlcon))

@@ -1530,6 +1530,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnMOBILIZATION;
             
+            private global::System.Data.DataColumn columnFOC;
+            
             private global::System.Data.DataColumn columnACCEPTEDBY;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1647,6 +1649,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FOCColumn {
+                get {
+                    return this.columnFOC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn ACCEPTEDBYColumn {
                 get {
                     return this.columnACCEPTEDBY;
@@ -1690,7 +1700,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, string MOBILIZATION, string ACCEPTEDBY) {
+            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, string MOBILIZATION, string FOC, string ACCEPTEDBY) {
                 QUOTATIONTBRow rowQUOTATIONTBRow = ((QUOTATIONTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ASENO,
@@ -1703,6 +1713,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         PREPAREDBY,
                         APPROVEDBY,
                         MOBILIZATION,
+                        FOC,
                         ACCEPTEDBY};
                 rowQUOTATIONTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQUOTATIONTBRow);
@@ -1736,6 +1747,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnPREPAREDBY = base.Columns["PREPAREDBY"];
                 this.columnAPPROVEDBY = base.Columns["APPROVEDBY"];
                 this.columnMOBILIZATION = base.Columns["MOBILIZATION"];
+                this.columnFOC = base.Columns["FOC"];
                 this.columnACCEPTEDBY = base.Columns["ACCEPTEDBY"];
             }
             
@@ -1762,6 +1774,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnAPPROVEDBY);
                 this.columnMOBILIZATION = new global::System.Data.DataColumn("MOBILIZATION", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMOBILIZATION);
+                this.columnFOC = new global::System.Data.DataColumn("FOC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFOC);
                 this.columnACCEPTEDBY = new global::System.Data.DataColumn("ACCEPTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnACCEPTEDBY);
             }
@@ -3170,6 +3184,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FOC {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUOTATIONTB.FOCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FOC\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.FOCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ACCEPTEDBY {
                 get {
                     try {
@@ -3302,6 +3332,18 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMOBILIZATIONNull() {
                 this[this.tableQUOTATIONTB.MOBILIZATIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFOCNull() {
+                return this.IsNull(this.tableQUOTATIONTB.FOCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFOCNull() {
+                this[this.tableQUOTATIONTB.FOCColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

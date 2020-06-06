@@ -48,7 +48,7 @@ namespace webaftersales.AFTERSALESPROJ
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
-                    string str = "select ID,ASENO AS ASE#,NETPRICE ,QDATE AS [DATE],OTHERCHARGES,ACTUALPRICE,PARTICULAR,MOBILIZATION from quotationtb where aseno=@aseno";
+                    string str = "select ID,ASENO AS ASE#,NETPRICE ,QDATE AS [DATE],OTHERCHARGES,ACTUALPRICE,PARTICULAR,MOBILIZATION,FOC from quotationtb where aseno=@aseno";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
@@ -143,7 +143,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("edititemnotbox")).Visible = true;
                 ((TextBox)row.FindControl("editknotbox")).Visible = true;
                 ((TextBox)row.FindControl("editlocationtbox")).Visible = true;
-
+           
             }
             if (e.CommandName == "myclose")
             {
@@ -300,6 +300,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lblothercharges")).Visible = false;
                 ((Label)row.FindControl("lblnetprice")).Visible = false;
                 ((Label)row.FindControl("lblactualprice")).Visible = false;
+                ((Label)row.FindControl("lblfoc")).Visible = false;
 
                 ((LinkButton)row.FindControl("equalbtn")).Visible = true;
                 ((LinkButton)row.FindControl("updatebtn")).Visible = true;
@@ -309,6 +310,11 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxothercharges")).Visible = true;
                 ((TextBox)row.FindControl("tboxnetprice")).Visible = true;
                 ((TextBox)row.FindControl("tboxactualprice")).Visible = true;
+                ((TextBox)row.FindControl("TBOXFOC")).Visible = true;
+                ((DropDownList)row.FindControl("ddlmobi")).Visible = true;
+
+
+
             }
             else if (e.CommandName == "mycancel")
             {
@@ -320,6 +326,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lblothercharges")).Visible = true;
                 ((Label)row.FindControl("lblnetprice")).Visible = true;
                 ((Label)row.FindControl("lblactualprice")).Visible = true;
+                ((Label)row.FindControl("lblfoc")).Visible = true;
 
                 ((LinkButton)row.FindControl("equalbtn")).Visible = false;
                 ((LinkButton)row.FindControl("updatebtn")).Visible = false;
@@ -329,6 +336,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxothercharges")).Visible = false;
                 ((TextBox)row.FindControl("tboxnetprice")).Visible = false;
                 ((TextBox)row.FindControl("tboxactualprice")).Visible = false;
+                ((TextBox)row.FindControl("tboxfoc")).Visible = false;
+                ((DropDownList)row.FindControl("ddlmobi")).Visible = false;
             }
             else if (e.CommandName == "equal")
             {
@@ -349,26 +358,27 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView3.Rows[rowindex];
-                string id, netprice, actualprice, particular, othercharges, mobilization;
+                string id, netprice, actualprice, particular, othercharges, mobilization,foc;
                 id = ((Label)row.FindControl("lblid")).Text;
                 netprice = ((TextBox)row.FindControl("tboxnetprice")).Text;
                 actualprice = ((TextBox)row.FindControl("tboxactualprice")).Text;
                 particular = ((TextBox)row.FindControl("tboxparticular")).Text;
                 mobilization = ((TextBox)row.FindControl("tboxmobilization")).Text;
                 othercharges = ((TextBox)row.FindControl("tboxothercharges")).Text;
+                foc = ((TextBox)row.FindControl("tboxfoc")).Text;
                 if (othercharges == "")
                 {
                     othercharges = "0";
                 }
-                updatefunction(id, particular, othercharges, netprice, actualprice, mobilization);
+                updatefunction(id, particular, othercharges, netprice, actualprice, mobilization,foc);
             }
         }
 
-        private void updatefunction(string id, string particular, string othercharges, string netprice, string actualprice, string mobilization)
+        private void updatefunction(string id, string particular, string othercharges, string netprice, string actualprice, string mobilization,string foc)
         {
             try
             {
-                string str = "update quotationtb set particular=@particular,othercharges=@othercharges,netprice=@netprice,actualprice=@actualprice,mobilization=@mobilization where id = @id";
+                string str = "update quotationtb set particular=@particular,othercharges=@othercharges,netprice=@netprice,actualprice=@actualprice,mobilization=@mobilization,foc=@foc where id = @id";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -381,6 +391,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@mobilization", mobilization);
                         sqlcmd.Parameters.AddWithValue("@netprice", netprice);
                         sqlcmd.Parameters.AddWithValue("@actualprice", actualprice);
+                        sqlcmd.Parameters.AddWithValue("@foc", foc);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -395,6 +406,10 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-
+       protected void mobiselectedindexchange(object sender, EventArgs e)
+        {
+            GridViewRow row = GridView3.Rows[(int)ViewState["rowindex"]];
+            ((TextBox)row.FindControl("tboxmobilization")).Text = ((DropDownList)row.FindControl("ddlmobi")).SelectedValue.ToString();
+        }
     }
 }

@@ -191,7 +191,7 @@
                                          Visible='<%# Eval("TURNOVER").ToString() == "0" ? true : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? true : Eval("RSTATUS").ToString() == "Approved" ? true : false %>' 
                                         runat="server">job order</asp:LinkButton>
                                       <br />
-                                       <asp:LinkButton ID="LinkButton5" CommandName="requestcollection" CssClass='<%# Eval("REQUESTED").ToString() == "" ? "btn btn-danger form-control" : "btn btn-success form-control" %>'
+                                       <asp:LinkButton ID="LinkButton5" CommandName="requestcollection" CssClass='<%# Eval("REQUESTED").ToString() == "" ? "btn btn-danger" : "btn btn-success" %>'
                                          Visible='<%# Eval("TURNOVER").ToString() == "0" ? false : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? false : Eval("RSTATUS").ToString() == "" ? true : false %>' 
                                         Text='<%# Eval("REQUESTED").ToString() == "" ? "request for jo approval" : "requested "+Eval("REQUESTED").ToString() %>' runat="server">request for collection review</asp:LinkButton>
                                  

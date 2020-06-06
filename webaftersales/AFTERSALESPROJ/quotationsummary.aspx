@@ -25,7 +25,7 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <div class="panel panel-primary">
+                                <div class="panel panel-info">
                                     <div class="panel-heading">
                                         <asp:Label ID="lbljo" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
                                     </div>
@@ -35,54 +35,70 @@
                                     </div>
 
                                     <asp:LinkButton ID="LinkButton2" runat="server" CommandName="showquotation" CssClass="btn btn-default"><span class="glyphicon glyphicon-resize-vertical"></span> quotation(s)</asp:LinkButton>
-                                    <asp:GridView ID="GridView2" Visible="false" AutoGenerateColumns="false" CssClass="table table-striped" GridLines="None" runat="server">
-                                        <Columns>
-                                            <asp:TemplateField HeaderText="ASE #">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblcin" runat="server" Visible="false" Text='<%# Bind("cin") %>'></asp:Label>
-                                                    <asp:Label ID="lblsid" runat="server" Visible="false" Text='<%# Bind("sid") %>'></asp:Label>
-                                                    <asp:Label ID="lblaseno" runat="server" Text='<%# Bind("aseno") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="DATE">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="datelbl" runat="server" Text='<%# Bind("qDATE") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="NET PRICE" ItemStyle-HorizontalAlign="Right">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("netprice") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="ACTUAL PRICE" ItemStyle-HorizontalAlign="Right">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("actualprice") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
+                                    <asp:Panel ID="Panel2" runat="server" ScrollBars="Auto">
+                                        <asp:GridView ID="GridView2" Visible="false" AutoGenerateColumns="false" CssClass="table table-striped" GridLines="None" runat="server">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="ASE #">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblcin" runat="server" Visible="false" Text='<%# Bind("cin") %>'></asp:Label>
+                                                        <asp:Label ID="lblsid" runat="server" Visible="false" Text='<%# Bind("sid") %>'></asp:Label>
+                                                        <asp:Label ID="lblaseno" runat="server" Text='<%# Bind("aseno") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="DATE">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="datelbl" runat="server" Text='<%# Bind("qDATE") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="NET PRICE" ItemStyle-HorizontalAlign="Right">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("netprice") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="ACTUAL PRICE" ItemStyle-HorizontalAlign="Right">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("actualprice") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label7" runat="server" Visible='<%# Eval("foc").ToString()=="" ? false : true %>' Text='<%# Bind("foc") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField>
+                                                    <ItemTemplate>
+                                                      <strong><asp:Label ID="Label8" runat="server" CssClass="text-success" Visible='<%# Eval("status").ToString()=="Done" ? true : false %>' Text='<%# Eval("status").ToString() + " Servicing" %>'></asp:Label></strong>  
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
 
-
-                                    </asp:GridView>
+                                            <HeaderStyle Wrap="false" />
+                                            <RowStyle Wrap="false" />
+                                        </asp:GridView>
+                                    </asp:Panel>
                                     <table class="table" border="0">
                                         <tr>
-                                            <td>Total Quotation Amount
+                                            <td>Expected Amount for Collection
                                             </td>
                                             <td class="text-right">
-                                            <strong>  <asp:Label ID="Label4" CssClass="text-info" runat="server" Text='<%# Bind("price") %>'></asp:Label></strong>  
+                                                <strong>
+                                                    <asp:Label ID="Label4" CssClass="text-info" runat="server" Text='<%# Bind("price") %>'></asp:Label></strong>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Total Payment
+                                            <td>Collected Amount
                                             </td>
                                             <td class="text-right">
-                                                 <strong>     <asp:Label ID="Label5" CssClass="text-success" runat="server" Text='<%# Bind("payment") %>'></asp:Label></strong>  
+                                                <strong>
+                                                    <asp:Label ID="Label5" CssClass="text-success" runat="server" Text='<%# Bind("payment") %>'></asp:Label></strong>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Balance
                                             </td>
                                             <td class="text-right">
-                                                  <strong>    <asp:Label ID="Label6" CssClass="text-danger" runat="server" Text='<%# Bind("balance") %>'></asp:Label></strong>  
+                                                <strong>
+                                                    <asp:Label ID="Label6" CssClass="text-danger" runat="server" Text='<%# Bind("balance") %>'></asp:Label></strong>
                                             </td>
                                         </tr>
 
