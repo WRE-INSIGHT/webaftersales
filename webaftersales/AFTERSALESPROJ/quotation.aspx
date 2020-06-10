@@ -19,8 +19,10 @@
         <small>
             <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
     <br />
+   
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
 
 
 
@@ -28,11 +30,12 @@
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
             <asp:Panel ID="Panel2" ScrollBars="Auto" runat="server">
-             
+          
                     <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" runat="server" OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
+                                     <asp:LinkButton ID="LinkButton7" Visible='<%# Eval("LOCK").ToString() == "1" ? false : true %>' runat="server" CommandName="myrevise">Revise</asp:LinkButton>
                                     <asp:LinkButton ID="editlink" CommandName="myedit" runat="server">Edit</asp:LinkButton>
                                     <asp:LinkButton ID="deletelink" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
                                     <asp:LinkButton ID="updatelink" Visible="false" CommandName="mysave" runat="server">Update</asp:LinkButton>

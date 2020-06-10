@@ -82,7 +82,7 @@
                                             </td>
                                         </tr>
                                     </table>
-
+                                  <strong><asp:Label ID="Label13" CssClass="text-danger" runat="server" Font-Size="45px" Text='<%# Eval("SORTING").ToString()+"." %>'></asp:Label></strong>  &nbsp;
                                     <asp:Label ID="datelbl" Font-Size="XX-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label><br />
                                     <table class="table" border="1">
                                         <tr>

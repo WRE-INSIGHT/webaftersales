@@ -63,7 +63,7 @@ namespace webaftersales.AFTERSALESPROJ
                           "   PARTICULAR," +
                           "   case when isdate(ACCEPTED)=1 then format(cast(ACCEPTED as date),'MMM-dd-yyyy') else ACCEPTED end as ACCEPTED," +
                           "   format(NETPRICE, 'n2') as NETPRICE," +
-                          "   format(Actualprice, 'n2') as [ACTUAL PRICE]" +
+                          "   format(Actualprice, 'n2') as [ACTUAL PRICE],LOCK" +
                           "   from quotationtb where sid = @sid";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
@@ -164,7 +164,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-           
+
                 string x;
                 if (((Label)row.FindControl("acceptedlbl")).Text == "Pending")
                 {
@@ -201,13 +201,13 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("datelbl")).Visible = false;
                 ((Label)row.FindControl("acceptedlbl")).Visible = false;
                 ((Label)row.FindControl("asenolbl")).Visible = false;
-      
+
             }
             if (e.CommandName == "mycancel")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-            
+
                 ((LinkButton)row.FindControl("updatelink")).Visible = false;
                 ((LinkButton)row.FindControl("cancellink")).Visible = false;
                 ((TextBox)row.FindControl("editdatetbox")).Visible = false;
@@ -220,7 +220,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("datelbl")).Visible = true;
                 ((Label)row.FindControl("acceptedlbl")).Visible = true;
                 ((Label)row.FindControl("otherlbl")).Visible = true;
-           
+
 
             }
             if (e.CommandName == "mysave")
@@ -236,7 +236,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                deletefunction(((Label)row.FindControl("idlbl")).Text);
+                deletefunction(((Label)row.FindControl("idlbl")).Text, ((Label)row.FindControl("asenolbl")).Text);
             }
             if (e.CommandName == "myitem")
             {
@@ -252,6 +252,138 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["aseno"] = ((Label)row.FindControl("asenolbl")).Text;
                 Session["qu_report_sender"] = "qu_sender_qu";
                 Response.Redirect("~/AFTERSALESPROJ/quotationreport.aspx");
+            }
+            if (e.CommandName == "myrevise")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                revisefunction(((Label)row.FindControl("idlbl")).Text, ((Label)row.FindControl("asenolbl")).Text);
+            }
+        }
+        private void revisefunction(string id, string aseno)
+        {
+            try
+            {
+                string str = "declare @id as integer = (select isnull(max(id),0)+1 from quotationtb) " +
+                                "insert into quotationtb  					  " +
+                                "      ([ID]									  " +
+                                "      ,[CIN]								  " +
+                                "      ,[ASENO]								  " +
+                                "      ,[QDATE]								  " +
+                                "      ,[PARTICULAR]							  " +
+                                "      ,[OTHERCHARGES]						  " +
+                                "      ,[ACCEPTED]							  " +
+                                "      ,[UNITPRICE]							  " +
+                                "      ,[NETPRICE]							  " +
+                                "      ,[ACTUALPRICE]						  " +
+                                "      ,[SID]								  " +
+                                "      ,[PREPAREDBY]							  " +
+                                "      ,[APPROVEDBY]							  " +
+                                "      ,[ACCEPTEDBY]							  " +
+                                "      ,[MOBILIZATION]						  " +
+                                "      ,[FOC])								  " +
+                                "	  select								  " +
+                                "	  @id									  " +
+                                "      ,[CIN]								  " +
+                                "      ,[ASENO]+'(rev)'								  " +
+                                "      ,[QDATE]								  " +
+                                "      ,[PARTICULAR]							  " +
+                                "      ,[OTHERCHARGES]						  " +
+                                "      ,[ACCEPTED]							  " +
+                                "      ,[UNITPRICE]							  " +
+                                "      ,[NETPRICE]							  " +
+                                "      ,[ACTUALPRICE]						  " +
+                                "      ,[SID]								  " +
+                                "      ,[PREPAREDBY]							  " +
+                                "      ,[APPROVEDBY]							  " +
+                                "      ,[ACCEPTEDBY]							  " +
+                                "      ,[MOBILIZATION]						  " +
+                                "      ,[FOC]								  " +
+                                "  FROM [QUOTATIONTB] where id = @myid 		  " +
+                                " UPDATE QUOTATIONTB SET LOCK = '1' WHERE ID = @myid";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+
+                        sqlcmd.Parameters.AddWithValue("@myid", id);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+            finally
+            {
+                reviseitems(aseno);
+            }
+        }
+        private void reviseitems(string aseno)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon1 = new SqlConnection(cs))
+                {
+                    sqlcon1.Open();
+                    string finditem = "select * from itemtb where aseno = @aseno";
+
+                    using (SqlCommand sqlcmd = new SqlCommand(finditem, sqlcon1))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@aseno", aseno);
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+
+
+                            while (rd.Read())
+                            {
+                              
+                                string insertitem = " declare @itemid as integer = (select isnull(max(id),0)+1 from itemtb)" +
+                                                    "  insert into itemtb(id, aseno, ITEM, kno, wdwloc,unitprice,qty,netprice,kid)" +
+                                                    "  values(@itemid, @aseno+'(rev)', @item, @kno, @loc,@unitprice,@qty,@netprice,@kid)"+
+                                "  declare @partsid as integer = (select isnull(max(id),0)+1 from partstb) " +
+"  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount) select @partsid,@itemid,articleno, description, markup, unitprice, qty, netamount from partstb where iid = @iid ";
+                                using (SqlConnection sqlcon = new SqlConnection(cs))
+                                {
+                                    using (SqlCommand cmd = new SqlCommand(insertitem, sqlcon))
+                                {
+                                        sqlcon.Open();
+                                        cmd.Parameters.AddWithValue("@iid", rd["id"].ToString());
+                                        cmd.Parameters.AddWithValue("@aseno", aseno);
+                                        cmd.Parameters.AddWithValue("@item", rd["item"].ToString());
+                                        cmd.Parameters.AddWithValue("@kno", rd["kno"].ToString());
+                                        cmd.Parameters.AddWithValue("@loc", rd["wdwloc"].ToString());
+                                        cmd.Parameters.AddWithValue("@unitprice", Convert.ToDouble(rd["unitprice"].ToString()));
+                                        cmd.Parameters.AddWithValue("@qty", Convert.ToDouble(rd["qty"].ToString()));
+                                        cmd.Parameters.AddWithValue("@netprice", Convert.ToDouble(rd["netprice"].ToString()));
+                                        cmd.Parameters.AddWithValue("@kid", rd["kid"].ToString());
+
+                                        cmd.ExecuteNonQuery();
+                                    }
+                                }
+
+                            }
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+            finally
+            {
+                getdata();
             }
         }
 
@@ -316,12 +448,15 @@ namespace webaftersales.AFTERSALESPROJ
 
         }
 
-        private void deletefunction(string id)
+        private void deletefunction(string id,string aseno)
         {
             try
             {
 
-                string str = " delete from quotationtb where id = @id";
+                string str = " delete from quotationtb where id = @id"+
+                    " delete from partstb where iid in (select id from itemtb where aseno = @aseno) "+
+                    " delete from itemtb where aseno = @aseno"+
+                    " update quotationtb set lock=0 where aseno = replace(@aseno,'(rev)','')";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -329,6 +464,7 @@ namespace webaftersales.AFTERSALESPROJ
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@aseno", aseno);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -351,11 +487,11 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
-           if (Session["quotationsender"].ToString()=="report")
+            if (Session["quotationsender"].ToString() == "report")
             {
                 Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
             }
-           else if (Session["quotationsender"].ToString() == "joborder")
+            else if (Session["quotationsender"].ToString() == "joborder")
             {
                 Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
             }

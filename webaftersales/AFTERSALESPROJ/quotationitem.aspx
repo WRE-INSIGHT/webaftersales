@@ -115,6 +115,7 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
+                             
                                 <asp:LinkButton ID="LinkButton2" runat="server" CommandName="myedit">Edit</asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton3" runat="server" OnClientClick="return confirm('delete this record?')" CommandName="mydelete">Delete</asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton5" Visible="false" runat="server" CommandName="mysave">Update</asp:LinkButton>

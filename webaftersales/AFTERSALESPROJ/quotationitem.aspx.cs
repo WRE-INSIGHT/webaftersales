@@ -176,6 +176,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("editknotbox")).Text,
                 ((TextBox)row.FindControl("editlocationtbox")).Text);
             }
+        
             if (e.CommandName == "parts")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
@@ -188,6 +189,9 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/importparts.aspx");
             }
         }
+
+     
+
         private void deletefunction(string id)
         {
             try

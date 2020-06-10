@@ -66,6 +66,14 @@
                             <asp:TextBox ID="plateno" CssClass="form-control" runat="server"></asp:TextBox>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                          <strong class="text-info">Sorting</strong>
+                        </td>
+                        <td>
+                              <asp:TextBox ID="tboxsorting" CssClass="form-control" TextMode="Number" Text="1" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
                 </table>
             </small>
             <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
@@ -124,7 +132,11 @@
                                                 <td>
                                                     <asp:Label ID="platenolbl" runat="server" Text='<%# Bind("PLATENO") %>'></asp:Label></td>
                                             </tr>
-
+                                            <tr>
+                                                  <td class="text-info"><strong>Sorting</strong></td>
+                                                <td>
+                                                    <asp:Label ID="sortinglbl" runat="server" Text='<%# Bind("SORTING") %>'></asp:Label></td>
+                                            </tr>
                                             <tr>
                                                 <td>
                                                     <asp:Button ID="getteambtn" CommandName="myteam" runat="server" CssClass="btn btn-default" Text='<%# Eval("TEAMNAME").ToString() == "" ? "Get team" : Eval("TEAMNAME") %>' /></td>
@@ -150,6 +162,8 @@
                                                 <div class="col-sm-6">
                                                     Plate #:<br />
                                                     <asp:TextBox ID="platenotbox" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                    <strong class="text-info">Sorting</strong><br />
+                                                      <asp:TextBox ID="sortingtbox" CssClass="form-control" TextMode="Number" Text='<%# Bind("SORTING") %>' runat="server"></asp:TextBox><br />
                                                     Status:<br />
                                                     <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server">
                                                         <asp:ListItem Value="Scheduled" Text="Scheduled"></asp:ListItem>

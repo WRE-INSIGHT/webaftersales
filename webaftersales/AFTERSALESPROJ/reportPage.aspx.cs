@@ -413,11 +413,12 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton7_Click(object sender, EventArgs e)
         {
-         
-                Session["quotationsender"] = "report";
-                Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
-           
-     
+
+            //Session["quotationsender"] = "report";
+            //Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
+
+            Response.Redirect("~/AFTERSALESPROJ/requestquotation.aspx");
+
 
         }
     }
