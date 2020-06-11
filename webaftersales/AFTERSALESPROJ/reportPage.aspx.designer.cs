@@ -310,24 +310,6 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.DropDownList newdlistspecification;
         
         /// <summary>
-        /// newtboxmobilizationcostvalidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator newtboxmobilizationcostvalidator;
-        
-        /// <summary>
-        /// newtboxmobilizationcost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox newtboxmobilizationcost;
-        
-        /// <summary>
         /// newbtn control.
         /// </summary>
         /// <remarks>

@@ -184,7 +184,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxwidth")).Text = ((Label)row.FindControl("lblwidth")).Text;
                 ((TextBox)row.FindControl("tboxheight")).Text = ((Label)row.FindControl("lblheight")).Text;
                 ((DropDownList)row.FindControl("dlistspecification")).Text = ((Label)row.FindControl("lblspecification")).Text;
-                ((TextBox)row.FindControl("tboxmobilizationcost")).Text = ((Label)row.FindControl("lblmobilization")).Text;
+             
                 ((Panel)row.FindControl("panel1")).Visible = true;
             }
             if (e.CommandName == "mycancel")
@@ -205,13 +205,12 @@ namespace webaftersales.AFTERSALESPROJ
                 ViewState["width"] = ((TextBox)row.FindControl("tboxwidth")).Text;
                 ViewState["height"] = ((TextBox)row.FindControl("tboxheight")).Text;
                 ViewState["specification"] = ((DropDownList)row.FindControl("dlistspecification")).Text;
-                ViewState["mobilization"] = ((TextBox)row.FindControl("tboxmobilizationcost")).Text;
+           
                 myupdate(ViewState["id"].ToString(),
                            ViewState["itemno"].ToString(),
                            ViewState["kno"].ToString(),
                            ViewState["location"].ToString(),
                            ViewState["specification"].ToString(),
-                           ViewState["mobilization"].ToString(),
                            ViewState["width"].ToString(),
                            ViewState["height"].ToString());
             }
@@ -232,12 +231,21 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 deletefunction(((Label)row.FindControl("lblid")).Text.ToString());
             }
+            if (e.CommandName == "myquotation")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["reportID"] = ((Label)row.FindControl("lblid")).Text.ToString();
+                Session["KNO"] = ((Label)row.FindControl("lblkno")).Text.ToString();
+                Session["LOCATION"] = ((Label)row.FindControl("lbllocation")).Text.ToString();
+                Response.Redirect("~/AFTERSALESPROJ/requestquotation.aspx");
+            }
         }
-        private void myupdate(string id, string itemno, string kno, string location, string specification, string mobilization,string width,string height)
+        private void myupdate(string id, string itemno, string kno, string location, string specification, string width,string height)
         {
             try
             {
-                string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,mobilizationcost=@mobilization,width=@width,height=@height where id = @id";
+                string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,width=@width,height=@height where id = @id";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -251,7 +259,6 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@width", width);
                         sqlcmd.Parameters.AddWithValue("@height", height);
                         sqlcmd.Parameters.AddWithValue("@specification", specification);
-                        sqlcmd.Parameters.AddWithValue("@mobilization", mobilization);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -294,11 +301,8 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                if (newtboxmobilizationcost.Text == "")
-                {
-                    newtboxmobilizationcost.Text = "0";
-                }
-                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb) insert into reporttb (sid,id,itemno,kno,location,specification,mobilizationcost,width,height)values(@sid,@id,@item,@kno,@location,@specification,@mobilization,@width,@height)";
+              
+                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb) insert into reporttb (sid,id,itemno,kno,location,specification,width,height)values(@sid,@id,@item,@kno,@location,@specification,@width,@height)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -309,7 +313,6 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@item", newtboxitemno.Text);
                         sqlcmd.Parameters.AddWithValue("@kno", newtboxkno.Text);
                         sqlcmd.Parameters.AddWithValue("@location", newtboxlocation.Text);
-                        sqlcmd.Parameters.AddWithValue("@mobilization", newtboxmobilizationcost.Text);
                         sqlcmd.Parameters.AddWithValue("@specification", newdlistspecification.Text);
                         sqlcmd.Parameters.AddWithValue("@width", newtboxwidth.Text);
                         sqlcmd.Parameters.AddWithValue("@height", newtboxheight.Text);

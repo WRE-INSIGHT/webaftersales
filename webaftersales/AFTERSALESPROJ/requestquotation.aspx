@@ -8,7 +8,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
         <h3><strong>Request proposal</strong></h3>
+        <div class="navbar-right">
+            <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server">back</asp:LinkButton>
+        </div>
+
     </div>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <strong>
         <asp:Label ID="lblproject" Font-Size="X-Large" runat="server" Text="Project Name"></asp:Label></strong><br />
@@ -19,68 +24,112 @@
         <small>
             <asp:Label ID="lblservicing" runat="server" Text="Servicing"></asp:Label></small></h2>
     <br />
-    <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="5" OnRowCommand="GridView1_RowCommand">
-        <Columns>
-            <asp:TemplateField HeaderText="Itemno">
-                <ItemTemplate>
-                    <table class="table" border="1">
-                        <tr>
-                            <th></th>
-                            <th>Itemno</th>
-                               <th>Kno</th>
-                               <th>Location</th>
-                               <th>Dimension</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:LinkButton ID="LinkButton1" runat="server">Request item</asp:LinkButton>
-                            </td>
-                            <td>
-                                <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                <asp:Label ID="lblitemno" runat="server" Text='<%# Bind("ITEMNO") %>'></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="lblkno" runat="server" Text='<%# Bind("KNO") %>'></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="lbllocation" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="lblwidth" runat="server" Text='<%# Bind("WIDTH") %>'></asp:Label>&nbsp;x&nbsp;  
-                                                        <asp:Label ID="lblheight" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label>
-                            </td>
-                        </tr>
-                    </table>
 
-                    <div class="panel panel-default">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                 <div class="panel-body">
-                            Articleno<br />
-                            <asp:TextBox ID="tboxarticleno" runat="server"></asp:TextBox><br />
-                            Description<br />
-                               <asp:TextBox ID="tboxdescription" runat="server"></asp:TextBox><br />
-                            <asp:Button ID="Button1" CommandName="myadd" runat="server" Text="add" />
-                               <asp:Button ID="Button2" CommandName="myreload" runat="server" Text="reload" />
-                        </div>
-                            </div>
-                                 <div class="col-sm-6">
-                                      <asp:GridView ID="GridView3" runat="server"></asp:GridView>
-                            </div>
-                        </div>
-                       
-                    </div>
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-        <PagerSettings PageButtonCount="8" />
-        <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-        <EmptyDataTemplate>
-            <div class="alert alert-danger">
-                <h2><strong>Empty Table!</strong>
-                    <small>0 result found</small>
-                </h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    search key
+                </div>
+                <asp:TextBox ID="searchkey" CssClass="form-control" runat="server"></asp:TextBox>
+
+                <div class="input-group-btn">
+                    <asp:LinkButton ID="LinkButton1" CssClass="btn btn-success" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+                </div>
             </div>
-        </EmptyDataTemplate>
-    </asp:GridView>
+        </div>
+        <div class="panel-body">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+
+                    <asp:GridView ID="GridView2" GridLines="Vertical" CssClass="table" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="5" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowCommand="GridView2_RowCommand">
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton3" CommandName="myimport" runat="server">import</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Article No">
+                                <ItemTemplate>
+                                    <asp:Label ID="g2lblid" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
+                                    <asp:Label ID="g2lblarticleno" runat="server" Text='<%# Bind("ARTICLENO") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Description">
+                                <ItemTemplate>
+                                    <asp:Label ID="g2lbldescription" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <PagerSettings PageButtonCount="8" />
+                        <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                        <EmptyDataTemplate>
+                            <div class="alert alert-danger">
+                                <h2><strong>Empty Table!</strong>
+                                    <small>0 result found</small>
+                                </h2>
+                            </div>
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3><span>Manual input</span></h3>
+        </div>
+        <div class="panel panel-body">
+            Articleno<br />
+            <asp:TextBox ID="tboxarticleno" CssClass="form-control" runat="server"></asp:TextBox><br />
+            Description<br />
+            <asp:TextBox ID="tboxdescription" CssClass="form-control" runat="server"></asp:TextBox><br />
+            <asp:Button ID="Button1" Width="100" CommandName="myadd" CssClass="btn btn-primary" runat="server" Text="add" OnClick="Button1_Click" />
+            <asp:Button ID="Button2" Width="100" CommandName="myreload" CssClass="btn btn-warning" runat="server" Text="reload" OnClick="Button2_Click" />
+        </div>
+    </div>
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
+        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <ContentTemplate>
+
+
+                <asp:GridView ID="GridView1" GridLines="Vertical" CssClass="table" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnedit" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                                <asp:LinkButton ID="btndelete" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
+                                <asp:LinkButton ID="btnupdate" Visible="false" CommandName="myupdate" runat="server">Update</asp:LinkButton>
+                                <asp:LinkButton ID="btncancel" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Article No">
+                            <ItemTemplate>
+                                <asp:Label ID="lblid" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
+                                <asp:Label ID="lblarticleno" runat="server" Text='<%# Bind("ARTICLENO") %>'></asp:Label>
+                                <asp:TextBox ID="tboxarticleno" Visible="false" Text='<%# Eval("ARTICLENO") %>' CssClass="form-control" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Description">
+                            <ItemTemplate>
+                                <asp:Label ID="lbldescription" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
+                                <asp:TextBox ID="tboxdescription" Visible="false" Text='<%# Eval("DESCRIPTION") %>' CssClass="form-control" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <PagerSettings PageButtonCount="8" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                    <EmptyDataTemplate>
+                        <div class="alert alert-danger">
+                            <h2><strong>Empty Table!</strong>
+                                <small>0 result found</small>
+                            </h2>
+                        </div>
+                    </EmptyDataTemplate>
+                </asp:GridView>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </asp:Panel>
 </asp:Content>

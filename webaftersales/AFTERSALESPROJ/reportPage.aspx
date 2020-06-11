@@ -128,11 +128,6 @@
                                                 <asp:ListItem>Door</asp:ListItem>
                                             </asp:DropDownList><br />
 
-                                            Mobilization cost 
-                                                <asp:CompareValidator ID="newtboxmobilizationcostvalidator" runat="server" ErrorMessage="invalid amount" Text="*"
-                                                    ControlToValidate="newtboxmobilizationcost" Type="Double" Operator="DataTypeCheck" ValidationGroup="newval"
-                                                    ForeColor="Red"></asp:CompareValidator><br />
-                                            <asp:TextBox ID="newtboxmobilizationcost" placeholder="Mobilization cost" CssClass="form-control" runat="server"></asp:TextBox><br />
 
                                             <asp:Button ID="newbtn" OnClick="newbtn_click" CssClass="btn btn-primary" ValidationGroup="newval" runat="server" Text="add" />
                                         </div>
@@ -170,7 +165,7 @@
                                                 <tr>
                                                     <th>Item#</th>
                                                     <th>K#</th>
-                                                    <th>Mobilization cost</th>
+                                                    <th>Dimension</th>
 
                                                 </tr>
                                                 <tr>
@@ -179,18 +174,15 @@
                                                     <td>
                                                         <asp:Label ID="lblkno" runat="server" Text='<%# Bind("KNO") %>'></asp:Label></td>
                                                     <td>
-                                                        <asp:Label ID="lblmobilization" runat="server" Text='<%# Bind("MOBILIZATIONCOST") %>'></asp:Label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dimension</td>
-                                                    <td colspan="2">
                                                         <asp:Label ID="lblwidth" runat="server" Text='<%# Bind("WIDTH") %>'></asp:Label>&nbsp;x&nbsp;  
                                                         <asp:Label ID="lblheight" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label>
                                                     </td>
                                                 </tr>
+
                                                 <tr>
                                                     <td colspan="3">
-                                                        <asp:Button ID="Button2" CssClass="btn btn-default" CommandName="myassessment" runat="server" Text="assessment" />
+                                                        <asp:Button ID="Button2" CssClass="btn btn-primary" CommandName="myassessment" runat="server" Text="assessment" />
+                                                        <asp:Button ID="Button5" CssClass="btn btn-success" CommandName="myquotation" runat="server" Text="proposal" />
                                                     </td>
                                                 </tr>
                                             </table>
@@ -200,30 +192,34 @@
                                                     <asp:Panel ID="Panel1" Visible="false" runat="server">
                                                         <div class="panel panel-primary">
                                                             <div class="panel-body">
-                                                                Item#<br />
-                                                                <asp:TextBox ID="tboxitemno" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                K#<br />
-                                                                <asp:TextBox ID="tboxkno" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                Location<br />
-                                                                <asp:TextBox ID="tboxlocation" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                Width<br />
-                                                                <asp:TextBox ID="tboxwidth" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                Height<br />
-                                                                <asp:TextBox ID="tboxheight" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                Specification 
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        Item#<br />
+                                                                        <asp:TextBox ID="tboxitemno" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                        K#<br />
+                                                                        <asp:TextBox ID="tboxkno" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                        Location<br />
+                                                                        <asp:TextBox ID="tboxlocation" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        Width<br />
+                                                                        <asp:TextBox ID="tboxwidth" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                        Height<br />
+                                                                        <asp:TextBox ID="tboxheight" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                        Specification 
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="editval"
                                                     ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
-                                                                <asp:DropDownList ID="dlistspecification" placeholder="Specification" CssClass="form-control" runat="server">
-                                                                    <asp:ListItem>-</asp:ListItem>
-                                                                    <asp:ListItem>Window</asp:ListItem>
-                                                                    <asp:ListItem>Door</asp:ListItem>
-                                                                </asp:DropDownList><br />
+                                                                        <asp:DropDownList ID="dlistspecification" placeholder="Specification" CssClass="form-control" runat="server">
+                                                                            <asp:ListItem>-</asp:ListItem>
+                                                                            <asp:ListItem>Window</asp:ListItem>
+                                                                            <asp:ListItem>Door</asp:ListItem>
+                                                                        </asp:DropDownList><br />
+                                                                    </div>
+                                                                </div>
 
-                                                                Mobilization cost 
-                                                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="invalid amount" Text="*"
-                                                    ControlToValidate="tboxmobilizationcost" Type="Double" Operator="DataTypeCheck" ValidationGroup="editval"
-                                                    ForeColor="Red"></asp:CompareValidator><br />
-                                                                <asp:TextBox ID="tboxmobilizationcost" CssClass="form-control" runat="server"></asp:TextBox><br />
+
+
+
                                                                 <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup="editval" CssClass="aler alert-danger" runat="server" />
                                                                 <asp:Button ID="Button3" CommandName="mysave" CssClass="btn btn-primary" ValidationGroup="editval" runat="server" Text="save" />
 
