@@ -253,12 +253,20 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["qu_report_sender"] = "qu_sender_qu";
                 Response.Redirect("~/AFTERSALESPROJ/quotationreport.aspx");
             }
+            if (e.CommandName == "pdffile")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["aseno"] = ((Label)row.FindControl("asenolbl")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/pdfuploads.aspx");
+            }
             if (e.CommandName == "myrevise")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 revisefunction(((Label)row.FindControl("idlbl")).Text, ((Label)row.FindControl("asenolbl")).Text);
             }
+
         }
         private void revisefunction(string id, string aseno)
         {

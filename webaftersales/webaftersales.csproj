@@ -372,6 +372,13 @@
     <Compile Include="AFTERSALESPROJ\newcallin.aspx.designer.cs">
       <DependentUpon>newcallin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\pdfuploads.aspx.cs">
+      <DependentUpon>pdfuploads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\pdfuploads.aspx.designer.cs">
+      <DependentUpon>pdfuploads.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\pendingpage.aspx.cs">
       <DependentUpon>pendingpage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -578,6 +585,7 @@
     <Content Include="AFTERSALESPROJ\images\edit.png" />
     <Content Include="AFTERSALESPROJ\images\kmdilogo.png" />
     <Content Include="AFTERSALESPROJ\images\loginback.jpg" />
+    <Content Include="AFTERSALESPROJ\images\pdf-icon.png" />
     <Content Include="AFTERSALESPROJ\images\save.png" />
     <Content Include="AFTERSALESPROJ\images\unnamed.jpg" />
     <Content Include="AFTERSALESPROJ\importPage.aspx" />
@@ -588,6 +596,7 @@
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\manageAccountsPage.aspx" />
     <Content Include="AFTERSALESPROJ\newcallin.aspx" />
+    <Content Include="AFTERSALESPROJ\pdfuploads.aspx" />
     <Content Include="AFTERSALESPROJ\pendingpage.aspx" />
     <Content Include="AFTERSALESPROJ\pricelist.aspx" />
     <Content Include="AFTERSALESPROJ\quotation.aspx" />

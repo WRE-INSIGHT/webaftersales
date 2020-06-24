@@ -53,6 +53,11 @@
                                     <asp:LinkButton ID="LinkButton1" runat="server" CommandName="report">Report</asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                               <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnpdf" runat="server" CommandName="pdffile">PDF file</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="ASE #">
                                 <ItemTemplate>
                                     <asp:Label ID="idlbl" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
