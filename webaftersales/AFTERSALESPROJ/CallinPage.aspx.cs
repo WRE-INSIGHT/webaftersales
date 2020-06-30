@@ -150,12 +150,21 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["managecallinsender"] = "Edit";
                 Response.Redirect("~/AFTERSALESPROJ/newcallin.aspx");
             }
+            else if (e.CommandName == "myphotos")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
+                Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
+                Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/callinphotos.aspx");
+            }
             else if (e.CommandName == "myservicing")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["servicingsource"] = "callin";
-                if (((Label)row.FindControl("turnoverlbl")).Text=="Yes")
+                if (((Label)row.FindControl("turnoverlbl")).Text == "Yes")
                 {
 
                     Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
@@ -165,7 +174,7 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 else
                 {
-                    if ( Convert.ToDecimal(((Label)row.FindControl("paymentperlbl")).Text) >= 100)
+                    if (Convert.ToDecimal(((Label)row.FindControl("paymentperlbl")).Text) >= 100)
                     {
                         Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
                         Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
@@ -185,10 +194,10 @@ namespace webaftersales.AFTERSALESPROJ
                         {
                             ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('Sorry unable to open JO, account is not fully paid')", true);
                         }
-                     
+
                     }
                 }
-            
+
             }
             else if (e.CommandName == "requestcollection")
             {

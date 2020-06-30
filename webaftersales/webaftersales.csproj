@@ -244,6 +244,20 @@
     <Compile Include="AFTERSALESPROJ\CallinPage.aspx.designer.cs">
       <DependentUpon>CallinPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\callinphotos.aspx.cs">
+      <DependentUpon>callinphotos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\callinphotos.aspx.designer.cs">
+      <DependentUpon>callinphotos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\callinviewimage.aspx.cs">
+      <DependentUpon>callinviewimage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\callinviewimage.aspx.designer.cs">
+      <DependentUpon>callinviewimage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\contactusPage.aspx.cs">
       <DependentUpon>contactusPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -557,6 +571,8 @@
     <Content Include="AFTERSALESPROJ\assessmentmade.aspx" />
     <Content Include="AFTERSALESPROJ\assessmentPage.aspx" />
     <Content Include="AFTERSALESPROJ\CallinPage.aspx" />
+    <Content Include="AFTERSALESPROJ\callinphotos.aspx" />
+    <Content Include="AFTERSALESPROJ\callinviewimage.aspx" />
     <Content Include="AFTERSALESPROJ\contactusPage.aspx" />
     <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
     <Content Include="AFTERSALESPROJ\css\CSSfrmsignature.css" />

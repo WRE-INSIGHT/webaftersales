@@ -76,7 +76,7 @@ namespace webaftersales.AFTERSALESPROJ
                     if (fileExtension == ".jpg" || fileExtension==".png" || fileExtension==".jpeg" || fileExtension==".gif")
                     {
                         double filesize = thefile.ContentLength;
-                        if (filesize < 4194304.00)
+                        if (filesize < 29360128)
                         {
                             thefile.SaveAs(Server.MapPath(filepath + cid + sid + thefile.FileName));
                             Session["ErrorMessage"] = null;
@@ -84,7 +84,7 @@ namespace webaftersales.AFTERSALESPROJ
                         else
                         {
                             CustomValidator err = new CustomValidator();
-                            Session["ErrorMessage"] = "You can only upload files of size lesser than 4 MB, but you are uploading a file of " + Math.Round((filesize / 1048576.00), 2) + " MB";
+                            Session["ErrorMessage"] = "You can only upload files of size lesser than 28 MB, but you are uploading a file of " + Math.Round((filesize / 1048576.00), 2) + " MB";
                         }
                     }
                     else

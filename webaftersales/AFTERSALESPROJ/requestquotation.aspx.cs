@@ -187,7 +187,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                errorrmessage(e.Message.ToString());
+                errorrmessage(e.ToString());
             }
         }
 
@@ -213,7 +213,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                errorrmessage(e.Message.ToString());
+                errorrmessage(e.ToString());
             }
             finally
             {
@@ -267,7 +267,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception e)
             {
-                errorrmessage(e.Message.ToString());
+                errorrmessage(e.ToString());
             }
         }
 

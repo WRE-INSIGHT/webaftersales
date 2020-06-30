@@ -124,8 +124,8 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <br />
-                               
+                                    
+                                    <asp:LinkButton ID="LinkButton6" runat="server" CommandName="myphotos" CssClass="btn btn-warning">photos</asp:LinkButton>
 
                                 </div>
                                 <div class="col-sm-6">

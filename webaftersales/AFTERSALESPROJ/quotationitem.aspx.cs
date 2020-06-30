@@ -415,5 +415,11 @@ namespace webaftersales.AFTERSALESPROJ
             GridViewRow row = GridView3.Rows[(int)ViewState["rowindex"]];
             ((TextBox)row.FindControl("tboxmobilization")).Text = ((DropDownList)row.FindControl("ddlmobi")).SelectedValue.ToString();
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            getdata();
+        }
     }
 }
