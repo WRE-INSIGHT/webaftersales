@@ -89,8 +89,7 @@
                     <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import</asp:HyperLink>
                     <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click">report</asp:LinkButton>
                     <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click">photos</asp:LinkButton>
-                    <asp:LinkButton ID="LinkButton7" CssClass="btn btn-default" runat="server" OnClick="LinkButton7_Click">quotation</asp:LinkButton>
-
+                 
                 </div>
             </div>
             <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
@@ -181,8 +180,8 @@
 
                                                 <tr>
                                                     <td colspan="3">
-                                                        <asp:Button ID="Button2" CssClass="btn btn-primary" CommandName="myassessment" runat="server" Text="assessment" />
-                                                        <asp:Button ID="Button5" CssClass="btn btn-success" CommandName="myquotation" runat="server" Text="proposal" />
+                                                        <asp:Button ID="Button2" CssClass="btn btn-primary" Width="100" CommandName="myassessment" runat="server" Text="assessment" />
+                                                        <asp:Button ID="Button5" CssClass="btn btn-success"  Width="100" CommandName="myquotation" runat="server" Text="proposal" />
                                                     </td>
                                                 </tr>
                                             </table>

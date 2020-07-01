@@ -26,14 +26,7 @@ namespace webaftersales.AFTERSALESPROJ
                     getdata();
                     getteam();
                     getstatus();
-                    if (Session["useraccount"].ToString() == "Admin")
-                    {
-                        LinkButton7.Visible = true;
-                    }
-                    else
-                    {
-                        LinkButton7.Visible = false;
-                    }
+                
                 }
 
             }
@@ -414,15 +407,6 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        protected void LinkButton7_Click(object sender, EventArgs e)
-        {
-
-            //Session["quotationsender"] = "report";
-            //Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
-
-            Response.Redirect("~/AFTERSALESPROJ/requestquotation.aspx");
-
-
-        }
+     
     }
 }

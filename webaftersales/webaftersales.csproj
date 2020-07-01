@@ -470,6 +470,13 @@
     <Compile Include="AFTERSALESPROJ\reqisterSign.aspx.designer.cs">
       <DependentUpon>reqisterSign.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\requestedquotation.aspx.cs">
+      <DependentUpon>requestedquotation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\requestedquotation.aspx.designer.cs">
+      <DependentUpon>requestedquotation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\requestquotation.aspx.cs">
       <DependentUpon>requestquotation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -624,6 +631,7 @@
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />
     <Content Include="AFTERSALESPROJ\reqisterSign.aspx" />
+    <Content Include="AFTERSALESPROJ\requestedquotation.aspx" />
     <Content Include="AFTERSALESPROJ\requestquotation.aspx" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />
     <Content Include="AFTERSALESPROJ\FRMsignature.aspx" />

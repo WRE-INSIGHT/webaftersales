@@ -60,7 +60,7 @@ namespace webaftersales.AFTERSALESPROJ
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
-      
+
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -73,19 +73,22 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("btndelete")).Visible = false;
                 ((Label)row.FindControl("lblarticleno")).Visible = false;
                 ((Label)row.FindControl("lbldescription")).Visible = false;
+                ((Label)row.FindControl("lblqty")).Visible = false;
 
                 ((TextBox)row.FindControl("tboxarticleno")).Visible = true;
                 ((TextBox)row.FindControl("tboxdescription")).Visible = true;
                 ((LinkButton)row.FindControl("btnupdate")).Visible = true;
                 ((LinkButton)row.FindControl("btncancel")).Visible = true;
+                ((TextBox)row.FindControl("tboxqty")).Visible = true;
             }
-           else if (e.CommandName == "myupdate")
+            else if (e.CommandName == "myupdate")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 updatefunction(((Label)row.FindControl("lblid")).Text,
                 ((TextBox)row.FindControl("tboxarticleno")).Text,
-                ((TextBox)row.FindControl("tboxdescription")).Text);
+                ((TextBox)row.FindControl("tboxdescription")).Text,
+                    ((TextBox)row.FindControl("tboxqty")).Text);
             }
             else if (e.CommandName == "mycancel")
             {
@@ -95,11 +98,13 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("btndelete")).Visible = true;
                 ((Label)row.FindControl("lblarticleno")).Visible = true;
                 ((Label)row.FindControl("lbldescription")).Visible = true;
+                ((Label)row.FindControl("lblqty")).Visible = true;
 
                 ((TextBox)row.FindControl("tboxarticleno")).Visible = false;
                 ((TextBox)row.FindControl("tboxdescription")).Visible = false;
                 ((LinkButton)row.FindControl("btnupdate")).Visible = false;
                 ((LinkButton)row.FindControl("btncancel")).Visible = false;
+                ((TextBox)row.FindControl("tboxqty")).Visible = false;
             }
             else if (e.CommandName == "mydelete")
             {
@@ -135,20 +140,21 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        private void updatefunction(string id, string article, string description)
+        private void updatefunction(string id, string article, string description, string qty)
         {
-           try
+            try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = "update quotationrequesttbl set articleno=@articleno,description=@description where id = @id";
+                string str = "update quotationrequesttbl set articleno=@articleno,description=@description,qty=@qty where id = @id";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
-                    using (SqlCommand sqlcmd = new SqlCommand(str,sqlcon))
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@articleno", article);
                         sqlcmd.Parameters.AddWithValue("@description", description);
+                        sqlcmd.Parameters.AddWithValue("@qty", qty);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -191,13 +197,13 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        private void insertfunction(string id, string articleno, string description)
+        private void insertfunction(string id, string articleno, string description, string qty)
         {
             try
             {
-            
+
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from quotationrequesttbl)" +
-                    " insert into quotationrequesttbl (id,iid,articleno,description)values(@id,@iid,@articleno,@description)";
+                    " insert into quotationrequesttbl (id,iid,articleno,description,qty)values(@id,@iid,@articleno,@description,@qty)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -207,6 +213,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@iid", id);
                         sqlcmd.Parameters.AddWithValue("@articleno", articleno);
                         sqlcmd.Parameters.AddWithValue("@description", description);
+                        sqlcmd.Parameters.AddWithValue("@qty", qty);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -225,7 +232,8 @@ namespace webaftersales.AFTERSALESPROJ
         {
             insertfunction(iid,
              tboxarticleno.Text,
-             tboxdescription.Text);
+             tboxdescription.Text,
+             tboxqty.Text);
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -256,7 +264,7 @@ namespace webaftersales.AFTERSALESPROJ
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@searchkey", "%"+searchkey.Text+"%");
+                        sqlcmd.Parameters.AddWithValue("@searchkey", "%" + searchkey.Text + "%");
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(ds);
@@ -279,22 +287,36 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "myimport")
+            if (e.CommandName == "tryimport")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                ((Panel)row.FindControl("Panel2")).Visible = true;
+            }
+            else if (e.CommandName == "myimport")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView2.Rows[rowindex];
                 importfunction(((Label)row.FindControl("g2lblarticleno")).Text,
-                ((Label)row.FindControl("g2lbldescription")).Text);
+                ((Label)row.FindControl("g2lbldescription")).Text,
+                     ((TextBox)row.FindControl("tboxqty")).Text, ((Label)row.FindControl("g2lblunitprice")).Text,((Panel)row.FindControl("Panel2")));
+
+            }
+            else if (e.CommandName == "mycancel")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                ((Panel)row.FindControl("Panel2")).Visible = false;
             }
         }
 
-        private void importfunction(string articleno, string description)
+        private void importfunction(string articleno, string description, string qty,string unitprice, object pnl)
         {
             try
             {
 
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from quotationrequesttbl)" +
-                    " insert into quotationrequesttbl (id,iid,articleno,description)values(@id,@iid,@articleno,@description)";
+                    " insert into quotationrequesttbl (id,iid,articleno,description,qty,unitprice)values(@id,@iid,@articleno,@description,@qty,@unitprice)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -304,6 +326,8 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@iid", iid);
                         sqlcmd.Parameters.AddWithValue("@articleno", articleno);
                         sqlcmd.Parameters.AddWithValue("@description", description);
+                        sqlcmd.Parameters.AddWithValue("@qty", qty);
+                        sqlcmd.Parameters.AddWithValue("@unitprice", unitprice);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -315,6 +339,7 @@ namespace webaftersales.AFTERSALESPROJ
             finally
             {
                 myreload();
+                ((Panel)pnl).Visible = false;
             }
         }
     }
