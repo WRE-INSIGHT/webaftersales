@@ -267,6 +267,8 @@
     </Compile>
     <Compile Include="AFTERSALESPROJ\dal\qukno.cs" />
     <Compile Include="AFTERSALESPROJ\dal\quknoparts.cs" />
+    <Compile Include="AFTERSALESPROJ\dal\requkno.cs" />
+    <Compile Include="AFTERSALESPROJ\dal\requknoparts.cs" />
     <Compile Include="AFTERSALESPROJ\dal\scheduledal.cs" />
     <Compile Include="AFTERSALESPROJ\dal\servicedal.cs" />
     <Compile Include="AFTERSALESPROJ\datasets\DSreport.Designer.cs">
