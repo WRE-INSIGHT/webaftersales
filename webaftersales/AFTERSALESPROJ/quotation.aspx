@@ -145,7 +145,9 @@
                                 ControlToValidate="datetbox" ValidationGroup="newval" ForeColor="Red">*</asp:RequiredFieldValidator><br />
                             <asp:TextBox ID="datetbox" TextMode="Date" placeholder="Date" CssClass="form-control" runat="server"></asp:TextBox><br />
                             ASE#<br />
-                            <asp:TextBox ID="asetbox" placeholder="ASE" CssClass="form-control" runat="server"></asp:TextBox><br />
+                            <asp:TextBox ID="asetbox" placeholder="ASE" CssClass="form-control" runat="server"></asp:TextBox>
+                            
+                            <br />
                         </div>
                         <div class="col-sm-6">
                             Other charges<br />

@@ -85,7 +85,7 @@ namespace webaftersales.AFTERSALESPROJ
                             CustomValidator err = new CustomValidator();
                             err.ValidationGroup = "newval";
                             err.IsValid = false;
-                            err.ErrorMessage = "duplicate record";
+                            err.ErrorMessage = "duplicate record ase# already exist!";
                             Page.Validators.Add(err);
                             return;
                         }
@@ -216,7 +216,11 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
+                if (IsValid)
+                {
+                    Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
+                }
+            
             }
         }
 

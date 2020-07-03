@@ -353,16 +353,17 @@ namespace webaftersales.AFTERSALESPROJ
 
                             while (rd.Read())
                             {
-                              
+                                string itemid = "";
                                 string insertitem = " declare @itemid as integer = (select isnull(max(id),0)+1 from itemtb)" +
                                                     "  insert into itemtb(id, aseno, ITEM, kno, wdwloc,unitprice,qty,netprice,kid)" +
                                                     "  values(@itemid, @aseno+'(rev)', @item, @kno, @loc,@unitprice,@qty,@netprice,@kid)"+
-                                "  declare @partsid as integer = (select isnull(max(id),0)+1 from partstb) " +
-"  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount) select @partsid,@itemid,articleno, description, markup, unitprice, qty, netamount from partstb where iid = @iid ";
+                                                    " select @itemid";
+                                //                                "  declare @partsid as integer = (select isnull(max(id),0)+1 from partstb) " +
+                                //"  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount) select @partsid,@itemid,articleno, description, markup, unitprice, qty, netamount from partstb where iid = @iid ";
                                 using (SqlConnection sqlcon = new SqlConnection(cs))
                                 {
                                     using (SqlCommand cmd = new SqlCommand(insertitem, sqlcon))
-                                {
+                                    {
                                         sqlcon.Open();
                                         cmd.Parameters.AddWithValue("@iid", rd["id"].ToString());
                                         cmd.Parameters.AddWithValue("@aseno", aseno);
@@ -373,11 +374,51 @@ namespace webaftersales.AFTERSALESPROJ
                                         cmd.Parameters.AddWithValue("@qty", Convert.ToDouble(rd["qty"].ToString()));
                                         cmd.Parameters.AddWithValue("@netprice", Convert.ToDouble(rd["netprice"].ToString()));
                                         cmd.Parameters.AddWithValue("@kid", rd["kid"].ToString());
-
-                                        cmd.ExecuteNonQuery();
+                                        using (SqlDataReader read = cmd.ExecuteReader())
+                                        {
+                                            while (read.Read())
+                                            {
+                                                itemid = read[0].ToString();
+                                            }
+                                        }
                                     }
                                 }
 
+                                string selectparts = "select * from  partstb where iid = @kid";
+                                using (SqlConnection selectpartssqlcon = new SqlConnection(cs))
+                                {
+                                    using (SqlCommand selectpartscmd = new SqlCommand(selectparts, selectpartssqlcon))
+                                    {
+                                        selectpartssqlcon.Open();
+                                        selectpartscmd.Parameters.AddWithValue("@kid", rd["id"].ToString());
+                                        using (SqlDataReader selectpartsread = selectpartscmd.ExecuteReader())
+                                        {
+                                            while (selectpartsread.Read())
+                                            {
+                                                string insertparts = " declare @partsid as integer = (select isnull(max(id),0)+1 from partstb) " +
+                                                        " insert into partstb (id, iid, articleno, description, markup, unitprice, qty, netamount)  values (@partsid,@iid,@articleno,@description,@markup,@unitprice,@qty,@netamount)";
+                                                using (SqlConnection insertpartssqlcon = new SqlConnection(cs))
+                                                {
+                                                    using (SqlCommand insertpartscmd = new SqlCommand(insertparts, insertpartssqlcon))
+                                                    {
+
+                                                        insertpartssqlcon.Open();
+                                                        insertpartscmd.Parameters.AddWithValue("@iid", itemid);
+                                                        insertpartscmd.Parameters.AddWithValue("@articleno", selectpartsread["articleno"].ToString());
+                                                        insertpartscmd.Parameters.AddWithValue("@description", selectpartsread["description"].ToString());
+                                                        insertpartscmd.Parameters.AddWithValue("@unitprice", selectpartsread["unitprice"].ToString());
+                                                        insertpartscmd.Parameters.AddWithValue("@netamount", selectpartsread["netamount"].ToString());
+                                                        insertpartscmd.Parameters.AddWithValue("@markup", selectpartsread["markup"].ToString());
+                                                        insertpartscmd.Parameters.AddWithValue("@qty", selectpartsread["qty"].ToString());
+                                                        insertpartscmd.ExecuteNonQuery();
+                                                    }
+
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                }
                             }
 
                         }
@@ -456,14 +497,14 @@ namespace webaftersales.AFTERSALESPROJ
 
         }
 
-        private void deletefunction(string id,string aseno)
+        private void deletefunction(string id, string aseno)
         {
             try
             {
 
-                string str = " delete from quotationtb where id = @id"+
-                    " delete from partstb where iid in (select id from itemtb where aseno = @aseno) "+
-                    " delete from itemtb where aseno = @aseno"+
+                string str = " delete from quotationtb where id = @id" +
+                    " delete from partstb where iid in (select id from itemtb where aseno = @aseno) " +
+                    " delete from itemtb where aseno = @aseno" +
                     " update quotationtb set lock=0 where aseno = replace(@aseno,'(rev)','')";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
