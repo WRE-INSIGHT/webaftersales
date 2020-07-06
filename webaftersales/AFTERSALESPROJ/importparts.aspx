@@ -201,9 +201,10 @@
         <ContentTemplate>
             <div class="panel panel-default">
                 <div class="panel-body">
+                       <asp:Label ID="Label4" Font-Size="X-Large" runat="server" Text="manual input"></asp:Label>
                     <div class="row">
                         <div class="col-sm-6">
-                            <asp:Label ID="Label4" Font-Size="X-Large" runat="server" Text="manual input"></asp:Label><br />
+                         
                             Article No<br />
                             <asp:TextBox ID="tboxarticle" CssClass="form-control" runat="server"></asp:TextBox><br />
                             Description<br />

@@ -14,7 +14,8 @@
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="getdata" />
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <asp:Button ID="Button2" runat="server" Text="removecache" OnClick="Button2_Click" />
-        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Button" />
+        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Button" /><br />
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>

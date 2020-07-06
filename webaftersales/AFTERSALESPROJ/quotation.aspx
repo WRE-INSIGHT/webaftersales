@@ -38,11 +38,11 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton7" Visible='<%# Eval("LOCK").ToString() == "1" ? false : true %>' runat="server" CommandName="myrevise">Revise</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton7"  OnClientClick="return confirm('delete this record?')" Visible='<%# Eval("LOCK").ToString() == "1" ? false : true %>' runat="server" CommandName="myrevise">Revise</asp:LinkButton>
                                 <asp:LinkButton ID="editlink" CommandName="myedit" runat="server">Edit</asp:LinkButton>
                                 <asp:LinkButton ID="deletelink" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
                                 <asp:LinkButton ID="updatelink" Visible="false" CommandName="mysave" runat="server">Update</asp:LinkButton>
-                                <asp:LinkButton ID="cancellink" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton><br />
+                                <asp:LinkButton ID="cancellink" Visible="false"  CommandName="mycancel" runat="server">Cancel</asp:LinkButton><br />
                                 <asp:ValidationSummary ID="editvalsummary" ValidationGroup="editval" Visible="false" CssClass="alert alert-danger" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>

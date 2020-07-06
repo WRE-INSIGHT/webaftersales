@@ -119,7 +119,11 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                reviseitems(sid);
+                if (IsValid)
+                {
+                    reviseitems(sid);
+                }
+         
             }
         }
         private void reviseitems(string sid)

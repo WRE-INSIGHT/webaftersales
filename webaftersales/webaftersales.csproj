@@ -437,6 +437,13 @@
     <Compile Include="AFTERSALESPROJ\quotationreport.aspx.designer.cs">
       <DependentUpon>quotationreport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationreportclient.aspx.cs">
+      <DependentUpon>quotationreportclient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationreportclient.aspx.designer.cs">
+      <DependentUpon>quotationreportclient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\quotationsignature.aspx.cs">
       <DependentUpon>quotationsignature.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -628,6 +635,7 @@
     <Content Include="AFTERSALESPROJ\quotationForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\quotationitem.aspx" />
     <Content Include="AFTERSALESPROJ\quotationreport.aspx" />
+    <Content Include="AFTERSALESPROJ\quotationreportclient.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsummary.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
@@ -734,6 +742,7 @@
   <ItemGroup>
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTassessment.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotation.rdlc" />
+    <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotationclient.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
