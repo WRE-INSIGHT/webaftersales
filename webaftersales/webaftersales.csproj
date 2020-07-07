@@ -444,6 +444,13 @@
     <Compile Include="AFTERSALESPROJ\quotationreportclient.aspx.designer.cs">
       <DependentUpon>quotationreportclient.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationreportclientsignature.aspx.cs">
+      <DependentUpon>quotationreportclientsignature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\quotationreportclientsignature.aspx.designer.cs">
+      <DependentUpon>quotationreportclientsignature.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\quotationsignature.aspx.cs">
       <DependentUpon>quotationsignature.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -499,6 +506,13 @@
     </Compile>
     <Compile Include="AFTERSALESPROJ\ServicingschedulePage.aspx.designer.cs">
       <DependentUpon>ServicingschedulePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Sessionexpired.aspx.cs">
+      <DependentUpon>Sessionexpired.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Sessionexpired.aspx.designer.cs">
+      <DependentUpon>Sessionexpired.aspx</DependentUpon>
     </Compile>
     <Compile Include="AFTERSALESPROJ\sidgalleryPage.aspx.cs">
       <DependentUpon>sidgalleryPage.aspx</DependentUpon>
@@ -636,6 +650,7 @@
     <Content Include="AFTERSALESPROJ\quotationitem.aspx" />
     <Content Include="AFTERSALESPROJ\quotationreport.aspx" />
     <Content Include="AFTERSALESPROJ\quotationreportclient.aspx" />
+    <Content Include="AFTERSALESPROJ\quotationreportclientsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsummary.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
@@ -647,6 +662,7 @@
     <Content Include="AFTERSALESPROJ\FRMsignature.aspx" />
     <Content Include="AFTERSALESPROJ\FRMimportitems.aspx" />
     <Content Include="AFTERSALESPROJ\ServicingschedulePage.aspx" />
+    <Content Include="AFTERSALESPROJ\Sessionexpired.aspx" />
     <Content Include="AFTERSALESPROJ\sidgalleryPage.aspx" />
     <Content Include="AFTERSALESPROJ\signaturePage.aspx" />
     <Content Include="AFTERSALESPROJ\SignupPage.aspx" />

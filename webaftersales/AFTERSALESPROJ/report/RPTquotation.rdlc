@@ -1232,7 +1232,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>TOTAL ESTIMATED REPAIR CHARGES :</Value>
+                              <Value>TOTAL ESTIMATED REPAIR CHARGES NoN Vat :</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1340,6 +1340,7 @@
                       </Style>
                     </Textbox>
                     <ColSpan>6</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />

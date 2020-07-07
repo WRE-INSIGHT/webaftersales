@@ -18,8 +18,15 @@ namespace webaftersales.AFTERSALESPROJ
 
             if (!IsPostBack)
             {
+                if (aseno == "")
+                {
+                    Response.Redirect("~/AFTERSALESPROJ/Sessionexpired.aspx");
+                }
+                else
+                {
+                    getdata();
+                }
 
-                getdata();
 
             }
         }
@@ -44,7 +51,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
-                       
+
                         sqlcmd.Parameters.AddWithValue("@aseno", Convert.ToString(aseno));
                         using (SqlDataReader rd = sqlcmd.ExecuteReader())
                         {
@@ -61,7 +68,7 @@ namespace webaftersales.AFTERSALESPROJ
                                     " on a.jo = b.job_order_no where a.cin = @cin				  ";
                     using (SqlCommand sqlcmd1 = new SqlCommand(basicinfo, sqlcon))
                     {
-                      
+
                         sqlcmd1.Parameters.AddWithValue("@cin", Session["CIN"].ToString());
                         using (SqlDataReader rd1 = sqlcmd1.ExecuteReader())
                         {
@@ -78,22 +85,22 @@ namespace webaftersales.AFTERSALESPROJ
             }
             catch (Exception ex)
             {
-               errorrmessage(ex.Message.ToString());
+                errorrmessage(ex.Message.ToString());
             }
             finally
             {
-             
-                    getparameters();
-             
+
+                getparameters();
+
             }
         }
         private string aseno
         {
+          
             get
             {
-                Session["aseno"]= Request.QueryString["aseno"].ToString();
-                return Session["aseno"].ToString();
-
+                    Session["aseno"] = Request.QueryString["aseno"].ToString();
+                    return Session["aseno"].ToString(); 
             }
         }
         private void getparameters()

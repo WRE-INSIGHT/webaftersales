@@ -2377,7 +2377,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>PLEASE SIGN ABOVE PRINTED NAME</Value>
+                  <Value>=First(Fields!ACCEPTEDBY.Value, "DataSet2")</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
