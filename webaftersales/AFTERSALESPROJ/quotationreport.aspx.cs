@@ -20,6 +20,9 @@ namespace webaftersales.AFTERSALESPROJ
                     if (!IsPostBack)
                     {
                         getparameters();
+                        HyperLink1.NavigateUrl= "http://localhost:64481//AFTERSALESPROJ/quotationreportclient.aspx?aseno=" + aseno;
+                        HyperLink1.Text = "http://localhost:64481//AFTERSALESPROJ/quotationreportclient.aspx?aseno=" + aseno;
+                        TextBox1.Text = "http://localhost:64481//AFTERSALESPROJ/quotationreportclient.aspx?aseno=" + aseno;
                     }
                 }
                 else

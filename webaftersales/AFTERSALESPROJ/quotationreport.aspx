@@ -4,6 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Quotation Report</title>
 </asp:Content>
 
@@ -15,7 +16,11 @@
         </div>
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
+
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+
+
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
         SelectCommand="select 
   a.ASENO,a.ITEM,a.KNO,a.WDWLOC,b.UNITPRICE,b.QTY,b.NETAMOUNT,b.MARKUP,b.ARTICLENO,b.DESCRIPTION from ITEMTB as a
@@ -44,6 +49,7 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
                     </DataSources>
                 </LocalReport>
             </rsweb:ReportViewer>
+
             <div class="row">
                 <div class="col-sm-4">
                     <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;PREPARED BY</asp:LinkButton>
@@ -55,9 +61,33 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
                     <asp:LinkButton ID="LinkButton3" Visible="false" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;ACCEPTED BY</asp:LinkButton>
                 </div>
             </div>
+            <br />
+            <br />
 
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
+                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <script type="text/javascript">
+                        function myFunction() {
+                            var copyText = document.getElementById("TextBox1");
 
+                            /* Select the text field */
+                            copyText.select();
+                            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 
+                            /* Copy the text inside the text field */
+                            document.execCommand("copy");
+
+                            /* Alert the copied text */
+                            alert("Copied the text: " + copyText.value);
+                        }
+                    </script>
+
+                    <asp:LinkButton ID="LinkButton5" OnClientClick="myFunction()" runat="server">LinkButton</asp:LinkButton>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </ContentTemplate>
     </asp:UpdatePanel>
+
 </asp:Content>

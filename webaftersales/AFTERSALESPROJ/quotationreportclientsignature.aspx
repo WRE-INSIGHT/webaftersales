@@ -72,7 +72,7 @@
             <div class="container well">
                 Full-name:<br />
                 <asp:TextBox ID="tboxfullname" CssClass="form-control" Width="300" placeholder="Ful-name" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tboxfullname" Text="*" ForeColor="Red" ValidationGroup="g1"
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tboxfullname" ForeColor="Red" ValidationGroup="g1"
                     ErrorMessage="Your full name is required!"></asp:RequiredFieldValidator><br />
                 <asp:Button runat="server" Width="100" CssClass="btn btn-danger" Text="Reset Sign" ID='resetSign' />
                 <asp:LinkButton ID="LinkButton2" Width="100" CssClass="btn btn-success" OnClientClick="storeimage()" ValidationGroup="g1" runat="server" OnClick="LinkButton2_Click">Save Sign</asp:LinkButton>
