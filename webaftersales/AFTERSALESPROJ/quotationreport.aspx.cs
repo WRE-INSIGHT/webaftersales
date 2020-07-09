@@ -22,7 +22,8 @@ namespace webaftersales.AFTERSALESPROJ
                         getparameters();
                         HyperLink1.NavigateUrl= "http://localhost:64481//AFTERSALESPROJ/quotationreportclient.aspx?aseno=" + aseno;
                         HyperLink1.Text = "http://localhost:64481//AFTERSALESPROJ/quotationreportclient.aspx?aseno=" + aseno;
-                        TextBox1.Text = "http://localhost:64481//AFTERSALESPROJ/quotationreportclient.aspx?aseno=" + aseno;
+                     
+                       
                     }
                 }
                 else
@@ -53,7 +54,7 @@ namespace webaftersales.AFTERSALESPROJ
         private void getparameters()
         {
             ReportViewer1.LocalReport.EnableExternalImages = true;
-            string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString()+"/" + Session["aseno"].ToString()+ "/signature/PREPAREDBY.jpg")).AbsoluteUri;
+            string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
             string approved = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/APPROVEDBY.jpg")).AbsoluteUri;
             string accepted = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/ACCEPTEDBY.jpg")).AbsoluteUri;
             ReportParameter[] repparam = new ReportParameter[5];
@@ -67,7 +68,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ReportViewer1.LocalReport.SetParameters(repparam[i]);
             }
 
-      
+
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)

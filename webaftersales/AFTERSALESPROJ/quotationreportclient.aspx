@@ -18,7 +18,7 @@
     <form id="form1" runat="server">
         <div class="container">
             <div class="well">
-                <h3><strong>Quotation Report Viewer</strong></h3>     
+                <h3><strong>PROPOSED AFTER SALES SERVICE QUOTATION</strong></h3>     
             </div>
             <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>

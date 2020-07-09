@@ -7,18 +7,18 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>
-            <asp:Label ID="lblpendingcout" runat="server" CssClass="text-danger"></asp:Label>&nbsp;Pending JO</strong></h3>
-    </div>
-      <div class="input-group">
+        <h3><strong>Pending JO</strong></h3>
+        <div class="input-group">
             <asp:TextBox ID="searchtbox" CssClass="form-control" placeholder="project name" runat="server"></asp:TextBox>
             <div class="input-group-btn">
-                <asp:LinkButton ID="searcbtn2" CssClass="btn btn-primary" runat="server" OnClick="searcbtn_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+                <asp:LinkButton ID="searcbtn2" CssClass="btn btn-default" runat="server" OnClick="searcbtn_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
             </div>
         </div>
+    </div>
+
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <br />
-      <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True"
+    <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True"
         OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False"
         HorizontalAlign="Left">
         <Columns>
@@ -72,11 +72,12 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                           
-                                                 <td class="text-center"><small class="text-muted">Status</small>
+
+                                            <td class="text-center"><small class="text-muted">Status</small>
                                             </td>
                                             <td>
-                                                 <strong><asp:Label ID="Label12" CssClass=" text-warning" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label></strong>  </td>
+                                                <strong>
+                                                    <asp:Label ID="Label12" CssClass=" text-warning" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label></strong>  </td>
                                             </td>
                                         </tr>
                                         <tr>
@@ -124,8 +125,8 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
-                                                   <table>
-                                                         <tr>
+                                                    <table>
+                                                        <tr>
                                                             <td><small class="text-muted">Caller :&nbsp;</small>
                                                                 <asp:Label ID="Label2" Font-Size="13px" runat="server" Text='<%# Bind("CALLER") %>'></asp:Label>
                                                             </td>
@@ -164,7 +165,7 @@
 
 
                         </div>
-                       
+
                     </div>
 
                 </ItemTemplate>

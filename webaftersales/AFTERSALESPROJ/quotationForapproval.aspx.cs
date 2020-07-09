@@ -88,8 +88,9 @@ namespace webaftersales.AFTERSALESPROJ.quotationforms
             {
                 errorrmessage(ex.ToString());
             }
+          
         }
-
+       
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             getdata();

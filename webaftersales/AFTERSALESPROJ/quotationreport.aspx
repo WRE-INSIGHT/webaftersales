@@ -10,7 +10,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>Quotation Report Viewer</strong></h3>
+        <h3><strong>PROPOSED AFTER SALES SERVICE QUOTATION</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">back</asp:LinkButton>
         </div>
@@ -18,7 +18,6 @@
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
 
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
@@ -40,7 +39,7 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
         SelectCommand="select * from notetb"></asp:SqlDataSource>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+            <rsweb:reportviewer id="ReportViewer1" width="100%" height="800" runat="server" font-names="Verdana" font-size="8pt" waitmessagefont-names="Verdana" waitmessagefont-size="14pt">
                 <LocalReport ReportPath="AFTERSALESPROJ\report\RPTquotation.rdlc">
                     <DataSources>
                         <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
@@ -48,7 +47,7 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
                         <rsweb:ReportDataSource DataSourceId="SqlDataSource3" Name="DataSet3" />
                     </DataSources>
                 </LocalReport>
-            </rsweb:ReportViewer>
+            </rsweb:reportviewer>
 
             <div class="row">
                 <div class="col-sm-4">
@@ -64,30 +63,9 @@ LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
             <br />
             <br />
 
-            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                <ContentTemplate>
-                    <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                    <script type="text/javascript">
-                        function myFunction() {
-                            var copyText = document.getElementById("TextBox1");
-
-                            /* Select the text field */
-                            copyText.select();
-                            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-                            /* Copy the text inside the text field */
-                            document.execCommand("copy");
-
-                            /* Alert the copied text */
-                            alert("Copied the text: " + copyText.value);
-                        }
-                    </script>
-
-                    <asp:LinkButton ID="LinkButton5" OnClientClick="myFunction()" runat="server">LinkButton</asp:LinkButton>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+            <asp:Label ID="Label1" runat="server" CssClass="text-muted" Text="Label">Copy and Paste this link to share.</asp:Label><br />
+            <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
+           
         </ContentTemplate>
     </asp:UpdatePanel>
-
 </asp:Content>

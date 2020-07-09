@@ -24,7 +24,7 @@ namespace webaftersales.AFTERSALESPROJ
                         {
                             searchtbox.Text = Session["pendingsearch"].ToString();
                         }
-                        getpendingcount();
+                     
                         getdata();
                     }
                 }
@@ -39,32 +39,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        private void getpendingcount()
-        {
-            try
-            {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
-                {
-                    using (SqlCommand sqlcmd = new SqlCommand("select count(id) from servicingtb where [status] = 'Pending For Reschedule'", sqlcon))
-                    {
-                        sqlcon.Open();
-                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
-                        {
-                            while (rd.Read())
-                            {
-                                lblpendingcout.Text = rd[0].ToString();
-                            }
-                        }
-                    }
-                 
-                }
-            }
-            catch (Exception e)
-            {
-                errorrmessage(e.Message.ToString());
-            }
-        }
+      
 
         private void errorrmessage(string message)
         {

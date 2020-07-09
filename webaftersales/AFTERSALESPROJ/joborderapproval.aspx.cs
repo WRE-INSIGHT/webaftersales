@@ -28,6 +28,7 @@ namespace webaftersales.AFTERSALESPROJ
                         getdata();
                     }
                 }
+             
                 else
                 {
                     Response.Redirect("~/AFTERSALESPROJ/invalidaccessPage.aspx");
@@ -57,9 +58,15 @@ namespace webaftersales.AFTERSALESPROJ
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
+                        string c = "0";
+                        if (CheckBox1.Checked)
+                        {
+                            c = "1";
+                        }
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.CommandText = "std_RequestCollectionApproval";
                         sqlcmd.Parameters.AddWithValue("@key", searchkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@forapproval", c);
                         DataTable tb = new DataTable();
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
@@ -74,8 +81,40 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 errorrmessage(ex.ToString());
             }
+            finally
+            {
+                countjoapproval();
+            }
         }
+        private void countjoapproval()
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = "select count(id) from [RequestCollectionApproval] where [APPROVED] = '' and [DISAPPROVED] = ''";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
 
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            HyperLink forjoapproval = (HyperLink)Master.FindControl("HyperLink9");
+                            forjoapproval.Text = "";
+                            while (rd.Read())
+                            {
+                                forjoapproval.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " For JO Approval";
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+        }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
@@ -178,6 +217,11 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 getdata();
             }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            getdata();
         }
     }
 }

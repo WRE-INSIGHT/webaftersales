@@ -9,9 +9,12 @@
     <div class="well">
         <h3><strong>JO Approval</strong></h3>
         <div class="input-group">
+             <div class="input-group-addon">
+                <asp:CheckBox ID="CheckBox1" runat="server" />&nbsp;for approval
+            </div>
             <asp:TextBox ID="searchkey" CssClass="form-control" runat="server"></asp:TextBox>
             <div class="input-group-btn">
-                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-default"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-default" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
             </div>
         </div>
     </div>

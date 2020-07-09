@@ -18,18 +18,18 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (!IsPostBack)
                 {
-                    if(useraccount != "Admin")
+                    if (useraccount != "Admin")
                     {
                         datetbox.Text = DateTime.Now.ToString("yyyy-MM-dd");
                     }
-                 
+
                     if (Session["currentsearch"] != null)
                     {
                         searchtbox.Text = Session["currentsearch"].ToString();
                     }
                     getdata();
+                 
                 }
-             
             }
             else
             {
@@ -55,6 +55,8 @@ namespace webaftersales.AFTERSALESPROJ
             Session["currentsearch"] = searchtbox.Text;
             getdata();
         }
+       
+     
         private void getdata()
         {
             try
@@ -119,6 +121,6 @@ namespace webaftersales.AFTERSALESPROJ
 
 
 
-      
+
     }
 }
