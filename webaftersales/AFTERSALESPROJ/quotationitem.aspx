@@ -111,7 +111,7 @@
             <asp:Label ID="lblaseno" Font-Size="XX-Large" runat="server" Text="Item table"></asp:Label>
             <asp:Panel ID="Panel2" runat="server" ScrollBars="Auto">
 
-                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" runat="server" OnRowCommand="GridView1_RowCommand" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" PageSize="8" CellSpacing="1" OnPageIndexChanging="GridView1_PageIndexChanging">
+                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" runat="server" OnRowCommand="GridView1_RowCommand" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" PageSize="15" CellSpacing="1" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="True">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>

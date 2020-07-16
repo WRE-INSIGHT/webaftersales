@@ -45,6 +45,11 @@
                                                         <asp:Label ID="lblaseno" runat="server" Text='<%# Bind("aseno") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="SERVICE DONE">
+                                                    <ItemTemplate>
+                                                           <asp:Label ID="lblstatus" runat="server" Text='<%# Eval("STATUS").ToString() == "Done" ? "Yes" : "Not yet" %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="DATE">
                                                     <ItemTemplate>
                                                         <asp:Label ID="datelbl" runat="server" Text='<%# Bind("qDATE") %>'></asp:Label>

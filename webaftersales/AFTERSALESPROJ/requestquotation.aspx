@@ -107,7 +107,7 @@
                 <asp:Panel ID="Panel3" runat="server" ScrollBars="Auto">
 
 
-                    <asp:GridView ID="GridView1" GridLines="Vertical" CssClass="table" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
+                    <asp:GridView ID="GridView1" GridLines="Vertical" CssClass="table" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>

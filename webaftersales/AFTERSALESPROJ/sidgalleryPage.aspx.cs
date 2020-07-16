@@ -30,6 +30,7 @@ namespace webaftersales.AFTERSALESPROJ
                     System.IO.Directory.CreateDirectory(Server.MapPath(filepath + cid + sid));
                 }
                 loadimages();
+          
                 if (!IsPostBack)
                 {
                     if (Session["ErrorMessage"] != null)
@@ -43,6 +44,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
 
                 }
+                
             }
             else
             {

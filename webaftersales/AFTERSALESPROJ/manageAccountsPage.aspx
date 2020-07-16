@@ -31,37 +31,42 @@
                     For verification
                 </div>
                 <div class="panel-body">
-                    <asp:GridView CssClass="table table-hover" GridLines="None" ID="GridView1" runat="server" AutoGenerateColumns="False"
-                        OnRowCommand="GridView1_RowCommand" DataKeyNames="ID" OnRowDataBound="GridView1_RowDataBound"
-                        PageSize="5" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No available request!">
-                        <Columns>         
-                            <asp:TemplateField HeaderText="Lastname">
-                                <ItemTemplate>
-                                       <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
-                                    <asp:Label ID="lbllastname" runat="server" Text='<%# Bind("LASTNAME") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Firstname">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblfirstname" runat="server" Text='<%# Bind("FIRSTNAME") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>              
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <div class="navbar-right">
-                                        <asp:LinkButton CssClass="btn btn-success" Width="90" ID="LinkButton2" CommandName="myverification" runat="server"><span class="glyphicon glyphicon-check"></span>&nbsp;verify</asp:LinkButton>
-                                        <asp:LinkButton CssClass="btn btn-danger" Width="90" ID="LinkButton1" CommandName="mycancel"
-                                            OnClientClick="return confirm('Are you sure you want to delete this record?');" ToolTip="Cancel this account?" runat="server"><span class="glyphicon glyphicon-minus-sign"></span>&nbsp;delete</asp:LinkButton>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                        <PagerSettings PageButtonCount="8" />
-                        <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-                        <SelectedRowStyle BackColor="#CCCCFF" Font-Bold="True" />
-                    </asp:GridView>
+                    <asp:Panel ID="Panel4" runat="server" ScrollBars="Auto">
+                        <asp:GridView CssClass="table table-hover" GridLines="None" ID="GridView1" runat="server" AutoGenerateColumns="False"
+                            OnRowCommand="GridView1_RowCommand" DataKeyNames="ID" OnRowDataBound="GridView1_RowDataBound"
+                            PageSize="5" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" EmptyDataText="No available request!">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Lastname">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Eval("ID") %>'></asp:Label>
+                                        <asp:Label ID="lbllastname" runat="server" Text='<%# Bind("LASTNAME") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Firstname">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblfirstname" runat="server" Text='<%# Bind("FIRSTNAME") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <div class="navbar-right">
+                                            <asp:LinkButton CssClass="btn btn-success" Width="90" ID="LinkButton2" CommandName="myverification" runat="server"><span class="glyphicon glyphicon-check"></span>&nbsp;verify</asp:LinkButton>
+                                            <asp:LinkButton CssClass="btn btn-danger" Width="90" ID="LinkButton1" CommandName="mycancel"
+                                                OnClientClick="return confirm('Are you sure you want to delete this record?');" ToolTip="Cancel this account?" runat="server"><span class="glyphicon glyphicon-minus-sign"></span>&nbsp;delete</asp:LinkButton>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <HeaderStyle Wrap="False" />
+                            <PagerSettings PageButtonCount="8" />
+                            <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                            <RowStyle Wrap="False" />
+                            <SelectedRowStyle BackColor="#CCCCFF" Font-Bold="True" />
+
+                        </asp:GridView>
+                    </asp:Panel>
                 </div>
-                  <div class="panel-footer">
+                <div class="panel-footer">
                     Footer
                 </div>
             </div>
@@ -84,41 +89,43 @@
                             <asp:Label ID="lblresultlastname" runat="server" Text="Label"></asp:Label>
                             <small>or</small>
                             <asp:Label ID="lblresultdirstname" runat="server" Text="Label"></asp:Label>
-                            <small> word is present in the record.</small>
+                            <small>word is present in the record.</small>
                         </h2>
                     </asp:Panel>
+                    <asp:Panel ID="Panel2" runat="server" ScrollBars="Auto">
+                        <asp:GridView ID="GridView3" CssClass=" table table-hover" GridLines="None" runat="server"
+                            AllowPaging="True" PageSize="5" OnPageIndexChanging="GridView3_PageIndexChanging" AutoGenerateColumns="false" OnRowCommand="GridView3_RowCommand">
+                            <Columns>
 
-                    <asp:GridView ID="GridView3" CssClass=" table table-hover" GridLines="None" runat="server"
-                        AllowPaging="True" PageSize="5" OnPageIndexChanging="GridView3_PageIndexChanging" AutoGenerateColumns="false" OnRowCommand="GridView3_RowCommand">
-                        <Columns>
-                 
-                            <asp:TemplateField HeaderText="fullname">
-                                <ItemTemplate>
-                                      <asp:Label ID="pidlbl" Visible="false" runat="server" Text='<%# Bind("PID") %>'></asp:Label>
-                                    <asp:Label ID="fullnamelbl" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="position">
-                                <ItemTemplate>
-                                    <asp:Label ID="positionlbl" runat="server" Text='<%# Bind("POSITION") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <div class="navbar-right">
-                                        <asp:LinkButton ID="validatebtn" CommandName="validate" CssClass="btn btn-success" OnClientClick="return confirm('continue validation?');"
-                                            Visible='<%# Eval("A").ToString() == "1" ? true : false%>' runat="server"><span class="glyphicon glyphicon-check"></span>&nbsp;validate request</asp:LinkButton>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                        <PagerSettings PageButtonCount="8" />
-                        <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-                        <EmptyDataTemplate>
-                            <h1><small><strong>0 result found!</strong></small></h1>
-                        </EmptyDataTemplate>
-                    </asp:GridView>
-
+                                <asp:TemplateField HeaderText="fullname">
+                                    <ItemTemplate>
+                                        <asp:Label ID="pidlbl" Visible="false" runat="server" Text='<%# Bind("PID") %>'></asp:Label>
+                                        <asp:Label ID="fullnamelbl" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="position">
+                                    <ItemTemplate>
+                                        <asp:Label ID="positionlbl" runat="server" Text='<%# Bind("POSITION") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <div class="navbar-right">
+                                            <asp:LinkButton ID="validatebtn" CommandName="validate" CssClass="btn btn-success" OnClientClick="return confirm('continue validation?');"
+                                                Visible='<%# Eval("A").ToString() == "1" ? true : false%>' runat="server"><span class="glyphicon glyphicon-check"></span>&nbsp;validate request</asp:LinkButton>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <HeaderStyle Wrap="False" />
+                            <PagerSettings PageButtonCount="5" />
+                            <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                            <EmptyDataTemplate>
+                                <h1><small><strong>0 result found!</strong></small></h1>
+                            </EmptyDataTemplate>
+                            <RowStyle Wrap="False" />
+                        </asp:GridView>
+                    </asp:Panel>
                 </div>
                 <div class="panel-footer">
                     Footer
@@ -144,24 +151,28 @@
                                     <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
                                 </div>
                             </div>
-                            <asp:GridView ID="GridView2" CssClass="table table-stripped" AllowPaging="true" PageSize="10"
-                                GridLines="None" runat="server" AutoGenerateColumns="false" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowCommand="GridView2_RowCommand">
-                                <Columns>
-                                    <asp:BoundField HeaderText="Lastname" DataField="LASTNAME" />
-                                    <asp:BoundField HeaderText="Firstname" DataField="FIRSTNAME" />
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                               <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                            <div class="navbar-right">
-                                                <asp:LinkButton ID="LinkButton5" CssClass="btn btn-danger" CommandName="mydelete" OnClientClick="return confirm('Are you sure you want to delete this record?');"
-                                                    Visible='<%# Eval("ACCTTYPE").ToString() == "Admin" ? false : true %>' runat="server"><span class="glyphicon glyphicon-minus-sign"></span></asp:LinkButton>
-                                            </div>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                                <PagerSettings PageButtonCount="8" />
-                                <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
-                            </asp:GridView>
+                            <asp:Panel ID="Panel3" runat="server" ScrollBars="Auto">
+                                <asp:GridView ID="GridView2" CssClass="table table-stripped" AllowPaging="true" PageSize="10"
+                                    GridLines="None" runat="server" AutoGenerateColumns="false" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowCommand="GridView2_RowCommand">
+                                    <Columns>
+                                        <asp:BoundField HeaderText="Lastname" DataField="LASTNAME" />
+                                        <asp:BoundField HeaderText="Firstname" DataField="FIRSTNAME" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                                <div class="navbar-right">
+                                                    <asp:LinkButton ID="LinkButton5" CssClass="btn btn-danger" CommandName="mydelete" OnClientClick="return confirm('Are you sure you want to delete this record?');"
+                                                        Visible='<%# Eval("ACCTTYPE").ToString() == "Admin" ? false : true %>' runat="server"><span class="glyphicon glyphicon-minus-sign"></span></asp:LinkButton>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <PagerSettings PageButtonCount="5" />
+                                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                                    <HeaderStyle Wrap="False" />
+                                    <RowStyle Wrap="False" />
+                                </asp:GridView>
+                            </asp:Panel>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
