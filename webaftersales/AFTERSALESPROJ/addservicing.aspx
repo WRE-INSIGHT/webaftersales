@@ -184,7 +184,8 @@
                                 </div>
                                 <div class="panel-footer">
                                     <asp:Button ID="Button2" runat="server" CommandName="viewreport" Text="view report" CssClass="btn btn-default" />&nbsp;
-                                    <asp:Button ID="Button5" runat="server" CommandName="quotation" CssClass="btn btn-default" Text="quotation" />
+                                    <asp:Button ID="Button5" runat="server" CommandName="quotation" CssClass="btn btn-default" Text="quotation" />&nbsp;
+                                    <asp:Button ID="Button6" runat="server" CommandName="cleaning" CssClass="btn btn-default" Text="cleaning" />
                                     <div class="navbar-right">
                                         <asp:LinkButton ID="LinkButton3" CommandName="mydelete" runat="server" OnClientClick="return confirm('Are you sure you want to delete this record?');" CssClass="btn btn-default"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
 

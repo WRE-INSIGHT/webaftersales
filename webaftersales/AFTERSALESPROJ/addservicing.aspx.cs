@@ -306,7 +306,16 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["quotationsender"] = "joborder";
                 Response.Redirect("~/AFTERSALESPROJ/quotation.aspx");
             }
-
+            else if (e.CommandName == "cleaning")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridView1.SelectedIndex = rowindex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["CIN"] = cin;
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                getdetails(cin);
+                Response.Redirect("~/AFTERSALESPROJ/cleaningpage.aspx");
+            }
         }
         private void getdetails(string callin)
         {
