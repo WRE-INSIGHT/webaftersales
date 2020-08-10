@@ -181,6 +181,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["cleaningid"] = ((Label)row.FindControl("lblid")).Text;
                 Response.Redirect("~/AFTERSALESPROJ/cleaningitem.aspx");
             }
+            else if (e.CommandName == "myreport")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["cleaningid"] = ((Label)row.FindControl("lblid")).Text;
+                Response.Redirect("~/AFTERSALESPROJ/cleaningreport.aspx");
+            }
         }
 
         private void deleteme(string id)

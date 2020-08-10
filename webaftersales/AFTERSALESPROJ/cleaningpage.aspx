@@ -64,13 +64,14 @@
                         <asp:TemplateField HeaderText="DATE">
                             <ItemTemplate>
                                 <asp:Label ID="lblqdate" runat="server" Text='<%# Bind("QDATE") %>'></asp:Label>
-                                <asp:TextBox ID="tboxqdateedit" CssClass="form-control" TextMode="Date"  Text='<%# Bind("QDATE") %>' Visible="false" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="tboxqdateedit" CssClass="form-control" TextMode="Date" Text='<%# Bind("QDATE") %>' Visible="false" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Visible="false" ControlToValidate="tboxqdateedit" runat="server" ValidationGroup="valedit" ErrorMessage="date is required" ForeColor="Red"></asp:RequiredFieldValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton ID="LinkButton1" CommandName="myitem" runat="server">items</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton2" CommandName="myreport" runat="server">report</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

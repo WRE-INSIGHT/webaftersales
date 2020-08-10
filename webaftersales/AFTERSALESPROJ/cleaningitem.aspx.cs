@@ -112,5 +112,143 @@ namespace webaftersales.AFTERSALESPROJ
                 loaddata();
             }
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+
+                ((LinkButton)row.FindControl("btnedit")).Visible = false;
+                ((LinkButton)row.FindControl("btndelete")).Visible = false;
+                ((Label)row.FindControl("lbllocation")).Visible = false;
+                ((Label)row.FindControl("lblarea")).Visible = false;
+                ((Label)row.FindControl("lblunitprice")).Visible = false;
+                ((Label)row.FindControl("lblqty")).Visible = false;
+
+                ((LinkButton)row.FindControl("btnsave")).Visible = true;
+                ((LinkButton)row.FindControl("btncancel")).Visible = true;
+                ((TextBox)row.FindControl("tboxlocationedit")).Visible = true;
+                ((TextBox)row.FindControl("tboxareaedit")).Visible = true;
+                ((TextBox)row.FindControl("tboxunitpriceedit")).Visible = true;
+                ((TextBox)row.FindControl("tboxqtyedit")).Visible = true;
+                ((RequiredFieldValidator)row.FindControl("RequiredFieldValidator3")).Visible = true;
+                ((RequiredFieldValidator)row.FindControl("RequiredFieldValidator4")).Visible = true;
+            }
+            else if (e.CommandName == "mycancel")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+
+                ((LinkButton)row.FindControl("btnedit")).Visible = true;
+                ((LinkButton)row.FindControl("btndelete")).Visible = true;
+                ((Label)row.FindControl("lbllocation")).Visible = true;
+                ((Label)row.FindControl("lblarea")).Visible = true;
+                ((Label)row.FindControl("lblunitprice")).Visible = true;
+                ((Label)row.FindControl("lblqty")).Visible = true;
+
+                ((LinkButton)row.FindControl("btnsave")).Visible = false;
+                ((LinkButton)row.FindControl("btncancel")).Visible = false;
+                ((TextBox)row.FindControl("tboxlocationedit")).Visible = false;
+                ((TextBox)row.FindControl("tboxareaedit")).Visible = false;
+                ((TextBox)row.FindControl("tboxunitpriceedit")).Visible = false;
+                ((TextBox)row.FindControl("tboxqtyedit")).Visible = false;
+                ((RequiredFieldValidator)row.FindControl("RequiredFieldValidator3")).Visible = false;
+                ((RequiredFieldValidator)row.FindControl("RequiredFieldValidator4")).Visible = false;
+            }
+            else if (e.CommandName == "mysave")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+
+                updateme(((Label)row.FindControl("lblid")).Text, ((TextBox)row.FindControl("tboxlocationedit")).Text,
+             ((TextBox)row.FindControl("tboxareaedit")).Text, ((TextBox)row.FindControl("tboxunitpriceedit")).Text, ((TextBox)row.FindControl("tboxqtyedit")).Text);
+            }
+            else if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+
+                deleteme(((Label)row.FindControl("lblid")).Text);
+            }
+         
+        }
+
+        private void deleteme(string id)
+        {
+            try
+            {
+
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    string str = "delete from cleaningitem where id = @id";
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "valedit";
+                err.IsValid = false;
+                err.ErrorMessage = ex.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                if (IsValid)
+                {
+                    loaddata();
+                }
+
+            }
+        }
+
+        private void updateme(string id, string location, string area, string unitprice, string qty)
+        {
+           try
+            {
+                string str = "update cleaningitem set location=@location,area=@area,unitprice=@unitprice,qty=@qty,totalamount=cast(isnull(@qty,0) as decimal)*cast(isnull(@unitprice,0) as decimal)  where id = @id";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@location", location);
+                        sqlcmd.Parameters.AddWithValue("@area", area);
+                        sqlcmd.Parameters.AddWithValue("@unitprice", unitprice);
+                        sqlcmd.Parameters.AddWithValue("@qty", qty);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "valedit";
+                err.IsValid = false;
+                err.ErrorMessage = ex.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                if (IsValid)
+                {
+                    loaddata();
+                }
+
+            }
+        }
     }
 }
