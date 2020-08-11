@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,7 +19,8 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
-                        
+
+                        loadparameter();
                     }
                 }
                 else
@@ -31,6 +33,24 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+
+        private void loadparameter()
+        {
+            ReportParameter param1 = new ReportParameter("project", Session["PROJECT"].ToString());
+            ReportParameter param2 = new ReportParameter("address", Session["ADDRESS"].ToString());
+            ReportParameter param3 = new ReportParameter("date", Session["cleaningdate"].ToString());
+            ReportParameter param4 = new ReportParameter("qno", Session["cleaningqno"].ToString());
+            ReportParameter param5 = new ReportParameter("note1", tboxnote1.Text);
+            ReportParameter param6 = new ReportParameter("note2", tboxnote2.Text);
+            ReportViewer1.LocalReport.SetParameters(param1);
+            ReportViewer1.LocalReport.SetParameters(param2);
+            ReportViewer1.LocalReport.SetParameters(param3);
+            ReportViewer1.LocalReport.SetParameters(param4);
+            ReportViewer1.LocalReport.SetParameters(param5);
+            ReportViewer1.LocalReport.SetParameters(param6);
+            ReportViewer1.LocalReport.Refresh();
+        }
+
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -45,6 +65,11 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 return Session["cleaningid"].ToString();
             }
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            loadparameter();
         }
     }
 }

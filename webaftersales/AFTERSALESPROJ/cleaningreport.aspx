@@ -21,6 +21,11 @@
             <asp:SessionParameter Name="IID" SessionField="cleaningid" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+    Dear<asp:TextBox ID="tboxnote1" runat="server" ></asp:TextBox><br />
+    Thank you for letting us serve you. Please find herewith our quotation for the
+    <asp:TextBox ID="tboxnote2"  runat="server"></asp:TextBox>
+    for your requirements on your residence.<br /><br />
+    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary" OnClick="LinkButton2_Click">refresh report</asp:LinkButton><br />
     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="800px" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
         <LocalReport ReportPath="AFTERSALESPROJ\report\cleaningRPT.rdlc">
             <DataSources>

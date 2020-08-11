@@ -67,7 +67,7 @@ namespace webaftersales.AFTERSALESPROJ
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
 
-                    string str = "select * from cleaningtbl where cin=@cin and sid=@sid";
+                    string str = "select [ID],[CIN],[SID],[QNO],case when isdate([QDATE])=1 then format(cast(qdate as date),'MMMM dd, yyyy') else qdate end as qdate,[PREPAREDBY],[NOTEDBY] from cleaningtbl where cin=@cin and sid=@sid";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
@@ -185,6 +185,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
+                Session["cleaningdate"] = ((Label)row.FindControl("lblqdate")).Text;
+                Session["cleaningqno"] = ((Label)row.FindControl("lblqno")).Text;
                 Session["cleaningid"] = ((Label)row.FindControl("lblid")).Text;
                 Response.Redirect("~/AFTERSALESPROJ/cleaningreport.aspx");
             }
