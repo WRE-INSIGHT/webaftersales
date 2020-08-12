@@ -33,5 +33,7 @@
             </DataSources>
         </LocalReport>
     </rsweb:ReportViewer>
+    <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" Width="200" runat="server" OnClick="LinkButton3_Click">PREPARED BY</asp:LinkButton><br />
+    <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" Width="200" runat="server" OnClick="LinkButton4_Click">NOTED BY</asp:LinkButton>
 </asp:Content>
 
