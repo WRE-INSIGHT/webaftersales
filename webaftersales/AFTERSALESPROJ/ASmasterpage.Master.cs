@@ -23,6 +23,10 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 countforapproval();
             }
+            if (Session["useraccount"].ToString() == "Admin" && (Session["userid"].ToString() == "3" || Session["userid"].ToString() == "2"))
+            {
+                countcleaningforapproval();
+            }
             getpendingcount();
         }
         private void getpendingcount()
@@ -97,6 +101,34 @@ namespace webaftersales.AFTERSALESPROJ
                             while (rd.Read())
                             {
                                 LinkButton3.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " For Approval";
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+        }
+        private void countcleaningforapproval()
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = "select count(id) from cleaningtbl where notedby = ''";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+
+                            while (rd.Read())
+                            {
+                                LinkButton5.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " For Approval";
                             }
                         }
                     }

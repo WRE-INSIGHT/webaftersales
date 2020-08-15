@@ -8,7 +8,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>Cleaning Item</strong></h3>
+        <h3><strong>Cleaning Proposal Item</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/cleaningpage.aspx" runat="server">back</asp:LinkButton>
         </div>
@@ -48,10 +48,10 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton CommandName="myedit" ID="btnedit" runat="server">edit</asp:LinkButton>
-                                <asp:LinkButton CommandName="mydelete" ID="btndelete" OnClientClick="return confirm('delete this record?');" runat="server">delete</asp:LinkButton>
-                                <asp:LinkButton CommandName="mysave" ValidationGroup="valedit" ID="btnsave" Visible="false" runat="server">save</asp:LinkButton>
-                                <asp:LinkButton CommandName="mycancel" ID="btncancel" Visible="false" runat="server">cancel</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-warning" CommandName="myedit" ID="btnedit" runat="server">edit</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-danger" CommandName="mydelete" ID="btndelete" OnClientClick="return confirm('delete this record?');" runat="server">delete</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-success" CommandName="mysave" ValidationGroup="valedit" ID="btnsave" Visible="false" runat="server">save</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-danger" CommandName="mycancel" ID="btncancel" Visible="false" runat="server">cancel</asp:LinkButton>
                                 <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                 <asp:Label ID="lbliid" Visible="false" runat="server" Text='<%# Bind("IID") %>'></asp:Label>
                             </ItemTemplate>

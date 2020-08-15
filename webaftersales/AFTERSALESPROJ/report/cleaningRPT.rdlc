@@ -39,7 +39,6 @@
                             <TextRun>
                               <Value>Item</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>Underline</TextDecoration>
                               </Style>
@@ -53,7 +52,6 @@
                       <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -75,7 +73,6 @@
                             <TextRun>
                               <Value>Location</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>Underline</TextDecoration>
                               </Style>
@@ -89,7 +86,6 @@
                       <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -111,7 +107,6 @@
                             <TextRun>
                               <Value>Area (sqm)</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>Underline</TextDecoration>
                               </Style>
@@ -125,7 +120,6 @@
                       <rd:DefaultName>Textbox5</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -147,7 +141,6 @@
                             <TextRun>
                               <Value>Unit Price</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>Underline</TextDecoration>
                               </Style>
@@ -161,7 +154,6 @@
                       <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -183,7 +175,6 @@
                             <TextRun>
                               <Value>Qty</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>Underline</TextDecoration>
                               </Style>
@@ -197,7 +188,6 @@
                       <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -219,7 +209,6 @@
                             <TextRun>
                               <Value>Total Amount</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>Underline</TextDecoration>
                               </Style>
@@ -233,7 +222,6 @@
                       <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -247,7 +235,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.46771cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -260,7 +248,7 @@
                             <TextRun>
                               <Value>=RowNumber("DataSet1")</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -272,7 +260,6 @@
                       <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -294,7 +281,7 @@
                             <TextRun>
                               <Value>=Fields!LOCATION.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -304,7 +291,6 @@
                       <rd:DefaultName>LOCATION</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -326,7 +312,7 @@
                             <TextRun>
                               <Value>=Fields!AREA.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -338,7 +324,6 @@
                       <rd:DefaultName>AREA</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -360,7 +345,7 @@
                             <TextRun>
                               <Value>=Fields!UNITPRICE.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -372,7 +357,6 @@
                       <rd:DefaultName>UNITPRICE</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -394,7 +378,7 @@
                             <TextRun>
                               <Value>=Fields!QTY.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -406,7 +390,6 @@
                       <rd:DefaultName>QTY</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -428,7 +411,7 @@
                             <TextRun>
                               <Value>=FORMAT(Fields!TOTALAMOUNT.Value,"N2")</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -440,7 +423,6 @@
                       <rd:DefaultName>TOTALAMOUNT</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -454,7 +436,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.3175cm</Height>
+              <Height>0.23812cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -480,7 +462,7 @@
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -512,6 +494,7 @@
                             <TextRun>
                               <Value>TOTAL NET AMOUNT WITHOUT VAT             </Value>
                               <Style>
+                                <FontSize>14pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -551,7 +534,7 @@
                             <TextRun>
                               <Value>="PHP "+FORMAT(Sum(Fields!TOTALAMOUNT.Value, "DataSet1"),"N2")</Value>
                               <Style>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>14pt</FontSize>
                                 <FontWeight>ExtraBold</FontWeight>
                                 <TextDecoration>Underline</TextDecoration>
                               </Style>
@@ -608,7 +591,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>3.69041cm</Top>
-        <Height>2.1525cm</Height>
+        <Height>1.94083cm</Height>
         <Width>19.05cm</Width>
         <Style>
           <Border>
@@ -665,7 +648,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>2.42583in</Top>
+        <Top>2.37583in</Top>
         <Height>0.25in</Height>
         <Width>1.48958in</Width>
         <ZIndex>2</ZIndex>
@@ -707,7 +690,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>2.42583in</Top>
+        <Top>2.37583in</Top>
         <Left>1.55903in</Left>
         <Height>0.42708in</Height>
         <Width>3.48958in</Width>
@@ -740,7 +723,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>2.92583in</Top>
+        <Top>2.87583in</Top>
         <Height>0.25in</Height>
         <Width>1.48958in</Width>
         <ZIndex>4</ZIndex>
@@ -772,7 +755,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>2.92583in</Top>
+        <Top>2.87583in</Top>
         <Left>1.55903in</Left>
         <Height>0.25in</Height>
         <Width>3.48958in</Width>
@@ -804,7 +787,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>3.26333in</Top>
+        <Top>3.21333in</Top>
         <Height>0.25in</Height>
         <Width>1.48958in</Width>
         <ZIndex>6</ZIndex>
@@ -835,7 +818,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>3.24944in</Top>
+        <Top>3.19944in</Top>
         <Left>1.55903in</Left>
         <Height>0.40625in</Height>
         <Width>5.10972in</Width>
@@ -952,7 +935,7 @@
                 <Value>="Thank you for letting us serve you. Please find herewith our quotation for the &lt;b&gt;"+Parameters!note2.Value+"&lt;/b&gt; for your requirements on your residence."</Value>
                 <MarkupType>HTML</MarkupType>
                 <Style>
-                  <FontSize>8pt</FontSize>
+                  <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -983,7 +966,7 @@
               <TextRun>
                 <Value>="Dear "+Parameters!note1.Value</Value>
                 <Style>
-                  <FontSize>8pt</FontSize>
+                  <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1006,7 +989,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.65569in</Height>
+    <Height>3.60569in</Height>
     <Style />
   </Body>
   <Width>7.5in</Width>

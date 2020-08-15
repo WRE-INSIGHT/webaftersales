@@ -45,10 +45,10 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton CommandName="myedit" ID="btnedit" runat="server">edit</asp:LinkButton>
-                                <asp:LinkButton CommandName="mydelete" ID="btndelete" OnClientClick="return confirm('delete this record?');" runat="server">delete</asp:LinkButton>
-                                <asp:LinkButton CommandName="mysave" ValidationGroup="valedit" ID="btnsave" Visible="false" runat="server">save</asp:LinkButton>
-                                <asp:LinkButton CommandName="mycancel" ID="btncancel" Visible="false" runat="server">cancel</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-warning" CommandName="myedit" ID="btnedit" runat="server">edit</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-danger" CommandName="mydelete" ID="btndelete" OnClientClick="return confirm('delete this record?');" runat="server">delete</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-success" CommandName="mysave" ValidationGroup="valedit" ID="btnsave" Visible="false" runat="server">save</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-danger" CommandName="mycancel" ID="btncancel" Visible="false" runat="server">cancel</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="QUOTATION NO.">
@@ -70,8 +70,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" CommandName="myitem" runat="server">items</asp:LinkButton>
-                                <asp:LinkButton ID="LinkButton2" CommandName="myreport" runat="server">report</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-primary" ID="LinkButton1" CommandName="myitem" runat="server">items</asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-default" ID="LinkButton2" CommandName="myreport" runat="server">report</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

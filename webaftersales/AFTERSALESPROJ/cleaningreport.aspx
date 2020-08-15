@@ -9,9 +9,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>Cleaning Form</strong></h3>
+        <h3><strong>Cleaning Proposal Form</strong></h3>
         <div class="navbar-right">
-            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/cleaningpage.aspx">back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-default" OnClick="LinkButton1_Click">back</asp:LinkButton>
         </div>
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
@@ -23,7 +23,7 @@
     </asp:SqlDataSource>
     Dear<asp:TextBox ID="tboxnote1" runat="server" ></asp:TextBox><br />
     Thank you for letting us serve you. Please find herewith our quotation for the
-    <asp:TextBox ID="tboxnote2"  runat="server"></asp:TextBox>
+    <asp:TextBox ID="tboxnote2" Width="300"  runat="server"></asp:TextBox>
     for your requirements on your residence.<br /><br />
     <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary" OnClick="LinkButton2_Click">refresh report</asp:LinkButton><br />
     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="800px" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
