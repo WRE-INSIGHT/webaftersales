@@ -89,7 +89,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
 
                     string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from cleaningitem) "+
-                        " insert into cleaningitem (id,iid,location,area,unitprice,qty,totalamount)values(@id,@iid,@location,@area,@unitprice,@qty,cast(@unitprice as decimal)*cast(@qty as decimal))";
+                        " insert into cleaningitem (id,iid,location,area,unitprice,qty,totalamount)values(@id,@iid,@location,@area,@unitprice,@qty,cast(@unitprice as decimal(10,2))*cast(@qty as decimal(10,2)))";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
@@ -217,7 +217,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
            try
             {
-                string str = "update cleaningitem set location=@location,area=@area,unitprice=@unitprice,qty=@qty,totalamount=cast(isnull(@qty,0) as decimal)*cast(isnull(@unitprice,0) as decimal)  where id = @id";
+                string str = "update cleaningitem set location=@location,area=@area,unitprice=@unitprice,qty=@qty,totalamount=cast(isnull(@qty,0) as decimal(10,2))*cast(isnull(@unitprice,0) as decimal(10,2))  where id = @id";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
