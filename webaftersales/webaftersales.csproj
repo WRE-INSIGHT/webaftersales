@@ -300,6 +300,7 @@
     <Compile Include="AFTERSALESPROJ\contactusPage.aspx.designer.cs">
       <DependentUpon>contactusPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\dal\ConnectionString.cs" />
     <Compile Include="AFTERSALESPROJ\dal\qukno.cs" />
     <Compile Include="AFTERSALESPROJ\dal\quknoparts.cs" />
     <Compile Include="AFTERSALESPROJ\dal\requkno.cs" />

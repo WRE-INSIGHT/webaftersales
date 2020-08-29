@@ -9,6 +9,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -18,6 +19,19 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (!IsPostBack)
             {
+                int port = HttpContext.Current.Request.Url.Port;
+                switch (port)
+                {
+                    case 8083:
+                        server1.Checked = true;
+                        break;
+                    case 8082:
+                        server2.Checked = true;
+                        break;
+                    default:
+                        server1.Checked = true;
+                        break;
+                }
                 if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
                 {
                     usernametbox.Text = Request.Cookies["UserName"].Value;
@@ -37,10 +51,19 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
+                if (server1.Checked)
+                {
+                    ConnectionString.getConnectionString("server1");
+                    ConnectionString.getConnectionString1("server1");
+                }
+                else
+                {
+                    ConnectionString.getConnectionString("server2");
+                    ConnectionString.getConnectionString1("server2");
+                }
+                string cs = ConnectionString.sqlconstr();
 
-
-
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+        
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();

@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="container">
-        <%--    <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhplogin.aspx" runat="server">Daily Health Profile</asp:LinkButton><br />--%>
+            <%--    <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhplogin.aspx" runat="server">Daily Health Profile</asp:LinkButton><br />--%>
             <div class="row">
                 <div class="col-sm-4">
                     <div class="container">
@@ -30,6 +30,12 @@
                             Not registered yet?
                             <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Blue" NavigateUrl="~/AFTERSALESPROJ/SignupPage.aspx">Sign Up here</asp:HyperLink>
                         </p>
+                        <div class="well">
+                            <strong>Choose data source</strong>
+                            <br />
+                            <asp:RadioButton ID="server1" GroupName="con" CssClass="text-success" Text="Server 1" runat="server" />&nbsp;&nbsp;
+                    <asp:RadioButton ID="server2" Text="Server 2" CssClass="text-success" GroupName="con" runat="server" />
+                        </div>
                         <blockquote>
                             <div class="form-group">
                                 <div class="form-group">
@@ -79,10 +85,10 @@
             </div>
         </div>
         <footer class="container-fluid text-center">
-                <br />
-                <br />
-                <br />
-                <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
+            <br />
+            <br />
+            <br />
+            <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
         </footer>
 
     </form>
