@@ -35,8 +35,8 @@ namespace webaftersales.AFTERSALESPROJ.dal
                     " QTY," +
                     " NETAMOUNT AS[NET AMOUNT]" +
                     " from partstb where iid = @iid";
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+       
+            using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
             {
                 using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                 {

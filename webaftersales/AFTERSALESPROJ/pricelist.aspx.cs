@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -33,6 +34,14 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
+
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -57,9 +66,9 @@ namespace webaftersales.AFTERSALESPROJ
                          " description like @key or" +
                          " articleno like @key or unit like @key or" +
                          " specification like @key";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+           
                 {
-                    using (SqlConnection sqlcon = new SqlConnection(cs))
+                    using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                         {
@@ -162,8 +171,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "delete from accessoriestb where id=@id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+           
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -187,8 +196,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "update accessoriestb set ARTICLENO = @article,SPECIFICATION =@specification,DESCRIPTION=@description,UNIT=@unit,UNITPRICE=@unitprice,remarks=@remarks  where id=@id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+           
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -224,8 +233,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from accessoriestb) insert into accessoriestb (id,ARTICLENO,SPECIFICATION,DESCRIPTION,UNIT,UNITPRICE,remarks)values(@id,@article,@specification,@description,@unit,@unitprice,@remarks)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+           
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

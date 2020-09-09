@@ -32,7 +32,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         protected void searcbtn_Click(object sender, EventArgs e)
         {
             Session["currentsearch1"] = servicingkeytbox.Text;
@@ -79,8 +85,8 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getdetails(string callin)
         {
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+           
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,PROFILE_FINISH from callintb as a " +
                          "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +

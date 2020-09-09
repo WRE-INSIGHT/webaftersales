@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -21,7 +22,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
-
+                        SqlDataSource1.ConnectionString = sqlconstr;
                         loadparameter();
                     }
                 }
@@ -35,9 +36,17 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void loadparameter()
         {
+
+
             ReportViewer1.LocalReport.EnableExternalImages = true;
             string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/CLEANING/" + Session["cleaningqno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
             string noted = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/CLEANING/" + Session["cleaningqno"].ToString() + "/signature/NOTEDBY.jpg")).AbsoluteUri;
@@ -68,7 +77,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             string preparedby="", preparedbytitle="", notedby="", notedbytitle = "",note1="",note2="";
 
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+         
             try
             {
                 string str = " declare @preparedby as varchar(max) = (select FIRSTNAME+' '+LASTNAME from accttb where id = (select preparedby from cleaningtbl where id = @iid))	" +
@@ -76,7 +85,7 @@ namespace webaftersales.AFTERSALESPROJ
 " declare @notedby as varchar(max) = (select FIRSTNAME+' '+LASTNAME from accttb where id = (select notedby from cleaningtbl where id = @iid))		" +
 " declare @notedbytitle as varchar(max) = (select TITLE from accttb where id = (select notedby from cleaningtbl where id = @iid))					" +
 " select @preparedby,@preparedbytitle,@notedby,@notedbytitle,note1,note2 from cleaningtbl where id = @iid																						";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -130,9 +139,9 @@ namespace webaftersales.AFTERSALESPROJ
         protected void LinkButton2_Click(object sender, EventArgs e)
         {try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+             
                 string str = "update cleaningtbl set note1=@note1,note2=@note2 where id = @id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

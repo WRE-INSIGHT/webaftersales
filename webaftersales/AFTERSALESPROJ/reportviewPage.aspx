@@ -33,7 +33,7 @@
         </div>
         <br />
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server"  SelectCommand="
                select kno,itemno,location,specification,reportid,[description],assessment from tblassessment as a
 left join reporttb as b
 on a.reportid = b.id where (b.[SID] = @SID)">
@@ -41,7 +41,7 @@ on a.reportid = b.id where (b.[SID] = @SID)">
                 <asp:SessionParameter Name="SID" SessionField="SID" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="SELECT * FROM [SERVICINGTB] WHERE ([ID] = @ID)">
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" SelectCommand="SELECT * FROM [SERVICINGTB] WHERE ([ID] = @ID)">
             <SelectParameters>
                 <asp:SessionParameter Name="ID" SessionField="SID" Type="Int32" />
             </SelectParameters>

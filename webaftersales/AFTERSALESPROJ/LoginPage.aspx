@@ -28,7 +28,7 @@
                         <h1>Sign in</h1>
                         <p>
                             Not registered yet?
-                            <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Blue" NavigateUrl="~/AFTERSALESPROJ/SignupPage.aspx">Sign Up here</asp:HyperLink>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Sign Up</asp:LinkButton>
                         </p>
                         <div class="well">
                             <strong>Choose data source</strong>

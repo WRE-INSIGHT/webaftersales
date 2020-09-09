@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using Microsoft.Reporting.WebForms;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -53,7 +54,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
 
         protected void GridView2_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {

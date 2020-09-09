@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -35,14 +36,20 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getdetails()
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
              
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     string str = "select wdwloc AS LOCATION, ITEM,kno AS K#, FORMAT(netprice,'N2') AS [NET PRICE] from itemtb where id = @iid ";
 
@@ -88,9 +95,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 DataSet ds = new DataSet();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     string str = "select ID, " +
                    "       SPECIFICATION," +
@@ -125,9 +132,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 DataSet ds = new DataSet();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     string str = "select * from partstb where iid = @iid";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -178,7 +185,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = "  declare @id as integer = (select isnull(max(id),0)+1 from partstb) " +
                   "  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount) " +
                   "  values(@id, @iid, @articleno, @description, @markup, @unitprice, @qty, @netamount)" +
@@ -186,7 +193,7 @@ namespace webaftersales.AFTERSALESPROJ
                              " update itemtb set netprice = @x where id = @iid " +
                              " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
                              " update [QUOTATIONTB] set netprice = @y where aseno = @aseno ";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
 
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -355,13 +362,13 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = "delete from partstb where id = @id"+
                              " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
                              " update itemtb set netprice = @x where id = @iid " +
                              " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
                              " update [QUOTATIONTB] set netprice = @y where aseno = @aseno "; ;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -387,13 +394,13 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = " update partstb set articleno=@articleno, description= @description, markup = @markup, unitprice = @unitprice, qty = @qty, netamount = @netamount where id = @id" +
                              " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
                              " update itemtb set netprice = @x where id = @iid " +
                              " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
                              " update [QUOTATIONTB] set netprice = @y where aseno = @aseno ";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

@@ -50,6 +50,13 @@ namespace webaftersales.AFTERSALESPROJ
                 return ConnectionString.sqlconstr1();
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getprovinces()
         {
             try
@@ -78,8 +85,8 @@ namespace webaftersales.AFTERSALESPROJ
                
                     DataSet ds = new DataSet();
                     ds.Clear();
-                    string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                    using (SqlConnection sqlcon = new SqlConnection(cs))
+                    
+                    using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                     {
                         using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                         {
@@ -218,7 +225,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string find = " select * from RequestCollectionApproval where cin = @cin";
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from RequestCollectionApproval)" +
                                 " insert into RequestCollectionApproval     "+
@@ -235,7 +242,7 @@ namespace webaftersales.AFTERSALESPROJ
                                 " , ''                                "+
                                 " , ''                             "+
                                 " , '')                           ";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     bool bol = false;

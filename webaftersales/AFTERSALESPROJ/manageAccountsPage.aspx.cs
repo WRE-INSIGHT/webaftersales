@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -36,14 +37,21 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getrequestdata()
         {
             try
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+       
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = sqlcon.CreateCommand();
@@ -77,8 +85,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+       
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = sqlcon.CreateCommand();
@@ -126,7 +134,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand("delete from ACCTTB where id = '" + ViewState["id"].ToString() + "'", sqlcon))
                     {
@@ -154,8 +162,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+       
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -271,7 +279,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand("UPDATE ACCTTB SET PID = '" + pid + "' where id = '" + ViewState["id"].ToString() + "'", sqlcon))
                     {
@@ -310,7 +318,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand("delete from ACCTTB where id = '" + id + "'", sqlcon))
                     {

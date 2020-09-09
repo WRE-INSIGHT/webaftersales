@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -16,7 +17,13 @@ namespace webaftersales.AFTERSALESPROJ
         {
 
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             if (IsValid)
@@ -52,8 +59,8 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+               using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(qry, sqlcon))
                     {

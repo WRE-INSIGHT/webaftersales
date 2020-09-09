@@ -20,8 +20,8 @@ namespace webaftersales.AFTERSALESPROJ.dal
         public static List<scheduledal> GetScheduleByCin(string cin,string pid,string useracct)
         {
             List<scheduledal> li = new List<scheduledal>();
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+      
+            using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
             {
                 string str;
                 if (useracct == "Admin")

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ.quotationforms
 {
@@ -42,6 +43,13 @@ namespace webaftersales.AFTERSALESPROJ.quotationforms
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -55,9 +63,9 @@ namespace webaftersales.AFTERSALESPROJ.quotationforms
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -67,13 +68,20 @@ namespace webaftersales.AFTERSALESPROJ
                 return Session["KNO"].ToString();
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getdata()
         {
             try
             {
                 string str = "SELECT * FROM [TBLassessment] WHERE ([REPORTID] = @REPORTID)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -151,8 +159,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "update [TBLassessment] set assessment=@assessment,description=@description WHERE ([ID] = @ID)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -178,8 +186,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "delete from [TBLassessment] WHERE ([ID] = @ID)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -210,8 +218,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment) insert into [TBLassessment] (id,reportid,assessment,description)values(@id,@reportid,@assessment,@description)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

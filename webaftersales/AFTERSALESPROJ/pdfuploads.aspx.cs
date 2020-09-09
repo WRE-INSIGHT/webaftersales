@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -54,6 +55,13 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return Session["aseno"].ToString();
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private void errorrmessage(string message)
@@ -109,12 +117,12 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 bool has;
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from pdftable) " +
                     "insert into pdftable (id,aseno,filename,filepath) values(@id,@aseno,@filename,@filepath)";
 
                 string find = "select * from pdftable where aseno  = @aseno and filename  = @filename";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))
                     {
@@ -137,7 +145,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                 if (has == false)
                 {
-                    using (SqlConnection sqlcon = new SqlConnection(cs))
+                    using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                         {
@@ -168,9 +176,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "select * from pdftable where aseno = @aseno";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -206,9 +214,9 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 try
                 {
-                    string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                    
                     string str = "delete from pdftable where aseno = @aseno and filename = @filename";
-                    using (SqlConnection sqlcon = new SqlConnection(cs))
+                    using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                         {

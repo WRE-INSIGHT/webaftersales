@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -32,6 +33,13 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return Session["columnname"].ToString();
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         public static void UploadImage(string imageData, string fileNameWitPath)
@@ -76,8 +84,8 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(qry, sqlcon))
                     {

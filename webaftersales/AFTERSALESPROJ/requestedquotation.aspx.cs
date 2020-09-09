@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -30,6 +31,13 @@ namespace webaftersales.AFTERSALESPROJ
             else
             {
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private void errorrmessage(string message)
@@ -69,8 +77,8 @@ namespace webaftersales.AFTERSALESPROJ
                     othertbox.Text = "0";
                 }
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     bool duplicate;
@@ -130,8 +138,8 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon1 = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon1 = new SqlConnection(sqlconstr))
                 {
                     sqlcon1.Open();
                     string finditem = "select * into #tbl from(select distinct iid from                   " +
@@ -153,7 +161,7 @@ namespace webaftersales.AFTERSALESPROJ
                                                     " insert into itemtb(id, aseno, ITEM, kno, wdwloc,kid)" +
                                                     " values(@itemid, @aseno, @item, @kno, @loc, @kid)" +
                                                     " select @itemid";
-                                using (SqlConnection sqlcon = new SqlConnection(cs))
+                                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                                 {
                                     using (SqlCommand cmd = new SqlCommand(insertitem, sqlcon))
                                     {
@@ -176,7 +184,7 @@ namespace webaftersales.AFTERSALESPROJ
 
 
                                 string selectparts = "select * from  quotationrequesttbl as b where b.iid = @kid";
-                                using (SqlConnection selectpartssqlcon = new SqlConnection(cs))
+                                using (SqlConnection selectpartssqlcon = new SqlConnection(sqlconstr))
                                 {
                                     using (SqlCommand selectpartscmd = new SqlCommand(selectparts, selectpartssqlcon))
                                     {
@@ -188,7 +196,7 @@ namespace webaftersales.AFTERSALESPROJ
                                             {
                                                 string insertparts = " declare @partsid as integer = (select isnull(max(id),0)+1 from partstb) " +
                                                         " insert into partstb (id, iid, articleno, description, unitprice, qty) values (@partsid,@iid,@articleno,@description,@unitprice,@qty)";
-                                                using (SqlConnection insertpartssqlcon = new SqlConnection(cs))
+                                                using (SqlConnection insertpartssqlcon = new SqlConnection(sqlconstr))
                                                 {
                                                     using (SqlCommand insertpartscmd = new SqlCommand(insertparts, insertpartssqlcon))
                                                     {

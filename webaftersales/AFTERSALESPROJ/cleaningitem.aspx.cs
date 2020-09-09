@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -49,14 +50,21 @@ namespace webaftersales.AFTERSALESPROJ
                 return Session["cleaningid"].ToString();
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void loaddata()
         {
             try
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
    
                     string str = "select * from cleaningitem where IID=@iid";
@@ -84,8 +92,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
 
                     string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from cleaningitem) "+
@@ -180,8 +188,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     string str = "delete from cleaningitem where id = @id";
@@ -218,8 +226,8 @@ namespace webaftersales.AFTERSALESPROJ
            try
             {
                 string str = "update cleaningitem set location=@location,area=@area,unitprice=@unitprice,qty=@qty,totalamount=cast(isnull(@qty,0) as decimal(10,2))*cast(isnull(@unitprice,0) as decimal(10,2))  where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))

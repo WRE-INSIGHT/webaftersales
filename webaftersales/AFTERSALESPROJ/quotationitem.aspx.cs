@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -40,13 +41,19 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getdetails()
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     string str = "select ID,ASENO AS ASE#,NETPRICE ,QDATE AS [DATE],OTHERCHARGES,ACTUALPRICE,PARTICULAR,MOBILIZATION,FOC from quotationtb where aseno=@aseno";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -101,8 +108,8 @@ namespace webaftersales.AFTERSALESPROJ
                 string str = "declare @id as integer = (select isnull(max(id),0)+1 from itemtb)" +
                           "   insert into itemtb(id, aseno, ITEM, kno, wdwloc)" +
                           "  values(@id, @aseno, @item, @kno, @loc)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -197,8 +204,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "delete from  itemtb where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -222,8 +229,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "update itemtb set WDWLOC=@location,item=@itemno,kno=@kno where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -263,8 +270,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "delete from  partstb where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -383,8 +390,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "update quotationtb set particular=@particular,othercharges=@othercharges,netprice=@netprice,actualprice=@actualprice,mobilization=@mobilization,foc=@foc where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

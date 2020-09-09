@@ -16,7 +16,7 @@
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="SELECT [ID], [IID], [LOCATION], [AREA], [UNITPRICE], [QTY], [TOTALAMOUNT] FROM [CLEANINGITEM] WHERE ([IID] = @IID)">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" SelectCommand="SELECT [ID], [IID], [LOCATION], [AREA], [UNITPRICE], [QTY], [TOTALAMOUNT] FROM [CLEANINGITEM] WHERE ([IID] = @IID)">
         <SelectParameters>
             <asp:SessionParameter Name="IID" SessionField="cleaningid" Type="String" />
         </SelectParameters>

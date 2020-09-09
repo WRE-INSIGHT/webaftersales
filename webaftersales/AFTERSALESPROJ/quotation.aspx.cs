@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -34,6 +35,13 @@ namespace webaftersales.AFTERSALESPROJ
             else
             {
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private string sid
@@ -65,8 +73,8 @@ namespace webaftersales.AFTERSALESPROJ
                           "   format(NETPRICE, 'n2') as NETPRICE," +
                           "   format(Actualprice, 'n2') as [ACTUAL PRICE],LOCK" +
                           "   from quotationtb where sid = @sid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -104,8 +112,8 @@ namespace webaftersales.AFTERSALESPROJ
                     othertbox.Text = "0";
                 }
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     bool duplicate;
@@ -309,8 +317,8 @@ namespace webaftersales.AFTERSALESPROJ
                                 "      ,[FOC]								  " +
                                 "  FROM [QUOTATIONTB] where id = @myid 		  " +
                                 " UPDATE QUOTATIONTB SET LOCK = '1' WHERE ID = @myid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -338,8 +346,8 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon1 = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon1 = new SqlConnection(sqlconstr))
                 {
                     sqlcon1.Open();
                     string finditem = "select * from itemtb where aseno = @aseno";
@@ -360,7 +368,7 @@ namespace webaftersales.AFTERSALESPROJ
                                                     " select @itemid";
                                 //                                "  declare @partsid as integer = (select isnull(max(id),0)+1 from partstb) " +
                                 //"  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount) select @partsid,@itemid,articleno, description, markup, unitprice, qty, netamount from partstb where iid = @iid ";
-                                using (SqlConnection sqlcon = new SqlConnection(cs))
+                                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                                 {
                                     using (SqlCommand cmd = new SqlCommand(insertitem, sqlcon))
                                     {
@@ -385,7 +393,7 @@ namespace webaftersales.AFTERSALESPROJ
                                 }
 
                                 string selectparts = "select * from  partstb where iid = @kid";
-                                using (SqlConnection selectpartssqlcon = new SqlConnection(cs))
+                                using (SqlConnection selectpartssqlcon = new SqlConnection(sqlconstr))
                                 {
                                     using (SqlCommand selectpartscmd = new SqlCommand(selectparts, selectpartssqlcon))
                                     {
@@ -397,7 +405,7 @@ namespace webaftersales.AFTERSALESPROJ
                                             {
                                                 string insertparts = " declare @partsid as integer = (select isnull(max(id),0)+1 from partstb) " +
                                                         " insert into partstb (id, iid, articleno, description, markup, unitprice, qty, netamount)  values (@partsid,@iid,@articleno,@description,@markup,@unitprice,@qty,@netamount)";
-                                                using (SqlConnection insertpartssqlcon = new SqlConnection(cs))
+                                                using (SqlConnection insertpartssqlcon = new SqlConnection(sqlconstr))
                                                 {
                                                     using (SqlCommand insertpartscmd = new SqlCommand(insertparts, insertpartssqlcon))
                                                     {
@@ -442,8 +450,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 string find = "select * from quotationtb where not id = @id and aseno = @aseno";
                 string str = " update quotationtb set accepted=@accepted, aseno=@aseno, qdate =@qdate where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     bool x;
@@ -506,8 +514,8 @@ namespace webaftersales.AFTERSALESPROJ
                     " delete from partstb where iid in (select id from itemtb where aseno = @aseno) " +
                     " delete from itemtb where aseno = @aseno" +
                     " update quotationtb set lock=0 where aseno = replace(@aseno,'(rev)','')";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))

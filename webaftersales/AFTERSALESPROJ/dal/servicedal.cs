@@ -33,9 +33,8 @@ namespace webaftersales.AFTERSALESPROJ.dal
         {
 
             List<servicedal> li = new List<servicedal>();
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+   
+            using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
             {
                 string str;
                 if (useracct == "Admin")

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -49,6 +50,13 @@ namespace webaftersales.AFTERSALESPROJ
                 return Session["CIN"].ToString();
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -63,8 +71,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+             using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
 
                     string str = "select [ID],[CIN],[SID],[QNO],qdate,[PREPAREDBY],[NOTEDBY] from cleaningtbl where cin=@cin and sid=@sid";
@@ -95,8 +103,8 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     DataSet ds = new DataSet();
                     ds.Clear();
-                    string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                    using (SqlConnection sqlcon = new SqlConnection(cs))
+                    
+                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                     {
                         GridView1.SelectedIndex = -1;
                         string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from [CLEANINGtbl]) " +
@@ -198,8 +206,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+             using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     string str = "delete from cleaningtbl where id = @id";
@@ -236,8 +244,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 bool isexist;
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+             using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     string str = "select * from cleaningtbl where qno = @qno and not id = @id";

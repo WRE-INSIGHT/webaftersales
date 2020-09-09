@@ -101,6 +101,13 @@ namespace webaftersales.AFTERSALESPROJ
                 return ConnectionString.sqlconstr1();
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getcl()
         {
         
@@ -145,8 +152,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 tb = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
 
                     sqlcon.Open();
@@ -302,8 +309,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment) insert into [TBLassessment] (id,reportid,stockno,assessment,description)values(@id,@reportid,@stockno,@assessment,@description)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

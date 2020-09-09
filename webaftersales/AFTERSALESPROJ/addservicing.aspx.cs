@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -52,14 +53,21 @@ namespace webaftersales.AFTERSALESPROJ
                 return Session["SID"].ToString();
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getdata()
         {
             try
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     GridView1.SelectedIndex = -1;
                     string str = "  select a.ID, " +
@@ -113,8 +121,8 @@ namespace webaftersales.AFTERSALESPROJ
                             " servicing) +1)" +
                             " FROM SERVICINGTB where cin = @cin order by x DESC ) AS TBL" +
                             " update callintb set [status] = (SELECT  case when [status] is null then '' else [status] end FROM #TBL) where cin = @cin";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -144,8 +152,8 @@ namespace webaftersales.AFTERSALESPROJ
                                      " update servicingtb set[status] = 'Reschedule',statusdate = @sdate where id = @sss" +
                                      " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks,plateno, status,sorting)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks,@plateno, 'Scheduled',@sorting)";
                 string str2 = "select isnull(count(id),0)+1 from servicingtb where cin = @cin";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str2, sqlcon))
                     {
@@ -319,8 +327,8 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getdetails(string callin)
         {
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+           
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,PROFILE_FINISH from callintb as a " +
                          "left join kmdidata.dbo.ADDENDUM_TO_CONTRACT_TB as b " +
@@ -347,8 +355,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 string str = "delete from servicingtb where id  = @id";
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -373,8 +381,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks,plateno=@plateno,sorting=@sorting  where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

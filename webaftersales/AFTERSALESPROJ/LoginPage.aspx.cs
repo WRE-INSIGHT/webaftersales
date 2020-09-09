@@ -134,6 +134,21 @@ namespace webaftersales.AFTERSALESPROJ
                 errorrmessage(ex.Message.ToString());
             }
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            if (server1.Checked)
+            {
+                ConnectionString.getConnectionString("server1");
+                ConnectionString.getConnectionString1("server1");
+            }
+            else
+            {
+                ConnectionString.getConnectionString("server2");
+                ConnectionString.getConnectionString1("server2");
+            }
+            Response.Redirect("~/AFTERSALESPROJ/SignupPage.aspx");
+        }
         //public string Encrypt(string clearText)
         //{
         //    string EncryptionKey = "MAKV2SPBNI99212";

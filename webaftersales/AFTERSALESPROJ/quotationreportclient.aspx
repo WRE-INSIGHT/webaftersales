@@ -24,7 +24,7 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                 SelectCommand="select 
   a.ASENO,a.ITEM,a.KNO,a.WDWLOC,b.UNITPRICE,b.QTY,b.NETAMOUNT,b.MARKUP,b.ARTICLENO,b.DESCRIPTION from ITEMTB as a
   inner join partstb as b on a.id = b.iid WHERE (a.[ASENO] = @ASENO)">
@@ -32,14 +32,14 @@
                     <asp:SessionParameter Name="ASENO" SessionField="aseno" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
-                SelectCommand="select ASENO,QDATE,PARTICULAR,FORMAT(OTHERCHARGES,'n2') as OTHERCHARGES,format(NETPRICE,'n2') as NETPRICE,format(ACTUALPRICE,'n2') as ACTUALPRICE,format(MOBILIZATION,'n2') AS MOBILIZATION,FOC, TELNO,PREPAREDBY,APPROVEDBY,ACCEPTEDBY from quotationtb as a
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                                SelectCommand="select ASENO,QDATE,PARTICULAR,FORMAT(OTHERCHARGES,'n2') as OTHERCHARGES,format(NETPRICE,'n2') as NETPRICE,format(ACTUALPRICE,'n2') as ACTUALPRICE,format(MOBILIZATION,'n2') AS MOBILIZATION,FOC, TELNO,PREPAREDBY,APPROVEDBY,ACCEPTEDBY from quotationtb as a
 LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
                 <SelectParameters>
                     <asp:SessionParameter Name="ASENO" SessionField="aseno" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
                 SelectCommand="select * from notetb"></asp:SqlDataSource>
 
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" PostBackUrl="~/AFTERSALESPROJ/quotationreportclientsignature.aspx"  runat="server">Please Sign here</asp:LinkButton>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -64,14 +65,21 @@ namespace webaftersales.AFTERSALESPROJ
                 return (DataTable)ViewState["tbl"];
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getdata()
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+              
                 DataTable ds = new DataTable();
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     string str = "select * from reporttb where sid = @sid";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -208,11 +216,11 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+              
                 string str = "  declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from [ITEMTB])" +
                              "  insert into[ITEMTB] (id, aseno, item, kno, wdwloc, kid)values(@id, @aseno, @itemno, @kno, @loc, @kid)";
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
 
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))

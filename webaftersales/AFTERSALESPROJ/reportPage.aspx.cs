@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -35,13 +36,20 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getstatus()
         {
             try
             {
                 string str = "select [status],REMARKS,CIN from servicingtb where id = @sid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -85,8 +93,8 @@ namespace webaftersales.AFTERSALESPROJ
                 DataSet ds = new DataSet();
                 ds.Clear();
                 string str = "select * from reporttb where sid = @sid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -111,8 +119,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = sqlcon.CreateCommand();
@@ -239,8 +247,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,width=@width,height=@height where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -270,8 +278,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "delete from reporttb where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -296,8 +304,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
               
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb) insert into reporttb (sid,id,itemno,kno,location,specification,width,height)values(@sid,@id,@item,@kno,@location,@specification,@width,@height)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -346,8 +354,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = " update servicingtb set [status] = @status,REMARKS=@REMARKS where id = @sid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -378,8 +386,8 @@ namespace webaftersales.AFTERSALESPROJ
                             " servicing) +1)" +
                             " FROM SERVICINGTB where cin = @cin order by x DESC ) AS TBL" +
                             " update callintb set [status] = (SELECT  case when [status] is null then '' else [status] end FROM #TBL) where cin = @cin";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))

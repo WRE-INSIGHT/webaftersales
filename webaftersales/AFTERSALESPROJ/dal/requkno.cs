@@ -44,8 +44,8 @@ namespace webaftersales.AFTERSALESPROJ.dal
                             " ,[WIDTH]			   " +
                             " ,[HEIGHT]			   " +
                             " from [REPORTTB] where SID = @sid";
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+       
+            using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
             {
                 using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                 {

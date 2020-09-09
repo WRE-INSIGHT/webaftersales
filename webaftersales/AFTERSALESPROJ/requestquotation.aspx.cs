@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -36,6 +37,13 @@ namespace webaftersales.AFTERSALESPROJ
             else
             {
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private string iid
@@ -118,9 +126,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            
                 string str = "delete from quotationrequesttbl where id = @id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -144,9 +152,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            
                 string str = "update quotationrequesttbl set articleno=@articleno,description=@description,qty=@qty where id = @id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

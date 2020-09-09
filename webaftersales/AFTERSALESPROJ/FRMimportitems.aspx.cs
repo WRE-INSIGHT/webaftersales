@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -54,14 +55,21 @@ namespace webaftersales.AFTERSALESPROJ
                 return (DataTable)ViewState["tb"];
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getdata()
         {
             try
             {
 
                 tb = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = sqlcon.CreateCommand();
@@ -203,8 +211,8 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void insertrecord(string sid, string kno, string itemno, string location)
         {
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 sqlcon.Open();
                 string qry = " declare @id as integer = (select max(id)+1 from reporttb) " +

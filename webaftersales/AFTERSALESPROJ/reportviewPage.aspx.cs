@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -18,6 +19,10 @@ namespace webaftersales.AFTERSALESPROJ
 
                 if (!IsPostBack)
                 {
+                    
+                    SqlDataSource2.ConnectionString = sqlconstr;
+                    SqlDataSource3.ConnectionString = sqlconstr;
+                    ReportViewer1.LocalReport.Refresh();
                     getparameters();
                     if (Session["link"].ToString() == "s1" || Session["link"].ToString() == "s3")
                     {
@@ -35,7 +40,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
             }
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         protected void ReportViewer1_ReportRefresh(object sender, System.ComponentModel.CancelEventArgs e)
         {
             getparameters();

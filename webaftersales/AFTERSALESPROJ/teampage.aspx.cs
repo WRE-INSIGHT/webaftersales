@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -38,6 +39,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getpersonnel()
         {
             try
@@ -45,8 +53,8 @@ namespace webaftersales.AFTERSALESPROJ
                 GridView1.SelectedIndex = -1;
                 DataSet ds = new DataSet();
                 string str = "select * from tblpersonnel where fullname like @key";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -79,8 +87,8 @@ namespace webaftersales.AFTERSALESPROJ
                                 " on a.PID = b.PID WHERE A.TID = D.TID" +
                                 " FOR XML PATH('')),1,2,'') AS MEMBERS" +
                                 " from TBLteam AS d) as tb where teamname like @key or members like @key";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -151,8 +159,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 string str = "update tblpersonnel set fullname = @fullname, position=@position where pid = @pid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -179,8 +187,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 string str = "delete from tblpersonnel where pid = @pid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -270,8 +278,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 string str = "delete from tblteam where tid =  @tid delete from tblteammember where tid = @tid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -296,8 +304,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 string str = "update servicingtb set teamid = @tid where id = @sid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -323,8 +331,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 string str = "update tblteam set teamname = @teamname where tid = @tid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -347,8 +355,8 @@ namespace webaftersales.AFTERSALESPROJ
 
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLteamMember)" +
                              " insert into TBLteamMember(id, tid, pid)values(@id,@tid,@pid)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -370,8 +378,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 string str = "select a.id,b.fullname from tblteammember as a left join tblpersonnel as b on a.pid = b.pid where tid = @tid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -396,8 +404,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 string str = "select * from tblpersonnel order by fullname asc";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -434,8 +442,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 string str = "delete from TBLteamMember where id = @id";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -462,8 +470,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "declare @id as integer = (select isnull(max(isnull(tid,0)),0)+1 from TBLteam) insert into TBLteam(tid, teamname)values(@id,@teamname)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -489,8 +497,8 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "declare @id as integer = (select isnull(max(isnull(pid,0)),0)+1 from TBLpersonnel) insert into TBLpersonnel(pid, fullname, position)values(@id,@fullname,@position)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

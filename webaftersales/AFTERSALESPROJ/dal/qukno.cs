@@ -22,7 +22,9 @@ namespace webaftersales.AFTERSALESPROJ.dal
                 return knoparts.getparts(this.id);
             }
         }
+    
     }
+   
     public class knumber
     {
         public static List<qukno> getkno(string ase)
@@ -37,8 +39,8 @@ namespace webaftersales.AFTERSALESPROJ.dal
                             " WDWLOC as [WDW / DOOR LOCATION], " +
                             " NETPRICE " +
                             " from itemtb where aseno = @aseno";
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+         
+            using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
             {
                 using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                 {

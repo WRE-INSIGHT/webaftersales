@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -34,6 +35,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -48,8 +56,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataTable tb = new DataTable();
            
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+       
+                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
@@ -98,7 +106,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+       
                 string str = " "+
                     " select [ID]   "+
     ",A.[CIN]                        "+
@@ -116,7 +124,7 @@ namespace webaftersales.AFTERSALESPROJ
     ",[ACCEPTEDBY] " +
      ",[STATUS] " +
     ",FOC from quotationtb AS A LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE B.JO = @jo order by cast(qdate as date) asc";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd=new SqlCommand(str,sqlcon))
                     {

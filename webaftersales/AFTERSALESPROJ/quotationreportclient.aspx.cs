@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -26,8 +27,17 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     getdata();
                 }
-
-
+                SqlDataSource1.ConnectionString = sqlconstr;
+                SqlDataSource2.ConnectionString = sqlconstr;
+                SqlDataSource3.ConnectionString = sqlconstr;
+                ReportViewer1.LocalReport.Refresh();
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private void errorrmessage(string message)
@@ -44,9 +54,9 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Session["PROJECT"] = "";
                 Session["ADDRESS"] = "";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+
                 string str = "select CIN,SID from quotationtb where aseno = @aseno";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))

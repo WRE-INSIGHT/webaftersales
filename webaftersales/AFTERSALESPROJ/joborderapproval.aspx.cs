@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -47,13 +48,20 @@ namespace webaftersales.AFTERSALESPROJ
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getdata()
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+             
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+           using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
@@ -90,9 +98,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+             
                 string str = "select count(id) from [RequestCollectionApproval] where [APPROVED] = '' and [DISAPPROVED] = ''";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+           using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -195,9 +203,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+             
                 string str = " update RequestCollectionApproval set message=@comment," + col + "=getdate(),rstatus=@status where id =@id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+           using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

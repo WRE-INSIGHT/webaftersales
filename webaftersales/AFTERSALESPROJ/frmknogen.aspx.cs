@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using webaftersales.AFTERSALESPROJ.dal;
+
 namespace webaftersales.AFTERSALESPROJ
 {
     public partial class frmknogen : System.Web.UI.Page
@@ -18,12 +20,19 @@ namespace webaftersales.AFTERSALESPROJ
                 getdata();
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getdata()
         {
             DataSet ds = new DataSet();
             ds.Clear();
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString;
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+          
+        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 sqlcon.Open();
                 SqlCommand cmd = new SqlCommand("select ID,KMDI_NO,ITEM_NO,LOCATION FROM KMDI_FABRICATION_TB WHERE ID < 100", sqlcon);

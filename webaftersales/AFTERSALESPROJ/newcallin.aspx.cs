@@ -68,7 +68,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             cleantext(calldate);
@@ -106,8 +112,8 @@ namespace webaftersales.AFTERSALESPROJ
                 errorrmessage("please select a project");
                 return;
             }
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+       
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 try
                 {
@@ -176,8 +182,8 @@ namespace webaftersales.AFTERSALESPROJ
                 errorrmessage("please select a project");
                 return;
             }
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+       
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 try
                 {

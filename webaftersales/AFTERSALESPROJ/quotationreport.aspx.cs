@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -19,6 +20,9 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
+                        SqlDataSource1.ConnectionString = sqlconstr;
+                        SqlDataSource2.ConnectionString = sqlconstr;
+                        SqlDataSource3.ConnectionString = sqlconstr;
                         getparameters();
                         HyperLink1.NavigateUrl= "http://aftersales.kennethandmock.com:8083/webaftersales/AFTERSALESPROJ/quotationreportclient.aspx?aseno=" + aseno;
                         HyperLink1.Text = "http://aftersales.kennethandmock.com:8083/webaftersales//AFTERSALESPROJ/quotationreportclient.aspx?aseno=" + aseno;
@@ -32,6 +36,13 @@ namespace webaftersales.AFTERSALESPROJ
             else
             {
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private void errorrmessage(string message)
@@ -66,7 +77,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ReportViewer1.LocalReport.SetParameters(repparam[i]);
             }
 
-
+            ReportViewer1.LocalReport.Refresh();
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
