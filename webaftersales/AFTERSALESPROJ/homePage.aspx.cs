@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -55,7 +56,13 @@ namespace webaftersales.AFTERSALESPROJ
             Session["currentsearch"] = searchtbox.Text;
             getdata();
         }
-       
+       private string sqlconstr
+        {
+            get
+            {
+              return  ConnectionString.sqlconstr();
+            }
+        }
      
         private void getdata()
         {
@@ -63,8 +70,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = sqlcon.CreateCommand();

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -267,13 +268,20 @@ namespace webaftersales.AFTERSALESPROJ
         {
             getdata();
         }
+        private string sqlconstr1
+        {
+            get
+            {
+                return ConnectionString.sqlconstr1();
+            }
+        }
         private void getdata()
         {
             try
             {
                 GridView1.SelectedIndex = -1;
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+             
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
                 {
                     string field = "(PROJECT_LABEL like @pl OR" +
                 " CLIENTS_NAME like @pl OR" +

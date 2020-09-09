@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -42,12 +43,19 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+        private string sqlconstr1
+        {
+            get
+            {
+                return ConnectionString.sqlconstr1();
+            }
+        }
         private void getprovinces()
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+              
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand("select distinct province from addendum_to_contract_tb order by province asc", sqlcon))
                     {

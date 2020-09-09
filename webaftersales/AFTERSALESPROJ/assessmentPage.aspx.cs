@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -93,10 +94,17 @@ namespace webaftersales.AFTERSALESPROJ
                 }
             }
         }
+        private string sqlconstr1
+        {
+            get
+            {
+                return ConnectionString.sqlconstr1();
+            }
+        }
         private void getcl()
         {
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+        
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
             {
                 try
                 {
