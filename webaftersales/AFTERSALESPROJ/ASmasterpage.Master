@@ -51,6 +51,9 @@
                                 <li>
                                     <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/AFTERSALESPROJ/joborderapproval.aspx">JO Approval</asp:HyperLink>
                                 </li>
+                                   <li>
+                                       <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Trip Ticket</asp:LinkButton>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">

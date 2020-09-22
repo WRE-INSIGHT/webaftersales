@@ -578,6 +578,13 @@
     <Compile Include="AFTERSALESPROJ\teampage.aspx.designer.cs">
       <DependentUpon>teampage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\tripticketreport.aspx.cs">
+      <DependentUpon>tripticketreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\tripticketreport.aspx.designer.cs">
+      <DependentUpon>tripticketreport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\viewimage.aspx.cs">
       <DependentUpon>viewimage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -708,6 +715,7 @@
     <Content Include="AFTERSALESPROJ\signaturePage.aspx" />
     <Content Include="AFTERSALESPROJ\SignupPage.aspx" />
     <Content Include="AFTERSALESPROJ\teampage.aspx" />
+    <Content Include="AFTERSALESPROJ\tripticketreport.aspx" />
     <Content Include="AFTERSALESPROJ\viewimage.aspx" />
     <Content Include="AFTERSALESPROJ\WebForm4.aspx" />
     <Content Include="AFTERSALESPROJ\WebForm5.aspx" />
@@ -801,6 +809,7 @@
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTassessment.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotation.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotationclient.rdlc" />
+    <EmbeddedResource Include="AFTERSALESPROJ\report\tripticketRPT.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

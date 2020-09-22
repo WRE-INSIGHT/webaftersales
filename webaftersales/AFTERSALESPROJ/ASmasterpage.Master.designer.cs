@@ -94,6 +94,15 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink9;
         
         /// <summary>
+        /// LinkButton6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton6;
+        
+        /// <summary>
         /// LinkButton3 control.
         /// </summary>
         /// <remarks>

@@ -22,13 +22,13 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
-                    
+
                         getprovinces();
 
                         if (Session["callinserachkey"] != null)
                         {
                             callinkey.Text = Session["callinserachkey"].ToString();
-                            provinceddl.Text= Session["provincekey"].ToString();
+                            provinceddl.Text = Session["provincekey"].ToString();
                         }
                         getdata();
                     }
@@ -57,11 +57,12 @@ namespace webaftersales.AFTERSALESPROJ
                 return ConnectionString.sqlconstr();
             }
         }
+
         private void getprovinces()
         {
             try
             {
-              
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand("select distinct province from addendum_to_contract_tb order by province asc", sqlcon))
@@ -73,7 +74,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
             }
@@ -82,28 +83,28 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-               
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    
-                    using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
-                    {
-                        using (SqlCommand sqlcmd = sqlcon.CreateCommand())
-                        {
-                            sqlcon.Open();
-                            sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
-                            sqlcmd.CommandText = "stdCallin";
-                            sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
-                            sqlcmd.Parameters.AddWithValue("@province", provinceddl.Text);
-                            SqlDataAdapter da = new SqlDataAdapter();
-                            da.SelectCommand = sqlcmd;
-                            da.Fill(ds, "tb");
 
-                            GridView1.DataSource = ds;
-                            GridView1.DataBind();
-                        }
+                DataSet ds = new DataSet();
+                ds.Clear();
+
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlcmd.CommandText = "stdCallin";
+                        sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@province", provinceddl.Text);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(ds, "tb");
+
+                        GridView1.DataSource = ds;
+                        GridView1.DataBind();
                     }
-                
+                }
+
             }
             catch (Exception ex)
             {
@@ -111,7 +112,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-     
+
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -220,27 +221,86 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 insertrequest(((Label)row.FindControl("callinlbl")).Text);
             }
+            else if (e.CommandName == "saveaddressbtn")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                updateaddress(((Label)row.FindControl("tboxParentjono")).Text,
+                    ((TextBox)row.FindControl("tboxUnitno")).Text,
+                    ((TextBox)row.FindControl("tboxEstablishment")).Text,
+                    ((TextBox)row.FindControl("tboxNo")).Text,
+                    ((TextBox)row.FindControl("tboxStreet")).Text,
+                    ((TextBox)row.FindControl("tboxVillage")).Text,
+                    ((TextBox)row.FindControl("tboxBrgy")).Text,
+                    ((TextBox)row.FindControl("tboxTown")).Text,
+                    ((TextBox)row.FindControl("tboxProvince")).Text,
+                    ((TextBox)row.FindControl("tboxArea")).Text);
+            }
+            else if (e.CommandName == "editaddressbtn")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((Panel)row.FindControl("UPDATEADDRESSPANEL")).Visible = true;
+            }
+            else if (e.CommandName == "canceladdressbtn")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((Panel)row.FindControl("UPDATEADDRESSPANEL")).Visible = false;
+            }
+        }
+        private void updateaddress(string parentjono, string unitno, string establishment, string no, string street, string village, string brgy, string town, string province, string area)
+        {
+            try
+            {
+                string str = " update addendum_to_contract_tb set unitno='" + unitno + "', " +
+                             " establishment='" + establishment + "',					   " +
+                             " no='" + no + "',											   " +
+                             " street='" + street + "',									   " +
+                             " village='" + village + "',								   " +
+                             " BRGY_MUNICIPALITY='" + brgy + "',			               " +
+                             " TOWN_DISTRICT='" + town + "',					           " +
+                             " province='" + province + "',								   " +
+                             " area='" + area + "' 										   " +
+                             " where parentjono = '" + parentjono + "'				       ";
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                getdata();
+            }
         }
         private void insertrequest(string cin)
         {
             try
             {
-                
+
                 string find = " select * from RequestCollectionApproval where cin = @cin";
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from RequestCollectionApproval)" +
-                                " insert into RequestCollectionApproval     "+
-                                " (ID                                         "+
-                                " , CIN                                      "+
-                                " , REQUESTED                                "+
-                                " , APPROVED                                 "+
-                                " , DISAPPROVED                              "+
-                                " ,[MESSAGE])                                "+
-                                " values                                     "+
-                                "  (@id                                      "+
-                                " , @cin                                     "+
-                                " , getdate()                               "+
-                                " , ''                                "+
-                                " , ''                             "+
+                                " insert into RequestCollectionApproval     " +
+                                " (ID                                         " +
+                                " , CIN                                      " +
+                                " , REQUESTED                                " +
+                                " , APPROVED                                 " +
+                                " , DISAPPROVED                              " +
+                                " ,[MESSAGE])                                " +
+                                " values                                     " +
+                                "  (@id                                      " +
+                                " , @cin                                     " +
+                                " , getdate()                               " +
+                                " , ''                                " +
+                                " , ''                             " +
                                 " , '')                           ";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -262,12 +322,12 @@ namespace webaftersales.AFTERSALESPROJ
                             }
                         }
                     }
-                    if (bol==false)
+                    if (bol == false)
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                         {
                             sqlcmd.Parameters.AddWithValue("@cin", cin);
-                            
+
                             sqlcmd.ExecuteNonQuery();
                         }
                     }
@@ -278,7 +338,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
             }

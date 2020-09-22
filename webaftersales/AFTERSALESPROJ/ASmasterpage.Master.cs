@@ -150,5 +150,13 @@ namespace webaftersales.AFTERSALESPROJ
             Session["teamsender"] = null;
             Response.Redirect("~/AFTERSALESPROJ/teampage.aspx");
         }
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            if (Session["tripticketdate"] == null)
+            {
+                Session["tripticketdate"] = DateTime.Now.ToString("yyyy-MM-dd");
+            }
+            Response.Redirect("~/AFTERSALESPROJ/tripticketreport.aspx");
+        }
     }
 }

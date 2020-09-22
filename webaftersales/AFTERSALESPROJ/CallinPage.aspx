@@ -64,6 +64,91 @@
                                     <br />
                                     <asp:Label ID="addresslbl" Font-Size="Medium" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label>
                                     <br />
+                                    <asp:LinkButton ID="editaddressbtn" CommandName="editaddressbtn" runat="server">edit address</asp:LinkButton>
+                                    <br />
+                                     <asp:Panel ID="UPDATEADDRESSPANEL" Visible="false" ScrollBars="Auto" runat="server">
+                                    <div class="panel panel-danger">
+                                        <div class="panel-heading">
+                                            UPDATE ADDRESS
+                                            <asp:Label ID="tboxParentjono" runat="server" Visible="false" Text='<%# Bind("PARENTJONO") %>'></asp:Label>
+                                        </div>
+                                        <div class="panel-body">
+                                            <table border="0" class="table">
+                                                <tr>
+                                                    <td style="width: 100px">Unit no.:
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxUnitno" placeholder="Unit no." CssClass="form-control"  Text='<%# Bind("UNITNO") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Establishment: 
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxEstablishment" placeholder="Establishment" CssClass="form-control" Text='<%# Bind("ESTABLISHMENT") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>No.:
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxNo" placeholder="No." CssClass="form-control" Text='<%# Bind("NO") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Street:</td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxStreet" placeholder="Street" CssClass="form-control" Text='<%# Bind("STREET") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Village:
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxVillage" placeholder="Village" CssClass="form-control" Text='<%# Bind("VILLAGE") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brgy.: </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxBrgy" placeholder="Brgy" CssClass="form-control" Text='<%# Bind("BRGY_MUNICIPALITY") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Town/City: </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxTown" placeholder="Town" CssClass="form-control" Text='<%# Bind("TOWN_DISTRICT") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Province:   </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxProvince" placeholder="Province" CssClass="form-control"  Text='<%# Bind("PROVINCE") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Area:</td>
+                                                    <td>
+                                                        <asp:TextBox ID="tboxArea" placeholder="Area" CssClass="form-control"  Text='<%# Bind("AREA") %>' runat="server"></asp:TextBox>
+                                                    </td>
+                                                </tr>   
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <asp:LinkButton ID="saveaddressbtn" CommandName="saveaddressbtn" runat="server" CssClass="btn btn-primary">save</asp:LinkButton>
+                                                        <asp:LinkButton ID="canceladdressbtn" CommandName="canceladdressbtn" CssClass="btn btn-default" runat="server">cancel</asp:LinkButton>
+                                                    </td>
+                                                </tr> 
+                                            </table>
+                                        </div>
+                                        <div class="panel-footer">
+                                        </div>
+
+                                    </div>
+                                   
+
+                                    </asp:Panel>
                                     <table border="0" class="table">
                                         <tr>
                                             <th><small>JO</small>
@@ -124,7 +209,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    
+
                                     <asp:LinkButton ID="LinkButton6" runat="server" CommandName="myphotos" CssClass="btn btn-warning">photos</asp:LinkButton>
 
                                 </div>
@@ -186,25 +271,25 @@
                                         </table>
 
                                     </div>
-                                    <asp:LinkButton ID="LinkButton4" CommandName="myservicing" 
-                                        CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "btn btn-primary" : Eval("RSTATUS").ToString() == "Approved" ? "btn btn-primary" : "btn btn-default" %>' 
-                                         Visible='<%# Eval("TURNOVER").ToString() == "0" ? true : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? true : Eval("RSTATUS").ToString() == "Approved" ? true : false %>' 
+                                    <asp:LinkButton ID="LinkButton4" CommandName="myservicing"
+                                        CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "btn btn-primary" : Eval("RSTATUS").ToString() == "Approved" ? "btn btn-primary" : "btn btn-default" %>'
+                                        Visible='<%# Eval("TURNOVER").ToString() == "0" ? true : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? true : Eval("RSTATUS").ToString() == "Approved" ? true : false %>'
                                         runat="server">job order</asp:LinkButton>
-                                      <br />
-                                       <asp:LinkButton ID="LinkButton5" CommandName="requestcollection" CssClass='<%# Eval("REQUESTED").ToString() == "" ? "btn btn-danger" : "btn btn-success" %>'
-                                         Visible='<%# Eval("TURNOVER").ToString() == "0" ? false : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? false : Eval("RSTATUS").ToString() == "" ? true : false %>' 
+                                    <br />
+                                    <asp:LinkButton ID="LinkButton5" CommandName="requestcollection" CssClass='<%# Eval("REQUESTED").ToString() == "" ? "btn btn-danger" : "btn btn-success" %>'
+                                        Visible='<%# Eval("TURNOVER").ToString() == "0" ? false : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? false : Eval("RSTATUS").ToString() == "" ? true : false %>'
                                         Text='<%# Eval("REQUESTED").ToString() == "" ? "request for jo approval" : "requested "+Eval("REQUESTED").ToString() %>' runat="server">request for collection review</asp:LinkButton>
-                                 
-                                        <asp:Panel ID="Panel3" runat="server" Visible='<%# Eval("RSTATUS").ToString() == "" ? false : true  %>'>
+
+                                    <asp:Panel ID="Panel3" runat="server" Visible='<%# Eval("RSTATUS").ToString() == "" ? false : true  %>'>
                                         <asp:Label ID="lblrstatus" Font-Size="X-Large" runat="server" CssClass='<%# Eval("RSTATUS").ToString() == "Approved" ? "text-success" : "text-danger" %>'
-                                             Text='<%# Bind("[RSTATUS]") %>'></asp:Label>&nbsp
+                                            Text='<%# Bind("[RSTATUS]") %>'></asp:Label>&nbsp
                                         <asp:Label ID="Label5" runat="server" Text='<%# Eval("RSTATUS").ToString()=="Approved" ? Eval("APPROVED").ToString() : Eval("DISAPPROVED").ToString() %>'></asp:Label>
                                         <br />
                                         <blockquote>
                                             <asp:Label ID="Label6" CssClass="text-muted" runat="server" Text='<%# Bind("MESSAGE") %>'></asp:Label>
                                         </blockquote>
                                     </asp:Panel>
-                                 
+
                                 </div>
                             </div>
 
