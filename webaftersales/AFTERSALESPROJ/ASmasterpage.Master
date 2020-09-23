@@ -45,15 +45,16 @@
                                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Teams</asp:LinkButton></li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/AFTERSALESPROJ/pricelist.aspx">Price List</asp:HyperLink></li>
+                                 <li>
+                                       <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Trip Ticket</asp:LinkButton>
+                                </li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/AFTERSALESPROJ/pendingpage.aspx">Pending JO</asp:HyperLink>
                                 </li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/AFTERSALESPROJ/joborderapproval.aspx">JO Approval</asp:HyperLink>
                                 </li>
-                                   <li>
-                                       <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Trip Ticket</asp:LinkButton>
-                                </li>
+                                  
                             </ul>
                         </li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">

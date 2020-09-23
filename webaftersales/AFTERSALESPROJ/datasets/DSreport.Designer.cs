@@ -2931,6 +2931,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnREMARKS;
             
+            private global::System.Data.DataColumn columnINSTRUCTION;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TRIPTICKETDataTable() {
@@ -3046,6 +3048,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn INSTRUCTIONColumn {
+                get {
+                    return this.columnINSTRUCTION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3081,7 +3091,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TRIPTICKETRow AddTRIPTICKETRow(System.DateTime DATE, string JO, string PROJECT, string ADDRESS, string TEAMID, string PLATENO, string SORTING, string MEMBERS, string DRIVER, string REMARKS) {
+            public TRIPTICKETRow AddTRIPTICKETRow(System.DateTime DATE, string JO, string PROJECT, string ADDRESS, string TEAMID, string PLATENO, string SORTING, string MEMBERS, string DRIVER, string REMARKS, string INSTRUCTION) {
                 TRIPTICKETRow rowTRIPTICKETRow = ((TRIPTICKETRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DATE,
@@ -3093,7 +3103,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         SORTING,
                         MEMBERS,
                         DRIVER,
-                        REMARKS};
+                        REMARKS,
+                        INSTRUCTION};
                 rowTRIPTICKETRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTRIPTICKETRow);
                 return rowTRIPTICKETRow;
@@ -3126,6 +3137,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnMEMBERS = base.Columns["MEMBERS"];
                 this.columnDRIVER = base.Columns["DRIVER"];
                 this.columnREMARKS = base.Columns["REMARKS"];
+                this.columnINSTRUCTION = base.Columns["INSTRUCTION"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3151,6 +3163,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnDRIVER);
                 this.columnREMARKS = new global::System.Data.DataColumn("REMARKS", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnREMARKS);
+                this.columnINSTRUCTION = new global::System.Data.DataColumn("INSTRUCTION", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnINSTRUCTION);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5070,6 +5084,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string INSTRUCTION {
+                get {
+                    try {
+                        return ((string)(this[this.tableTRIPTICKET.INSTRUCTIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'INSTRUCTION\' in table \'TRIPTICKET\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTRIPTICKET.INSTRUCTIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDATENull() {
                 return this.IsNull(this.tableTRIPTICKET.DATEColumn);
             }
@@ -5186,6 +5216,18 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetREMARKSNull() {
                 this[this.tableTRIPTICKET.REMARKSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsINSTRUCTIONNull() {
+                return this.IsNull(this.tableTRIPTICKET.INSTRUCTIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetINSTRUCTIONNull() {
+                this[this.tableTRIPTICKET.INSTRUCTIONColumn] = global::System.Convert.DBNull;
             }
         }
         

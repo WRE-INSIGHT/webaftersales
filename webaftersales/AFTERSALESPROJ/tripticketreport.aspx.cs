@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,8 +16,7 @@ namespace webaftersales.AFTERSALESPROJ
             SqlDataSource1.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
             if (Session["username"] != null)
             {
-                if (Session["useraccount"].ToString() == "Admin")
-                {
+               
                     if (!IsPostBack)
                     {
                         if (Session["tripticketdate"] != null)
@@ -25,11 +25,7 @@ namespace webaftersales.AFTERSALESPROJ
                         }
                         loaddata();
                     }
-                }
-                else
-                {
-                    Response.Redirect("~/AFTERSALESPROJ/invalidaccessPage.aspx");
-                }
+            
             }
             else
             {
@@ -71,12 +67,15 @@ namespace webaftersales.AFTERSALESPROJ
                 SqlDataSource1.ConnectionString = sqlconstr;
                 SqlDataSource1.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
                 SqlDataSource1.SelectCommand = "TRIP_TICKET_STP";
+                DateTime d =Convert.ToDateTime(tboxdate.Text);
+                ReportParameter param1 = new ReportParameter("date", d.ToString("dddd, MMMM dd yyyy"));
+                ReportViewer1.LocalReport.SetParameters(param1);
                 ReportViewer1.LocalReport.Refresh();
                 Session["tripticketdate"] = tboxdate.Text;
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.ToString());
+                errorrmessage(ex.ToString()+ tboxdate.Text);
             }
         }
     }

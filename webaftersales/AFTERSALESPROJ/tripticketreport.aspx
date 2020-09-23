@@ -20,7 +20,7 @@
         </div>
 
     </div>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Visible="false" ControlToValidate="tboxdate" ErrorMessage="please set a date!"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tboxdate" ValidationGroup="val1" ErrorMessage="please select a date!">*</asp:RequiredFieldValidator>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server">

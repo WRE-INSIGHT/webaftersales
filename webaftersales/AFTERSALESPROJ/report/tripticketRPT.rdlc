@@ -6,19 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>5.01354cm</Width>
+              <Width>3.10854cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.85479cm</Width>
+              <Width>3.53187cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.45167cm</Width>
+              <Width>4.76375cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.96063cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.95521cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -79,7 +79,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>DATE:</Value>
+                              <Value>=Parameters!date.Value</Value>
                               <Style>
                                 <FontSize>15pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -296,14 +296,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="JO1">
+                    <Textbox Name="INSTRUCTION">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!JO.Value</Value>
+                              <Value>=Fields!INSTRUCTION.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -312,7 +312,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>JO1</rd:DefaultName>
+                      <rd:DefaultName>INSTRUCTION</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -482,6 +482,10 @@
           <DataField>REMARKS</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="INSTRUCTION">
+          <DataField>INSTRUCTION</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSreport</rd:DataSetName>
@@ -493,6 +497,14 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="date">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>85b7f469-2dd9-49af-8ce9-7cee814a0e5a</rd:ReportID>
 </Report>
