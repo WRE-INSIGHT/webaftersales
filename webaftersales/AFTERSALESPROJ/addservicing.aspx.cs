@@ -81,6 +81,7 @@ namespace webaftersales.AFTERSALESPROJ
                         "  b.TEAMNAME," +
                         " a.plateno," +
                           " a.SORTING," +
+                            " a.MATERIALS," +
                         "  STUFF((SELECT ', ' + y.FULLNAME+ char(10) from TBLteamMember as x " +
                         " 	left join tblpersonnel as y" +
                         " 	on x.pid = y.pid" +
@@ -150,7 +151,7 @@ namespace webaftersales.AFTERSALESPROJ
                 string str = " declare @id as integer = (select isnull(max(id),0)+1 from servicingtb)" +
                                      " declare @sss as integer = (select isnull(max(id), 0) from servicingtb where cin = @cin)" +
                                      " update servicingtb set[status] = 'Reschedule',statusdate = @sdate where id = @sss" +
-                                     " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks,plateno, status,sorting)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks,@plateno, 'Scheduled',@sorting)";
+                                     " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks,materials,plateno, status,sorting)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks,@materials,@plateno, 'Scheduled',@sorting)";
                 string str2 = "select isnull(count(id),0)+1 from servicingtb where cin = @cin";
                
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
@@ -192,6 +193,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@specifiedjob", specifiedjobtbox.Text);
                         sqlcmd.Parameters.AddWithValue("@instruction", instructiontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@remarks", remarks.Text);
+                        sqlcmd.Parameters.AddWithValue("@materials", materials.Text);
                         sqlcmd.Parameters.AddWithValue("@plateno", plateno.Text);
                         sqlcmd.Parameters.AddWithValue("@sorting", tboxsorting.Text);
                         sqlcmd.ExecuteNonQuery();
@@ -234,6 +236,7 @@ namespace webaftersales.AFTERSALESPROJ
                 }
                 ((TextBox)row.FindControl("servicingdatetbox")).Text = dt;
                 ((TextBox)row.FindControl("remarkstbox")).Text = ((Label)row.FindControl("remarkslbl")).Text;
+                ((TextBox)row.FindControl("materialstbox")).Text = ((Label)row.FindControl("materialslbl")).Text;
                 ((TextBox)row.FindControl("platenotbox")).Text = ((Label)row.FindControl("platenolbl")).Text;
                 ((TextBox)row.FindControl("specifiedjobtbox")).Text = ((Label)row.FindControl("specifiedjoblbl")).Text;
                 ((TextBox)row.FindControl("instructiontbox")).Text = ((Label)row.FindControl("instructionlbl")).Text;
@@ -257,6 +260,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
                 ViewState["servicingdate"] = ((TextBox)row.FindControl("servicingdatetbox")).Text;
                 ViewState["remarks"] = ((TextBox)row.FindControl("remarkstbox")).Text;
+                ViewState["materials"] = ((TextBox)row.FindControl("materialstbox")).Text;
                 ViewState["plateno"] = ((TextBox)row.FindControl("platenotbox")).Text;
                 ViewState["sorting"] = ((TextBox)row.FindControl("sortingtbox")).Text;
                 ViewState["specifiedjob"] = ((TextBox)row.FindControl("specifiedjobtbox")).Text;
@@ -380,7 +384,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks,plateno=@plateno,sorting=@sorting  where id = @id";
+                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks,materials=@materials,plateno=@plateno,sorting=@sorting  where id = @id";
                
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -392,6 +396,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@statusdate", ViewState["statusdate"].ToString());
                         sqlcmd.Parameters.AddWithValue("@sdate", ViewState["servicingdate"].ToString());
                         sqlcmd.Parameters.AddWithValue("@remarks", ViewState["remarks"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@materials", ViewState["materials"].ToString());
                         sqlcmd.Parameters.AddWithValue("@plateno", ViewState["plateno"].ToString());
                         sqlcmd.Parameters.AddWithValue("@sorting", ViewState["sorting"].ToString());
                         sqlcmd.Parameters.AddWithValue("@specifiedjob", ViewState["specifiedjob"].ToString());

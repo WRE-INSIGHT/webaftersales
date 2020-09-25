@@ -57,7 +57,13 @@
                         <td>
                             <asp:TextBox ID="remarks" placeholder="remarks" CssClass="form-control" runat="server"></asp:TextBox>
                         </td>
-
+                    </tr>
+                    <tr>
+                        <td>Materials
+                        </td>
+                        <td>
+                            <asp:TextBox ID="materials"  TextMode="MultiLine" Rows="4" placeholder="marterials" CssClass="form-control" runat="server"></asp:TextBox>
+                        </td>
                     </tr>
                     <tr>
                         <td>Plate #
@@ -68,10 +74,10 @@
                     </tr>
                     <tr>
                         <td>
-                          <strong class="text-info">Sorting</strong>
+                            <strong class="text-info">Sorting</strong>
                         </td>
                         <td>
-                              <asp:TextBox ID="tboxsorting" CssClass="form-control" TextMode="Number" Text="1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tboxsorting" CssClass="form-control" TextMode="Number" Text="1" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                 </table>
@@ -128,12 +134,18 @@
                                                     <asp:Label ID="remarkslbl" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label></td>
                                             </tr>
                                             <tr>
+                                                <td>Materials</td>
+                                                <td>
+                                                    <asp:Label ID="materialslbl" runat="server" Text='<%# Bind("MATERIALS") %>'></asp:Label>
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td>Plate #</td>
                                                 <td>
                                                     <asp:Label ID="platenolbl" runat="server" Text='<%# Bind("PLATENO") %>'></asp:Label></td>
                                             </tr>
                                             <tr>
-                                                  <td class="text-info"><strong>Sorting</strong></td>
+                                                <td class="text-info"><strong>Sorting</strong></td>
                                                 <td>
                                                     <asp:Label ID="sortinglbl" runat="server" Text='<%# Bind("SORTING") %>'></asp:Label></td>
                                             </tr>
@@ -158,12 +170,14 @@
                                                     <asp:TextBox ID="specifiedjobtbox" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                     Remarks:<br />
                                                     <asp:TextBox ID="remarkstbox" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                    Materials:<br />
+                                                    <asp:TextBox ID="materialstbox" TextMode="MultiLine" Rows="4" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                 </div>
                                                 <div class="col-sm-6">
                                                     Plate #:<br />
                                                     <asp:TextBox ID="platenotbox" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                     <strong class="text-info">Sorting</strong><br />
-                                                      <asp:TextBox ID="sortingtbox" CssClass="form-control" TextMode="Number" Text='<%# Bind("SORTING") %>' runat="server"></asp:TextBox><br />
+                                                    <asp:TextBox ID="sortingtbox" CssClass="form-control" TextMode="Number" Text='<%# Bind("SORTING") %>' runat="server"></asp:TextBox><br />
                                                     Status:<br />
                                                     <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server">
                                                         <asp:ListItem Value="Scheduled" Text="Scheduled"></asp:ListItem>
