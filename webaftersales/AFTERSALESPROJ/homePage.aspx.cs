@@ -24,6 +24,10 @@ namespace webaftersales.AFTERSALESPROJ
                         datetbox.Text = DateTime.Now.ToString("yyyy-MM-dd");
                     }
 
+                    if (Session["currentdate"] != null)
+                    {
+                        datetbox.Text = Session["currentdate"].ToString();
+                    }
                     if (Session["currentsearch"] != null)
                     {
                         searchtbox.Text = Session["currentsearch"].ToString();
@@ -54,6 +58,7 @@ namespace webaftersales.AFTERSALESPROJ
         protected void searcbtn_Click(object sender, EventArgs e)
         {
             Session["currentsearch"] = searchtbox.Text;
+            Session["currentdate"] = datetbox.Text;
             getdata();
         }
        private string sqlconstr

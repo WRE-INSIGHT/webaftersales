@@ -293,9 +293,6 @@ namespace webaftersales.AFTERSALESPROJ
                                 "      ,[NETPRICE]							  " +
                                 "      ,[ACTUALPRICE]						  " +
                                 "      ,[SID]								  " +
-                                "      ,[PREPAREDBY]							  " +
-                                "      ,[APPROVEDBY]							  " +
-                                "      ,[ACCEPTEDBY]							  " +
                                 "      ,[MOBILIZATION]						  " +
                                 "      ,[FOC])								  " +
                                 "	  select								  " +
@@ -310,9 +307,6 @@ namespace webaftersales.AFTERSALESPROJ
                                 "      ,[NETPRICE]							  " +
                                 "      ,[ACTUALPRICE]						  " +
                                 "      ,[SID]								  " +
-                                "      ,[PREPAREDBY]							  " +
-                                "      ,[APPROVEDBY]							  " +
-                                "      ,[ACCEPTEDBY]							  " +
                                 "      ,[MOBILIZATION]						  " +
                                 "      ,[FOC]								  " +
                                 "  FROM [QUOTATIONTB] where id = @myid 		  " +

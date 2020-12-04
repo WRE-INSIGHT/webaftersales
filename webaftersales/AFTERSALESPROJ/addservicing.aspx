@@ -20,68 +20,68 @@
     <br />
     <asp:Panel ID="Panel1" runat="server">
         <div class="panel">
-            <small>
-                <table border="0" style="width: 100%">
-                    <tr>
-                        <td style="width: 100px">Date
-                        </td>
-                        <td>
-                            <asp:TextBox ID="servicingdate" CssClass="form-control" runat="server" TextMode="Date"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:CompareValidator ID="CompareValidator1" ControlToValidate="servicingdate" Type="Date" Operator="DataTypeCheck"
-                                ValidationGroup="val1" runat="server" ErrorMessage="Invalid date format!" ForeColor="Red">*</asp:CompareValidator>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Date is required!"
-                                ControlToValidate="servicingdate" ValidationGroup="val1" ForeColor="Red">*</asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Specified Job
-                        </td>
-                        <td>
-                            <asp:TextBox ID="specifiedjobtbox" placeholder="Specified Job" CssClass="form-control" runat="server"></asp:TextBox>
-                        </td>
 
-                    </tr>
-                    <tr>
-                        <td>Instruction
-                        </td>
-                        <td>
-                            <asp:TextBox ID="instructiontbox" TextMode="MultiLine" Rows="4" placeholder="Instruction" CssClass="form-control" runat="server"></asp:TextBox>
-                        </td>
+            <table border="0" style="width: 100%">
+                <tr>
+                    <td style="width: 100px">Date
+                    </td>
+                    <td>
+                        <asp:TextBox ID="servicingdate" CssClass="form-control" runat="server" TextMode="Date"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:CompareValidator ID="CompareValidator1" ControlToValidate="servicingdate" Type="Date" Operator="DataTypeCheck"
+                            ValidationGroup="val1" runat="server" ErrorMessage="Invalid date format!" ForeColor="Red">*</asp:CompareValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Date is required!"
+                            ControlToValidate="servicingdate" ValidationGroup="val1" ForeColor="Red">*</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Specified Job
+                    </td>
+                    <td>
+                        <asp:TextBox ID="specifiedjobtbox" placeholder="Specified Job" CssClass="form-control" runat="server"></asp:TextBox>
+                    </td>
 
-                    </tr>
-                    <tr>
-                        <td>Remarks
-                        </td>
-                        <td>
-                            <asp:TextBox ID="remarks" placeholder="remarks" CssClass="form-control" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Materials
-                        </td>
-                        <td>
-                            <asp:TextBox ID="materials"  TextMode="MultiLine" Rows="4" placeholder="marterials" CssClass="form-control" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Plate #
-                        </td>
-                        <td>
-                            <asp:TextBox ID="plateno" CssClass="form-control" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong class="text-info">Sorting</strong>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tboxsorting" CssClass="form-control" TextMode="Number" Text="1" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                </table>
-            </small>
+                </tr>
+                <tr>
+                    <td>Instruction
+                    </td>
+                    <td>
+                        <asp:TextBox ID="instructiontbox" TextMode="MultiLine" Rows="7" placeholder="Instruction" CssClass="form-control" runat="server"></asp:TextBox>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Remarks
+                    </td>
+                    <td>
+                        <asp:TextBox ID="remarks" placeholder="remarks" CssClass="form-control" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Materials
+                    </td>
+                    <td>
+                        <asp:TextBox ID="materials" TextMode="MultiLine" Rows="7" placeholder="marterials" CssClass="form-control" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Plate #
+                    </td>
+                    <td>
+                        <asp:TextBox ID="plateno" CssClass="form-control" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong class="text-info">Sorting</strong>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="tboxsorting" CssClass="form-control" TextMode="Number" Text="1" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+            </table>
+
             <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
         </div>
     </asp:Panel>
@@ -108,55 +108,56 @@
                                 <div class="panel-body">
                                     <asp:Label ID="Label2" runat="server" Font-Size="Large" Text='<%# Bind("SERVICING") %>'></asp:Label>
                                     <small>
-                                        <table class="table" border="1">
-                                            <tr>
-
-                                                <td>
-                                                    <asp:Label ID="statuslbl" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
-                                                </td>
-                                                <td colspan="2">
-                                                    <asp:Label ID="statusdatelbl" runat="server" Text='<%# Bind("STATUSDATE") %>'></asp:Label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Specified job</td>
-                                                <td>
-                                                    <asp:Label ID="specifiedjoblbl" runat="server" Text='<%# Bind("SPECIFIEDJOB") %>'></asp:Label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Instruction</td>
-                                                <td>
-                                                    <asp:Label ID="instructionlbl" runat="server" Text='<%# Bind("INSTRUCTION") %>'></asp:Label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Remarks</td>
-                                                <td>
-                                                    <asp:Label ID="remarkslbl" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Materials</td>
-                                                <td>
-                                                    <asp:Label ID="materialslbl" runat="server" Text='<%# Bind("MATERIALS") %>'></asp:Label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Plate #</td>
-                                                <td>
-                                                    <asp:Label ID="platenolbl" runat="server" Text='<%# Bind("PLATENO") %>'></asp:Label></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-info"><strong>Sorting</strong></td>
-                                                <td>
-                                                    <asp:Label ID="sortinglbl" runat="server" Text='<%# Bind("SORTING") %>'></asp:Label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <asp:Button ID="getteambtn" CommandName="myteam" runat="server" CssClass="btn btn-default" Text='<%# Eval("TEAMNAME").ToString() == "" ? "Get team" : Eval("TEAMNAME") %>' /></td>
-                                                <td colspan="2">
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                        <asp:Panel ID="Panel3" ScrollBars="Auto" runat="server">
+                                            <table class="table" border="1">
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="statuslbl" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <asp:Label ID="statusdatelbl" runat="server" Text='<%# Bind("STATUSDATE") %>'></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Specified job</td>
+                                                    <td>
+                                                        <asp:Label ID="specifiedjoblbl" runat="server" Text='<%# Bind("SPECIFIEDJOB") %>'></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Instruction</td>
+                                                    <td>
+                                                        <asp:Label ID="instructionlbl" runat="server" Text='<%# Bind("INSTRUCTION") %>'></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Remarks</td>
+                                                    <td>
+                                                        <asp:Label ID="remarkslbl" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Materials</td>
+                                                    <td>
+                                                        <asp:Label ID="materialslbl" runat="server" Text='<%# Bind("MATERIALS") %>'></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Plate #</td>
+                                                    <td>
+                                                        <asp:Label ID="platenolbl" runat="server" Text='<%# Bind("PLATENO") %>'></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-info"><strong>Sorting</strong></td>
+                                                    <td>
+                                                        <asp:Label ID="sortinglbl" runat="server" Text='<%# Bind("SORTING") %>'></asp:Label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Button ID="getteambtn" CommandName="myteam" runat="server" CssClass="btn btn-default" Text='<%# Eval("TEAMNAME").ToString() == "" ? "Get team" : Eval("TEAMNAME") %>' /></td>
+                                                    <td colspan="2">
+                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:Panel>
                                     </small>
                                     <asp:Panel ID="Panel2" Visible="false" CssClass="well" runat="server">
                                         <small>
@@ -165,13 +166,13 @@
                                                     Servicing date:<br />
                                                     <asp:TextBox ID="servicingdatetbox" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                     Instruction:<br />
-                                                    <asp:TextBox ID="instructiontbox" TextMode="MultiLine" Rows="4" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                    <asp:TextBox ID="instructiontbox" TextMode="MultiLine" Rows="7" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                     Specified job:<br />
                                                     <asp:TextBox ID="specifiedjobtbox" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                     Remarks:<br />
                                                     <asp:TextBox ID="remarkstbox" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                     Materials:<br />
-                                                    <asp:TextBox ID="materialstbox" TextMode="MultiLine" Rows="4" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                    <asp:TextBox ID="materialstbox" TextMode="MultiLine" Rows="7" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                 </div>
                                                 <div class="col-sm-6">
                                                     Plate #:<br />

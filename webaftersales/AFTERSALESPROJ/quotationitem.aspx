@@ -24,6 +24,7 @@
     <asp:Panel ID="Panel1" ScrollBars="Auto" runat="server">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
+                <h4 class="text-warning"> selected quotation: </h4>
                 <asp:GridView ID="GridView3" AutoGenerateColumns="false" CssClass="table" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowCommand="GridView3_RowCommand">
                     <Columns>
 

@@ -18,6 +18,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
         <ContentTemplate>
+                 <h4 class="text-warning"> selected k#: </h4>
             <asp:GridView ID="GridView3" CssClass="table" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" >
                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
                 <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
@@ -28,6 +29,25 @@
                 <SortedAscendingHeaderStyle BackColor="#594B9C" />
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                 <SortedDescendingHeaderStyle BackColor="#33276A" />
+            </asp:GridView>
+            <h4 class="text-info">cutting list:</h4>
+            <asp:GridView ID="GridView4" CssClass="table" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+                
+                <AlternatingRowStyle BackColor="White" />
+                <FooterStyle BackColor="#CCCC99" />
+                <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                <RowStyle BackColor="#F7F7DE" />
+                <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                <SortedAscendingHeaderStyle BackColor="#848384" />
+                <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                <SortedDescendingHeaderStyle BackColor="#575357" />
+                    <EmptyDataTemplate>
+                        <div class="alert alert-danger">
+                           no cutting list input.
+                        </div>
+                    </EmptyDataTemplate>
             </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>

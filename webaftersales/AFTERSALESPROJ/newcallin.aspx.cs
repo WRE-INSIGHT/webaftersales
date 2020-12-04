@@ -298,7 +298,7 @@ namespace webaftersales.AFTERSALESPROJ
                 " FULLADD like @pl OR" +
                 " ACCT_EXEC_INCHARGE like @pl)";
                     string str = "select JOB_ORDER_NO AS JO, project_label as [PROJECT],FULLADD AS ADDRESS from addendum_to_contract_tb" +
-                                  " where " + field + " and contract_type = 'original contract'";
+                                  " where " + field + " and lock = '0' and (contract_type = 'original contract' or contract_type = 'revised contract')";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@pl", "%" + keytbox.Text + "%");

@@ -24,6 +24,7 @@ namespace webaftersales.AFTERSALESPROJ
                         getdata();
                         getpricelist();
                         getdetails();
+                        getknofromfab();
                     }
                 }
                 else
@@ -68,7 +69,30 @@ namespace webaftersales.AFTERSALESPROJ
             }
 
         }
+        private void getknofromfab()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    
+                    using (SqlCommand sqlcmd =sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "display_cl";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@iid", iid);
+                        GridView4.DataSource = sqlcmd.ExecuteReader();
+                        GridView4.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
 
+        }
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
