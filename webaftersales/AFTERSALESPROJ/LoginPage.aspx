@@ -15,7 +15,7 @@
 <body class="body">
     <form id="fomr1" runat="server">
         <div class="container-fluid">
-            <div class="jumbotron">
+            <div class="jumbotron container">
                 <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
 
             </div>
