@@ -12,7 +12,7 @@
         <h3><strong>Quotation reports</strong></h3>
         <div class="input-group">
             <div class="input-group-addon">
-                <asp:CheckBox ID="CheckBox1" runat="server" />&nbsp;for approval
+                <asp:CheckBox ID="CheckBox1" runat="server" Checked="true" />&nbsp;for approval
             </div>
             <asp:TextBox ID="tboxsearchkey" CssClass="form-control" runat="server"></asp:TextBox>
             <div class="input-group-btn">
