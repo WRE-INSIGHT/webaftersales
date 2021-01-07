@@ -20,7 +20,8 @@
     </div>
 
     <br />
-    <h3>Project Details</h3>
+    <h3>Select a project / <small>
+        <asp:LinkButton ID="LinkButton4" PostBackUrl="~/AFTERSALESPROJ/projectList.aspx" runat="server">manage project list</asp:LinkButton></small></h3>
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading">

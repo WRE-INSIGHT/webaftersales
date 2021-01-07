@@ -140,6 +140,10 @@ namespace webaftersales.AFTERSALESPROJ
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
             Session["managecallinsender"] = "New";
+
+            Session["callinProject"] = "";
+            Session["callinAddress"] = "";
+            Session["callinJo"] = "";
             Response.Redirect("~/AFTERSALESPROJ/newcallin.aspx");
         }
 
@@ -247,6 +251,68 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 ((Panel)row.FindControl("UPDATEADDRESSPANEL")).Visible = false;
+            }
+            else if (e.CommandName == "editColor")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((Panel)row.FindControl("pnlColor")).Visible = true;
+
+                loadColor(((DropDownList)row.FindControl("ddlColor")));
+            }
+            else if (e.CommandName == "cancelEditingColor")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((Panel)row.FindControl("pnlColor")).Visible = false;
+            }
+            else if (e.CommandName == "selectColor")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((TextBox)row.FindControl("tboxColor")).Text = ((TextBox)row.FindControl("tboxColor")).Text == "" ? ((DropDownList)row.FindControl("ddlColor")).Text : ((TextBox)row.FindControl("tboxColor")).Text + ", " + ((DropDownList)row.FindControl("ddlColor")).Text;
+            }
+            else if (e.CommandName == "saveColor")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                updateColor(((Label)row.FindControl("jolbl")).Text, ((TextBox)row.FindControl("tboxColor")).Text);
+            }
+        }
+        private void loadColor(DropDownList ddl)
+        {
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
+            {
+                using (SqlCommand sqlcmd = new SqlCommand("select * from kmdi_addinfo_tb where type = 'PROFILE_FINISH' order by value asc", sqlcon))
+                {
+                    sqlcon.Open();
+                    ddl.DataSource = sqlcmd.ExecuteReader();
+                    ddl.DataTextField = "value";
+                    ddl.DataValueField = "value";
+                    ddl.DataBind();
+                }
+            }
+        }
+        private void updateColor(string jo, string profileColor)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("update addendum_to_contract_tb set profile_finish = '" + profileColor + "' where job_order_no = '" + jo + "'", sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                getdata();
             }
         }
         private void updateaddress(string parentjono, string unitno, string establishment, string no, string street, string village, string brgy, string town, string province, string area)
