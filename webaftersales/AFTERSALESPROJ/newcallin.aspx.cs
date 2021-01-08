@@ -21,11 +21,17 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
+                        
+                            projectname.Text = Session["callinProject"].ToString();
+                            address.Text = Session["callinAddress"].ToString();
+                            jo.Text = Session["callinJo"].ToString();
+                   
+
                         if (Session["managecallinsender"].ToString() == "Edit")
                         {
                             Button1.Text = "save";
                             cin.Text = Session["callinnumber"].ToString();
-                            contactpersontbox.Text= Session["callinContactperson"].ToString();
+                            contactpersontbox.Text = Session["callinContactperson"].ToString();
                             telno.Text = Session["callinTelno"].ToString();
                             emailtbox.Text = Session["callinEmail"].ToString();
                             vibertbox.Text = Session["callinViber"].ToString();
@@ -112,7 +118,7 @@ namespace webaftersales.AFTERSALESPROJ
                 errorrmessage("please select a project");
                 return;
             }
-       
+
             using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 try
@@ -182,7 +188,7 @@ namespace webaftersales.AFTERSALESPROJ
                 errorrmessage("please select a project");
                 return;
             }
-       
+
             using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 try
@@ -286,7 +292,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 GridView1.SelectedIndex = -1;
-             
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
                 {
                     string field = "(PROJECT_LABEL like @pl OR" +

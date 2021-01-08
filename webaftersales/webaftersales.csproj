@@ -445,6 +445,13 @@
     <Compile Include="AFTERSALESPROJ\pricelist.aspx.designer.cs">
       <DependentUpon>pricelist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\projectList.aspx.cs">
+      <DependentUpon>projectList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\projectList.aspx.designer.cs">
+      <DependentUpon>projectList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\quotation.aspx.cs">
       <DependentUpon>quotation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -693,6 +700,7 @@
     <Content Include="AFTERSALESPROJ\pdfuploads.aspx" />
     <Content Include="AFTERSALESPROJ\pendingpage.aspx" />
     <Content Include="AFTERSALESPROJ\pricelist.aspx" />
+    <Content Include="AFTERSALESPROJ\projectList.aspx" />
     <Content Include="AFTERSALESPROJ\quotation.aspx" />
     <Content Include="AFTERSALESPROJ\quotationForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\quotationitem.aspx" />
