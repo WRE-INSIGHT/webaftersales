@@ -185,19 +185,51 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxwidth")).Text = ((Label)row.FindControl("lblwidth")).Text;
                 ((TextBox)row.FindControl("tboxheight")).Text = ((Label)row.FindControl("lblheight")).Text;
                 ((DropDownList)row.FindControl("dlistspecification")).Text = ((Label)row.FindControl("lblspecification")).Text;
-             
-                ((Panel)row.FindControl("panel1")).Visible = true;
+
+                ((TextBox)row.FindControl("tboxitemno")).Visible = true;
+                ((Label)row.FindControl("lblitemno")).Visible = false;
+                ((TextBox)row.FindControl("tboxkno")).Visible = true;
+                ((Label)row.FindControl("lblkno")).Visible = false;;
+                ((TextBox)row.FindControl("tboxlocation")).Visible = true;
+                ((Label)row.FindControl("lbllocation")).Visible = false;
+                ((TextBox)row.FindControl("tboxwidth")).Visible = true;
+                ((Label)row.FindControl("lblwidth")).Visible = false;
+                ((TextBox)row.FindControl("tboxheight")).Visible = true;
+                ((Label)row.FindControl("lblheight")).Visible = false;
+                ((DropDownList)row.FindControl("dlistspecification")).Visible = true;
+                ((Label)row.FindControl("lblspecification")).Visible = false;
+
+                ((LinkButton)row.FindControl("btnsave")).Visible = true;
+                ((LinkButton)row.FindControl("btncancel")).Visible = true;
+                ((LinkButton)row.FindControl("btnedit")).Visible = false;
+                ((LinkButton)row.FindControl("btndelete")).Visible = false;
             }
             if (e.CommandName == "mycancel")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                ((Panel)row.FindControl("panel1")).Visible = false;
+                ((TextBox)row.FindControl("tboxitemno")).Visible = false;
+                ((Label)row.FindControl("lblitemno")).Visible = true;
+                ((TextBox)row.FindControl("tboxkno")).Visible = false;
+                ((Label)row.FindControl("lblkno")).Visible = true; ;
+                ((TextBox)row.FindControl("tboxlocation")).Visible = false;
+                ((Label)row.FindControl("lbllocation")).Visible = true;
+                ((TextBox)row.FindControl("tboxwidth")).Visible = false;
+                ((Label)row.FindControl("lblwidth")).Visible = true;
+                ((TextBox)row.FindControl("tboxheight")).Visible = false;
+                ((Label)row.FindControl("lblheight")).Visible = true;
+                ((DropDownList)row.FindControl("dlistspecification")).Visible = false;
+                ((Label)row.FindControl("lblspecification")).Visible = true;
+
+                ((LinkButton)row.FindControl("btnsave")).Visible = false;
+                ((LinkButton)row.FindControl("btncancel")).Visible = false;
+                ((LinkButton)row.FindControl("btnedit")).Visible = true;
+                ((LinkButton)row.FindControl("btndelete")).Visible = true;
                 GridView1.SelectedIndex = -1;
             }
             if (e.CommandName == "mysave")
             {
-                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 ViewState["id"] = ((Label)row.FindControl("lblid")).Text.ToString();
                 ViewState["itemno"] = ((TextBox)row.FindControl("tboxitemno")).Text;
@@ -241,6 +273,17 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["LOCATION"] = ((Label)row.FindControl("lbllocation")).Text.ToString();
                 Response.Redirect("~/AFTERSALESPROJ/requestquotation.aspx");
             }
+            if (e.CommandName == "myphotos")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["link"] = "s2";
+                Session["reportID"] = ((Label)row.FindControl("lblid")).Text.ToString();
+                //Session["KNO"] = ((Label)row.FindControl("lblkno")).Text.ToString();
+                //Session["LOCATION"] = ((Label)row.FindControl("lbllocation")).Text.ToString();
+                Response.Redirect("~/AFTERSALESPROJ/reportPhotos.aspx");
+            }
+
         }
         private void myupdate(string id, string itemno, string kno, string location, string specification, string width,string height)
         {

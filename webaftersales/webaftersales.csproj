@@ -515,6 +515,13 @@
     <Compile Include="AFTERSALESPROJ\reportPage.aspx.designer.cs">
       <DependentUpon>reportPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\reportPhotos.aspx.cs">
+      <DependentUpon>reportPhotos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\reportPhotos.aspx.designer.cs">
+      <DependentUpon>reportPhotos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\reportviewPage.aspx.cs">
       <DependentUpon>reportviewPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -710,6 +717,7 @@
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsummary.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
+    <Content Include="AFTERSALESPROJ\reportPhotos.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />
     <Content Include="AFTERSALESPROJ\reqisterSign.aspx" />
     <Content Include="AFTERSALESPROJ\requestedquotation.aspx" />

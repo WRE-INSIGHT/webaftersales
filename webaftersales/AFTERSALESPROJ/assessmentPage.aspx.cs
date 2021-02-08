@@ -300,6 +300,7 @@ namespace webaftersales.AFTERSALESPROJ
                         }
                     }
                 }
+                Response.Redirect("~/AFTERSALESPROJ/assessmentmade.aspx");
             }
 
             ViewState["listid"] = l;
@@ -327,10 +328,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 errorrmessage(ex.Message.ToString());
             }
-            finally
-            {
-                Response.Redirect("~/AFTERSALESPROJ/assessmentmade.aspx");
-            }
+          
         }
         protected void findbtn_Click(object sender, EventArgs e)
         {

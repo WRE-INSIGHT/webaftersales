@@ -13,10 +13,10 @@
         </div>
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
-    <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/assessmentPage.aspx" OnClick="LinkButton3_Click">Import</asp:LinkButton><br />
+    <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-warning" PostBackUrl="~/AFTERSALESPROJ/assessmentPage.aspx" OnClick="LinkButton3_Click">Import from cutting list</asp:LinkButton><br />
     <h4>
-    <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label>&nbsp;
-    <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label>&nbsp;assessment
+    <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label>&nbsp;\
+    <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label>
         </h4>
    
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -24,7 +24,7 @@
         <ContentTemplate>
 
             <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
-                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -43,30 +43,31 @@
                                 <asp:TextBox ID="descriptiontbox" TextMode="MultiLine" Rows="10" Width="400" Visible="false" Text='<%# Eval("DESCRIPTION") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Assessment">
+                        <asp:TemplateField HeaderText="Assessment" ItemStyle-Wrap="true">
                             <ItemTemplate>
                                 <asp:Label ID="assessmentlbl" runat="server" Text='<%# Bind("ASSESSMENT") %>'></asp:Label>
                                 <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
-                    <FooterStyle BackColor="#CCCCCC" />
-                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
                     <PagerSettings PageButtonCount="8" />
-                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" BackColor="#CCCCCC" ForeColor="Black" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Right" ForeColor="Black" BackColor="White" />
                     <EmptyDataTemplate>
-                        <div class="alert alert-danger">
-                            <h2><strong>Empty Table!</strong>
-                                <small>0 result found</small>
+                        <div class="">
+                            <h2><strong>This Table is empty</strong>
+                                <small>no assessment made!</small>
                             </h2>
                         </div>
                     </EmptyDataTemplate>
-                    <RowStyle BackColor="White" Wrap="False" />
+                    <RowStyle Wrap="False" />
                 
-                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                    <SortedAscendingHeaderStyle BackColor="#808080" />
-                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                    <SortedDescendingHeaderStyle BackColor="#383838" />
+         
+                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                    <SortedDescendingHeaderStyle BackColor="#242121" />
                 </asp:GridView>
             </asp:Panel>
 

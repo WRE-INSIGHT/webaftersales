@@ -89,7 +89,7 @@
                     <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" runat="server" NavigateUrl="~/AFTERSALESPROJ/importPage.aspx">import</asp:HyperLink>
                     <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click">report</asp:LinkButton>
                     <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" OnClick="LinkButton3_Click">photos</asp:LinkButton>
-                 
+
                 </div>
             </div>
             <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
@@ -142,117 +142,106 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <br />
-            <div class="panel panel-primary">
 
-                <div class="panel-body">
-                    <asp:GridView ID="GridView1" OnRowCommand="GridView1_RowCommand" ShowHeader="false" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging">
-                        <Columns>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <div class="panel panel-default">
+            <asp:GridView ID="GridView1" CssClass="table" OnRowCommand="GridView1_RowCommand" GridLines="Both" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+                <AlternatingRowStyle BackColor="#DCDCDC" />
+                <Columns>
+                    <asp:TemplateField HeaderText="" ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                            <asp:Label ID="lblsid" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
 
-                                        <div class="panel-body">
-                                            <asp:Label ID="lbllocation" Font-Size="Large" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
-                                            <asp:LinkButton ID="LinkButton4" CommandName="myedit" CssClass="text-right" runat="server">Edit</asp:LinkButton>
-                                            <br />
-                                            <br />
-                                            <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                            <asp:Label ID="lblsid" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
-                                            <asp:Label ID="lbljo" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
-                                            <asp:Label ID="lblspecification" Font-Size="Medium" runat="server" Text='<%# Bind("SPECIFICATION") %>'></asp:Label><br />
-                                            <table class="table" border="1">
-                                                <tr>
-                                                    <th>Item#</th>
-                                                    <th>K#</th>
-                                                    <th>Dimension</th>
+                            <asp:LinkButton ID="btnedit" CommandName="myedit" runat="server">Edit</asp:LinkButton>&nbsp;|&nbsp;
+                            <asp:LinkButton ID="btndelete" OnClientClick="return confirm('delete this item?')" CommandName="mydelete" runat="server">Delete</asp:LinkButton>
+                            <asp:LinkButton ID="btnsave" CommandName="mysave" Visible="false" ValidationGroup="editval" runat="server">Save</asp:LinkButton>&nbsp;|&nbsp;
+                            <asp:LinkButton ID="btncancel" CommandName="mycancel" Visible="false" runat="server">Cancel</asp:LinkButton>
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" />
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lbljo" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Location" ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lbllocation" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
+                            <asp:TextBox ID="tboxlocation" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" />
+                    </asp:TemplateField>
 
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <asp:Label ID="lblitemno" runat="server" Text='<%# Bind("ITEMNO") %>'></asp:Label></td>
-                                                    <td>
-                                                        <asp:Label ID="lblkno" runat="server" Text='<%# Bind("KNO") %>'></asp:Label></td>
-                                                    <td>
-                                                        <asp:Label ID="lblwidth" runat="server" Text='<%# Bind("WIDTH") %>'></asp:Label>&nbsp;x&nbsp;  
-                                                        <asp:Label ID="lblheight" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label>
-                                                    </td>
-                                                </tr>
+                    <asp:TemplateField HeaderText="Specification" ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lblspecification" runat="server" Text='<%# Bind("SPECIFICATION") %>'></asp:Label>
+                            <asp:DropDownList ID="dlistspecification" Visible="false" placeholder="Specification" CssClass="form-control" runat="server">
+                                <asp:ListItem>-</asp:ListItem>
+                                <asp:ListItem>Window</asp:ListItem>
+                                <asp:ListItem>Door</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="editval"
+                                ErrorMessage="specification is required" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
 
-                                                <tr>
-                                                    <td colspan="3">
-                                                        <asp:Button ID="Button2" CssClass="btn btn-primary" Width="100" CommandName="myassessment" runat="server" Text="assessment" />
-                                                        <asp:Button ID="Button5" CssClass="btn btn-success"  Width="100" CommandName="myquotation" runat="server" Text="proposal" />
-                                                    </td>
-                                                </tr>
-                                            </table>
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" />
+                    </asp:TemplateField>
 
-                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                <ContentTemplate>
-                                                    <asp:Panel ID="Panel1" Visible="false" runat="server">
-                                                        <div class="panel panel-primary">
-                                                            <div class="panel-body">
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        Item#<br />
-                                                                        <asp:TextBox ID="tboxitemno" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                        K#<br />
-                                                                        <asp:TextBox ID="tboxkno" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                        Location<br />
-                                                                        <asp:TextBox ID="tboxlocation" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        Width<br />
-                                                                        <asp:TextBox ID="tboxwidth" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                        Height<br />
-                                                                        <asp:TextBox ID="tboxheight" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                                                        Specification 
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="editval"
-                                                    ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
-                                                                        <asp:DropDownList ID="dlistspecification" placeholder="Specification" CssClass="form-control" runat="server">
-                                                                            <asp:ListItem>-</asp:ListItem>
-                                                                            <asp:ListItem>Window</asp:ListItem>
-                                                                            <asp:ListItem>Door</asp:ListItem>
-                                                                        </asp:DropDownList><br />
-                                                                    </div>
-                                                                </div>
+                    <asp:TemplateField HeaderText="Item#" ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lblitemno" runat="server" Text='<%# Bind("ITEMNO") %>'></asp:Label>
+                            <asp:TextBox ID="tboxitemno" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="K#" ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lblkno" runat="server" Text='<%# Bind("KNO") %>'></asp:Label>
+                            <asp:TextBox ID="tboxkno" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
 
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Width" ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lblwidth" runat="server" Text='<%# Bind("WIDTH") %>'></asp:Label>
+                            <asp:TextBox ID="tboxwidth" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Height" ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Label ID="lblheight" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label>
+                            <asp:TextBox ID="tboxheight" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" />
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Wrap="false">
+                        <ItemTemplate>
+                            <asp:Button ID="Button2" CssClass="btn btn-default" Width="100" CommandName="myassessment" runat="server" Text="assessment" />
+                            <asp:Button ID="Button5" CssClass="btn btn-default" Width="100" CommandName="myquotation" runat="server" Text="proposal" />
+                            <asp:Button ID="Button3" CssClass="btn btn-default" Width="100" CommandName="myphotos" runat="server" Text="photos" />
+                        </ItemTemplate>
+                        <ItemStyle Wrap="False" />
+                    </asp:TemplateField>
+                </Columns>
+                <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+                <PagerSettings PageButtonCount="8" />
+                <PagerStyle CssClass="GridPager" HorizontalAlign="Center" BackColor="#999999" ForeColor="Black" />
+                <EmptyDataTemplate>
+                    <div class="">
+                        <h2><strong>This table is empty!</strong>
+                            <small>there are no k#(s) inputs.</small>
+                        </h2>
+                    </div>
+                </EmptyDataTemplate>
+                <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#0000A9" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#000065" />
+            </asp:GridView>
 
-
-
-                                                                <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup="editval" CssClass="aler alert-danger" runat="server" />
-                                                                <asp:Button ID="Button3" CommandName="mysave" CssClass="btn btn-primary" ValidationGroup="editval" runat="server" Text="save" />
-
-                                                            </div>
-                                                            <div class="panel-footer">
-                                                                <asp:Button ID="Button4" CommandName="mycancel" CssClass="btn btn-default" runat="server" Text="cancel" />
-                                                                <div class="navbar-right">
-                                                                    <asp:LinkButton ID="LinkButton5" OnClientClick="return confirm('delete this item?')" CommandName="mydelete" CssClass="btn btn-default" runat="server"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </asp:Panel>
-                                                </ContentTemplate>
-                                            </asp:UpdatePanel>
-
-                                        </div>
-
-                                    </div>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                        <PagerSettings PageButtonCount="8" />
-                        <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
-                        <EmptyDataTemplate>
-                            <div class="alert alert-danger">
-                                <h2><strong>Empty Table!</strong>
-                                    <small>0 result found</small>
-                                </h2>
-                            </div>
-                        </EmptyDataTemplate>
-                    </asp:GridView>
-                </div>
-
-            </div>
             <br />
 
 

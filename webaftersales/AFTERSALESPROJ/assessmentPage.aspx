@@ -32,8 +32,8 @@
                         <asp:GridView ID="GridView1" CssClass="table" runat="server"
                             AutoGenerateColumns="False"
                             AllowPaging="True" DataKeyNames="ID"
-                            OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="8"
-                            OnRowDataBound="GridView1_RowDataBound" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+                            OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="20"
+                            OnRowDataBound="GridView1_RowDataBound" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
@@ -68,22 +68,22 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
-                            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
-                            <HeaderStyle Wrap="False" BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
-                            <PagerStyle HorizontalAlign="Left" CssClass="GridPager" BackColor="#FFFFCC" ForeColor="#330099" />
+                            <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                            <HeaderStyle Wrap="False" BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle HorizontalAlign="Right" CssClass="GridPager" BackColor="White" ForeColor="Black" />
                             <EmptyDataTemplate>
-                                <div class="alert alert-danger">
-                                    <h2><strong>Empty Table!</strong>
-                                        <small>0 result found</small>
+                                <div class="">
+                                    <h2><strong>This table is empty!</strong>
+                                        <small>There are no cutting list inputs in the original system.</small>
                                     </h2>
                                 </div>
                             </EmptyDataTemplate>
-                            <RowStyle Wrap="False" BackColor="White" ForeColor="#330099" />
-                            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
-                            <SortedAscendingCellStyle BackColor="#FEFCEB" />
-                            <SortedAscendingHeaderStyle BackColor="#AF0101" />
-                            <SortedDescendingCellStyle BackColor="#F6F0C0" />
-                            <SortedDescendingHeaderStyle BackColor="#7E0000" />
+                            <RowStyle Wrap="False" />
+                            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                            <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                            <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                            <SortedDescendingHeaderStyle BackColor="#242121" />
                         </asp:GridView>
                     </asp:Panel>
                 </ContentTemplate>

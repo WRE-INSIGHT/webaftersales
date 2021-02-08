@@ -8,9 +8,8 @@ using System.Web.UI.WebControls;
 
 namespace webaftersales.AFTERSALESPROJ
 {
-    public partial class sidgalleryPage : System.Web.UI.Page
+    public partial class reportPhotos : System.Web.UI.Page
     {
-
         string filepath = "~/Uploads/ASuploads/";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,13 +23,13 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     Panel3.Visible = true;
                 }
-                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath + cid + sid));
+                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath + cid + sid + rid));
                 if (!IsExists)
                 {
-                    System.IO.Directory.CreateDirectory(Server.MapPath(filepath + cid + sid));
+                    System.IO.Directory.CreateDirectory(Server.MapPath(filepath + cid + sid + rid));
                 }
                 loadimages();
-          
+
                 if (!IsPostBack)
                 {
                     if (Session["ErrorMessage"] != null)
@@ -44,7 +43,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
 
                 }
-                
+
             }
             else
             {
@@ -62,7 +61,14 @@ namespace webaftersales.AFTERSALESPROJ
         {
             get
             {
-                return Session["SID"].ToString() + "/photos/";
+                return Session["SID"].ToString() + "/";
+            }
+        }
+        private string rid
+        {
+            get
+            {
+                return Session["reportID"].ToString() + "/photos/";
             }
         }
         protected void Button1_Click(object sender, EventArgs e)
@@ -75,12 +81,12 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     string fileExtension = System.IO.Path.GetExtension(thefile.FileName).ToString().ToLower();
 
-                    if (fileExtension == ".jpg" || fileExtension==".png" || fileExtension==".jpeg" || fileExtension==".gif")
+                    if (fileExtension == ".jpg" || fileExtension == ".png" || fileExtension == ".jpeg" || fileExtension == ".gif")
                     {
                         double filesize = thefile.ContentLength;
                         if (filesize < 29360128)
                         {
-                            thefile.SaveAs(Server.MapPath(filepath + cid + sid + thefile.FileName));
+                            thefile.SaveAs(Server.MapPath(filepath + cid + sid + rid + thefile.FileName));
                             Session["ErrorMessage"] = null;
                         }
                         else
@@ -99,22 +105,23 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Session["ErrorMessage"] = "select image first";
             }
-            Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
+            Response.Redirect("~/AFTERSALESPROJ/reportPhotos.aspx");
 
         }
         private void loadimages()
         {
 
-            foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath + cid + sid)))
+            foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath + cid + sid + rid)))
             {
                 ImageButton imgbutton = new ImageButton();
                 FileInfo fileinfo = new FileInfo(strfilename);
-                imgbutton.ImageUrl = filepath + cid + sid + fileinfo.Name;
+                imgbutton.ImageUrl = filepath + cid + sid + rid + fileinfo.Name;
                 imgbutton.Width = Unit.Pixel(200);
                 imgbutton.Height = Unit.Pixel(200);
                 imgbutton.Style.Add("margin", "5px");
                 imgbutton.CssClass = "img-thumbnail";
                 imgbutton.Click += new ImageClickEventHandler(Imgbutton_Click);
+
                 Table tb = new Table();
 
                 Panel1.Controls.Add(imgbutton);
@@ -122,13 +129,11 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void Imgbutton_Click(object sender, ImageClickEventArgs e)
         {
-            //Response.Redirect(((ImageButton)sender).ImageUrl);
-            //File.Delete(Server.MapPath(((ImageButton)sender).ImageUrl));
+  
             Session["imgpath"] = ((ImageButton)sender).ImageUrl.ToString();
-            Session["imgpathsource"] = "per servicing";
+            Session["imgpathsource"] = "per item";
             Response.Redirect("~/AFTERSALESPROJ/viewimage.aspx?ImageUrl=" + ((ImageButton)sender).ImageUrl);
         }
-
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             string prevpage = Session["link"].ToString();

@@ -39,13 +39,28 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
+            if (Session["imgpathsource"].ToString() == "per item")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/reportPhotos.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             File.Delete(Server.MapPath(imagepath));
-            Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
+            if (Session["imgpathsource"].ToString() == "per item")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/reportPhotos.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
+            }
+               
         }
     }
 }

@@ -23,11 +23,8 @@
             <asp:HyperLink ID="HyperLink1" CssClass="btn btn-default" NavigateUrl="~/AFTERSALESPROJ/reportPage.aspx" runat="server" Text="back"></asp:HyperLink>
         </div>
     </div>
-
-    <br />
-
     <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
-   <h4>KMDI Sytem data</h4> 
+   <h4>System k#(s)</h4> 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -57,7 +54,7 @@
                     AutoGenerateColumns="False" EmptyDataText="No result found."
                     AllowPaging="True" DataKeyNames="ID"
                     OnPageIndexChanging="GridView1_PageIndexChanging"
-                    OnRowDataBound="GridView1_RowDataBound" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+                    OnRowDataBound="GridView1_RowDataBound" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both" PageSize="20">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -91,22 +88,24 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
-                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" Wrap="False" />
-                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" BackColor="White" ForeColor="#000066" />
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" Wrap="False" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Right" BackColor="White" ForeColor="Black" />
                     <EmptyDataTemplate>
-                        <div class="alert alert-danger">
-                            <h2><strong>Empty Table!</strong>
-                                <small>0 result found</small>
+                        <div class="">
+                            <h2><strong>This table is empty!</strong>
+                                <small>There are no k#(s) inputs in the original system.</small>
                             </h2>
                         </div>
                     </EmptyDataTemplate>
-                    <RowStyle ForeColor="#000066" Wrap="False" />
-                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    <RowStyle Wrap="False" />
+
+                
+
+                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                    <SortedDescendingHeaderStyle BackColor="#242121" />
                 </asp:GridView>
             </asp:Panel>
             <br />
