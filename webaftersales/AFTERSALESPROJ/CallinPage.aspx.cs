@@ -319,6 +319,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
+                string fulladd = AddressFormat(unitno, establishment,no,street,village,brgy,town,province,area);
                 string str = " update addendum_to_contract_tb set unitno='" + unitno + "', " +
                              " establishment='" + establishment + "',					   " +
                              " no='" + no + "',											   " +
@@ -327,7 +328,8 @@ namespace webaftersales.AFTERSALESPROJ
                              " BRGY_MUNICIPALITY='" + brgy + "',			               " +
                              " TOWN_DISTRICT='" + town + "',					           " +
                              " province='" + province + "',								   " +
-                             " area='" + area + "' 										   " +
+                             " area='" + area + "', 									   " +
+                             " fulladd='" + fulladd + "'										   " +
                              " where parentjono = '" + parentjono + "'				       ";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr1))
                 {
@@ -413,5 +415,967 @@ namespace webaftersales.AFTERSALESPROJ
                 getdata();
             }
         }
+        public string AddressFormat(string unitnoAF, string establishmentAF, string housenoAF, string streetAF, string villageAF, string brgyAF, string cityAF, string provinceAF, string areaAF)
+        {
+            string FullAddress_Global = null;
+
+            string UnitNo_Global;
+            string Establishment_Global;
+            string HouseNo_Global;
+            string Street_Global;
+            string Village_Global;
+            string Brgy_Global;
+            string CityMunicipality_Global;
+            string Province_Global;
+            string Area_Global;
+
+            unitnoAF = unitnoAF.Trim();
+            establishmentAF = establishmentAF.Trim();
+            housenoAF = housenoAF.Trim();
+            streetAF = streetAF.Trim();
+            villageAF = villageAF.Trim();
+            brgyAF = brgyAF.Trim();
+            cityAF = cityAF.Trim();
+            provinceAF = provinceAF.Trim();
+            areaAF = areaAF.Trim();
+
+            unitnoAF = unitnoAF.TrimEnd(System.Convert.ToChar(","));
+            establishmentAF = establishmentAF.TrimEnd(System.Convert.ToChar(","));
+            housenoAF = housenoAF.TrimEnd(System.Convert.ToChar(","));
+            streetAF = streetAF.TrimEnd(System.Convert.ToChar(","));
+            villageAF = villageAF.TrimEnd(System.Convert.ToChar(","));
+            brgyAF = brgyAF.TrimEnd(System.Convert.ToChar(","));
+            cityAF = cityAF.TrimEnd(System.Convert.ToChar(","));
+            provinceAF = provinceAF.TrimEnd(System.Convert.ToChar(","));
+            areaAF = areaAF.TrimEnd(System.Convert.ToChar(","));
+
+            UnitNo_Global = unitnoAF;
+            Establishment_Global = establishmentAF;
+            HouseNo_Global = housenoAF;
+            Street_Global = streetAF;
+            Village_Global = villageAF;
+            Brgy_Global = brgyAF;
+            CityMunicipality_Global = cityAF;
+            Province_Global = provinceAF;
+
+            if (areaAF.IndexOf("Luzon", 0, StringComparison.CurrentCultureIgnoreCase) > -1)
+                areaAF = "Luzon";
+            else if (areaAF.IndexOf("Visayas", 0, StringComparison.CurrentCultureIgnoreCase) > -1)
+                areaAF = "Visayas";
+            else if (areaAF.IndexOf("Mindanao", 0, StringComparison.CurrentCultureIgnoreCase) > -1)
+                areaAF = "Mindanao";
+            else
+                areaAF = "";
+
+            Area_Global = areaAF;
+
+            switch (unitnoAF)
+            {
+                case "":
+                    {
+                        FullAddress_Global = FullAddress_Global;
+                        break;
+                    }
+
+                default:
+                    {
+                        FullAddress_Global = unitnoAF;
+                        break;
+                    }
+            }
+
+            switch (establishmentAF)
+            {
+                case "":
+                    {
+                        FullAddress_Global = FullAddress_Global;
+                        break;
+                    }
+
+                default:
+                    {
+                        FullAddress_Global = FullAddress_Global + " " + establishmentAF;
+                        break;
+                    }
+            }
+
+            switch (housenoAF)
+            {
+                case "":
+                    {
+                        FullAddress_Global = FullAddress_Global;
+                        break;
+                    }
+
+                default:
+                    {
+                        FullAddress_Global = FullAddress_Global + " " + housenoAF;
+                        break;
+                    }
+            }
+
+            switch (streetAF)
+            {
+                case "":
+                    {
+                        FullAddress_Global = FullAddress_Global;
+                        break;
+                    }
+
+                default:
+                    {
+                        FullAddress_Global = FullAddress_Global + " " + streetAF;
+                        break;
+                    }
+            }
+
+            switch (villageAF)
+            {
+                case "":
+                    {
+                        FullAddress_Global = FullAddress_Global;
+                        break;
+                    }
+
+                default:
+                    {
+                        switch (housenoAF)
+                        {
+                            case "":
+                                {
+                                    switch (streetAF)
+                                    {
+                                        case "":
+                                            {
+                                                FullAddress_Global = FullAddress_Global + " " + villageAF;
+                                                break;
+                                            }
+
+                                        default:
+                                            {
+                                                FullAddress_Global = FullAddress_Global + ", " + villageAF;
+                                                break;
+                                            }
+                                    }
+
+                                    break;
+                                }
+
+                            default:
+                                {
+                                    switch (streetAF)
+                                    {
+                                        case "":
+                                            {
+                                                FullAddress_Global = FullAddress_Global + " " + villageAF;
+                                                break;
+                                            }
+
+                                        default:
+                                            {
+                                                FullAddress_Global = FullAddress_Global + ", " + villageAF;
+                                                break;
+                                            }
+                                    }
+
+                                    break;
+                                }
+                        }
+
+                        break;
+                    }
+            }
+
+            switch (brgyAF)
+            {
+                case "":
+                    {
+                        FullAddress_Global = FullAddress_Global;
+                        break;
+                    }
+
+                default:
+                    {
+                        switch (housenoAF)
+                        {
+                            case "":
+                                {
+                                    switch (streetAF)
+                                    {
+                                        case "":
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            FullAddress_Global = FullAddress_Global + " " + brgyAF;
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            FullAddress_Global = FullAddress_Global + ", " + brgyAF;
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+
+                                        default:
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            FullAddress_Global = FullAddress_Global + ", " + brgyAF;
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            FullAddress_Global = FullAddress_Global + ", " + brgyAF;
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+                                    }
+
+                                    break;
+                                }
+
+                            default:
+                                {
+                                    switch (streetAF)
+                                    {
+                                        case "":
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            FullAddress_Global = FullAddress_Global + " " + brgyAF;
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            FullAddress_Global = FullAddress_Global + ", " + brgyAF;
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+
+                                        default:
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            FullAddress_Global = FullAddress_Global + ", " + brgyAF;
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            FullAddress_Global = FullAddress_Global + ", " + brgyAF;
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+                                    }
+
+                                    break;
+                                }
+                        }
+
+                        break;
+                    }
+            }
+
+            switch (cityAF)
+            {
+                case "":
+                    {
+                        FullAddress_Global = FullAddress_Global;
+                        break;
+                    }
+
+                default:
+                    {
+                        switch (housenoAF)
+                        {
+                            case "":
+                                {
+                                    switch (streetAF)
+                                    {
+                                        case "":
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + " " + cityAF;
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+
+                                        default:
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+                                    }
+
+                                    break;
+                                }
+
+                            default:
+                                {
+                                    switch (streetAF)
+                                    {
+                                        case "":
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + " " + cityAF;
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+
+                                        default:
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        FullAddress_Global = FullAddress_Global + ", " + cityAF;
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+                                    }
+
+                                    break;
+                                }
+                        }
+
+                        break;
+                    }
+            }
+
+            switch (provinceAF)
+            {
+                case "":
+                    {
+                        FullAddress_Global = FullAddress_Global;
+                        break;
+                    }
+
+                default:
+                    {
+                        switch (housenoAF)
+                        {
+                            case "":
+                                {
+                                    switch (streetAF)
+                                    {
+                                        case "":
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + " " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+
+                                        default:
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+                                    }
+
+                                    break;
+                                }
+
+                            default:
+                                {
+                                    switch (streetAF)
+                                    {
+                                        case "":
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + " " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+
+                                        default:
+                                            {
+                                                switch (villageAF)
+                                                {
+                                                    case "":
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+
+                                                    default:
+                                                        {
+                                                            switch (brgyAF)
+                                                            {
+                                                                case "":
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+
+                                                                default:
+                                                                    {
+                                                                        switch (cityAF)
+                                                                        {
+                                                                            case "":
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+
+                                                                            default:
+                                                                                {
+                                                                                    FullAddress_Global = FullAddress_Global + ", " + provinceAF;
+                                                                                    break;
+                                                                                }
+                                                                        }
+
+                                                                        break;
+                                                                    }
+                                                            }
+
+                                                            break;
+                                                        }
+                                                }
+
+                                                break;
+                                            }
+                                    }
+
+                                    break;
+                                }
+                        }
+
+                        break;
+                    }
+            }
+
+            return FullAddress_Global = FullAddress_Global.Trim();
+            Area_Global = areaAF;
+        }
+
     }
 }
