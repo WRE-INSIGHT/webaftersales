@@ -120,11 +120,18 @@ namespace webaftersales.AFTERSALESPROJ
                 imgbutton.Height = Unit.Pixel(200);
                 imgbutton.Style.Add("margin", "5px");
                 imgbutton.CssClass = "img-thumbnail";
+                imgbutton.AlternateText = fileinfo.Name.ToString();
                 imgbutton.Click += new ImageClickEventHandler(Imgbutton_Click);
+             
+                Panel pn = new Panel();
+                pn.Width = Unit.Pixel(210);
+                Label lbl = new Label();
+                lbl.Text = fileinfo.Name;
+                pn.Controls.Add(imgbutton);
+                pn.Controls.Add(new LiteralControl("<br />"));
+                pn.Controls.Add(lbl);
 
-                Table tb = new Table();
-
-                Panel1.Controls.Add(imgbutton);
+                PlaceHolder1.Controls.Add(pn);
             }
         }
         private void Imgbutton_Click(object sender, ImageClickEventArgs e)
@@ -132,7 +139,7 @@ namespace webaftersales.AFTERSALESPROJ
   
             Session["imgpath"] = ((ImageButton)sender).ImageUrl.ToString();
             Session["imgpathsource"] = "per item";
-            Response.Redirect("~/AFTERSALESPROJ/viewimage.aspx?ImageUrl=" + ((ImageButton)sender).ImageUrl);
+            Response.Redirect("~/AFTERSALESPROJ/viewimage.aspx?ImageUrl=" + ((ImageButton)sender).ImageUrl+"&ImageName="+ ((ImageButton)sender).AlternateText + "");
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {

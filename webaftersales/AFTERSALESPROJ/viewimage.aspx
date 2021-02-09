@@ -13,7 +13,10 @@
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click">back</asp:LinkButton>
         </div>
     </div>
+    <asp:Label ID="label1" runat="server" Font-Size="X-Large" Text="Label"></asp:Label><br />
     <asp:Image ID="Image1" runat="server" />
-    <br/>
+    <br />
+
+
     <asp:Button ID="Button1" CssClass="btn btn-default" runat="server" OnClientClick="return confirm('delete this image?');" Text="delete" OnClick="Button1_Click" />
 </asp:Content>

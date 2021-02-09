@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
-   <div class="well">
+    <div class="well">
         <h3><strong>Photos</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click">back</asp:LinkButton>
@@ -38,8 +38,9 @@
             </asp:Panel>
 
         </div>
-        <asp:Panel ID="Panel1" runat="server" BorderStyle="None" BackColor="#333333">
+        <asp:Panel ID="Panel1" runat="server" BorderStyle="None" BackColor="#CCCCCC">
         </asp:Panel>
+        <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
 
         <div class="panel-footer">
         </div>
