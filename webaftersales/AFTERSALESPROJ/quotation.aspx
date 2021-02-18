@@ -104,7 +104,11 @@
                                 <asp:Label ID="actualpricelbl" runat="server" Text='<%# Bind("[ACTUAL PRICE]") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-
+                           <asp:TemplateField HeaderText="VAT AMOUNT">
+                            <ItemTemplate>
+                                <asp:Label ID="vatamountlbl" runat="server" Text='<%# Bind("[VAT_AMOUNT]") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <RowStyle Wrap="False" ForeColor="#000066" />
                     <FooterStyle BackColor="White" ForeColor="#000066" />

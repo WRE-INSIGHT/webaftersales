@@ -48,11 +48,11 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-               
-             
+
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    string str = "select wdwloc AS LOCATION, ITEM,kno AS K#, FORMAT(netprice,'N2') AS [NET PRICE] from itemtb where id = @iid ";
+                    string str = "select wdwloc AS LOCATION, ITEM,kno AS K#, FORMAT(netprice,'N2') AS [NET PRICE],Vat_Amount from itemtb where id = @iid ";
 
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -75,8 +75,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    
-                    using (SqlCommand sqlcmd =sqlcon.CreateCommand())
+
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
                         sqlcmd.CommandText = "display_cl";
@@ -119,7 +119,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-               
+
                 DataSet ds = new DataSet();
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -156,7 +156,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-               
+
                 DataSet ds = new DataSet();
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -177,7 +177,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 errorrmessage(ex.Message.ToString());
             }
-         
+
         }
 
 
@@ -203,20 +203,22 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void insertbtn_Click(object sender, EventArgs e)
         {
-            addfunction(tboxarticle.Text, tboxdescription.Text, tboxmarkup.Text, tboxunitprice.Text, tboxqty.Text, tboxnetprice.Text);
+            addfunction(tboxarticle.Text, tboxdescription.Text, tboxmarkup.Text, tboxunitprice.Text, tboxqty.Text, tboxnetprice.Text,tboxVatamount.Text);
         }
-        private void addfunction(string articleno, string description, string markup, string unitprice, string qty, string netprice)
+        private void addfunction(string articleno, string description, string markup, string unitprice, string qty, string netprice,string vatamount)
         {
             try
             {
-               
+
                 string str = "  declare @id as integer = (select isnull(max(id),0)+1 from partstb) " +
-                  "  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount) " +
-                  "  values(@id, @iid, @articleno, @description, @markup, @unitprice, @qty, @netamount)" +
+                  "  insert into partstb(id, iid, articleno, description, markup, unitprice, qty, netamount,vat_amount) " +
+                  "  values(@id, @iid, @articleno, @description, @markup, @unitprice, @qty, @netamount,@vatamount) " +
                              " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
-                             " update itemtb set netprice = @x where id = @iid " +
+                              " declare @totalVatamountParts as decimal(10,2) = (select sum(vat_amount) from partstb where iid=@iid) " +
+                             " update itemtb set netprice = @x,vat_amount = @totalVatamountParts where id = @iid " +
                              " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
-                             " update [QUOTATIONTB] set netprice = @y where aseno = @aseno ";
+                              " declare @totalVatamountItem as decimal(10,2) = (select sum(vat_amount) from itemtb where aseno=@aseno) " +
+                             " update [QUOTATIONTB] set netprice = @y,vat_amount = @totalVatamountItem where aseno = @aseno ";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
 
@@ -231,6 +233,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@unitprice", unitprice);
                         sqlcmd.Parameters.AddWithValue("@qty", qty);
                         sqlcmd.Parameters.AddWithValue("@netamount", netprice);
+                        sqlcmd.Parameters.AddWithValue("@vatamount", vatamount);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -277,7 +280,7 @@ namespace webaftersales.AFTERSALESPROJ
                     ((Label)row.FindControl("lbldescription")).Text,
                     w.ToString(),
                     y.ToString(),
-                    x.ToString(), netamount.ToString());
+                    x.ToString(), netamount.ToString(),tboxVatamount.Text);
             }
             if (e.CommandName == "mycancel")
             {
@@ -318,6 +321,7 @@ namespace webaftersales.AFTERSALESPROJ
                     ((TextBox)row.FindControl("unitpricetboxedit")).Visible = true;
                     ((TextBox)row.FindControl("qtytboxedit")).Visible = true;
                     ((TextBox)row.FindControl("netamounttboxedit")).Visible = true;
+                    ((TextBox)row.FindControl("vatamounttboxedit")).Visible = true;
 
                     ((LinkButton)row.FindControl("LinkButton6")).Visible = false;
                     ((LinkButton)row.FindControl("LinkButton9")).Visible = false;
@@ -327,7 +331,7 @@ namespace webaftersales.AFTERSALESPROJ
                     ((Label)row.FindControl("unitprice")).Visible = false;
                     ((Label)row.FindControl("qty")).Visible = false;
                     ((Label)row.FindControl("netamount")).Visible = false;
-
+                    ((Label)row.FindControl("vatamount")).Visible = false;
 
 
                 }
@@ -344,6 +348,7 @@ namespace webaftersales.AFTERSALESPROJ
                     ((TextBox)row.FindControl("unitpricetboxedit")).Visible = false;
                     ((TextBox)row.FindControl("qtytboxedit")).Visible = false;
                     ((TextBox)row.FindControl("netamounttboxedit")).Visible = false;
+                    ((TextBox)row.FindControl("vatamounttboxedit")).Visible = false;
 
                     ((LinkButton)row.FindControl("LinkButton6")).Visible = true;
                     ((LinkButton)row.FindControl("LinkButton9")).Visible = true;
@@ -353,7 +358,7 @@ namespace webaftersales.AFTERSALESPROJ
                     ((Label)row.FindControl("unitprice")).Visible = true;
                     ((Label)row.FindControl("qty")).Visible = true;
                     ((Label)row.FindControl("netamount")).Visible = true;
-
+                    ((Label)row.FindControl("vatamount")).Visible = true;
                 }
                 else if (e.CommandName == "myupdate")
                 {
@@ -366,7 +371,8 @@ namespace webaftersales.AFTERSALESPROJ
                      ((TextBox)row.FindControl("markuptboxedit")).Text,
                      ((TextBox)row.FindControl("unitpricetboxedit")).Text,
                      ((TextBox)row.FindControl("qtytboxedit")).Text,
-                     ((TextBox)row.FindControl("netamounttboxedit")).Text);
+                     ((TextBox)row.FindControl("netamounttboxedit")).Text,
+                        ((TextBox)row.FindControl("vatamounttboxedit")).Text);
                 }
                 else if (e.CommandName == "mydelete")
                 {
@@ -386,12 +392,14 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-               
-                string str = "delete from partstb where id = @id"+
+
+                string str = "delete from partstb where id = @id" +
                              " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
-                             " update itemtb set netprice = @x where id = @iid " +
+                             " declare @b as decimal(10,2) = (select sum(vat_amount) from partstb where iid=@iid) " +
+                             " update itemtb set netprice = @x,vat_amount=@b where id = @iid " +
                              " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
-                             " update [QUOTATIONTB] set netprice = @y where aseno = @aseno "; ;
+                             " declare @z as decimal(10,2) = (select sum(vat_amount) from itemtb where aseno=@aseno) " +
+                             " update [QUOTATIONTB] set netprice = @y,vat_amount=@z where aseno = @aseno "; ;
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -414,16 +422,18 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        private void updatefunction(string id, string articleno, string description, string markup, string unitprice, string qty, string netprice)
+        private void updatefunction(string id, string articleno, string description, string markup, string unitprice, string qty, string netprice, string vatamount)
         {
             try
             {
-               
-                string str = " update partstb set articleno=@articleno, description= @description, markup = @markup, unitprice = @unitprice, qty = @qty, netamount = @netamount where id = @id" +
+
+                string str = " update partstb set articleno=@articleno, description= @description, markup = @markup, unitprice = @unitprice, qty = @qty, netamount = @netamount, vat_amount=@vatamount where id = @id" +
                              " declare @x as decimal(10,2) = (select sum(netamount) from partstb where iid=@iid) " +
-                             " update itemtb set netprice = @x where id = @iid " +
+                             " declare @totalVatamountParts as decimal(10,2) = (select sum(VAT_amount) from partstb where iid=@iid) " +
+                             " update itemtb set netprice = @x, VAT_AMOUNT = @totalVatamountParts where id = @iid " +
                              " declare @y as decimal(10,2) = (select sum(netprice) from itemtb where aseno=@aseno) " +
-                             " update [QUOTATIONTB] set netprice = @y where aseno = @aseno ";
+                             " declare @totalVatamountItem as decimal(10,2) = (select sum(VAT_amount) from itemtb where aseno=@aseno) " +
+                             " update [QUOTATIONTB] set netprice = @y, VAT_AMOUNT = @totalVatamountItem where aseno = @aseno ";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -438,6 +448,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@unitprice", unitprice);
                         sqlcmd.Parameters.AddWithValue("@qty", qty);
                         sqlcmd.Parameters.AddWithValue("@netamount", netprice);
+                        sqlcmd.Parameters.AddWithValue("@vatamount", vatamount);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -472,6 +483,25 @@ namespace webaftersales.AFTERSALESPROJ
             else
             {
                 ((TextBox)row.FindControl("netamounttboxedit")).Text = "0";
+            }
+        }
+
+        protected void tboxVatPer_TextChanged(object sender, EventArgs e)
+        {
+            if (tboxnetprice.Text != "" && tboxVatPer.Text != "")
+            {
+                double vatamount, v, w, x;
+                w = double.Parse(tboxVatPer.Text);
+                x = double.Parse(tboxnetprice.Text);
+
+               
+                v = x * (w * 0.01);
+                vatamount = v;
+                tboxVatamount.Text = Convert.ToString(vatamount);
+            }
+            else
+            {
+                tboxVatamount.Text = "0";
             }
         }
     }

@@ -17,6 +17,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
         public string unitprice { get; set; }
         public string qty { get; set; }
         public string netamount { get; set; }
+        public string vat_amount { get; set; }
     }
     public class knoparts
     {
@@ -33,7 +34,8 @@ namespace webaftersales.AFTERSALESPROJ.dal
                     " MARKUP," +
                     " UNITPRICE AS[UNIT PRICE]," +
                     " QTY," +
-                    " NETAMOUNT AS[NET AMOUNT]" +
+                    " NETAMOUNT AS[NET AMOUNT], " +
+                    " Vat_amount "+
                     " from partstb where iid = @iid";
        
             using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
@@ -55,6 +57,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
                         p.unitprice = rd[5].ToString();
                         p.qty = rd[6].ToString();
                         p.netamount = rd[7].ToString();
+                        p.vat_amount = rd[8].ToString();
                         li.Add(p);
                     }
                 }

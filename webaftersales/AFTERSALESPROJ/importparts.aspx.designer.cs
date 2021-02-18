@@ -229,6 +229,24 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.WebControls.TextBox tboxnetprice;
         
         /// <summary>
+        /// tboxVatPer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxVatPer;
+        
+        /// <summary>
+        /// tboxVatamount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxVatamount;
+        
+        /// <summary>
         /// ValidationSummary2 control.
         /// </summary>
         /// <remarks>

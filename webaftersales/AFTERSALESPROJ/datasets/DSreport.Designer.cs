@@ -1639,6 +1639,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnACCEPTEDBY;
             
+            private global::System.Data.DataColumn columnVAT_AMOUNT;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public QUOTATIONTBDataTable() {
@@ -1770,6 +1772,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VAT_AMOUNTColumn {
+                get {
+                    return this.columnVAT_AMOUNT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1805,7 +1815,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, string MOBILIZATION, string FOC, string ACCEPTEDBY) {
+            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, string MOBILIZATION, string FOC, string ACCEPTEDBY, string VAT_AMOUNT) {
                 QUOTATIONTBRow rowQUOTATIONTBRow = ((QUOTATIONTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ASENO,
@@ -1819,7 +1829,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         APPROVEDBY,
                         MOBILIZATION,
                         FOC,
-                        ACCEPTEDBY};
+                        ACCEPTEDBY,
+                        VAT_AMOUNT};
                 rowQUOTATIONTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQUOTATIONTBRow);
                 return rowQUOTATIONTBRow;
@@ -1854,6 +1865,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnMOBILIZATION = base.Columns["MOBILIZATION"];
                 this.columnFOC = base.Columns["FOC"];
                 this.columnACCEPTEDBY = base.Columns["ACCEPTEDBY"];
+                this.columnVAT_AMOUNT = base.Columns["VAT_AMOUNT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1883,6 +1895,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnFOC);
                 this.columnACCEPTEDBY = new global::System.Data.DataColumn("ACCEPTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnACCEPTEDBY);
+                this.columnVAT_AMOUNT = new global::System.Data.DataColumn("VAT_AMOUNT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVAT_AMOUNT);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4342,6 +4356,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string VAT_AMOUNT {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUOTATIONTB.VAT_AMOUNTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VAT_AMOUNT\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.VAT_AMOUNTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsASENONull() {
                 return this.IsNull(this.tableQUOTATIONTB.ASENOColumn);
             }
@@ -4482,6 +4512,18 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetACCEPTEDBYNull() {
                 this[this.tableQUOTATIONTB.ACCEPTEDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVAT_AMOUNTNull() {
+                return this.IsNull(this.tableQUOTATIONTB.VAT_AMOUNTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVAT_AMOUNTNull() {
+                this[this.tableQUOTATIONTB.VAT_AMOUNTColumn] = global::System.Convert.DBNull;
             }
         }
         

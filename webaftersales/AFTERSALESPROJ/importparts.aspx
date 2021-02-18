@@ -18,8 +18,8 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
         <ContentTemplate>
-                 <h4 class="text-warning"> selected k#: </h4>
-            <asp:GridView ID="GridView3" CssClass="table" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" >
+            <h4 class="text-warning">selected k#: </h4>
+            <asp:GridView ID="GridView3" CssClass="table" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1">
                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
                 <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
                 <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
@@ -32,7 +32,7 @@
             </asp:GridView>
             <h4 class="text-info">cutting list:</h4>
             <asp:GridView ID="GridView4" CssClass="table" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
-                
+
                 <AlternatingRowStyle BackColor="White" />
                 <FooterStyle BackColor="#CCCC99" />
                 <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -43,11 +43,11 @@
                 <SortedAscendingHeaderStyle BackColor="#848384" />
                 <SortedDescendingCellStyle BackColor="#EAEAD3" />
                 <SortedDescendingHeaderStyle BackColor="#575357" />
-                    <EmptyDataTemplate>
-                        <div class="alert alert-danger">
-                           no cutting list input.
-                        </div>
-                    </EmptyDataTemplate>
+                <EmptyDataTemplate>
+                    <div class="alert alert-danger">
+                        no cutting list input.
+                    </div>
+                </EmptyDataTemplate>
             </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>
@@ -195,6 +195,12 @@
                                 <asp:TextBox ID="netamounttboxedit" Visible="false" Enabled="false" Text='<%# Eval("netamount") %>' Width="90" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Vat Amount">
+                            <ItemTemplate>
+                                <asp:Label ID="vatamount" runat="server" Text='<%# Bind("vat_amount") %>'></asp:Label>
+                                <asp:TextBox ID="vatamounttboxedit" Visible="false" Text='<%# Eval("vat_amount") %>' Width="90" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                     <HeaderStyle Wrap="False" BackColor="#006699" Font-Bold="True" ForeColor="White" />
@@ -221,35 +227,34 @@
         <ContentTemplate>
             <div class="panel panel-default">
                 <div class="panel-body">
-                       <asp:Label ID="Label4" Font-Size="X-Large" runat="server" Text="manual input"></asp:Label>
+                    <asp:Label ID="Label4" Font-Size="X-Large" runat="server" Text="manual input"></asp:Label>
                     <div class="row">
-                        <div class="col-sm-6">
-                         
+                        <div class="col-sm-4">
                             Article No<br />
                             <asp:TextBox ID="tboxarticle" CssClass="form-control" runat="server"></asp:TextBox><br />
                             Description<br />
                             <asp:TextBox ID="tboxdescription" CssClass="form-control" runat="server"></asp:TextBox><br />
                         </div>
-                        <div class="col-sm-6">
-                            <table class="table" border="0">
-                                <tr>
-                                    <td>%Markup<br />
-                                        <asp:TextBox ID="tboxmarkup" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="True" OnTextChanged="tboxunitprice_TextChanged">30</asp:TextBox><br />
-                                    </td>
-                                    <td>Unit price<br />
-                                        <asp:TextBox ID="tboxunitprice" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="True" OnTextChanged="tboxunitprice_TextChanged"></asp:TextBox><br />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Qty<br />
-                                        <asp:TextBox ID="tboxqty" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="True" OnTextChanged="tboxunitprice_TextChanged"></asp:TextBox><br />
+                        <div class="col-sm-4">
+                            %Markup<br />
+                            <asp:TextBox ID="tboxmarkup" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="True" OnTextChanged="tboxunitprice_TextChanged">30</asp:TextBox>
+                            <br />
+                            Unit price<br />
+                            <asp:TextBox ID="tboxunitprice" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="True" OnTextChanged="tboxunitprice_TextChanged"></asp:TextBox>
+                            <br />
+                            Qty<br />
+                            <asp:TextBox ID="tboxqty" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="True" OnTextChanged="tboxunitprice_TextChanged"></asp:TextBox>
+                          
 
-                                    </td>
-                                    <td>Net price<br />
-                                        <asp:TextBox ID="tboxnetprice" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox><br />
-                                    </td>
-                                </tr>
-                            </table>
+                        </div>
+                        <div class="col-sm-4">
+                           Net price
+                                    <br />
+                            <asp:TextBox ID="tboxnetprice" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox><br />
+                            %Vat<br />
+                            <asp:TextBox ID="tboxVatPer" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="tboxVatPer_TextChanged">0</asp:TextBox>
+                            <br />Vat Amount<br />
+                            <asp:TextBox ID="tboxVatamount" TextMode="Number" CssClass="form-control" runat="server">0</asp:TextBox>
                         </div>
                     </div>
                     <asp:ValidationSummary ID="ValidationSummary2" CssClass="alert alert-danger" ValidationGroup="val2" runat="server" />

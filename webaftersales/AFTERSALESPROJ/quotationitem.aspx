@@ -75,6 +75,12 @@
                                 <asp:TextBox ID="tboxactualprice" Visible="false" TextMode="Number" Text='<%# Eval("ACTUALPRICE") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
+                             <asp:TemplateField HeaderText="Vat Amount">
+                            <ItemTemplate>
+                                <asp:Label ID="lblvatamount" runat="server" Text='<%# Bind("[vat_amount]") %>'></asp:Label>
+                                <asp:TextBox ID="tboxvatamount" Visible="false" TextMode="Number" Text='<%# Eval("vat_amount") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="FOC">
                             <ItemTemplate>
                                 <asp:Label ID="lblfoc" runat="server" Text='<%# Bind("[FOC]") %>'></asp:Label>
@@ -192,7 +198,11 @@
                                                 <asp:Label ID="netamountlbl" runat="server" Text='<%# Bind("netamount") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-
+                                          <asp:TemplateField HeaderText="NET AMOUNT">
+                                            <ItemTemplate>
+                                                <asp:Label ID="vatamount" runat="server" Text='<%# Bind("vat_amount") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                     </Columns>
                                     <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                     <RowStyle Wrap="false" BackColor="White" />

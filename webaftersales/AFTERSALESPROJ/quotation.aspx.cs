@@ -70,7 +70,7 @@ namespace webaftersales.AFTERSALESPROJ
                           "   format(OTHERCHARGES, 'n2') as [OTHER CHARGES]," +
                           "   PARTICULAR," +
                           "   case when isdate(ACCEPTED)=1 then format(cast(ACCEPTED as date),'MMM-dd-yyyy') else ACCEPTED end as ACCEPTED," +
-                          "   format(NETPRICE, 'n2') as NETPRICE," +
+                          "   format(NETPRICE, 'n2') as NETPRICE,vat_amount," +
                           "   format(Actualprice, 'n2') as [ACTUAL PRICE],LOCK" +
                           "   from quotationtb where sid = @sid";
              
