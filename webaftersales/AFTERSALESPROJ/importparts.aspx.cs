@@ -183,9 +183,9 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void tboxunitprice_TextChanged(object sender, EventArgs e)
         {
-            if (tboxunitprice.Text != "" && tboxqty.Text != "" && tboxmarkup.Text != "")
+            if (tboxunitprice.Text != "" && tboxqty.Text != "" && tboxmarkup.Text != "" && tboxVatPer.Text != "")
             {
-                double netamount, v, w, x, y, z;
+                double netamount, v, w, x, y, z,vat;
                 w = double.Parse(tboxmarkup.Text);
                 x = double.Parse(tboxqty.Text);
                 y = double.Parse(tboxunitprice.Text);
@@ -194,6 +194,8 @@ namespace webaftersales.AFTERSALESPROJ
                 v = z * (w * 0.01);
                 netamount = z + v;
                 tboxnetprice.Text = Convert.ToString(netamount);
+                vat = double.Parse(tboxVatPer.Text);
+                tboxVatamount.Text = Convert.ToString(netamount*(vat*0.01));
             }
             else
             {
@@ -486,23 +488,6 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        protected void tboxVatPer_TextChanged(object sender, EventArgs e)
-        {
-            if (tboxnetprice.Text != "" && tboxVatPer.Text != "")
-            {
-                double vatamount, v, w, x;
-                w = double.Parse(tboxVatPer.Text);
-                x = double.Parse(tboxnetprice.Text);
-
-               
-                v = x * (w * 0.01);
-                vatamount = v;
-                tboxVatamount.Text = Convert.ToString(vatamount);
-            }
-            else
-            {
-                tboxVatamount.Text = "0";
-            }
-        }
+       
     }
 }

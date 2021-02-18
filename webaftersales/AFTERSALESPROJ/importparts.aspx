@@ -252,7 +252,7 @@
                                     <br />
                             <asp:TextBox ID="tboxnetprice" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox><br />
                             %Vat<br />
-                            <asp:TextBox ID="tboxVatPer" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="tboxVatPer_TextChanged">0</asp:TextBox>
+                            <asp:TextBox ID="tboxVatPer" TextMode="Number" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="tboxunitprice_TextChanged">0</asp:TextBox>
                             <br />Vat Amount<br />
                             <asp:TextBox ID="tboxVatamount" TextMode="Number" CssClass="form-control" runat="server">0</asp:TextBox>
                         </div>
