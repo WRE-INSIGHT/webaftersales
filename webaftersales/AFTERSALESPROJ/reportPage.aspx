@@ -17,7 +17,6 @@
         <h3><strong>Report</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton6" CssClass="btn btn-default" runat="server" OnClick="LinkButton6_Click">back</asp:LinkButton>
-
         </div>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>

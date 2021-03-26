@@ -320,7 +320,8 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "delete from reporttb where id = @id";
+                string str = "delete from reporttb where id = @id "+
+                    " delete from TBLassessment where REPORTID = @id";
             
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
