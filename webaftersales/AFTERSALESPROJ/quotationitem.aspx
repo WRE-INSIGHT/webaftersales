@@ -24,7 +24,7 @@
     <asp:Panel ID="Panel1" ScrollBars="Auto" runat="server">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <h4 class="text-warning"> selected quotation: </h4>
+                <h4 class="text-warning">selected quotation: </h4>
                 <asp:GridView ID="GridView3" AutoGenerateColumns="false" CssClass="table" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowCommand="GridView3_RowCommand">
                     <Columns>
 
@@ -51,7 +51,13 @@
                                 <asp:TextBox ID="tboxothercharges" Visible="false" TextMode="Number" Text='<%# Eval("OTHERCHARGES") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="MOBILIZATION CHARGES">
+                        <asp:TemplateField HeaderText="Transportation">
+                            <ItemTemplate>
+                                <asp:Label ID="lblTransportation" runat="server" Text='<%# Bind("[Transportation]") %>'></asp:Label>
+                                <asp:TextBox ID="tboxTransportation" Visible="false" TextMode="Number" Text='<%# Eval("Transportation") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Delivery/Mobilization ">
                             <ItemTemplate>
                                 <asp:Label ID="lblmobilization" runat="server" Text='<%# Bind("[MOBILIZATION]") %>'></asp:Label>
                                 <asp:DropDownList ID="ddlmobi" Visible="false" runat="server" OnSelectedIndexChanged="mobiselectedindexchange" AutoPostBack="true">
@@ -60,6 +66,12 @@
                                     <asp:ListItem Value="3500">Northern Luzon</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:TextBox ID="tboxmobilization" Visible="false" TextMode="Number" Text='<%# Eval("MOBILIZATION") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Material surcharges due to Pandemic">
+                            <ItemTemplate>
+                                <asp:Label ID="lblMaterial_surcharges" runat="server" Text='<%# Bind("[Material_surcharges]") %>'></asp:Label>
+                                <asp:TextBox ID="tboxMaterial_surcharges" Visible="false" TextMode="Number" Text='<%# Eval("Material_surcharges") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="NET PRICE">
@@ -75,7 +87,7 @@
                                 <asp:TextBox ID="tboxactualprice" Visible="false" TextMode="Number" Text='<%# Eval("ACTUALPRICE") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                             <asp:TemplateField HeaderText="Vat Amount">
+                        <asp:TemplateField HeaderText="Vat Amount">
                             <ItemTemplate>
                                 <asp:Label ID="lblvatamount" runat="server" Text='<%# Bind("[vat_amount]") %>'></asp:Label>
                                 <asp:TextBox ID="tboxvatamount" Visible="false" TextMode="Number" Text='<%# Eval("vat_amount") %>' runat="server"></asp:TextBox>
@@ -122,7 +134,7 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                             
+
                                 <asp:LinkButton ID="LinkButton2" runat="server" CommandName="myedit">Edit</asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton3" runat="server" OnClientClick="return confirm('delete this record?')" CommandName="mydelete">Delete</asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton5" Visible="false" runat="server" CommandName="mysave">Update</asp:LinkButton>
@@ -198,7 +210,7 @@
                                                 <asp:Label ID="netamountlbl" runat="server" Text='<%# Bind("netamount") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                          <asp:TemplateField HeaderText="NET AMOUNT">
+                                        <asp:TemplateField HeaderText="NET AMOUNT">
                                             <ItemTemplate>
                                                 <asp:Label ID="vatamount" runat="server" Text='<%# Bind("vat_amount") %>'></asp:Label>
                                             </ItemTemplate>

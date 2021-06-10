@@ -29,7 +29,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        SelectCommand="select ASENO,QDATE,PARTICULAR,FORMAT(OTHERCHARGES,'n2') as OTHERCHARGES,format(NETPRICE,'n2') as NETPRICE,format(ACTUALPRICE,'n2') as ACTUALPRICE,format(MOBILIZATION,'n2') AS MOBILIZATION,FOC, TELNO,PREPAREDBY,APPROVEDBY,ACCEPTEDBY,FORMAT(VAT_AMOUNT,'n2') as VAT_AMOUNT from quotationtb as a
+        SelectCommand="select ASENO,QDATE,PARTICULAR,FORMAT(OTHERCHARGES,'n2') as OTHERCHARGES,format(NETPRICE,'n2') as NETPRICE,format(ACTUALPRICE,'n2') as ACTUALPRICE,MOBILIZATION,TRANSPORTATION,MATERIAL_SURCHARGES,FOC, TELNO,PREPAREDBY,APPROVEDBY,ACCEPTEDBY,FORMAT(VAT_AMOUNT,'n2') as VAT_AMOUNT from quotationtb as a
 LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE ([ASENO] = @ASENO)">
         <SelectParameters>
             <asp:SessionParameter Name="ASENO" SessionField="aseno" Type="String" />

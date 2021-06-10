@@ -1641,6 +1641,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnVAT_AMOUNT;
             
+            private global::System.Data.DataColumn columnTRANSPORTATION;
+            
+            private global::System.Data.DataColumn columnMATERIAL_SURCHARGES;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public QUOTATIONTBDataTable() {
@@ -1780,6 +1784,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TRANSPORTATIONColumn {
+                get {
+                    return this.columnTRANSPORTATION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MATERIAL_SURCHARGESColumn {
+                get {
+                    return this.columnMATERIAL_SURCHARGES;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1815,7 +1835,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, string MOBILIZATION, string FOC, string ACCEPTEDBY, string VAT_AMOUNT) {
+            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, decimal MOBILIZATION, string FOC, string ACCEPTEDBY, string VAT_AMOUNT, decimal TRANSPORTATION, decimal MATERIAL_SURCHARGES) {
                 QUOTATIONTBRow rowQUOTATIONTBRow = ((QUOTATIONTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ASENO,
@@ -1830,7 +1850,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         MOBILIZATION,
                         FOC,
                         ACCEPTEDBY,
-                        VAT_AMOUNT};
+                        VAT_AMOUNT,
+                        TRANSPORTATION,
+                        MATERIAL_SURCHARGES};
                 rowQUOTATIONTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQUOTATIONTBRow);
                 return rowQUOTATIONTBRow;
@@ -1866,6 +1888,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnFOC = base.Columns["FOC"];
                 this.columnACCEPTEDBY = base.Columns["ACCEPTEDBY"];
                 this.columnVAT_AMOUNT = base.Columns["VAT_AMOUNT"];
+                this.columnTRANSPORTATION = base.Columns["TRANSPORTATION"];
+                this.columnMATERIAL_SURCHARGES = base.Columns["MATERIAL_SURCHARGES"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1889,7 +1913,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnPREPAREDBY);
                 this.columnAPPROVEDBY = new global::System.Data.DataColumn("APPROVEDBY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAPPROVEDBY);
-                this.columnMOBILIZATION = new global::System.Data.DataColumn("MOBILIZATION", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnMOBILIZATION = new global::System.Data.DataColumn("MOBILIZATION", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMOBILIZATION);
                 this.columnFOC = new global::System.Data.DataColumn("FOC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFOC);
@@ -1897,6 +1921,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnACCEPTEDBY);
                 this.columnVAT_AMOUNT = new global::System.Data.DataColumn("VAT_AMOUNT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVAT_AMOUNT);
+                this.columnTRANSPORTATION = new global::System.Data.DataColumn("TRANSPORTATION", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTRANSPORTATION);
+                this.columnMATERIAL_SURCHARGES = new global::System.Data.DataColumn("MATERIAL_SURCHARGES", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMATERIAL_SURCHARGES);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4308,10 +4336,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MOBILIZATION {
+            public decimal MOBILIZATION {
                 get {
                     try {
-                        return ((string)(this[this.tableQUOTATIONTB.MOBILIZATIONColumn]));
+                        return ((decimal)(this[this.tableQUOTATIONTB.MOBILIZATIONColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'MOBILIZATION\' in table \'QUOTATIONTB\' is DBNull.", e);
@@ -4367,6 +4395,38 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 }
                 set {
                     this[this.tableQUOTATIONTB.VAT_AMOUNTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal TRANSPORTATION {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableQUOTATIONTB.TRANSPORTATIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TRANSPORTATION\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.TRANSPORTATIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal MATERIAL_SURCHARGES {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableQUOTATIONTB.MATERIAL_SURCHARGESColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MATERIAL_SURCHARGES\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.MATERIAL_SURCHARGESColumn] = value;
                 }
             }
             
@@ -4524,6 +4584,30 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetVAT_AMOUNTNull() {
                 this[this.tableQUOTATIONTB.VAT_AMOUNTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTRANSPORTATIONNull() {
+                return this.IsNull(this.tableQUOTATIONTB.TRANSPORTATIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTRANSPORTATIONNull() {
+                this[this.tableQUOTATIONTB.TRANSPORTATIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMATERIAL_SURCHARGESNull() {
+                return this.IsNull(this.tableQUOTATIONTB.MATERIAL_SURCHARGESColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMATERIAL_SURCHARGESNull() {
+                this[this.tableQUOTATIONTB.MATERIAL_SURCHARGESColumn] = global::System.Convert.DBNull;
             }
         }
         

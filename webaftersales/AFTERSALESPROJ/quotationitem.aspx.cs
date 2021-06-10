@@ -55,7 +55,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    string str = "select ID,ASENO AS ASE#,NETPRICE ,QDATE AS [DATE],OTHERCHARGES,ACTUALPRICE,PARTICULAR,MOBILIZATION,VAT_AMOUNT,FOC from quotationtb where aseno=@aseno";
+                    string str = "select ID,ASENO AS ASE#,NETPRICE ,QDATE AS [DATE],OTHERCHARGES,ACTUALPRICE,PARTICULAR,MOBILIZATION,TRANSPORTATION,MATERIAL_SURCHARGES,VAT_AMOUNT,FOC from quotationtb where aseno=@aseno";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
@@ -308,6 +308,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("editbtn")).Visible = false;
                 ((Label)row.FindControl("lblparticular")).Visible = false;
                 ((Label)row.FindControl("lblmobilization")).Visible = false;
+                ((Label)row.FindControl("lblTransportation")).Visible = false;
+                ((Label)row.FindControl("lblMaterial_surcharges")).Visible = false;
                 ((Label)row.FindControl("lblothercharges")).Visible = false;
                 ((Label)row.FindControl("lblnetprice")).Visible = false;
                 ((Label)row.FindControl("lblactualprice")).Visible = false;
@@ -318,7 +320,9 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("updatebtn")).Visible = true;
                 ((LinkButton)row.FindControl("cancelbtn")).Visible = true;
                 ((TextBox)row.FindControl("tboxparticular")).Visible = true;
+                ((TextBox)row.FindControl("tboxTransportation")).Visible = true;
                 ((TextBox)row.FindControl("tboxmobilization")).Visible = true;
+                ((TextBox)row.FindControl("tboxMaterial_surcharges")).Visible = true;
                 ((TextBox)row.FindControl("tboxothercharges")).Visible = true;
                 ((TextBox)row.FindControl("tboxnetprice")).Visible = true;
                 ((TextBox)row.FindControl("tboxactualprice")).Visible = true;
@@ -335,6 +339,9 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView3.Rows[rowindex];
                 ((LinkButton)row.FindControl("editbtn")).Visible = true;
                 ((Label)row.FindControl("lblparticular")).Visible = true;
+                ((Label)row.FindControl("lblmobilization")).Visible = true;
+                ((Label)row.FindControl("lblTransportation")).Visible = true;
+                ((Label)row.FindControl("lblMaterial_surcharges")).Visible = true;
                 ((Label)row.FindControl("lblothercharges")).Visible = true;
                 ((Label)row.FindControl("lblothercharges")).Visible = true;
                 ((Label)row.FindControl("lblnetprice")).Visible = true;
@@ -346,7 +353,9 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("updatebtn")).Visible = false;
                 ((LinkButton)row.FindControl("cancelbtn")).Visible = false;
                 ((TextBox)row.FindControl("tboxparticular")).Visible = false;
+                ((TextBox)row.FindControl("tboxTransportation")).Visible = false;
                 ((TextBox)row.FindControl("tboxmobilization")).Visible = false;
+                ((TextBox)row.FindControl("tboxMaterial_surcharges")).Visible = false;
                 ((TextBox)row.FindControl("tboxothercharges")).Visible = false;
                 ((TextBox)row.FindControl("tboxnetprice")).Visible = false;
                 ((TextBox)row.FindControl("tboxactualprice")).Visible = false;
@@ -360,12 +369,14 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView3.Rows[rowindex];
                 if (((TextBox)row.FindControl("tboxnetprice")).Text != "" && ((TextBox)row.FindControl("tboxothercharges")).Text != "")
                 {
-                    double x, y, z, a, b;
+                    double x, y, z, a, b,transpo,materials;
                     x = double.Parse(((TextBox)row.FindControl("tboxnetprice")).Text);
                     y = double.Parse(((TextBox)row.FindControl("tboxothercharges")).Text);
                     a = double.Parse(((TextBox)row.FindControl("tboxmobilization")).Text);
+                    transpo = double.Parse(((TextBox)row.FindControl("tboxTransportation")).Text);
+                    materials = double.Parse(((TextBox)row.FindControl("tboxMaterial_surcharges")).Text);
                     b = double.Parse(((TextBox)row.FindControl("tboxvatamount")).Text);
-                    z = x + y + a + b;
+                    z = x + y + a + b+ transpo+ materials;
                     ((TextBox)row.FindControl("tboxactualprice")).Text = z.ToString();
                 }
 
@@ -374,12 +385,14 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView3.Rows[rowindex];
-                string id, netprice, actualprice, particular, othercharges, mobilization, foc, vatamount;
+                string id, netprice, actualprice, particular, othercharges, mobilization,transpo,materials, foc, vatamount;
                 id = ((Label)row.FindControl("lblid")).Text;
                 netprice = ((TextBox)row.FindControl("tboxnetprice")).Text;
                 actualprice = ((TextBox)row.FindControl("tboxactualprice")).Text;
                 particular = ((TextBox)row.FindControl("tboxparticular")).Text;
                 mobilization = ((TextBox)row.FindControl("tboxmobilization")).Text;
+                transpo = ((TextBox)row.FindControl("tboxTransportation")).Text;
+                materials = ((TextBox)row.FindControl("tboxMaterial_surcharges")).Text;
                 othercharges = ((TextBox)row.FindControl("tboxothercharges")).Text;
                 foc = ((TextBox)row.FindControl("tboxfoc")).Text;
                 vatamount = ((TextBox)row.FindControl("tboxvatamount")).Text;
@@ -387,15 +400,15 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     othercharges = "0";
                 }
-                updatefunction(id, particular, othercharges, netprice, actualprice, mobilization, foc, vatamount);
+                updatefunction(id, particular, othercharges, netprice, actualprice, mobilization, transpo, materials,  foc, vatamount);
             }
         }
 
-        private void updatefunction(string id, string particular, string othercharges, string netprice, string actualprice, string mobilization, string foc, string vatamount)
+        private void updatefunction(string id, string particular, string othercharges, string netprice, string actualprice, string mobilization,string transpo, string materials, string foc, string vatamount)
         {
             try
             {
-                string str = "update quotationtb set particular=@particular,othercharges=@othercharges,netprice=@netprice,actualprice=@actualprice,mobilization=@mobilization,foc=@foc,vat_amount=@vatamount where id = @id";
+                string str = "update quotationtb set particular=@particular,othercharges=@othercharges,netprice=@netprice,actualprice=@actualprice,mobilization=@mobilization,transportation=@transpo,material_surcharges=@materials,foc=@foc,vat_amount=@vatamount where id = @id";
 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -406,6 +419,8 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@particular", particular);
                         sqlcmd.Parameters.AddWithValue("@othercharges", othercharges);
                         sqlcmd.Parameters.AddWithValue("@mobilization", mobilization);
+                        sqlcmd.Parameters.AddWithValue("@transpo", transpo);
+                        sqlcmd.Parameters.AddWithValue("@materials", materials);
                         sqlcmd.Parameters.AddWithValue("@netprice", netprice);
                         sqlcmd.Parameters.AddWithValue("@actualprice", actualprice);
                         sqlcmd.Parameters.AddWithValue("@foc", foc);
