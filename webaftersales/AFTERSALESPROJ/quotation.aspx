@@ -15,7 +15,7 @@
     </div>
     <h2>
         <strong>
-            <asp:Label ID="lblproject" runat="server" Text="Project Name"></asp:Label></strong><br />
+            <asp:Label ID="lblproject" runat="server" Text="PROJECT NAME"></asp:Label></strong><br />
         <small>
             <asp:Label ID="lbladdress" runat="server" Text="Address"></asp:Label></small></h2>
     <br />
