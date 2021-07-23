@@ -92,7 +92,7 @@
         <ContentTemplate>
 
 
-            <asp:GridView ID="GridView1" GridLines="none" AllowPaging="true" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+            <asp:GridView ID="GridView1" GridLines="none" AllowPaging="true" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
