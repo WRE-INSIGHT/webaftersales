@@ -17,7 +17,7 @@
     <div class="well">
         <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="input-group">
                     <div class="input-group-addon">
                         Date
@@ -25,7 +25,15 @@
                     <asp:TextBox ID="datetbox" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                        Member
+                    </div>
+                    <asp:TextBox ID="membertbox" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="col-sm-4">
                 <div class="input-group">
                     <asp:TextBox ID="searchtbox" CssClass="form-control" placeholder="project name" runat="server"></asp:TextBox>
                     <div class="input-group-btn">
