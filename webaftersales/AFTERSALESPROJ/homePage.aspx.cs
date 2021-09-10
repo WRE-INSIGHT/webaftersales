@@ -86,6 +86,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.Parameters.AddWithValue("@useraccount", useraccount);
                     sqlcmd.Parameters.AddWithValue("@userpid", userpid);
                     sqlcmd.Parameters.AddWithValue("@datekey", datetbox.Text);
+                    sqlcmd.Parameters.AddWithValue("@member", membertbox.Text);
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(ds, "tb");
