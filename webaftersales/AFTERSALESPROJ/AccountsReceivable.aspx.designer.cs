@@ -10,70 +10,61 @@
 namespace webaftersales.AFTERSALESPROJ {
     
     
-    public partial class homePage {
+    public partial class AccountsReceivable {
         
         /// <summary>
-        /// datetbox control.
+        /// CheckBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox datetbox;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
         
         /// <summary>
-        /// assessmentsortingcbox control.
+        /// tboxSdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList assessmentsortingcbox;
+        protected global::System.Web.UI.WebControls.TextBox tboxSdate;
         
         /// <summary>
-        /// membertbox control.
+        /// tboxEdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox membertbox;
+        protected global::System.Web.UI.WebControls.TextBox tboxEdate;
         
         /// <summary>
-        /// searchtbox control.
+        /// tboxsearchkey control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox searchtbox;
+        protected global::System.Web.UI.WebControls.TextBox tboxsearchkey;
         
         /// <summary>
-        /// searcbtn2 control.
+        /// LinkButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton searcbtn2;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// GridView1 control.
@@ -83,5 +74,23 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// lblTotalRowCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalRowCount;
+        
+        /// <summary>
+        /// lblTotalAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalAmount;
     }
 }

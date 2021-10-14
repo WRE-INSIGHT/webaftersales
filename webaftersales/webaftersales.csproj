@@ -209,6 +209,13 @@
     <Compile Include="AFTERSALESPROJ\accountPage.aspx.designer.cs">
       <DependentUpon>accountPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\AccountsReceivable.aspx.cs">
+      <DependentUpon>AccountsReceivable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\AccountsReceivable.aspx.designer.cs">
+      <DependentUpon>AccountsReceivable.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\addservicing.aspx.cs">
       <DependentUpon>addservicing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -654,6 +661,7 @@
   <ItemGroup>
     <Content Include="AFTERSALESPROJ\aboutusPage.aspx" />
     <Content Include="AFTERSALESPROJ\accountPage.aspx" />
+    <Content Include="AFTERSALESPROJ\AccountsReceivable.aspx" />
     <Content Include="AFTERSALESPROJ\addservicing.aspx" />
     <Content Include="AFTERSALESPROJ\assessmentmade.aspx" />
     <Content Include="AFTERSALESPROJ\assessmentPage.aspx" />

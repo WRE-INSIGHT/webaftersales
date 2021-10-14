@@ -33,7 +33,7 @@ namespace webaftersales.AFTERSALESPROJ
                         searchtbox.Text = Session["currentsearch"].ToString();
                     }
                     getdata();
-                 
+                    GetAssessmentSortingList();
                 }
             }
             else
@@ -68,7 +68,27 @@ namespace webaftersales.AFTERSALESPROJ
               return  ConnectionString.sqlconstr();
             }
         }
-     
+        private void GetAssessmentSortingList()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("select distinct assessment_sorting from servicingtb order by assessment_sorting asc", sqlcon))
+                    {
+                        sqlcon.Open();
+                        assessmentsortingcbox.DataSource = sqlcmd.ExecuteReader();
+                        assessmentsortingcbox.DataTextField = "assessment_sorting";
+                        assessmentsortingcbox.DataValueField = "assessment_sorting";
+                        assessmentsortingcbox.DataBind();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                errorrmessage(e.Message.ToString());
+            }
+        }
         private void getdata()
         {
             try
@@ -87,6 +107,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcmd.Parameters.AddWithValue("@userpid", userpid);
                     sqlcmd.Parameters.AddWithValue("@datekey", datetbox.Text);
                     sqlcmd.Parameters.AddWithValue("@member", membertbox.Text);
+                    sqlcmd.Parameters.AddWithValue("@assessment_sorting", assessmentsortingcbox.SelectedValue.ToString());
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlcmd;
                     da.Fill(ds, "tb");

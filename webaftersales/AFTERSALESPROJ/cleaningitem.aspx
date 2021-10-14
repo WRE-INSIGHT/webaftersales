@@ -16,6 +16,91 @@
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
+    <div>
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            Location selector
+                        </div>
+                        <asp:DropDownList ID="locationdl" Height="30" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="locationdl_SelectedIndexChanged"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <asp:TextBox ID="tboxsearch" Height="30" runat="server" CssClass="form-control"></asp:TextBox>
+                        <div class="input-group-btn">
+                            <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" Height="30" runat="server" OnClick="searchbtn_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <asp:Panel ID="Panel2" runat="server" ScrollBars="Auto">
+                <asp:GridView ID="GridView2" CssClass="table" runat="server"
+                    AutoGenerateColumns="False" EmptyDataText="No result found."
+                    AllowPaging="True" DataKeyNames="ID"
+                    OnPageIndexChanging="GridView2_PageIndexChanging"
+                    OnRowDataBound="GridView2_RowDataBound" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Label ID="Label6" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                <asp:CheckBox ID="cboxselect" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Location">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="K #">
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("KMDI_NO") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Item #">
+                            <ItemTemplate>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("ITEM_NO") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="JO">
+                            <ItemTemplate>
+                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("job_order_no") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Dimension">
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("WIDTH") %>'></asp:Label>&nbsp;x&nbsp;<asp:Label ID="Label7" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" Wrap="False" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Right" BackColor="White" ForeColor="Black" />
+                    <EmptyDataTemplate>
+                        <div class="">
+                            <h2><strong>This table is empty!</strong>
+                                <small>There are no k#(s) inputs in the original system.</small>
+                            </h2>
+                        </div>
+                    </EmptyDataTemplate>
+                    <RowStyle Wrap="False" />
+                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                    <SortedDescendingHeaderStyle BackColor="#242121" />
+                </asp:GridView>
+            </asp:Panel>
+            <br />
+            <asp:Button ID="btnimport" CssClass="btn btn-primary" runat="server" OnClick="btnimport_Click" Text="import" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
         </div>

@@ -17,23 +17,28 @@
     <div class="well">
         <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="input-group">
                     <div class="input-group-addon">
                         Date
                     </div>
                     <asp:TextBox ID="datetbox" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        Assessment Sorting
+                    </div>
+                    <asp:DropDownList ID="assessmentsortingcbox" CssClass="form-control" runat="server"></asp:DropDownList>
+                </div>
             </div>
-            <div class="col-sm-4">
-                  <div class="input-group">
+
+            <div class="col-sm-6">
+                <div class="input-group">
                     <div class="input-group-addon">
                         Member
                     </div>
                     <asp:TextBox ID="membertbox" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
-            </div>
-            <div class="col-sm-4">
                 <div class="input-group">
                     <asp:TextBox ID="searchtbox" CssClass="form-control" placeholder="project name" runat="server"></asp:TextBox>
                     <div class="input-group-btn">
@@ -41,6 +46,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
     </div>
@@ -90,11 +96,12 @@
                                             </td>
                                         </tr>
                                     </table>
-                                  <strong><asp:Label ID="Label13" CssClass="text-danger" runat="server" Font-Size="45px" Text='<%# Eval("SORTING").ToString()+"." %>'></asp:Label></strong>  &nbsp;
+                                    <strong>
+                                        <asp:Label ID="Label13" CssClass="text-danger" runat="server" Font-Size="45px" Text='<%# Eval("SORTING").ToString()+"." %>'></asp:Label></strong>  &nbsp;
                                     <asp:Label ID="datelbl" Font-Size="XX-Large" runat="server" Text='<%# Bind("DATE") %>'></asp:Label><br />
                                     <table class="table" border="1">
                                         <tr>
-                                             <td class="text-center"><small class="text-muted">Plate #</small>
+                                            <td class="text-center"><small class="text-muted">Plate #</small>
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label11" CssClass=" text-success" runat="server" Text='<%# Bind("PLATENO") %>'></asp:Label>
@@ -142,6 +149,13 @@
                                             <td class="text-center"><small class="text-muted">Color</small></td>
                                             <td>
                                                 <asp:Label ID="colorlbl" runat="server" Text='<%# Bind("PROFILE_FINISH") %>'></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center"><small class="text-muted">Assessment sorting</small></td>
+                                            <td>
+                                                <h3>
+                                                <asp:Label ID="assessmentsortinglbl" CssClass="label label-danger" Font-Bold="true" runat="server" Text='<%# Bind("assessment_sorting") %>'></asp:Label></td>
+                                        </h3>
                                         </tr>
                                     </table>
                                     <br />
@@ -198,7 +212,7 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                      
+
                                     </div>
                                 </div>
                             </div>
