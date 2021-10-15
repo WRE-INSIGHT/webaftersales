@@ -36,6 +36,13 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+        private string jo
+        {
+            get
+            {
+                return Session["JO"].ToString();
+            }
+        }
         private string sid
         {
             get
@@ -65,6 +72,7 @@ namespace webaftersales.AFTERSALESPROJ
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
+      
         private void loaddata()
         {
             try
@@ -187,6 +195,7 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["cleaningid"] = ((Label)row.FindControl("lblid")).Text;
+                Session["SID"] = sid;
                 Response.Redirect("~/AFTERSALESPROJ/cleaningitem.aspx");
             }
             else if (e.CommandName == "myreport")

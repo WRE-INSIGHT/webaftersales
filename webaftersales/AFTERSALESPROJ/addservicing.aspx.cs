@@ -60,6 +60,13 @@ namespace webaftersales.AFTERSALESPROJ
                 return ConnectionString.sqlconstr();
             }
         }
+        private string jo
+        {
+            get
+            {
+                return Session["callinJo"].ToString();
+            }
+        }
         private void getdata()
         {
             try
@@ -80,8 +87,9 @@ namespace webaftersales.AFTERSALESPROJ
                         "  a.teamid, " +
                         "  b.TEAMNAME," +
                         " a.plateno," +
-                          " a.SORTING," +
-                            " a.MATERIALS," +
+                        " a.SORTING," +
+                        " a.ASSESSMENT_SORTING," +
+                        " a.MATERIALS," +
                         "  STUFF((SELECT ', ' + y.FULLNAME+ char(10) from TBLteamMember as x " +
                         " 	left join tblpersonnel as y" +
                         " 	on x.pid = y.pid" +
@@ -151,7 +159,7 @@ namespace webaftersales.AFTERSALESPROJ
                 string str = " declare @id as integer = (select isnull(max(id),0)+1 from servicingtb)" +
                                      " declare @sss as integer = (select isnull(max(id), 0) from servicingtb where cin = @cin)" +
                                      " update servicingtb set[status] = 'Reschedule',statusdate = @sdate where id = @sss" +
-                                     " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks,materials,plateno, status,sorting)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks,@materials,@plateno, 'Scheduled',@sorting)";
+                                     " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks,materials,plateno, status,sorting,assessment_sorting)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks,@materials,@plateno, 'Scheduled',@sorting,@assessment_sorting)";
                 string str2 = "select isnull(count(id),0)+1 from servicingtb where cin = @cin";
                
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
@@ -196,6 +204,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@materials", materials.Text);
                         sqlcmd.Parameters.AddWithValue("@plateno", plateno.Text);
                         sqlcmd.Parameters.AddWithValue("@sorting", tboxsorting.Text);
+                        sqlcmd.Parameters.AddWithValue("@assessment_sorting", tboxAssessment.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -240,6 +249,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("platenotbox")).Text = ((Label)row.FindControl("platenolbl")).Text;
                 ((TextBox)row.FindControl("specifiedjobtbox")).Text = ((Label)row.FindControl("specifiedjoblbl")).Text;
                 ((TextBox)row.FindControl("instructiontbox")).Text = ((Label)row.FindControl("instructionlbl")).Text;
+                ((TextBox)row.FindControl("assessment_sortingtbox")).Text = ((Label)row.FindControl("assessment_sortinglbl")).Text;
                 ((DropDownList)row.FindControl("DropDownList1")).Text = ((Label)row.FindControl("statuslbl")).Text;
                 DateTime Svalue;
                 string Sdt = ((Label)row.FindControl("statusdatelbl")).Text;
@@ -263,6 +273,7 @@ namespace webaftersales.AFTERSALESPROJ
                 ViewState["materials"] = ((TextBox)row.FindControl("materialstbox")).Text;
                 ViewState["plateno"] = ((TextBox)row.FindControl("platenotbox")).Text;
                 ViewState["sorting"] = ((TextBox)row.FindControl("sortingtbox")).Text;
+                ViewState["assessment_sorting"] = ((TextBox)row.FindControl("assessment_sortingtbox")).Text;
                 ViewState["specifiedjob"] = ((TextBox)row.FindControl("specifiedjobtbox")).Text;
                 ViewState["instruction"] = ((TextBox)row.FindControl("instructiontbox")).Text;
                 ViewState["status"] = ((DropDownList)row.FindControl("DropDownList1")).Text;
@@ -325,6 +336,7 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["CIN"] = cin;
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                Session["JO"] = jo;
                 getdetails(cin);
                 Response.Redirect("~/AFTERSALESPROJ/cleaningpage.aspx");
             }
@@ -384,7 +396,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks,materials=@materials,plateno=@plateno,sorting=@sorting  where id = @id";
+                string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks,materials=@materials,plateno=@plateno,sorting=@sorting,assessment_sorting=@assessment_sorting  where id = @id";
                
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -399,6 +411,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@materials", ViewState["materials"].ToString());
                         sqlcmd.Parameters.AddWithValue("@plateno", ViewState["plateno"].ToString());
                         sqlcmd.Parameters.AddWithValue("@sorting", ViewState["sorting"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@assessment_sorting", ViewState["assessment_sorting"].ToString());
                         sqlcmd.Parameters.AddWithValue("@specifiedjob", ViewState["specifiedjob"].ToString());
                         sqlcmd.Parameters.AddWithValue("@instruction", ViewState["instruction"].ToString());
                         sqlcmd.ExecuteNonQuery();

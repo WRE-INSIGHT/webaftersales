@@ -62,9 +62,6 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-
-
-        
                  using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();

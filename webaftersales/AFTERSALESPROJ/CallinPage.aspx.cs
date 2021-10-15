@@ -190,6 +190,7 @@ namespace webaftersales.AFTERSALESPROJ
                     Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
                     Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
                     Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                    Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
                     Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
                 }
                 else
@@ -199,6 +200,7 @@ namespace webaftersales.AFTERSALESPROJ
                         Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
                         Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
                         Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                        Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
                         Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
                     }
                     else
@@ -208,6 +210,7 @@ namespace webaftersales.AFTERSALESPROJ
                             Session["callinnumber"] = ((Label)row.FindControl("callinlbl")).Text;
                             Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
                             Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
+                            Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
                             Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
                         }
                         else
