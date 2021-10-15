@@ -25,6 +25,7 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         loaddata();
                         getlocations();
+                        getdefaultvalue();
                     }
                 }
                 else
@@ -37,6 +38,35 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
         }
+
+        private void getdefaultvalue()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("select property_value from default_property_tbl where property_name = 'Cleaning Unit Price'", sqlcon))
+                    {
+                        sqlcon.Open();
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            while (rd.Read())
+                            {
+                                tboxCleaningUnitPrice.Text = rd[0].ToString();
+                                tboxunitprice.Text = rd[0].ToString();
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+
+            }
+        }
+
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -473,11 +503,11 @@ namespace webaftersales.AFTERSALESPROJ
                         location = mytb.Rows[i]["location"].ToString();
                         width = mytb.Rows[i]["width"].ToString();
                         height = mytb.Rows[i]["height"].ToString();
-
+                        double dup = Convert.ToDouble(tboxCleaningUnitPrice.Text);
                         double w = (Convert.ToDouble(width) * (0.001));
                         double h = (Convert.ToDouble(height) * (0.001));
                         double a = w * h;
-                        double u = a * 250;
+                        double u = a * dup;
                         insertNew(a.ToString(), kno + " - " + location, u.ToString(), "1");
                     }
                 }
@@ -499,5 +529,29 @@ namespace webaftersales.AFTERSALESPROJ
             getdata("filter");
         }
 
+        protected void btnSet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("update default_property_tbl set property_value = @property_value where property_name = 'Cleaning Unit Price'", sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@property_value", tboxCleaningUnitPrice.Text);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                getdefaultvalue();
+            }
+        }
     }
 }
