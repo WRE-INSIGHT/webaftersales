@@ -152,7 +152,7 @@
     <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3>Cleaning items</h3>
+                <h3>Items for cleaning</h3>
             </div>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
