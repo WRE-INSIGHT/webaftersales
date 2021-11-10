@@ -17,7 +17,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (Session["username"] != null)
             {
-                if (Session["useraccount"].ToString() == "Admin" && (Session["userid"].ToString() == "2" || Session["userid"].ToString() == "24" || Session["userid"].ToString() == "3"))
+                if (Session["useraccount"].ToString() == "Admin" && (Session["userid"].ToString() == "2" 
+                    || Session["userid"].ToString() == "24" || Session["userid"].ToString() == "3"
+                    || Session["userid"].ToString() == "33"))
                 {
                     if (!IsPostBack)
                     {
