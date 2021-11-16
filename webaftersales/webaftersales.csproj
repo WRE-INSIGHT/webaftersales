@@ -515,6 +515,20 @@
     <Compile Include="AFTERSALESPROJ\quotationsummary.aspx.designer.cs">
       <DependentUpon>quotationsummary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\refoilingitem.aspx.cs">
+      <DependentUpon>refoilingitem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\refoilingitem.aspx.designer.cs">
+      <DependentUpon>refoilingitem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\refoilingpage.aspx.cs">
+      <DependentUpon>refoilingpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\refoilingpage.aspx.designer.cs">
+      <DependentUpon>refoilingpage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\reportPage.aspx.cs">
       <DependentUpon>reportPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -724,6 +738,8 @@
     <Content Include="AFTERSALESPROJ\quotationreportclientsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsummary.aspx" />
+    <Content Include="AFTERSALESPROJ\refoilingitem.aspx" />
+    <Content Include="AFTERSALESPROJ\refoilingpage.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportPhotos.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />

@@ -340,6 +340,17 @@ namespace webaftersales.AFTERSALESPROJ
                 getdetails(cin);
                 Response.Redirect("~/AFTERSALESPROJ/cleaningpage.aspx");
             }
+            else if (e.CommandName == "refoiling")
+            {
+                int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
+                GridView1.SelectedIndex = rowindex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["CIN"] = cin;
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                Session["JO"] = jo;
+                getdetails(cin);
+                Response.Redirect("~/AFTERSALESPROJ/refoilingpage.aspx");
+            }
         }
         private void getdetails(string callin)
         {
