@@ -99,7 +99,7 @@
                     </asp:GridView>
                 </asp:Panel>
                 <br />
-                <asp:Button ID="btnimport" CssClass="btn btn-success" runat="server" Text="import" />
+                <asp:Button ID="btnimport" CssClass="btn btn-success" runat="server" Text="import" OnClick="btnimport_Click" />
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
@@ -172,69 +172,89 @@
                     <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="false" CellPadding="4" ForeColor="#333333" GridLines="Both" OnRowCommand="GridView1_RowCommand">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField>
+                            <asp:TemplateField  ItemStyle-Wrap="false">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btndelete" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">delete</asp:LinkButton>
+                                    <asp:Panel ID="btnpanel1" runat="server">
+                                        <asp:LinkButton ID="btndelete" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">delete</asp:LinkButton>
+                                        |
+                                    <asp:LinkButton ID="btnedit" CommandName="myedit" runat="server">edit</asp:LinkButton>
+                                    </asp:Panel>
+                                    <asp:Panel ID="btnpanel2" visible="false" runat="server">
+                                        <asp:LinkButton ID="btnsave" CommandName="mysave" runat="server">save</asp:LinkButton>
+                                        |
+                                        <asp:LinkButton ID="btncancel" CommandName="mycancel" runat="server">cancel</asp:LinkButton>
+                                    </asp:Panel>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ITEM#" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                     <asp:Label ID="lblitemno" runat="server" Text='<%# Bind("ITEM_NO") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxitemnoE" TextMode="Number" Visible="false" CssClass=" form-control" Text='<%# Bind("ITEM_NO") %>' runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="K#" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblkno" runat="server" Text='<%# Bind("K_NO") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxknoE" CssClass="form-control" Visible="false" Text='<%# Bind("K_NO") %>' runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="LOCATION" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lbllocation" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxlocationE" CssClass="form-control" Text='<%# Bind("LOCATION") %>' Visible="false" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="PARTS" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblparts" runat="server" Text='<%# Bind("PARTS") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxpartsE" CssClass=" form-control" Visible="false" Text='<%# Bind("PARTS") %>' runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ARTICLE#" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblarticleno" runat="server" Text='<%# Bind("ARTICLE_NO") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxarticlenoE" CssClass=" form-control" Visible="false" Text='<%# Bind("ARTICLE_NO") %>' runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="PROFILE LENGTH" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lbllength" runat="server" Text='<%# Bind("PROFILE_LENGTH") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxlengthE" TextMode="Number" Text='<%# Bind("PROFILE_LENGTH") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="WIDTH INSIDE" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblinside" runat="server" Text='<%# Bind("PROFILE_WIDTH_IN") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxwidthinE" TextMode="Number" Text='<%# Bind("PROFILE_WIDTH_IN") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="WIDTH OUTSIDE" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lbloutside" runat="server" Text='<%# Bind("PROFILE_WIDTH_OUT") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxwidthoutE" TextMode="Number" Text='<%# Bind("PROFILE_WIDTH_OUT") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="QUANTITY" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblqty" runat="server" Text='<%# Bind("QTY") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxqtyE" TextMode="Number" Visible="false" Text='<%# Bind("QTY") %>' CssClass=" form-control" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SUB TOTAL" ItemStyle-Wrap="false">
                                 <ItemTemplate>
+                                    <div class="text-right">
                                     <asp:Label ID="lblsubtotal" runat="server" Text='<%# Bind("SUB_TOTAL") %>'></asp:Label>
+                                        </div>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
