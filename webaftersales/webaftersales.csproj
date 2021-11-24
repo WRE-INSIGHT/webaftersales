@@ -452,6 +452,13 @@
     <Compile Include="AFTERSALESPROJ\pricelist.aspx.designer.cs">
       <DependentUpon>pricelist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\ProfileWidth.aspx.cs">
+      <DependentUpon>ProfileWidth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\ProfileWidth.aspx.designer.cs">
+      <DependentUpon>ProfileWidth.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\projectList.aspx.cs">
       <DependentUpon>projectList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -515,6 +522,13 @@
     <Compile Include="AFTERSALESPROJ\quotationsummary.aspx.designer.cs">
       <DependentUpon>quotationsummary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\refoilingForapproval.aspx.cs">
+      <DependentUpon>refoilingForapproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\refoilingForapproval.aspx.designer.cs">
+      <DependentUpon>refoilingForapproval.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\refoilingitem.aspx.cs">
       <DependentUpon>refoilingitem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -528,6 +542,20 @@
     </Compile>
     <Compile Include="AFTERSALESPROJ\refoilingpage.aspx.designer.cs">
       <DependentUpon>refoilingpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Refoilingreport.aspx.cs">
+      <DependentUpon>Refoilingreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Refoilingreport.aspx.designer.cs">
+      <DependentUpon>Refoilingreport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\refoilingsignature.aspx.cs">
+      <DependentUpon>refoilingsignature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\refoilingsignature.aspx.designer.cs">
+      <DependentUpon>refoilingsignature.aspx</DependentUpon>
     </Compile>
     <Compile Include="AFTERSALESPROJ\reportPage.aspx.cs">
       <DependentUpon>reportPage.aspx</DependentUpon>
@@ -729,6 +757,7 @@
     <Content Include="AFTERSALESPROJ\pdfuploads.aspx" />
     <Content Include="AFTERSALESPROJ\pendingpage.aspx" />
     <Content Include="AFTERSALESPROJ\pricelist.aspx" />
+    <Content Include="AFTERSALESPROJ\ProfileWidth.aspx" />
     <Content Include="AFTERSALESPROJ\projectList.aspx" />
     <Content Include="AFTERSALESPROJ\quotation.aspx" />
     <Content Include="AFTERSALESPROJ\quotationForapproval.aspx" />
@@ -738,8 +767,11 @@
     <Content Include="AFTERSALESPROJ\quotationreportclientsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsummary.aspx" />
+    <Content Include="AFTERSALESPROJ\refoilingForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\refoilingitem.aspx" />
     <Content Include="AFTERSALESPROJ\refoilingpage.aspx" />
+    <Content Include="AFTERSALESPROJ\Refoilingreport.aspx" />
+    <Content Include="AFTERSALESPROJ\refoilingsignature.aspx" />
     <Content Include="AFTERSALESPROJ\reportPage.aspx" />
     <Content Include="AFTERSALESPROJ\reportPhotos.aspx" />
     <Content Include="AFTERSALESPROJ\reportviewPage.aspx" />
@@ -845,6 +877,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AFTERSALESPROJ\report\cleaningRPT.rdlc" />
+    <EmbeddedResource Include="AFTERSALESPROJ\report\refoilingRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTassessment.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotation.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotationclient.rdlc" />

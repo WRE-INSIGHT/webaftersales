@@ -195,7 +195,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["refoilingdate"] = ((Label)row.FindControl("lblqdate")).Text;
                 Session["refoilingqno"] = ((Label)row.FindControl("lblqno")).Text;
         
-                Session["refoiling_report_sender"] = "cleaningpage";
+                Session["refoiling_report_sender"] = "refoilingpage";
                 Response.Redirect("~/AFTERSALESPROJ/refoilingreport.aspx");
             }
         }

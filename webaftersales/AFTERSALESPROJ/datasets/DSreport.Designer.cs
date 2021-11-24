@@ -3391,29 +3391,35 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnItem_no;
+            private global::System.Data.DataColumn columnItem_No;
             
-            private global::System.Data.DataColumn columnk_no;
+            private global::System.Data.DataColumn columnK_No;
             
-            private global::System.Data.DataColumn columnlocation;
+            private global::System.Data.DataColumn columnLocation;
             
-            private global::System.Data.DataColumn columnparts;
+            private global::System.Data.DataColumn columnParts;
             
-            private global::System.Data.DataColumn columnarticle_no;
+            private global::System.Data.DataColumn columnArticle_No;
             
-            private global::System.Data.DataColumn columnprofile_length;
+            private global::System.Data.DataColumn columnProfile_Length;
             
             private global::System.Data.DataColumn columnProfile_Width_In;
             
             private global::System.Data.DataColumn columnProfile_Width_Out;
             
-            private global::System.Data.DataColumn columnqty;
+            private global::System.Data.DataColumn columnQty;
             
             private global::System.Data.DataColumn columnTotal_Length;
             
             private global::System.Data.DataColumn columnTotal_Area;
             
-            private global::System.Data.DataColumn columnSub_total;
+            private global::System.Data.DataColumn columnSub_Total;
+            
+            private global::System.Data.DataColumn columnAverage_Price;
+            
+            private global::System.Data.DataColumn columnCleaning;
+            
+            private global::System.Data.DataColumn columnItem_Description;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3458,49 +3464,49 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Item_noColumn {
+            public global::System.Data.DataColumn Item_NoColumn {
                 get {
-                    return this.columnItem_no;
+                    return this.columnItem_No;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn k_noColumn {
+            public global::System.Data.DataColumn K_NoColumn {
                 get {
-                    return this.columnk_no;
+                    return this.columnK_No;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn locationColumn {
+            public global::System.Data.DataColumn LocationColumn {
                 get {
-                    return this.columnlocation;
+                    return this.columnLocation;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn partsColumn {
+            public global::System.Data.DataColumn PartsColumn {
                 get {
-                    return this.columnparts;
+                    return this.columnParts;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn article_noColumn {
+            public global::System.Data.DataColumn Article_NoColumn {
                 get {
-                    return this.columnarticle_no;
+                    return this.columnArticle_No;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn profile_lengthColumn {
+            public global::System.Data.DataColumn Profile_LengthColumn {
                 get {
-                    return this.columnprofile_length;
+                    return this.columnProfile_Length;
                 }
             }
             
@@ -3522,9 +3528,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn qtyColumn {
+            public global::System.Data.DataColumn QtyColumn {
                 get {
-                    return this.columnqty;
+                    return this.columnQty;
                 }
             }
             
@@ -3546,9 +3552,33 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Sub_totalColumn {
+            public global::System.Data.DataColumn Sub_TotalColumn {
                 get {
-                    return this.columnSub_total;
+                    return this.columnSub_Total;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Average_PriceColumn {
+                get {
+                    return this.columnAverage_Price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CleaningColumn {
+                get {
+                    return this.columnCleaning;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Item_DescriptionColumn {
+                get {
+                    return this.columnItem_Description;
                 }
             }
             
@@ -3589,22 +3619,41 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public refoiling_tblRow Addrefoiling_tblRow(string Id, string Item_no, string k_no, string location, string parts, string article_no, string profile_length, string Profile_Width_In, string Profile_Width_Out, string qty, decimal Total_Length, decimal Total_Area, decimal Sub_total) {
+            public refoiling_tblRow Addrefoiling_tblRow(
+                        string Id, 
+                        string Item_No, 
+                        string K_No, 
+                        string Location, 
+                        string Parts, 
+                        string Article_No, 
+                        string Profile_Length, 
+                        string Profile_Width_In, 
+                        string Profile_Width_Out, 
+                        string Qty, 
+                        decimal Total_Length, 
+                        decimal Total_Area, 
+                        decimal Sub_Total, 
+                        decimal Average_Price, 
+                        decimal Cleaning, 
+                        string Item_Description) {
                 refoiling_tblRow rowrefoiling_tblRow = ((refoiling_tblRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
-                        Item_no,
-                        k_no,
-                        location,
-                        parts,
-                        article_no,
-                        profile_length,
+                        Item_No,
+                        K_No,
+                        Location,
+                        Parts,
+                        Article_No,
+                        Profile_Length,
                         Profile_Width_In,
                         Profile_Width_Out,
-                        qty,
+                        Qty,
                         Total_Length,
                         Total_Area,
-                        Sub_total};
+                        Sub_Total,
+                        Average_Price,
+                        Cleaning,
+                        Item_Description};
                 rowrefoiling_tblRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrefoiling_tblRow);
                 return rowrefoiling_tblRow;
@@ -3628,18 +3677,21 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnItem_no = base.Columns["Item_no"];
-                this.columnk_no = base.Columns["k_no"];
-                this.columnlocation = base.Columns["location"];
-                this.columnparts = base.Columns["parts"];
-                this.columnarticle_no = base.Columns["article_no"];
-                this.columnprofile_length = base.Columns["profile_length"];
+                this.columnItem_No = base.Columns["Item_No"];
+                this.columnK_No = base.Columns["K_No"];
+                this.columnLocation = base.Columns["Location"];
+                this.columnParts = base.Columns["Parts"];
+                this.columnArticle_No = base.Columns["Article_No"];
+                this.columnProfile_Length = base.Columns["Profile_Length"];
                 this.columnProfile_Width_In = base.Columns["Profile_Width_In"];
                 this.columnProfile_Width_Out = base.Columns["Profile_Width_Out"];
-                this.columnqty = base.Columns["qty"];
+                this.columnQty = base.Columns["Qty"];
                 this.columnTotal_Length = base.Columns["Total_Length"];
                 this.columnTotal_Area = base.Columns["Total_Area"];
-                this.columnSub_total = base.Columns["Sub_total"];
+                this.columnSub_Total = base.Columns["Sub_Total"];
+                this.columnAverage_Price = base.Columns["Average_Price"];
+                this.columnCleaning = base.Columns["Cleaning"];
+                this.columnItem_Description = base.Columns["Item_Description"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3647,30 +3699,36 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnItem_no = new global::System.Data.DataColumn("Item_no", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItem_no);
-                this.columnk_no = new global::System.Data.DataColumn("k_no", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnk_no);
-                this.columnlocation = new global::System.Data.DataColumn("location", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnlocation);
-                this.columnparts = new global::System.Data.DataColumn("parts", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnparts);
-                this.columnarticle_no = new global::System.Data.DataColumn("article_no", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnarticle_no);
-                this.columnprofile_length = new global::System.Data.DataColumn("profile_length", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnprofile_length);
+                this.columnItem_No = new global::System.Data.DataColumn("Item_No", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItem_No);
+                this.columnK_No = new global::System.Data.DataColumn("K_No", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnK_No);
+                this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLocation);
+                this.columnParts = new global::System.Data.DataColumn("Parts", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnParts);
+                this.columnArticle_No = new global::System.Data.DataColumn("Article_No", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnArticle_No);
+                this.columnProfile_Length = new global::System.Data.DataColumn("Profile_Length", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProfile_Length);
                 this.columnProfile_Width_In = new global::System.Data.DataColumn("Profile_Width_In", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProfile_Width_In);
                 this.columnProfile_Width_Out = new global::System.Data.DataColumn("Profile_Width_Out", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProfile_Width_Out);
-                this.columnqty = new global::System.Data.DataColumn("qty", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnqty);
+                this.columnQty = new global::System.Data.DataColumn("Qty", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQty);
                 this.columnTotal_Length = new global::System.Data.DataColumn("Total_Length", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal_Length);
                 this.columnTotal_Area = new global::System.Data.DataColumn("Total_Area", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal_Area);
-                this.columnSub_total = new global::System.Data.DataColumn("Sub_total", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSub_total);
+                this.columnSub_Total = new global::System.Data.DataColumn("Sub_Total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSub_Total);
+                this.columnAverage_Price = new global::System.Data.DataColumn("Average_Price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAverage_Price);
+                this.columnCleaning = new global::System.Data.DataColumn("Cleaning", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCleaning);
+                this.columnItem_Description = new global::System.Data.DataColumn("Item_Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItem_Description);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5881,97 +5939,97 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Item_no {
+            public string Item_No {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.Item_noColumn]));
+                        return ((string)(this[this.tablerefoiling_tbl.Item_NoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Item_no\' in table \'refoiling_tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Item_No\' in table \'refoiling_tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerefoiling_tbl.Item_noColumn] = value;
+                    this[this.tablerefoiling_tbl.Item_NoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string k_no {
+            public string K_No {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.k_noColumn]));
+                        return ((string)(this[this.tablerefoiling_tbl.K_NoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'k_no\' in table \'refoiling_tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'K_No\' in table \'refoiling_tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerefoiling_tbl.k_noColumn] = value;
+                    this[this.tablerefoiling_tbl.K_NoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string location {
+            public string Location {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.locationColumn]));
+                        return ((string)(this[this.tablerefoiling_tbl.LocationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'location\' in table \'refoiling_tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Location\' in table \'refoiling_tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerefoiling_tbl.locationColumn] = value;
+                    this[this.tablerefoiling_tbl.LocationColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string parts {
+            public string Parts {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.partsColumn]));
+                        return ((string)(this[this.tablerefoiling_tbl.PartsColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'parts\' in table \'refoiling_tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Parts\' in table \'refoiling_tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerefoiling_tbl.partsColumn] = value;
+                    this[this.tablerefoiling_tbl.PartsColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string article_no {
+            public string Article_No {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.article_noColumn]));
+                        return ((string)(this[this.tablerefoiling_tbl.Article_NoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'article_no\' in table \'refoiling_tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Article_No\' in table \'refoiling_tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerefoiling_tbl.article_noColumn] = value;
+                    this[this.tablerefoiling_tbl.Article_NoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string profile_length {
+            public string Profile_Length {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.profile_lengthColumn]));
+                        return ((string)(this[this.tablerefoiling_tbl.Profile_LengthColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'profile_length\' in table \'refoiling_tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Profile_Length\' in table \'refoiling_tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerefoiling_tbl.profile_lengthColumn] = value;
+                    this[this.tablerefoiling_tbl.Profile_LengthColumn] = value;
                 }
             }
             
@@ -6009,17 +6067,17 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string qty {
+            public string Qty {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.qtyColumn]));
+                        return ((string)(this[this.tablerefoiling_tbl.QtyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'qty\' in table \'refoiling_tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Qty\' in table \'refoiling_tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerefoiling_tbl.qtyColumn] = value;
+                    this[this.tablerefoiling_tbl.QtyColumn] = value;
                 }
             }
             
@@ -6057,17 +6115,65 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Sub_total {
+            public decimal Sub_Total {
                 get {
                     try {
-                        return ((decimal)(this[this.tablerefoiling_tbl.Sub_totalColumn]));
+                        return ((decimal)(this[this.tablerefoiling_tbl.Sub_TotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Sub_total\' in table \'refoiling_tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Sub_Total\' in table \'refoiling_tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerefoiling_tbl.Sub_totalColumn] = value;
+                    this[this.tablerefoiling_tbl.Sub_TotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Average_Price {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablerefoiling_tbl.Average_PriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Average_Price\' in table \'refoiling_tbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerefoiling_tbl.Average_PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Cleaning {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablerefoiling_tbl.CleaningColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cleaning\' in table \'refoiling_tbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerefoiling_tbl.CleaningColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Item_Description {
+                get {
+                    try {
+                        return ((string)(this[this.tablerefoiling_tbl.Item_DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Item_Description\' in table \'refoiling_tbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerefoiling_tbl.Item_DescriptionColumn] = value;
                 }
             }
             
@@ -6085,74 +6191,74 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsItem_noNull() {
-                return this.IsNull(this.tablerefoiling_tbl.Item_noColumn);
+            public bool IsItem_NoNull() {
+                return this.IsNull(this.tablerefoiling_tbl.Item_NoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetItem_noNull() {
-                this[this.tablerefoiling_tbl.Item_noColumn] = global::System.Convert.DBNull;
+            public void SetItem_NoNull() {
+                this[this.tablerefoiling_tbl.Item_NoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isk_noNull() {
-                return this.IsNull(this.tablerefoiling_tbl.k_noColumn);
+            public bool IsK_NoNull() {
+                return this.IsNull(this.tablerefoiling_tbl.K_NoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setk_noNull() {
-                this[this.tablerefoiling_tbl.k_noColumn] = global::System.Convert.DBNull;
+            public void SetK_NoNull() {
+                this[this.tablerefoiling_tbl.K_NoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IslocationNull() {
-                return this.IsNull(this.tablerefoiling_tbl.locationColumn);
+            public bool IsLocationNull() {
+                return this.IsNull(this.tablerefoiling_tbl.LocationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetlocationNull() {
-                this[this.tablerefoiling_tbl.locationColumn] = global::System.Convert.DBNull;
+            public void SetLocationNull() {
+                this[this.tablerefoiling_tbl.LocationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IspartsNull() {
-                return this.IsNull(this.tablerefoiling_tbl.partsColumn);
+            public bool IsPartsNull() {
+                return this.IsNull(this.tablerefoiling_tbl.PartsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetpartsNull() {
-                this[this.tablerefoiling_tbl.partsColumn] = global::System.Convert.DBNull;
+            public void SetPartsNull() {
+                this[this.tablerefoiling_tbl.PartsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isarticle_noNull() {
-                return this.IsNull(this.tablerefoiling_tbl.article_noColumn);
+            public bool IsArticle_NoNull() {
+                return this.IsNull(this.tablerefoiling_tbl.Article_NoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setarticle_noNull() {
-                this[this.tablerefoiling_tbl.article_noColumn] = global::System.Convert.DBNull;
+            public void SetArticle_NoNull() {
+                this[this.tablerefoiling_tbl.Article_NoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isprofile_lengthNull() {
-                return this.IsNull(this.tablerefoiling_tbl.profile_lengthColumn);
+            public bool IsProfile_LengthNull() {
+                return this.IsNull(this.tablerefoiling_tbl.Profile_LengthColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setprofile_lengthNull() {
-                this[this.tablerefoiling_tbl.profile_lengthColumn] = global::System.Convert.DBNull;
+            public void SetProfile_LengthNull() {
+                this[this.tablerefoiling_tbl.Profile_LengthColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6181,14 +6287,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsqtyNull() {
-                return this.IsNull(this.tablerefoiling_tbl.qtyColumn);
+            public bool IsQtyNull() {
+                return this.IsNull(this.tablerefoiling_tbl.QtyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetqtyNull() {
-                this[this.tablerefoiling_tbl.qtyColumn] = global::System.Convert.DBNull;
+            public void SetQtyNull() {
+                this[this.tablerefoiling_tbl.QtyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6217,14 +6323,50 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSub_totalNull() {
-                return this.IsNull(this.tablerefoiling_tbl.Sub_totalColumn);
+            public bool IsSub_TotalNull() {
+                return this.IsNull(this.tablerefoiling_tbl.Sub_TotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSub_totalNull() {
-                this[this.tablerefoiling_tbl.Sub_totalColumn] = global::System.Convert.DBNull;
+            public void SetSub_TotalNull() {
+                this[this.tablerefoiling_tbl.Sub_TotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAverage_PriceNull() {
+                return this.IsNull(this.tablerefoiling_tbl.Average_PriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAverage_PriceNull() {
+                this[this.tablerefoiling_tbl.Average_PriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCleaningNull() {
+                return this.IsNull(this.tablerefoiling_tbl.CleaningColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCleaningNull() {
+                this[this.tablerefoiling_tbl.CleaningColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsItem_DescriptionNull() {
+                return this.IsNull(this.tablerefoiling_tbl.Item_DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetItem_DescriptionNull() {
+                this[this.tablerefoiling_tbl.Item_DescriptionColumn] = global::System.Convert.DBNull;
             }
         }
         

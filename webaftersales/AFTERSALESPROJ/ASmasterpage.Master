@@ -78,6 +78,17 @@
                               
                             </ul>
                         </li>
+                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-th-large"></span>&nbsp;Re-foiling<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/AFTERSALESPROJ/refoilingForapproval.aspx">For approval</asp:LinkButton>
+                                </li>
+                                 <li>
+                                    <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/AFTERSALESPROJ/PROFILEWIDTH.aspx">Profile width</asp:LinkButton>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/contactusPage.aspx">
                                    <span class="glyphicon glyphicon-phone"></span>&nbsp;Contact</asp:HyperLink></li>

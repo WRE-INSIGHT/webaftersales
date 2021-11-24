@@ -14,6 +14,30 @@
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    Re-foiling/sqm
+                </div>
+                <asp:TextBox ID="tboxRefoilingPerSqm" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
+                <div class="input-group-btn">
+                    <asp:LinkButton ID="btnSet" CssClass="btn btn-default" runat="server" OnClick="btnSet_Click">set</asp:LinkButton>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    Cleaning/sqm
+                </div>
+                <asp:TextBox ID="tboxCleaningPerSqm" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
+                <div class="input-group-btn">
+                    <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">set</asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
     <br />
     <br />
     <div style="background-color: aliceblue;" class="panel panel-success">
@@ -68,6 +92,11 @@
                             <asp:TemplateField HeaderText="Item #">
                                 <ItemTemplate>
                                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("ITEM_NO") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Description">
+                                <ItemTemplate>
+                                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="JO">
@@ -125,14 +154,16 @@
 
                             Location<br />
                             <asp:TextBox ID="tboxlocation" CssClass=" form-control" runat="server"></asp:TextBox>
-                            Parts<br />
+                            Parts/Design<br />
                             <asp:TextBox ID="tboxparts" CssClass=" form-control" runat="server"></asp:TextBox>
+                            Description<br />
+                            <asp:TextBox ID="tboxdescription" CssClass=" form-control" runat="server"></asp:TextBox>
                         </div>
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-xs-6">
                                     Article Number<br />
-                                    <asp:TextBox ID="tboxarticleno" CssClass=" form-control" runat="server"></asp:TextBox>
+                                    <asp:DropDownList ID="ddlarticleno" runat="server" CssClass=" form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlarticleno_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                                 <div class="col-xs-6">
                                     Profile length<br />
@@ -172,14 +203,14 @@
                     <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="false" CellPadding="4" ForeColor="#333333" GridLines="Both" OnRowCommand="GridView1_RowCommand">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:TemplateField  ItemStyle-Wrap="false">
+                            <asp:TemplateField ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Panel ID="btnpanel1" runat="server">
                                         <asp:LinkButton ID="btndelete" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">delete</asp:LinkButton>
                                         |
                                     <asp:LinkButton ID="btnedit" CommandName="myedit" runat="server">edit</asp:LinkButton>
                                     </asp:Panel>
-                                    <asp:Panel ID="btnpanel2" visible="false" runat="server">
+                                    <asp:Panel ID="btnpanel2" Visible="false" runat="server">
                                         <asp:LinkButton ID="btnsave" CommandName="mysave" runat="server">save</asp:LinkButton>
                                         |
                                         <asp:LinkButton ID="btncancel" CommandName="mycancel" runat="server">cancel</asp:LinkButton>
@@ -190,42 +221,49 @@
                                 <ItemTemplate>
                                     <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                     <asp:Label ID="lblitemno" runat="server" Text='<%# Bind("ITEM_NO") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxitemnoE" TextMode="Number" Visible="false" CssClass=" form-control" Text='<%# Bind("ITEM_NO") %>' runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tboxitemnoE" Width="100px" TextMode="Number" Visible="false" CssClass=" form-control" Text='<%# Bind("ITEM_NO") %>' runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="K#" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblkno" runat="server" Text='<%# Bind("K_NO") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxknoE" CssClass="form-control" Visible="false" Text='<%# Bind("K_NO") %>' runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tboxknoE" Width="200px" CssClass="form-control" Visible="false" Text='<%# Bind("K_NO") %>' runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="LOCATION" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lbllocation" runat="server" Text='<%# Bind("LOCATION") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxlocationE" CssClass="form-control" Text='<%# Bind("LOCATION") %>' Visible="false" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tboxlocationE" Width="200px" CssClass="form-control" Text='<%# Bind("LOCATION") %>' Visible="false" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="PARTS" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblparts" runat="server" Text='<%# Bind("PARTS") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxpartsE" CssClass=" form-control" Visible="false" Text='<%# Bind("PARTS") %>' runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tboxpartsE" Width="200px" CssClass=" form-control" Visible="false" Text='<%# Bind("PARTS") %>' runat="server"></asp:TextBox>
+                                </ItemTemplate>
+                                <ItemStyle Wrap="False" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="DESCRIPTION" ItemStyle-Wrap="false">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbldescription" runat="server" Text='<%# Bind("ITEM_DESCRIPTION") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxdescriptionE" Width="200px" CssClass=" form-control" Visible="false" Text='<%# Bind("ITEM_DESCRIPTION") %>' runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ARTICLE#" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblarticleno" runat="server" Text='<%# Bind("ARTICLE_NO") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxarticlenoE" CssClass=" form-control" Visible="false" Text='<%# Bind("ARTICLE_NO") %>' runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tboxarticlenoE" Width="200px" CssClass=" form-control" Visible="false" Text='<%# Bind("ARTICLE_NO") %>' runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="PROFILE LENGTH" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lbllength" runat="server" Text='<%# Bind("PROFILE_LENGTH") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxlengthE" TextMode="Number" Text='<%# Bind("PROFILE_LENGTH") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tboxlengthE" Width="200px" TextMode="Number" Text='<%# Bind("PROFILE_LENGTH") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
@@ -253,8 +291,8 @@
                             <asp:TemplateField HeaderText="SUB TOTAL" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <div class="text-right">
-                                    <asp:Label ID="lblsubtotal" runat="server" Text='<%# Bind("SUB_TOTAL") %>'></asp:Label>
-                                        </div>
+                                        <asp:Label ID="lblsubtotal" runat="server" Text='<%# Bind("SUB_TOTAL") %>'></asp:Label>
+                                    </div>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
@@ -274,6 +312,36 @@
                 </asp:Panel>
             </div>
 
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+        <ContentTemplate>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3>LETTER</h3>
+                </div>
+                <div>
+                    <span>Re:
+                    </span>
+                    <br />
+                    <asp:TextBox ID="tboxreference" CssClass="form-control" runat="server"></asp:TextBox>
+                    <br />
+                    <span>Salutation:
+                    </span>
+                    <br />
+                    <asp:TextBox ID="tboxsalutation" CssClass="form-control" runat="server"></asp:TextBox>
+                    <br />
+                    <span>Body:
+                    </span>
+                    <br />
+                    <asp:TextBox ID="tboxbody" TextMode="MultiLine" Rows="5" CssClass="form-control" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:LinkButton ID="LinkButton5" CssClass="btn btn-success" runat="server" OnClick="LinkButton5_Click">save</asp:LinkButton>
+                </div>
+                <div>
+                    <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup="SUCCESSVAL" CssClass="alert alert-success" runat="server" />
+                </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
