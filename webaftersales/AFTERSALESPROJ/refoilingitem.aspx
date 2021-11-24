@@ -270,14 +270,14 @@
                             <asp:TemplateField HeaderText="WIDTH INSIDE" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblinside" runat="server" Text='<%# Bind("PROFILE_WIDTH_IN") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxwidthinE" TextMode="Number" Text='<%# Bind("PROFILE_WIDTH_IN") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tboxwidthinE" Width="150px" TextMode="Number" Text='<%# Bind("PROFILE_WIDTH_IN") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="WIDTH OUTSIDE" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lbloutside" runat="server" Text='<%# Bind("PROFILE_WIDTH_OUT") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxwidthoutE" TextMode="Number" Text='<%# Bind("PROFILE_WIDTH_OUT") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tboxwidthoutE" Width="150px" TextMode="Number" Text='<%# Bind("PROFILE_WIDTH_OUT") %>' Visible="false" CssClass=" form-control" runat="server"></asp:TextBox>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>
@@ -316,9 +316,9 @@
     </asp:UpdatePanel>
     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
         <ContentTemplate>
-            <div class="panel panel-success">
+            <div class="panel panel-success"  style="background-color: aliceblue;">
                 <div class="panel-heading">
-                    <h3>LETTER</h3>
+                    <h3>Letter</h3>
                 </div>
                 <div>
                     <span>Re:
@@ -335,6 +335,12 @@
                     </span>
                     <br />
                     <asp:TextBox ID="tboxbody" TextMode="MultiLine" Rows="5" CssClass="form-control" runat="server"></asp:TextBox>
+                    <br />
+                    <br />
+                    <span style="font-size:x-small" class="text-muted">
+                        Thank you for letting us serve you. Please find herewith our quotation for the Golden Oak Sticker Foil Cost corresponding to our world-class PVC-u windows and doors from Germany for your requirements on your residence.
+                    </span>
+                    <br />
                     <br />
                     <asp:LinkButton ID="LinkButton5" CssClass="btn btn-success" runat="server" OnClick="LinkButton5_Click">save</asp:LinkButton>
                 </div>

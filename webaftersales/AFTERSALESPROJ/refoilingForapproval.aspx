@@ -65,17 +65,7 @@
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("preparedbytitle") %>'></asp:Label><br />
                                         <span class="text-muted">Prepared by:</span>
                                     </div>
-                                    <div class="col-xs-3">
-                                        <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/NOTEDBY.jpg" %>' />
-                                        <br />
-                                        <b>
-                                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("notedby") %>'></asp:Label></b>
-                                        <br />
-                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("notedbytitle") %>'></asp:Label>
-                                        <br />
-                                        <span class="text-muted">Noted by:</span>
-                                    </div>
-                                     <div class="col-xs-3">
+                                       <div class="col-xs-3">
                                         <asp:Image ID="Image3" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/REVIEWEDBY.jpg" %>' />
                                         <br />
                                         <b>
@@ -95,6 +85,17 @@
                                         <br />
                                         <span class="text-muted">Verified by:</span>
                                     </div>
+                                    <div class="col-xs-3">
+                                        <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/NOTEDBY.jpg" %>' />
+                                        <br />
+                                        <b>
+                                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("notedby") %>'></asp:Label></b>
+                                        <br />
+                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("notedbytitle") %>'></asp:Label>
+                                        <br />
+                                        <span class="text-muted">Noted by:</span>
+                                    </div>
+                                  
                                 </div>
                             </div>
                             </div>
