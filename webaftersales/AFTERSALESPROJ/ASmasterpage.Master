@@ -10,7 +10,7 @@
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="css/gridcss.css" rel="stylesheet" />
-  
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -45,8 +45,8 @@
                                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Teams</asp:LinkButton></li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/AFTERSALESPROJ/pricelist.aspx">Price List</asp:HyperLink></li>
-                                 <li>
-                                       <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Trip Ticket</asp:LinkButton>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Trip Ticket</asp:LinkButton>
                                 </li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/AFTERSALESPROJ/pendingpage.aspx">Pending JO</asp:HyperLink>
@@ -54,7 +54,7 @@
                                 <li>
                                     <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/AFTERSALESPROJ/joborderapproval.aspx">JO Approval</asp:HyperLink>
                                 </li>
-                                       <li>
+                                <li>
                                     <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/AFTERSALESPROJ/accountsreceivable.aspx">Accounts Receivable</asp:HyperLink>
                                 </li>
                             </ul>
@@ -69,13 +69,24 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationsummary.aspx">Payment status</asp:LinkButton></li>
                             </ul>
                         </li>
-                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <span class="glyphicon glyphicon-th-large"></span>&nbsp;Cleaning<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/AFTERSALESPROJ/cleaningForapproval.aspx">For approval</asp:LinkButton>
                                 </li>
-                              
+
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-th-large"></span>&nbsp;Re-foiling<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/AFTERSALESPROJ/refoilingForapproval.aspx">For approval</asp:LinkButton>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/AFTERSALESPROJ/PROFILEWIDTH.aspx">Profile width</asp:LinkButton>
+                                </li>
                             </ul>
                         </li>
                         <li>

@@ -129,6 +129,28 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="refoiling_tbl" msprop:Generator_TableClassName="refoiling_tblDataTable" msprop:Generator_TableVarName="tablerefoiling_tbl" msprop:Generator_RowChangedName="refoiling_tblRowChanged" msprop:Generator_TablePropName="refoiling_tbl" msprop:Generator_RowDeletingName="refoiling_tblRowDeleting" msprop:Generator_RowChangingName="refoiling_tblRowChanging" msprop:Generator_RowEvHandlerName="refoiling_tblRowChangeEventHandler" msprop:Generator_RowDeletedName="refoiling_tblRowDeleted" msprop:Generator_RowClassName="refoiling_tblRow" msprop:Generator_UserTableName="refoiling_tbl" msprop:Generator_RowEvArgName="refoiling_tblRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+              <xs:element name="Item_No" msprop:Generator_ColumnVarNameInTable="columnItem_No" msprop:Generator_ColumnPropNameInRow="Item_No" msprop:Generator_ColumnPropNameInTable="Item_NoColumn" msprop:Generator_UserColumnName="Item_No" type="xs:string" minOccurs="0" />
+              <xs:element name="K_No" msprop:Generator_ColumnVarNameInTable="columnK_No" msprop:Generator_ColumnPropNameInRow="K_No" msprop:Generator_ColumnPropNameInTable="K_NoColumn" msprop:Generator_UserColumnName="K_No" type="xs:string" minOccurs="0" />
+              <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" type="xs:string" minOccurs="0" />
+              <xs:element name="Parts" msprop:Generator_ColumnVarNameInTable="columnParts" msprop:Generator_ColumnPropNameInRow="Parts" msprop:Generator_ColumnPropNameInTable="PartsColumn" msprop:Generator_UserColumnName="Parts" type="xs:string" minOccurs="0" />
+              <xs:element name="Article_No" msprop:Generator_ColumnVarNameInTable="columnArticle_No" msprop:Generator_ColumnPropNameInRow="Article_No" msprop:Generator_ColumnPropNameInTable="Article_NoColumn" msprop:Generator_UserColumnName="Article_No" type="xs:string" minOccurs="0" />
+              <xs:element name="Profile_Length" msprop:Generator_ColumnVarNameInTable="columnProfile_Length" msprop:Generator_ColumnPropNameInRow="Profile_Length" msprop:Generator_ColumnPropNameInTable="Profile_LengthColumn" msprop:Generator_UserColumnName="Profile_Length" type="xs:string" minOccurs="0" />
+              <xs:element name="Profile_Width_In" msprop:Generator_ColumnVarNameInTable="columnProfile_Width_In" msprop:Generator_ColumnPropNameInRow="Profile_Width_In" msprop:Generator_ColumnPropNameInTable="Profile_Width_InColumn" msprop:Generator_UserColumnName="Profile_Width_In" type="xs:string" minOccurs="0" />
+              <xs:element name="Profile_Width_Out" msprop:Generator_ColumnVarNameInTable="columnProfile_Width_Out" msprop:Generator_ColumnPropNameInRow="Profile_Width_Out" msprop:Generator_ColumnPropNameInTable="Profile_Width_OutColumn" msprop:Generator_UserColumnName="Profile_Width_Out" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_Length" msprop:Generator_ColumnVarNameInTable="columnTotal_Length" msprop:Generator_ColumnPropNameInRow="Total_Length" msprop:Generator_ColumnPropNameInTable="Total_LengthColumn" msprop:Generator_UserColumnName="Total_Length" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Total_Area" msprop:Generator_ColumnVarNameInTable="columnTotal_Area" msprop:Generator_ColumnPropNameInRow="Total_Area" msprop:Generator_ColumnPropNameInTable="Total_AreaColumn" msprop:Generator_UserColumnName="Total_Area" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Sub_Total" msprop:Generator_ColumnVarNameInTable="columnSub_Total" msprop:Generator_ColumnPropNameInRow="Sub_Total" msprop:Generator_ColumnPropNameInTable="Sub_TotalColumn" msprop:Generator_UserColumnName="Sub_Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Average_Price" msprop:Generator_ColumnVarNameInTable="columnAverage_Price" msprop:Generator_ColumnPropNameInRow="Average_Price" msprop:Generator_ColumnPropNameInTable="Average_PriceColumn" msprop:Generator_UserColumnName="Average_Price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cleaning" msprop:Generator_ColumnVarNameInTable="columnCleaning" msprop:Generator_ColumnPropNameInRow="Cleaning" msprop:Generator_ColumnPropNameInTable="CleaningColumn" msprop:Generator_UserColumnName="Cleaning" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Item_Description" msprop:Generator_ColumnVarNameInTable="columnItem_Description" msprop:Generator_ColumnPropNameInRow="Item_Description" msprop:Generator_ColumnPropNameInTable="Item_DescriptionColumn" msprop:Generator_UserColumnName="Item_Description" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
