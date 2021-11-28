@@ -645,5 +645,116 @@ namespace webaftersales.AFTERSALESPROJ
             tboxbody.Text = tboxbody.Text.Replace("\"", "``");
             updateReferences();
         }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //List<int> idlist = ViewState["listidg1"] as List<int>;
+            //if (e.Row.RowType == DataControlRowType.DataRow && idlist != null)
+            //{
+            //    var autoid = int.Parse(GridView1.DataKeys[e.Row.RowIndex].Value.ToString());
+            //    if (idlist.Contains(autoid))
+            //    {
+            //        CheckBox cbx = (CheckBox)e.Row.FindControl("cboxg1");
+            //        cbx.Checked = true;
+            //    }
+            //}
+        }
+
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "confimmessage();", true);
+
+            List<int> idl = new List<int>();
+            if ((List<int>)ViewState["listidg1"] == null)
+            {
+                idl.Add(0);
+            }
+            else
+            {
+                idl = ViewState["listidg1"] as List<int>;
+            }
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                CheckBox cbk = (CheckBox)row.FindControl("cboxg1");
+                if (cbk.Checked == true)
+                {
+                    int x = int.Parse(((Label)row.FindControl("lblid")).Text.ToString());
+                    if (!idl.Contains(x))
+                    {
+                        idl.Add(x);
+                    }
+                }
+                else
+                {
+                    int x = int.Parse(((Label)row.FindControl("lblid")).Text.ToString());
+                    if (idl.Contains(x))
+                    {
+                        idl.Remove(x);
+                    }
+                }
+            }
+            try
+            {
+                resetselection();
+                foreach (int id in idl)
+                {
+                    forcutting(id.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                Response.Redirect("~/AFTERSALESPROJ/RefoilingCuttingList.aspx");
+            }
+           
+            ViewState["listidg1"] = idl;
+        }
+        private void resetselection()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "Refoiling_For_Cutting_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Reset");
+                        sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                errorrmessage(e.Message.ToString());
+            }
+        }
+        private void forcutting(string id)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "Refoiling_For_Cutting_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "For_cutting");
+                        sqlcmd.Parameters.AddWithValue("@Id", id);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                errorrmessage(e.Message.ToString());
+            }
+        }
     }
 }

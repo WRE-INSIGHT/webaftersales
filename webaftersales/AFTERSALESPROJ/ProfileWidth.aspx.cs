@@ -96,6 +96,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "Create");
                         sqlcmd.Parameters.AddWithValue("@Article_No", tboxArticleNo.Text);
+                        sqlcmd.Parameters.AddWithValue("@Color", tboxColor.Text);
                         sqlcmd.Parameters.AddWithValue("@Width_In", tboxWidthIn.Text);
                         sqlcmd.Parameters.AddWithValue("@Width_Out",tboxWidthOut.Text);
                         sqlcmd.ExecuteNonQuery();
@@ -126,6 +127,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Command", "Update");
                         sqlcmd.Parameters.AddWithValue("@Id", ((Label)row.FindControl("lblid")).Text);
                         sqlcmd.Parameters.AddWithValue("@Article_No", ((TextBox)row.FindControl("tboxArticleNoEdit")).Text);
+                        sqlcmd.Parameters.AddWithValue("@Color", ((TextBox)row.FindControl("tboxColorEdit")).Text);
                         sqlcmd.Parameters.AddWithValue("@Width_In", ((TextBox)row.FindControl("tboxWidthInEdit")).Text);
                         sqlcmd.Parameters.AddWithValue("@Width_Out", ((TextBox)row.FindControl("tboxWidthOutEdit")).Text);
                         sqlcmd.ExecuteNonQuery();
@@ -198,10 +200,11 @@ namespace webaftersales.AFTERSALESPROJ
         private void controlVisibility(GridViewRow row, bool b)
         {
             ((Label)row.FindControl("lblArticleNo")).Visible = b;
+            ((Label)row.FindControl("lblColor")).Visible = b;
             ((Label)row.FindControl("lblInside")).Visible = b;
             ((Label)row.FindControl("lblOutside")).Visible = b;
 
-
+            ((TextBox)row.FindControl("tboxColorEdit")).Visible = b == true ? false : true;
             ((TextBox)row.FindControl("tboxArticleNoEdit")).Visible = b == true ? false : true;
             ((TextBox)row.FindControl("tboxWidthInEdit")).Visible = b == true ? false : true;
             ((TextBox)row.FindControl("tboxWidthOutEdit")).Visible = b == true ? false : true;

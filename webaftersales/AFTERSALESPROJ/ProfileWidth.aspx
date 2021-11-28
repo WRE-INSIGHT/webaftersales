@@ -14,7 +14,7 @@
             <div class="col-sm-6">
                 <div class="input-group">
                     <div class="input-group-addon">
-                        Article#
+                        FIND
                     </div>
                     <asp:TextBox ID="tboxSearch" CssClass="form-control" runat="server"></asp:TextBox>
                     <div class="input-group-btn">
@@ -32,15 +32,19 @@
             <h3>Input form</h3>
         </div>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <span>Article No</span><br />
                 <asp:TextBox ID="tboxArticleNo" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
-            <div class="col-sm-4">
+               <div class="col-sm-3">
+                <span>Color</span><br />
+                <asp:TextBox ID="tboxColor" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+            <div class="col-sm-3">
                 <span>Width Inside</span><br />
                 <asp:TextBox ID="tboxWidthIn" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <span>Width Outside</span><br />
                 <asp:TextBox ID="tboxWidthOut" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
@@ -78,6 +82,12 @@
                                 <asp:Label ID="lblId" Visible="false" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
                                 <asp:Label ID="lblArticleNo" runat="server" Text='<%# Bind("Article_No") %>'></asp:Label>
                                 <asp:TextBox ID="tboxArticleNoEdit" Visible="false" CssClass="form-control" Text='<%# Bind("Article_No") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                           <asp:TemplateField HeaderText="COLOR">
+                            <ItemTemplate>
+                                <asp:Label ID="lblColor" runat="server" Text='<%# Bind("Color") %>'></asp:Label>
+                                <asp:TextBox ID="tboxColorEdit" Visible="false" CssClass="form-control" Text='<%# Bind("Color") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="WIDTH INSIDE">

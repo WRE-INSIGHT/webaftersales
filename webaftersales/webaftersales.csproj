@@ -307,6 +307,13 @@
     <Compile Include="AFTERSALESPROJ\contactusPage.aspx.designer.cs">
       <DependentUpon>contactusPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\cuttinglistsignature.aspx.cs">
+      <DependentUpon>cuttinglistsignature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\cuttinglistsignature.aspx.designer.cs">
+      <DependentUpon>cuttinglistsignature.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\dal\ConnectionString.cs" />
     <Compile Include="AFTERSALESPROJ\dal\qukno.cs" />
     <Compile Include="AFTERSALESPROJ\dal\quknoparts.cs" />
@@ -522,6 +529,13 @@
     <Compile Include="AFTERSALESPROJ\quotationsummary.aspx.designer.cs">
       <DependentUpon>quotationsummary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\RefoilingCuttingList.aspx.cs">
+      <DependentUpon>RefoilingCuttingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\RefoilingCuttingList.aspx.designer.cs">
+      <DependentUpon>RefoilingCuttingList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\refoilingForapproval.aspx.cs">
       <DependentUpon>refoilingForapproval.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -726,6 +740,7 @@
     <Content Include="AFTERSALESPROJ\css\CSSsignup.css" />
     <Content Include="AFTERSALESPROJ\css\gridcss.css" />
     <Content Include="AFTERSALESPROJ\css\tablecss.css" />
+    <Content Include="AFTERSALESPROJ\cuttinglistsignature.aspx" />
     <Content Include="AFTERSALESPROJ\FRMassessment.aspx" />
     <Content Include="AFTERSALESPROJ\frmknogen.aspx" />
     <Content Include="AFTERSALESPROJ\frmReport.aspx">
@@ -767,6 +782,7 @@
     <Content Include="AFTERSALESPROJ\quotationreportclientsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsummary.aspx" />
+    <Content Include="AFTERSALESPROJ\RefoilingCuttingList.aspx" />
     <Content Include="AFTERSALESPROJ\refoilingForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\refoilingitem.aspx" />
     <Content Include="AFTERSALESPROJ\refoilingpage.aspx" />
@@ -877,6 +893,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AFTERSALESPROJ\report\cleaningRPT.rdlc" />
+    <EmbeddedResource Include="AFTERSALESPROJ\report\refoilingCuttingListRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\refoilingRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTassessment.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotation.rdlc" />
