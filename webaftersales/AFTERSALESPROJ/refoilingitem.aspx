@@ -200,9 +200,14 @@
                     <h3>Items for re-foiling</h3>
                 </div>
                 <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
-                    <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="false" CellPadding="4" ForeColor="#333333" GridLines="Both" OnRowCommand="GridView1_RowCommand">
+                    <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="false" CellPadding="4" ForeColor="#333333" GridLines="Both" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
+                            <asp:TemplateField HeaderText="For CL">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="cboxg1" Checked='<%# Eval("For_Cutting").ToString() == "1" ? true : false %>' runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Panel ID="btnpanel1" runat="server">
@@ -309,6 +314,8 @@
                         <SortedDescendingHeaderStyle BackColor="#15524A" />
                     </asp:GridView>
                     <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="valedit" CssClass="alert alert-danger" runat="server" />
+                    <br />
+                    <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">generate cutting list</asp:LinkButton>
                 </asp:Panel>
             </div>
 
@@ -316,7 +323,7 @@
     </asp:UpdatePanel>
     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
         <ContentTemplate>
-            <div class="panel panel-success"  style="background-color: aliceblue;">
+            <div class="panel panel-success" style="background-color: aliceblue;">
                 <div class="panel-heading">
                     <h3>Letter</h3>
                 </div>
@@ -337,8 +344,7 @@
                     <asp:TextBox ID="tboxbody" TextMode="MultiLine" Rows="5" CssClass="form-control" runat="server"></asp:TextBox>
                     <br />
                     <br />
-                    <span style="font-size:x-small" class="text-muted">
-                        Thank you for letting us serve you. Please find herewith our quotation for the Golden Oak Sticker Foil Cost corresponding to our world-class PVC-u windows and doors from Germany for your requirements on your residence.
+                    <span style="font-size: x-small" class="text-muted">Thank you for letting us serve you. Please find herewith our quotation for the Golden Oak Sticker Foil Cost corresponding to our world-class PVC-u windows and doors from Germany for your requirements on your residence.
                     </span>
                     <br />
                     <br />

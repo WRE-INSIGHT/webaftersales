@@ -56,7 +56,7 @@
                                     </table>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-4">
                                         <asp:Image ID="Image1" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/PREPAREDBY.jpg" %>' />
                                         <br />
                                         <b>
@@ -65,27 +65,18 @@
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("preparedbytitle") %>'></asp:Label><br />
                                         <span class="text-muted">Prepared by:</span>
                                     </div>
-                                       <div class="col-xs-3">
+                                       <div class="col-xs-4">
                                         <asp:Image ID="Image3" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/REVIEWEDBY.jpg" %>' />
                                         <br />
                                         <b>
-                                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("verifiedby") %>'></asp:Label></b>
+                                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("reviewedby") %>'></asp:Label></b>
                                         <br />
-                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("verifiedbytitle") %>'></asp:Label>
+                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("reviewedbytitle") %>'></asp:Label>
                                         <br />
                                         <span class="text-muted">Reviewed by:</span>
                                     </div>
-                                     <div class="col-xs-3">
-                                        <asp:Image ID="Image4" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/VERIFIEDBY.jpg" %>' />
-                                        <br />
-                                        <b>
-                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("verifiedby") %>'></asp:Label></b>
-                                        <br />
-                                        <asp:Label ID="Label9" runat="server" Text='<%# Bind("verifiedbytitle") %>'></asp:Label>
-                                        <br />
-                                        <span class="text-muted">Verified by:</span>
-                                    </div>
-                                    <div class="col-xs-3">
+                                  
+                                    <div class="col-xs-4">
                                         <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/NOTEDBY.jpg" %>' />
                                         <br />
                                         <b>

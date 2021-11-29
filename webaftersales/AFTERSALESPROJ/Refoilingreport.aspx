@@ -40,9 +40,6 @@
                 <asp:LinkButton ID="LinkButton2" CssClass="btn btn-success" Width="200" runat="server" OnClick="LinkButton2_Click">REVIEWED BY</asp:LinkButton>
             </div>
             <div class="col-sm-3">
-                <asp:LinkButton ID="LinkButton5" CssClass="btn btn-success" Width="200" runat="server" OnClick="LinkButton5_Click">VERIFIED BY</asp:LinkButton>
-            </div>
-            <div class="col-sm-3">
                 <asp:LinkButton ID="LinkButton4" CssClass="btn btn-success" Width="200" runat="server" OnClick="LinkButton4_Click">NOTED BY</asp:LinkButton>
             </div>
 

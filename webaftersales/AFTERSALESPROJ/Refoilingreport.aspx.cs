@@ -40,8 +40,7 @@ namespace webaftersales.AFTERSALESPROJ
             string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
             string noted = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/NOTEDBY.jpg")).AbsoluteUri;
             string reviewed = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/REVIEWEDBY.jpg")).AbsoluteUri;
-            string verified = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/VERIFIEDBY.jpg")).AbsoluteUri;
-            ReportParameter[] param = new ReportParameter[8];
+            ReportParameter[] param = new ReportParameter[7];
             param[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             param[1] = new ReportParameter("address", Session["ADDRESS"].ToString());
             param[2] = new ReportParameter("date", Session["refoilingdate"].ToString());
@@ -49,8 +48,7 @@ namespace webaftersales.AFTERSALESPROJ
             param[4] = new ReportParameter("prepared", prepared);
             param[5] = new ReportParameter("noted", noted);
             param[6] = new ReportParameter("reviewed", reviewed);
-            param[7] = new ReportParameter("verified", verified);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
             {
                 ReportViewer1.LocalReport.SetParameters(param[i]);
             }
@@ -65,8 +63,6 @@ namespace webaftersales.AFTERSALESPROJ
                 notedbytitle = "",
                 reviewedby = "",
                 reviewedbytitle = "",
-                verifiedby = "",
-                verifiedbytitle = "",
                 reference = "",
                 salutation = "",
                 body = "";
@@ -80,9 +76,7 @@ namespace webaftersales.AFTERSALESPROJ
 " declare @notedbytitle as varchar(max) = (select TITLE from accttb where id = (select notedby from refoiling_id_tbl where QNO = @iid))					" +
 " declare @reviewedby as varchar(max) = (select FIRSTNAME+' '+LASTNAME from accttb where id = (select reviewedby from refoiling_id_tbl where QNO = @iid))		" +
 " declare @reviewedbytitle as varchar(max) = (select TITLE from accttb where id = (select reviewedby from refoiling_id_tbl where QNO = @iid))					" +
-" declare @verifiedby as varchar(max) = (select FIRSTNAME+' '+LASTNAME from accttb where id = (select verifiedby from refoiling_id_tbl where QNO = @iid))		" +
-" declare @verifiedbytitle as varchar(max) = (select TITLE from accttb where id = (select verifiedby from refoiling_id_tbl where QNO = @iid))					" +
-" select top 1 @preparedby,@preparedbytitle,@notedby,@notedbytitle,@reviewedby,@reviewedbytitle,@verifiedby,@verifiedbytitle,reference,salutation,body from refoiling_id_tbl where QNO = @iid																					";
+" select top 1 @preparedby,@preparedbytitle,@notedby,@notedbytitle,@reviewedby,@reviewedbytitle,reference,salutation,body from refoiling_id_tbl where QNO = @iid																					";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
@@ -99,11 +93,9 @@ namespace webaftersales.AFTERSALESPROJ
                                 notedbytitle = dr[3].ToString();
                                 reviewedby = dr[4].ToString();
                                 reviewedbytitle = dr[5].ToString();
-                                verifiedby = dr[6].ToString();
-                                verifiedbytitle = dr[7].ToString();
-                                reference = dr[8].ToString();
-                                salutation = dr[9].ToString();
-                                body = dr[10].ToString();
+                                reference = dr[6].ToString();
+                                salutation = dr[7].ToString();
+                                body = dr[8].ToString();
                             }
                         }
                     }
@@ -115,19 +107,17 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-                ReportParameter[] param = new ReportParameter[11];
+                ReportParameter[] param = new ReportParameter[9];
                 param[0] = new ReportParameter("preparedby", preparedby);
                 param[1] = new ReportParameter("preparedbytitle", preparedbytitle);
                 param[2] = new ReportParameter("notedby", notedby);
                 param[3] = new ReportParameter("notedbytitle", notedbytitle);
                 param[4] = new ReportParameter("reviewedby", reviewedby);
                 param[5] = new ReportParameter("reviewedbytitle", reviewedbytitle);
-                param[6] = new ReportParameter("verifiedby", verifiedby);
-                param[7] = new ReportParameter("verifiedbytitle", verifiedbytitle);
-                param[8] = new ReportParameter("reference", reference);
-                param[9] = new ReportParameter("salutation", salutation);
-                param[10] = new ReportParameter("body", body);
-                for (int i = 0; i < 11; i++)
+                param[6] = new ReportParameter("reference", reference);
+                param[7] = new ReportParameter("salutation", salutation);
+                param[8] = new ReportParameter("body", body);
+                for (int i = 0; i < 9; i++)
                 {
                     ReportViewer1.LocalReport.SetParameters(param[i]);
                 }
@@ -181,12 +171,6 @@ namespace webaftersales.AFTERSALESPROJ
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             Session["columnname"] = "REVIEWEDBY";
-            Response.Redirect("~/AFTERSALESPROJ/refoilingsignature.aspx");
-        }
-
-        protected void LinkButton5_Click(object sender, EventArgs e)
-        {
-            Session["columnname"] = "VERIFIEDBY";
             Response.Redirect("~/AFTERSALESPROJ/refoilingsignature.aspx");
         }
     }
