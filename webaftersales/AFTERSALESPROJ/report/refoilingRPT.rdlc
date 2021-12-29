@@ -954,12 +954,6 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BottomBorder>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Style>None</Style>
-                        </LeftBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1034,6 +1028,9 @@
                           <Style>None</Style>
                           <Width>3pt</Width>
                         </Border>
+                        <TopBorder>
+                          <Style>None</Style>
+                        </TopBorder>
                         <BottomBorder>
                           <Style>Double</Style>
                         </BottomBorder>

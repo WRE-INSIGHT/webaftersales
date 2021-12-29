@@ -116,7 +116,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                 Session["refoilingdate"] = ((Label)row.FindControl("datelbl")).Text;
                 Session["refoilingqno"] = ((Label)row.FindControl("lblqno")).Text;
-             
+                Session["miscellaneous"] = ((Label)row.FindControl("lblmiscellaneous")).Text;
                 Session["CIN"] = ((Label)row.FindControl("lblcin")).Text;
                 Session["SID"] = ((Label)row.FindControl("lblsid")).Text;
 
