@@ -58,7 +58,8 @@
                                 <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                 <asp:Label ID="lblcin" Visible="false" runat="server" Text='<%# Bind("CIN") %>'></asp:Label>
                                 <asp:Label ID="lblsid" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
-                                <asp:Label ID="lblqno" runat="server" Text='<%# Bind("QNO") %>'></asp:Label>              
+                                <asp:Label ID="lblmiscellaneous" Visible="false" runat="server" Text='<%# Bind("MISCELLANEOUS") %>'></asp:Label>
+                                <asp:Label ID="lblqno" runat="server" Text='<%# Bind("QNO") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="DATE">
@@ -70,7 +71,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton CssClass="" ID="LinkButton1" CommandName="myitem" runat="server">items</asp:LinkButton> |
+                                <asp:LinkButton CssClass="" ID="LinkButton1" CommandName="myitem" runat="server">items</asp:LinkButton>
+                                |
                                 <asp:LinkButton CssClass="" ID="LinkButton2" CommandName="myreport" runat="server">report</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>

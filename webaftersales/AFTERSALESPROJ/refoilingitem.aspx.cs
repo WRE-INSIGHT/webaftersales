@@ -126,10 +126,10 @@ namespace webaftersales.AFTERSALESPROJ
                         {
                             while (rd.Read())
                             {
-
                                 tboxreference.Text = rd[0].ToString();
                                 tboxsalutation.Text = rd[1].ToString();
                                 tboxbody.Text = rd[2].ToString();
+                                tboxMiscellaneous.Text = rd[3].ToString();
                             }
                         }
                     }
@@ -156,6 +156,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Reference", tboxreference.Text);
                         sqlcmd.Parameters.AddWithValue("@Salutation", tboxsalutation.Text);
                         sqlcmd.Parameters.AddWithValue("@Body", tboxbody.Text);
+                        sqlcmd.Parameters.AddWithValue("@Miscellaneous", tboxMiscellaneous.Text);
                         sqlcmd.Parameters.AddWithValue("@Command", "Update_reference");
                         sqlcmd.ExecuteNonQuery();
                     }

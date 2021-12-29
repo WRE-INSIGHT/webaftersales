@@ -171,7 +171,7 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
 
-                updateme(((Label)row.FindControl("lblid")).Text,((TextBox)row.FindControl("tboxqdateedit")).Text);
+                updateme(((Label)row.FindControl("lblid")).Text, ((TextBox)row.FindControl("tboxqdateedit")).Text);
             }
             else if (e.CommandName == "mydelete")
             {
@@ -194,7 +194,7 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["refoilingdate"] = ((Label)row.FindControl("lblqdate")).Text;
                 Session["refoilingqno"] = ((Label)row.FindControl("lblqno")).Text;
-        
+                Session["miscellaneous"] = ((Label)row.FindControl("lblmiscellaneous")).Text;
                 Session["refoiling_report_sender"] = "refoilingpage";
                 Response.Redirect("~/AFTERSALESPROJ/refoilingreport.aspx");
             }
@@ -207,7 +207,7 @@ namespace webaftersales.AFTERSALESPROJ
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
-                    using (SqlCommand sqlcmd =sqlcon.CreateCommand())
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcmd.CommandText = "Refoiling_Id_Stp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;

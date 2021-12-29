@@ -40,7 +40,7 @@ namespace webaftersales.AFTERSALESPROJ
             string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
             string noted = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/NOTEDBY.jpg")).AbsoluteUri;
             string reviewed = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/REVIEWEDBY.jpg")).AbsoluteUri;
-            ReportParameter[] param = new ReportParameter[7];
+            ReportParameter[] param = new ReportParameter[8];
             param[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             param[1] = new ReportParameter("address", Session["ADDRESS"].ToString());
             param[2] = new ReportParameter("date", Session["refoilingdate"].ToString());
@@ -48,7 +48,8 @@ namespace webaftersales.AFTERSALESPROJ
             param[4] = new ReportParameter("prepared", prepared);
             param[5] = new ReportParameter("noted", noted);
             param[6] = new ReportParameter("reviewed", reviewed);
-            for (int i = 0; i < 7; i++)
+            param[7] = new ReportParameter("miscellaneous", Session["miscellaneous"].ToString());
+            for (int i = 0; i < 8; i++)
             {
                 ReportViewer1.LocalReport.SetParameters(param[i]);
             }
