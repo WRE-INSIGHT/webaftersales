@@ -324,6 +324,18 @@
     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
         <ContentTemplate>
             <div class="panel panel-success" style="background-color: aliceblue;">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <span>Miscellaneous fee:</span>
+                            </div>
+                            <asp:TextBox ID="tboxMiscellaneous" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success" style="background-color: aliceblue;">
                 <div class="panel-heading">
                     <h3>Letter</h3>
                 </div>
