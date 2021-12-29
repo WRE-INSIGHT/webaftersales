@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="well">
         <h3><strong>Re-foiling Proposal approval</strong></h3>
         <div class="input-group">
@@ -20,7 +20,7 @@
         </div>
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
-      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
                 <Columns>
@@ -28,9 +28,10 @@
                         <ItemTemplate>
                             <div class='<%# Eval("notedby").ToString() == "" ? "panel panel-danger" : "panel panel-success" %>'>
                                 <div class="panel-heading">
-                            
+
                                     <asp:Label ID="lblcin" runat="server" Visible="false" Text='<%# Bind("cin") %>'></asp:Label>
                                     <asp:Label ID="lblsid" runat="server" Visible="false" Text='<%# Bind("sid") %>'></asp:Label>
+                                    <asp:Label ID="lblmiscellaneous" runat="server" Visible="false" Text='<%# Bind("miscellaneous") %>'></asp:Label>
                                     <asp:Label ID="lblqno" runat="server" Text='<%# Bind("qno") %>'></asp:Label>
 
                                 </div>
@@ -65,7 +66,7 @@
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("preparedbytitle") %>'></asp:Label><br />
                                         <span class="text-muted">Prepared by:</span>
                                     </div>
-                                       <div class="col-xs-4">
+                                    <div class="col-xs-4">
                                         <asp:Image ID="Image3" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/REVIEWEDBY.jpg" %>' />
                                         <br />
                                         <b>
@@ -75,7 +76,7 @@
                                         <br />
                                         <span class="text-muted">Reviewed by:</span>
                                     </div>
-                                  
+
                                     <div class="col-xs-4">
                                         <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/NOTEDBY.jpg" %>' />
                                         <br />
@@ -86,7 +87,7 @@
                                         <br />
                                         <span class="text-muted">Noted by:</span>
                                     </div>
-                                  
+
                                 </div>
                             </div>
                             </div>
@@ -106,6 +107,6 @@
             </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>
-        <h5><strong class="text-muted">
+    <h5><strong class="text-muted">
         <asp:Label ID="lblcountrow" runat="server" Text="Label"></asp:Label></strong> </h5>
 </asp:Content>
