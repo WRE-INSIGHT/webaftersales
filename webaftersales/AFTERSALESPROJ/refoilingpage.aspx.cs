@@ -188,7 +188,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["SID"] = sid;
                 Response.Redirect("~/AFTERSALESPROJ/refoilingitem.aspx");
             }
-            else if (e.CommandName == "myreport")
+            else if (e.CommandName == "viewreport")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
