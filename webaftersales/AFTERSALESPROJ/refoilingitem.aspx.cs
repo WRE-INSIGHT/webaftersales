@@ -132,6 +132,14 @@ namespace webaftersales.AFTERSALESPROJ
                                 tboxMiscellaneous.Text = rd[3].ToString();
                             }
                         }
+                        if (tboxbody.Text == "")
+                        {
+                            tboxbody.Text = "Thank you for letting us serve you. Please find herewith our quotation for the Golden Oak Sticker Foil Cost corresponding to our world-class PVC-u windows and doors from Germany for your requirements on your residence.";
+                        }
+                        if (tboxsalutation.Text == "")
+                        {
+                            tboxsalutation.Text = "Dear Mr/Mrs";
+                        }
                     }
                 }
 

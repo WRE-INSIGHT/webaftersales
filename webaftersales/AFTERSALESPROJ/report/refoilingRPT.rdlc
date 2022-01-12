@@ -330,6 +330,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
+                        <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -364,6 +365,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
+                        <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -398,6 +400,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
+                        <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -432,6 +435,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
+                        <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -532,11 +536,15 @@
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
-                    <TablixMember />
+                    <TablixMember>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
+                    </TablixMember>
                   </TablixMembers>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
                 </TablixMember>
               </TablixMembers>
               <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember>
               <Group Name="Item_No">
@@ -642,6 +650,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
         <DataSetName>DataSet1</DataSetName>
         <Top>2.78764in</Top>
         <Height>0.5in</Height>
