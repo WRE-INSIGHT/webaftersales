@@ -73,7 +73,7 @@
                             <ItemTemplate>
                                 <asp:LinkButton CssClass="" ID="LinkButton1" CommandName="myitem" runat="server">items</asp:LinkButton>
                                 |
-                                <asp:LinkButton CssClass="" ID="LinkButton2" CommandName="myreport" runat="server">report</asp:LinkButton>
+                                <asp:LinkButton CssClass="" ID="btnviewreport" CommandName="viewreport" runat="server">view report</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
