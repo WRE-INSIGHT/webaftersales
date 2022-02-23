@@ -99,7 +99,7 @@ namespace webaftersales.AFTERSALESPROJ
                         "  left join " +
                         "  tblteam as b " +
                         "  on a.teamid = b.tid " +
-                        "  where a.cin = @cin ORDER BY a.SERVICING desc";
+                        "  where a.cin = @cin ORDER BY a.id desc";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
@@ -126,10 +126,10 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = " SELECT * INTO #TBL FROM( " +
-                            " SELECT TOP 1 [STATUS],id, x=SUBSTRING(servicing, PATINDEX('%[0-9]%', servicing), PATINDEX('%[0-9][^0-9]%', servicing + 't') - PATINDEX('%[0-9]%'," +
+                            " SELECT [STATUS],id, x=SUBSTRING(servicing, PATINDEX('%[0-9]%', servicing), PATINDEX('%[0-9][^0-9]%', servicing + 't') - PATINDEX('%[0-9]%'," +
                             " servicing) +1)" +
-                            " FROM SERVICINGTB where cin = @cin order by x DESC ) AS TBL" +
-                            " update callintb set [status] = (SELECT  case when [status] is null then '' else [status] end FROM #TBL) where cin = @cin";
+                            " FROM SERVICINGTB where cin = @cin) AS TBL" +
+                            " update callintb set [status] = (SELECT top 1 case when [status] is null then '' else [status] end FROM #TBL order by convert(int,x) desc) where cin = @cin";
                
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
