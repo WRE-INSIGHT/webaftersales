@@ -20,7 +20,7 @@
         <div class="col-sm-3">
             <div class="input-group">
                 <div class="input-group-addon">
-                    Unit price
+                    Cleaning per sqm
                 </div>
                 <asp:TextBox ID="tboxCleaningUnitPrice" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
                 <div class="input-group-btn">
@@ -237,7 +237,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Visible="false" ControlToValidate="tboxqtyedit" ValidationGroup="valedit" runat="server" ErrorMessage="qty is required!" ForeColor="Red">*</asp:RequiredFieldValidator>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Cleaning Portion">
+                            <asp:TemplateField HeaderText="Cleaning Option">
                                 <ItemTemplate>
                                     <asp:Label ID="lblIn_Out" runat="server" Text='<%# Eval("In_Out").ToString() == "1" ? "Outside only" : "In and Out" %>'></asp:Label>
                                     <asp:Panel ID="Panel33" Visible="false" runat="server">

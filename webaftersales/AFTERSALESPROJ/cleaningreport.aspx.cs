@@ -57,7 +57,7 @@ namespace webaftersales.AFTERSALESPROJ
             param[3] = new ReportParameter("qno", Session["cleaningqno"].ToString());
             param[4] = new ReportParameter("prepared", prepared);
             param[5] = new ReportParameter("noted", noted);
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 ReportViewer1.LocalReport.SetParameters(param[i]);
             }
@@ -75,16 +75,17 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void loadnames()
         {
-            string preparedby="", preparedbytitle="", notedby="", notedbytitle = "",note1="",note2="";
+            string preparedby = "", preparedbytitle = "", notedby = "", notedbytitle = "", reference = "", salutation = "", body = "";
+            string mobilization = "", scaffolding = "";
 
-         
+
             try
             {
                 string str = " declare @preparedby as varchar(max) = (select FIRSTNAME+' '+LASTNAME from accttb where id = (select preparedby from cleaningtbl where id = @iid))	" +
 " declare @preparedbytitle as varchar(max) = (select TITLE from accttb where id = (select preparedby from cleaningtbl where id = @iid))				" +
 " declare @notedby as varchar(max) = (select FIRSTNAME+' '+LASTNAME from accttb where id = (select notedby from cleaningtbl where id = @iid))		" +
 " declare @notedbytitle as varchar(max) = (select TITLE from accttb where id = (select notedby from cleaningtbl where id = @iid))					" +
-" select @preparedby,@preparedbytitle,@notedby,@notedbytitle,note1,note2 from cleaningtbl where id = @iid																						";
+" select @preparedby,@preparedbytitle,@notedby,@notedbytitle,reference,salutation,body,mobilization_cost,scaffolding_cost from cleaningtbl where id = @iid																						";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
@@ -99,33 +100,37 @@ namespace webaftersales.AFTERSALESPROJ
                                 preparedbytitle = dr[1].ToString();
                                 notedby = dr[2].ToString();
                                 notedbytitle = dr[3].ToString();
-                                note1 = dr[4].ToString();
-                                note2 = dr[5].ToString();
-
+                                reference = dr[4].ToString();
+                                salutation = dr[5].ToString();
+                                body = dr[6].ToString();
+                                mobilization = dr[7].ToString();
+                                scaffolding = dr[8].ToString();
                             }
                         }
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.ToString());
             }
             finally
             {
-                ReportParameter[] param = new ReportParameter[6];
+                ReportParameter[] param = new ReportParameter[9];
                 param[0] = new ReportParameter("preparedby", preparedby);
                 param[1] = new ReportParameter("preparedbytitle", preparedbytitle);
                 param[2] = new ReportParameter("notedby", notedby);
                 param[3] = new ReportParameter("notedbytitle", notedbytitle);
-                param[4] = new ReportParameter("note1", note1);
-                param[5] = new ReportParameter("note2", note2);
-                for (int i = 0; i < 6; i++)
+                param[4] = new ReportParameter("reference", reference);
+                param[5] = new ReportParameter("salutation", salutation);
+                param[6] = new ReportParameter("body", body);
+                param[7] = new ReportParameter("mobilization", mobilization);
+                param[8] = new ReportParameter("scaffolding", scaffolding);
+                for (int i = 0; i < 9; i++)
                 {
                     ReportViewer1.LocalReport.SetParameters(param[i]);
                 }
-                tboxnote1.Text = note1;
-                tboxnote2.Text = note2;
+
             }
         }
         private string iid
@@ -136,34 +141,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        protected void LinkButton2_Click(object sender, EventArgs e)
-        {try
-            {
-             
-                string str = "update cleaningtbl set note1=@note1,note2=@note2 where id = @id";
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
-                {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
-                    {
-                        sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@id", iid);
-                        sqlcmd.Parameters.AddWithValue("@note1", tboxnote1.Text);
-                        sqlcmd.Parameters.AddWithValue("@note2", tboxnote2.Text);
-                        sqlcmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                errorrmessage(ex.ToString());
-            }
-            finally
-            {
-                loadparameter();
-            }
 
-          
-        }
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
