@@ -16,16 +16,12 @@
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" SelectCommand="SELECT [ID], [IID], [LOCATION], [AREA], [UNITPRICE], [QTY], [TOTALAMOUNT] FROM [CLEANINGITEM] WHERE ([IID] = @IID)">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" SelectCommand="SELECT [Id],[Cleaning_Id],[Item_Description],[Width],[Height],[AREA],[Qty],[In_Out],[Price] from [Cleaning_Item_Tbl] WHERE ([Cleaning_Id] = @IID)">
         <SelectParameters>
             <asp:SessionParameter Name="IID" SessionField="cleaningid" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
-    Dear<asp:TextBox ID="tboxnote1" runat="server" ></asp:TextBox><br />
-    Thank you for letting us serve you. Please find herewith our quotation for the
-    <asp:TextBox ID="tboxnote2" Width="300"  runat="server"></asp:TextBox>
-    for your requirements on your residence.<br /><br />
-    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary" OnClick="LinkButton2_Click">refresh report</asp:LinkButton><br />
+  
     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="800px" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
         <LocalReport ReportPath="AFTERSALESPROJ\report\cleaningRPT.rdlc">
             <DataSources>

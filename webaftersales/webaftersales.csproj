@@ -300,6 +300,13 @@
     <Compile Include="AFTERSALESPROJ\cleaningsignature.aspx.designer.cs">
       <DependentUpon>cleaningsignature.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\Cleaning_Item.aspx.cs">
+      <DependentUpon>Cleaning_Item.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Cleaning_Item.aspx.designer.cs">
+      <DependentUpon>Cleaning_Item.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\contactusPage.aspx.cs">
       <DependentUpon>contactusPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -729,6 +736,7 @@
     <Content Include="AFTERSALESPROJ\cleaningpage.aspx" />
     <Content Include="AFTERSALESPROJ\cleaningreport.aspx" />
     <Content Include="AFTERSALESPROJ\cleaningsignature.aspx" />
+    <Content Include="AFTERSALESPROJ\Cleaning_Item.aspx" />
     <Content Include="AFTERSALESPROJ\contactusPage.aspx" />
     <Content Include="AFTERSALESPROJ\css\CSSassessment.css" />
     <Content Include="AFTERSALESPROJ\css\CSSfrmsignature.css" />

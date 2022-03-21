@@ -151,6 +151,21 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Cleaning_Item_Tbl" msprop:Generator_TableClassName="Cleaning_Item_TblDataTable" msprop:Generator_TableVarName="tableCleaning_Item_Tbl" msprop:Generator_RowChangedName="Cleaning_Item_TblRowChanged" msprop:Generator_TablePropName="Cleaning_Item_Tbl" msprop:Generator_RowDeletingName="Cleaning_Item_TblRowDeleting" msprop:Generator_RowChangingName="Cleaning_Item_TblRowChanging" msprop:Generator_RowEvHandlerName="Cleaning_Item_TblRowChangeEventHandler" msprop:Generator_RowDeletedName="Cleaning_Item_TblRowDeleted" msprop:Generator_RowClassName="Cleaning_Item_TblRow" msprop:Generator_UserTableName="Cleaning_Item_Tbl" msprop:Generator_RowEvArgName="Cleaning_Item_TblRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+              <xs:element name="Cleaning_Id" msprop:Generator_ColumnVarNameInTable="columnCleaning_Id" msprop:Generator_ColumnPropNameInRow="Cleaning_Id" msprop:Generator_ColumnPropNameInTable="Cleaning_IdColumn" msprop:Generator_UserColumnName="Cleaning_Id" type="xs:string" minOccurs="0" />
+              <xs:element name="Item_Description" msprop:Generator_ColumnVarNameInTable="columnItem_Description" msprop:Generator_ColumnPropNameInRow="Item_Description" msprop:Generator_ColumnPropNameInTable="Item_DescriptionColumn" msprop:Generator_UserColumnName="Item_Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Width" msprop:Generator_ColumnVarNameInTable="columnWidth" msprop:Generator_ColumnPropNameInRow="Width" msprop:Generator_ColumnPropNameInTable="WidthColumn" msprop:Generator_UserColumnName="Width" type="xs:string" minOccurs="0" />
+              <xs:element name="Height" msprop:Generator_ColumnVarNameInTable="columnHeight" msprop:Generator_ColumnPropNameInRow="Height" msprop:Generator_ColumnPropNameInTable="HeightColumn" msprop:Generator_UserColumnName="Height" type="xs:string" minOccurs="0" />
+              <xs:element name="AREA" msprop:Generator_ColumnVarNameInTable="columnAREA" msprop:Generator_ColumnPropNameInRow="AREA" msprop:Generator_ColumnPropNameInTable="AREAColumn" msprop:Generator_UserColumnName="AREA" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="In_Out" msprop:Generator_ColumnVarNameInTable="columnIn_Out" msprop:Generator_ColumnPropNameInRow="In_Out" msprop:Generator_ColumnPropNameInTable="In_OutColumn" msprop:Generator_UserColumnName="In_Out" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

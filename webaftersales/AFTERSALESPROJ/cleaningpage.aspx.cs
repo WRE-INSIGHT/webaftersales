@@ -196,7 +196,7 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["cleaningid"] = ((Label)row.FindControl("lblid")).Text;
                 Session["SID"] = sid;
-                Response.Redirect("~/AFTERSALESPROJ/cleaningitem.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/cleaning_item.aspx");
             }
             else if (e.CommandName == "myreport")
             {
