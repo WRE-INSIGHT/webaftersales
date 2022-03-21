@@ -3907,7 +3907,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnHeight;
             
-            private global::System.Data.DataColumn columnArea;
+            private global::System.Data.DataColumn columnAREA;
             
             private global::System.Data.DataColumn columnQty;
             
@@ -3990,9 +3990,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AreaColumn {
+            public global::System.Data.DataColumn AREAColumn {
                 get {
-                    return this.columnArea;
+                    return this.columnAREA;
                 }
             }
             
@@ -4057,7 +4057,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Cleaning_Item_TblRow AddCleaning_Item_TblRow(string Id, string Cleaning_Id, string Item_Description, string Width, string Height, string Area, string Qty, string In_Out, decimal Price) {
+            public Cleaning_Item_TblRow AddCleaning_Item_TblRow(string Id, string Cleaning_Id, string Item_Description, string Width, string Height, string AREA, string Qty, string In_Out, decimal Price) {
                 Cleaning_Item_TblRow rowCleaning_Item_TblRow = ((Cleaning_Item_TblRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -4065,7 +4065,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         Item_Description,
                         Width,
                         Height,
-                        Area,
+                        AREA,
                         Qty,
                         In_Out,
                         Price};
@@ -4096,7 +4096,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnItem_Description = base.Columns["Item_Description"];
                 this.columnWidth = base.Columns["Width"];
                 this.columnHeight = base.Columns["Height"];
-                this.columnArea = base.Columns["Area"];
+                this.columnAREA = base.Columns["AREA"];
                 this.columnQty = base.Columns["Qty"];
                 this.columnIn_Out = base.Columns["In_Out"];
                 this.columnPrice = base.Columns["Price"];
@@ -4115,8 +4115,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnWidth);
                 this.columnHeight = new global::System.Data.DataColumn("Height", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHeight);
-                this.columnArea = new global::System.Data.DataColumn("Area", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnArea);
+                this.columnAREA = new global::System.Data.DataColumn("AREA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAREA);
                 this.columnQty = new global::System.Data.DataColumn("Qty", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQty);
                 this.columnIn_Out = new global::System.Data.DataColumn("In_Out", typeof(string), null, global::System.Data.MappingType.Element);
@@ -6860,17 +6860,17 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Area {
+            public string AREA {
                 get {
                     try {
-                        return ((string)(this[this.tableCleaning_Item_Tbl.AreaColumn]));
+                        return ((string)(this[this.tableCleaning_Item_Tbl.AREAColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Area\' in table \'Cleaning_Item_Tbl\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'AREA\' in table \'Cleaning_Item_Tbl\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCleaning_Item_Tbl.AreaColumn] = value;
+                    this[this.tableCleaning_Item_Tbl.AREAColumn] = value;
                 }
             }
             
@@ -6984,14 +6984,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAreaNull() {
-                return this.IsNull(this.tableCleaning_Item_Tbl.AreaColumn);
+            public bool IsAREANull() {
+                return this.IsNull(this.tableCleaning_Item_Tbl.AREAColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAreaNull() {
-                this[this.tableCleaning_Item_Tbl.AreaColumn] = global::System.Convert.DBNull;
+            public void SetAREANull() {
+                this[this.tableCleaning_Item_Tbl.AREAColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
