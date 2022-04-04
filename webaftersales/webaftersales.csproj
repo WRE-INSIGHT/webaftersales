@@ -620,6 +620,41 @@
     <Compile Include="AFTERSALESPROJ\requestquotation.aspx.designer.cs">
       <DependentUpon>requestquotation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\resealantForapproval.aspx.cs">
+      <DependentUpon>resealantForapproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealantForapproval.aspx.designer.cs">
+      <DependentUpon>resealantForapproval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealantpage.aspx.cs">
+      <DependentUpon>resealantpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealantpage.aspx.designer.cs">
+      <DependentUpon>resealantpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealantreport.aspx.cs">
+      <DependentUpon>resealantreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealantreport.aspx.designer.cs">
+      <DependentUpon>resealantreport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealantsignature.aspx.cs">
+      <DependentUpon>resealantsignature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealantsignature.aspx.designer.cs">
+      <DependentUpon>resealantsignature.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealant_item.aspx.cs">
+      <DependentUpon>resealant_item.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\resealant_item.aspx.designer.cs">
+      <DependentUpon>resealant_item.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\ServicingschedulePage.aspx.cs">
       <DependentUpon>ServicingschedulePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -802,6 +837,11 @@
     <Content Include="AFTERSALESPROJ\reqisterSign.aspx" />
     <Content Include="AFTERSALESPROJ\requestedquotation.aspx" />
     <Content Include="AFTERSALESPROJ\requestquotation.aspx" />
+    <Content Include="AFTERSALESPROJ\resealantForapproval.aspx" />
+    <Content Include="AFTERSALESPROJ\resealantpage.aspx" />
+    <Content Include="AFTERSALESPROJ\resealantreport.aspx" />
+    <Content Include="AFTERSALESPROJ\resealantsignature.aspx" />
+    <Content Include="AFTERSALESPROJ\resealant_item.aspx" />
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />
     <Content Include="AFTERSALESPROJ\FRMsignature.aspx" />
     <Content Include="AFTERSALESPROJ\FRMimportitems.aspx" />
@@ -903,6 +943,7 @@
     <EmbeddedResource Include="AFTERSALESPROJ\report\cleaningRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\refoilingCuttingListRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\refoilingRPT.rdlc" />
+    <EmbeddedResource Include="AFTERSALESPROJ\report\resealantRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTassessment.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotation.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotationclient.rdlc" />

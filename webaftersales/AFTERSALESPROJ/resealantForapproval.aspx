@@ -1,14 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" CodeBehind="cleaningForapproval.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.cleaningForapproval" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" CodeBehind="resealantForapproval.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.resealantForapproval" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Re-cleaning Proposal approval</title>
+    <title>Re-sealant Proposal approval</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="well">
-        <h3><strong>Re-cleaning Proposal approval</strong></h3>
+        <h3><strong>Re-sealant Proposal approval</strong></h3>
         <div class="input-group">
             <div class="input-group-addon">
                 <asp:CheckBox ID="CheckBox1" runat="server" />&nbsp;for approval
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <strong>
-                                        <asp:LinkButton ID="projectlbl" CommandName="mycleaning" CssClass='<%# Eval("notedby").ToString() == "" ? "text-danger" : "text-success" %>'
+                                        <asp:LinkButton ID="projectlbl" CommandName="myresealant" CssClass='<%# Eval("notedby").ToString() == "" ? "text-danger" : "text-success" %>'
                                             Font-Size="X-Large" runat="server" Text='<%# Bind("PROJECT") %>'></asp:LinkButton>
                                     </strong>
                                     <br />
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <asp:Image ID="Image1" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/CLEANING/"+Eval("qno").ToString()+"/signature/PREPAREDBY.jpg" %>' />
+                                        <asp:Image ID="Image1" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/RESEALANT/"+Eval("qno").ToString()+"/signature/PREPAREDBY.jpg" %>' />
                                         <br />
                                         <b>
                                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("preparedby") %>'></asp:Label></b>
@@ -66,7 +66,7 @@
                                         <span class="text-muted">Prepared by:</span>
                                     </div>
                                     <div class="col-xs-6">
-                                        <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/CLEANING/"+Eval("qno").ToString()+"/signature/NOTEDBY.jpg" %>' />
+                                        <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/RESEALANT/"+Eval("qno").ToString()+"/signature/NOTEDBY.jpg" %>' />
                                         <br />
                                         <b>
                                             <asp:Label ID="Label5" runat="server" Text='<%# Bind("notedby") %>'></asp:Label></b>
@@ -97,4 +97,5 @@
     <h5><strong class="text-muted">
         <asp:Label ID="lblcountrow" runat="server" Text="Label"></asp:Label></strong> </h5>
 </asp:Content>
+
 

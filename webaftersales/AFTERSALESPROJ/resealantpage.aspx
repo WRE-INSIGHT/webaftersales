@@ -1,15 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" CodeBehind="cleaningpage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.cleaningpage" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" CodeBehind="resealantpage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.resealantpage" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Re-cleaning Proposal</title>
+    <title>Re-sealant Proposal</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>Re-cleaning Proposal</strong></h3>
+        <h3><strong>Re-sealant Proposal</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton3" CssClass="btn btn-default" runat="server" PostBackUrl="~/AFTERSALESPROJ/addservicing.aspx">back</asp:LinkButton>
         </div>
