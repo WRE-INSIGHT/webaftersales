@@ -1,36 +1,43 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" CodeBehind="Cleaning_Item.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.Cleaning_Item" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" AutoEventWireup="true" CodeBehind="resealant_item.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.resealant_item" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Re-cleaning Item</title>
+    <title>Re-sealant Item</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>Re-cleaning Proposal Item</strong></h3>
+        <h3><strong>Re-sealant Proposal Item</strong></h3>
         <div class="navbar-right">
-            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/cleaningpage.aspx" runat="server">back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/AFTERSALESPROJ/resealantpage.aspx" runat="server">back</asp:LinkButton>
         </div>
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <%--    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-        <ContentTemplate>--%>
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-addon">
-                    Cleaning per sqm
+                    Sealant price per tube
                 </div>
-                <asp:TextBox ID="tboxCleaningUnitPrice" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tboxSealantPrice" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
                 <div class="input-group-btn">
                     <asp:LinkButton ID="btnSet" CssClass="btn btn-default" runat="server" OnClick="btnSet_Click">set</asp:LinkButton>
                 </div>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    Perimeter-sealant(m) per tube (600ml)
+                </div>
+                <asp:TextBox ID="tboxPerimeterSealantPerTube" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
+                <div class="input-group-btn">
+                    <asp:LinkButton ID="btnSet2" CssClass="btn btn-default" runat="server" OnClick="btnSet2_Click">set</asp:LinkButton>
+                </div>
+            </div>
+        </div>
     </div>
-    <%-- </ContentTemplate>
-    </asp:UpdatePanel>--%>
     <br />
     <br />
     <div style="background-color: aliceblue;" class="panel panel-success">
@@ -116,25 +123,10 @@
                     </asp:GridView>
                 </asp:Panel>
 
-                <asp:Panel ID="Panel1" runat="server">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <br />
-                            <asp:RadioButton ID="rdOutsideimport" GroupName="y" Checked="true" Text="Cleaning outside only" runat="server" />
-                        </div>
-                        <div class="col-sm-6">
-                            <br />
-                            <asp:RadioButton ID="rdInOutimport" GroupName="y" Text="Inside and Outside" runat="server" />
-                        </div>
-                    </div>
-                </asp:Panel>
-
-
                 <asp:Button ID="btnimport" CssClass="btn btn-success" runat="server" OnClick="btnimport_Click" Text="import" />
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-
     <div class="panel panel-success" style="background-color: aliceblue;">
         <div class="panel-heading">
             <h3>Input form</h3>
@@ -145,6 +137,8 @@
                 <div class="col-sm-6">
                     Description<br />
                     <asp:TextBox ID="tboxdescription" CssClass=" form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-sm-6">
                     <div class="row">
                         <div class="col-sm-6">
                             Width
@@ -159,25 +153,6 @@
                             <asp:TextBox ID="tboxheight" TextMode="Number" CssClass=" form-control" runat="server"></asp:TextBox>
                         </div>
                     </div>
-
-
-                </div>
-                <div class="col-sm-6">
-                    Qty  
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="tboxqty" ValidationGroup="val2" runat="server" ErrorMessage="qty is required!" ForeColor="Red">*</asp:RequiredFieldValidator><br />
-                    <asp:TextBox ID="tboxqty" TextMode="Number" CssClass=" form-control" Text="1" runat="server"></asp:TextBox>
-                    <asp:Panel ID="Panel3" runat="server">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <br />
-                                <asp:RadioButton ID="rdOutside" Checked="true" GroupName="x" Text="Cleaning outside only" runat="server" />
-                            </div>
-                            <div class="col-sm-6">
-                                <br />
-                                <asp:RadioButton ID="rdInOut" GroupName="x" Text="Inside and Outside" runat="server" />
-                            </div>
-                        </div>
-                    </asp:Panel>
                 </div>
             </div>
             <br />
@@ -188,10 +163,11 @@
     <asp:Panel ID="Panel4" runat="server" ScrollBars="Auto">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3>Items for re-cleaning</h3>
+                <h3>Items for re-sealant</h3>
             </div>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                   
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table" OnRowCommand="GridView1_RowCommand" CellPadding="4" ForeColor="#333333" GridLines="Both">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
@@ -201,8 +177,8 @@
                                     <asp:LinkButton CssClass="btn btn-danger" CommandName="mydelete" ID="btndelete" OnClientClick="return confirm('delete this record?');" runat="server">delete</asp:LinkButton>
                                     <asp:LinkButton CssClass="btn btn-success" CommandName="mysave" ValidationGroup="valedit" ID="btnsave" Visible="false" runat="server">save</asp:LinkButton>
                                     <asp:LinkButton CssClass="btn btn-default" CommandName="mycancel" ID="btncancel" Visible="false" runat="server">cancel</asp:LinkButton>
-                                    <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                    <asp:Label ID="lblCleaningId" Visible="false" runat="server" Text='<%# Bind("Cleaning_Id") %>'></asp:Label>
+                                    <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
+                                    <asp:Label ID="lblReSealantid" Visible="false" runat="server" Text='<%# Bind("Re_Sealant_Id") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Description">
@@ -225,31 +201,12 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator32" Visible="false" ControlToValidate="tboxheightedit" ValidationGroup="valedit" runat="server" ErrorMessage="height is required!" ForeColor="Red">*</asp:RequiredFieldValidator>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Area">
+                            <asp:TemplateField HeaderText="Perimeter">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblArea" runat="server" Text='<%# Bind("Area") %>'></asp:Label>
+                                    <asp:Label ID="lblPerimeter" runat="server" Text='<%# Bind("Perimeter") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="QTY">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblQty" runat="server" Text='<%# Bind("QTY") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxqtyedit" CssClass="form-control" TextMode="Number" Visible="false" runat="server" Text='<%# Bind("QTY") %>'></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Visible="false" ControlToValidate="tboxqtyedit" ValidationGroup="valedit" runat="server" ErrorMessage="qty is required!" ForeColor="Red">*</asp:RequiredFieldValidator>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Cleaning Option">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblIn_Out" runat="server" Text='<%# Eval("In_Out").ToString() == "1" ? "Outside only" : "In and Out" %>'></asp:Label>
-                                    <asp:Panel ID="Panel33" Visible="false" runat="server">
-                                      
-                                                <asp:RadioButton ID="rdOutsideedit" Checked='<%# Eval("In_Out").ToString() == "1" ? true : false %>' GroupName="m" Text="Cleaning outside only" runat="server" />
-                                           <br />
-                                                <asp:RadioButton ID="rdInOutedit" Checked='<%# Eval("In_Out").ToString() == "1" ? false : true %>' GroupName="m" Text="Inside and Outside" runat="server" />
-                                          
-                                        </div>
-                                    </asp:Panel>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                       
                             <asp:TemplateField HeaderText="TOTAL AMOUNT">
                                 <ItemTemplate>
                                     <asp:Label ID="lblPrice" runat="server" Text='<%# Bind("PRICE") %>'></asp:Label>
@@ -272,11 +229,11 @@
             </asp:UpdatePanel>
         </div>
     </asp:Panel>
-       <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+      <asp:UpdatePanel ID="UpdatePanel3" runat="server">
         <ContentTemplate>
             <div class="panel panel-success" style="background-color: aliceblue;">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <span>Mobilization cost:</span>
@@ -284,12 +241,20 @@
                             <asp:TextBox ID="tboxMobilization" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                         </div>
                     </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                         <div class="input-group">
                             <div class="input-group-addon">
-                                <span>Scaffolding cost:</span>
+                                <span>Labor rate/day:</span>
                             </div>
-                            <asp:TextBox ID="tboxScaffolding" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="tboxLaborRate" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
+                      <div class="col-sm-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <span>No. workers:</span>
+                            </div>
+                            <asp:TextBox ID="tboxWorkers" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>

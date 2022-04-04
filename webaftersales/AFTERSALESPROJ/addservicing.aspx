@@ -215,8 +215,9 @@
                                 <div class="panel-footer">
                                     <asp:Button ID="Button2" runat="server" CommandName="viewreport" Text="view report" CssClass="btn btn-default" />&nbsp;
                                     <asp:Button ID="Button5" runat="server" CommandName="quotation" CssClass="btn btn-default" Text="quotation" />&nbsp;
-                                    <asp:Button ID="Button6" runat="server" CommandName="cleaning" CssClass="btn btn-default" Text="cleaning" />&nbsp;
-                                    <asp:Button ID="Button7" runat="server" CommandName="refoiling" CssClass="btn btn-default" Text="re-foiling" />
+                                    <asp:Button ID="Button6" runat="server" CommandName="cleaning" CssClass="btn btn-default" Text="re-cleaning" />&nbsp;
+                                    <asp:Button ID="Button7" runat="server" CommandName="refoiling" CssClass="btn btn-default" Text="re-foiling" />&nbsp;
+                                    <asp:Button ID="Button8" runat="server" CommandName="resealant" CssClass="btn btn-default" Text="re-sealant" />
                                     <div class="navbar-right">
                                         <asp:LinkButton ID="LinkButton3" CommandName="mydelete" runat="server" OnClientClick="return confirm('Are you sure you want to delete this record?');" CssClass="btn btn-default"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
 
