@@ -115,12 +115,14 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("deletebtn")).Visible = false;
                 ((Label)row.FindControl("descriptionlbl")).Visible=false;
                 ((Label)row.FindControl("assessmentlbl")).Visible = false;
+                ((Label)row.FindControl("progresslbl")).Visible = false;
 
                 ((LinkButton)row.FindControl("savebtn")).Visible = true;
                 ((LinkButton)row.FindControl("cancelbtn")).Visible = true;
                 ((TextBox)row.FindControl("descriptiontbox")).Visible = true;
                 ((TextBox)row.FindControl("assessmenttbox")).Visible = true;
-             
+                ((DropDownList)row.FindControl("progressddl")).Visible = true;
+
             }
             if (e.CommandName == "mysave")
             {
@@ -128,7 +130,8 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 updatefunction(((Label)row.FindControl("idlbl")).Text,
                         ((TextBox)row.FindControl("descriptiontbox")).Text,
-                        ((TextBox)row.FindControl("assessmenttbox")).Text);
+                        ((TextBox)row.FindControl("assessmenttbox")).Text,
+                        ((DropDownList)row.FindControl("progressddl")).Text);
             }
             if (e.CommandName == "mydelete")
             {
@@ -146,19 +149,21 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("deletebtn")).Visible = true;
                 ((Label)row.FindControl("descriptionlbl")).Visible = true;
                 ((Label)row.FindControl("assessmentlbl")).Visible = true;
+                ((Label)row.FindControl("progresslbl")).Visible = true;
 
                 ((LinkButton)row.FindControl("savebtn")).Visible = false;
                 ((LinkButton)row.FindControl("cancelbtn")).Visible = false;
                 ((TextBox)row.FindControl("descriptiontbox")).Visible = false;
                 ((TextBox)row.FindControl("assessmenttbox")).Visible = false;
+                ((DropDownList)row.FindControl("progressddl")).Visible = false;
             }
 
         }
-        private void updatefunction(string id, string description, string assessment)
+        private void updatefunction(string id, string description, string assessment, string progressddl)
         {
             try
             {
-                string str = "update [TBLassessment] set assessment=@assessment,description=@description WHERE ([ID] = @ID)";
+                string str = "update [TBLassessment] set assessment=@assessment,description=@description,progress=@progress WHERE ([ID] = @ID)";
                 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -168,6 +173,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@description", description);
                         sqlcmd.Parameters.AddWithValue("@assessment", assessment);
+                        sqlcmd.Parameters.AddWithValue("@progress", progressddl);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -217,7 +223,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment) insert into [TBLassessment] (id,reportid,assessment,description)values(@id,@reportid,@assessment,@description)";
+                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment) insert into [TBLassessment] (id,reportid,assessment,description,progress)values(@id,@reportid,@assessment,@description,@progress)";
                 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -227,6 +233,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@reportid", reportid);
                         sqlcmd.Parameters.AddWithValue("@description", newdescriptiontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@assessment", newassessmenttbox.Text);
+                        sqlcmd.Parameters.AddWithValue("@progress", newprogressddl.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }

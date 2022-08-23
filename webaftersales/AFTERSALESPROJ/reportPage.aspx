@@ -116,17 +116,31 @@
                                         </div>
                                         <div class="col-sm-6">
                                             Location<br />
-                                            <asp:TextBox ID="newtboxlocation" placeholder="Location" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                            <asp:DropDownList ID="newcboxlocation" placeholder="Location" CssClass="form-control" runat="server">
+                                                <asp:ListItem>-</asp:ListItem>
+                                                <asp:ListItem>Lanai</asp:ListItem>
+                                                <asp:ListItem>Bed RM</asp:ListItem>
+                                                <asp:ListItem>Master`s RM</asp:ListItem>
+                                                <asp:ListItem>Living RM</asp:ListItem>
+                                                <asp:ListItem>Dining RM</asp:ListItem>
+                                                <asp:ListItem>Kitchen RM</asp:ListItem>
+                                                <asp:ListItem>T&B/WIC</asp:ListItem>
+                                            </asp:DropDownList><br />
                                             Specification 
                                                 <asp:RequiredFieldValidator ID="newdlistspecificationvalidator" runat="server" ControlToValidate="newdlistspecification" ValidationGroup="newval"
                                                     ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
                                             <asp:DropDownList ID="newdlistspecification" placeholder="Specification" CssClass="form-control" runat="server">
                                                 <asp:ListItem>-</asp:ListItem>
-                                                <asp:ListItem>Window</asp:ListItem>
-                                                <asp:ListItem>Door</asp:ListItem>
+                                                <asp:ListItem>Casement Window/Door</asp:ListItem>
+                                                <asp:ListItem>Awning</asp:ListItem>
+                                                <asp:ListItem>Fixed</asp:ListItem>
+                                                <asp:ListItem>Sliding Window/Door</asp:ListItem>
+                                                <asp:ListItem>Curtainwall</asp:ListItem>
+                                                <asp:ListItem>Fold-Slide Door</asp:ListItem>
+                                                <asp:ListItem>Lift-Slide Door</asp:ListItem>
                                             </asp:DropDownList><br />
-
-
+                                            Item Description
+                                            <asp:TextBox ID="newtboxitemdescription" placeholder="description" CssClass="form-control" runat="server"></asp:TextBox><br />
                                             <asp:Button ID="newbtn" OnClick="newbtn_click" CssClass="btn btn-primary" ValidationGroup="newval" runat="server" Text="add" />
                                         </div>
                                     </div>
@@ -149,6 +163,7 @@
                             <ItemTemplate>
                                 <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                 <asp:Label ID="lblsid" Visible="false" runat="server" Text='<%# Bind("SID") %>'></asp:Label>
+                                <asp:Label ID="lbljo" Visible="false" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
 
                                 <asp:LinkButton ID="btnedit" CommandName="myedit" runat="server">Edit</asp:LinkButton>&nbsp;|&nbsp;
                             <asp:LinkButton ID="btndelete" OnClientClick="return confirm('delete this item?')" CommandName="mydelete" runat="server">Delete</asp:LinkButton>
@@ -156,11 +171,6 @@
                             <asp:LinkButton ID="btncancel" CommandName="mycancel" Visible="false" runat="server">Cancel</asp:LinkButton>
                             </ItemTemplate>
                             <ItemStyle Wrap="False" />
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-Wrap="false">
-                            <ItemTemplate>
-                                <asp:Label ID="lbljo" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
-                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Location" ItemStyle-Wrap="false">
                             <ItemTemplate>
@@ -175,8 +185,15 @@
                                 <asp:Label ID="lblspecification" runat="server" Text='<%# Bind("SPECIFICATION") %>'></asp:Label>
                                 <asp:DropDownList ID="dlistspecification" Visible="false" placeholder="Specification" CssClass="form-control" runat="server">
                                     <asp:ListItem>-</asp:ListItem>
-                                    <asp:ListItem>Window</asp:ListItem>
+                                    <asp:ListItem>Casement Window/Door</asp:ListItem>
+                                    <asp:ListItem>Awning</asp:ListItem>
+                                    <asp:ListItem>Fixed</asp:ListItem>
+                                    <asp:ListItem>Sliding Window/Door</asp:ListItem>
+                                    <asp:ListItem>Curtainwall</asp:ListItem>
+                                    <asp:ListItem>Fold-Slide Door</asp:ListItem>
+                                    <asp:ListItem>Lift-Slide Door</asp:ListItem>
                                     <asp:ListItem>Door</asp:ListItem>
+                                    <asp:ListItem>Window</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="editval"
                                     ErrorMessage="specification is required" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
@@ -184,19 +201,24 @@
                             </ItemTemplate>
                             <ItemStyle Wrap="False" />
                         </asp:TemplateField>
-
+                        <asp:TemplateField HeaderText="Description" ItemStyle-Wrap="false">
+                            <ItemTemplate>
+                                <asp:Label ID="lblitemdescription" runat="server" Text='<%# Bind("ITEM_DESCRIPTION") %>'></asp:Label>
+                                <asp:TextBox ID="tboxitemdescription" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                            <ItemStyle Wrap="False" />
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Item#" ItemStyle-Wrap="false">
                             <ItemTemplate>
-                                <asp:Label ID="lblitemno" runat="server" Width="100" Text='<%# Bind("ITEMNO") %>'></asp:Label>
+                                <asp:Label ID="lblitemno" runat="server" Width="70" Text='<%# Bind("ITEMNO") %>'></asp:Label>
                                 <asp:TextBox ID="tboxitemno" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
                             <ItemStyle Wrap="False" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="K#" ItemStyle-Wrap="false">
                             <ItemTemplate>
-                                <asp:Label ID="lblkno" runat="server" Text='<%# Bind("KNO") %>'></asp:Label>
+                                <asp:Label ID="lblkno" runat="server" Width="100" Text='<%# Bind("KNO") %>'></asp:Label>
                                 <asp:TextBox ID="tboxkno" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
-
                             </ItemTemplate>
                             <ItemStyle Wrap="False" />
                         </asp:TemplateField>
@@ -210,7 +232,7 @@
                         <asp:TemplateField HeaderText="Height" ItemStyle-Wrap="false">
                             <ItemTemplate>
                                 <asp:Label ID="lblheight" runat="server" Text='<%# Bind("HEIGHT") %>'></asp:Label>
-                                <asp:TextBox ID="tboxheight" Visible="false" Width="150"  CssClass="form-control" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="tboxheight" Visible="false" Width="150" CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
                             <ItemStyle Wrap="False" />
                         </asp:TemplateField>

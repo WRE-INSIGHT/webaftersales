@@ -643,6 +643,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnassessment;
             
+            private global::System.Data.DataColumn columnprogress;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public REPORTTBDataTable() {
@@ -734,6 +736,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn progressColumn {
+                get {
+                    return this.columnprogress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -769,7 +779,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public REPORTTBRow AddREPORTTBRow(string kno, string itemno, string location, string specification, string reportid, string description, string assessment) {
+            public REPORTTBRow AddREPORTTBRow(string kno, string itemno, string location, string specification, string reportid, string description, string assessment, string progress) {
                 REPORTTBRow rowREPORTTBRow = ((REPORTTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         kno,
@@ -778,7 +788,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         specification,
                         reportid,
                         description,
-                        assessment};
+                        assessment,
+                        progress};
                 rowREPORTTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowREPORTTBRow);
                 return rowREPORTTBRow;
@@ -808,6 +819,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnreportid = base.Columns["reportid"];
                 this.columndescription = base.Columns["description"];
                 this.columnassessment = base.Columns["assessment"];
+                this.columnprogress = base.Columns["progress"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -827,6 +839,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columndescription);
                 this.columnassessment = new global::System.Data.DataColumn("assessment", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnassessment);
+                this.columnprogress = new global::System.Data.DataColumn("progress", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprogress);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -984,6 +998,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnMONDATE;
             
+            private global::System.Data.DataColumn columnACCEPTEDBY;
+            
+            private global::System.Data.DataColumn columnACCEPTEDBYDATE;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SERVICINGTBDataTable() {
@@ -1115,6 +1133,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ACCEPTEDBYColumn {
+                get {
+                    return this.columnACCEPTEDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ACCEPTEDBYDATEColumn {
+                get {
+                    return this.columnACCEPTEDBYDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1150,7 +1184,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SERVICINGTBRow AddSERVICINGTBRow(string ID, string CIN, string STATUS, string STATUSDATE, string SERVICING, string SDATE, string REMARKS, string TEAMID, string INSPECTEDBY, string INSDATE, string MONITOREDBY, string MONDATE) {
+            public SERVICINGTBRow AddSERVICINGTBRow(string ID, string CIN, string STATUS, string STATUSDATE, string SERVICING, string SDATE, string REMARKS, string TEAMID, string INSPECTEDBY, string INSDATE, string MONITOREDBY, string MONDATE, string ACCEPTEDBY, string ACCEPTEDBYDATE) {
                 SERVICINGTBRow rowSERVICINGTBRow = ((SERVICINGTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -1164,7 +1198,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         INSPECTEDBY,
                         INSDATE,
                         MONITOREDBY,
-                        MONDATE};
+                        MONDATE,
+                        ACCEPTEDBY,
+                        ACCEPTEDBYDATE};
                 rowSERVICINGTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSERVICINGTBRow);
                 return rowSERVICINGTBRow;
@@ -1199,6 +1235,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnINSDATE = base.Columns["INSDATE"];
                 this.columnMONITOREDBY = base.Columns["MONITOREDBY"];
                 this.columnMONDATE = base.Columns["MONDATE"];
+                this.columnACCEPTEDBY = base.Columns["ACCEPTEDBY"];
+                this.columnACCEPTEDBYDATE = base.Columns["ACCEPTEDBYDATE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1228,6 +1266,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnMONITOREDBY);
                 this.columnMONDATE = new global::System.Data.DataColumn("MONDATE", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMONDATE);
+                this.columnACCEPTEDBY = new global::System.Data.DataColumn("ACCEPTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACCEPTEDBY);
+                this.columnACCEPTEDBYDATE = new global::System.Data.DataColumn("ACCEPTEDBYDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACCEPTEDBYDATE);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4745,6 +4787,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string progress {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.progressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'progress\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.progressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsknoNull() {
                 return this.IsNull(this.tableREPORTTB.knoColumn);
             }
@@ -4825,6 +4883,18 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetassessmentNull() {
                 this[this.tableREPORTTB.assessmentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsprogressNull() {
+                return this.IsNull(this.tableREPORTTB.progressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetprogressNull() {
+                this[this.tableREPORTTB.progressColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5036,6 +5106,38 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ACCEPTEDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableSERVICINGTB.ACCEPTEDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACCEPTEDBY\' in table \'SERVICINGTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSERVICINGTB.ACCEPTEDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ACCEPTEDBYDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableSERVICINGTB.ACCEPTEDBYDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACCEPTEDBYDATE\' in table \'SERVICINGTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSERVICINGTB.ACCEPTEDBYDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableSERVICINGTB.IDColumn);
             }
@@ -5176,6 +5278,30 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMONDATENull() {
                 this[this.tableSERVICINGTB.MONDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsACCEPTEDBYNull() {
+                return this.IsNull(this.tableSERVICINGTB.ACCEPTEDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetACCEPTEDBYNull() {
+                this[this.tableSERVICINGTB.ACCEPTEDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsACCEPTEDBYDATENull() {
+                return this.IsNull(this.tableSERVICINGTB.ACCEPTEDBYDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetACCEPTEDBYDATENull() {
+                this[this.tableSERVICINGTB.ACCEPTEDBYDATEColumn] = global::System.Convert.DBNull;
             }
         }
         

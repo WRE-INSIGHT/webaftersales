@@ -185,11 +185,12 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxwidth")).Text = ((Label)row.FindControl("lblwidth")).Text;
                 ((TextBox)row.FindControl("tboxheight")).Text = ((Label)row.FindControl("lblheight")).Text;
                 ((DropDownList)row.FindControl("dlistspecification")).Text = ((Label)row.FindControl("lblspecification")).Text;
+                ((TextBox)row.FindControl("tboxitemdescription")).Text = ((Label)row.FindControl("lblitemdescription")).Text;
 
                 ((TextBox)row.FindControl("tboxitemno")).Visible = true;
                 ((Label)row.FindControl("lblitemno")).Visible = false;
                 ((TextBox)row.FindControl("tboxkno")).Visible = true;
-                ((Label)row.FindControl("lblkno")).Visible = false;;
+                ((Label)row.FindControl("lblkno")).Visible = false;
                 ((TextBox)row.FindControl("tboxlocation")).Visible = true;
                 ((Label)row.FindControl("lbllocation")).Visible = false;
                 ((TextBox)row.FindControl("tboxwidth")).Visible = true;
@@ -198,6 +199,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lblheight")).Visible = false;
                 ((DropDownList)row.FindControl("dlistspecification")).Visible = true;
                 ((Label)row.FindControl("lblspecification")).Visible = false;
+                ((TextBox)row.FindControl("tboxitemdescription")).Visible = true;
+                ((Label)row.FindControl("lblitemdescription")).Visible = false;
 
                 ((LinkButton)row.FindControl("btnsave")).Visible = true;
                 ((LinkButton)row.FindControl("btncancel")).Visible = true;
@@ -220,6 +223,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lblheight")).Visible = true;
                 ((DropDownList)row.FindControl("dlistspecification")).Visible = false;
                 ((Label)row.FindControl("lblspecification")).Visible = true;
+                ((TextBox)row.FindControl("tboxitemdescription")).Visible = false;
+                ((Label)row.FindControl("lblitemdescription")).Visible = true;
 
                 ((LinkButton)row.FindControl("btnsave")).Visible = false;
                 ((LinkButton)row.FindControl("btncancel")).Visible = false;
@@ -238,14 +243,16 @@ namespace webaftersales.AFTERSALESPROJ
                 ViewState["width"] = ((TextBox)row.FindControl("tboxwidth")).Text;
                 ViewState["height"] = ((TextBox)row.FindControl("tboxheight")).Text;
                 ViewState["specification"] = ((DropDownList)row.FindControl("dlistspecification")).Text;
-           
+                ViewState["item_description"] = ((TextBox)row.FindControl("tboxitemdescription")).Text;
+
                 myupdate(ViewState["id"].ToString(),
                            ViewState["itemno"].ToString(),
                            ViewState["kno"].ToString(),
                            ViewState["location"].ToString(),
                            ViewState["specification"].ToString(),
                            ViewState["width"].ToString(),
-                           ViewState["height"].ToString());
+                           ViewState["height"].ToString(),
+                           ViewState["item_description"].ToString());
             }
             if (e.CommandName == "myassessment")
             {
@@ -285,11 +292,11 @@ namespace webaftersales.AFTERSALESPROJ
             }
 
         }
-        private void myupdate(string id, string itemno, string kno, string location, string specification, string width,string height)
+        private void myupdate(string id, string itemno, string kno, string location, string specification, string width,string height,string item_description)
         {
             try
             {
-                string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,width=@width,height=@height where id = @id";
+                string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,width=@width,height=@height,item_description=@item_description where id = @id";
             
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -303,6 +310,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@width", width);
                         sqlcmd.Parameters.AddWithValue("@height", height);
                         sqlcmd.Parameters.AddWithValue("@specification", specification);
+                        sqlcmd.Parameters.AddWithValue("@item_description", item_description);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -347,7 +355,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
               
-                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb) insert into reporttb (sid,id,itemno,kno,location,specification,width,height)values(@sid,@id,@item,@kno,@location,@specification,@width,@height)";
+                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb) insert into reporttb (sid,id,itemno,kno,location,specification,width,height,item_description)values(@sid,@id,@item,@kno,@location,@specification,@width,@height,@item_description)";
             
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -357,10 +365,11 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@sid", sid);
                         sqlcmd.Parameters.AddWithValue("@item", newtboxitemno.Text);
                         sqlcmd.Parameters.AddWithValue("@kno", newtboxkno.Text);
-                        sqlcmd.Parameters.AddWithValue("@location", newtboxlocation.Text);
+                        sqlcmd.Parameters.AddWithValue("@location", newcboxlocation.Text);
                         sqlcmd.Parameters.AddWithValue("@specification", newdlistspecification.Text);
                         sqlcmd.Parameters.AddWithValue("@width", newtboxwidth.Text);
                         sqlcmd.Parameters.AddWithValue("@height", newtboxheight.Text);
+                        sqlcmd.Parameters.AddWithValue("@item_description", newtboxitemdescription.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }

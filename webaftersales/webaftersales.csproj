@@ -655,6 +655,13 @@
     <Compile Include="AFTERSALESPROJ\resealant_item.aspx.designer.cs">
       <DependentUpon>resealant_item.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\ServicingCalendar.aspx.cs">
+      <DependentUpon>ServicingCalendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\ServicingCalendar.aspx.designer.cs">
+      <DependentUpon>ServicingCalendar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\ServicingschedulePage.aspx.cs">
       <DependentUpon>ServicingschedulePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -845,6 +852,7 @@
     <Content Include="AFTERSALESPROJ\scripts\sign.js" />
     <Content Include="AFTERSALESPROJ\FRMsignature.aspx" />
     <Content Include="AFTERSALESPROJ\FRMimportitems.aspx" />
+    <Content Include="AFTERSALESPROJ\ServicingCalendar.aspx" />
     <Content Include="AFTERSALESPROJ\ServicingschedulePage.aspx" />
     <Content Include="AFTERSALESPROJ\Sessionexpired.aspx" />
     <Content Include="AFTERSALESPROJ\sidgalleryPage.aspx" />

@@ -215,14 +215,15 @@ namespace webaftersales.AFTERSALESPROJ
                     int id = Convert.ToInt32(mytb.Rows[i]["id"].ToString());
                     if (l.Contains(id))
                     {
-                        string joborder, kno, itemno, location, width, height;
+                        string joborder, kno, itemno, location, width, height, description;
                         joborder = mytb.Rows[i]["job_order_no"].ToString();
                         kno = mytb.Rows[i]["kmdi_no"].ToString();
                         itemno = mytb.Rows[i]["item_no"].ToString();
                         location = mytb.Rows[i]["location"].ToString();
                         width = mytb.Rows[i]["width"].ToString();
                         height = mytb.Rows[i]["height"].ToString();
-                        insertrecord(sid, joborder, kno, itemno, location, width, height);
+                        description = mytb.Rows[i]["description"].ToString();
+                        insertrecord(sid, joborder, kno, itemno, location, width, height, description);
                     }
                 }
             }
@@ -258,7 +259,7 @@ namespace webaftersales.AFTERSALESPROJ
             ViewState["listid"] = l;
 
         }
-        private void insertrecord(string sid, string joborder, string kno, string itemno, string location,string width, string height)
+        private void insertrecord(string sid, string joborder, string kno, string itemno, string location,string width, string height,string description)
         {
             try
             {
@@ -267,8 +268,8 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     sqlcon.Open();
                     string qry = " declare @id as integer = (select max(id)+1 from reporttb) " +
-                        "insert into reporttb (id,sid,jo,kno,itemno,location,specification,width,height)values" +
-                        "(@id,'" + sid + "','" + joborder + "','" + kno + "','" + itemno + "','" + location + "','Window','" + width + "','" + height + "')";
+                        "insert into reporttb (id,sid,jo,kno,itemno,location,specification,width,height,item_description)values" +
+                        "(@id,'" + sid + "','" + joborder + "','" + kno + "','" + itemno + "','" + location + "','Window','" + width + "','" + height + "','"+description+"')";
 
                     SqlCommand sqlcmd = new SqlCommand(qry, sqlcon);
                     sqlcmd.ExecuteNonQuery();

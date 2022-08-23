@@ -28,6 +28,10 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         Panel2.Visible = true;
                     }
+                    else if (Session["Signatureby"].ToString() == "panel3")
+                    {
+                        Panel3.Visible = true;
+                    }
                 }
             }
             else
@@ -100,6 +104,27 @@ namespace webaftersales.AFTERSALESPROJ
                 //ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
                 string str = "update servicingtb set monitoredby=@person,mondate=@date where id = @sid";
                 updatetb(str, tboxmonitored.Text, tboxmonitoreddate.Text);
+                Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
+            }
+
+        }
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            if (IsValid)
+            {
+                //Session["dataurlsignature1"] = Request.Form["myurl1"];
+                //Session["monitoredby"] = tboxmonitored.Text;
+                //Session["monitoreddate"] = tboxmonitoreddate.Text;
+                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
+                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
+                if (!IsExists)
+                {
+                    System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
+                }
+                UploadImage(Request.Form["myurl2"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath + "acceptedby.jpg"));
+                //ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "successfulmessage();", true);
+                string str = "update servicingtb set acceptedby=@person,acceptedbydate=@date where id = @sid";
+                updatetb(str, tboxaccepted.Text, tboxaccepteddate.Text);
                 Response.Redirect("~/AFTERSALESPROJ/reportviewPage.aspx");
             }
 

@@ -47,6 +47,7 @@
                             <canvas id="myCanvas"></canvas>
                             <input type='hidden' id='myurl' name='myurl' />
                             <input type='hidden' id='myurl1' name='myurl1' />
+                            <input type='hidden' id='myurl2' name='myurl2' />
                             <br />
                             <asp:Button runat="server" CssClass="btn btn-warning" Text="Reset Sign" ID='resetSign' />
                             <br />
@@ -79,7 +80,17 @@
                             //document.getElementById('resetSign').click();
                             //document.getElementById('Image1').src = dataURL;
                         }
+                        function storeimage2() {
+                            var canvas = document.getElementById('myCanvas');
+                            var context = canvas.getContext('2d');
+                            var dataURL = canvas.toDataURL();
 
+                            var h = document.getElementById('myurl2');
+                            h.value = dataURL;
+
+                            //document.getElementById('resetSign').click();
+                            //document.getElementById('Image1').src = dataURL;
+                        }
                     </script>
                 </div>
                 <div class="col-sm-6">
@@ -156,8 +167,37 @@
                                         </tr>
                                     </table>
                                 </asp:Panel>
+                                    <asp:Panel ID="Panel3" runat="server" Visible="False">
+                                    <table class="tbl">
+                                        <tr>
+                                            <td style="width: 100%">
+                                                <asp:TextBox ID="tboxaccepted" Height="40" placeholder="Accepted by" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="g3" ControlToValidate="tboxaccepted"
+                                                    ErrorMessage="Accepted by is required" Text="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <asp:TextBox ID="tboxaccepteddate"  TextMode="Date" Height="40" CssClass="form-control" placeholder="Date" runat="server"></asp:TextBox></td>
+                                            <td>
+                                                <asp:CompareValidator ID="CompareValidator3" ControlToValidate="tboxaccepteddate" ValidationGroup="g3"
+                                                    Type="Date" Operator="DataTypeCheck" runat="server" ErrorMessage="Invalid Date" Text="*" ForeColor="Red"></asp:CompareValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="date is required"
+                                                    ForeColor="Red" ControlToValidate="tboxaccepteddate" ValidationGroup="g3" Text="*"></asp:RequiredFieldValidator></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <asp:Button ID="Button3" CssClass="btn btn-primary" ValidationGroup="g3" OnClientClick="storeimage2()" runat="server" Text="capture signature" OnClick="Button3_Click" />
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </asp:Panel>
                                 <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="g1" CssClass="alert alert-danger" runat="server" />
                                 <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="g2" CssClass="alert alert-danger" runat="server" />
+                                <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup="g3" CssClass="alert alert-danger" runat="server" />
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
