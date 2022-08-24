@@ -37,6 +37,17 @@
                 </div>
             </div>
         </div>
+           <div class="col-sm-4">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    Landed cost/sqm
+                </div>
+                <asp:TextBox ID="tboxWastage" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
+                <div class="input-group-btn">
+                    <asp:LinkButton ID="LinkButton7" CssClass="btn btn-default" runat="server" OnClick="LinkButton7_Click">set</asp:LinkButton>
+                </div>
+            </div>
+        </div>
     </div>
     <br />
     <br />
@@ -315,7 +326,8 @@
                     </asp:GridView>
                     <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="valedit" CssClass="alert alert-danger" runat="server" />
                     <br />
-                    <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">generate cutting list</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">generate cutting list</asp:LinkButton>&nbsp;&nbsp;
+                    <asp:LinkButton ID="LinkButton8" CssClass="btn btn-success" runat="server" OnClientClick="return confirm('confirm changes?')"  OnClick="LinkButton8_Click">Update All Price</asp:LinkButton>
                 </asp:Panel>
             </div>
 

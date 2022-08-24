@@ -18,6 +18,10 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (!IsPostBack)
                 {
+                    var x = DateTime.Now.ToString("yyyy");
+                    var y = DateTime.Now.ToString("MM");
+                    tboxyear.Text = x;
+                    ddlmonth.Text = y;
                     loaddata();
                 }
             }
@@ -28,11 +32,11 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void loaddata()
         {
-            DateTime D = Convert.ToDateTime("01-"+ddlmonth.SelectedValue.ToString()+"-" + tboxyear.Text);
+            DateTime D = Convert.ToDateTime("01-" + ddlmonth.SelectedValue.ToString() + "-" + tboxyear.Text);
             lblMonth.Text = D.ToString("MMMM");
             loadCalendarData(ddlmonth.SelectedValue.ToString() + "-01-" + tboxyear.Text);
         }
-     
+
         private void loadCalendarData(string d)
         {
             using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
@@ -78,7 +82,7 @@ namespace webaftersales.AFTERSALESPROJ
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
-     
+
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
