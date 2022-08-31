@@ -22,7 +22,7 @@
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
+            <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -47,11 +47,32 @@
                                 </div>
                                 <div class="panel-footer">
                                     <table class="table" border="1">
-                                        <th>Total amount 
+                                        <th>Bill Amount 
                                         </th>
+                                        <th>Discounted Price</th>
+                                        <th>Waived</th>
+                                        <th></th>
                                         <tr>
                                             <td>
                                                 <asp:Label ID="Label3" Font-Size="Large" runat="server" Text='<%# Bind("TOTALAMOUNT") %>'></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblid" runat="server" Visible="false" Text='<%# Bind("id") %>'></asp:Label>
+                                                <asp:Label ID="lbldiscountedprice" runat="server" Text='<%# Bind("discountedpriceFormatted") %>'></asp:Label>
+                                                <asp:TextBox ID="tboxdiscountedprice" CssClass="form-control" Visible="false" TextMode="Number" Text='<%# Bind("discountedprice") %>' runat="server"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblwaived" runat="server" Text='<%# Bind("waived") %>'></asp:Label>
+                                                <asp:DropDownList ID="ddlwaived" CssClass="form-control" Visible="false" Text='<%# Bind("waived") %>' runat="server">
+                                                    <asp:ListItem>yes</asp:ListItem>
+                                                    <asp:ListItem>no</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                            <td>
+                                                <asp:LinkButton ID="btnEdit" CommandName="myEdit" runat="server">Edit</asp:LinkButton>
+                                                <asp:LinkButton ID="btnSave" CommandName="mySave" Visible="false" runat="server">Save</asp:LinkButton>
+                                                |
+                                        <asp:LinkButton ID="btnCancel" CommandName="myCancel" Visible="false" runat="server">Cancel</asp:LinkButton>
                                             </td>
                                         </tr>
                                     </table>

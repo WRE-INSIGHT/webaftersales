@@ -3533,6 +3533,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnItem_Description;
             
+            private global::System.Data.DataColumn columnWastage;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public refoiling_tblDataTable() {
@@ -3696,6 +3698,14 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WastageColumn {
+                get {
+                    return this.columnWastage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3747,7 +3757,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         decimal Sub_Total, 
                         decimal Average_Price, 
                         decimal Cleaning, 
-                        string Item_Description) {
+                        string Item_Description, 
+                        decimal Wastage) {
                 refoiling_tblRow rowrefoiling_tblRow = ((refoiling_tblRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -3765,7 +3776,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         Sub_Total,
                         Average_Price,
                         Cleaning,
-                        Item_Description};
+                        Item_Description,
+                        Wastage};
                 rowrefoiling_tblRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrefoiling_tblRow);
                 return rowrefoiling_tblRow;
@@ -3804,6 +3816,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnAverage_Price = base.Columns["Average_Price"];
                 this.columnCleaning = base.Columns["Cleaning"];
                 this.columnItem_Description = base.Columns["Item_Description"];
+                this.columnWastage = base.Columns["Wastage"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3841,6 +3854,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnCleaning);
                 this.columnItem_Description = new global::System.Data.DataColumn("Item_Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItem_Description);
+                this.columnWastage = new global::System.Data.DataColumn("Wastage", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWastage);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7067,6 +7082,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Wastage {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablerefoiling_tbl.WastageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Wastage\' in table \'refoiling_tbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerefoiling_tbl.WastageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIdNull() {
                 return this.IsNull(this.tablerefoiling_tbl.IdColumn);
             }
@@ -7255,6 +7286,18 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetItem_DescriptionNull() {
                 this[this.tablerefoiling_tbl.Item_DescriptionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWastageNull() {
+                return this.IsNull(this.tablerefoiling_tbl.WastageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWastageNull() {
+                this[this.tablerefoiling_tbl.WastageColumn] = global::System.Convert.DBNull;
             }
         }
         

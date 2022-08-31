@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -21,7 +22,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
-
+                        get_refoiling();
                         getlocations();
                         loaditem();
                         displayvalue();
@@ -44,6 +45,13 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return Session["refoilingqno"].ToString();
+            }
+        }
+        private string cin
+        {
+            get
+            {
+                return Session["CIN"].ToString();
             }
         }
         private string sid
@@ -184,7 +192,7 @@ namespace webaftersales.AFTERSALESPROJ
                 CustomValidator err = new CustomValidator();
                 err.ValidationGroup = "SUCCESSVAL";
                 err.IsValid = false;
-                err.ErrorMessage =ex.Message.ToString();
+                err.ErrorMessage = ex.Message.ToString();
                 err.CssClass = "alert alert-danger";
                 Page.Validators.Add(err);
             }
@@ -232,6 +240,7 @@ namespace webaftersales.AFTERSALESPROJ
             tboxRefoilingPerSqm.Text = getdefaultvalue("Refoiling Price per sqm");
             tboxCleaningPerSqm.Text = getdefaultvalue("Refoiling Cleaning per sqm");
             tboxWastage.Text = getdefaultvalue("Refoiling landed cost per sql");
+            lblwastage.Text = tboxWastage.Text;
         }
         protected void searchbtn_Click(object sender, EventArgs e)
         {
@@ -352,6 +361,16 @@ namespace webaftersales.AFTERSALESPROJ
             add(tboxitemno.Text, tboxkno.Text, tboxlocation.Text, tboxparts.Text, tboxdescription.Text, ddlarticleno.Text, tboxlength.Text, tboxwidthin.Text, tboxwidthout.Text, tboxqty.Text);
             loaditem();
         }
+        ArrayList _AL_itemno = new ArrayList();
+        ArrayList _AL_kno = new ArrayList();
+        ArrayList _AL_location = new ArrayList();
+        ArrayList _AL_parts = new ArrayList();
+        ArrayList _AL_description = new ArrayList();
+        ArrayList _AL_articleno = new ArrayList();
+        ArrayList _AL_length = new ArrayList();
+        ArrayList _AL_widthin = new ArrayList();
+        ArrayList _AL_widthout = new ArrayList();
+        ArrayList _AL_qty = new ArrayList();
         private void add(string itemno, string kno, string location, string parts, string description, string articleno, string length, string widthin, string widthout, string qty)
         {
             try
@@ -385,7 +404,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
 
         }
-        
+
         private void loaditem()
         {
             try
@@ -399,7 +418,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "Load");
                         sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
-                
+
                         DataTable tb = new DataTable();
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
@@ -734,7 +753,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Response.Redirect("~/AFTERSALESPROJ/RefoilingCuttingList.aspx");
             }
-           
+
             ViewState["listidg1"] = idl;
         }
         private void resetselection()
@@ -754,7 +773,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 errorrmessage(e.Message.ToString());
             }
@@ -806,12 +825,12 @@ namespace webaftersales.AFTERSALESPROJ
             loaditem();
         }
         private void updateall(string Id,
-            string Item_No, 
+            string Item_No,
             string K_No,
-            string Location, 
-            string Parts, 
-            string Item_Description, 
-            string Article_No, 
+            string Location,
+            string Parts,
+            string Item_Description,
+            string Article_No,
             string Profile_Length,
             string Profile_Width_In,
             string Profile_Width_Out,
@@ -846,6 +865,101 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 errorrmessage(ex.Message.ToString());
             }
+        }
+        private void get_refoiling()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcmd.CommandText = "Refoiling_Id_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Get_Refoiling");
+                        sqlcmd.Parameters.AddWithValue("@CIN", cin);
+                        sqlcmd.Parameters.AddWithValue("@SID", sid);
+                        sqlcmd.Parameters.AddWithValue("@QNO", refoilingqno);
+                        ddlFoilQuotation.DataSource = sqlcmd.ExecuteReader();
+                        ddlFoilQuotation.DataValueField = "QNO";
+                        ddlFoilQuotation.DataTextField = "QNO";
+                        ddlFoilQuotation.DataBind();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+        }
+
+        private void get_refoiling_item(string refqu)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcmd.CommandText = "Refoiling_Method2_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Load");
+                        sqlcmd.Parameters.AddWithValue("@refoiling_id", refqu);
+                        _AL_itemno = new ArrayList();
+                        _AL_kno = new ArrayList();
+                        _AL_location = new ArrayList();
+                        _AL_parts = new ArrayList();
+                        _AL_description = new ArrayList();
+                        _AL_articleno = new ArrayList();
+                        _AL_length = new ArrayList();
+                        _AL_widthin = new ArrayList();
+                        _AL_widthout = new ArrayList();
+                        _AL_qty = new ArrayList();
+                        SqlDataReader rd = sqlcmd.ExecuteReader();
+                        while (rd.Read())
+                        {
+                            _AL_itemno.Add(rd[2].ToString());
+                            _AL_kno.Add(rd[3].ToString());
+                            _AL_location.Add(rd[4].ToString());
+                            _AL_parts.Add(rd[5].ToString());
+                            _AL_description.Add(rd[6].ToString());
+                            _AL_articleno.Add(rd[7].ToString());
+                            _AL_length.Add(rd[8].ToString());
+                            _AL_widthin.Add(rd[9].ToString());
+                            _AL_widthout.Add(rd[10].ToString());
+                            _AL_qty.Add(rd[11].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+        }
+
+        protected void LinkButton9_Click(object sender, EventArgs e)
+        {
+            get_refoiling_item(ddlFoilQuotation.Text);
+            for (int i = 0; i <= _AL_itemno.Count - 1; i++)
+            {
+                var x = _AL_itemno[i].ToString();
+                Console.WriteLine(x);
+                add(_AL_itemno[i].ToString(),
+                    _AL_kno[i].ToString(),
+                    _AL_location[i].ToString(),
+                    _AL_parts[i].ToString(),
+                    _AL_description[i].ToString(),
+                    _AL_articleno[i].ToString(),
+                    _AL_length[i].ToString(),
+                    _AL_widthin[i].ToString(),
+                    _AL_widthout[i].ToString(),
+                    _AL_qty[i].ToString());
+            }
+            loaditem();
         }
     }
 }

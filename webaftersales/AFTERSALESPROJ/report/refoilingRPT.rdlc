@@ -907,6 +907,83 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Wastage</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>8.5pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=FORMAT(Sum(Fields!Wastage.Value, "DataSet1"),"N2")</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>8.5pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>None</Style>
+                        </LeftBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -1018,7 +1095,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>="PHP "+FORMAT(Sum(Fields!Average_Price.Value, "DataSet1")+(Ceiling(Sum(Fields!Total_Length.Value, "DataSet1")/24)*2000)+Sum(Fields!Cleaning.Value, "DataSet1")+Parameters!miscellaneous.Value,"N2")</Value>
+                              <Value>="PHP "+FORMAT(Sum(Fields!Average_Price.Value, "DataSet1")+(Ceiling(Sum(Fields!Total_Length.Value, "DataSet1")/24)*2000)+Sum(Fields!Cleaning.Value, "DataSet1")+Sum(Fields!Wastage.Value, "DataSet1")+Parameters!miscellaneous.Value,"N2")</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>13pt</FontSize>
@@ -1071,11 +1148,12 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <Top>3.2932in</Top>
         <Left>3.17868in</Left>
-        <Height>1.25in</Height>
+        <Height>1.5in</Height>
         <Width>4.32132in</Width>
         <ZIndex>5</ZIndex>
         <Style>
@@ -2022,7 +2100,7 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
           </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>4.62514in</Top>
+        <Top>4.87514in</Top>
         <Height>4.80348in</Height>
         <Width>7.5in</Width>
         <ZIndex>9</ZIndex>
@@ -2260,7 +2338,7 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
         </Style>
       </Line>
     </ReportItems>
-    <Height>9.42862in</Height>
+    <Height>9.67862in</Height>
     <Style />
   </Body>
   <Width>7.50001in</Width>
@@ -2499,6 +2577,10 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
         <Field Name="Item_Description">
           <DataField>Item_Description</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Wastage">
+          <DataField>Wastage</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

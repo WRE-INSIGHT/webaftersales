@@ -146,10 +146,12 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("btnedit")).Visible = false;
                 ((LinkButton)row.FindControl("btndelete")).Visible = false;
                 ((Label)row.FindControl("lblqdate")).Visible = false;
+                ((Label)row.FindControl("lblLock")).Visible = false;
 
                 ((LinkButton)row.FindControl("btnsave")).Visible = true;
                 ((LinkButton)row.FindControl("btncancel")).Visible = true;
                 ((TextBox)row.FindControl("tboxqdateedit")).Visible = true;
+                ((DropDownList)row.FindControl("ddlLock")).Visible = true;
                 ((RequiredFieldValidator)row.FindControl("RequiredFieldValidator3")).Visible = true;
             }
             else if (e.CommandName == "mycancel")
@@ -160,10 +162,12 @@ namespace webaftersales.AFTERSALESPROJ
                 ((LinkButton)row.FindControl("btnedit")).Visible = true;
                 ((LinkButton)row.FindControl("btndelete")).Visible = true;
                 ((Label)row.FindControl("lblqdate")).Visible = true;
+                ((Label)row.FindControl("lblLock")).Visible = true;
 
                 ((LinkButton)row.FindControl("btnsave")).Visible = false;
                 ((LinkButton)row.FindControl("btncancel")).Visible = false;
                 ((TextBox)row.FindControl("tboxqdateedit")).Visible = false;
+                ((DropDownList)row.FindControl("ddlLock")).Visible = false;
                 ((RequiredFieldValidator)row.FindControl("RequiredFieldValidator3")).Visible = false;
             }
             else if (e.CommandName == "mysave")
@@ -171,7 +175,7 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
 
-                updateme(((Label)row.FindControl("lblid")).Text, ((TextBox)row.FindControl("tboxqdateedit")).Text);
+                updateme(((Label)row.FindControl("lblid")).Text, ((TextBox)row.FindControl("tboxqdateedit")).Text, ((DropDownList)row.FindControl("ddlLock")).SelectedValue.ToString());
             }
             else if (e.CommandName == "mydelete")
             {
@@ -237,7 +241,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-        private void updateme(string id, string qdate)
+        private void updateme(string id, string qdate, string mylock)
         {
             try
             {
@@ -251,6 +255,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Command", "Update");
                         sqlcmd.Parameters.AddWithValue("@Id", id);
                         sqlcmd.Parameters.AddWithValue("@QDATE", qdate);
+                        sqlcmd.Parameters.AddWithValue("@LOCK", mylock);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }

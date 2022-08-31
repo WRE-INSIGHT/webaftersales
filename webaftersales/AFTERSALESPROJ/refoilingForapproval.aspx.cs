@@ -125,6 +125,95 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["refoiling_report_sender"] = "forapproval";
                 Response.Redirect("~/AFTERSALESPROJ/refoilingreport.aspx");
             }
+            else if (e.CommandName == "myEdit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((Label)row.FindControl("lbldiscountedprice")).Visible = false;
+                ((Label)row.FindControl("lblwaived")).Visible = false;
+                ((LinkButton)row.FindControl("btnEdit")).Visible = false;
+
+                ((TextBox)row.FindControl("tboxdiscountedprice")).Visible = true;
+                ((DropDownList)row.FindControl("ddlwaived")).Visible = true;
+
+                ((LinkButton)row.FindControl("btnSave")).Visible = true;
+                ((LinkButton)row.FindControl("btnCancel")).Visible = true;
+            }
+            else if (e.CommandName == "myCancel")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((Label)row.FindControl("lbldiscountedprice")).Visible = true;
+                ((Label)row.FindControl("lblwaived")).Visible = true;
+                ((LinkButton)row.FindControl("btnEdit")).Visible = true;
+
+                ((TextBox)row.FindControl("tboxdiscountedprice")).Visible = false;
+                ((DropDownList)row.FindControl("ddlwaived")).Visible = false;
+
+                ((LinkButton)row.FindControl("btnSave")).Visible = false;
+                ((LinkButton)row.FindControl("btnCancel")).Visible = false;
+            }
+            else if (e.CommandName == "mySave")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                updatePayment(((Label)row.FindControl("lblid")).Text,
+                     ((TextBox)row.FindControl("tboxdiscountedprice")).Text,
+                     ((DropDownList)row.FindControl("ddlwaived")).Text);
+
+            }
+        }
+        private void updatePayment(string id, string discountedprice, string waived)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "Refoiling_Forapproval_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Update");
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@discountedprice", discountedprice);
+                        sqlcmd.Parameters.AddWithValue("@waived", waived);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            finally
+            {
+                getdata();
+            }
+        }
+
+        private string userfullname
+        {
+            get
+            {
+                return Session["userfullname"].ToString();
+            }
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            for (int i = 0; i <= GridView1.Rows.Count - 1; i++)
+            {
+                if (userfullname == "Warren Mangaring" || userfullname == "Amanda Aquino ")
+                {
+                    GridViewRow row = GridView1.Rows[i];
+                    ((LinkButton)row.FindControl("btnEdit")).Visible = true;
+                }
+                else
+                {
+                    GridViewRow row = GridView1.Rows[i];
+                    ((LinkButton)row.FindControl("btnEdit")).Visible = false;
+                }
+            }
         }
     }
 }

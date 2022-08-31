@@ -96,7 +96,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = "select count(id) from quotationtb where approvedby = ''";
+                string str = "select count(id) from quotationtb where approvedby = '' and lock = 0";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
