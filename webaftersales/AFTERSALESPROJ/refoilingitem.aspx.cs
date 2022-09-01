@@ -374,30 +374,30 @@ namespace webaftersales.AFTERSALESPROJ
         private void add(string itemno, string kno, string location, string parts, string description, string articleno, string length, string widthin, string widthout, string qty)
         {
             try
-            {
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    sqlcon.Open();
-                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
-                    {
-                        sqlcmd.CommandText = "Refoiling_Method2_Stp";
-                        sqlcmd.CommandType = CommandType.StoredProcedure;
-                        sqlcmd.Parameters.AddWithValue("@Command", "Create");
-                        sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
-                        sqlcmd.Parameters.AddWithValue("@Item_No", itemno);
-                        sqlcmd.Parameters.AddWithValue("@K_No", kno);
-                        sqlcmd.Parameters.AddWithValue("@Location", location);
-                        sqlcmd.Parameters.AddWithValue("@Parts", parts);
-                        sqlcmd.Parameters.AddWithValue("@Item_Description", description);
-                        sqlcmd.Parameters.AddWithValue("@Article_No", articleno);
-                        sqlcmd.Parameters.AddWithValue("@Profile_Length", length);
-                        sqlcmd.Parameters.AddWithValue("@Profile_Width_In", widthin);
-                        sqlcmd.Parameters.AddWithValue("@Profile_Width_Out", widthout);
-                        sqlcmd.Parameters.AddWithValue("@Qty", qty);
-                        sqlcmd.ExecuteNonQuery();
-                    }
+                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                 {
+                     sqlcon.Open();
+                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                     {
+                         sqlcmd.CommandText = "Refoiling_Method2_Stp";
+                         sqlcmd.CommandType = CommandType.StoredProcedure;
+                         sqlcmd.Parameters.AddWithValue("@Command", "Create");
+                         sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
+                         sqlcmd.Parameters.AddWithValue("@Item_No", itemno);
+                         sqlcmd.Parameters.AddWithValue("@K_No", kno);
+                         sqlcmd.Parameters.AddWithValue("@Location", location);
+                         sqlcmd.Parameters.AddWithValue("@Parts", parts);
+                         sqlcmd.Parameters.AddWithValue("@Item_Description", description);
+                         sqlcmd.Parameters.AddWithValue("@Article_No", articleno);
+                         sqlcmd.Parameters.AddWithValue("@Profile_Length", length);
+                         sqlcmd.Parameters.AddWithValue("@Profile_Width_In", widthin);
+                         sqlcmd.Parameters.AddWithValue("@Profile_Width_Out", widthout);
+                         sqlcmd.Parameters.AddWithValue("@Qty", qty);
+                         sqlcmd.ExecuteNonQuery();
+                     }
+                 }
                 }
-            }
             catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());

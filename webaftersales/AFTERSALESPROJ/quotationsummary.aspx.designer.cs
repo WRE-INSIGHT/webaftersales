@@ -13,6 +13,15 @@ namespace webaftersales.AFTERSALESPROJ {
     public partial class quotationsummary {
         
         /// <summary>
+        /// ddlPaymentStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPaymentStatus;
+        
+        /// <summary>
         /// searchkey control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// lblRowNum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRowNum;
         
         /// <summary>
         /// lblbill_amount_summary control.

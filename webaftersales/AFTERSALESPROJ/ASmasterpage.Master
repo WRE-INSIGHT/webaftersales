@@ -54,55 +54,40 @@
                                     <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/AFTERSALESPROJ/joborderapproval.aspx">JO Approval</asp:HyperLink>
                                 </li>
                                 <li>
+                                    <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/AFTERSALESPROJ/PROFILEWIDTH.aspx">Profile width</asp:LinkButton>
+                                </li>
+                                <%--  <li>
                                     <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/AFTERSALESPROJ/accountsreceivable.aspx">Accounts Receivable</asp:HyperLink>
-                                </li>
-                                     <li>
-                                    <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/AFTERSALESPROJ/servicingcalendar.aspx">Servicing Calendar</asp:HyperLink>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-th-large"></span>&nbsp;Quotation<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                                </li>--%>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationForapproval.aspx">For approval</asp:LinkButton>
+                                    <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/AFTERSALESPROJ/servicingcalendar.aspx">Servicing Calendar</asp:HyperLink>
                                 </li>
                                 <li>
                                     <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationsummary.aspx">Payment status</asp:LinkButton></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-th-large"></span>&nbsp;Re-cleaning<span class="caret"></span></a>
+                            <span class="glyphicon glyphicon-th-large"></span>&nbsp;Quotation Approval<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/AFTERSALESPROJ/cleaningForapproval.aspx">For approval</asp:LinkButton>
-                                </li>
-
-                            </ul>
-                        </li>
-                           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-th-large"></span>&nbsp;Re-sealant<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/AFTERSALESPROJ/resealantForapproval.aspx">For approval</asp:LinkButton>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-th-large"></span>&nbsp;Re-foiling<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/AFTERSALESPROJ/refoilingForapproval.aspx">For approval</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationForapproval.aspx">Quotation</asp:LinkButton>
                                 </li>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/AFTERSALESPROJ/PROFILEWIDTH.aspx">Profile width</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/AFTERSALESPROJ/refoilingForapproval.aspx">Re-foiling</asp:LinkButton>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/AFTERSALESPROJ/cleaningForapproval.aspx">Re-cleaning</asp:LinkButton>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/AFTERSALESPROJ/resealantForapproval.aspx">Re-sealant</asp:LinkButton>
                                 </li>
                             </ul>
                         </li>
 
-                        <li>
+
+                        <%-- <li>
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/contactusPage.aspx">
-                                   <span class="glyphicon glyphicon-phone"></span>&nbsp;Contact</asp:HyperLink></li>
+                                   <span class="glyphicon glyphicon-phone"></span>&nbsp;Contact</asp:HyperLink></li>--%>
                         <li>
                             <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/AFTERSALESPROJ/manageAccountsPage.aspx">
                                      <span class="glyphicon glyphicon-user"></span>&nbsp;Accounts</asp:HyperLink></li>

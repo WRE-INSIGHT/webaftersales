@@ -67,11 +67,13 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Command", "Load");
                         sqlcmd.Parameters.AddWithValue("@SubCommand", "Load");
                         sqlcmd.Parameters.AddWithValue("@SearchKey", searchkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@PaymentStatus", ddlPaymentStatus.Text);
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
+                        lblRowNum.Text = tb.Rows.Count.ToString()+" row(s) found!";
                     }
                 }
             }
@@ -81,6 +83,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
+               
                 showsummary();
             }
 
@@ -148,6 +151,8 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "Load");
                         sqlcmd.Parameters.AddWithValue("@SubCommand", "Summary");
+                        sqlcmd.Parameters.AddWithValue("@SearchKey", searchkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@PaymentStatus", ddlPaymentStatus.Text);
                         SqlDataReader rd = sqlcmd.ExecuteReader();
                         while (rd.Read())
                         {
@@ -169,5 +174,6 @@ namespace webaftersales.AFTERSALESPROJ
             GridView1.PageIndex = e.NewPageIndex;
             getdata();
         }
+
     }
 }

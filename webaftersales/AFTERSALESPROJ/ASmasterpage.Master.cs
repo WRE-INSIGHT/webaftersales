@@ -108,7 +108,7 @@ namespace webaftersales.AFTERSALESPROJ
                            
                             while (rd.Read())
                             {
-                                LinkButton3.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " For Approval";
+                                LinkButton3.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " Quotation";
                             }
                         }
                     }
@@ -136,7 +136,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                             while (rd.Read())
                             {
-                                LinkButton5.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " For Approval";
+                                LinkButton5.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " Re-cleaning";
                             }
                         }
                     }
@@ -163,7 +163,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                             while (rd.Read())
                             {
-                                LinkButton9.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " For Approval";
+                                LinkButton9.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " Re-sealant";
                             }
                         }
                     }
@@ -191,7 +191,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                             while (rd.Read())
                             {
-                                LinkButton7.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " For Approval";
+                                LinkButton7.Text = "<span class='btn btn-danger'  style='font-size:smaller'>" + rd[0].ToString() + "</span>" + " Re-foiling";
                             }
                         }
                     }

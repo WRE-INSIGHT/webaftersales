@@ -88,5 +88,45 @@ namespace webaftersales.AFTERSALESPROJ
         {
             loaddata();
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+            GridViewRow row = GridView1.Rows[rowindex];
+            if (e.CommandName == "viewlistMon")
+            {
+                redirectToHome(Convert.ToDateTime(((Label)row.FindControl("lbl1date")).Text + ", " + tboxyear.Text));
+            }
+            else if (e.CommandName == "viewlistTue")
+            {
+                redirectToHome(Convert.ToDateTime(((Label)row.FindControl("lbl2date")).Text + ", " + tboxyear.Text));
+            }
+            else if (e.CommandName == "viewlistWed")
+            {
+                redirectToHome(Convert.ToDateTime(((Label)row.FindControl("lbl3date")).Text + ", " + tboxyear.Text));
+            }
+            else if (e.CommandName == "viewlistThu")
+            {
+                redirectToHome(Convert.ToDateTime(((Label)row.FindControl("lbl4date")).Text + ", " + tboxyear.Text));
+            }
+            else if (e.CommandName == "viewlistFri")
+            {
+                redirectToHome(Convert.ToDateTime(((Label)row.FindControl("lbl5date")).Text + ", " + tboxyear.Text));
+            }
+            else if (e.CommandName == "viewlistSat")
+            {
+                redirectToHome(Convert.ToDateTime(((Label)row.FindControl("lbl6date")).Text + ", " + tboxyear.Text));
+            }
+            else if (e.CommandName == "viewlistSun")
+            {
+                redirectToHome(Convert.ToDateTime(((Label)row.FindControl("lbl7date")).Text + ", " + tboxyear.Text));
+            }
+
+        }
+        private void redirectToHome(DateTime x)
+        {
+            Session["currentdate"] = x.ToString("yyyy-MM-dd");
+            Response.Redirect("~/AFTERSALESPROJ/homePage.aspx");
+        }
     }
 }
