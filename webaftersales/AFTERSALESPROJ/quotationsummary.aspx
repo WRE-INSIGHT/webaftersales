@@ -59,7 +59,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -170,20 +169,30 @@
                 <asp:Label ID="lblRowNum" runat="server" Font-Size="Large" Text="Results"></asp:Label>
                 <br />
                 <br />
-                <div style="padding: 20px; border-left: 5px solid red; border-radius: 5px; background-color: white; min-width: 450px; background-color: aliceblue;">
-                    <h3>
-                        <span>Bill Amount:</span>
-                        <span class="pull-right" style="letter-spacing: 2px; font-weight: bold;">
-                            <asp:Label ID="lblbill_amount_summary" runat="server" Text="Label"></asp:Label><br />
-                            <asp:Label ID="lbldiscounted_price_summary" runat="server" Text="Label"></asp:Label><br />
-                            <asp:Label ID="lblpayment_summary" CssClass="text-success" runat="server" Text="Label"></asp:Label><br />
-                            <asp:Label ID="lblbalance_summary" CssClass="text-danger" runat="server" Text="Label"></asp:Label>
-                        </span>
-                        <br />
-                        <span>Discounted Price:</span><br />
-                        <span>Collected Amount:</span><br />
-                        <span>Balance:</span>
-                    </h3>
+                <div style="padding: 20px; border-radius: 5px; background-color: white; min-width: 450px; background-color: aliceblue;">
+                    <h3>Summary</h3>
+                    <table style="width: 100%; font-size: x-large" border="1">
+                        <tr>
+                            <td><span>Bill Amount:</span></td>
+                            <td style="text-wrap: none;text-align:right;">
+                                <asp:Label ID="lblbill_amount_summary" runat="server" Text="Label"></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td><span>Discounted Price:</span></td>
+                            <td style="text-wrap: none;text-align:right;">
+                                <asp:Label ID="lbldiscounted_price_summary" runat="server" Text="Label"></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td><span>Collected Amount:</span></td>
+                            <td style="text-wrap: none;text-align:right;">
+                                <asp:Label ID="lblpayment_summary" CssClass="text-success" runat="server" Text="Label"></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td><span>Balance:</span></td>
+                            <td style="text-wrap: none;text-align:right;">
+                                <asp:Label ID="lblbalance_summary" CssClass="text-danger" runat="server" Text="Label"></asp:Label></td>
+                        </tr>
+                    </table>
                 </div>
             </asp:Panel>
         </ContentTemplate>
