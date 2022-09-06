@@ -165,7 +165,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
                 Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
                 Session["callinContactperson"] = ((Label)row.FindControl("contactpersonlbl")).Text;
-                Session["callinConcern"] = ((Label)row.FindControl("concernlbl")).Text;
+                Session["callinConcern"] = ((Label)row.FindControl("concernlbl2")).Text;
                 Session["callinConversation"] = ((Label)row.FindControl("conversationlbl")).Text;
                 Session["managecallinsender"] = "Edit";
                 Response.Redirect("~/AFTERSALESPROJ/newcallin.aspx");

@@ -10,7 +10,19 @@
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="css/gridcss.css" rel="stylesheet" />
+    <style>
+        .contentPadding {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
 
+        @media screen and (max-width: 450px) {
+            .contentPadding {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -113,7 +125,7 @@
         <br />
         <br />
 
-        <div class="container" style="background-color: white; padding-bottom: 25px; margin-bottom: 0px;">
+        <div style="background-color: white; padding-bottom: 25px; margin-bottom: 0px;" class="contentPadding">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
@@ -121,7 +133,7 @@
             <br />
             <br />
             <br />
-            <p>Copyright 2020. Kenneth and Mock windows and doors. All rights Reserved.</p>
+            <p>Copyright 2020-2022. Kenneth and Mock windows and doors. All rights Reserved.</p>
         </footer>
     </form>
 </body>

@@ -31,6 +31,7 @@ namespace webaftersales.AFTERSALESPROJ
                         else if (Session["managecallinsender"].ToString() == "New")
                         {
                             cin.Enabled = false;
+                            calldate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                             Button1.Text = "add";
                         }
                     }
@@ -52,13 +53,13 @@ namespace webaftersales.AFTERSALESPROJ
                 return ConnectionString.sqlconstr();
             }
         }
-        private DataTable mytb
-        {
-            get
-            {
-                return (DataTable)ViewState["tb"];
-            }
-        }
+        //private DataTable mytb
+        //{
+        //    get
+        //    {
+        //        return (DataTable)ViewState["tb"];
+        //    }
+        //}
         private void EditSetUp()
         {
             Button1.Text = "save";
@@ -80,13 +81,7 @@ namespace webaftersales.AFTERSALESPROJ
             projectname.Text = Session["callinProject"].ToString();
             address.Text = Session["callinAddress"].ToString();
             jo.Text = Session["callinJo"].ToString();
-            for (int i = 0; i <= CheckBoxList1.Items.Count - 1; i++)
-            {
-                if (Session["callinConcern"].ToString().Contains(CheckBoxList1.Items[i].Value.ToString()))
-                {
-                    CheckBoxList1.Items[i].Selected = true;
-                }
-            }
+            concern.Text = Session["callinConcern"].ToString();
             conversation.Text = Session["callinConversation"].ToString();
         }
         protected void Button1_Click(object sender, EventArgs e)
@@ -96,22 +91,15 @@ namespace webaftersales.AFTERSALESPROJ
             cleantext(telno);
             cleantext(faxno);
             cleantext(conversation);
-            string concern = "";
-            foreach (ListItem li in CheckBoxList1.Items)
-            {
-                if (li.Selected)
-                {
-                    concern += " *" + li.Value.ToString();
-                }
-            }
+            cleantext(concern);
 
             if (Button1.Text == "save")
             {
-                updatefunction(concern);
+                updatefunction(concern.Text);
             }
             else if (Button1.Text == "add")
             {
-                addfunction(concern);
+                addfunction(concern.Text);
             }
         }
         private void cleantext(object sender)
@@ -177,7 +165,7 @@ namespace webaftersales.AFTERSALESPROJ
                     sqlcon.Open();
                     bool bol;
                     string anum = cin.Text.Replace("-", "");
-                    using (SqlCommand sqlcmd =sqlcon.CreateCommand())
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcmd.CommandText = "callin_stp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
@@ -305,6 +293,7 @@ namespace webaftersales.AFTERSALESPROJ
                 get_Location(((Label)row.FindControl("bindJo")).Text);
                 get_Kno(((Label)row.FindControl("bindJo")).Text);
                 ViewState["selected_jo"] = ((Label)row.FindControl("bindJo")).Text;
+                pnlKno.Visible = true;
             }
         }
 
@@ -334,7 +323,7 @@ namespace webaftersales.AFTERSALESPROJ
                         da.Fill(dt);
                         GridView2.DataSource = dt;
                         GridView2.DataBind();
-                        ViewState["tb"] = dt;
+                        //ViewState["tb"] = dt;
                     }
                 }
             }
@@ -372,7 +361,7 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton5_Click(object sender, EventArgs e)
         {
-            if(ViewState["selected_jo"] == null)
+            if (ViewState["selected_jo"] == null)
             {
                 get_Kno("");
             }
@@ -380,95 +369,49 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 get_Kno(ViewState["selected_jo"].ToString());
             }
-           
-        }
 
-        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            List<int> idlist = new List<int>();
-            if (ViewState["listid"] != null)
-            {
-                idlist = (List<int>)ViewState["listid"];
-            }
-
-            foreach (GridViewRow row in this.GridView2.Rows)
-            {
-                CheckBox cbx = (CheckBox)row.FindControl("cboxselect");
-
-                var selectedkey = int.Parse(GridView2.DataKeys[row.RowIndex].Value.ToString());
-
-                if (cbx.Checked)
-                {
-                    if (!idlist.Contains(selectedkey))
-                    {
-                        idlist.Add(selectedkey);
-                    }
-                }
-                else
-                {
-                    if (idlist.Contains(selectedkey))
-                    {
-                        idlist.Remove(selectedkey);
-                    }
-                }
-            }
-
-            ViewState["listid"] = idlist;
-            GridView2.PageIndex = e.NewPageIndex;
-            get_Kno(ViewState["selected_jo"].ToString());
-        }
-
-        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            List<int> idlist = ViewState["listid"] as List<int>;
-            if (e.Row.RowType == DataControlRowType.DataRow && idlist != null)
-            {
-                var autoid = int.Parse(GridView2.DataKeys[e.Row.RowIndex].Value.ToString());
-                if (idlist.Contains(autoid))
-                {
-                    CheckBox cbx = (CheckBox)e.Row.FindControl("cboxselect");
-                    cbx.Checked = true;
-                }
-            }
         }
 
         protected void LinkButton6_Click(object sender, EventArgs e)
         {
-            List<int> idlist = new List<int>();
-            if ((List<int>)ViewState["listid"] == null)
-            {
-                idlist.Add(0);
-            }
-            else
-            {
-                idlist = ViewState["listid"] as List<int>;
-            }
+            concern.Text = gen_concern();
+        }
+        private string gen_concern()
+        {
+            string concern_collection = concern.Text;
             foreach (GridViewRow row in GridView2.Rows)
             {
-                CheckBox cbk = (CheckBox)row.FindControl("cboxselect");
-                if (cbk.Checked == true)
+                if (((CheckBox)row.FindControl("cboxSelect")).Checked == true)
                 {
-                    int x = int.Parse(((Label)row.FindControl("lblId")).Text.ToString());
-                    if (!idlist.Contains(x))
+                    string kno = ((Label)row.FindControl("lblKno")).Text.ToString();
+                    string location = ((Label)row.FindControl("lbllocation")).Text.ToString();
+                    string other_concern = ((TextBox)row.FindControl("tboxConcern")).Text.ToString();
+                    CheckBoxList clist = ((CheckBoxList)row.FindControl("cblConcern"));
+                    string concern = "";
+                    foreach (ListItem li in clist.Items)
                     {
-                        idlist.Add(x);
-                    }
-                }
-                else
-                {
-                    int x = int.Parse(((Label)row.FindControl("lblId")).Text.ToString());
-                    if (idlist.Contains(x))
-                    {
-                        idlist.Remove(x);
-                    }
-                }
-            }
+                        if (li.Selected)
+                        {
 
-            for(int i = 0; i<= idlist.Count - 1; i++)
-            {
-                var x = idlist[i].ToString();
-                Console.WriteLine(x);
+                            concern += " *" + li.Value.ToString();
+                        }
+                    }
+                    other_concern = other_concern != "" ? "*" + other_concern : "";
+                    var result = kno + " - " + location + ": " + concern + " " + other_concern;
+
+
+                    if (concern_collection.Contains(result))
+                    {
+
+                    }
+                    else
+                    {
+                        concern_collection += concern_collection == "" ? result : Environment.NewLine + result;
+                    }
+
+                }
             }
+            return concern_collection;
         }
 
         //    protected void Page_Load(object sender, EventArgs e)
