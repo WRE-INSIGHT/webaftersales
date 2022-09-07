@@ -265,6 +265,13 @@
     <Compile Include="AFTERSALESPROJ\callinviewimage.aspx.designer.cs">
       <DependentUpon>callinviewimage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\callin_monitoring.aspx.cs">
+      <DependentUpon>callin_monitoring.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\callin_monitoring.aspx.designer.cs">
+      <DependentUpon>callin_monitoring.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\cleaningForapproval.aspx.cs">
       <DependentUpon>cleaningForapproval.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -773,6 +780,7 @@
     <Content Include="AFTERSALESPROJ\CallinPage.aspx" />
     <Content Include="AFTERSALESPROJ\callinphotos.aspx" />
     <Content Include="AFTERSALESPROJ\callinviewimage.aspx" />
+    <Content Include="AFTERSALESPROJ\callin_monitoring.aspx" />
     <Content Include="AFTERSALESPROJ\cleaningForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\cleaningitem.aspx" />
     <Content Include="AFTERSALESPROJ\cleaningpage.aspx" />

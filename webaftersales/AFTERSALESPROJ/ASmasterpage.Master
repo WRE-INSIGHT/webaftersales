@@ -51,8 +51,8 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/AFTERSALESPROJ/CallinPage.aspx">Call-in</asp:HyperLink></li>
-                                <li>
-                                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AFTERSALESPROJ/ServicingschedulePage.aspx">Servicing Records</asp:HyperLink></li>
+
+                                <%--<asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AFTERSALESPROJ/ServicingschedulePage.aspx">Servicing Records</asp:HyperLink></li>--%>
                                 <li>
                                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Teams</asp:LinkButton></li>
                                 <li>
@@ -75,7 +75,9 @@
                                     <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/AFTERSALESPROJ/servicingcalendar.aspx">Servicing Calendar</asp:HyperLink>
                                 </li>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationsummary.aspx">Payment status</asp:LinkButton></li>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationsummary.aspx">Payment Monitoring</asp:LinkButton></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AFTERSALESPROJ/callin_monitoring.aspx">Call-in Monitoring</asp:HyperLink></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">

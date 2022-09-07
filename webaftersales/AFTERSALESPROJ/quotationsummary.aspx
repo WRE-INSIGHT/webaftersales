@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quotation Payment Status</title>
+    <title>Quotation Payment Monitoring</title>
     <style>
         .Green {
             border-left: solid 5px green;
@@ -23,7 +23,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>Aftersales Payment Status</strong></h3>
+        <h3><strong>Aftersales Payment Monitoring</strong></h3>
     </div>
     <div class="well">
         <div class="row">
