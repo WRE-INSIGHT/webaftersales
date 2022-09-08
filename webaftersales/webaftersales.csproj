@@ -244,6 +244,13 @@
     <Compile Include="AFTERSALESPROJ\assessmentPage.aspx.designer.cs">
       <DependentUpon>assessmentPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\BuildServicingTeam.aspx.cs">
+      <DependentUpon>BuildServicingTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\BuildServicingTeam.aspx.designer.cs">
+      <DependentUpon>BuildServicingTeam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\CallinPage.aspx.cs">
       <DependentUpon>CallinPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -777,6 +784,7 @@
     <Content Include="AFTERSALESPROJ\addservicing.aspx" />
     <Content Include="AFTERSALESPROJ\assessmentmade.aspx" />
     <Content Include="AFTERSALESPROJ\assessmentPage.aspx" />
+    <Content Include="AFTERSALESPROJ\BuildServicingTeam.aspx" />
     <Content Include="AFTERSALESPROJ\CallinPage.aspx" />
     <Content Include="AFTERSALESPROJ\callinphotos.aspx" />
     <Content Include="AFTERSALESPROJ\callinviewimage.aspx" />

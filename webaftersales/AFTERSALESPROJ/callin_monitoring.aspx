@@ -114,7 +114,13 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
-
+                                        <EmptyDataTemplate>
+                                            <div>
+                                                <span><strong>No servicing records!</strong><br />
+                                                    <small>0 result found</small>
+                                                </span>
+                                            </div>
+                                        </EmptyDataTemplate>
                                         <HeaderStyle Wrap="false" />
                                         <RowStyle Wrap="false" />
                                     </asp:GridView>
@@ -138,11 +144,11 @@
                                 <asp:Label ID="LBLConversation" runat="server" Font-Size="Smaller" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("CONVERSATION").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                      <asp:TemplateField HeaderText="CALLER">
-                          <ItemTemplate>
-                               <asp:Label ID="lblCaller" runat="server" Font-Size="Small" Text='<%# Bind("CALLER") %>'></asp:Label>
-                          </ItemTemplate>
-                      </asp:TemplateField>
+                        <asp:TemplateField HeaderText="CALLER">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCaller" runat="server" Font-Size="Small" Text='<%# Bind("CALLER") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <EmptyDataTemplate>
                         <div class="alert alert-danger">

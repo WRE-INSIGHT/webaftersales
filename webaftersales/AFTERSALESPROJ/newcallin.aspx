@@ -20,7 +20,7 @@
     </div>
 
     <br />
-    <div class="well" style="background-color: cornsilk">
+    <div class="well" style="background-color: whitesmoke">
         <span style="font-size: larger">Caller's Information</span>
         <div class="row">
             <div class="col-sm-4">
@@ -78,7 +78,7 @@
 
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-            <div class="well" style="background-color:aliceblue">
+            <div class="well" style="background-color:azure">
             <div class="row">
                 <div class="col-sm-4">
                     <span style="font-size: larger">Select a project / <small>
@@ -150,7 +150,7 @@
                                             <ItemTemplate>
                                                 <asp:Label ID="lbllocation" runat="server" Font-Size="Small" Text='<%# Bind("location") %>'></asp:Label><br />
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <asp:Label ID="lbldescription" Font-Size="X-Small" runat="server" Text='<%# Bind("description") %>'></asp:Label>
+                                        -<asp:Label ID="lbldescription" Font-Size="Smaller" runat="server" Text='<%# Bind("description") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
@@ -210,7 +210,7 @@
     <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="well" style="background-color: cornsilk">
+            <div class="well" style="background-color:floralwhite">
                 <div class="row">
                     <div class="col-sm-4">
                         <span>PROJECT NAME</span>

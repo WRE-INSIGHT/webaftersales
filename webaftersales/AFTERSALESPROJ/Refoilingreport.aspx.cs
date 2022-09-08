@@ -156,6 +156,10 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Response.Redirect("~/AFTERSALESPROJ/refoilingForapproval.aspx");
             }
+            else if (Session["refoiling_report_sender"].ToString() == "refoiling_sernder_monitoring")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/quotationsummary.aspx");
+            }
         }
         protected void LinkButton3_Click(object sender, EventArgs e)
         {

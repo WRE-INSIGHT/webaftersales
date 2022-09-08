@@ -80,12 +80,14 @@
                                 <asp:Label ID="lbljo" runat="server" Font-Size="XX-Small" Text='<%# Bind("jo") %>'></asp:Label>
                                 </asp:Panel>
                                 <asp:Panel ID="Panel2" runat="server" ScrollBars="Auto">
-                                    <asp:GridView ID="GridView2" Visible="false" Font-Size="Small" AutoGenerateColumns="false" CssClass="table table-striped" GridLines="Both" runat="server">
+                                    <asp:GridView ID="GridView2" Visible="false" Font-Size="Smaller" OnRowCommand="GridView2_RowCommand" AutoGenerateColumns="false" CssClass="table table-striped" GridLines="Both" runat="server">
                                         <Columns>
                                             <asp:TemplateField HeaderText="ase#">
                                                 <ItemTemplate>
                                                     <asp:Label ID="lblcin" runat="server" Visible="false" Text='<%# Bind("cin") %>'></asp:Label>
                                                     <asp:Label ID="lblsid" runat="server" Visible="false" Text='<%# Bind("sid") %>'></asp:Label>
+                                                    <asp:Label ID="lblquotationtype" runat="server" Visible="false" Text='<%# Bind("quotationtype") %>'></asp:Label>
+                                                    <asp:Label ID="lblmiscellaneous" runat="server" Visible="false" Text='<%# Bind("miscellaneous") %>'></asp:Label>
                                                     <asp:Label ID="lblaseno" runat="server" Text='<%# Bind("aseno") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -111,12 +113,16 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
+                                                    <asp:LinkButton ID="LinkButton3" CommandName="myquotation" runat="server">view</asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
                                                     <strong>
                                                         <asp:Label ID="Label8" runat="server" CssClass="text-success" Visible='<%# Eval("status").ToString()=="Done" ? true : false %>' Text='<%# Eval("status").ToString() + " Servicing" %>'></asp:Label></strong>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
-
                                         <HeaderStyle Wrap="false" />
                                         <RowStyle Wrap="false" />
                                     </asp:GridView>
@@ -174,22 +180,22 @@
                     <table style="width: 100%; font-size: x-large" border="1">
                         <tr>
                             <td><span>Bill Amount:</span></td>
-                            <td style="text-wrap: none;text-align:right;">
+                            <td style="text-wrap: none; text-align: right;">
                                 <asp:Label ID="lblbill_amount_summary" runat="server" Text="Label"></asp:Label></td>
                         </tr>
                         <tr>
                             <td><span>Discounted Price:</span></td>
-                            <td style="text-wrap: none;text-align:right;">
+                            <td style="text-wrap: none; text-align: right;">
                                 <asp:Label ID="lbldiscounted_price_summary" runat="server" Text="Label"></asp:Label></td>
                         </tr>
                         <tr>
                             <td><span>Collected Amount:</span></td>
-                            <td style="text-wrap: none;text-align:right;">
+                            <td style="text-wrap: none; text-align: right;">
                                 <asp:Label ID="lblpayment_summary" CssClass="text-success" runat="server" Text="Label"></asp:Label></td>
                         </tr>
                         <tr>
                             <td><span>Balance:</span></td>
-                            <td style="text-wrap: none;text-align:right;">
+                            <td style="text-wrap: none; text-align: right;">
                                 <asp:Label ID="lblbalance_summary" CssClass="text-danger" runat="server" Text="Label"></asp:Label></td>
                         </tr>
                     </table>

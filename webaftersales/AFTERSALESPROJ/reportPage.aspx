@@ -251,8 +251,7 @@
                     <PagerStyle CssClass="GridPager" HorizontalAlign="Center" BackColor="#999999" ForeColor="Black" />
                     <EmptyDataTemplate>
                         <div class="">
-                            <h2><strong>This table is empty!</strong>
-                                <small>there are no k#(s) inputs.</small>
+                            <h2><strong>No reports found!</strong>
                             </h2>
                         </div>
                     </EmptyDataTemplate>

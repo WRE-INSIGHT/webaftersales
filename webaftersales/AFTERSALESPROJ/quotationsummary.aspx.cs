@@ -22,6 +22,11 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
+                        if (Session["q_monitoring_search"] != null)
+                        {
+                            searchkey.Text = Session["q_monitoring_search"].ToString();
+                            ddlPaymentStatus.Text = Session["q_monitoring_status"].ToString();
+                        }
                         getdata();
                     }
                 }
@@ -55,12 +60,17 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 DataTable tb = new DataTable();
-           
-       
-                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+
+
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
+                        if (Session["p_monitoring_pageindex"] != null)
+                        {
+                            var x = Convert.ToInt32(Session["p_monitoring_pageindex"].ToString());
+                            GridView1.PageIndex = x;
+                        }
                         sqlcon.Open();
                         sqlcmd.CommandText = "Account_Receivable_Stp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
@@ -73,7 +83,9 @@ namespace webaftersales.AFTERSALESPROJ
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
-                        lblRowNum.Text = tb.Rows.Count.ToString()+" row(s) found!";
+                        Session["q_monitoring_search"] = searchkey.Text;
+                        Session["q_monitoring_status"] = ddlPaymentStatus.Text;
+                        lblRowNum.Text = tb.Rows.Count.ToString() + " row(s) found!";
                     }
                 }
             }
@@ -83,7 +95,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
             finally
             {
-               
+
                 showsummary();
             }
 
@@ -91,6 +103,7 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
+            Session["p_monitoring_pageindex"] = 0;
             getdata();
         }
 
@@ -108,16 +121,47 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     ((GridView)row.FindControl("Gridview2")).Visible = true;
                 }
+                Session["PROJECT"] = ((LinkButton)row.FindControl("LinkButton2")).Text;
+                Session["ADDRESS"] = ((Label)row.FindControl("g1lblfulladd")).Text;
                 showquotation(((Label)row.FindControl("lbljo")).Text, ((GridView)row.FindControl("Gridview2")));
             }
         }
-        private void showquotation(string jo,GridView gv)
+        protected void GridView2_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myquotation")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = ((GridView)sender).Rows[rowindex];
+                var qtype = ((Label)row.FindControl("lblquotationtype")).Text;
+                Session["CIN"] = ((Label)row.FindControl("lblcin")).Text;
+                Session["SID"] = ((Label)row.FindControl("lblsid")).Text;
+
+                if (qtype == "quotation")
+                {
+                    Session["aseno"] = ((Label)row.FindControl("lblaseno")).Text;
+                    Session["qu_report_sender"] = "qu_sernder_monitoring";
+                    Response.Redirect("~/AFTERSALESPROJ/quotationreport.aspx");
+                }
+                else if (qtype == "re-foiling")
+                {
+                    Session["refoilingdate"] = ((Label)row.FindControl("datelbl")).Text;
+                    Session["refoilingqno"] = ((Label)row.FindControl("lblaseno")).Text;
+                    Session["miscellaneous"] = ((Label)row.FindControl("lblmiscellaneous")).Text;
+                    Session["refoiling_report_sender"] = "refoiling_sernder_monitoring";
+                    Response.Redirect("~/AFTERSALESPROJ/refoilingreport.aspx");
+                }
+
+
+
+            }
+        }
+        private void showquotation(string jo, GridView gv)
         {
             try
             {
-                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    using (SqlCommand sqlcmd=sqlcon.CreateCommand())
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
                         sqlcmd.CommandText = "Account_Receivable_Stp";
@@ -133,7 +177,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.ToString());
             }
@@ -172,6 +216,7 @@ namespace webaftersales.AFTERSALESPROJ
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
+            Session["p_monitoring_pageindex"] = e.NewPageIndex;
             getdata();
         }
 
