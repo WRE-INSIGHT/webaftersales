@@ -302,10 +302,13 @@ namespace webaftersales.AFTERSALESPROJ
                 int rowindex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
                 GridView1.SelectedIndex = rowindex;
                 GridViewRow row = GridView1.Rows[rowindex];
-
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
-                Session["teamsender"] = "servicing";
-                Response.Redirect("~/AFTERSALESPROJ/teampage.aspx");
+                Session["Build_Team_Action"] = ((Button)row.FindControl("getteambtn")).Text.ToString() == "Get team" ? "Add" : "Update";
+                Session["Buil_Team_Id"] = ((Label)row.FindControl("lblTeamId")).Text;
+                //Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                //Session["teamsender"] = "servicing";
+                //Response.Redirect("~/AFTERSALESPROJ/teampage.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/BuildServicingTeam.aspx");
             }
             else if (e.CommandName == "viewreport")
             {
