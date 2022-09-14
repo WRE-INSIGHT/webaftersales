@@ -111,15 +111,14 @@
                                                     <asp:Label ID="Label7" runat="server" Text='<%# Bind("waived") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField>
+                                               <asp:TemplateField HeaderText="lock">
                                                 <ItemTemplate>
-                                                    <asp:LinkButton ID="LinkButton3" CommandName="myquotation" runat="server">view</asp:LinkButton>
+                                                    <asp:Label ID="Label7" runat="server" Text='<%# Bind("lock") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
-                                                    <strong>
-                                                        <asp:Label ID="Label8" runat="server" CssClass="text-success" Visible='<%# Eval("status").ToString()=="Done" ? true : false %>' Text='<%# Eval("status").ToString() + " Servicing" %>'></asp:Label></strong>
+                                                    <asp:LinkButton ID="LinkButton3" CommandName="myquotation" runat="server">view</asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>

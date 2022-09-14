@@ -26,7 +26,11 @@ namespace webaftersales.AFTERSALESPROJ
                         }
                         if (Session["refoiling_cbox"] != null)
                         {
-                            CheckBox1.Checked = Convert.ToBoolean(Session["refoiling_cbox"]);
+                           ddlForApproval.SelectedValue = Session["refoiling_cbox"].ToString();
+                        }
+                        if (Session["refoiling_locksearch"] != null)
+                        {
+                            ddlLockSearch.SelectedValue = Session["refoiling_locksearch"].ToString();
                         }
                         getdata();
                     }
@@ -59,15 +63,16 @@ namespace webaftersales.AFTERSALESPROJ
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
-                        string c = "0";
-                        if (CheckBox1.Checked)
-                        {
-                            c = "1";
-                        }
+                        //string c = "0";
+                        //if (CheckBox1.Checked)
+                        //{
+                        //    c = "1";
+                        //}
                         sqlcmd.CommandText = "Refoiling_Forapproval_Stp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@searchkey", tboxsearchkey.Text);
-                        sqlcmd.Parameters.AddWithValue("@forapproval", c);
+                        sqlcmd.Parameters.AddWithValue("@forapproval", ddlForApproval.SelectedValue.ToString());
+                        sqlcmd.Parameters.AddWithValue("@lock", ddlLockSearch.SelectedValue.ToString());
                         DataTable tb = new DataTable();
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
@@ -77,7 +82,8 @@ namespace webaftersales.AFTERSALESPROJ
                         lblcountrow.Text = tb.Rows.Count.ToString() + " resul(s)";
 
                         Session["refoiling_searchkey"] = tboxsearchkey.Text;
-                        Session["refoiling_cbox"] = CheckBox1.Checked;
+                        Session["refoiling_cbox"] = ddlForApproval.SelectedValue.ToString();
+                        Session["refoiling_locksearch"] = ddlLockSearch.SelectedValue.ToString();
                     }
                 }
             }
@@ -131,10 +137,12 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 ((Label)row.FindControl("lbldiscountedprice")).Visible = false;
                 ((Label)row.FindControl("lblwaived")).Visible = false;
+                ((Label)row.FindControl("lbllock")).Visible = false;
                 ((LinkButton)row.FindControl("btnEdit")).Visible = false;
 
                 ((TextBox)row.FindControl("tboxdiscountedprice")).Visible = true;
                 ((DropDownList)row.FindControl("ddlwaived")).Visible = true;
+                ((DropDownList)row.FindControl("ddllock")).Visible = true;
 
                 ((LinkButton)row.FindControl("btnSave")).Visible = true;
                 ((LinkButton)row.FindControl("btnCancel")).Visible = true;
@@ -145,10 +153,12 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 ((Label)row.FindControl("lbldiscountedprice")).Visible = true;
                 ((Label)row.FindControl("lblwaived")).Visible = true;
+                ((Label)row.FindControl("lbllock")).Visible = true;
                 ((LinkButton)row.FindControl("btnEdit")).Visible = true;
 
                 ((TextBox)row.FindControl("tboxdiscountedprice")).Visible = false;
                 ((DropDownList)row.FindControl("ddlwaived")).Visible = false;
+                ((DropDownList)row.FindControl("ddllock")).Visible = false;
 
                 ((LinkButton)row.FindControl("btnSave")).Visible = false;
                 ((LinkButton)row.FindControl("btnCancel")).Visible = false;
@@ -159,11 +169,12 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 updatePayment(((Label)row.FindControl("lblid")).Text,
                      ((TextBox)row.FindControl("tboxdiscountedprice")).Text,
-                     ((DropDownList)row.FindControl("ddlwaived")).Text);
+                     ((DropDownList)row.FindControl("ddlwaived")).Text,
+                     ((DropDownList)row.FindControl("ddllock")).SelectedValue.ToString());
 
             }
         }
-        private void updatePayment(string id, string discountedprice, string waived)
+        private void updatePayment(string id, string discountedprice, string waived, string strlock)
         {
             try
             {
@@ -178,6 +189,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@discountedprice", discountedprice);
                         sqlcmd.Parameters.AddWithValue("@waived", waived);
+                        sqlcmd.Parameters.AddWithValue("@lock", strlock);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }

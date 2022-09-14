@@ -10,12 +10,9 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--   <div class="page-header">
-        <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
-    </div>--%>
+  
     <div class="well">
-        <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
+        <h3>Servicing Schedule</h3>
         <div class="row">
             <div class="col-sm-6">
                 <div class="input-group">
@@ -46,9 +43,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -58,8 +53,7 @@
         <h4><small>Job orders</small></h4>
     </div>
     <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True"
-        OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False"
-        HorizontalAlign="Left">
+        OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False">
         <Columns>
             <asp:TemplateField HeaderText="">
                 <ItemTemplate>
