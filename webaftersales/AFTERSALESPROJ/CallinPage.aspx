@@ -171,6 +171,7 @@
                                                 <tr>
                                                     <td>
                                                         <asp:Label ID="jolbl" Font-Size="Small" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
+                                                          <asp:Label ID="parentjolbl" Visible="false" Font-Size="Small" runat="server" Text='<%# Eval("PARENT_JO") %>'></asp:Label>
                                                     </td>
                                                     <td>
                                                         <asp:Label ID="Label10" Font-Size="Small" runat="server" Text='<%# Bind("JODATE") %>'></asp:Label>

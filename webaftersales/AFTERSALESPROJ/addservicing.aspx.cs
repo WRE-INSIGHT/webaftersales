@@ -65,7 +65,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             get
             {
-                return Session["callinJo"].ToString();
+                return Session["callinParentJo"].ToString();
             }
         }
         private void getdata()

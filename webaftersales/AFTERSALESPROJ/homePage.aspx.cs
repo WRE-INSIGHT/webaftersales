@@ -100,7 +100,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = sqlcon.CreateCommand();
-                    sqlcmd.CommandText = "stpServicing";
+                    sqlcmd.CommandText = "stpServicing_Revised";
                     sqlcmd.CommandType = CommandType.StoredProcedure;
                     sqlcmd.Parameters.AddWithValue("@project", searchtbox.Text);
                     sqlcmd.Parameters.AddWithValue("@useraccount", useraccount);
@@ -142,7 +142,7 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView1.Rows[rowindex];
                 Session["CIN"] = ((Label)row.Cells[0].FindControl("cidlbl")).Text;
                 Session["SID"] = ((Label)row.Cells[0].FindControl("idlbl")).Text;
-                Session["JO"] = ((Label)row.Cells[0].FindControl("jolbl")).Text;
+                Session["JO"] = ((Label)row.Cells[0].FindControl("parentjolbl")).Text;
                 Session["PROJECT"] = ((LinkButton)row.Cells[0].FindControl("projectlbl")).Text;
                 Session["ADDRESS"] = ((Label)row.Cells[0].FindControl("addresslbl")).Text;
                 Session["COLOR"] = ((Label)row.Cells[0].FindControl("colorlbl")).Text;

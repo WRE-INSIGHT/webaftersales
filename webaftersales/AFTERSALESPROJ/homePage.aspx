@@ -10,7 +10,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  
+
     <div class="well">
         <h3>Servicing Schedule</h3>
         <div class="row">
@@ -84,6 +84,7 @@
                                         <tr>
                                             <td>
                                                 <asp:Label ID="jolbl" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                                <asp:Label ID="parentjolbl" runat="server" Visible="false" Text='<%# Bind("PARENT_JO") %>'></asp:Label>
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label10" runat="server" Text='<%# Bind("JODATE") %>'></asp:Label>
@@ -148,8 +149,9 @@
                                             <td class="text-center"><small class="text-muted">Assessment sorting</small></td>
                                             <td>
                                                 <h3>
-                                                <asp:Label ID="assessmentsortinglbl" CssClass="label label-danger" Font-Bold="true" runat="server" Text='<%# Bind("assessment_sorting") %>'></asp:Label></td>
-                                        </h3>
+                                                    <asp:Label ID="assessmentsortinglbl" CssClass="label label-danger" Font-Bold="true" runat="server" Text='<%# Bind("assessment_sorting") %>'></asp:Label>
+                                            </td>
+                                            </h3>
                                         </tr>
                                     </table>
                                     <br />

@@ -24,6 +24,7 @@ namespace webaftersales.AFTERSALESPROJ
                         projectname.Text = Session["callinProject"].ToString();
                         address.Text = Session["callinAddress"].ToString();
                         jo.Text = Session["callinJo"].ToString();
+                        parentjo.Text = Session["callinParentJo"].ToString();
                         if (Session["managecallinsender"].ToString() == "Edit")
                         {
                             EditSetUp();
@@ -81,6 +82,7 @@ namespace webaftersales.AFTERSALESPROJ
             projectname.Text = Session["callinProject"].ToString();
             address.Text = Session["callinAddress"].ToString();
             jo.Text = Session["callinJo"].ToString();
+            parentjo.Text = Session["callinParentJo"].ToString();
             concern.Text = Session["callinConcern"].ToString();
             conversation.Text = Session["callinConversation"].ToString();
         }
@@ -125,6 +127,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "Add");
                         sqlcmd.Parameters.AddWithValue("@JO", jo.Text);
+                        sqlcmd.Parameters.AddWithValue("@ParentJO", parentjo.Text);
                         sqlcmd.Parameters.AddWithValue("@CONTACTPERSON", contactpersontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@CDATE", calldate.Text);
                         sqlcmd.Parameters.AddWithValue("@CALLER", callername.Text);
@@ -197,6 +200,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@CDATE", calldate.Text);
                         sqlcmd.Parameters.AddWithValue("@CALLER", callername.Text);
                         sqlcmd.Parameters.AddWithValue("@JO", jo.Text);
+                        sqlcmd.Parameters.AddWithValue("@ParentJO", parentjo.Text);
                         sqlcmd.Parameters.AddWithValue("@CONTACTPERSON", contactpersontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@CIN", Session["callinnumber"].ToString());
                         sqlcmd.Parameters.AddWithValue("@NEWCIN", cin.Text);
@@ -290,9 +294,10 @@ namespace webaftersales.AFTERSALESPROJ
                 projectname.Text = ((LinkButton)row.FindControl("bindProject")).Text;
                 address.Text = ((Label)row.FindControl("bindAddress")).Text;
                 jo.Text = ((Label)row.FindControl("bindJo")).Text;
-                get_Location(((Label)row.FindControl("bindJo")).Text);
-                get_Kno(((Label)row.FindControl("bindJo")).Text);
-                ViewState["selected_jo"] = ((Label)row.FindControl("bindJo")).Text;
+                parentjo.Text = ((Label)row.FindControl("bindParentJo")).Text;
+                get_Location(((Label)row.FindControl("bindParentJo")).Text);
+                get_Kno(((Label)row.FindControl("bindParentJo")).Text);
+                ViewState["selected_jo"] = ((Label)row.FindControl("bindParentJo")).Text;
                 pnlKno.Visible = true;
             }
         }
@@ -302,6 +307,7 @@ namespace webaftersales.AFTERSALESPROJ
             projectname.Text = "";
             address.Text = "";
             jo.Text = "";
+            parentjo.Text = "";
         }
         private void get_Kno(string jo)
         {

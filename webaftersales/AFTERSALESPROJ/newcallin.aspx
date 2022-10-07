@@ -78,145 +78,148 @@
 
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-            <div class="well" style="background-color:azure">
-            <div class="row">
-                <div class="col-sm-4">
-                    <span style="font-size: larger">Select a project / <small>
-                        <asp:LinkButton ID="LinkButton4" PostBackUrl="~/AFTERSALESPROJ/projectList.aspx" runat="server">manage project list</asp:LinkButton></small></span>
-                    <div class="input-group">
-                        <asp:TextBox ID="keytbox" CssClass="form-control" runat="server"></asp:TextBox>
-                        <div class="input-group-btn">
-                            <asp:LinkButton ID="LinkButton2" OnClick="LinkButton2click" CssClass="btn btn-primary" runat="server">Find</asp:LinkButton>
-                        </div>
-                    </div>
-                    <asp:Panel ID="Panel1" ScrollBars="Auto" runat="server">
-                        <asp:GridView ID="GridView1" Width="100%" GridLines="None" AutoGenerateColumns="false" AllowPaging="true" PageSize="5" runat="server"
-                            OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
-                            <Columns>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <div style="padding: 5px;">
-                                            <asp:LinkButton ID="bindProject" CommandName="myselect" Text='<%# Eval("PROJECT") %>' Font-Size="Small" Font-Bold="true" runat="server"></asp:LinkButton><br />
-                                            <asp:Label ID="bindAddress" Font-Size="small" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label><br />
-                                          ---><asp:Label ID="bindJo" Font-Size="small" runat="server" Text='<%# Bind("JO") %>'></asp:Label><---
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                            <PagerSettings PageButtonCount="8" />
-                            <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
-                            <SelectedRowStyle BackColor="#CCCCFF" Font-Bold="True" />
-                            <EmptyDataTemplate>
-                                <div class="alert alert-info" style="width: 100%">
-                                    <h2><strong>No project found</strong>
-                                    </h2>
-                                </div>
-                            </EmptyDataTemplate>
-                        </asp:GridView>
-                    </asp:Panel>
-                </div>
-                <div class="col-sm-8">
-                    <asp:Panel ID="pnlKno" Visible="false" runat="server">
-                        <br />
-                        <div class="row">
-                            <div class="col-sm-6">
+            <div class="well" style="background-color: azure">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span style="font-size: larger">Select a project / <small>
+                            <asp:LinkButton ID="LinkButton4" PostBackUrl="~/AFTERSALESPROJ/projectList.aspx" runat="server">manage project list</asp:LinkButton></small></span>
+                        <div class="input-group">
+                            <asp:TextBox ID="keytbox" CssClass="form-control" runat="server"></asp:TextBox>
+                            <div class="input-group-btn">
+                                <asp:LinkButton ID="LinkButton2" OnClick="LinkButton2click" CssClass="btn btn-primary" runat="server">Find</asp:LinkButton>
                             </div>
-                            <div class="col-sm-6">
-                                <span>Search k# by location
-                                </span>
-                                <div class="input-group">
-                                    <asp:DropDownList ID="ddlLocation" CssClass="form-control" runat="server"></asp:DropDownList>
-                                    <div class="input-group-btn">
-                                        <asp:LinkButton ID="LinkButton5" CssClass="btn btn-primary" runat="server" OnClick="LinkButton5_Click">Find</asp:LinkButton>
+                        </div>
+                        <asp:Panel ID="Panel1" ScrollBars="Auto" runat="server">
+                            <asp:GridView ID="GridView1" Width="100%" GridLines="None" AutoGenerateColumns="false" AllowPaging="true" PageSize="5" runat="server"
+                                OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand">
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <div style="padding: 5px;">
+                                                <asp:LinkButton ID="bindProject" CommandName="myselect" Text='<%# Eval("PROJECT") %>' Font-Size="Small" Font-Bold="true" runat="server"></asp:LinkButton><br />
+                                                <asp:Label ID="bindAddress" Font-Size="small" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label><br />
+                                                ---><asp:Label ID="bindJo" Font-Size="small" runat="server" Text='<%# Bind("JO") %>'></asp:Label><---
+                                            <asp:Label ID="bindParentJo" Visible="false" Font-Size="small" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                                <PagerSettings PageButtonCount="8" />
+                                <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#CCCCFF" Font-Bold="True" />
+                                <EmptyDataTemplate>
+                                    <div class="alert alert-info" style="width: 100%">
+                                        <h2><strong>No project found</strong>
+                                        </h2>
+                                    </div>
+                                </EmptyDataTemplate>
+                            </asp:GridView>
+                        </asp:Panel>
+                    </div>
+                    <div class="col-sm-8">
+                        <asp:Panel ID="pnlKno" Visible="false" runat="server">
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-6">
+                                </div>
+                                <div class="col-sm-6">
+                                    <span>Search k# by location
+                                    </span>
+                                    <div class="input-group">
+                                        <asp:DropDownList ID="ddlLocation" CssClass="form-control" runat="server"></asp:DropDownList>
+                                        <div class="input-group-btn">
+                                            <asp:LinkButton ID="LinkButton5" CssClass="btn btn-primary" runat="server" OnClick="LinkButton5_Click">Find</asp:LinkButton>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                        <asp:Panel ID="Panel2" BackColor="Silver" runat="server">
-                            <div style="max-height: 450px; overflow-y: auto">
-                                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="false" Width="100%" BackColor="White" BorderColor="#999999" BorderStyle="None"
-                                    BorderWidth="1px" CellPadding="3" GridLines="Vertical">
-                                    <Columns>
-                                        <asp:TemplateField ItemStyle-Wrap="false">
-                                            <ItemTemplate>
-                                                <asp:CheckBox ID="cboxSelect" Text='<%# Bind("kmdi_no") %>' runat="server" />
-                                                <asp:Label ID="lblkno" Font-Size="Small" Visible="false" runat="server" Text='<%# Bind("kmdi_no") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
+                            <asp:Panel ID="Panel2" BackColor="Silver" runat="server">
+                                <div style="max-height: 450px; overflow-y: auto">
+                                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="false" Width="100%" BackColor="White" BorderColor="#999999" BorderStyle="None"
+                                        BorderWidth="1px" CellPadding="3" GridLines="Vertical">
+                                        <Columns>
+                                            <asp:TemplateField ItemStyle-Wrap="false">
+                                                <ItemTemplate>
+                                                    <asp:CheckBox ID="cboxSelect" Text='<%# Bind("kmdi_no") %>' runat="server" />
+                                                    <asp:Label ID="lblkno" Font-Size="Small" Visible="false" runat="server" Text='<%# Bind("kmdi_no") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
-                                        <asp:TemplateField HeaderText="Description">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbllocation" runat="server" Font-Size="Small" Text='<%# Bind("location") %>'></asp:Label><br />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <asp:TemplateField HeaderText="Description">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lbllocation" runat="server" Font-Size="Small" Text='<%# Bind("location") %>'></asp:Label><br />
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;
                                         -<asp:Label ID="lbldescription" Font-Size="Smaller" runat="server" Text='<%# Bind("description") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField>
-                                            <ItemTemplate>
-                                                <a data-toggle="collapse" href='<%# "#"+Eval("Id") %>' role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <span>Concerns
-                                                    </span>
-                                                </a>
-                                                <div class="collapse" id='<%# Eval("Id") %>'>
-                                                    <div>
-                                                        <asp:CheckBoxList ID="cblConcern" Font-Size="Small" runat="server">
-                                                            <asp:ListItem>Hardware</asp:ListItem>
-                                                            <asp:ListItem>Delamination</asp:ListItem>
-                                                            <asp:ListItem>Glass Breakage</asp:ListItem>
-                                                            <asp:ListItem>Discoloration/Stains</asp:ListItem>
-                                                            <asp:ListItem>Leak</asp:ListItem>
-                                                            <asp:ListItem>Torn Mesh</asp:ListItem>
-                                                            <asp:ListItem>Cut String</asp:ListItem>
-                                                            <asp:ListItem>Stuck-up</asp:ListItem>
-                                                        </asp:CheckBoxList>
-                                                        <asp:TextBox runat="server" ID="tboxConcern" placeholder="Other concern" CssClass="form-control"></asp:TextBox>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <a data-toggle="collapse" href='<%# "#"+Eval("Id") %>' role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                        <span>Concerns
+                                                        </span>
+                                                    </a>
+                                                    <div class="collapse" id='<%# Eval("Id") %>'>
+                                                        <div>
+                                                            <asp:CheckBoxList ID="cblConcern" Font-Size="Small" runat="server">
+                                                                <asp:ListItem>Hardware</asp:ListItem>
+                                                                <asp:ListItem>Delamination</asp:ListItem>
+                                                                <asp:ListItem>Glass Breakage</asp:ListItem>
+                                                                <asp:ListItem>Discoloration/Stains</asp:ListItem>
+                                                                <asp:ListItem>Leak</asp:ListItem>
+                                                                <asp:ListItem>Torn Mesh</asp:ListItem>
+                                                                <asp:ListItem>Cut String</asp:ListItem>
+                                                                <asp:ListItem>Stuck-up</asp:ListItem>
+                                                            </asp:CheckBoxList>
+                                                            <asp:TextBox runat="server" ID="tboxConcern" placeholder="Other concern" CssClass="form-control"></asp:TextBox>
+                                                        </div>
+
                                                     </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
-                                                </div>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
+                                        </Columns>
+                                        <AlternatingRowStyle BackColor="#DCDCDC" />
+                                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                        <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
+                                        <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                                        <EmptyDataTemplate>
+                                            <div class="alert alert-info" style="width: 100%">
+                                                <h2><strong>No k# found</strong>
+                                                </h2>
+                                            </div>
+                                        </EmptyDataTemplate>
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#0000A9" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#000065" />
+                                    </asp:GridView>
+                                </div>
 
-                                    </Columns>
-                                    <AlternatingRowStyle BackColor="#DCDCDC" />
-                                    <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                                    <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle CssClass="GridPager" HorizontalAlign="Center" />
-                                    <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
-                                    <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
-                                    <EmptyDataTemplate>
-                                        <div class="alert alert-info" style="width: 100%">
-                                            <h2><strong>No k# found</strong>
-                                            </h2>
-                                        </div>
-                                    </EmptyDataTemplate>
-                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                    <SortedAscendingHeaderStyle BackColor="#0000A9" />
-                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                    <SortedDescendingHeaderStyle BackColor="#000065" />
-                                </asp:GridView>
-                            </div>
-
+                            </asp:Panel>
+                            <asp:LinkButton ID="LinkButton6" runat="server" CssClass="btn btn-success" OnClick="LinkButton6_Click">submit concern</asp:LinkButton>
                         </asp:Panel>
-                        <asp:LinkButton ID="LinkButton6" runat="server" CssClass="btn btn-success" OnClick="LinkButton6_Click">submit concern</asp:LinkButton>
-                    </asp:Panel>
+                    </div>
                 </div>
             </div>
-                </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 
     <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="well" style="background-color:floralwhite">
+            <div class="well" style="background-color: floralwhite">
                 <div class="row">
                     <div class="col-sm-4">
                         <span>PROJECT NAME</span>
                         <asp:TextBox ID="projectname" CssClass="form-control" placeholder="Project Name" runat="server" Enabled="False"></asp:TextBox>
                         <span>ADDRESS</span>
                         <asp:TextBox ID="address" CssClass="form-control" placeholder="Address" runat="server" Enabled="False"></asp:TextBox>
+                        <span>PARENTJO</span>
+                        <asp:TextBox ID="parentjo" CssClass="form-control" placeholder="Parent JO" runat="server" Enabled="False"></asp:TextBox>
                         <span>JO</span>
                         <div class="input-group">
                             <asp:TextBox ID="jo" CssClass="form-control" placeholder="Job order number" runat="server" Enabled="False"></asp:TextBox>

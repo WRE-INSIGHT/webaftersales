@@ -86,7 +86,7 @@ namespace webaftersales.AFTERSALESPROJ.quotationforms
                         //{
                         //    c = "1";
                         //}
-                        sqlcmd.CommandText = "stp_qu_forapproval";
+                        sqlcmd.CommandText = "stp_qu_forapproval_Revised";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@searchkey", tboxsearchkey.Text);
                         sqlcmd.Parameters.AddWithValue("@forapproval", ddlForApproval.SelectedValue.ToString());
@@ -183,7 +183,7 @@ namespace webaftersales.AFTERSALESPROJ.quotationforms
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
-                        sqlcmd.CommandText = "stp_qu_forapproval";
+                        sqlcmd.CommandText = "stp_qu_forapproval_Revised";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "Update");
                         sqlcmd.Parameters.AddWithValue("@id", id);

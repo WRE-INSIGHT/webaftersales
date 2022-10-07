@@ -68,7 +68,7 @@ namespace webaftersales.AFTERSALESPROJ
                         //{
                         //    c = "1";
                         //}
-                        sqlcmd.CommandText = "Refoiling_Forapproval_Stp";
+                        sqlcmd.CommandText = "Refoiling_Forapproval_Stp_Revised";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@searchkey", tboxsearchkey.Text);
                         sqlcmd.Parameters.AddWithValue("@forapproval", ddlForApproval.SelectedValue.ToString());
@@ -183,7 +183,7 @@ namespace webaftersales.AFTERSALESPROJ
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
-                        sqlcmd.CommandText = "Refoiling_Forapproval_Stp";
+                        sqlcmd.CommandText = "Refoiling_Forapproval_Stp_Revised";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "Update");
                         sqlcmd.Parameters.AddWithValue("@id", id);

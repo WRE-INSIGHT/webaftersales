@@ -20,7 +20,7 @@
     <br />
     <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True"
         OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False"
-        HorizontalAlign="Left">
+        >
         <Columns>
             <asp:TemplateField HeaderText="">
                 <ItemTemplate>

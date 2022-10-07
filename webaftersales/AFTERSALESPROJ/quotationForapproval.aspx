@@ -22,8 +22,8 @@
             <div class="col-sm-3">
                 Lock
                 <asp:DropDownList ID="ddlLockSearch" CssClass="form-control" runat="server">
-                    <asp:ListItem Text="O" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="X" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="no" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="yes" Value="1"></asp:ListItem>
                     <asp:ListItem Text="All" Value="10"></asp:ListItem>
                 </asp:DropDownList>
             </div>
@@ -106,10 +106,10 @@
                                                         </asp:DropDownList>
                                                     </td>
                                                     <td>
-                                                        <asp:Label ID="lbllock" runat="server" Text='<%# Bind("lock_case") %>'></asp:Label>
+                                                        <asp:Label ID="lbllock" runat="server" Text='<%# Eval("lock").ToString() == "1" ? "yes" : "no" %>'></asp:Label>
                                                         <asp:DropDownList ID="ddllock" CssClass="form-control" Visible="false" Text='<%# Bind("lock") %>' runat="server">
-                                                            <asp:ListItem Value="0" Text="O"></asp:ListItem>
-                                                            <asp:ListItem Value="1" Text="X"></asp:ListItem>
+                                                            <asp:ListItem Value="0" Text="no"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="yes"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
                                                     <td>

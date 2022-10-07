@@ -113,7 +113,7 @@
                                             </asp:TemplateField>
                                                <asp:TemplateField HeaderText="lock">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label7" runat="server" Text='<%# Bind("lock") %>'></asp:Label>
+                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("lock").ToString() == "1" ? "yes" : "no" %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField>
