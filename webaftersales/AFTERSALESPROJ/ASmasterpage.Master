@@ -130,9 +130,7 @@
         <br />
 
         <div style="background-color: none; height:100%; padding-bottom: 25px; margin-bottom: 0px;" class="contentPadding">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                
-                 
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">  
             </asp:ContentPlaceHolder>
                  
      <hr />

@@ -229,6 +229,35 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
+                        <a data-toggle="collapse" href="#div_pnl_collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <span>Add Concerns</span>
+                        </a>
+                        <br />
+                        <div class="collapse" id="div_pnl_collapse">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <span>K#/Location/Description</span>
+                                        <asp:TextBox ID="tboxItemManual" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <span>Select Concerns</span>
+                                        <asp:CheckBoxList ID="cblConcernManual" Font-Size="Small" runat="server">
+                                            <asp:ListItem>Hardware</asp:ListItem>
+                                            <asp:ListItem>Delamination</asp:ListItem>
+                                            <asp:ListItem>Glass Breakage</asp:ListItem>
+                                            <asp:ListItem>Discoloration/Stains</asp:ListItem>
+                                            <asp:ListItem>Leak</asp:ListItem>
+                                            <asp:ListItem>Torn Mesh</asp:ListItem>
+                                            <asp:ListItem>Cut String</asp:ListItem>
+                                            <asp:ListItem>Stuck-up</asp:ListItem>
+                                        </asp:CheckBoxList>
+                                        <asp:TextBox runat="server" ID="tboxOtherConcern" placeholder="Other concern" CssClass="form-control"></asp:TextBox>
+                                        <br />
+                                        <asp:LinkButton ID="LinkButton7" CssClass="btn btn-primary" OnClick="LinkButton7_Click" runat="server">submit concern</asp:LinkButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
                         <span style="font-size: large">Concern</span>
                         <asp:TextBox ID="concern" CssClass="form-control" placeholder="Concern" runat="server" Rows="6" TextMode="MultiLine"></asp:TextBox>
                         <br />

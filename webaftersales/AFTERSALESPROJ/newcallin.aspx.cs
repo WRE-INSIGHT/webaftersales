@@ -378,6 +378,37 @@ namespace webaftersales.AFTERSALESPROJ
 
         }
 
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            concern.Text = gen_concernManual();
+        }
+        private string gen_concernManual()
+        {
+            string concern_collection = concern.Text;
+            string other_concern = tboxOtherConcern.Text;
+            string concerns = "";
+            foreach (ListItem li in cblConcernManual.Items)
+            {
+                if (li.Selected)
+                {
+
+                    concerns += " *" + li.Value.ToString();
+                }
+            }
+            other_concern = other_concern != "" ? "*" + other_concern : "";
+            var result = tboxItemManual.Text + ": " + concerns + " " + other_concern;
+
+            if (concern_collection.Contains(result))
+            {
+
+            }
+            else
+            {
+                concern_collection += concern_collection == "" ? result : Environment.NewLine + result;
+            }
+
+            return concern_collection;
+        }
         protected void LinkButton6_Click(object sender, EventArgs e)
         {
             concern.Text = gen_concern();
