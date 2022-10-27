@@ -614,7 +614,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=Fields!Location.Value+" "+Fields!Item_Description.Value</Value>
+                                <Value>=Fields!K_No.Value+" - "+Fields!Location.Value+" "+Fields!Item_Description.Value</Value>
                                 <Style>
                                   <FontFamily>Calibri</FontFamily>
                                   <FontSize>8.5pt</FontSize>

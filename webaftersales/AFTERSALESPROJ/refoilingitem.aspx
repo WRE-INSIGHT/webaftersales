@@ -26,13 +26,15 @@
             </div>
         </div>
         <div class="col-sm-3">
-            Wastage(%)
+            <asp:Panel ID="Panel3" Visible="false" runat="server">
+                Wastage(%)
             <div class="input-group">
                 <asp:TextBox ID="tboxWastage" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
                 <div class="input-group-btn">
                     <asp:LinkButton ID="LinkButton7" CssClass="btn btn-default" runat="server" OnClick="LinkButton7_Click">set</asp:LinkButton>
                 </div>
             </div>
+            </asp:Panel>
         </div>
         <div class="col-sm-3">
             Cleaning/sqm
@@ -336,7 +338,7 @@
                     </asp:GridView>
                     <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="valedit" CssClass="alert alert-danger" runat="server" />
                 </asp:Panel>
-                   <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">generate cutting list</asp:LinkButton>&nbsp;&nbsp;
+                <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">generate cutting list</asp:LinkButton>&nbsp;&nbsp;
                     <asp:LinkButton ID="LinkButton8" CssClass="btn btn-success" runat="server" OnClientClick="return confirm('confirm changes?')" OnClick="LinkButton8_Click">Update All Price</asp:LinkButton>
             </div>
 
