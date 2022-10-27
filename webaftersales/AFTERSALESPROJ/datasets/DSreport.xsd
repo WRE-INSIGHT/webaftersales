@@ -22,6 +22,7 @@
               <xs:element name="reportid" msprop:Generator_ColumnVarNameInTable="columnreportid" msprop:Generator_ColumnPropNameInRow="reportid" msprop:Generator_ColumnPropNameInTable="reportidColumn" msprop:Generator_UserColumnName="reportid" type="xs:string" minOccurs="0" />
               <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" type="xs:string" minOccurs="0" />
               <xs:element name="assessment" msprop:Generator_ColumnVarNameInTable="columnassessment" msprop:Generator_ColumnPropNameInRow="assessment" msprop:Generator_ColumnPropNameInTable="assessmentColumn" msprop:Generator_UserColumnName="assessment" type="xs:string" minOccurs="0" />
+              <xs:element name="progress" msprop:Generator_ColumnVarNameInTable="columnprogress" msprop:Generator_ColumnPropNameInRow="progress" msprop:Generator_ColumnPropNameInTable="progressColumn" msprop:Generator_UserColumnName="progress" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -40,6 +41,8 @@
               <xs:element name="INSDATE" msprop:Generator_ColumnVarNameInTable="columnINSDATE" msprop:Generator_ColumnPropNameInRow="INSDATE" msprop:Generator_ColumnPropNameInTable="INSDATEColumn" msprop:Generator_UserColumnName="INSDATE" type="xs:string" minOccurs="0" />
               <xs:element name="MONITOREDBY" msprop:Generator_ColumnVarNameInTable="columnMONITOREDBY" msprop:Generator_ColumnPropNameInRow="MONITOREDBY" msprop:Generator_ColumnPropNameInTable="MONITOREDBYColumn" msprop:Generator_UserColumnName="MONITOREDBY" type="xs:string" minOccurs="0" />
               <xs:element name="MONDATE" msprop:Generator_ColumnVarNameInTable="columnMONDATE" msprop:Generator_ColumnPropNameInRow="MONDATE" msprop:Generator_ColumnPropNameInTable="MONDATEColumn" msprop:Generator_UserColumnName="MONDATE" type="xs:string" minOccurs="0" />
+              <xs:element name="ACCEPTEDBY" msprop:Generator_ColumnVarNameInTable="columnACCEPTEDBY" msprop:Generator_ColumnPropNameInRow="ACCEPTEDBY" msprop:Generator_ColumnPropNameInTable="ACCEPTEDBYColumn" msprop:Generator_UserColumnName="ACCEPTEDBY" type="xs:string" minOccurs="0" />
+              <xs:element name="ACCEPTEDBYDATE" msprop:Generator_ColumnVarNameInTable="columnACCEPTEDBYDATE" msprop:Generator_ColumnPropNameInRow="ACCEPTEDBYDATE" msprop:Generator_ColumnPropNameInTable="ACCEPTEDBYDATEColumn" msprop:Generator_UserColumnName="ACCEPTEDBYDATE" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -148,6 +151,7 @@
               <xs:element name="Average_Price" msprop:Generator_ColumnVarNameInTable="columnAverage_Price" msprop:Generator_ColumnPropNameInRow="Average_Price" msprop:Generator_ColumnPropNameInTable="Average_PriceColumn" msprop:Generator_UserColumnName="Average_Price" type="xs:decimal" minOccurs="0" />
               <xs:element name="Cleaning" msprop:Generator_ColumnVarNameInTable="columnCleaning" msprop:Generator_ColumnPropNameInRow="Cleaning" msprop:Generator_ColumnPropNameInTable="CleaningColumn" msprop:Generator_UserColumnName="Cleaning" type="xs:decimal" minOccurs="0" />
               <xs:element name="Item_Description" msprop:Generator_ColumnVarNameInTable="columnItem_Description" msprop:Generator_ColumnPropNameInRow="Item_Description" msprop:Generator_ColumnPropNameInTable="Item_DescriptionColumn" msprop:Generator_UserColumnName="Item_Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Wastage" msprop:Generator_ColumnVarNameInTable="columnWastage" msprop:Generator_ColumnPropNameInRow="Wastage" msprop:Generator_ColumnPropNameInTable="WastageColumn" msprop:Generator_UserColumnName="Wastage" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

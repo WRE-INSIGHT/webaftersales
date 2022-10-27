@@ -134,7 +134,7 @@ namespace webaftersales.AFTERSALESPROJ
             string prevpage = Session["link"].ToString();
             if (prevpage == "s1")
             {
-                Response.Redirect("~/AFTERSALESPROJ/ServicingschedulePage.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/callin_monitoring.aspx");
             }
             else if (prevpage == "s2")
             {

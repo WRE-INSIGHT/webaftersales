@@ -62,11 +62,21 @@
                                 <asp:Label ID="lblqno" runat="server" Text='<%# Bind("QNO") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+                       
                         <asp:TemplateField HeaderText="DATE">
                             <ItemTemplate>
                                 <asp:Label ID="lblqdate" runat="server" Text='<%# Bind("QDATE") %>'></asp:Label>
                                 <asp:TextBox ID="tboxqdateedit" CssClass="form-control" TextMode="Date" Text='<%# Bind("QDATE") %>' Visible="false" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Visible="false" ControlToValidate="tboxqdateedit" runat="server" ValidationGroup="valedit" ErrorMessage="date is required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                         <asp:TemplateField HeaderText="LOCK">
+                            <ItemTemplate>
+                                <asp:Label ID="lblLock" Visible="true" runat="server" Text='<%# Eval("LOCK").ToString() == "0" ? "no" : "yes"  %>'></asp:Label>
+                                <asp:DropDownList ID="ddlLock" Visible="false" CssClass="form-control" Text='<%# Bind("LOCK") %>' runat="server">
+                                    <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="No" Value="0"></asp:ListItem>
+                                </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

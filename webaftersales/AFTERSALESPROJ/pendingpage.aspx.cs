@@ -25,7 +25,7 @@ namespace webaftersales.AFTERSALESPROJ
                         {
                             searchtbox.Text = Session["pendingsearch"].ToString();
                         }
-                     
+
                         getdata();
                     }
                 }
@@ -62,8 +62,8 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-           
-                   using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = sqlcon.CreateCommand();

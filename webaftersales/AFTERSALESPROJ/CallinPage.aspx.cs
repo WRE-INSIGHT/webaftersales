@@ -93,7 +93,7 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         sqlcon.Open();
                         sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        sqlcmd.CommandText = "stdCallin";
+                        sqlcmd.CommandText = "stdCallin_Revised";
                         sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
                         sqlcmd.Parameters.AddWithValue("@province", provinceddl.Text);
                         SqlDataAdapter da = new SqlDataAdapter();
@@ -144,6 +144,7 @@ namespace webaftersales.AFTERSALESPROJ
             Session["callinProject"] = "";
             Session["callinAddress"] = "";
             Session["callinJo"] = "";
+            Session["callinParentJo"] = "";
             Response.Redirect("~/AFTERSALESPROJ/newcallin.aspx");
         }
 
@@ -164,8 +165,9 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
                 Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
                 Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
+                Session["callinParentJo"] = ((Label)row.FindControl("parentjolbl")).Text;
                 Session["callinContactperson"] = ((Label)row.FindControl("contactpersonlbl")).Text;
-                Session["callinConcern"] = ((Label)row.FindControl("concernlbl")).Text;
+                Session["callinConcern"] = ((Label)row.FindControl("concernlbl2")).Text;
                 Session["callinConversation"] = ((Label)row.FindControl("conversationlbl")).Text;
                 Session["managecallinsender"] = "Edit";
                 Response.Redirect("~/AFTERSALESPROJ/newcallin.aspx");
@@ -191,6 +193,8 @@ namespace webaftersales.AFTERSALESPROJ
                     Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
                     Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
                     Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
+                    Session["callinParentJo"] = ((Label)row.FindControl("parentjolbl")).Text;
+                    Session["callinConcern"] = ((Label)row.FindControl("concernlbl2")).Text;
                     Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
                 }
                 else
@@ -201,6 +205,8 @@ namespace webaftersales.AFTERSALESPROJ
                         Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
                         Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
                         Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
+                        Session["callinParentJo"] = ((Label)row.FindControl("parentjolbl")).Text;
+                        Session["callinConcern"] = ((Label)row.FindControl("concernlbl2")).Text;
                         Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
                     }
                     else
@@ -211,6 +217,8 @@ namespace webaftersales.AFTERSALESPROJ
                             Session["callinProject"] = ((Label)row.FindControl("projectlbl")).Text;
                             Session["callinAddress"] = ((Label)row.FindControl("addresslbl")).Text;
                             Session["callinJo"] = ((Label)row.FindControl("jolbl")).Text;
+                            Session["callinParentJo"] = ((Label)row.FindControl("parentjolbl")).Text;
+                            Session["callinConcern"] = ((Label)row.FindControl("concernlbl2")).Text;
                             Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
                         }
                         else

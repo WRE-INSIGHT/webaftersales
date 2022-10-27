@@ -10,12 +10,9 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--   <div class="page-header">
-        <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
-    </div>--%>
+
     <div class="well">
-        <h3><strong>Kenneth and Mock</strong><small> WINDOWS AND DOORS</small></h3>
+        <h3>Servicing Schedule</h3>
         <div class="row">
             <div class="col-sm-6">
                 <div class="input-group">
@@ -46,9 +43,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -58,8 +53,7 @@
         <h4><small>Job orders</small></h4>
     </div>
     <asp:GridView ID="GridView1" GridLines="None" runat="server" AutoGenerateColumns="False" AllowPaging="True"
-        OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False"
-        HorizontalAlign="Left">
+        OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" ShowHeader="False">
         <Columns>
             <asp:TemplateField HeaderText="">
                 <ItemTemplate>
@@ -90,6 +84,7 @@
                                         <tr>
                                             <td>
                                                 <asp:Label ID="jolbl" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                                <asp:Label ID="parentjolbl" runat="server" Visible="false" Text='<%# Bind("PARENT_JO") %>'></asp:Label>
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label10" runat="server" Text='<%# Bind("JODATE") %>'></asp:Label>
@@ -154,8 +149,9 @@
                                             <td class="text-center"><small class="text-muted">Assessment sorting</small></td>
                                             <td>
                                                 <h3>
-                                                <asp:Label ID="assessmentsortinglbl" CssClass="label label-danger" Font-Bold="true" runat="server" Text='<%# Bind("assessment_sorting") %>'></asp:Label></td>
-                                        </h3>
+                                                    <asp:Label ID="assessmentsortinglbl" CssClass="label label-danger" Font-Bold="true" runat="server" Text='<%# Bind("assessment_sorting") %>'></asp:Label>
+                                            </td>
+                                            </h3>
                                         </tr>
                                     </table>
                                     <br />

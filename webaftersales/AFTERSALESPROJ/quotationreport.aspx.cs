@@ -109,6 +109,10 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Response.Redirect("~/AFTERSALESPROJ/quotationForapproval.aspx");
             }
+            else if (Session["qu_report_sender"].ToString() == "qu_sernder_monitoring")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/quotationsummary.aspx");
+            }
         }
     }
 }

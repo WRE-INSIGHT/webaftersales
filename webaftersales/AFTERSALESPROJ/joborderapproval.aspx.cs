@@ -74,7 +74,7 @@ namespace webaftersales.AFTERSALESPROJ
                             c = "1";
                         }
                         sqlcmd.CommandType = CommandType.StoredProcedure;
-                        sqlcmd.CommandText = "std_RequestCollectionApproval";
+                        sqlcmd.CommandText = "std_RequestCollectionApproval_Revised";
                         sqlcmd.Parameters.AddWithValue("@key", searchkey.Text);
                         sqlcmd.Parameters.AddWithValue("@forapproval", c);
                         DataTable tb = new DataTable();

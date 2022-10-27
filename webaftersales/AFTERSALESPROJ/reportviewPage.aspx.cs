@@ -56,13 +56,15 @@ namespace webaftersales.AFTERSALESPROJ
             ReportViewer1.LocalReport.EnableExternalImages = true;
             string imgparam = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/inspectedby.jpg")).AbsoluteUri;
             string imgparam1 = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/monitoredby.jpg")).AbsoluteUri;
-            ReportParameter[] repparam = new ReportParameter[5];
+            string imgparam2 = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/acceptedby.jpg")).AbsoluteUri;
+            ReportParameter[] repparam = new ReportParameter[6];
             repparam[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             repparam[1] = new ReportParameter("address", Session["ADDRESS"].ToString());
             repparam[2] = new ReportParameter("profilefinish", Session["COLOR"].ToString());
             repparam[3] = new ReportParameter("imgparam", imgparam);
             repparam[4] = new ReportParameter("imgparam1", imgparam1);
-            for (int i = 0; i < 5; i++)
+            repparam[5] = new ReportParameter("imgparam2", imgparam2);
+            for (int i = 0; i < 6; i++)
             {
                 ReportViewer1.LocalReport.SetParameters(repparam[i]);
             }
@@ -109,7 +111,7 @@ namespace webaftersales.AFTERSALESPROJ
             string prevpage = Session["link"].ToString();
             if (prevpage == "s1")
             {
-                Response.Redirect("~/AFTERSALESPROJ/ServicingschedulePage.aspx");
+                Response.Redirect("~/AFTERSALESPROJ/callin_monitoring.aspx");
             }
             else if (prevpage == "s2")
             {
@@ -120,6 +122,12 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/addservicing.aspx");
             }
 
+        }
+
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+            Session["Signatureby"] = "panel3";
+            Response.Redirect("~/AFTERSALESPROJ/signaturePage.aspx");
         }
     }
 }

@@ -105,9 +105,9 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:Label ID="sidlbl" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
-                            <div class="panel panel-default">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    <asp:LinkButton ID="LinkButton2" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton2" CommandName="myedit" ForeColor="White" runat="server">Edit</asp:LinkButton>
 
                                     <div class=" navbar-right">
                                         <asp:Label ID="servicingdatelbl" runat="server" Text='<%# Bind("SERVICINGDATE") %>'></asp:Label>
@@ -115,9 +115,11 @@
                                 </div>
                                 <div class="panel-body">
                                     <asp:Label ID="Label2" runat="server" Font-Size="Large" Text='<%# Bind("SERVICING") %>'></asp:Label>
+
+
                                     <small>
                                         <asp:Panel ID="Panel3" ScrollBars="Auto" runat="server">
-                                            <table class="table" border="1">
+                                            <table class="table table-striped" border="1">
                                                 <tr>
                                                     <td>
                                                         <asp:Label ID="statuslbl" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
@@ -164,6 +166,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
+                                                        <asp:Label ID="lblTeamId" runat="server" Visible="false" Text='<%# Bind("TEAMID") %>'></asp:Label>
                                                         <asp:Button ID="getteambtn" CommandName="myteam" runat="server" CssClass="btn btn-default" Text='<%# Eval("TEAMNAME").ToString() == "" ? "Get team" : Eval("TEAMNAME") %>' /></td>
                                                     <td colspan="2">
                                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
@@ -172,6 +175,8 @@
                                             </table>
                                         </asp:Panel>
                                     </small>
+
+
                                     <asp:Panel ID="Panel2" Visible="false" CssClass="well" runat="server">
                                         <small>
                                             <div class="row">
@@ -211,6 +216,10 @@
                                             </div>
                                         </small>
                                     </asp:Panel>
+
+
+
+
                                 </div>
                                 <div class="panel-footer">
                                     <asp:Button ID="Button2" runat="server" CommandName="viewreport" Text="view report" CssClass="btn btn-default" />&nbsp;

@@ -66,7 +66,7 @@ namespace webaftersales.AFTERSALESPROJ
             
                 SqlDataSource1.ConnectionString = sqlconstr;
                 SqlDataSource1.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
-                SqlDataSource1.SelectCommand = "TRIP_TICKET_STP";
+                SqlDataSource1.SelectCommand = "TRIP_TICKET_STP_Revised";
                 DateTime d =Convert.ToDateTime(tboxdate.Text);
                 ReportParameter param1 = new ReportParameter("date", d.ToString("dddd, MMMM dd yyyy"));
                 ReportViewer1.LocalReport.SetParameters(param1);

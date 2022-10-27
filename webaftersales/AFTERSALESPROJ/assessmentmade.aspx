@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" AutoEventWireup="true" CodeBehind="assessmentmade.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.assessmentmade" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Assessment</title>
@@ -15,11 +17,11 @@
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-warning" PostBackUrl="~/AFTERSALESPROJ/assessmentPage.aspx" OnClick="LinkButton3_Click">Import from cutting list</asp:LinkButton><br />
     <h4>
-    <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label>&nbsp;\
+        <asp:Label ID="lblkno" runat="server" Text="Label"></asp:Label>&nbsp;\
     <asp:Label ID="lbllocation" runat="server" Text="Label"></asp:Label>
-        </h4>
-   
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    </h4>
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
@@ -32,7 +34,6 @@
                                 <asp:LinkButton ID="deletebtn" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
                                 <asp:LinkButton ID="savebtn" Visible="false" CommandName="mysave" runat="server">Update</asp:LinkButton>
                                 <asp:LinkButton ID="cancelbtn" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
-
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Description">
@@ -49,6 +50,16 @@
                                 <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Progress" ItemStyle-Wrap="true">
+                            <ItemTemplate>
+                                <asp:Label ID="progresslbl" runat="server" Text='<%# Bind("PROGRESS") %>'></asp:Label>
+                                <asp:DropDownList ID="progressddl" Visible="false" runat="server" Text='<%# Eval("PROGRESS") %>' CssClass="form-control">
+                                    <asp:ListItem>-</asp:ListItem>
+                                    <asp:ListItem>in progress</asp:ListItem>
+                                    <asp:ListItem>finished</asp:ListItem>
+                                </asp:DropDownList>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                     <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -62,8 +73,8 @@
                         </div>
                     </EmptyDataTemplate>
                     <RowStyle Wrap="False" />
-                
-         
+
+
                     <SortedAscendingCellStyle BackColor="#F7F7F7" />
                     <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
                     <SortedDescendingCellStyle BackColor="#E5E5E5" />
@@ -80,6 +91,12 @@
         <asp:TextBox ID="newdescriptiontbox" CssClass="form-control" runat="server"></asp:TextBox><br />
         Assessment<br />
         <asp:TextBox ID="newassessmenttbox" TextMode="MultiLine" Rows="10" CssClass="form-control" runat="server"></asp:TextBox><br />
+        Progress<br />
+        <asp:DropDownList ID="newprogressddl" runat="server" CssClass="form-control">
+            <asp:ListItem>-</asp:ListItem>
+            <asp:ListItem>in progress</asp:ListItem>
+            <asp:ListItem>finished</asp:ListItem>
+        </asp:DropDownList><br />
         <asp:Button ID="newbtn" CssClass="btn btn-primary" runat="server" Text="add" OnClick="newbtn_Click" />
     </div>
 </asp:Content>

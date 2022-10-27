@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -21,7 +22,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
-
+                        get_refoiling();
                         getlocations();
                         loaditem();
                         displayvalue();
@@ -44,6 +45,13 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return Session["refoilingqno"].ToString();
+            }
+        }
+        private string cin
+        {
+            get
+            {
+                return Session["CIN"].ToString();
             }
         }
         private string sid
@@ -72,6 +80,13 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return (DataTable)ViewState["tb"];
+            }
+        }
+        private DataTable itemtb
+        {
+            get
+            {
+                return (DataTable)ViewState["itemtb"];
             }
         }
         private void errorrmessage(string message)
@@ -177,7 +192,7 @@ namespace webaftersales.AFTERSALESPROJ
                 CustomValidator err = new CustomValidator();
                 err.ValidationGroup = "SUCCESSVAL";
                 err.IsValid = false;
-                err.ErrorMessage =ex.Message.ToString();
+                err.ErrorMessage = ex.Message.ToString();
                 err.CssClass = "alert alert-danger";
                 Page.Validators.Add(err);
             }
@@ -224,6 +239,8 @@ namespace webaftersales.AFTERSALESPROJ
         {
             tboxRefoilingPerSqm.Text = getdefaultvalue("Refoiling Price per sqm");
             tboxCleaningPerSqm.Text = getdefaultvalue("Refoiling Cleaning per sqm");
+            tboxWastage.Text = getdefaultvalue("Refoiling landed cost per sql");
+            lblwastage.Text = tboxWastage.Text;
         }
         protected void searchbtn_Click(object sender, EventArgs e)
         {
@@ -344,39 +361,50 @@ namespace webaftersales.AFTERSALESPROJ
             add(tboxitemno.Text, tboxkno.Text, tboxlocation.Text, tboxparts.Text, tboxdescription.Text, ddlarticleno.Text, tboxlength.Text, tboxwidthin.Text, tboxwidthout.Text, tboxqty.Text);
             loaditem();
         }
+        ArrayList _AL_itemno = new ArrayList();
+        ArrayList _AL_kno = new ArrayList();
+        ArrayList _AL_location = new ArrayList();
+        ArrayList _AL_parts = new ArrayList();
+        ArrayList _AL_description = new ArrayList();
+        ArrayList _AL_articleno = new ArrayList();
+        ArrayList _AL_length = new ArrayList();
+        ArrayList _AL_widthin = new ArrayList();
+        ArrayList _AL_widthout = new ArrayList();
+        ArrayList _AL_qty = new ArrayList();
         private void add(string itemno, string kno, string location, string parts, string description, string articleno, string length, string widthin, string widthout, string qty)
         {
             try
-            {
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    sqlcon.Open();
-                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
-                    {
-                        sqlcmd.CommandText = "Refoiling_Method2_Stp";
-                        sqlcmd.CommandType = CommandType.StoredProcedure;
-                        sqlcmd.Parameters.AddWithValue("@Command", "Create");
-                        sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
-                        sqlcmd.Parameters.AddWithValue("@Item_No", itemno);
-                        sqlcmd.Parameters.AddWithValue("@K_No", kno);
-                        sqlcmd.Parameters.AddWithValue("@Location", location);
-                        sqlcmd.Parameters.AddWithValue("@Parts", parts);
-                        sqlcmd.Parameters.AddWithValue("@Item_Description", description);
-                        sqlcmd.Parameters.AddWithValue("@Article_No", articleno);
-                        sqlcmd.Parameters.AddWithValue("@Profile_Length", length);
-                        sqlcmd.Parameters.AddWithValue("@Profile_Width_In", widthin);
-                        sqlcmd.Parameters.AddWithValue("@Profile_Width_Out", widthout);
-                        sqlcmd.Parameters.AddWithValue("@Qty", qty);
-                        sqlcmd.ExecuteNonQuery();
-                    }
+                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                 {
+                     sqlcon.Open();
+                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                     {
+                         sqlcmd.CommandText = "Refoiling_Method2_Stp";
+                         sqlcmd.CommandType = CommandType.StoredProcedure;
+                         sqlcmd.Parameters.AddWithValue("@Command", "Create");
+                         sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
+                         sqlcmd.Parameters.AddWithValue("@Item_No", itemno);
+                         sqlcmd.Parameters.AddWithValue("@K_No", kno);
+                         sqlcmd.Parameters.AddWithValue("@Location", location);
+                         sqlcmd.Parameters.AddWithValue("@Parts", parts);
+                         sqlcmd.Parameters.AddWithValue("@Item_Description", description);
+                         sqlcmd.Parameters.AddWithValue("@Article_No", articleno);
+                         sqlcmd.Parameters.AddWithValue("@Profile_Length", length);
+                         sqlcmd.Parameters.AddWithValue("@Profile_Width_In", widthin);
+                         sqlcmd.Parameters.AddWithValue("@Profile_Width_Out", widthout);
+                         sqlcmd.Parameters.AddWithValue("@Qty", qty);
+                         sqlcmd.ExecuteNonQuery();
+                     }
+                 }
                 }
-            }
             catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
             }
 
         }
+
         private void loaditem()
         {
             try
@@ -390,8 +418,15 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "Load");
                         sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
-                        GridView1.DataSource = sqlcmd.ExecuteReader();
+
+                        DataTable tb = new DataTable();
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        GridView1.DataSource = tb;
                         GridView1.DataBind();
+
+                        ViewState["itemtb"] = tb;
                     }
                 }
             }
@@ -718,7 +753,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Response.Redirect("~/AFTERSALESPROJ/RefoilingCuttingList.aspx");
             }
-           
+
             ViewState["listidg1"] = idl;
         }
         private void resetselection()
@@ -738,7 +773,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 errorrmessage(e.Message.ToString());
             }
@@ -764,6 +799,167 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 errorrmessage(e.Message.ToString());
             }
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            updateProperty("Refoiling landed cost per sql", tboxWastage.Text);
+        }
+
+        protected void LinkButton8_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= itemtb.Rows.Count - 1; i++)
+            {
+                updateall(itemtb.Rows[i]["Id"].ToString(),
+                    itemtb.Rows[i]["Item_No"].ToString(),
+                    itemtb.Rows[i]["K_No"].ToString(),
+                    itemtb.Rows[i]["Location"].ToString(),
+                    itemtb.Rows[i]["Parts"].ToString(),
+                    itemtb.Rows[i]["Item_Description"].ToString(),
+                    itemtb.Rows[i]["Article_No"].ToString(),
+                    itemtb.Rows[i]["Profile_Length"].ToString(),
+                    itemtb.Rows[i]["Profile_Width_In"].ToString(),
+                    itemtb.Rows[i]["Profile_Width_Out"].ToString(),
+                    itemtb.Rows[i]["Qty"].ToString());
+            }
+            loaditem();
+        }
+        private void updateall(string Id,
+            string Item_No,
+            string K_No,
+            string Location,
+            string Parts,
+            string Item_Description,
+            string Article_No,
+            string Profile_Length,
+            string Profile_Width_In,
+            string Profile_Width_Out,
+            string Qty)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcmd.CommandText = "Refoiling_Update_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Id", Id);
+                        sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
+                        sqlcmd.Parameters.AddWithValue("@Item_No", Item_No);
+                        sqlcmd.Parameters.AddWithValue("@K_No", K_No);
+                        sqlcmd.Parameters.AddWithValue("@Location", Location);
+                        sqlcmd.Parameters.AddWithValue("@Parts", Parts);
+                        sqlcmd.Parameters.AddWithValue("@Item_Description", Item_Description);
+                        sqlcmd.Parameters.AddWithValue("@Article_No", Article_No);
+                        sqlcmd.Parameters.AddWithValue("@Profile_Length", Profile_Length);
+                        sqlcmd.Parameters.AddWithValue("@Profile_Width_In", Profile_Width_In);
+                        sqlcmd.Parameters.AddWithValue("@Profile_Width_Out", Profile_Width_Out);
+                        sqlcmd.Parameters.AddWithValue("@Qty", Qty);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+        }
+        private void get_refoiling()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcmd.CommandText = "Refoiling_Id_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Get_Refoiling");
+                        sqlcmd.Parameters.AddWithValue("@CIN", cin);
+                        sqlcmd.Parameters.AddWithValue("@SID", sid);
+                        sqlcmd.Parameters.AddWithValue("@QNO", refoilingqno);
+                        ddlFoilQuotation.DataSource = sqlcmd.ExecuteReader();
+                        ddlFoilQuotation.DataValueField = "QNO";
+                        ddlFoilQuotation.DataTextField = "QNO";
+                        ddlFoilQuotation.DataBind();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+        }
+
+        private void get_refoiling_item(string refqu)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcmd.CommandText = "Refoiling_Method2_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Load");
+                        sqlcmd.Parameters.AddWithValue("@refoiling_id", refqu);
+                        _AL_itemno = new ArrayList();
+                        _AL_kno = new ArrayList();
+                        _AL_location = new ArrayList();
+                        _AL_parts = new ArrayList();
+                        _AL_description = new ArrayList();
+                        _AL_articleno = new ArrayList();
+                        _AL_length = new ArrayList();
+                        _AL_widthin = new ArrayList();
+                        _AL_widthout = new ArrayList();
+                        _AL_qty = new ArrayList();
+                        SqlDataReader rd = sqlcmd.ExecuteReader();
+                        while (rd.Read())
+                        {
+                            _AL_itemno.Add(rd[2].ToString());
+                            _AL_kno.Add(rd[3].ToString());
+                            _AL_location.Add(rd[4].ToString());
+                            _AL_parts.Add(rd[5].ToString());
+                            _AL_description.Add(rd[6].ToString());
+                            _AL_articleno.Add(rd[7].ToString());
+                            _AL_length.Add(rd[8].ToString());
+                            _AL_widthin.Add(rd[9].ToString());
+                            _AL_widthout.Add(rd[10].ToString());
+                            _AL_qty.Add(rd[11].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+        }
+
+        protected void LinkButton9_Click(object sender, EventArgs e)
+        {
+            get_refoiling_item(ddlFoilQuotation.Text);
+            for (int i = 0; i <= _AL_itemno.Count - 1; i++)
+            {
+                var x = _AL_itemno[i].ToString();
+                Console.WriteLine(x);
+                add(_AL_itemno[i].ToString(),
+                    _AL_kno[i].ToString(),
+                    _AL_location[i].ToString(),
+                    _AL_parts[i].ToString(),
+                    _AL_description[i].ToString(),
+                    _AL_articleno[i].ToString(),
+                    _AL_length[i].ToString(),
+                    _AL_widthin[i].ToString(),
+                    _AL_widthout[i].ToString(),
+                    _AL_qty[i].ToString());
+            }
+            loaditem();
         }
     }
 }

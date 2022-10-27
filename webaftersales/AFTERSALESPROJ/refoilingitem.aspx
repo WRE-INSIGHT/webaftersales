@@ -16,21 +16,29 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="col-sm-4">
+            Re-foiling/sqm - landed cost w/
+            <asp:Label ID="lblwastage" runat="server"></asp:Label>% wastage
             <div class="input-group">
-                <div class="input-group-addon">
-                    Re-foiling/sqm
-                </div>
                 <asp:TextBox ID="tboxRefoilingPerSqm" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
                 <div class="input-group-btn">
                     <asp:LinkButton ID="btnSet" CssClass="btn btn-default" runat="server" OnClick="btnSet_Click">set</asp:LinkButton>
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+            <asp:Panel ID="Panel3" Visible="false" runat="server">
+                Wastage(%)
             <div class="input-group">
-                <div class="input-group-addon">
-                    Cleaning/sqm
+                <asp:TextBox ID="tboxWastage" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
+                <div class="input-group-btn">
+                    <asp:LinkButton ID="LinkButton7" CssClass="btn btn-default" runat="server" OnClick="LinkButton7_Click">set</asp:LinkButton>
                 </div>
+            </div>
+            </asp:Panel>
+        </div>
+        <div class="col-sm-3">
+            Cleaning/sqm
+            <div class="input-group">
                 <asp:TextBox ID="tboxCleaningPerSqm" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
                 <div class="input-group-btn">
                     <asp:LinkButton ID="LinkButton4" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">set</asp:LinkButton>
@@ -193,7 +201,22 @@
                     <asp:LinkButton ID="LinkButton2" CssClass="btn btn-primary" runat="server" ValidationGroup="val1" OnClick="LinkButton2_Click">add</asp:LinkButton>
                 </div>
             </div>
-
+            <br />
+            <div>
+                <div class="panel panel-success" style="background-color: aliceblue;">
+                    <div class="panel-heading">
+                        <h3>Copy refoiling data</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <span>Select quotation number to copy items</span>
+                            <asp:DropDownList ID="ddlFoilQuotation" CssClass="form-control" runat="server">
+                            </asp:DropDownList><br />
+                            <asp:LinkButton ID="LinkButton9" CssClass="btn btn-primary" runat="server" OnClick="LinkButton9_Click">Copy</asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="panel panel-success">
                 <div class="panel-heading">
@@ -314,9 +337,9 @@
                         <SortedDescendingHeaderStyle BackColor="#15524A" />
                     </asp:GridView>
                     <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="valedit" CssClass="alert alert-danger" runat="server" />
-                    <br />
-                    <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">generate cutting list</asp:LinkButton>
                 </asp:Panel>
+                <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">generate cutting list</asp:LinkButton>&nbsp;&nbsp;
+                    <asp:LinkButton ID="LinkButton8" CssClass="btn btn-success" runat="server" OnClientClick="return confirm('confirm changes?')" OnClick="LinkButton8_Click">Update All Price</asp:LinkButton>
             </div>
 
         </ContentTemplate>

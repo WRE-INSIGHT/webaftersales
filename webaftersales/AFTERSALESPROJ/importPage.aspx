@@ -77,9 +77,9 @@
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("ITEM_NO") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="JO">
+                        <asp:TemplateField HeaderText="Description">
                             <ItemTemplate>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("job_order_no") %>'></asp:Label>
+                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("description") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Dimension">

@@ -22,6 +22,11 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
+                        if (Session["q_monitoring_search"] != null)
+                        {
+                            searchkey.Text = Session["q_monitoring_search"].ToString();
+                            ddlPaymentStatus.Text = Session["q_monitoring_status"].ToString();
+                        }
                         getdata();
                     }
                 }
@@ -55,21 +60,32 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 DataTable tb = new DataTable();
-           
-       
-                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+
+
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
+                        if (Session["p_monitoring_pageindex"] != null)
+                        {
+                            var x = Convert.ToInt32(Session["p_monitoring_pageindex"].ToString());
+                            GridView1.PageIndex = x;
+                        }
                         sqlcon.Open();
-                        sqlcmd.CommandText = "std_quotationsummary";
+                        sqlcmd.CommandText = "Account_Receivable_Stp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
-                        sqlcmd.Parameters.AddWithValue("@searchkey", "%" + searchkey.Text + "%");
+                        sqlcmd.Parameters.AddWithValue("@Command", "Load");
+                        sqlcmd.Parameters.AddWithValue("@SubCommand", "Load");
+                        sqlcmd.Parameters.AddWithValue("@SearchKey", searchkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@PaymentStatus", ddlPaymentStatus.Text);
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
+                        Session["q_monitoring_search"] = searchkey.Text;
+                        Session["q_monitoring_status"] = ddlPaymentStatus.Text;
+                        lblRowNum.Text = tb.Rows.Count.ToString() + " row(s) found!";
                     }
                 }
             }
@@ -77,11 +93,17 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 errorrmessage(ex.Message.ToString());
             }
+            finally
+            {
+
+                showsummary();
+            }
 
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
+            Session["p_monitoring_pageindex"] = 0;
             getdata();
         }
 
@@ -99,36 +121,52 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     ((GridView)row.FindControl("Gridview2")).Visible = true;
                 }
+                Session["PROJECT"] = ((LinkButton)row.FindControl("LinkButton2")).Text;
+                Session["ADDRESS"] = ((Label)row.FindControl("g1lblfulladd")).Text;
                 showquotation(((Label)row.FindControl("lbljo")).Text, ((GridView)row.FindControl("Gridview2")));
             }
         }
-        private void showquotation(string jo,GridView gv)
+        protected void GridView2_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myquotation")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = ((GridView)sender).Rows[rowindex];
+                var qtype = ((Label)row.FindControl("lblquotationtype")).Text;
+                Session["CIN"] = ((Label)row.FindControl("lblcin")).Text;
+                Session["SID"] = ((Label)row.FindControl("lblsid")).Text;
+
+                if (qtype == "quotation")
+                {
+                    Session["aseno"] = ((Label)row.FindControl("lblaseno")).Text;
+                    Session["qu_report_sender"] = "qu_sernder_monitoring";
+                    Response.Redirect("~/AFTERSALESPROJ/quotationreport.aspx");
+                }
+                else if (qtype == "re-foiling")
+                {
+                    Session["refoilingdate"] = ((Label)row.FindControl("datelbl")).Text;
+                    Session["refoilingqno"] = ((Label)row.FindControl("lblaseno")).Text;
+                    Session["miscellaneous"] = ((Label)row.FindControl("lblmiscellaneous")).Text;
+                    Session["refoiling_report_sender"] = "refoiling_sernder_monitoring";
+                    Response.Redirect("~/AFTERSALESPROJ/refoilingreport.aspx");
+                }
+
+
+
+            }
+        }
+        private void showquotation(string jo, GridView gv)
         {
             try
             {
-       
-                string str = " "+
-                    " select [ID]   "+
-    ",A.[CIN]                        "+
-    ",[ASENO]                      "+
-    ",case when isdate(qdate)=1 then format(cast([QDATE] as date),'MMM-dd-yyyy') else qdate end as  QDATE                    " +
-    ",[PARTICULAR]                 "+
-    ",[OTHERCHARGES]               "+
-    ",[ACCEPTED]                   "+
-    ",[UNITPRICE]                  "+
-    ",'php '+format([NETPRICE],'n2') as  NETPRICE " +
-    ",'php '+format([ACTUALPRICE],'n2') as ACTUALPRICE " +
-    ",[SID]                        "+
-    ",[PREPAREDBY]                 "+
-    ",[APPROVEDBY]                 "+
-    ",[ACCEPTEDBY] " +
-     ",[STATUS] " +
-    ",FOC from quotationtb AS A LEFT JOIN CALLINTB AS B ON A.CIN = B.CIN WHERE B.JO = @jo order by cast(qdate as date) asc";
-                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    using (SqlCommand sqlcmd=new SqlCommand(str,sqlcon))
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
+                        sqlcmd.CommandText = "Account_Receivable_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Quotation_Data");
                         sqlcmd.Parameters.AddWithValue("@jo", jo);
                         SqlDataAdapter da = new SqlDataAdapter();
                         DataTable tb = new DataTable();
@@ -139,16 +177,48 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.ToString());
             }
         }
-
+        private void showsummary()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "Account_Receivable_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Load");
+                        sqlcmd.Parameters.AddWithValue("@SubCommand", "Summary");
+                        sqlcmd.Parameters.AddWithValue("@SearchKey", searchkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@PaymentStatus", ddlPaymentStatus.Text);
+                        SqlDataReader rd = sqlcmd.ExecuteReader();
+                        while (rd.Read())
+                        {
+                            lblbill_amount_summary.Text = rd[0].ToString();
+                            lbldiscounted_price_summary.Text = rd[1].ToString();
+                            lblpayment_summary.Text = rd[2].ToString();
+                            lblbalance_summary.Text = rd[3].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+        }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
+            Session["p_monitoring_pageindex"] = e.NewPageIndex;
             getdata();
         }
+
     }
 }
