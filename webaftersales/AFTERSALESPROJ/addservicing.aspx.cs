@@ -94,7 +94,7 @@ namespace webaftersales.AFTERSALESPROJ
                         "  STUFF((SELECT ', ' + y.FULLNAME+ char(10) from TBLteamMember as x " +
                         " 	left join tblpersonnel as y" +
                         " 	on x.pid = y.pid" +
-                        " 	where x.tid= a.teamid" +
+                        " 	where x.tid= a.teamid order by ordering asc" +
                         " 	FOR XML PATH('')),1,2,'') AS MEMBERS" +
                         "  from servicingtb as a " +
                         "  left join " +
