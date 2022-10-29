@@ -452,6 +452,13 @@
     <Compile Include="AFTERSALESPROJ\manageAccountsPage.aspx.designer.cs">
       <DependentUpon>manageAccountsPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\ManagePeople.aspx.cs">
+      <DependentUpon>ManagePeople.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\ManagePeople.aspx.designer.cs">
+      <DependentUpon>ManagePeople.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\newcallin.aspx.cs">
       <DependentUpon>newcallin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -834,6 +841,7 @@
     <Content Include="AFTERSALESPROJ\joborderapproval.aspx" />
     <Content Include="AFTERSALESPROJ\LoginPage.aspx" />
     <Content Include="AFTERSALESPROJ\manageAccountsPage.aspx" />
+    <Content Include="AFTERSALESPROJ\ManagePeople.aspx" />
     <Content Include="AFTERSALESPROJ\newcallin.aspx" />
     <Content Include="AFTERSALESPROJ\pdfuploads.aspx" />
     <Content Include="AFTERSALESPROJ\pendingpage.aspx" />

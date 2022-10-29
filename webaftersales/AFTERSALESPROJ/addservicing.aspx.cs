@@ -94,7 +94,7 @@ namespace webaftersales.AFTERSALESPROJ
                         "  STUFF((SELECT ', ' + y.FULLNAME+ char(10) from TBLteamMember as x " +
                         " 	left join tblpersonnel as y" +
                         " 	on x.pid = y.pid" +
-                        " 	where x.tid= a.teamid order by ordering asc" +
+                        " 	where x.tid= a.teamid" +
                         " 	FOR XML PATH('')),1,2,'') AS MEMBERS" +
                         "  from servicingtb as a " +
                         "  left join " +
@@ -306,10 +306,10 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
                 Session["Build_Team_Action"] = ((Button)row.FindControl("getteambtn")).Text.ToString() == "Get team" ? "Add" : "Update";
                 Session["Buil_Team_Id"] = ((Label)row.FindControl("lblTeamId")).Text;
-                //Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
-                //Session["teamsender"] = "servicing";
-                //Response.Redirect("~/AFTERSALESPROJ/teampage.aspx");
-                Response.Redirect("~/AFTERSALESPROJ/BuildServicingTeam.aspx");
+                Session["SID"] = ((Label)row.FindControl("sidlbl")).Text;
+                Session["teamsender"] = "servicing";
+                Response.Redirect("~/AFTERSALESPROJ/teampage.aspx");
+                //Response.Redirect("~/AFTERSALESPROJ/BuildServicingTeam.aspx");
             }
             else if (e.CommandName == "viewreport")
             {
