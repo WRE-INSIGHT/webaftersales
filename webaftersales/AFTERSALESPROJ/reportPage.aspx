@@ -116,16 +116,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             Location<br />
-                                            <asp:DropDownList ID="newcboxlocation" placeholder="Location" CssClass="form-control" runat="server">
-                                                <asp:ListItem>-</asp:ListItem>
-                                                <asp:ListItem>Lanai</asp:ListItem>
-                                                <asp:ListItem>Bed RM</asp:ListItem>
-                                                <asp:ListItem>Master`s RM</asp:ListItem>
-                                                <asp:ListItem>Living RM</asp:ListItem>
-                                                <asp:ListItem>Dining RM</asp:ListItem>
-                                                <asp:ListItem>Kitchen RM</asp:ListItem>
-                                                <asp:ListItem>T&B/WIC</asp:ListItem>
-                                            </asp:DropDownList><br />
+                                            <asp:TextBox ID="tboxLocation" CssClass="form-control" placeholder="Location" runat="server"></asp:TextBox>
+                                            <br />
                                             Specification 
                                                 <asp:RequiredFieldValidator ID="newdlistspecificationvalidator" runat="server" ControlToValidate="newdlistspecification" ValidationGroup="newval"
                                                     ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />

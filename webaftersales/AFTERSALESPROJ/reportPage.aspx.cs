@@ -365,7 +365,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@sid", sid);
                         sqlcmd.Parameters.AddWithValue("@item", newtboxitemno.Text);
                         sqlcmd.Parameters.AddWithValue("@kno", newtboxkno.Text);
-                        sqlcmd.Parameters.AddWithValue("@location", newcboxlocation.Text);
+                        sqlcmd.Parameters.AddWithValue("@location", tboxLocation.Text);
                         sqlcmd.Parameters.AddWithValue("@specification", newdlistspecification.Text);
                         sqlcmd.Parameters.AddWithValue("@width", newtboxwidth.Text);
                         sqlcmd.Parameters.AddWithValue("@height", newtboxheight.Text);
