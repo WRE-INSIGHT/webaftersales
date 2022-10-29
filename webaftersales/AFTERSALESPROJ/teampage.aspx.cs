@@ -86,7 +86,7 @@ namespace webaftersales.AFTERSALESPROJ
                                 " left join tblpersonnel as b" +
                                 " on a.PID = b.PID WHERE A.TID = D.TID" +
                                 " FOR XML PATH('')),1,2,'') AS MEMBERS" +
-                                " from TBLteam AS d) as tb where teamname like @key or members like @key";
+                                " from TBLteam AS d) as tb where teamname like @key or members like @key order by TID desc";
               
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
