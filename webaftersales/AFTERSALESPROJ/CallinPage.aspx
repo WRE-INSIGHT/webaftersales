@@ -50,7 +50,7 @@
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <div class='<%# Eval("TURNOVER").ToString() == "0" ? "panel panel-success" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "panel panel-success" : Eval("RSTATUS").ToString() == "Approved" ? "panel panel-success" : "panel panel-default" %>'>
+                            <div class='<%# Eval("TURNOVER").ToString() != "0" ? "panel panel-success" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "panel panel-success" : Eval("RSTATUS").ToString() == "Approved" ? "panel panel-success" : "panel panel-default" %>'>
                                 <div class="panel-heading">
                                     <asp:LinkButton ID="LinkButton2" CommandName="myedit" Font-Size="Medium" runat="server">Edit</asp:LinkButton>
                                     <div class="navbar-right">
@@ -180,7 +180,7 @@
                                                         <asp:Label ID="paymentperlbl" Font-Size="Small" CssClass="text-warning" runat="server" Text='<%# Bind("PAYMENTPER") %>'></asp:Label>
                                                     </td>
                                                     <td>
-                                                        <asp:Label ID="turnoverlbl" Font-Size="Small" runat="server" Text='<%# Eval("TURNOVER").ToString() == "0" ? "Yes" : "No" %>'></asp:Label>
+                                                        <asp:Label ID="turnoverlbl" Font-Size="Small" runat="server" Text='<%# Eval("TURNOVER").ToString() != "0" ? "Yes" : "No" %>'></asp:Label>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -308,12 +308,12 @@
 
                                             </div>
                                             <asp:LinkButton ID="LinkButton4" CommandName="myservicing"
-                                                CssClass='<%# Eval("TURNOVER").ToString() == "0" ? "btn btn-primary" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "btn btn-primary" : Eval("RSTATUS").ToString() == "Approved" ? "btn btn-primary" : "btn btn-default" %>'
-                                                Visible='<%# Eval("TURNOVER").ToString() == "0" ? true : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? true : Eval("RSTATUS").ToString() == "Approved" ? true : false %>'
+                                                CssClass='<%# Eval("TURNOVER").ToString() != "0" ? "btn btn-primary" : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? "btn btn-primary" : Eval("RSTATUS").ToString() == "Approved" ? "btn btn-primary" : "btn btn-default" %>'
+                                                Visible='<%# Eval("TURNOVER").ToString() != "0" ? true : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? true : Eval("RSTATUS").ToString() == "Approved" ? true : false %>'
                                                 runat="server">job order</asp:LinkButton>
                                             <br />
                                             <asp:LinkButton ID="LinkButton5" CommandName="requestcollection" CssClass='<%# Eval("REQUESTED").ToString() == "" ? "btn btn-danger" : "btn btn-success" %>'
-                                                Visible='<%# Eval("TURNOVER").ToString() == "0" ? false : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? false : Eval("RSTATUS").ToString() == "" ? true : false %>'
+                                                Visible='<%# Eval("TURNOVER").ToString() != "0" ? false : Convert.ToDecimal(Eval("PAYMENTPER")) >=100 ? false : Eval("RSTATUS").ToString() == "" ? true : false %>'
                                                 Text='<%# Eval("REQUESTED").ToString() == "" ? "request for jo approval" : "requested "+Eval("REQUESTED").ToString() %>' runat="server">request for collection review</asp:LinkButton>
 
                                             <asp:Panel ID="Panel3" runat="server" Visible='<%# Eval("RSTATUS").ToString() == "" ? false : true  %>'>

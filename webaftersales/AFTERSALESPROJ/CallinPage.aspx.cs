@@ -93,7 +93,7 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         sqlcon.Open();
                         sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        sqlcmd.CommandText = "stdCallin_Revised";
+                        sqlcmd.CommandText = "stdCallin";
                         sqlcmd.Parameters.AddWithValue("@key", callinkey.Text);
                         sqlcmd.Parameters.AddWithValue("@province", provinceddl.Text);
                         SqlDataAdapter da = new SqlDataAdapter();

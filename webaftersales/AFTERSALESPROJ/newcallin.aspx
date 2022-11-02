@@ -99,7 +99,7 @@
                                                 <asp:LinkButton ID="bindProject" CommandName="myselect" Text='<%# Eval("PROJECT") %>' Font-Size="Small" Font-Bold="true" runat="server"></asp:LinkButton><br />
                                                 <asp:Label ID="bindAddress" Font-Size="small" runat="server" Text='<%# Bind("ADDRESS") %>'></asp:Label><br />
                                                 ---><asp:Label ID="bindJo" Font-Size="small" runat="server" Text='<%# Bind("JO") %>'></asp:Label><---
-                                            <asp:Label ID="bindParentJo" Visible="false" Font-Size="small" runat="server" Text='<%# Bind("JO") %>'></asp:Label>
+                                            <asp:Label ID="bindParentJo" Visible="false" Font-Size="small" runat="server" Text='<%# Bind("PARENTJONO") %>'></asp:Label>
                                             </div>
                                         </ItemTemplate>
                                     </asp:TemplateField>
