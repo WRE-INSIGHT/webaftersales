@@ -39,11 +39,13 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Label ID="fullnamelbl" runat="server" Font-Size="Large" Text='<%# Bind("FULLNAME") %>'></asp:Label>
+                                                        <asp:Label ID="fullnamelbl" runat="server" ForeColor='<%# Eval("Emp_status").ToString() == "True" ? System.Drawing.Color.Black : System.Drawing.Color.Red %>' Font-Size="Large" Text='<%# Bind("FULLNAME") %>'></asp:Label>
                                                     </td>
                                                     <td>
                                                         <h4><small>
-                                                            <asp:Label ID="positionlbl" runat="server" Text='<%# Bind("POSITION") %>'></asp:Label></small></h4>
+                                                            <asp:Label ID="positionlbl" runat="server" Text='<%# Bind("POSITION") %>'></asp:Label>
+                                                        </small>
+                                                        </h4>
                                                     </td>
                                                     <td>
                                                         <asp:LinkButton ID="LinkButton2" CommandName="myedit" runat="server">Edit</asp:LinkButton>
@@ -61,14 +63,20 @@
                                                                     <asp:TextBox ID="fullnametbox" placeholder="Fullname" CssClass="form-control" runat="server"></asp:TextBox><br />
                                                                     Position<br />
                                                                     <asp:TextBox ID="positiondl" placeholder="Position" CssClass="form-control" runat="server"></asp:TextBox><br />
+                                                                    Emp Status<br />
+                                                                    <asp:DropDownList ID="ddlEmp_status" CssClass="form-control" Text='<%# Bind("Emp_status") %>' runat="server">
+                                                                        <asp:ListItem Value="True" Text="Active"></asp:ListItem>
+                                                                        <asp:ListItem Value="False" Text="Inactive"></asp:ListItem>
+                                                                    </asp:DropDownList>
+                                                                    <br />
                                                                     <asp:Button ID="Button2" CommandName="savebtn" runat="server" CssClass="btn btn-primary" Text="save" />
 
                                                                 </div>
                                                                 <div class="panel-footer">
                                                                     <asp:Button ID="Button3" CommandName="cancelbtn" CssClass="btn btn-default" runat="server" Text="Close" />
-                                                                    <div class="navbar-right">
+                                                                  <%--  <div class="navbar-right">
                                                                         <asp:LinkButton ID="LinkButton3" OnClientClick="return confirm('Are you sure you want to delete this record?');" CommandName="mydelete" CssClass="btn btn-default" runat="server"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
-                                                                    </div>
+                                                                    </div>--%>
                                                                 </div>
                                                             </div>
                                                         </asp:Panel>
@@ -140,7 +148,7 @@
                                                         <h4><small>Members:</small></h4>
                                                     </td>
                                                     <td>
-                                                        <asp:Label ID="memberlbl" runat="server" Text='<%# Bind("MEMBERS") %>'></asp:Label>
+                                                        <asp:Label ID="memberlbl" runat="server" Text='<%# Eval("MEMBERS").ToString().Replace("\n", "<br />")  %>'></asp:Label>
                                                     </td>
                                                 </tr>
                                             </table>

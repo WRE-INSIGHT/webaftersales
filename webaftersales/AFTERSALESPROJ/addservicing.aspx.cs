@@ -26,7 +26,8 @@ namespace webaftersales.AFTERSALESPROJ
                     {
                         lblproject.Text = Session["callinProject"].ToString();
                         lbladdress.Text = Session["callinAddress"].ToString();
-                        instructiontbox.Text = Session["callinConversation"].ToString();
+                        instructiontbox.Text = default_instruction();
+                        //instructiontbox.Text = Session["callinConversation"].ToString();
                         getdata();
                     }
                 }
@@ -39,6 +40,34 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Response.Redirect("~/AFTERSALESPROJ/loginPage.aspx");
             }
+        }
+        private string default_instruction()
+        {
+            string str = "";
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "default_instruction_stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Get");
+                        sqlcmd.Parameters.AddWithValue("@Cin", cin);
+                        SqlDataReader dr = sqlcmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            str = dr[0].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            return str;
         }
         private string cin
         {
@@ -74,7 +103,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-               
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     GridView1.SelectedIndex = -1;
@@ -131,7 +160,7 @@ namespace webaftersales.AFTERSALESPROJ
                             " servicing) +1)" +
                             " FROM SERVICINGTB where cin = @cin) AS TBL" +
                             " update callintb set [status] = (SELECT top 1 case when [status] is null then '' else [status] end FROM #TBL order by convert(int,x) desc) where cin = @cin";
-               
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
@@ -162,7 +191,7 @@ namespace webaftersales.AFTERSALESPROJ
                                      " update servicingtb set[status] = 'Reschedule',statusdate = @sdate where id = @sss" +
                                      " insert into servicingtb(id, cin, servicing, sdate,specifiedjob,instruction, remarks,materials,plateno, status,sorting,assessment_sorting)values(@id, @cin, @servicing, @sdate,@specifiedjob,@instruction, @remarks,@materials,@plateno, 'Scheduled',@sorting,@assessment_sorting)";
                 string str2 = "select isnull(count(id),0)+1 from servicingtb where cin = @cin";
-               
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str2, sqlcon))
@@ -369,7 +398,7 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void getdetails(string callin)
         {
-           
+
             using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 string str = "select A.STATUS,CIN,CDATE,JO,PROJECT_LABEL,FULLADD,PROFILE_FINISH from callintb as a " +
@@ -397,7 +426,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 string str = "delete from servicingtb where id  = @id";
 
-               
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -423,7 +452,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "update servicingtb set status = @status , statusdate = @statusdate ,sdate=@sdate,specifiedjob=@specifiedjob,instruction=@instruction,remarks=@remarks,materials=@materials,plateno=@plateno,sorting=@sorting,assessment_sorting=@assessment_sorting  where id = @id";
-               
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
