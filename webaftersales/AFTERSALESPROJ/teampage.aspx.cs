@@ -82,10 +82,10 @@ namespace webaftersales.AFTERSALESPROJ
                 string str = "select * from(select " +
                                 " TID," +
                                 " TEAMNAME," +
-                                " STUFF((SELECT ', ' + FULLNAME + CHAR(10) FROM TBLteamMember as a" +
+                                " (SELECT FULLNAME + CHAR(10) FROM TBLteamMember as a" +
                                 " left join tblpersonnel as b" +
                                 " on a.PID = b.PID WHERE A.TID = D.TID" +
-                                " FOR XML PATH('')),1,2,'') AS MEMBERS" +
+                                " FOR XML PATH('')) AS MEMBERS" +
                                 " from TBLteam AS d) as tb where teamname like @key or members like @key order by TID desc";
               
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
@@ -143,7 +143,8 @@ namespace webaftersales.AFTERSALESPROJ
                 string pid = ((Label)row.FindControl("pidlbl")).Text;
                 string fullname = ((TextBox)row.FindControl("fullnametbox")).Text;
                 string position = ((TextBox)row.FindControl("positiondl")).Text;
-                updatefunction(pid, fullname, position);
+                string emp_status = ((DropDownList)row.FindControl("ddlEmp_status")).SelectedValue.ToString();
+                updatefunction(pid, fullname, position, emp_status);
             }
             else if (e.CommandName == "mydelete")
             {
@@ -153,12 +154,12 @@ namespace webaftersales.AFTERSALESPROJ
                 deletefunction(pid);
             }
         }
-        private void updatefunction(string pid, string fullname, string position)
+        private void updatefunction(string pid, string fullname, string position, string status)
         {
             try
             {
 
-                string str = "update tblpersonnel set fullname = @fullname, position=@position where pid = @pid";
+                string str = "update tblpersonnel set fullname = @fullname, position=@position,Emp_Status=@Emp_Status where pid = @pid";
               
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -168,6 +169,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@pid", pid);
                         sqlcmd.Parameters.AddWithValue("@fullname", fullname);
                         sqlcmd.Parameters.AddWithValue("@position", position);
+                        sqlcmd.Parameters.AddWithValue("@Emp_Status", status);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -403,7 +405,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 DataSet ds = new DataSet();
-                string str = "select * from tblpersonnel order by fullname asc";
+                string str = "select * from tblpersonnel where Emp_Status = 1 order by fullname asc";
               
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
