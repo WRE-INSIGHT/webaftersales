@@ -80,6 +80,8 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/AFTERSALESPROJ/quotationsummary.aspx">Payment Monitoring</asp:LinkButton></li>
                                 <li>
                                     <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AFTERSALESPROJ/callin_monitoring.aspx">Call-in Monitoring</asp:HyperLink></li>
+                                 <li>
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/servicing_monitoring.aspx">Servicing Monitoring</asp:HyperLink></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">

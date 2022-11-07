@@ -690,6 +690,13 @@
     <Compile Include="AFTERSALESPROJ\ServicingschedulePage.aspx.designer.cs">
       <DependentUpon>ServicingschedulePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\servicing_monitoring.aspx.cs">
+      <DependentUpon>servicing_monitoring.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\servicing_monitoring.aspx.designer.cs">
+      <DependentUpon>servicing_monitoring.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\Sessionexpired.aspx.cs">
       <DependentUpon>Sessionexpired.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -878,6 +885,7 @@
     <Content Include="AFTERSALESPROJ\FRMimportitems.aspx" />
     <Content Include="AFTERSALESPROJ\ServicingCalendar.aspx" />
     <Content Include="AFTERSALESPROJ\ServicingschedulePage.aspx" />
+    <Content Include="AFTERSALESPROJ\servicing_monitoring.aspx" />
     <Content Include="AFTERSALESPROJ\Sessionexpired.aspx" />
     <Content Include="AFTERSALESPROJ\sidgalleryPage.aspx" />
     <Content Include="AFTERSALESPROJ\signaturePage.aspx" />

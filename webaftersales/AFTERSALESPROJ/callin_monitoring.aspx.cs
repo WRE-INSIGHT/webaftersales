@@ -20,11 +20,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     if (!IsPostBack)
                     {
-                        if (Session["c_monitoring_search"] != null)
-                        {
-                            tboxSearch.Text = Session["c_monitoring_search"].ToString();
-                            ddlStatus.Text = Session["c_monitoring_status"].ToString();
-                        }
+                        retrieve_sessions();
                         getdata();
                     }
                 }
@@ -43,6 +39,17 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return ConnectionString.sqlconstr();
+            }
+        }
+        private void retrieve_sessions()
+        {
+            if (Session["c_monitoring_search"] != null)
+            {
+                tboxSearch.Text = Session["c_monitoring_search"].ToString();
+            }
+            if (Session["c_monitoring_status"] != null)
+            {
+                ddlStatus.Text = Session["c_monitoring_status"].ToString();
             }
         }
         private void errorrmessage(string message)
