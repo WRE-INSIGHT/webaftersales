@@ -82,7 +82,7 @@
                 <ItemTemplate>
                     <asp:Panel ID="pnl" runat="server" CssClass='<%# Convert.ToInt32(Eval("report").ToString()) > 0 ? "Green" : "Red" %>'>
                         <asp:LinkButton ID="LinkButton2" ForeColor="Black" CommandName="showReport" runat="server" Font-Bold="true" Font-Size="Small" Text='<%# Bind("PROJECT") %>'></asp:LinkButton><br />
-                        <asp:Label ID="lblAddress" runat="server" Font-Size="X-Small" Text='<%# Bind("ADDRESS") %>'></asp:Label><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblAddress" runat="server" Font-Size="X-Small" Text='<%# Bind("ADDRESS") %>'></asp:Label><br />
                         <asp:Label ID="lblJO" runat="server" Font-Size="Small" Text='<%# Bind("JO") %>'></asp:Label>
 
 

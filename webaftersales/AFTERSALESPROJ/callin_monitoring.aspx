@@ -69,7 +69,8 @@
             <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="errorval" CssClass="alert alert-danger" runat="server" />
             <div>
 
-                <asp:GridView ID="GridView1" AutoGenerateColumns="False" CssClass="table" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnRowCommand="GridView1_RowCommand">
+                <asp:GridView ID="GridView1" AutoGenerateColumns="False" CssClass="table" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging"
+                     BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnRowCommand="GridView1_RowCommand">
                     <AlternatingRowStyle BackColor="#DCDCDC" />
                     <Columns>
                         <asp:TemplateField HeaderText="PROJECT">
