@@ -173,6 +173,15 @@ namespace webaftersales.AFTERSALESPROJ
                      ((DropDownList)row.FindControl("ddllock")).SelectedValue.ToString());
 
             }
+            else if (e.CommandName == "proofOfPayment")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                Session["subfolder"] = "RefoilingQuotation";
+                Session["quotation_id"] = ((Label)row.FindControl("lblid")).Text;
+                Session["page_caller"] = "refoiling_quotation";
+                Response.Redirect("~/AFTERSALESPROJ/ProofOfDiscountPhotos.aspx");
+            }
         }
         private void updatePayment(string id, string discountedprice, string waived, string strlock)
         {
