@@ -148,7 +148,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Session["COLOR"] = ((Label)row.Cells[0].FindControl("colorlbl")).Text;
                 Session["DATE"] = ((Label)row.Cells[0].FindControl("datelbl")).Text;
                 Session["TEAMID"] = ((Label)row.Cells[0].FindControl("teamlbl")).Text;
-                Session["pendingSOURCE"] = false;
+                Session["servicing_page_SOURCE"] = "Home";
                 Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
             }
         }

@@ -458,9 +458,13 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton6_Click(object sender, EventArgs e)
         {
-            if (Convert.ToBoolean(Session["pendingSOURCE"]))
+            if (Session["servicing_page_SOURCE"].ToString() =="Pending")
             {
                 Response.Redirect("~/AFTERSALESPROJ/PENDINGPAGE.aspx");
+            }
+            else if (Session["servicing_page_SOURCE"].ToString() == "Monitoring")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/servicing_monitoring.aspx");
             }
             else
             {
