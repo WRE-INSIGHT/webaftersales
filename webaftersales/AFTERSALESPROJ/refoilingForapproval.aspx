@@ -80,6 +80,7 @@
                                                     <th>Bill Amount 
                                                     </th>
                                                     <th>Discounted Price</th>
+                                                    <th></th>
                                                     <th>Waived</th>
                                                     <th>Lock</th>
                                                     <th></th>
@@ -92,6 +93,9 @@
                                                             <asp:Label ID="lbldiscountedprice" runat="server" Text='<%# Bind("discountedpriceFormatted") %>'></asp:Label>
                                                             <asp:TextBox ID="tboxdiscountedprice" CssClass="form-control" Visible="false" TextMode="Number" Text='<%# Bind("discountedprice") %>' runat="server"></asp:TextBox>
                                                         </td>
+                                                          <td>
+                                                                    <asp:LinkButton ID="LinkButton2" CommandName="proofOfPayment" CssClass="btn btn-primary" runat="server">photos</asp:LinkButton>
+                                                                </td>
                                                         <td>
                                                             <asp:Label ID="lblwaived" runat="server" Text='<%# Bind("waived") %>'></asp:Label>
                                                             <asp:DropDownList ID="ddlwaived" CssClass="form-control" Visible="false" Text='<%# Bind("waived") %>' runat="server">

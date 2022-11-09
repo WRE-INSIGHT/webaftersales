@@ -16,11 +16,12 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Image1.ImageUrl = Request.QueryString["ImageUrl"];
                 label1.Text = Request.QueryString["ImageName"];
-                if (Session["link"].ToString() == "s1")
+                string s1 = Session["link"].ToString();
+                if (s1 == "s1")
                 {
                     Button1.Visible = false;
                 }
-                else if (Session["link"].ToString() == "s2")
+                else if (s1 == "s2")
                 {
                     Button1.Visible = true;
                 }
@@ -44,6 +45,10 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 Response.Redirect("~/AFTERSALESPROJ/reportPhotos.aspx");
             }
+            else if (Session["imgpathsource"].ToString() == "ProofOfDiscountPhotos")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/ProofOfDiscountPhotos.aspx");
+            }
             else
             {
                 Response.Redirect("~/AFTERSALESPROJ/sidgalleryPage.aspx");
@@ -56,6 +61,10 @@ namespace webaftersales.AFTERSALESPROJ
             if (Session["imgpathsource"].ToString() == "per item")
             {
                 Response.Redirect("~/AFTERSALESPROJ/reportPhotos.aspx");
+            }
+            else if (Session["imgpathsource"].ToString() == "ProofOfDiscountPhotos")
+            {
+                Response.Redirect("~/AFTERSALESPROJ/ProofOfDiscountPhotos.aspx");
             }
             else
             {
