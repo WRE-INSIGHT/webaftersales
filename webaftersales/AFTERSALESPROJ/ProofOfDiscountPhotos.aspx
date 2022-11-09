@@ -7,14 +7,14 @@
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
       <div class="well">
-        <h3><strong>Photos</strong></h3>
+        <h3><strong>Proof of discount</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" OnClick="LinkButton1_Click" runat="server">back</asp:LinkButton>
         </div>
     </div>
       <div class="panel panel-primary">
         <div class="panel-heading">
-            Site Photos
+            Photos
         </div>
         <div class="panel-body">
             <asp:Panel ID="Panel3" runat="server">
