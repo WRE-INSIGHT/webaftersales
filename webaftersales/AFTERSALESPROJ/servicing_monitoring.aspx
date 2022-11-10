@@ -25,7 +25,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="well">
-        <h3><strong>Aftersales Servicing Monitoring</strong></h3>
+        <h3><strong>Aftersales Servicing Report Monitoring</strong></h3>
     </div>
     <table>
         <tr>
@@ -67,8 +67,10 @@
                     <asp:TextBox ID="tboxSearch" CssClass="form-control" runat="server"></asp:TextBox>
                     <div class="input-group-btn">
                         <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">search</asp:LinkButton>
+                         <asp:LinkButton ID="LinkButton3" CssClass="btn btn-success" runat="server" OnClick="LinkButton3_Click">Report</asp:LinkButton>
                     </div>
                 </div>
+               
             </div>
         </div>
     </div>
