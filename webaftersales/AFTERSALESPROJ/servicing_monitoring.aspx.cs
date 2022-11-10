@@ -143,5 +143,14 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/reportPage.aspx");
             }
         }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            Session["s_monitoring_search"] = tboxSearch.Text.ToString();
+            Session["s_monitoring_status"] = ddlStatus.SelectedValue.ToString();
+            Session["s_monitoring_sdate"] = tboxSdate.Text.ToString();
+            Session["s_monitoring_edate"] = tboxEdate.Text.ToString();
+            Response.Redirect("~/AFTERSALESPROJ/servicing_monitoring_report.aspx");
+        }
     }
 }
