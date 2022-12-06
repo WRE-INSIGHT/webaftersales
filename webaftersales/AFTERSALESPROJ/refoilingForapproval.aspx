@@ -59,11 +59,15 @@
                                         <div class='<%# Eval("notedby").ToString() == "" ? "panel panel-danger" : "panel panel-success" %>'>
                                             <div class="panel-heading">
 
-                                                <asp:Label ID="lblcin" runat="server" Visible="false" Text='<%# Bind("cin") %>'></asp:Label>
+                                                
                                                 <asp:Label ID="lblsid" runat="server" Visible="false" Text='<%# Bind("sid") %>'></asp:Label>
                                                 <asp:Label ID="lblmiscellaneous" runat="server" Visible="false" Text='<%# Bind("miscellaneous") %>'></asp:Label>
                                                 <asp:Label ID="lblqno" runat="server" Text='<%# Bind("qno") %>'></asp:Label>
-
+                                                <span class="pull-right">
+                                                    (<asp:Label ID="lblcin" runat="server" Visible="true" Text='<%# Bind("cin") %>'></asp:Label>)
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("servicing") %>'></asp:Label>
+                                          
+                                                </span>
                                             </div>
                                             <div class="panel-body">
                                                 <strong>
@@ -153,6 +157,7 @@
                                                 </div>
 
                                             </div>
+                                          
                                         </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
