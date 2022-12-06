@@ -3784,8 +3784,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         string Parts, 
                         string Article_No, 
                         string Profile_Length, 
-                        string Profile_Width_In, 
-                        string Profile_Width_Out, 
+                        int Profile_Width_In, 
+                        int Profile_Width_Out, 
                         string Qty, 
                         decimal Total_Length, 
                         decimal Total_Area, 
@@ -3871,9 +3871,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnArticle_No);
                 this.columnProfile_Length = new global::System.Data.DataColumn("Profile_Length", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProfile_Length);
-                this.columnProfile_Width_In = new global::System.Data.DataColumn("Profile_Width_In", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnProfile_Width_In = new global::System.Data.DataColumn("Profile_Width_In", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProfile_Width_In);
-                this.columnProfile_Width_Out = new global::System.Data.DataColumn("Profile_Width_Out", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnProfile_Width_Out = new global::System.Data.DataColumn("Profile_Width_Out", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProfile_Width_Out);
                 this.columnQty = new global::System.Data.DataColumn("Qty", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQty);
@@ -7626,10 +7626,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Profile_Width_In {
+            public int Profile_Width_In {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.Profile_Width_InColumn]));
+                        return ((int)(this[this.tablerefoiling_tbl.Profile_Width_InColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Profile_Width_In\' in table \'refoiling_tbl\' is DBNull.", e);
@@ -7642,10 +7642,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Profile_Width_Out {
+            public int Profile_Width_Out {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.Profile_Width_OutColumn]));
+                        return ((int)(this[this.tablerefoiling_tbl.Profile_Width_OutColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Profile_Width_Out\' in table \'refoiling_tbl\' is DBNull.", e);

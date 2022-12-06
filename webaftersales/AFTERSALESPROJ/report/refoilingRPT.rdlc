@@ -139,7 +139,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.88542in</Width>
+              <Width>0.74519in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.72917in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.41965in</Width>
@@ -148,13 +151,49 @@
               <Width>1.51641in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.67376in</Width>
+              <Width>1.64742in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.20834in</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Width (mm)</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>8.5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox3">
@@ -306,6 +345,41 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox10">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Profile_Width_In.Value+Fields!Profile_Width_Out.Value</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>8.5pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Top</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Profile_Length">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -454,6 +528,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -499,7 +574,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.55894in</Size>
+                    <Size>1.99632in</Size>
                     <CellContents>
                       <Textbox Name="Textbox108">
                         <CanGrow>true</CanGrow>
@@ -605,7 +680,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.55894in</Size>
+                    <Size>1.99632in</Size>
                     <CellContents>
                       <Textbox Name="K_No">
                         <CanGrow>true</CanGrow>
@@ -653,8 +728,8 @@
         <RepeatColumnHeaders>true</RepeatColumnHeaders>
         <DataSetName>DataSet1</DataSetName>
         <Top>2.78764in</Top>
-        <Height>0.5in</Height>
-        <Width>7.50001in</Width>
+        <Height>0.45834in</Height>
+        <Width>7.5in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -1073,7 +1148,7 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>3.2932in</Top>
+        <Top>3.2682in</Top>
         <Left>3.17868in</Left>
         <Height>1.25in</Height>
         <Width>4.32132in</Width>
@@ -2022,7 +2097,7 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
           </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>4.62514in</Top>
+        <Top>4.57514in</Top>
         <Height>4.80348in</Height>
         <Width>7.5in</Width>
         <ZIndex>9</ZIndex>
@@ -2260,10 +2335,10 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
         </Style>
       </Line>
     </ReportItems>
-    <Height>9.42862in</Height>
+    <Height>9.37862in</Height>
     <Style />
   </Body>
-  <Width>7.50001in</Width>
+  <Width>7.5in</Width>
   <Page>
     <PageHeader>
       <Height>0.39in</Height>
