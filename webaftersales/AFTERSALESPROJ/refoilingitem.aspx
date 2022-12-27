@@ -338,8 +338,9 @@
                     </asp:GridView>
                     <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="valedit" CssClass="alert alert-danger" runat="server" />
                 </asp:Panel>
-                <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">generate cutting list</asp:LinkButton>&nbsp;&nbsp;
-                    <asp:LinkButton ID="LinkButton8" CssClass="btn btn-success" runat="server" OnClientClick="return confirm('confirm changes?')" OnClick="LinkButton8_Click">Update All Price</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton10" CssClass="btn btn-success" runat="server" OnClick="LinkButton10_Click">cutting list (all)</asp:LinkButton>&nbsp;&nbsp;
+                <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">cutting list (selected)</asp:LinkButton>&nbsp;&nbsp;
+                <asp:LinkButton ID="LinkButton8" CssClass="btn btn-success" runat="server" OnClientClick="return confirm('confirm changes?')" OnClick="LinkButton8_Click">Update All Price</asp:LinkButton>
             </div>
 
         </ContentTemplate>

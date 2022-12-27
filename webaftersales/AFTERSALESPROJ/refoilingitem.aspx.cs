@@ -778,6 +778,28 @@ namespace webaftersales.AFTERSALESPROJ
                 errorrmessage(e.Message.ToString());
             }
         }
+        private void selectall()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "Refoiling_For_Cutting_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "SelectAll");
+                        sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                errorrmessage(e.Message.ToString());
+            }
+        }
         private void forcutting(string id)
         {
             try
@@ -960,6 +982,22 @@ namespace webaftersales.AFTERSALESPROJ
                     _AL_qty[i].ToString());
             }
             loaditem();
+        }
+
+        protected void LinkButton10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                selectall();
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                Response.Redirect("~/AFTERSALESPROJ/RefoilingCuttingList.aspx");
+            }
         }
     }
 }
