@@ -87,7 +87,7 @@ namespace webaftersales.AFTERSALESPROJ
                         GridView1.DataBind();
                         Session["c_monitoring_search"] = tboxSearch.Text;
                         Session["c_monitoring_status"] = ddlStatus.Text;
-                      
+
                         lblRowNum.Text = tb.Rows.Count.ToString() + " row(s) found!";
                     }
                 }
@@ -103,13 +103,18 @@ namespace webaftersales.AFTERSALESPROJ
             Session["c_monitoring_pageindex"] = 0;
             getdata();
         }
+        protected void LinkButton5_Click(object sender, EventArgs e)
+        {
+            Session["c_monitoring_search"] = tboxSearch.Text;
+            Session["c_monitoring_status"] = ddlStatus.Text;
+            Response.Redirect("~/AFTERSALESPROJ/callin_monitoringReport.aspx");
+        }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             Session["c_monitoring_pageindex"] = e.NewPageIndex;
             getdata();
-           
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

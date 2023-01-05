@@ -60,6 +60,7 @@
                             <asp:TextBox ID="tboxSearch" CssClass="form-control" runat="server"></asp:TextBox>
                             <div class="input-group-btn">
                                 <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">search</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton5" CssClass="btn btn-primary" runat="server" OnClick="LinkButton5_Click">report</asp:LinkButton>
                             </div>
                         </div>
 
@@ -70,7 +71,7 @@
             <div>
 
                 <asp:GridView ID="GridView1" AutoGenerateColumns="False" CssClass="table" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging"
-                     BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnRowCommand="GridView1_RowCommand">
+                    BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnRowCommand="GridView1_RowCommand">
                     <AlternatingRowStyle BackColor="#DCDCDC" />
                     <Columns>
                         <asp:TemplateField HeaderText="PROJECT">

@@ -279,6 +279,13 @@
     <Compile Include="AFTERSALESPROJ\callin_monitoring.aspx.designer.cs">
       <DependentUpon>callin_monitoring.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\callin_monitoringReport.aspx.cs">
+      <DependentUpon>callin_monitoringReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\callin_monitoringReport.aspx.designer.cs">
+      <DependentUpon>callin_monitoringReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\cleaningForapproval.aspx.cs">
       <DependentUpon>cleaningForapproval.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -817,6 +824,7 @@
     <Content Include="AFTERSALESPROJ\callinphotos.aspx" />
     <Content Include="AFTERSALESPROJ\callinviewimage.aspx" />
     <Content Include="AFTERSALESPROJ\callin_monitoring.aspx" />
+    <Content Include="AFTERSALESPROJ\callin_monitoringReport.aspx" />
     <Content Include="AFTERSALESPROJ\cleaningForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\cleaningitem.aspx" />
     <Content Include="AFTERSALESPROJ\cleaningpage.aspx" />
@@ -996,6 +1004,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AFTERSALESPROJ\report\callin_monitoringRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\cleaningRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\refoilingCuttingListRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\refoilingRPT.rdlc" />
