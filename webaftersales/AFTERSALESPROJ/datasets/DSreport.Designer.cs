@@ -5412,6 +5412,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnCIN;
             
+            private global::System.Data.DataColumn columnCALLER;
             
             private global::System.Data.DataColumn columnJO;
             
