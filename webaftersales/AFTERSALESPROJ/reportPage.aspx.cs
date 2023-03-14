@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -27,13 +28,26 @@ namespace webaftersales.AFTERSALESPROJ
                     getdata();
                     getteam();
                     getstatus();
-                
+                    CheckPhotos();
                 }
 
             }
             else
             {
                 Response.Redirect("~/AFTERSALESPROJ/LoginPage.aspx");
+            }
+        }
+        private void CheckPhotos()
+        {
+            var path = "~/Uploads/ASuploads/"+Session["CIN"].ToString() + "/"+ Session["SID"].ToString() + "/photos/";
+            Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(path));
+            if (IsExists)
+            {
+                int results = Directory.GetFiles(Server.MapPath(path)).Count();
+                if (results >= 1)
+                {
+                    LinkButton3.CssClass = "btn btn-success";
+                }
             }
         }
         private string sqlconstr

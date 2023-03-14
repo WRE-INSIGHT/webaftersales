@@ -26,7 +26,7 @@ namespace webaftersales.AFTERSALESPROJ
                         }
                         if (Session["refoiling_cbox"] != null)
                         {
-                           ddlForApproval.SelectedValue = Session["refoiling_cbox"].ToString();
+                            ddlForApproval.SelectedValue = Session["refoiling_cbox"].ToString();
                         }
                         if (Session["refoiling_locksearch"] != null)
                         {
@@ -138,11 +138,13 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lbldiscountedprice")).Visible = false;
                 ((Label)row.FindControl("lblwaived")).Visible = false;
                 ((Label)row.FindControl("lbllock")).Visible = false;
+                ((Label)row.FindControl("lblstatus")).Visible = false;
                 ((LinkButton)row.FindControl("btnEdit")).Visible = false;
 
                 ((TextBox)row.FindControl("tboxdiscountedprice")).Visible = true;
                 ((DropDownList)row.FindControl("ddlwaived")).Visible = true;
                 ((DropDownList)row.FindControl("ddllock")).Visible = true;
+                ((DropDownList)row.FindControl("ddlstatus")).Visible = true;
 
                 ((LinkButton)row.FindControl("btnSave")).Visible = true;
                 ((LinkButton)row.FindControl("btnCancel")).Visible = true;
@@ -154,11 +156,13 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lbldiscountedprice")).Visible = true;
                 ((Label)row.FindControl("lblwaived")).Visible = true;
                 ((Label)row.FindControl("lbllock")).Visible = true;
+                ((Label)row.FindControl("lblstatus")).Visible = true;
                 ((LinkButton)row.FindControl("btnEdit")).Visible = true;
 
                 ((TextBox)row.FindControl("tboxdiscountedprice")).Visible = false;
                 ((DropDownList)row.FindControl("ddlwaived")).Visible = false;
                 ((DropDownList)row.FindControl("ddllock")).Visible = false;
+                ((DropDownList)row.FindControl("ddlstatus")).Visible = false;
 
                 ((LinkButton)row.FindControl("btnSave")).Visible = false;
                 ((LinkButton)row.FindControl("btnCancel")).Visible = false;
@@ -170,7 +174,8 @@ namespace webaftersales.AFTERSALESPROJ
                 updatePayment(((Label)row.FindControl("lblid")).Text,
                      ((TextBox)row.FindControl("tboxdiscountedprice")).Text,
                      ((DropDownList)row.FindControl("ddlwaived")).Text,
-                     ((DropDownList)row.FindControl("ddllock")).SelectedValue.ToString());
+                     ((DropDownList)row.FindControl("ddllock")).SelectedValue.ToString(),
+                     ((DropDownList)row.FindControl("ddlstatus")).SelectedValue.ToString());
 
             }
             else if (e.CommandName == "proofOfPayment")
@@ -183,7 +188,7 @@ namespace webaftersales.AFTERSALESPROJ
                 Response.Redirect("~/AFTERSALESPROJ/ProofOfDiscountPhotos.aspx");
             }
         }
-        private void updatePayment(string id, string discountedprice, string waived, string strlock)
+        private void updatePayment(string id, string discountedprice, string waived, string strlock, string strstatus)
         {
             try
             {
@@ -199,6 +204,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@discountedprice", discountedprice);
                         sqlcmd.Parameters.AddWithValue("@waived", waived);
                         sqlcmd.Parameters.AddWithValue("@lock", strlock);
+                        sqlcmd.Parameters.AddWithValue("@status", strstatus);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }

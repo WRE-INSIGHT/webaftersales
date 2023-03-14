@@ -104,7 +104,7 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void loadimages()
         {
-
+         
             foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath + cid + sid)))
             {
                 ImageButton imgbutton = new ImageButton();

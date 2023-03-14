@@ -10,7 +10,7 @@
 namespace webaftersales.AFTERSALESPROJ {
     
     
-    public partial class callin_monitoring {
+    public partial class RefoilingColorSummary {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -31,66 +31,30 @@ namespace webaftersales.AFTERSALESPROJ {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// ddlStatus control.
+        /// gvProject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        protected global::System.Web.UI.WebControls.GridView gvProject;
         
         /// <summary>
-        /// tboxSearch control.
+        /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxSearch;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// gvColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-        
-        /// <summary>
-        /// LinkButton5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton5;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// lblRowNum control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRowNum;
+        protected global::System.Web.UI.WebControls.GridView gvColor;
     }
 }
