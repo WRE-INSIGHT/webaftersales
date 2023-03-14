@@ -148,6 +148,12 @@ namespace webaftersales.AFTERSALESPROJ
 
                 ((LinkButton)row.FindControl("btnSave")).Visible = true;
                 ((LinkButton)row.FindControl("btnCancel")).Visible = true;
+
+                if(userfullname == "Racquel Perez")
+                {
+                    ((DropDownList)row.FindControl("ddlwaived")).Enabled = false;
+                    ((TextBox)row.FindControl("tboxdiscountedprice")).Enabled = false;
+                }
             }
             else if (e.CommandName == "myCancel")
             {
@@ -230,7 +236,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             for (int i = 0; i <= GridView1.Rows.Count - 1; i++)
             {
-                if (userfullname == "Warren Mangaring" || userfullname == "Amanda Aquino ")
+                if (userfullname == "Warren Mangaring" || userfullname == "Amanda Aquino " || userfullname == "Racquel Perez")
                 {
                     GridViewRow row = GridView1.Rows[i];
                     ((LinkButton)row.FindControl("btnEdit")).Visible = true;
