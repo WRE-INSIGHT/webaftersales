@@ -571,6 +571,13 @@
     <Compile Include="AFTERSALESPROJ\quotationsummary.aspx.designer.cs">
       <DependentUpon>quotationsummary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\RefoilingColorSummary.aspx.cs">
+      <DependentUpon>RefoilingColorSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\RefoilingColorSummary.aspx.designer.cs">
+      <DependentUpon>RefoilingColorSummary.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\RefoilingCuttingList.aspx.cs">
       <DependentUpon>RefoilingCuttingList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -886,6 +893,7 @@
     <Content Include="AFTERSALESPROJ\quotationreportclientsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsignature.aspx" />
     <Content Include="AFTERSALESPROJ\quotationsummary.aspx" />
+    <Content Include="AFTERSALESPROJ\RefoilingColorSummary.aspx" />
     <Content Include="AFTERSALESPROJ\RefoilingCuttingList.aspx" />
     <Content Include="AFTERSALESPROJ\refoilingForapproval.aspx" />
     <Content Include="AFTERSALESPROJ\refoilingitem.aspx" />

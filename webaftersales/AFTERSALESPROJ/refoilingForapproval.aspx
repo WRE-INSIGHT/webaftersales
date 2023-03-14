@@ -59,14 +59,13 @@
                                         <div class='<%# Eval("notedby").ToString() == "" ? "panel panel-danger" : "panel panel-success" %>'>
                                             <div class="panel-heading">
 
-                                                
+
                                                 <asp:Label ID="lblsid" runat="server" Visible="false" Text='<%# Bind("sid") %>'></asp:Label>
                                                 <asp:Label ID="lblmiscellaneous" runat="server" Visible="false" Text='<%# Bind("miscellaneous") %>'></asp:Label>
                                                 <asp:Label ID="lblqno" runat="server" Text='<%# Bind("qno") %>'></asp:Label>
-                                                <span class="pull-right">
-                                                    (<asp:Label ID="lblcin" runat="server" Visible="true" Text='<%# Bind("cin") %>'></asp:Label>)
+                                                <span class="pull-right">(<asp:Label ID="lblcin" runat="server" Visible="true" Text='<%# Bind("cin") %>'></asp:Label>)
                                                     <asp:Label ID="Label8" runat="server" Text='<%# Bind("servicing") %>'></asp:Label>
-                                          
+
                                                 </span>
                                             </div>
                                             <div class="panel-body">
@@ -87,6 +86,7 @@
                                                     <th></th>
                                                     <th>Waived</th>
                                                     <th>Lock</th>
+                                                     <th>Status</th>
                                                     <th></th>
                                                     <tr>
                                                         <td>
@@ -97,9 +97,9 @@
                                                             <asp:Label ID="lbldiscountedprice" runat="server" Text='<%# Bind("discountedpriceFormatted") %>'></asp:Label>
                                                             <asp:TextBox ID="tboxdiscountedprice" CssClass="form-control" Visible="false" TextMode="Number" Text='<%# Bind("discountedprice") %>' runat="server"></asp:TextBox>
                                                         </td>
-                                                          <td>
-                                                                    <asp:LinkButton ID="LinkButton2" CommandName="proofOfPayment" CssClass="btn btn-primary" runat="server">photos</asp:LinkButton>
-                                                                </td>
+                                                        <td>
+                                                            <asp:LinkButton ID="LinkButton2" CommandName="proofOfPayment" CssClass="btn btn-primary" runat="server">photos</asp:LinkButton>
+                                                        </td>
                                                         <td>
                                                             <asp:Label ID="lblwaived" runat="server" Text='<%# Bind("waived") %>'></asp:Label>
                                                             <asp:DropDownList ID="ddlwaived" CssClass="form-control" Visible="false" Text='<%# Bind("waived") %>' runat="server">
@@ -112,6 +112,14 @@
                                                             <asp:DropDownList ID="ddllock" CssClass="form-control" Visible="false" Text='<%# Bind("lock") %>' runat="server">
                                                                 <asp:ListItem Value="0" Text="no"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="yes"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label ID="lblstatus" runat="server" Text='<%# Bind("refoiling_status") %>'></asp:Label>
+                                                            <asp:DropDownList ID="ddlstatus" CssClass="form-control" Visible="false" Text='<%# Bind("refoiling_status") %>' runat="server">
+                                                                <asp:ListItem Value="-" Text="-"></asp:ListItem>
+                                                                <asp:ListItem Value="Client Approved" Text="Client Approved"></asp:ListItem>
+                                                                <asp:ListItem Value="Done Cutting" Text="Done Cutting"></asp:ListItem>
                                                             </asp:DropDownList>
                                                         </td>
                                                         <td>
@@ -157,7 +165,7 @@
                                                 </div>
 
                                             </div>
-                                          
+
                                         </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
