@@ -39,7 +39,7 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void CheckPhotos()
         {
-            var path = "~/Uploads/ASuploads/"+Session["CIN"].ToString() + "/"+ Session["SID"].ToString() + "/photos/";
+            var path = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/photos/";
             Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(path));
             if (IsExists)
             {
@@ -62,7 +62,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "select [status],REMARKS,CIN from servicingtb where id = @sid";
-             
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -81,7 +81,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
             }
@@ -107,7 +107,7 @@ namespace webaftersales.AFTERSALESPROJ
                 DataSet ds = new DataSet();
                 ds.Clear();
                 string str = "select * from reporttb where sid = @sid";
-             
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -133,7 +133,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-             
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
@@ -306,12 +306,12 @@ namespace webaftersales.AFTERSALESPROJ
             }
 
         }
-        private void myupdate(string id, string itemno, string kno, string location, string specification, string width,string height,string item_description)
+        private void myupdate(string id, string itemno, string kno, string location, string specification, string width, string height, string item_description)
         {
             try
             {
                 string str = "update reporttb set itemno = @itemno, kno = @kno, location=@location, specification=@specification,width=@width,height=@height,item_description=@item_description where id = @id";
-            
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -342,9 +342,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "delete from reporttb where id = @id "+
+                string str = "delete from reporttb where id = @id " +
                     " delete from TBLassessment where REPORTID = @id";
-            
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -368,9 +368,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-              
+
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from reporttb) insert into reporttb (sid,id,itemno,kno,location,specification,width,height,item_description)values(@sid,@id,@item,@kno,@location,@specification,@width,@height,@item_description)";
-            
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -407,7 +407,7 @@ namespace webaftersales.AFTERSALESPROJ
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             reasontbox.Text = lblremarks.Text;
-           
+
             Panel2.Visible = true;
         }
 
@@ -421,7 +421,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = " update servicingtb set [status] = @status,REMARKS=@REMARKS where id = @sid";
-            
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -453,7 +453,7 @@ namespace webaftersales.AFTERSALESPROJ
                             " servicing) +1)" +
                             " FROM SERVICINGTB where cin = @cin order by x DESC ) AS TBL" +
                             " update callintb set [status] = (SELECT  case when [status] is null then '' else [status] end FROM #TBL) where cin = @cin";
-            
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
@@ -472,7 +472,7 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void LinkButton6_Click(object sender, EventArgs e)
         {
-            if (Session["servicing_page_SOURCE"].ToString() =="Pending")
+            if (Session["servicing_page_SOURCE"].ToString() == "Pending")
             {
                 Response.Redirect("~/AFTERSALESPROJ/PENDINGPAGE.aspx");
             }
@@ -486,6 +486,24 @@ namespace webaftersales.AFTERSALESPROJ
             }
         }
 
-     
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                TableCell cell = e.Row.Cells[0];
+                string id = ((Label)cell.FindControl("lblid")).Text;
+                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + id + "/photos/";
+
+                Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
+                if (IsExists)
+                {
+                    int results = Directory.GetFiles(Server.MapPath(filepath)).Count();
+                    if (results >= 1)
+                    {
+                        ((Button)cell.FindControl("Button3")).CssClass = "btn btn-success";
+                    }
+                }
+            }
+        }
     }
 }
