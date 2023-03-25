@@ -149,7 +149,7 @@
             </asp:UpdatePanel>
             <br />
             <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
-                <asp:GridView ID="GridView1" CssClass="table" OnRowCommand="GridView1_RowCommand" GridLines="Both" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+                <asp:GridView ID="GridView1" CssClass="table" OnRowCommand="GridView1_RowCommand" GridLines="Both" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowDataBound="GridView1_RowDataBound">
                     <AlternatingRowStyle BackColor="#DCDCDC" />
                     <Columns>
                         <asp:TemplateField HeaderText="" ItemStyle-Wrap="false">
