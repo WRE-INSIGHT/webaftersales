@@ -32,6 +32,11 @@ namespace webaftersales.AFTERSALESPROJ
                         {
                             ddlLockSearch.SelectedValue = Session["refoiling_locksearch"].ToString();
                         }
+                        if (Session["refoiling_statussearch"] != null)
+                        {
+                            ddlStatusSearch.SelectedValue = Session["refoiling_statussearch"].ToString();
+                        }
+                        
                         getdata();
                     }
                 }
@@ -73,6 +78,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@searchkey", tboxsearchkey.Text);
                         sqlcmd.Parameters.AddWithValue("@forapproval", ddlForApproval.SelectedValue.ToString());
                         sqlcmd.Parameters.AddWithValue("@lock", ddlLockSearch.SelectedValue.ToString());
+                        sqlcmd.Parameters.AddWithValue("@status", ddlStatusSearch.SelectedValue.ToString());
                         DataTable tb = new DataTable();
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
@@ -84,6 +90,7 @@ namespace webaftersales.AFTERSALESPROJ
                         Session["refoiling_searchkey"] = tboxsearchkey.Text;
                         Session["refoiling_cbox"] = ddlForApproval.SelectedValue.ToString();
                         Session["refoiling_locksearch"] = ddlLockSearch.SelectedValue.ToString();
+                        Session["refoiling_statussearch"] = ddlStatusSearch.SelectedValue.ToString();
                     }
                 }
             }

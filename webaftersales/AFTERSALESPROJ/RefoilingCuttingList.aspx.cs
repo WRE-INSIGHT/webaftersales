@@ -65,8 +65,8 @@ namespace webaftersales.AFTERSALESPROJ
             param[0] = new ReportParameter("prepared", prepared);
             param[1] = new ReportParameter("project", Session["PROJECT"].ToString());
             param[2] = new ReportParameter("address", Session["ADDRESS"].ToString());
-    
-            for (int i = 0; i < 3; i++)
+            param[3] = new ReportParameter("refoilingqno", Session["refoilingqno"].ToString());
+            for (int i = 0; i < 4; i++)
             {
                 ReportViewer1.LocalReport.SetParameters(param[i]);
             }
