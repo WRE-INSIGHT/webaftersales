@@ -3821,7 +3821,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         string Profile_Length, 
                         int Profile_Width_In, 
                         int Profile_Width_Out, 
-                        string Qty, 
+                        int Qty, 
                         decimal Total_Length, 
                         decimal Total_Area, 
                         decimal Sub_Total, 
@@ -3910,7 +3910,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnProfile_Width_In);
                 this.columnProfile_Width_Out = new global::System.Data.DataColumn("Profile_Width_Out", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProfile_Width_Out);
-                this.columnQty = new global::System.Data.DataColumn("Qty", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnQty = new global::System.Data.DataColumn("Qty", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQty);
                 this.columnTotal_Length = new global::System.Data.DataColumn("Total_Length", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal_Length);
@@ -8181,10 +8181,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Qty {
+            public int Qty {
                 get {
                     try {
-                        return ((string)(this[this.tablerefoiling_tbl.QtyColumn]));
+                        return ((int)(this[this.tablerefoiling_tbl.QtyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Qty\' in table \'refoiling_tbl\' is DBNull.", e);

@@ -20,7 +20,7 @@
                     <asp:CheckBox ID="CheckBox1" runat="server" />&nbsp;for approval
                 </div>--%>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 Lock
                 <asp:DropDownList ID="ddlLockSearch" CssClass="form-control" runat="server">
                     <asp:ListItem Text="no" Value="0"></asp:ListItem>
@@ -28,7 +28,16 @@
                     <asp:ListItem Text="All" Value="10"></asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-3">
+                Status
+                <asp:DropDownList ID="ddlStatusSearch" CssClass="form-control" runat="server">
+                    <asp:ListItem Text="All" Value="All"></asp:ListItem>
+                    <asp:ListItem Text="Client Approved" Value="Client Approved"></asp:ListItem>
+                    <asp:ListItem Text="Done Cutting" Value="Done Cutting"></asp:ListItem>
+                    <asp:ListItem Text="-" Value="-"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="col-sm-4">
                 Search
                 <div class="input-group">
 
@@ -86,7 +95,7 @@
                                                     <th></th>
                                                     <th>Waived</th>
                                                     <th>Lock</th>
-                                                     <th>Status</th>
+                                                    <th>Status</th>
                                                     <th></th>
                                                     <tr>
                                                         <td>
