@@ -123,10 +123,12 @@
                                                     ErrorMessage="specification is required" Text="*" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
                                             <asp:DropDownList ID="newdlistspecification" placeholder="Specification" CssClass="form-control" runat="server">
                                                 <asp:ListItem>-</asp:ListItem>
-                                                <asp:ListItem>Casement Window/Door</asp:ListItem>
+                                                <asp:ListItem>Casement Window</asp:ListItem>
+                                                <asp:ListItem>Casement Door</asp:ListItem>
                                                 <asp:ListItem>Awning</asp:ListItem>
                                                 <asp:ListItem>Fixed</asp:ListItem>
-                                                <asp:ListItem>Sliding Window/Door</asp:ListItem>
+                                                <asp:ListItem>Sliding Window</asp:ListItem>
+                                                <asp:ListItem>Sliding Door</asp:ListItem>
                                                 <asp:ListItem>Curtainwall</asp:ListItem>
                                                 <asp:ListItem>Fold-Slide Door</asp:ListItem>
                                                 <asp:ListItem>Lift-Slide Door</asp:ListItem>
@@ -179,9 +181,13 @@
                                 <asp:DropDownList ID="dlistspecification" Visible="false" placeholder="Specification" CssClass="form-control" runat="server">
                                     <asp:ListItem>-</asp:ListItem>
                                     <asp:ListItem>Casement Window/Door</asp:ListItem>
+                                    <asp:ListItem>Casement Door</asp:ListItem>
+                                    <asp:ListItem>Casement Window</asp:ListItem>
                                     <asp:ListItem>Awning</asp:ListItem>
                                     <asp:ListItem>Fixed</asp:ListItem>
                                     <asp:ListItem>Sliding Window/Door</asp:ListItem>
+                                    <asp:ListItem>Sliding Door</asp:ListItem>
+                                    <asp:ListItem>Sliding Window</asp:ListItem>
                                     <asp:ListItem>Curtainwall</asp:ListItem>
                                     <asp:ListItem>Fold-Slide Door</asp:ListItem>
                                     <asp:ListItem>Lift-Slide Door</asp:ListItem>
