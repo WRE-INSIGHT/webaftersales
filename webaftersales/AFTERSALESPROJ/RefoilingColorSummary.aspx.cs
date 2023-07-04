@@ -18,6 +18,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (!IsPostBack)
                 {
+                    loadColorList();
                     loadProject();
                     loadColor();
                 }
@@ -55,6 +56,9 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.CommandText = "Refoiling_Area_Summary_Stp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "loadProject");
+                        sqlcmd.Parameters.AddWithValue("@Project", tboxProject.Text);
+                        sqlcmd.Parameters.AddWithValue("@Color", ddlColor.Text);
+                        sqlcmd.Parameters.AddWithValue("@Date", tboxDate.Text);
                         DataSet ds = new DataSet();
                         ds.Clear();
                         SqlDataAdapter da = new SqlDataAdapter();
@@ -82,6 +86,9 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.CommandText = "Refoiling_Area_Summary_Stp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@Command", "loadColor");
+                        sqlcmd.Parameters.AddWithValue("@Project", tboxProject.Text);
+                        sqlcmd.Parameters.AddWithValue("@Color", ddlColor.Text);
+                        sqlcmd.Parameters.AddWithValue("@Date", tboxDate.Text);
                         DataSet ds = new DataSet();
                         ds.Clear();
                         SqlDataAdapter da = new SqlDataAdapter();
@@ -97,7 +104,30 @@ namespace webaftersales.AFTERSALESPROJ
                 errorrmessage(ex.ToString());
             }
         }
-
+        private void loadColorList()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "Refoiling_Area_Summary_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "ColorList");
+                        ddlColor.DataSource = sqlcmd.ExecuteReader();
+                        ddlColor.DataValueField = "Color";
+                        ddlColor.DataTextField = "Color";
+                        ddlColor.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+        }
         protected void gvProject_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvProject.PageIndex = e.NewPageIndex;
@@ -107,6 +137,12 @@ namespace webaftersales.AFTERSALESPROJ
         protected void gvColor_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvColor.PageIndex = e.NewPageIndex;
+            loadColor();
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            loadProject();
             loadColor();
         }
     }
