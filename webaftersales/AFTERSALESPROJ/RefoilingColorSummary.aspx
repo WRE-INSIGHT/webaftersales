@@ -12,6 +12,28 @@
     </div>
     <div>
         <h1>By Project</h1>
+        <br />
+        <div class="well">
+            <div class="row">
+                <div class="col-sm-2">
+                    <span>Date</span>
+                    <asp:TextBox ID="tboxDate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-sm-2">
+                    <span>Color</span>
+                    <asp:DropDownList ID="ddlColor" CssClass="form-control" runat="server"></asp:DropDownList>
+                </div>
+                <div class="col-sm-8">
+                    <span>Project</span>
+                    <div class="input-group">
+                        <asp:TextBox ID="tboxProject" CssClass="form-control" runat="server"></asp:TextBox>
+                        <div class="input-group-btn">
+                            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">search</asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <asp:GridView ID="gvProject" runat="server" CssClass="table" BackColor="White" BorderColor="White" BorderWidth="2px" CellPadding="3" GridLines="Both" OnPageIndexChanging="gvProject_PageIndexChanging" AllowPaging="True" BorderStyle="Ridge" CellSpacing="1" PageSize="25">
