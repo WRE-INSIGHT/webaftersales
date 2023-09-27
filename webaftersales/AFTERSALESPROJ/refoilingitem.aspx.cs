@@ -778,7 +778,7 @@ namespace webaftersales.AFTERSALESPROJ
                 errorrmessage(e.Message.ToString());
             }
         }
-        private void selectall()
+        private void selectall(string command)
         {
             try
             {
@@ -789,7 +789,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcon.Open();
                         sqlcmd.CommandText = "Refoiling_For_Cutting_Stp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
-                        sqlcmd.Parameters.AddWithValue("@Command", "SelectAll");
+                        sqlcmd.Parameters.AddWithValue("@Command", command);
                         sqlcmd.Parameters.AddWithValue("@Refoiling_Id", refoilingqno);
                         sqlcmd.ExecuteNonQuery();
                     }
@@ -988,7 +988,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                selectall();
+                selectall("SelectAll");
             }
             catch (Exception ex)
             {
@@ -997,6 +997,22 @@ namespace webaftersales.AFTERSALESPROJ
             finally
             {
                 Response.Redirect("~/AFTERSALESPROJ/RefoilingCuttingList.aspx");
+            }
+        }
+
+        protected void LinkButton11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                selectall("UnselectAll");
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                loaditem();
             }
         }
     }
