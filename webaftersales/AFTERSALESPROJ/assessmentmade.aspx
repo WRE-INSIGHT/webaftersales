@@ -26,7 +26,7 @@
         <ContentTemplate>
 
             <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
-                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both">
+                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both" OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -46,7 +46,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Assessment" ItemStyle-Wrap="true">
                             <ItemTemplate>
-                                <asp:Label ID="assessmentlbl" runat="server" Text='<%# Bind("ASSESSMENT") %>'></asp:Label>
+                                <div style="white-space:normal; word-wrap: normal; min-width:300px;">
+                                    <asp:Label ID="assessmentlbl" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("ASSESSMENT").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
+                                </div>
+
                                 <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -58,6 +61,12 @@
                                     <asp:ListItem>in progress</asp:ListItem>
                                     <asp:ListItem>finished</asp:ListItem>
                                 </asp:DropDownList>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="DATE MODIFIED">
+                            <ItemTemplate>
+                                <div style="white-space: normal; text-wrap: normal"></div>
+                                <asp:Label ID="lblDate_Modified" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("DATE_MODIFIED").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

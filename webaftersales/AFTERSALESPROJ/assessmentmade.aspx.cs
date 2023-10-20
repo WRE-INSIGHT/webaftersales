@@ -18,14 +18,14 @@ namespace webaftersales.AFTERSALESPROJ
 
             if (Session["username"] != null)
             {
-             
-                    if (!IsPostBack)
-                    {
-                        lblkno.Text = kno;
-                        lbllocation.Text = location;
-                        getdata();
-                    }
-              
+
+                if (!IsPostBack)
+                {
+                    lblkno.Text = kno;
+                    lbllocation.Text = location;
+                    getdata();
+                }
+
             }
             else
             {
@@ -45,6 +45,13 @@ namespace webaftersales.AFTERSALESPROJ
             get
             {
                 return Session["reportID"].ToString();
+            }
+        }
+        private string fullname
+        {
+            get
+            {
+                return Session["userfullname"].ToString();
             }
         }
         private string location
@@ -80,7 +87,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "SELECT * FROM [TBLassessment] WHERE ([REPORTID] = @REPORTID)";
-                
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -96,7 +103,7 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
             }
@@ -104,7 +111,7 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-          
+
             if (e.CommandName == "myedit")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
@@ -113,7 +120,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                 ((LinkButton)row.FindControl("editbtn")).Visible = false;
                 ((LinkButton)row.FindControl("deletebtn")).Visible = false;
-                ((Label)row.FindControl("descriptionlbl")).Visible=false;
+                ((Label)row.FindControl("descriptionlbl")).Visible = false;
                 ((Label)row.FindControl("assessmentlbl")).Visible = false;
                 ((Label)row.FindControl("progresslbl")).Visible = false;
 
@@ -163,17 +170,20 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "update [TBLassessment] set assessment=@assessment,description=@description,progress=@progress WHERE ([ID] = @ID)";
-                
+                string str = "update [TBLassessment] set assessment=@assessment,description=@description,progress=@progress" +
+                    ",date_modified=date_modified+char(10)+@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt') WHERE ([ID] = @ID)";
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
+                        string date_modified = "updatted by " + fullname + " ";
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@description", description);
                         sqlcmd.Parameters.AddWithValue("@assessment", assessment);
                         sqlcmd.Parameters.AddWithValue("@progress", progressddl);
+                        sqlcmd.Parameters.AddWithValue("@date_modified", date_modified);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -192,7 +202,7 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = "delete from [TBLassessment] WHERE ([ID] = @ID)";
-                
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -223,17 +233,21 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment) insert into [TBLassessment] (id,reportid,assessment,description,progress)values(@id,@reportid,@assessment,@description,@progress)";
-                
+                string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment)" +
+                             " insert into [TBLassessment] (id,reportid,assessment,description,progress,date_modified)" +
+                             " values(@id,@reportid,@assessment,@description,@progress,@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt'))";
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
+                        string date_modified = "inputted by " + fullname + " ";
                         sqlcmd.Parameters.AddWithValue("@reportid", reportid);
                         sqlcmd.Parameters.AddWithValue("@description", newdescriptiontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@assessment", newassessmenttbox.Text);
                         sqlcmd.Parameters.AddWithValue("@progress", newprogressddl.Text);
+                        sqlcmd.Parameters.AddWithValue("@date_modified", date_modified);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -251,6 +265,22 @@ namespace webaftersales.AFTERSALESPROJ
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (Session["useraccount"].ToString() =="Admin")
+                {
+                    GridView1.Columns[4].Visible = true;
+                }
+                else
+                {
+                    GridView1.Columns[4].Visible = false;
+                }
+              
+            }
         }
     }
 }
