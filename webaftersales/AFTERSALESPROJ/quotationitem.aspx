@@ -74,6 +74,18 @@
                                 <asp:TextBox ID="tboxMaterial_surcharges" Visible="false" TextMode="Number" Text='<%# Eval("Material_surcharges") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
+                          <asp:TemplateField HeaderText="LABOR COST">
+                            <ItemTemplate>
+                                <asp:Label ID="lbllaborcost" runat="server" Text='<%# Bind("[LABOR]") %>'></asp:Label>
+                                <asp:TextBox ID="tboxlaborcost" Visible="false" TextMode="Number" Text='<%# Eval("LABOR") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="LABOR REMARKS">
+                            <ItemTemplate>
+                                <asp:Label ID="lbllaborremarks" runat="server" Text='<%# Bind("[LABOR_remarks]") %>'></asp:Label>
+                                <asp:TextBox ID="tboxlaborremarks" Visible="false" Text='<%# Eval("LABOR_remarks") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="NET PRICE">
                             <ItemTemplate>
                                 <asp:Label ID="lblnetprice" runat="server" Text='<%# Bind("[NETPRICE]") %>'></asp:Label>
@@ -99,6 +111,7 @@
                                 <asp:TextBox ID="tboxfoc" Visible="false" Text='<%# Eval("FOC") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
+                      
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton ID="editbtn" CommandName="myedit" runat="server">Edit</asp:LinkButton>

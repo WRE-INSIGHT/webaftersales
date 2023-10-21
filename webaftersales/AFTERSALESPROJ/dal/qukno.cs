@@ -40,7 +40,7 @@ namespace webaftersales.AFTERSALESPROJ.dal
                             " WDWLOC as [WDW / DOOR LOCATION], " +
                             " NETPRICE, " +
                              " VAT_AMOUNT " +
-                            " from itemtb where aseno = @aseno";
+                            " from itemtb where aseno = @aseno order by item asc";
          
             using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
             {
