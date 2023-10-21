@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webaftersales.AFTERSALESPROJ.dal;
 
 namespace webaftersales.AFTERSALESPROJ
 {
@@ -37,12 +38,19 @@ namespace webaftersales.AFTERSALESPROJ
             }
             getpendingcount();
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void getpendingcount()
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+               
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand("select count(id) from servicingtb where [status] = 'Pending For Reschedule'", sqlcon))
                     {
@@ -67,9 +75,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            
                 string str = "select count(id) from [RequestCollectionApproval] where [APPROVED] = '' and [DISAPPROVED] = ''";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -95,9 +103,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+              
                 string str = "select count(id) from quotationtb where approvedby = '' and lock = 0";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -123,9 +131,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+              
                 string str = "select count(id) from cleaningtbl where notedby = ''";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -151,9 +159,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+              
                 string str = "select count(id) from re_sealant_quotation_tbl where notedby = ''";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -178,9 +186,9 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = "select count(id) from refoiling_id_tbl where notedby = ''";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
