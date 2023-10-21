@@ -16,10 +16,10 @@ namespace webaftersales.AFTERSALESPROJ.dal
             switch (server)
             {
                 case "server1":
-                    connectionstring = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;     
+                    connectionstring = ConfigurationManager.ConnectionStrings["sqlcon_server1_asdb"].ConnectionString;     
                     break;
                 case "server2":
-                    connectionstring = ConfigurationManager.ConnectionStrings["sqlconA"].ConnectionString;
+                    connectionstring = ConfigurationManager.ConnectionStrings["sqlcon_server2_asdb"].ConnectionString;
                     break;
                 default:
                     break;
@@ -34,10 +34,10 @@ namespace webaftersales.AFTERSALESPROJ.dal
             switch (server)
             {
                 case "server1": 
-                    connectionstring1 = ConfigurationManager.ConnectionStrings["sqlcon1"].ConnectionString;
+                    connectionstring1 = ConfigurationManager.ConnectionStrings["sqlcon_server1_kmdidata"].ConnectionString;
                     break;
                 case "server2":
-                    connectionstring1 = ConfigurationManager.ConnectionStrings["sqlconB"].ConnectionString;
+                    connectionstring1 = ConfigurationManager.ConnectionStrings["sqlcon_server2_kmdidata"].ConnectionString;
                     break;
                 default:
                     break;
