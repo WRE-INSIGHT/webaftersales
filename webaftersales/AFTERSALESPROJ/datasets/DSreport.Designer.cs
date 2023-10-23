@@ -1862,6 +1862,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnMATERIAL_SURCHARGES;
             
+            private global::System.Data.DataColumn columnLABOR;
+            
+            private global::System.Data.DataColumn columnLABOR_REMARKS;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public QUOTATIONTBDataTable() {
@@ -2017,6 +2021,22 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LABORColumn {
+                get {
+                    return this.columnLABOR;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LABOR_REMARKSColumn {
+                get {
+                    return this.columnLABOR_REMARKS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2052,7 +2072,24 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public QUOTATIONTBRow AddQUOTATIONTBRow(string ASENO, string QDATE, string PARTICULAR, string OTHERCHARGES, string NETPRICE, string ACTUALPRICE, string TELNO, string PREPAREDBY, string APPROVEDBY, decimal MOBILIZATION, string FOC, string ACCEPTEDBY, string VAT_AMOUNT, decimal TRANSPORTATION, decimal MATERIAL_SURCHARGES) {
+            public QUOTATIONTBRow AddQUOTATIONTBRow(
+                        string ASENO, 
+                        string QDATE, 
+                        string PARTICULAR, 
+                        string OTHERCHARGES, 
+                        string NETPRICE, 
+                        string ACTUALPRICE, 
+                        string TELNO, 
+                        string PREPAREDBY, 
+                        string APPROVEDBY, 
+                        decimal MOBILIZATION, 
+                        string FOC, 
+                        string ACCEPTEDBY, 
+                        string VAT_AMOUNT, 
+                        decimal TRANSPORTATION, 
+                        decimal MATERIAL_SURCHARGES, 
+                        decimal LABOR, 
+                        string LABOR_REMARKS) {
                 QUOTATIONTBRow rowQUOTATIONTBRow = ((QUOTATIONTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ASENO,
@@ -2069,7 +2106,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         ACCEPTEDBY,
                         VAT_AMOUNT,
                         TRANSPORTATION,
-                        MATERIAL_SURCHARGES};
+                        MATERIAL_SURCHARGES,
+                        LABOR,
+                        LABOR_REMARKS};
                 rowQUOTATIONTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowQUOTATIONTBRow);
                 return rowQUOTATIONTBRow;
@@ -2107,6 +2146,8 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnVAT_AMOUNT = base.Columns["VAT_AMOUNT"];
                 this.columnTRANSPORTATION = base.Columns["TRANSPORTATION"];
                 this.columnMATERIAL_SURCHARGES = base.Columns["MATERIAL_SURCHARGES"];
+                this.columnLABOR = base.Columns["LABOR"];
+                this.columnLABOR_REMARKS = base.Columns["LABOR_REMARKS"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2142,6 +2183,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnTRANSPORTATION);
                 this.columnMATERIAL_SURCHARGES = new global::System.Data.DataColumn("MATERIAL_SURCHARGES", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMATERIAL_SURCHARGES);
+                this.columnLABOR = new global::System.Data.DataColumn("LABOR", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLABOR);
+                this.columnLABOR_REMARKS = new global::System.Data.DataColumn("LABOR_REMARKS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLABOR_REMARKS);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7054,6 +7099,38 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal LABOR {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableQUOTATIONTB.LABORColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LABOR\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.LABORColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string LABOR_REMARKS {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUOTATIONTB.LABOR_REMARKSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LABOR_REMARKS\' in table \'QUOTATIONTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUOTATIONTB.LABOR_REMARKSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsASENONull() {
                 return this.IsNull(this.tableQUOTATIONTB.ASENOColumn);
             }
@@ -7230,6 +7307,30 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMATERIAL_SURCHARGESNull() {
                 this[this.tableQUOTATIONTB.MATERIAL_SURCHARGESColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLABORNull() {
+                return this.IsNull(this.tableQUOTATIONTB.LABORColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLABORNull() {
+                this[this.tableQUOTATIONTB.LABORColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLABOR_REMARKSNull() {
+                return this.IsNull(this.tableQUOTATIONTB.LABOR_REMARKSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLABOR_REMARKSNull() {
+                this[this.tableQUOTATIONTB.LABOR_REMARKSColumn] = global::System.Convert.DBNull;
             }
         }
         

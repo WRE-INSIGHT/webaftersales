@@ -55,7 +55,7 @@ namespace webaftersales.AFTERSALESPROJ
 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    string str = "select ID,ASENO AS ASE#,NETPRICE ,QDATE AS [DATE],OTHERCHARGES,ACTUALPRICE,PARTICULAR,MOBILIZATION,TRANSPORTATION,MATERIAL_SURCHARGES,VAT_AMOUNT,FOC from quotationtb where aseno=@aseno";
+                    string str = "select ID,ASENO AS ASE#,NETPRICE ,QDATE AS [DATE],OTHERCHARGES,ACTUALPRICE,PARTICULAR,MOBILIZATION,TRANSPORTATION,MATERIAL_SURCHARGES,VAT_AMOUNT,FOC,LABOR,LABOR_REMARKS from quotationtb where aseno=@aseno";
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcon.Open();
@@ -315,6 +315,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lblactualprice")).Visible = false;
                 ((Label)row.FindControl("lblfoc")).Visible = false;
                 ((Label)row.FindControl("lblvatamount")).Visible = false;
+                ((Label)row.FindControl("lbllaborcost")).Visible = false;
+                ((Label)row.FindControl("lbllaborremarks")).Visible = false;
 
                 ((LinkButton)row.FindControl("equalbtn")).Visible = true;
                 ((LinkButton)row.FindControl("updatebtn")).Visible = true;
@@ -328,6 +330,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxactualprice")).Visible = true;
                 ((TextBox)row.FindControl("TBOXFOC")).Visible = true;
                 ((TextBox)row.FindControl("tboxvatamount")).Visible = true;
+                ((TextBox)row.FindControl("tboxlaborcost")).Visible = true;
+                ((TextBox)row.FindControl("tboxlaborremarks")).Visible = true;
                 ((DropDownList)row.FindControl("ddlmobi")).Visible = true;
 
 
@@ -348,6 +352,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lblactualprice")).Visible = true;
                 ((Label)row.FindControl("lblfoc")).Visible = true;
                 ((Label)row.FindControl("lblvatamount")).Visible = true;
+                ((Label)row.FindControl("lbllaborcost")).Visible = true;
+                ((Label)row.FindControl("lbllaborremarks")).Visible = true;
 
                 ((LinkButton)row.FindControl("equalbtn")).Visible = false;
                 ((LinkButton)row.FindControl("updatebtn")).Visible = false;
@@ -361,6 +367,8 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxactualprice")).Visible = false;
                 ((TextBox)row.FindControl("tboxfoc")).Visible = false;
                 ((TextBox)row.FindControl("tboxvatamount")).Visible = false;
+                ((TextBox)row.FindControl("tboxlaborcost")).Visible = false;
+                ((TextBox)row.FindControl("tboxlaborremarks")).Visible = false;
                 ((DropDownList)row.FindControl("ddlmobi")).Visible = false;
             }
             else if (e.CommandName == "equal")
@@ -369,14 +377,15 @@ namespace webaftersales.AFTERSALESPROJ
                 GridViewRow row = GridView3.Rows[rowindex];
                 if (((TextBox)row.FindControl("tboxnetprice")).Text != "" && ((TextBox)row.FindControl("tboxothercharges")).Text != "")
                 {
-                    double x, y, z, a, b,transpo,materials;
+                    double x, y, z, a, b,transpo,materials,labor;
                     x = double.Parse(((TextBox)row.FindControl("tboxnetprice")).Text);
                     y = double.Parse(((TextBox)row.FindControl("tboxothercharges")).Text);
                     a = double.Parse(((TextBox)row.FindControl("tboxmobilization")).Text);
                     transpo = double.Parse(((TextBox)row.FindControl("tboxTransportation")).Text);
                     materials = double.Parse(((TextBox)row.FindControl("tboxMaterial_surcharges")).Text);
+                    labor = double.Parse(((TextBox)row.FindControl("tboxlaborcost")).Text);
                     b = double.Parse(((TextBox)row.FindControl("tboxvatamount")).Text);
-                    z = x + y + a + b+ transpo+ materials;
+                    z = x + y + a + b+ transpo+ materials +labor;
                     ((TextBox)row.FindControl("tboxactualprice")).Text = z.ToString();
                 }
 
@@ -385,7 +394,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView3.Rows[rowindex];
-                string id, netprice, actualprice, particular, othercharges, mobilization,transpo,materials, foc, vatamount;
+                string id, netprice, actualprice, particular, othercharges, mobilization,transpo,materials, foc, vatamount,labor,labor_remarks;
                 id = ((Label)row.FindControl("lblid")).Text;
                 netprice = ((TextBox)row.FindControl("tboxnetprice")).Text;
                 actualprice = ((TextBox)row.FindControl("tboxactualprice")).Text;
@@ -395,20 +404,24 @@ namespace webaftersales.AFTERSALESPROJ
                 materials = ((TextBox)row.FindControl("tboxMaterial_surcharges")).Text;
                 othercharges = ((TextBox)row.FindControl("tboxothercharges")).Text;
                 foc = ((TextBox)row.FindControl("tboxfoc")).Text;
+                labor = ((TextBox)row.FindControl("tboxlaborcost")).Text;
+                labor_remarks = ((TextBox)row.FindControl("tboxlaborremarks")).Text;
                 vatamount = ((TextBox)row.FindControl("tboxvatamount")).Text;
                 if (othercharges == "")
                 {
                     othercharges = "0";
                 }
-                updatefunction(id, particular, othercharges, netprice, actualprice, mobilization, transpo, materials,  foc, vatamount);
+                updatefunction(id, particular, othercharges, netprice, actualprice, mobilization, transpo, materials,  foc, vatamount,labor,labor_remarks);
             }
         }
 
-        private void updatefunction(string id, string particular, string othercharges, string netprice, string actualprice, string mobilization,string transpo, string materials, string foc, string vatamount)
+        private void updatefunction(string id, string particular, string othercharges, string netprice, string actualprice, 
+            string mobilization,string transpo, string materials, string foc, string vatamount,string labor, string labor_remarks)
         {
             try
             {
-                string str = "update quotationtb set particular=@particular,othercharges=@othercharges,netprice=@netprice,actualprice=@actualprice,mobilization=@mobilization,transportation=@transpo,material_surcharges=@materials,foc=@foc,vat_amount=@vatamount where id = @id";
+                string str = "update quotationtb set particular=@particular,othercharges=@othercharges,netprice=@netprice,actualprice=@actualprice"+
+                    ",mobilization=@mobilization,transportation=@transpo,material_surcharges=@materials,foc=@foc,vat_amount=@vatamount,labor=@labor,labor_remarks=@labor_remarks where id = @id";
 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -425,6 +438,8 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@actualprice", actualprice);
                         sqlcmd.Parameters.AddWithValue("@foc", foc);
                         sqlcmd.Parameters.AddWithValue("@vatamount", vatamount);
+                        sqlcmd.Parameters.AddWithValue("@labor", labor);
+                        sqlcmd.Parameters.AddWithValue("@labor_remarks", labor_remarks);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
