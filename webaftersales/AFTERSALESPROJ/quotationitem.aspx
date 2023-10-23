@@ -77,7 +77,7 @@
                           <asp:TemplateField HeaderText="LABOR COST">
                             <ItemTemplate>
                                 <asp:Label ID="lbllaborcost" runat="server" Text='<%# Bind("[LABOR]") %>'></asp:Label>
-                                <asp:TextBox ID="tboxlaborcost" Visible="false" TextMode="Number" Text='<%# Eval("LABOR") %>' runat="server">0</asp:TextBox>
+                                <asp:TextBox ID="tboxlaborcost" Visible="false" TextMode="Number" Text='<%# Eval("LABOR") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="LABOR REMARKS">
