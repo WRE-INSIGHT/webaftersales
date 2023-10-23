@@ -1976,6 +1976,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox71</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=IIF(Sum(Fields!LABOR.Value, "DataSet2")&lt;=0,false,true)</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -2012,6 +2015,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox73</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=IIF(Sum(Fields!LABOR.Value, "DataSet2")&lt;=0,false,true)</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Style>None</Style>
