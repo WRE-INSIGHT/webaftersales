@@ -23,7 +23,15 @@
                     <span>Color</span>
                     <asp:DropDownList ID="ddlColor" CssClass="form-control" runat="server"></asp:DropDownList>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-3">
+                    <span>Status</span>
+                    <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server">
+                        <asp:ListItem Text="All (Exclude Pending)" Value="All" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Client Approved" Value="Approved"></asp:ListItem>
+                        <asp:ListItem Text="Pending Approval" Value="Pending Approval"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-sm-5">
                     <span>Project</span>
                     <div class="input-group">
                         <asp:TextBox ID="tboxProject" CssClass="form-control" runat="server"></asp:TextBox>

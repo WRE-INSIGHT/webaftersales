@@ -59,6 +59,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Project", tboxProject.Text);
                         sqlcmd.Parameters.AddWithValue("@Color", ddlColor.Text);
                         sqlcmd.Parameters.AddWithValue("@Date", tboxDate.Text);
+                        sqlcmd.Parameters.AddWithValue("@Refoiling_Status", ddlStatus.Text);
                         DataSet ds = new DataSet();
                         ds.Clear();
                         SqlDataAdapter da = new SqlDataAdapter();
@@ -89,6 +90,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Project", tboxProject.Text);
                         sqlcmd.Parameters.AddWithValue("@Color", ddlColor.Text);
                         sqlcmd.Parameters.AddWithValue("@Date", tboxDate.Text);
+                        sqlcmd.Parameters.AddWithValue("@Refoiling_Status", ddlStatus.Text);
                         DataSet ds = new DataSet();
                         ds.Clear();
                         SqlDataAdapter da = new SqlDataAdapter();
