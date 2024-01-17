@@ -255,7 +255,7 @@ namespace webaftersales.AFTERSALESPROJ
             err.IsValid = false;
             err.ErrorMessage = message;
             Page.Validators.Add(err);
-           
+
         }
 
 
@@ -515,6 +515,47 @@ namespace webaftersales.AFTERSALESPROJ
         {
             GridView1.PageIndex = e.NewPageIndex;
             getdata();
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                TableCell cell = e.Row.Cells[0];
+                string sid = ((Label)cell.FindControl("sidlbl")).Text;
+
+                if (countFoiling(sid)>0)
+                {
+                    ((Button)cell.FindControl("Button7")).BackColor = System.Drawing.Color.Green;
+                    ((Button)cell.FindControl("Button7")).ForeColor = System.Drawing.Color.White;
+                }
+            }
+        }
+        private int countFoiling(string sid)
+        {
+            int x = 0;
+            string query = "select isnull(count(id),0) from Refoiling_Id_Tbl where sid = @sid and lock = 0";
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(query, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@sid", sid);
+                        SqlDataReader rd = sqlcmd.ExecuteReader();
+                        while (rd.Read())
+                        {
+                            x = Convert.ToInt32(rd[0].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            return x;
         }
     }
 }
