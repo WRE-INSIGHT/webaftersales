@@ -50,7 +50,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-       
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
@@ -85,7 +85,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-       
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
@@ -162,7 +162,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 DataSet ds = new DataSet();
                 ds.Clear();
-       
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
@@ -267,21 +267,22 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "validate")
+            if (e.CommandName == "validateRequest")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView3.Rows[rowindex];
-                validaterequest(((Label)row.FindControl("pidlbl")).Text);
+                string id = ViewState["id"].ToString();
+                string pid = ((Label)row.FindControl("pidlbl")).Text;
+                validaterequest(pid,id );
             }
         }
-        private void validaterequest(string pid)
+        private void validaterequest(string pid, string id)
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    using (SqlCommand sqlcmd = new SqlCommand("UPDATE ACCTTB SET PID = '" + pid + "' where id = '" + ViewState["id"].ToString() + "'", sqlcon))
+                    using (SqlCommand sqlcmd = new SqlCommand("UPDATE ACCTTB SET PID = " + pid + " where id = " + id + "", sqlcon))
                     {
                         sqlcon.Open();
                         sqlcmd.ExecuteNonQuery();
