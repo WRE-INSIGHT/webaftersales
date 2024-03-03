@@ -111,7 +111,7 @@
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <div class="navbar-right">
-                                            <asp:LinkButton ID="validatebtn" CommandName="validate" CssClass="btn btn-success" OnClientClick="return confirm('continue validation?');"
+                                            <asp:LinkButton ID="validatebtn" CommandName="validateRequest" CssClass="btn btn-success" OnClientClick="return confirm('continue validation?');"
                                                 Visible='<%# Eval("A").ToString() == "1" ? true : false%>' runat="server"><span class="glyphicon glyphicon-check"></span>&nbsp;validate request</asp:LinkButton>
                                         </div>
                                     </ItemTemplate>
