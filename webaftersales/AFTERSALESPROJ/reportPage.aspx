@@ -133,6 +133,7 @@
                                                 <asp:ListItem>Fold-Slide Door</asp:ListItem>
                                                 <asp:ListItem>Lift-Slide Door</asp:ListItem>
                                                 <asp:ListItem>Louver</asp:ListItem>
+                                                <asp:ListItem>Other</asp:ListItem>
                                             </asp:DropDownList><br />
                                             Item Description
                                             <asp:TextBox ID="newtboxitemdescription" placeholder="description" CssClass="form-control" runat="server"></asp:TextBox><br />
@@ -194,6 +195,7 @@
                                     <asp:ListItem>Door</asp:ListItem>
                                     <asp:ListItem>Window</asp:ListItem>
                                     <asp:ListItem>Louver</asp:ListItem>
+                                    <asp:ListItem>Other</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dlistspecification" ValidationGroup="editval"
                                     ErrorMessage="specification is required" ForeColor="Red" InitialValue="-"></asp:RequiredFieldValidator><br />
