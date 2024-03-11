@@ -729,7 +729,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>2.78764in</Top>
         <Height>0.45834in</Height>
-        <Width>7.5in</Width>
+        <Width>7.49999in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -1398,7 +1398,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>PRICE VALIDITY:</Value>
+                    <Value>INCLUSION:</Value>
                     <Style>
                       <FontFamily>Calibri</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1431,7 +1431,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>30 DAYS FROM THIS DATE OF QUOTATION</Value>
+                    <Value>This warranty lasts for five (5) years from the date of  purchase of this product.</Value>
                     <Style>
                       <FontFamily>Calibri</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1448,140 +1448,6 @@
             <Height>0.13542in</Height>
             <Width>4.5625in</Width>
             <ZIndex>5</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox66">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>DELIVERY :</Value>
-                    <Style>
-                      <FontFamily>Calibri</FontFamily>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox66</rd:DefaultName>
-            <Top>1.50208in</Top>
-            <Height>0.13542in</Height>
-            <Width>2.15625in</Width>
-            <ZIndex>6</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox67">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Undefined Delivery and Installation lead time as a result of the transitioning from lockdown to the New Normal until the pandemic abates
-and efficiency reaches its full potential.</Value>
-                    <Style>
-                      <FontFamily>Calibri</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox67</rd:DefaultName>
-            <Top>1.65833in</Top>
-            <Left>0.44583in</Left>
-            <Height>0.3125in</Height>
-            <Width>7.02784in</Width>
-            <ZIndex>7</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox68">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>GENERAL NOTES:</Value>
-                    <Style>
-                      <FontFamily>Calibri</FontFamily>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox68</rd:DefaultName>
-            <Top>1.9875in</Top>
-            <Height>0.13542in</Height>
-            <Width>2.15625in</Width>
-            <ZIndex>8</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox69">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Freight/ Delivery Charges are to be on Owner's Account
-For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Installation Team shall be accounted to the Buyer.</Value>
-                    <Style>
-                      <FontFamily>Calibri</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox69</rd:DefaultName>
-            <Top>2.15417in</Top>
-            <Left>0.44716in</Left>
-            <Height>0.39583in</Height>
-            <Width>7.02784in</Width>
-            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1610,10 +1476,10 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>6.69925cm</Top>
+            <Top>3.8735cm</Top>
             <Height>0.17708in</Height>
             <Width>2.10398in</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1643,10 +1509,10 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox27</rd:DefaultName>
-            <Top>3.4757in</Top>
+            <Top>2.3632in</Top>
             <Height>0.17013in</Height>
             <Width>2.13223in</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1661,11 +1527,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
             <Source>External</Source>
             <Value>=Parameters!prepared.Value</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>2.81458in</Top>
+            <Top>1.70208in</Top>
             <Left>0.0212in</Left>
             <Height>0.64806in</Height>
             <Width>1.21875in</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1690,10 +1556,10 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox27</rd:DefaultName>
-            <Top>3.65138in</Top>
+            <Top>2.53888in</Top>
             <Height>0.17013in</Height>
             <Width>2.13223in</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1722,11 +1588,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>6.69925cm</Top>
+            <Top>3.8735cm</Top>
             <Left>2.69801in</Left>
             <Height>0.17708in</Height>
             <Width>2.10398in</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1756,11 +1622,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox27</rd:DefaultName>
-            <Top>3.4757in</Top>
+            <Top>2.3632in</Top>
             <Left>2.69801in</Left>
             <Height>0.17013in</Height>
             <Width>2.13223in</Width>
-            <ZIndex>15</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1775,11 +1641,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
             <Source>External</Source>
             <Value>=Parameters!reviewed.Value</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>2.81458in</Top>
+            <Top>1.70208in</Top>
             <Left>2.69801in</Left>
             <Height>0.64806in</Height>
             <Width>1.21875in</Width>
-            <ZIndex>16</ZIndex>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1804,11 +1670,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox27</rd:DefaultName>
-            <Top>3.65138in</Top>
+            <Top>2.53888in</Top>
             <Left>2.69801in</Left>
             <Height>0.17013in</Height>
             <Width>2.13223in</Width>
-            <ZIndex>17</ZIndex>
+            <ZIndex>13</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1837,11 +1703,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox25</rd:DefaultName>
-            <Top>6.70847cm</Top>
+            <Top>3.88272cm</Top>
             <Left>5.39602in</Left>
             <Height>0.17708in</Height>
             <Width>2.10398in</Width>
-            <ZIndex>18</ZIndex>
+            <ZIndex>14</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1871,11 +1737,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox27</rd:DefaultName>
-            <Top>3.48959in</Top>
+            <Top>2.37709in</Top>
             <Left>5.39602in</Left>
             <Height>0.17014in</Height>
             <Width>2.10398in</Width>
-            <ZIndex>19</ZIndex>
+            <ZIndex>15</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1890,11 +1756,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
             <Source>External</Source>
             <Value>=Parameters!noted.Value</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>2.8321in</Top>
+            <Top>1.7196in</Top>
             <Left>5.39602in</Left>
             <Height>0.64806in</Height>
             <Width>1.21875in</Width>
-            <ZIndex>20</ZIndex>
+            <ZIndex>16</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1919,11 +1785,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox27</rd:DefaultName>
-            <Top>3.66527in</Top>
+            <Top>2.55277in</Top>
             <Left>5.39602in</Left>
             <Height>0.17014in</Height>
             <Width>2.10398in</Width>
-            <ZIndex>21</ZIndex>
+            <ZIndex>17</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1952,11 +1818,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox30</rd:DefaultName>
-            <Top>3.95417in</Top>
+            <Top>2.84167in</Top>
             <Left>0.02261in</Left>
             <Height>0.17708in</Height>
             <Width>1in</Width>
-            <ZIndex>22</ZIndex>
+            <ZIndex>18</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1985,11 +1851,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox30</rd:DefaultName>
-            <Top>3.95417in</Top>
+            <Top>2.84167in</Top>
             <Left>3.97272in</Left>
             <Height>0.17708in</Height>
             <Width>1in</Width>
-            <ZIndex>23</ZIndex>
+            <ZIndex>19</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2001,10 +1867,10 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>4.29098in</Top>
+            <Top>3.17848in</Top>
             <Height>0in</Height>
             <Width>2.13364in</Width>
-            <ZIndex>24</ZIndex>
+            <ZIndex>20</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2013,11 +1879,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
             </Style>
           </Line>
           <Line Name="Line2">
-            <Top>4.29098in</Top>
+            <Top>3.17848in</Top>
             <Left>3.97413in</Left>
             <Height>0in</Height>
             <Width>2.13364in</Width>
-            <ZIndex>25</ZIndex>
+            <ZIndex>21</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2043,10 +1909,10 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox74</rd:DefaultName>
-            <Top>4.33264in</Top>
+            <Top>3.22014in</Top>
             <Height>0.13542in</Height>
             <Width>2.15625in</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2079,11 +1945,11 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox75</rd:DefaultName>
-            <Top>4.55348in</Top>
+            <Top>3.44098in</Top>
             <Left>0.00141in</Left>
             <Height>0.25in</Height>
             <Width>7.47359in</Width>
-            <ZIndex>27</ZIndex>
+            <ZIndex>23</ZIndex>
             <Style>
               <Border>
                 <Style>Double</Style>
@@ -2098,7 +1964,7 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>4.57514in</Top>
-        <Height>4.80348in</Height>
+        <Height>3.69098in</Height>
         <Width>7.5in</Width>
         <ZIndex>9</ZIndex>
         <Style>
@@ -2335,7 +2201,7 @@ For Out-of-town projects, corresponding Allowances, Board &amp; Lodging of Insta
         </Style>
       </Line>
     </ReportItems>
-    <Height>9.37862in</Height>
+    <Height>8.26612in</Height>
     <Style />
   </Body>
   <Width>7.5in</Width>
