@@ -243,7 +243,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             for (int i = 0; i <= GridView1.Rows.Count - 1; i++)
             {
-                if (userfullname == "Warren Mangaring" || userfullname == "Amanda Aquino " || userfullname == "Racquel Perez")
+                if (userfullname == "Warren Mangaring" || userfullname == "Amanda Aquino " || userfullname == "Racquel Perez" || userfullname == "Evelyn Coching")
                 {
                     GridViewRow row = GridView1.Rows[i];
                     ((LinkButton)row.FindControl("btnEdit")).Visible = true;
