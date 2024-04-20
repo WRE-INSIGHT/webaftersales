@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" CodeBehind="Refoilingreport.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.Refoilingreport" %>
 
-
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,13 +21,15 @@
             <asp:SessionParameter Name="REFOILING_ID" SessionField="refoilingqno" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="800px" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-        <LocalReport ReportPath="AFTERSALESPROJ\report\refoilingRPT.rdlc">
-            <DataSources>
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
-            </DataSources>
-        </LocalReport>
-    </rsweb:ReportViewer>
+    <div style="overflow-x: auto">
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" SizeToReportContent="true">
+            <LocalReport ReportPath="AFTERSALESPROJ\report\refoilingRPT.rdlc">
+                <DataSources>
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
+                </DataSources>
+            </LocalReport>
+        </rsweb:ReportViewer>
+    </div>
     <div class="well">
         <br />
 

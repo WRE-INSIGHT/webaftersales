@@ -80,10 +80,10 @@ namespace webaftersales.AFTERSALESPROJ
         private void Lod_Report()
         {
             DataTable dt = GetData();
-            ReportViewer1.Visible = true;
-            ReportViewer1.LocalReport.DataSources.Clear();
-            ReportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("DataSet1", dt));
-            ReportViewer1.LocalReport.Refresh();
+            rpt1.Visible = true;
+            rpt1.LocalReport.DataSources.Clear();
+            rpt1.LocalReport.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("DataSet1", dt));
+            rpt1.LocalReport.Refresh();
         }
     }
 }

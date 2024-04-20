@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace webaftersales.AFTERSALESPROJ {
-    
-    
-    public partial class callin_monitoringReport {
-        
+namespace webaftersales.AFTERSALESPROJ
+{
+
+
+    public partial class callin_monitoringReport
+    {
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -20,14 +22,14 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
-        /// ReportViewer1 control.
+        /// rpt1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer rpt1;
     }
 }
