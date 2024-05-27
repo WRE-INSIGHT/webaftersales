@@ -777,6 +777,13 @@
     <Compile Include="AFTERSALESPROJ\SignupPage.aspx.designer.cs">
       <DependentUpon>SignupPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\Stock_Used_Summary.aspx.cs">
+      <DependentUpon>Stock_Used_Summary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Stock_Used_Summary.aspx.designer.cs">
+      <DependentUpon>Stock_Used_Summary.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\teampage.aspx.cs">
       <DependentUpon>teampage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -947,6 +954,7 @@
     <Content Include="AFTERSALESPROJ\sidgalleryPage.aspx" />
     <Content Include="AFTERSALESPROJ\signaturePage.aspx" />
     <Content Include="AFTERSALESPROJ\SignupPage.aspx" />
+    <Content Include="AFTERSALESPROJ\Stock_Used_Summary.aspx" />
     <Content Include="AFTERSALESPROJ\teampage.aspx" />
     <Content Include="AFTERSALESPROJ\tripticketreport.aspx" />
     <Content Include="AFTERSALESPROJ\viewimage.aspx" />

@@ -28,6 +28,7 @@
             <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
                 <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both" OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
+
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton ID="editbtn" CommandName="myedit" runat="server">Edit</asp:LinkButton>
@@ -46,17 +47,41 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Assessment" ItemStyle-Wrap="true">
                             <ItemTemplate>
-                                <div style="white-space:normal; word-wrap: normal; min-width:300px;">
+                                <div style="white-space: normal; word-wrap: normal; min-width: 300px;">
                                     <asp:Label ID="assessmentlbl" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("ASSESSMENT").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                                 </div>
 
                                 <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Stock Used">
+                            <ItemTemplate>
+                                <asp:Label ID="lblStockUsed" runat="server"><%# Eval("Stock_Used").ToString() %></asp:Label>
+                                <asp:DropDownList ID="ddlStockUsedEdit" Visible="false" runat="server" Style="min-width: 150px"  CssClass="form-control" Text='<%# Bind("Stock_Used") %>'>
+                                     <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>Mesh with tube</asp:ListItem>
+                                    <asp:ListItem>Plisse Cord</asp:ListItem>
+                                    <asp:ListItem>Zigzag/Magnum Cord</asp:ListItem>
+                                    <asp:ListItem>Caterpillar</asp:ListItem>
+                                </asp:DropDownList>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Measurement">
+                            <ItemTemplate>
+                                <asp:Label ID="lblMeasurement" runat="server"><%# Eval("Measurement").ToString() %></asp:Label>
+                                <asp:TextBox ID="tboxMeasurementEdit" Visible="false" runat="server" Style="min-width: 150px" CssClass="form-control" Text='<%# Bind("Measurement") %>'></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Quantity">
+                            <ItemTemplate>
+                                <asp:Label ID="lblQuantity" runat="server"><%# Eval("Quantity").ToString() %></asp:Label>
+                                <asp:TextBox ID="tboxQuantityEdit" Visible="false" runat="server" Style="min-width: 150px" CssClass="form-control" Text='<%# Bind("Quantity") %>'></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Progress" ItemStyle-Wrap="true">
                             <ItemTemplate>
                                 <asp:Label ID="progresslbl" runat="server" Text='<%# Bind("PROGRESS") %>'></asp:Label>
-                                <asp:DropDownList ID="progressddl" Visible="false" runat="server" Text='<%# Eval("PROGRESS") %>' CssClass="form-control">
+                                <asp:DropDownList ID="progressddl" Visible="false" Style="min-width: 150px" runat="server" Text='<%# Eval("PROGRESS") %>' CssClass="form-control">
                                     <asp:ListItem>-</asp:ListItem>
                                     <asp:ListItem>in progress</asp:ListItem>
                                     <asp:ListItem>finished</asp:ListItem>
@@ -93,19 +118,51 @@
 
         </ContentTemplate>
     </asp:UpdatePanel>
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+            <div class="well">
+                <h3>New record</h3>
+                Description<br />
+                <asp:TextBox ID="newdescriptiontbox" CssClass="form-control" runat="server"></asp:TextBox><br />
+                Assessment<br />
+                <asp:TextBox ID="newassessmenttbox" TextMode="MultiLine" Rows="10" CssClass="form-control" runat="server"></asp:TextBox><br />
 
-    <div class="well">
-        <h3>New record</h3>
-        Description<br />
-        <asp:TextBox ID="newdescriptiontbox" CssClass="form-control" runat="server"></asp:TextBox><br />
-        Assessment<br />
-        <asp:TextBox ID="newassessmenttbox" TextMode="MultiLine" Rows="10" CssClass="form-control" runat="server"></asp:TextBox><br />
-        Progress<br />
-        <asp:DropDownList ID="newprogressddl" runat="server" CssClass="form-control">
-            <asp:ListItem>-</asp:ListItem>
-            <asp:ListItem>in progress</asp:ListItem>
-            <asp:ListItem>finished</asp:ListItem>
-        </asp:DropDownList><br />
-        <asp:Button ID="newbtn" CssClass="btn btn-primary" runat="server" Text="add" OnClick="newbtn_Click" />
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span>Stock Used</span>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="inputVal" ControlToValidate="ddlStockUse" ErrorMessage="Stock Used is required! Please select a stock used." ForeColor="Red">*</asp:RequiredFieldValidator><br />
+                        <asp:DropDownList ID="ddlStockUse" runat="server" CssClass="form-control">
+                            <asp:ListItem>Mesh with tube</asp:ListItem>
+                            <asp:ListItem>Plisse Cord</asp:ListItem>
+                            <asp:ListItem>Zigzag/Magnum Cord</asp:ListItem>
+                            <asp:ListItem>Caterpillar</asp:ListItem>
+                        </asp:DropDownList>
+                        <span>Quantity</span>
+                        <asp:TextBox ID="tboxQuantity" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-6">
+                        <span>Measurement</span>
+                        <asp:TextBox ID="tboxMeasurement" runat="server" CssClass="form-control"></asp:TextBox>
+                        <span>Progress</span>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="inputVal" ControlToValidate="newprogressddl" ErrorMessage="Progress is required! Please select a progress." ForeColor="Red">*</asp:RequiredFieldValidator><br />
+                        <asp:DropDownList ID="newprogressddl" runat="server" CssClass="form-control">
+                            <asp:ListItem>in progress</asp:ListItem>
+                            <asp:ListItem>finished</asp:ListItem>
+                        </asp:DropDownList><br />
+                    </div>
+                </div>
+                <br />
+
+
+
+                <asp:Button ID="newbtn" CssClass="btn btn-primary" runat="server" Text="add" ValidationGroup="inputVal" OnClick="newbtn_Click" />
+                <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="inputVal" CssClass="alert alert-danger" runat="server" />
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
     </div>
+
 </asp:Content>
