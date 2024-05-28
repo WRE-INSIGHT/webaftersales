@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/AFTERSALESPROJ/ASmasterpage.Master" AutoEventWireup="true" CodeBehind="reportviewPage.aspx.cs" Inherits="webaftersales.AFTERSALESPROJ.reportviewPage" %>
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,7 @@
         </div>
         <br />
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server"  SelectCommand="
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" SelectCommand="
                select kno,itemno,location,specification,reportid,[description],assessment,progress from tblassessment as a
 left join reporttb as b
 on a.reportid = b.id where (b.[SID] = @SID)">
@@ -49,19 +49,21 @@ on a.reportid = b.id where (b.[SID] = @SID)">
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <rsweb:ReportViewer CssClass="report" Width="100%" Height="800"
-                    ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" OnReportRefresh="ReportViewer1_ReportRefresh">
-                    <LocalReport ReportPath="AFTERSALESPROJ\report\RPTassessment.rdlc">
-                        <DataSources>
-                            <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet1" />
-                            <rsweb:ReportDataSource DataSourceId="SqlDataSource3" Name="DataSet2" />
-                        </DataSources>
-                    </LocalReport>
-                </rsweb:ReportViewer>
+                <div style="overflow-x: auto">
+                    <rsweb:ReportViewer
+                        ID="ReportViewer1" runat="server" SizeToReportContent="true" OnReportRefresh="ReportViewer1_ReportRefresh">
+                        <LocalReport ReportPath="AFTERSALESPROJ\report\RPTassessment.rdlc">
+                            <DataSources>
+                                <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet1" />
+                                <rsweb:ReportDataSource DataSourceId="SqlDataSource3" Name="DataSet2" />
+                            </DataSources>
+                        </LocalReport>
+                    </rsweb:ReportViewer>
+                </div>
             </ContentTemplate>
         </asp:UpdatePanel>
         <br />
-        <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
+        <asp:Panel ID="Panel1" runat="server">
             <div class="row">
                 <div class="col-sm-3">
                     <asp:LinkButton ID="LinkButton1" runat="server" Width="300" CssClass="btn btn-default" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;Inspected and Assessed by</asp:LinkButton>
@@ -69,7 +71,7 @@ on a.reportid = b.id where (b.[SID] = @SID)">
                 <div class="col-sm-3">
                     <asp:LinkButton ID="LinkButton2" runat="server" Width="300" CssClass="btn btn-default" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;Assessment Monitored by</asp:LinkButton>
                 </div>
-                     <div class="col-sm-3">
+                <div class="col-sm-3">
                     <asp:LinkButton ID="LinkButton4" runat="server" Width="300" CssClass="btn btn-default" OnClick="LinkButton4_Click"><span class="glyphicon glyphicon-pencil"></span> &nbsp;Accepted by</asp:LinkButton>
                 </div>
             </div>

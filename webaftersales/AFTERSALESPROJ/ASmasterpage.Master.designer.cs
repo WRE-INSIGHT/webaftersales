@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace webaftersales.AFTERSALESPROJ {
-    
-    
-    public partial class ASmasterpage {
-        
+namespace webaftersales.AFTERSALESPROJ
+{
+
+
+    public partial class ASmasterpage
+    {
+
         /// <summary>
         /// head control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// HyperLink2 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
-        
+
         /// <summary>
         /// HyperLink5 control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink5;
-        
+
         /// <summary>
         /// LinkButton2 control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
-        
+
         /// <summary>
         /// HyperLink7 control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink7;
-        
+
         /// <summary>
         /// LinkButton6 control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton6;
-        
+
         /// <summary>
         /// HyperLink8 control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink8;
-        
+
         /// <summary>
         /// HyperLink9 control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink9;
-        
+
         /// <summary>
         /// LinkButton8 control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton8;
-        
+
         /// <summary>
         /// HyperLink11 control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink11;
-        
+
         /// <summary>
         /// LinkButton4 control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
-        
+
         /// <summary>
         /// HyperLink4 control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
-        
+
         /// <summary>
         /// btnServicingMonitoring control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink btnServicingMonitoring;
-        
+
         /// <summary>
         /// HyperLink1 control.
         /// </summary>
@@ -146,7 +148,16 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
+
+        /// <summary>
+        /// HyperLink10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink10;
+
         /// <summary>
         /// LinkButton3 control.
         /// </summary>
@@ -155,7 +166,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
-        
+
         /// <summary>
         /// LinkButton7 control.
         /// </summary>
@@ -164,7 +175,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton7;
-        
+
         /// <summary>
         /// LinkButton5 control.
         /// </summary>
@@ -173,7 +184,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton5;
-        
+
         /// <summary>
         /// LinkButton9 control.
         /// </summary>
@@ -182,7 +193,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton9;
-        
+
         /// <summary>
         /// HyperLink3 control.
         /// </summary>
@@ -191,7 +202,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
-        
+
         /// <summary>
         /// username control.
         /// </summary>
@@ -200,7 +211,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label username;
-        
+
         /// <summary>
         /// HyperLink6 control.
         /// </summary>
@@ -209,7 +220,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink6;
-        
+
         /// <summary>
         /// LinkButton1 control.
         /// </summary>
@@ -218,7 +229,7 @@ namespace webaftersales.AFTERSALESPROJ {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-        
+
         /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>

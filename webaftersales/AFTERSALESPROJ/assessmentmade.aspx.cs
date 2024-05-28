@@ -123,12 +123,18 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("descriptionlbl")).Visible = false;
                 ((Label)row.FindControl("assessmentlbl")).Visible = false;
                 ((Label)row.FindControl("progresslbl")).Visible = false;
+                ((Label)row.FindControl("lblStockUsed")).Visible = false;
+                ((Label)row.FindControl("lblMeasurement")).Visible = false;
+                ((Label)row.FindControl("lblQuantity")).Visible = false;
 
                 ((LinkButton)row.FindControl("savebtn")).Visible = true;
                 ((LinkButton)row.FindControl("cancelbtn")).Visible = true;
                 ((TextBox)row.FindControl("descriptiontbox")).Visible = true;
                 ((TextBox)row.FindControl("assessmenttbox")).Visible = true;
                 ((DropDownList)row.FindControl("progressddl")).Visible = true;
+                ((TextBox)row.FindControl("tboxQuantityEdit")).Visible = true;
+                ((TextBox)row.FindControl("tboxMeasurementEdit")).Visible = true;
+                ((DropDownList)row.FindControl("ddlStockUsedEdit")).Visible = true;
 
             }
             if (e.CommandName == "mysave")
@@ -138,7 +144,10 @@ namespace webaftersales.AFTERSALESPROJ
                 updatefunction(((Label)row.FindControl("idlbl")).Text,
                         ((TextBox)row.FindControl("descriptiontbox")).Text,
                         ((TextBox)row.FindControl("assessmenttbox")).Text,
-                        ((DropDownList)row.FindControl("progressddl")).Text);
+                        ((DropDownList)row.FindControl("progressddl")).Text,
+                        ((DropDownList)row.FindControl("ddlStockUsedEdit")).Text,
+                        ((TextBox)row.FindControl("tboxMeasurementEdit")).Text,
+                        ((TextBox)row.FindControl("tboxQuantityEdit")).Text);
             }
             if (e.CommandName == "mydelete")
             {
@@ -157,21 +166,33 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("descriptionlbl")).Visible = true;
                 ((Label)row.FindControl("assessmentlbl")).Visible = true;
                 ((Label)row.FindControl("progresslbl")).Visible = true;
+                ((Label)row.FindControl("lblStockUsed")).Visible = true;
+                ((Label)row.FindControl("lblMeasurement")).Visible = true;
+                ((Label)row.FindControl("lblQuantity")).Visible = true;
 
                 ((LinkButton)row.FindControl("savebtn")).Visible = false;
                 ((LinkButton)row.FindControl("cancelbtn")).Visible = false;
                 ((TextBox)row.FindControl("descriptiontbox")).Visible = false;
                 ((TextBox)row.FindControl("assessmenttbox")).Visible = false;
                 ((DropDownList)row.FindControl("progressddl")).Visible = false;
+                ((TextBox)row.FindControl("tboxQuantityEdit")).Visible = false;
+                ((TextBox)row.FindControl("tboxMeasurementEdit")).Visible = false;
+                ((DropDownList)row.FindControl("ddlStockUsedEdit")).Visible = false;
             }
 
         }
-        private void updatefunction(string id, string description, string assessment, string progressddl)
+        private void updatefunction(string id, string description, string assessment, 
+                                    string progressddl, string stock_used, string measurement, string quantity)
         {
             try
             {
-                string str = "update [TBLassessment] set assessment=@assessment,description=@description,progress=@progress" +
-                    ",date_modified=date_modified+char(10)+@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt') WHERE ([ID] = @ID)";
+                string str = "update [TBLassessment] set assessment=@assessment," +
+                    "description=@description," +
+                    "progress=@progress," +
+                    "Stock_Used=@Stock_Used," +
+                    "Measurement=@Measurement," +
+                    "Quantity=@Quantity," +
+                    "date_modified=date_modified+char(10)+@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt') WHERE ([ID] = @ID)";
 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -184,6 +205,9 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@assessment", assessment);
                         sqlcmd.Parameters.AddWithValue("@progress", progressddl);
                         sqlcmd.Parameters.AddWithValue("@date_modified", date_modified);
+                        sqlcmd.Parameters.AddWithValue("@Stock_Used", stock_used);
+                        sqlcmd.Parameters.AddWithValue("@Measurement", measurement);
+                        sqlcmd.Parameters.AddWithValue("@Quantity", quantity);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -234,8 +258,16 @@ namespace webaftersales.AFTERSALESPROJ
             try
             {
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment)" +
-                             " insert into [TBLassessment] (id,reportid,assessment,description,progress,date_modified)" +
-                             " values(@id,@reportid,@assessment,@description,@progress,@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt'))";
+                             " insert into [TBLassessment] (id,reportid,assessment,description,progress,date_modified,stock_used,measurement,quantity)" +
+                             " values(@id," +
+                             "@reportid," +
+                             "@assessment," +
+                             "@description," +
+                             "@progress," +
+                             "@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt')," +
+                             "@Stock_Used," +
+                             "@Measurement," +
+                             "@Quantity)";
 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
@@ -248,6 +280,9 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@assessment", newassessmenttbox.Text);
                         sqlcmd.Parameters.AddWithValue("@progress", newprogressddl.Text);
                         sqlcmd.Parameters.AddWithValue("@date_modified", date_modified);
+                        sqlcmd.Parameters.AddWithValue("@Stock_Used", ddlStockUse.Text);
+                        sqlcmd.Parameters.AddWithValue("@Measurement", tboxMeasurement.Text);
+                        sqlcmd.Parameters.AddWithValue("@Quantity", tboxQuantity.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -271,7 +306,7 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                if (Session["useraccount"].ToString() =="Admin")
+                if (Session["useraccount"].ToString() == "Admin")
                 {
                     GridView1.Columns[4].Visible = true;
                 }
@@ -279,7 +314,7 @@ namespace webaftersales.AFTERSALESPROJ
                 {
                     GridView1.Columns[4].Visible = false;
                 }
-              
+
             }
         }
     }

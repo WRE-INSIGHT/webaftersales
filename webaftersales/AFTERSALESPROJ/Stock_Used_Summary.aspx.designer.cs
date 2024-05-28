@@ -11,25 +11,34 @@ namespace webaftersales.AFTERSALESPROJ
 {
 
 
-    public partial class callin_monitoringReport
+    public partial class Stock_Used_Summary
     {
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// ddlStockUsed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStockUsed;
 
         /// <summary>
-        /// rpt1 control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer rpt1;
+        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+
+        /// <summary>
+        /// gv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv;
     }
 }
