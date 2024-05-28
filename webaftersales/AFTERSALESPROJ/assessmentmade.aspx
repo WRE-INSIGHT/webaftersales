@@ -94,6 +94,9 @@
                                 <asp:Label ID="lblDate_Modified" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("DATE_MODIFIED").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField>
+
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                     <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />

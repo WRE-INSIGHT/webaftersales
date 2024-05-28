@@ -81,5 +81,11 @@ namespace webaftersales.AFTERSALESPROJ
         {
             getdata();
         }
+
+        protected void gv_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv.PageIndex = e.NewPageIndex;
+            getdata();
+        }
     }
 }

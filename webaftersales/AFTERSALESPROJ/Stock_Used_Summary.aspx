@@ -34,29 +34,29 @@
     </div>
     <div class="container">
         <div style="overflow-x: auto">
-            <asp:GridView ID="gv" runat="server" AutoGenerateColumns="false" CssClass="table" Width="100%" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Both">
-                <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
-                <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
-                <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
-                <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
-                <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
+            <asp:GridView ID="gv" runat="server" AutoGenerateColumns="False" Width="100%" CellPadding="3" AllowPaging="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" OnPageIndexChanging="gv_PageIndexChanging" PageSize="5">
+                <FooterStyle BackColor="White" ForeColor="#000066" />
+                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                <RowStyle ForeColor="#000066" />
+                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
                 <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                <SortedAscendingHeaderStyle BackColor="#594B9C" />
+                <SortedAscendingHeaderStyle BackColor="#007DBB" />
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                <SortedDescendingHeaderStyle BackColor="#33276A" />
+                <SortedDescendingHeaderStyle BackColor="#00547E" />
                 <Columns>
                     <asp:TemplateField HeaderText="PROJECT">
                         <ItemTemplate>
-                            <div style="min-width: 370px;">
+                            <div style="min-width: 300px;">
                                 <span style="font-size: small"><%# Eval("PROJECT").ToString() %></span><br />
-                                <span style="font-size: smaller"><%# Eval("ADDRESS").ToString() %></span><br />
-                                <span style="font-size: smaller" class="text-info"><%# Eval("JO").ToString() %></span>
+                                <span style="font-size: x-small"><%# Eval("ADDRESS").ToString() %></span><br />
+                                <span style="font-size: x-small" class="text-info"><%# Eval("JO").ToString() %></span>
                             </div>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ITEM_DESCRIPTION">
                         <ItemTemplate>
-                            <div>
+                            <div style="min-width: 250px">
                                 <span style="font-size: small"><%# Eval("LOCATION").ToString() %></span><br />
                                 <span style="font-size: smaller"><%# Eval("KNO").ToString() %></span> / 
                             <span style="font-size: smaller"><%# Eval("ITEMNO").ToString() %></span><br />
@@ -66,14 +66,35 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="STOCK USED">
                         <ItemTemplate>
-                            <div style="min-width: 370px;">
+                            <div style="min-width: 200px;">
                                 <span style="font-size: small"><%# Eval("STOCK_USED").ToString() %></span><br />
                                 <span style="font-size: smaller"><%# Eval("MEASUREMENT").ToString() %></span><br />
                                 <span style="font-size: smaller"><%# Eval("QUANTITY").ToString() %></span>
                             </div>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="DATE">
+                        <ItemTemplate>
+                            <div style="min-width: 100px;">
+                                <span style="font-size: small"><%# Eval("SDATE").ToString() %></span>
+                            </div>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="UPDATE LOG">
+                        <ItemTemplate>
+                            <div style="white-space: nowrap">
+                                <span style="font-size: small"><%# Server.HtmlDecode(Regex.Replace(Eval("DATE_MODIFIED").ToString(), "\r\n|\r|\n", "<br>")) %></span>
+                            </div>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
+                <PagerSettings PageButtonCount="8" Position="TopAndBottom" />
+                <PagerStyle CssClass="GridPager" HorizontalAlign="Left" ForeColor="Black" BackColor="White" />
+                <EmptyDataTemplate>
+                    <div class="">
+                        <h2><strong>This Table is empty</strong></h2>
+                    </div>
+                </EmptyDataTemplate>
             </asp:GridView>
         </div>
     </div>
