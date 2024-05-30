@@ -34,7 +34,7 @@
         <br />
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" SelectCommand="
-               select kno,itemno,location,specification,reportid,[description],assessment,progress from tblassessment as a
+               select kno,itemno,location,specification,reportid,[description],assessment,progress,Stock_Used,Measurement,Quantity = (case when Quantity = '' then '' else Quantity+'qty' end) from tblassessment as a
 left join reporttb as b
 on a.reportid = b.id where (b.[SID] = @SID)">
             <SelectParameters>

@@ -18,8 +18,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
 
                 if (!IsPostBack)
-                {
-                    
+                {   
                     SqlDataSource2.ConnectionString = sqlconstr;
                     SqlDataSource3.ConnectionString = sqlconstr;
                     ReportViewer1.LocalReport.Refresh();
