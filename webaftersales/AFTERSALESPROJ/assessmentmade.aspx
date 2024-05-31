@@ -57,8 +57,8 @@
                         <asp:TemplateField HeaderText="Stock Used">
                             <ItemTemplate>
                                 <asp:Label ID="lblStockUsed" runat="server"><%# Eval("Stock_Used").ToString() %></asp:Label>
-                                <asp:DropDownList ID="ddlStockUsedEdit" Visible="false" runat="server" Style="min-width: 150px"  CssClass="form-control" Text='<%# Bind("Stock_Used") %>'>
-                                     <asp:ListItem></asp:ListItem>
+                                <asp:DropDownList ID="ddlStockUsedEdit" Visible="false" runat="server" Style="min-width: 150px" CssClass="form-control" Text='<%# Bind("Stock_Used") %>'>
+                                    <asp:ListItem Text="" Value=""></asp:ListItem>
                                     <asp:ListItem>Mesh with tube</asp:ListItem>
                                     <asp:ListItem>Plisse Cord</asp:ListItem>
                                     <asp:ListItem>Zigzag/Magnum Cord</asp:ListItem>
@@ -94,9 +94,7 @@
                                 <asp:Label ID="lblDate_Modified" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("DATE_MODIFIED").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
-
-                        </asp:TemplateField>
+                        <asp:TemplateField></asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                     <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -137,6 +135,7 @@
                         <span>Stock Used</span>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="inputVal" ControlToValidate="ddlStockUse" ErrorMessage="Stock Used is required! Please select a stock used." ForeColor="Red">*</asp:RequiredFieldValidator><br />
                         <asp:DropDownList ID="ddlStockUse" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="" Value=""></asp:ListItem>
                             <asp:ListItem>Mesh with tube</asp:ListItem>
                             <asp:ListItem>Plisse Cord</asp:ListItem>
                             <asp:ListItem>Zigzag/Magnum Cord</asp:ListItem>
