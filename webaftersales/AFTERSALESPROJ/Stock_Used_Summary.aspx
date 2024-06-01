@@ -20,7 +20,6 @@
                     <div class="input-group">
                         <asp:DropDownList ID="ddlStockUsed" CssClass="form-control" runat="server">
                             <asp:ListItem></asp:ListItem>
-                            <asp:ListItem>Mesh with tube</asp:ListItem>
                             <asp:ListItem>Plisse Cord</asp:ListItem>
                             <asp:ListItem>Zigzag/Magnum Cord</asp:ListItem>
                             <asp:ListItem>Caterpillar</asp:ListItem>
