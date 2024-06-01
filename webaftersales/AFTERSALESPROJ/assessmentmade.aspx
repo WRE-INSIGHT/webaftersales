@@ -131,7 +131,6 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <span>Stock Used</span>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="inputVal" ControlToValidate="ddlStockUse" ErrorMessage="Stock Used is required! Please select a stock used." ForeColor="Red">*</asp:RequiredFieldValidator><br />
                         <asp:DropDownList ID="ddlStockUse" runat="server" CssClass="form-control">
                             <asp:ListItem Text="" Value=""></asp:ListItem>
                             <asp:ListItem>Plisse Cord</asp:ListItem>
