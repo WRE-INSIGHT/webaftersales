@@ -50,7 +50,6 @@
                                 <div style="white-space: normal; word-wrap: normal; min-width: 300px;">
                                     <asp:Label ID="assessmentlbl" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("ASSESSMENT").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                                 </div>
-
                                 <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -59,7 +58,6 @@
                                 <asp:Label ID="lblStockUsed" runat="server"><%# Eval("Stock_Used").ToString() %></asp:Label>
                                 <asp:DropDownList ID="ddlStockUsedEdit" Visible="false" runat="server" Style="min-width: 150px" CssClass="form-control" Text='<%# Bind("Stock_Used") %>'>
                                     <asp:ListItem Text="" Value=""></asp:ListItem>
-                                    <asp:ListItem>Mesh with tube</asp:ListItem>
                                     <asp:ListItem>Plisse Cord</asp:ListItem>
                                     <asp:ListItem>Zigzag/Magnum Cord</asp:ListItem>
                                     <asp:ListItem>Caterpillar</asp:ListItem>
@@ -136,7 +134,6 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="inputVal" ControlToValidate="ddlStockUse" ErrorMessage="Stock Used is required! Please select a stock used." ForeColor="Red">*</asp:RequiredFieldValidator><br />
                         <asp:DropDownList ID="ddlStockUse" runat="server" CssClass="form-control">
                             <asp:ListItem Text="" Value=""></asp:ListItem>
-                            <asp:ListItem>Mesh with tube</asp:ListItem>
                             <asp:ListItem>Plisse Cord</asp:ListItem>
                             <asp:ListItem>Zigzag/Magnum Cord</asp:ListItem>
                             <asp:ListItem>Caterpillar</asp:ListItem>
