@@ -672,7 +672,7 @@ Fields!Quantity.Value.ToString()</Value>
             <Image Name="Image3">
               <Source>Embedded</Source>
               <Value>kmdilogo</Value>
-              <Sizing>FitProportional</Sizing>
+              <Sizing>Fit</Sizing>
               <Left>0.60854cm</Left>
               <Height>0.76042in</Height>
               <Width>3.03125in</Width>
