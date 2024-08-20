@@ -284,7 +284,31 @@
                             <asp:TemplateField HeaderText="ARTICLE#" ItemStyle-Wrap="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblarticleno" runat="server" Text='<%# Bind("ARTICLE_NO") %>'></asp:Label>
-                                    <asp:TextBox ID="tboxarticlenoE" Width="200px" CssClass=" form-control" Visible="false" Text='<%# Bind("ARTICLE_NO") %>' runat="server"></asp:TextBox>
+                                    <asp:DropDownList ID="cboxarticlenoE" Width="200px" CssClass=" form-control" Visible="false" Text='<%# Bind("ARTICLE_NO") %>' runat="server">
+                                        <asp:ListItem Text="" Value=""></asp:ListItem>
+                                        <asp:ListItem Text="1240" Value="1240"></asp:ListItem>
+                                        <asp:ListItem Text="1240 GOLDEN OAK" Value="1240 GOLDEN OAK"></asp:ListItem>
+                                        <asp:ListItem Text="1385" Value="1385"></asp:ListItem>
+                                        <asp:ListItem Text="1460" Value="1460"></asp:ListItem>
+                                        <asp:ListItem Text="BRUSHED CHAMPAGNE" Value="BRUSHED CHAMPAGNE"></asp:ListItem>
+                                        <asp:ListItem Text="BRUSHED GUN METAL" Value="BRUSHED GUN METAL"></asp:ListItem>
+                                        <asp:ListItem Text="CACAO" Value="CACAO"></asp:ListItem>
+                                        <asp:ListItem Text="CARBON" Value="CARBON"></asp:ListItem>
+                                        <asp:ListItem Text="CHARCOAL GRAY" Value="CHARCOAL GRAY"></asp:ListItem>
+                                        <asp:ListItem Text="CHESTNUT OAK" Value="CHESTNUT OAK"></asp:ListItem>
+                                        <asp:ListItem Text="FOSSIL GRAY" Value="FOSSIL GRAY"></asp:ListItem>
+                                        <asp:ListItem Text="GOLDEN OAK" Value="GOLDEN OAK"></asp:ListItem>
+                                        <asp:ListItem Text="GRAPHITE" Value="GRAPHITE"></asp:ListItem>
+                                        <asp:ListItem Text="GREY OAK" Value="GREY OAK"></asp:ListItem>
+                                        <asp:ListItem Text="GREY SLATE" Value="GREY SLATE"></asp:ListItem>
+                                        <asp:ListItem Text="GUN METAL" Value="GUN METAL"></asp:ListItem>
+                                        <asp:ListItem Text="HAVANA" Value="HAVANA"></asp:ListItem>
+                                        <asp:ListItem Text="MAHOGANY" Value="MAHOGANY"></asp:ListItem>
+                                        <asp:ListItem Text="TITANUM GREY" Value="TITANUM GREY"></asp:ListItem>
+                                        <asp:ListItem Text="UMBER OAK" Value="UMBER OAK"></asp:ListItem>
+                                        <asp:ListItem Text="WALNUT" Value="WALNUT"></asp:ListItem>
+                                        <asp:ListItem Text="WASHED OAK" Value="WASHED OAK"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
                             </asp:TemplateField>

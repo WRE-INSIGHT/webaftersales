@@ -506,7 +506,7 @@ namespace webaftersales.AFTERSALESPROJ
             ((TextBox)row.FindControl("tboxlocationE")).Visible = b == true ? false : true;
             ((TextBox)row.FindControl("tboxpartsE")).Visible = b == true ? false : true;
             ((TextBox)row.FindControl("tboxdescriptionE")).Visible = b == true ? false : true;
-            ((TextBox)row.FindControl("tboxarticlenoE")).Visible = b == true ? false : true;
+            ((DropDownList)row.FindControl("cboxarticlenoE")).Visible = b == true ? false : true;
             ((TextBox)row.FindControl("tboxlengthE")).Visible = b == true ? false : true;
             ((TextBox)row.FindControl("tboxwidthinE")).Visible = b == true ? false : true;
             ((TextBox)row.FindControl("tboxwidthoutE")).Visible = b == true ? false : true;
@@ -531,7 +531,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Location", ((TextBox)row.FindControl("tboxlocationE")).Text);
                         sqlcmd.Parameters.AddWithValue("@Parts", ((TextBox)row.FindControl("tboxpartsE")).Text);
                         sqlcmd.Parameters.AddWithValue("@Item_Description", ((TextBox)row.FindControl("tboxdescriptionE")).Text);
-                        sqlcmd.Parameters.AddWithValue("@Article_No", ((TextBox)row.FindControl("tboxarticlenoE")).Text);
+                        sqlcmd.Parameters.AddWithValue("@Article_No", ((DropDownList)row.FindControl("cboxarticlenoE")).Text);
                         sqlcmd.Parameters.AddWithValue("@Profile_Length", ((TextBox)row.FindControl("tboxlengthE")).Text);
                         sqlcmd.Parameters.AddWithValue("@Profile_Width_In", ((TextBox)row.FindControl("tboxwidthinE")).Text);
                         sqlcmd.Parameters.AddWithValue("@Profile_Width_Out", ((TextBox)row.FindControl("tboxwidthoutE")).Text);
