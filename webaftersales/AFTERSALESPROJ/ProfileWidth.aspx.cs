@@ -173,26 +173,33 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-            GridViewRow row = GridView1.Rows[rowindex];
+          
             if (e.CommandName == "mydelete")
             {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
                 deletedata(((Label)row.FindControl("lblid")).Text);
             }
             else if (e.CommandName == "myedit")
             {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
                 controlVisibility(row, false);
                 ((Panel)row.FindControl("btnpanel2")).Visible = true;
                 ((Panel)row.FindControl("btnpanel1")).Visible = false;
             }
             else if (e.CommandName == "mycancel")
             {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
                 controlVisibility(row, true);
                 ((Panel)row.FindControl("btnpanel2")).Visible = false;
                 ((Panel)row.FindControl("btnpanel1")).Visible = true;
             }
             else if (e.CommandName == "mysave")
             {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
                 updatedata(row);
 
             }
