@@ -63,9 +63,9 @@ namespace webaftersales.AFTERSALESPROJ
         private void getparameters()
         {
             ReportViewer1.LocalReport.EnableExternalImages = true;
-            string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
-            string approved = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/APPROVEDBY.jpg")).AbsoluteUri;
-            string accepted = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/ACCEPTEDBY.jpg")).AbsoluteUri;
+            string prepared = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
+            string approved = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/APPROVEDBY.jpg")).AbsoluteUri;
+            string accepted = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/ACCEPTEDBY.jpg")).AbsoluteUri;
             ReportParameter[] repparam = new ReportParameter[5];
             repparam[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             repparam[1] = new ReportParameter("address", Session["ADDRESS"].ToString());

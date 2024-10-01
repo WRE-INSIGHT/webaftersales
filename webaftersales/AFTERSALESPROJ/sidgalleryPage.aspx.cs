@@ -11,7 +11,7 @@ namespace webaftersales.AFTERSALESPROJ
     public partial class sidgalleryPage : System.Web.UI.Page
     {
 
-        string filepath = "~/Uploads/ASuploads/";
+        string filepath = "~/KMDI_FILES/Aftersales/ASuploads/";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)

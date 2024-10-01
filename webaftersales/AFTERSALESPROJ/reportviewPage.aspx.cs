@@ -53,9 +53,9 @@ namespace webaftersales.AFTERSALESPROJ
         private void getparameters()
         {
             ReportViewer1.LocalReport.EnableExternalImages = true;
-            string imgparam = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/inspectedby.jpg")).AbsoluteUri;
-            string imgparam1 = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/monitoredby.jpg")).AbsoluteUri;
-            string imgparam2 = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/acceptedby.jpg")).AbsoluteUri;
+            string imgparam = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/inspectedby.jpg")).AbsoluteUri;
+            string imgparam1 = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/monitoredby.jpg")).AbsoluteUri;
+            string imgparam2 = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/acceptedby.jpg")).AbsoluteUri;
             ReportParameter[] repparam = new ReportParameter[6];
             repparam[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             repparam[1] = new ReportParameter("address", Session["ADDRESS"].ToString());

@@ -14,7 +14,7 @@ namespace webaftersales.AFTERSALESPROJ
 {
     public partial class pdfuploads : System.Web.UI.Page
     {
-        string filepath = "~/Uploads/ASuploads/PDFfiles/";
+        string filepath = "~/KMDI_FILES/Aftersales/ASuploads/PDFfiles/";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)

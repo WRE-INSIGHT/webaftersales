@@ -143,7 +143,7 @@
 
                                             <div class="row">
                                                 <div class="col-xs-4">
-                                                    <asp:Image ID="Image1" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/PREPAREDBY.jpg" %>' />
+                                                    <asp:Image ID="Image1" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/KMDI_FILES/Aftersales/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/PREPAREDBY.jpg" %>' />
                                                     <br />
                                                     <b>
                                                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("preparedby") %>'></asp:Label></b>
@@ -152,7 +152,7 @@
                                                     <span class="text-muted">Prepared by:</span>
                                                 </div>
                                                 <div class="col-xs-4">
-                                                    <asp:Image ID="Image3" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/REVIEWEDBY.jpg" %>' />
+                                                    <asp:Image ID="Image3" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/KMDI_FILES/Aftersales/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/REVIEWEDBY.jpg" %>' />
                                                     <br />
                                                     <b>
                                                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("reviewedby") %>'></asp:Label></b>
@@ -163,7 +163,7 @@
                                                 </div>
 
                                                 <div class="col-xs-4">
-                                                    <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/NOTEDBY.jpg" %>' />
+                                                    <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/KMDI_FILES/Aftersales/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/REFOILING/"+Eval("qno").ToString()+"/signature/NOTEDBY.jpg" %>' />
                                                     <br />
                                                     <b>
                                                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("notedby") %>'></asp:Label></b>

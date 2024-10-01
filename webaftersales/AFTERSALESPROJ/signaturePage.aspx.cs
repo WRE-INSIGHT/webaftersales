@@ -61,7 +61,7 @@ namespace webaftersales.AFTERSALESPROJ
                 //Session["dataurlsignature"] = Request.Form["myurl"];
                 //Session["inspectedby"] = tboxinspector.Text;
                 //Session["inspecteddate"] = tboxinspectordate.Text;
-                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
+                string filepath = "~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                 if (!IsExists)
                 {
@@ -94,7 +94,7 @@ namespace webaftersales.AFTERSALESPROJ
                 //Session["dataurlsignature1"] = Request.Form["myurl1"];
                 //Session["monitoredby"] = tboxmonitored.Text;
                 //Session["monitoreddate"] = tboxmonitoreddate.Text;
-                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
+                string filepath = "~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                 if (!IsExists)
                 {
@@ -115,7 +115,7 @@ namespace webaftersales.AFTERSALESPROJ
                 //Session["dataurlsignature1"] = Request.Form["myurl1"];
                 //Session["monitoredby"] = tboxmonitored.Text;
                 //Session["monitoreddate"] = tboxmonitoreddate.Text;
-                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
+                string filepath = "~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/signature/";
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                 if (!IsExists)
                 {

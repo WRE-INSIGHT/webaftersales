@@ -60,7 +60,7 @@ namespace webaftersales.AFTERSALESPROJ
         private void loadparameter()
         {
             ReportViewer1.LocalReport.EnableExternalImages = true;
-            string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/CL_PREPAREDBY.jpg")).AbsoluteUri;
+            string prepared = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/CL_PREPAREDBY.jpg")).AbsoluteUri;
             ReportParameter[] param = new ReportParameter[4];
             param[0] = new ReportParameter("prepared", prepared);
             param[1] = new ReportParameter("project", Session["PROJECT"].ToString());

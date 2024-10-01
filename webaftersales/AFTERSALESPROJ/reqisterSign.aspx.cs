@@ -42,7 +42,7 @@ namespace webaftersales.AFTERSALESPROJ
             if (IsValid)
             {
 
-                string filepath = "~/Uploads/ASuploads/UserSignature/" + Session["userid"].ToString() +"/";
+                string filepath = "~/KMDI_FILES/Aftersales/ASuploads/UserSignature/" + Session["userid"].ToString() +"/";
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                 if (!IsExists)
                 {

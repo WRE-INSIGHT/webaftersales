@@ -12,7 +12,7 @@ namespace webaftersales.AFTERSALESPROJ
     public partial class WebForm5 : System.Web.UI.Page
     {
         static string sid = "1000";
-        string filepath = "~/Uploads/ASuploads/SIDreport/" + sid + "/";
+        string filepath = "~/KMDI_FILES/Aftersales/ASuploads/SIDreport/" + sid + "/";
         protected void Page_Load(object sender, EventArgs e)
         {
 

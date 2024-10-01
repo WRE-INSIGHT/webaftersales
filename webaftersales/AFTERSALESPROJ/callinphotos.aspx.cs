@@ -10,7 +10,7 @@ namespace webaftersales.AFTERSALESPROJ
 {
     public partial class callinphotos : System.Web.UI.Page
     {
-        string filepath = "~/Uploads/ASuploads/CallinPhotos/";
+        string filepath = "~/KMDI_FILES/Aftersales/ASuploads/CallinPhotos/";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)

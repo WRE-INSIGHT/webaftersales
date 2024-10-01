@@ -19,7 +19,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 if (!IsPostBack)
                 {
-                    string filepath = "~/Uploads/ASuploads/UserSignature/" + Session["userid"].ToString() + "/";
+                    string filepath = "~/KMDI_FILES/Aftersales/ASuploads/UserSignature/" + Session["userid"].ToString() + "/";
                     Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                     if (!IsExists)
                     {
@@ -30,7 +30,6 @@ namespace webaftersales.AFTERSALESPROJ
                         FileInfo fileinfo = new FileInfo(strfilename);
                         Image1.ImageUrl = filepath + fileinfo.Name;
                     }
-
                 }
             }
             else

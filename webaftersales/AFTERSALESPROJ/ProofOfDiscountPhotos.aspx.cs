@@ -10,7 +10,7 @@ namespace webaftersales.AFTERSALESPROJ
 {
     public partial class ProofOfDiscountPhotos : System.Web.UI.Page
     {
-        string filepath = "~/Uploads/ProofOfPayment/";
+        string filepath = "~/KMDI_FILES/Aftersales/ProofOfPayment/";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] != null)

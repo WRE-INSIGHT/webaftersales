@@ -378,6 +378,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSreport.xsd</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\FileBL\File_Upload_BusinessLogic.cs" />
     <Compile Include="AFTERSALESPROJ\FRMassessment.aspx.cs">
       <DependentUpon>FRMassessment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -838,6 +839,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -39,7 +39,7 @@ namespace webaftersales.AFTERSALESPROJ
         }
         private void CheckPhotos()
         {
-            var path = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/photos/";
+            var path = "~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/photos/";
             Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(path));
             if (IsExists)
             {
@@ -492,7 +492,7 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 TableCell cell = e.Row.Cells[0];
                 string id = ((Label)cell.FindControl("lblid")).Text;
-                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + id + "/photos/";
+                string filepath = "~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + id + "/photos/";
 
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                 if (IsExists)

@@ -75,7 +75,7 @@ namespace webaftersales.AFTERSALESPROJ
             if (IsValid)
             {
 
-                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/";
+                string filepath = "~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/";
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                 if (!IsExists)
                 {
@@ -119,13 +119,13 @@ namespace webaftersales.AFTERSALESPROJ
             if (IsValid)
             {
 
-                string filepath = "~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/";
+                string filepath = "~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/" + Session["aseno"].ToString() + "/signature/";
                 Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
                 if (!IsExists)
                 {
                     System.IO.Directory.CreateDirectory(Server.MapPath(filepath));
                 }
-                string sourcepath = "~/Uploads/ASuploads/UserSignature/" + Session["userid"].ToString() + "/";
+                string sourcepath = "~/KMDI_FILES/Aftersales/ASuploads/UserSignature/" + Session["userid"].ToString() + "/";
                 Boolean IsExists1 = System.IO.Directory.Exists(Server.MapPath(sourcepath));
                 if (!IsExists1)
                 {

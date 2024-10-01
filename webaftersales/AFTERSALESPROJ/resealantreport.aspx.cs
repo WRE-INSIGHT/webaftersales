@@ -46,8 +46,8 @@ namespace webaftersales.AFTERSALESPROJ
 
 
             ReportViewer1.LocalReport.EnableExternalImages = true;
-            string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/RESEALANT/" + Session["re_sealantqno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
-            string noted = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/RESEALANT/" + Session["re_sealantqno"].ToString() + "/signature/NOTEDBY.jpg")).AbsoluteUri;
+            string prepared = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/RESEALANT/" + Session["re_sealantqno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
+            string noted = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/RESEALANT/" + Session["re_sealantqno"].ToString() + "/signature/NOTEDBY.jpg")).AbsoluteUri;
             ReportParameter[] param = new ReportParameter[6];
             param[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             param[1] = new ReportParameter("address", Session["ADDRESS"].ToString());

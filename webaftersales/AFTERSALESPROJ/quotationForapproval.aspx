@@ -130,13 +130,13 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-xs-6">
-                                                    <asp:Image ID="Image1" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/"+Eval("aseno").ToString()+"/signature/PREPAREDBY.jpg" %>' />
+                                                    <asp:Image ID="Image1" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/KMDI_FILES/Aftersales/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/"+Eval("aseno").ToString()+"/signature/PREPAREDBY.jpg" %>' />
                                                     <br />
                                                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("preparedby") %>'></asp:Label><br />
                                                     <span class="text-muted">Prepared by:</span>
                                                 </div>
                                                 <div class="col-xs-6">
-                                                    <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/Uploads/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/"+Eval("aseno").ToString()+"/signature/APPROVEDBY.jpg" %>' />
+                                                    <asp:Image ID="Image2" Width="120" Height="80" runat="server" AlternateText="no signature" ImageUrl='<%# "~/KMDI_FILES/Aftersales/ASuploads/"+Eval("cin").ToString()+"/"+Eval("sid").ToString()+"/"+Eval("aseno").ToString()+"/signature/APPROVEDBY.jpg" %>' />
                                                     <br />
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("approvedby") %>'></asp:Label><br />
                                                     <span class="text-muted">Approved by:</span>

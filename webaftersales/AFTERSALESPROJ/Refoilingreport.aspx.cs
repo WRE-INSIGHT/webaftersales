@@ -37,9 +37,9 @@ namespace webaftersales.AFTERSALESPROJ
         private void loadparameter()
         {
             ReportViewer1.LocalReport.EnableExternalImages = true;
-            string prepared = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
-            string noted = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/NOTEDBY.jpg")).AbsoluteUri;
-            string reviewed = new Uri(Server.MapPath("~/Uploads/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/REVIEWEDBY.jpg")).AbsoluteUri;
+            string prepared = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/PREPAREDBY.jpg")).AbsoluteUri;
+            string noted = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/NOTEDBY.jpg")).AbsoluteUri;
+            string reviewed = new Uri(Server.MapPath("~/KMDI_FILES/Aftersales/ASuploads/" + Session["CIN"].ToString() + "/" + Session["SID"].ToString() + "/REFOILING/" + Session["refoilingqno"].ToString() + "/signature/REVIEWEDBY.jpg")).AbsoluteUri;
             ReportParameter[] param = new ReportParameter[8];
             param[0] = new ReportParameter("project", Session["PROJECT"].ToString());
             param[1] = new ReportParameter("address", Session["ADDRESS"].ToString());
