@@ -308,6 +308,8 @@
                                         <asp:ListItem Text="UMBER OAK" Value="UMBER OAK"></asp:ListItem>
                                         <asp:ListItem Text="WALNUT" Value="WALNUT"></asp:ListItem>
                                         <asp:ListItem Text="WASHED OAK" Value="WASHED OAK"></asp:ListItem>
+                                        <asp:ListItem Text="WHEAT" Value="WHEAT"></asp:ListItem>
+                                        <asp:ListItem Text="DRIFTWOOD" Value="DRIFTWOOD"></asp:ListItem>
                                     </asp:DropDownList>
                                 </ItemTemplate>
                                 <ItemStyle Wrap="False" />
