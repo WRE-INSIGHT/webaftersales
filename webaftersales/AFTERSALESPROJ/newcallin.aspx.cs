@@ -138,6 +138,7 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@FAXNO", faxno.Text);
                         sqlcmd.Parameters.AddWithValue("@CONCERN", concern);
                         sqlcmd.Parameters.AddWithValue("@CONVERSATION", conversation.Text);
+                        sqlcmd.Parameters.AddWithValue("@UserFullname", Session["userfullname"].ToString());
                         sqlcmd.ExecuteNonQuery();
                         CustomValidator err = new CustomValidator();
                         err.ValidationGroup = "val1";
