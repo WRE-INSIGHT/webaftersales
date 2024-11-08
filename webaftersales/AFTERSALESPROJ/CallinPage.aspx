@@ -171,7 +171,7 @@
                                                 <tr>
                                                     <td>
                                                         <asp:Label ID="jolbl" Font-Size="Small" runat="server" Text='<%# Eval("JO") %>'></asp:Label>
-                                                          <asp:Label ID="parentjolbl" Visible="false" Font-Size="Small" runat="server" Text='<%# Eval("PARENT_JO") %>'></asp:Label>
+                                                        <asp:Label ID="parentjolbl" Visible="false" Font-Size="Small" runat="server" Text='<%# Eval("PARENT_JO") %>'></asp:Label>
                                                     </td>
                                                     <td>
                                                         <asp:Label ID="Label10" Font-Size="Small" runat="server" Text='<%# Bind("JODATE") %>'></asp:Label>
@@ -329,6 +329,12 @@
                                         </div>
                                     </div>
 
+                                </div>
+                                <div class="panel-footer" style="font-size:small">
+                                    <span><%# Eval("Inputted_By") %></span>
+                                    <span class="pull-right">
+                                        <span><%# Eval("Inputted_Date") %></span>
+                                    </span>
                                 </div>
                             </div>
                         </ItemTemplate>
