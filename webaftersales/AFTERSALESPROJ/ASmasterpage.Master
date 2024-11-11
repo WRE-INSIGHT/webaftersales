@@ -86,6 +86,8 @@
                                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/AFTERSALESPROJ/RefoilingColorSummary.aspx">Refoiling Quotation Summary</asp:HyperLink></li>
                                      <li>
                                     <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/AFTERSALESPROJ/Stock_Used_Summary.aspx">Stock Used Summary</asp:HyperLink></li>
+                                   <li>
+                                    <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/AFTERSALESPROJ/Servicing_Report_Summary.aspx">Servicing Report Summary</asp:HyperLink></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">

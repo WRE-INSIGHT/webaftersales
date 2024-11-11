@@ -721,6 +721,12 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnSERVICING;
+            
+            private global::System.Data.DataColumn columnSDATE;
+            
+            private global::System.Data.DataColumn columnSID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public REPORTTBDataTable() {
@@ -844,6 +850,30 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SERVICINGColumn {
+                get {
+                    return this.columnSERVICING;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SDATEColumn {
+                get {
+                    return this.columnSDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SIDColumn {
+                get {
+                    return this.columnSID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -879,7 +909,7 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public REPORTTBRow AddREPORTTBRow(string kno, string itemno, string location, string specification, string reportid, string description, string assessment, string progress, string Stock_Used, string Measurement, string Quantity) {
+            public REPORTTBRow AddREPORTTBRow(string kno, string itemno, string location, string specification, string reportid, string description, string assessment, string progress, string Stock_Used, string Measurement, string Quantity, string SERVICING, string SDATE, string SID) {
                 REPORTTBRow rowREPORTTBRow = ((REPORTTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         kno,
@@ -892,7 +922,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         progress,
                         Stock_Used,
                         Measurement,
-                        Quantity};
+                        Quantity,
+                        SERVICING,
+                        SDATE,
+                        SID};
                 rowREPORTTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowREPORTTBRow);
                 return rowREPORTTBRow;
@@ -926,6 +959,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnStock_Used = base.Columns["Stock_Used"];
                 this.columnMeasurement = base.Columns["Measurement"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnSERVICING = base.Columns["SERVICING"];
+                this.columnSDATE = base.Columns["SDATE"];
+                this.columnSID = base.Columns["SID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -953,6 +989,12 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnMeasurement);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnSERVICING = new global::System.Data.DataColumn("SERVICING", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSERVICING);
+                this.columnSDATE = new global::System.Data.DataColumn("SDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSDATE);
+                this.columnSID = new global::System.Data.DataColumn("SID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSID);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6164,6 +6206,54 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SERVICING {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.SERVICINGColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SERVICING\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.SERVICINGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.SDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SDATE\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.SDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SID {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.SIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SID\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.SIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsknoNull() {
                 return this.IsNull(this.tableREPORTTB.knoColumn);
             }
@@ -6292,6 +6382,42 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableREPORTTB.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSERVICINGNull() {
+                return this.IsNull(this.tableREPORTTB.SERVICINGColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSERVICINGNull() {
+                this[this.tableREPORTTB.SERVICINGColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSDATENull() {
+                return this.IsNull(this.tableREPORTTB.SDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSDATENull() {
+                this[this.tableREPORTTB.SDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSIDNull() {
+                return this.IsNull(this.tableREPORTTB.SIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSIDNull() {
+                this[this.tableREPORTTB.SIDColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -749,6 +749,20 @@
     <Compile Include="AFTERSALESPROJ\servicing_monitoring_report.aspx.designer.cs">
       <DependentUpon>servicing_monitoring_report.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AFTERSALESPROJ\Servicing_Report_Summary.aspx.cs">
+      <DependentUpon>Servicing_Report_Summary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Servicing_Report_Summary.aspx.designer.cs">
+      <DependentUpon>Servicing_Report_Summary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Servicing_Report_SummaryRPT.aspx.cs">
+      <DependentUpon>Servicing_Report_SummaryRPT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AFTERSALESPROJ\Servicing_Report_SummaryRPT.aspx.designer.cs">
+      <DependentUpon>Servicing_Report_SummaryRPT.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AFTERSALESPROJ\Sessionexpired.aspx.cs">
       <DependentUpon>Sessionexpired.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -950,6 +964,8 @@
     <Content Include="AFTERSALESPROJ\ServicingschedulePage.aspx" />
     <Content Include="AFTERSALESPROJ\servicing_monitoring.aspx" />
     <Content Include="AFTERSALESPROJ\servicing_monitoring_report.aspx" />
+    <Content Include="AFTERSALESPROJ\Servicing_Report_Summary.aspx" />
+    <Content Include="AFTERSALESPROJ\Servicing_Report_SummaryRPT.aspx" />
     <Content Include="AFTERSALESPROJ\Sessionexpired.aspx" />
     <Content Include="AFTERSALESPROJ\sidgalleryPage.aspx" />
     <Content Include="AFTERSALESPROJ\signaturePage.aspx" />
@@ -1066,6 +1082,7 @@
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTassessment.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotation.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\RPTquotationclient.rdlc" />
+    <EmbeddedResource Include="AFTERSALESPROJ\report\ServicingReportSummaryRPT.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\servicing_monitoring_rpt.rdlc" />
     <EmbeddedResource Include="AFTERSALESPROJ\report\tripticketRPT.rdlc" />
   </ItemGroup>

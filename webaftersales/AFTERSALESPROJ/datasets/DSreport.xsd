@@ -26,6 +26,9 @@
               <xs:element name="Stock_Used" msprop:Generator_ColumnVarNameInTable="columnStock_Used" msprop:Generator_ColumnPropNameInRow="Stock_Used" msprop:Generator_ColumnPropNameInTable="Stock_UsedColumn" msprop:Generator_UserColumnName="Stock_Used" type="xs:string" minOccurs="0" />
               <xs:element name="Measurement" msprop:Generator_ColumnVarNameInTable="columnMeasurement" msprop:Generator_ColumnPropNameInRow="Measurement" msprop:Generator_ColumnPropNameInTable="MeasurementColumn" msprop:Generator_UserColumnName="Measurement" type="xs:string" minOccurs="0" />
               <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:string" minOccurs="0" />
+              <xs:element name="SERVICING" msprop:Generator_ColumnVarNameInTable="columnSERVICING" msprop:Generator_ColumnPropNameInRow="SERVICING" msprop:Generator_ColumnPropNameInTable="SERVICINGColumn" msprop:Generator_UserColumnName="SERVICING" type="xs:string" minOccurs="0" />
+              <xs:element name="SDATE" msprop:Generator_ColumnVarNameInTable="columnSDATE" msprop:Generator_ColumnPropNameInRow="SDATE" msprop:Generator_ColumnPropNameInTable="SDATEColumn" msprop:Generator_UserColumnName="SDATE" type="xs:string" minOccurs="0" />
+              <xs:element name="SID" msprop:Generator_ColumnVarNameInTable="columnSID" msprop:Generator_ColumnPropNameInRow="SID" msprop:Generator_ColumnPropNameInTable="SIDColumn" msprop:Generator_UserColumnName="SID" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
