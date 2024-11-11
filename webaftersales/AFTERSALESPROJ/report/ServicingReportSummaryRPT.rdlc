@@ -387,11 +387,11 @@ Fields!Quantity.Value.ToString()</Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Inspected By:&lt;/i&gt; "+Fields!INSPECTEDBY.Value+
+                              <Value>="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Inspected By:&lt;/i&gt; "+Fields!INSPECTEDBY.Value + "&amp;nbsp;" + Fields!INSDATE.Value +
 "&lt;br/&gt;" + 
-"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Monitored By:&lt;/i&gt; "+Fields!MONITOREDBY.Value +
+"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Monitored By:&lt;/i&gt; "+Fields!MONITOREDBY.Value + "&amp;nbsp;" + Fields!MONDATE.Value +
 "&lt;br/&gt;" + 
-"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Accepted By:&lt;/i&gt; "+Fields!ACCEPTEDBY.Value</Value>
+"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;Accepted By:&lt;/i&gt; "+Fields!ACCEPTEDBY.Value + "&amp;nbsp;" + Fields!ACCEPTEDBYDATE.Value</Value>
                               <MarkupType>HTML</MarkupType>
                               <Style />
                             </TextRun>
