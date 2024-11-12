@@ -157,6 +157,48 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
+              <Height>0.635cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=First(Fields!CIN.Value, "DataSet1")+" - "+First(Fields!CDATE.Value, "DataSet1")</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>4</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
               <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
@@ -432,6 +474,9 @@ Fields!Quantity.Value.ToString()</Value>
           <TablixMembers>
             <TablixMember />
             <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
               <Group Name="SID">
                 <GroupExpressions>
                   <GroupExpression>=Fields!SID.Value</GroupExpression>
@@ -477,7 +522,7 @@ Fields!Quantity.Value.ToString()</Value>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.3302cm</Top>
         <Left>0.30428cm</Left>
-        <Height>3.035cm</Height>
+        <Height>3.67cm</Height>
         <Width>10.26041in</Width>
         <Style>
           <Border>
@@ -486,7 +531,7 @@ Fields!Quantity.Value.ToString()</Value>
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.32488in</Height>
+    <Height>1.57488in</Height>
     <Style />
   </Body>
   <Width>10.5in</Width>
@@ -847,6 +892,14 @@ Fields!Quantity.Value.ToString()</Value>
         </Field>
         <Field Name="ACCEPTEDBYDATE">
           <DataField>ACCEPTEDBYDATE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CIN">
+          <DataField>CIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CDATE">
+          <DataField>CDATE</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
