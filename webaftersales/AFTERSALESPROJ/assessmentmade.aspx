@@ -151,6 +151,19 @@
                         </asp:DropDownList><br />
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <asp:CheckBox runat="server" ID="cboxBreakage" Text="Breakage" />
+                    </div>
+                    <div class="col-sm-6">
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <asp:CheckBox runat="server" ID="cboxTyphoon" Text="Typhoon" AutoPostBack="true" OnCheckedChanged="cboxTyphoon_CheckedChanged" />
+                                <asp:TextBox runat="server" ID="tboxStormName" AutoPostBack="true" Visible="false" CssClass="form-control" placeholder="enter typhoon name"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
                 <br />
 
 

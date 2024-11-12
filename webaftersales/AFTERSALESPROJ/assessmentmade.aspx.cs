@@ -181,7 +181,7 @@ namespace webaftersales.AFTERSALESPROJ
             }
 
         }
-        private void updatefunction(string id, string description, string assessment, 
+        private void updatefunction(string id, string description, string assessment,
                                     string progressddl, string stock_used, string measurement, string quantity)
         {
             try
@@ -315,6 +315,18 @@ namespace webaftersales.AFTERSALESPROJ
                     GridView1.Columns[4].Visible = false;
                 }
 
+            }
+        }
+
+        protected void cboxTyphoon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cboxTyphoon.Checked)
+            {
+                tboxStormName.Visible = true;
+            }
+            else
+            {
+                tboxStormName.Visible = false;
             }
         }
     }
