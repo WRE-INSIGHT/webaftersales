@@ -159,7 +159,7 @@
                         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                             <ContentTemplate>
                                 <asp:CheckBox runat="server" ID="cboxTyphoon" Text="Typhoon" AutoPostBack="true" OnCheckedChanged="cboxTyphoon_CheckedChanged" />
-                                <asp:TextBox runat="server" ID="tboxStormName" AutoPostBack="true" Visible="false" CssClass="form-control" placeholder="enter typhoon name"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="tboxTyphoonName" AutoPostBack="true" Visible="false" CssClass="form-control" placeholder="enter typhoon name"></asp:TextBox>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>

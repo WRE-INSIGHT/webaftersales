@@ -255,26 +255,40 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void newbtn_Click(object sender, EventArgs e)
         {
-            try
+            if (cboxTyphoon.Checked)
             {
-                string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment)" +
-                             " insert into [TBLassessment] (id,reportid,assessment,description,progress,date_modified,stock_used,measurement,quantity)" +
-                             " values(@id," +
-                             "@reportid," +
-                             "@assessment," +
-                             "@description," +
-                             "@progress," +
-                             "@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt')," +
-                             "@Stock_Used," +
-                             "@Measurement," +
-                             "@Quantity)";
-
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                if (tboxTyphoonName.Text == "")
                 {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    CustomValidator err = new CustomValidator();
+                    err.ValidationGroup = "inputVal";
+                    err.IsValid = false;
+                    err.ErrorMessage = "Please fill the typhoon name.";
+                    Page.Validators.Add(err);
+                }
+                else
+                {
+                    InsertQuery();
+                }
+            }
+            else
+            {
+                InsertQuery();
+            }
+
+        }
+        private void InsertQuery()
+        {
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+            {
+                using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                {
+                    sqlcon.Open();
+                    try
                     {
-                        sqlcon.Open();
                         string date_modified = "inputted by " + fullname + " ";
+                        sqlcmd.CommandText = "TBLassessment_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Insert");
                         sqlcmd.Parameters.AddWithValue("@reportid", reportid);
                         sqlcmd.Parameters.AddWithValue("@description", newdescriptiontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@assessment", newassessmenttbox.Text);
@@ -285,18 +299,57 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Quantity", tboxQuantity.Text);
                         sqlcmd.ExecuteNonQuery();
                     }
+                    catch (Exception ex)
+                    {
+                        errorrmessage(ex.Message.ToString());
+                    }
+                    finally
+                    {
+                        getdata();
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                errorrmessage(ex.Message.ToString());
-            }
-            finally
-            {
-                getdata();
-            }
-        }
+            //try
+            //{
+            //    string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment)" +
+            //                 " insert into [TBLassessment] (id,reportid,assessment,description,progress,date_modified,stock_used,measurement,quantity)" +
+            //                 " values(@id," +
+            //                 "@reportid," +
+            //                 "@assessment," +
+            //                 "@description," +
+            //                 "@progress," +
+            //                 "@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt')," +
+            //                 "@Stock_Used," +
+            //                 "@Measurement," +
+            //                 "@Quantity)";
 
+            //    using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+            //    {
+            //        using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+            //        {
+            //            sqlcon.Open();
+            //            string date_modified = "inputted by " + fullname + " ";
+            //            sqlcmd.Parameters.AddWithValue("@reportid", reportid);
+            //            sqlcmd.Parameters.AddWithValue("@description", newdescriptiontbox.Text);
+            //            sqlcmd.Parameters.AddWithValue("@assessment", newassessmenttbox.Text);
+            //            sqlcmd.Parameters.AddWithValue("@progress", newprogressddl.Text);
+            //            sqlcmd.Parameters.AddWithValue("@date_modified", date_modified);
+            //            sqlcmd.Parameters.AddWithValue("@Stock_Used", ddlStockUse.Text);
+            //            sqlcmd.Parameters.AddWithValue("@Measurement", tboxMeasurement.Text);
+            //            sqlcmd.Parameters.AddWithValue("@Quantity", tboxQuantity.Text);
+            //            sqlcmd.ExecuteNonQuery();
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    errorrmessage(ex.Message.ToString());
+            //}
+            //finally
+            //{
+            //    getdata();
+            //}
+        }
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
 
@@ -322,11 +375,11 @@ namespace webaftersales.AFTERSALESPROJ
         {
             if (cboxTyphoon.Checked)
             {
-                tboxStormName.Visible = true;
+                tboxTyphoonName.Visible = true;
             }
             else
             {
-                tboxStormName.Visible = false;
+                tboxTyphoonName.Visible = false;
             }
         }
     }
