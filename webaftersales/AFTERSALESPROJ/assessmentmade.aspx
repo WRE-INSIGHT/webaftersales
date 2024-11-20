@@ -37,6 +37,26 @@
                                 <asp:LinkButton ID="cancelbtn" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="BREAKAGE">
+                            <ItemTemplate>
+                                <asp:CheckBox Text="Breakage" Visible="false" runat="server" ID="cboxBreakageEdit" Checked='<%# Eval("Breakage")  %>' /><br />
+                                <asp:Label runat="server" ID="lblBreakage" class='<%# Eval("Breakage").ToString() == "True" ? "glyphicon glyphicon-ok" : "" %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="TYPHOON">
+                            <ItemTemplate>
+                                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                    <ContentTemplate>
+                                        <div style="min-width: 150px;">
+                                            <asp:CheckBox Text="Typhoon" runat="server" AutoPostBack="true" OnCheckedChanged="cboxTyphoonEdit_CheckedChanged" ID="cboxTyphoonEdit" Visible="false" Checked='<%# Eval("Typhoon") %>' /><br />
+                                            <asp:Label runat="server" ID="lblTyphoon" class='<%# Eval("Typhoon").ToString() == "True" ? "glyphicon glyphicon-ok" : "" %>'></asp:Label>
+                                            <asp:Label runat="server" ID="lblTyphoonName" Visible="true" Text='<%# Bind("Typhoon_Name") %>'></asp:Label>
+                                            <asp:TextBox ID="tboxTyphoon_NameEdit" Visible="false" Text='<%# Eval("Typhoon_Name") %>' runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Description">
                             <ItemTemplate>
                                 <asp:Label ID="idlbl" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
@@ -86,6 +106,7 @@
                                 </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
+
                         <asp:TemplateField HeaderText="DATE MODIFIED">
                             <ItemTemplate>
                                 <div style="white-space: normal; text-wrap: normal"></div>

@@ -334,7 +334,14 @@ and Fields!specification.Value &lt;&gt;""
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!assessment.Value</Value>
+                              <Value>=Fields!assessment.Value+
+iif(Fields!Breakage.Value.ToString()="True" or Fields!Typhoon.Value.ToString()="True",
+"&lt;br /&gt;Reason(s)&lt;br /&gt;"+
+iif(Fields!Breakage.Value.ToString()="False","","&lt;span style='font-family: Wingdings;'&gt;&amp;#252;&lt;/span&gt; Breakage")+
+"&lt;br /&gt;"+
+iif(Fields!Typhoon.Value.ToString()="False","","&lt;span style='font-family: Wingdings;'&gt;&amp;#252;&lt;/span&gt; Typhoon (" + Fields!Typhoon_Name.Value + ")"),
+"")</Value>
+                              <MarkupType>HTML</MarkupType>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -900,6 +907,18 @@ Fields!Quantity.Value.ToString()</Value>
         </Field>
         <Field Name="CDATE">
           <DataField>CDATE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Breakage">
+          <DataField>Breakage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Typhoon">
+          <DataField>Typhoon</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Typhoon_Name">
+          <DataField>Typhoon_Name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

@@ -749,6 +749,12 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnCDATE;
             
+            private global::System.Data.DataColumn columnBreakage;
+            
+            private global::System.Data.DataColumn columnTyphoon;
+            
+            private global::System.Data.DataColumn columnTyphoon_Name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public REPORTTBDataTable() {
@@ -984,6 +990,30 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BreakageColumn {
+                get {
+                    return this.columnBreakage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TyphoonColumn {
+                get {
+                    return this.columnTyphoon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Typhoon_NameColumn {
+                get {
+                    return this.columnTyphoon_Name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1044,7 +1074,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         string ACCEPTEDBY, 
                         string ACCEPTEDBYDATE, 
                         string CIN, 
-                        string CDATE) {
+                        string CDATE, 
+                        string Breakage, 
+                        string Typhoon, 
+                        string Typhoon_Name) {
                 REPORTTBRow rowREPORTTBRow = ((REPORTTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         kno,
@@ -1071,7 +1104,10 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         ACCEPTEDBY,
                         ACCEPTEDBYDATE,
                         CIN,
-                        CDATE};
+                        CDATE,
+                        Breakage,
+                        Typhoon,
+                        Typhoon_Name};
                 rowREPORTTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowREPORTTBRow);
                 return rowREPORTTBRow;
@@ -1119,6 +1155,9 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnACCEPTEDBYDATE = base.Columns["ACCEPTEDBYDATE"];
                 this.columnCIN = base.Columns["CIN"];
                 this.columnCDATE = base.Columns["CDATE"];
+                this.columnBreakage = base.Columns["Breakage"];
+                this.columnTyphoon = base.Columns["Typhoon"];
+                this.columnTyphoon_Name = base.Columns["Typhoon_Name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1174,6 +1213,12 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnCIN);
                 this.columnCDATE = new global::System.Data.DataColumn("CDATE", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCDATE);
+                this.columnBreakage = new global::System.Data.DataColumn("Breakage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBreakage);
+                this.columnTyphoon = new global::System.Data.DataColumn("Typhoon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyphoon);
+                this.columnTyphoon_Name = new global::System.Data.DataColumn("Typhoon_Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyphoon_Name);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6609,6 +6654,54 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Breakage {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.BreakageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Breakage\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.BreakageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Typhoon {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.TyphoonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Typhoon\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.TyphoonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Typhoon_Name {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.Typhoon_NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Typhoon_Name\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.Typhoon_NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsknoNull() {
                 return this.IsNull(this.tableREPORTTB.knoColumn);
             }
@@ -6905,6 +6998,42 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetCDATENull() {
                 this[this.tableREPORTTB.CDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBreakageNull() {
+                return this.IsNull(this.tableREPORTTB.BreakageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBreakageNull() {
+                this[this.tableREPORTTB.BreakageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTyphoonNull() {
+                return this.IsNull(this.tableREPORTTB.TyphoonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTyphoonNull() {
+                this[this.tableREPORTTB.TyphoonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTyphoon_NameNull() {
+                return this.IsNull(this.tableREPORTTB.Typhoon_NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTyphoon_NameNull() {
+                this[this.tableREPORTTB.Typhoon_NameColumn] = global::System.Convert.DBNull;
             }
         }
         
