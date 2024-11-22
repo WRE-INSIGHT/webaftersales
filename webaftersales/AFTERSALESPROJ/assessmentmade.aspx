@@ -68,7 +68,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Assessment">
                             <ItemTemplate>
-                                <div style="white-space:normal;text-wrap:normal;  max-width: 370px;">
+                                <div style="white-space:normal;text-wrap:normal;  max-width: 370px;min-width: 370px;">
                                     <asp:Label ID="assessmentlbl" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("ASSESSMENT").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                                 </div>
                                 <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
@@ -76,6 +76,9 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Stock Used">
                             <ItemTemplate>
+                                <div style="min-width:300px;">
+
+                                </div>
                                 <asp:Label ID="lblStockUsed" runat="server"><%# Eval("Stock_Used").ToString() %></asp:Label>
                                 <asp:DropDownList ID="ddlStockUsedEdit" Visible="false" runat="server" Style="min-width: 150px" CssClass="form-control" Text='<%# Bind("Stock_Used") %>'>
                                     <asp:ListItem Text="" Value=""></asp:ListItem>
