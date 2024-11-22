@@ -336,7 +336,7 @@ and Fields!specification.Value &lt;&gt;""
                             <TextRun>
                               <Value>=Fields!assessment.Value+
 iif(Fields!Breakage.Value.ToString()="True" or Fields!Typhoon.Value.ToString()="True",
-"&lt;br /&gt;Reason(s)&lt;br /&gt;"+
+"&lt;br /&gt;Reason(s):&lt;br /&gt;"+
 iif(Fields!Breakage.Value.ToString()="False","","&lt;span style='font-family: Wingdings;'&gt;&amp;#252;&lt;/span&gt; Breakage")+
 "&lt;br /&gt;"+
 iif(Fields!Typhoon.Value.ToString()="False","","&lt;span style='font-family: Wingdings;'&gt;&amp;#252;&lt;/span&gt; Typhoon (" + Fields!Typhoon_Name.Value + ")"),
