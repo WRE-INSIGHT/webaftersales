@@ -53,6 +53,8 @@
                                             <asp:Label runat="server" ID="lblTyphoon" class='<%# Eval("Typhoon").ToString() == "True" ? "glyphicon glyphicon-ok" : "" %>'></asp:Label>
                                             <asp:Label runat="server" ID="lblTyphoonName" Visible="true" Text='<%# Bind("Typhoon_Name") %>'></asp:Label>
                                             <asp:TextBox ID="tboxTyphoon_NameEdit" Visible="false" Text='<%# Eval("Typhoon_Name") %>' runat="server" CssClass="form-control" placeholder="enter typhoon name"></asp:TextBox>
+                                       
+                                            <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup='<%# "editVal"+Eval("Id").ToString() %>' CssClass="alert alert-danger" runat="server" />
                                         </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>

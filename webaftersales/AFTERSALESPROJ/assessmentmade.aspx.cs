@@ -151,16 +151,30 @@ namespace webaftersales.AFTERSALESPROJ
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                updatefunction(((Label)row.FindControl("idlbl")).Text,
-                        ((TextBox)row.FindControl("descriptiontbox")).Text,
-                        ((TextBox)row.FindControl("assessmenttbox")).Text,
-                        ((DropDownList)row.FindControl("progressddl")).Text,
-                        ((DropDownList)row.FindControl("ddlStockUsedEdit")).Text,
-                        ((TextBox)row.FindControl("tboxMeasurementEdit")).Text,
-                        ((TextBox)row.FindControl("tboxQuantityEdit")).Text,
-                         ((CheckBox)row.FindControl("cboxBreakageEdit")).Checked,
-                     ((CheckBox)row.FindControl("cboxTyphoonEdit")).Checked,
-                     ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Text);
+
+                if (((CheckBox)row.FindControl("cboxTyphoonEdit")).Checked && ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Text == "")
+                {
+                    CustomValidator err = new CustomValidator();
+                    err.ValidationGroup = "editVal" + ((Label)row.FindControl("idlbl")).Text;
+                    err.IsValid = false;
+                    err.ErrorMessage = "Please fill the typhoon name.";
+                    Page.Validators.Add(err);
+                }
+                else
+                {
+                    updatefunction(((Label)row.FindControl("idlbl")).Text,
+                      ((TextBox)row.FindControl("descriptiontbox")).Text,
+                      ((TextBox)row.FindControl("assessmenttbox")).Text,
+                      ((DropDownList)row.FindControl("progressddl")).Text,
+                      ((DropDownList)row.FindControl("ddlStockUsedEdit")).Text,
+                      ((TextBox)row.FindControl("tboxMeasurementEdit")).Text,
+                      ((TextBox)row.FindControl("tboxQuantityEdit")).Text,
+                       ((CheckBox)row.FindControl("cboxBreakageEdit")).Checked,
+                   ((CheckBox)row.FindControl("cboxTyphoonEdit")).Checked,
+                   ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Text);
+                }
+
+              
             }
             if (e.CommandName == "mydelete")
             {
