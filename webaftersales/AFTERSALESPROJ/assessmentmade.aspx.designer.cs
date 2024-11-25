@@ -159,6 +159,15 @@ namespace webaftersales.AFTERSALESPROJ
         protected global::System.Web.UI.WebControls.DropDownList newprogressddl;
 
         /// <summary>
+        /// upnl3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnl3;
+
+        /// <summary>
         /// cboxBreakage control.
         /// </summary>
         /// <remarks>
@@ -166,15 +175,6 @@ namespace webaftersales.AFTERSALESPROJ
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cboxBreakage;
-
-        /// <summary>
-        /// UpdatePanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
 
         /// <summary>
         /// cboxTyphoon control.
@@ -202,6 +202,15 @@ namespace webaftersales.AFTERSALESPROJ
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button newbtn;
+
+        /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
 
         /// <summary>
         /// ValidationSummary2 control.
