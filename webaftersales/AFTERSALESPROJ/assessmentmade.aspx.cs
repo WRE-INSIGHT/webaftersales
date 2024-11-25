@@ -86,14 +86,15 @@ namespace webaftersales.AFTERSALESPROJ
         {
             try
             {
-                string str = "SELECT * FROM [TBLassessment] WHERE ([REPORTID] = @REPORTID)";
-
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@REPORTID", reportid);
+                        sqlcmd.CommandText = "TBLassessment_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "GetData");
+                        sqlcmd.Parameters.AddWithValue("@reportid", reportid);
                         DataSet ds = new DataSet();
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
@@ -126,6 +127,9 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lblStockUsed")).Visible = false;
                 ((Label)row.FindControl("lblMeasurement")).Visible = false;
                 ((Label)row.FindControl("lblQuantity")).Visible = false;
+                ((Label)row.FindControl("lblBreakage")).Visible = false;
+                ((Label)row.FindControl("lblTyphoon")).Visible = false;
+                ((Label)row.FindControl("lblTyphoonName")).Visible = false;
 
                 ((LinkButton)row.FindControl("savebtn")).Visible = true;
                 ((LinkButton)row.FindControl("cancelbtn")).Visible = true;
@@ -135,19 +139,42 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxQuantityEdit")).Visible = true;
                 ((TextBox)row.FindControl("tboxMeasurementEdit")).Visible = true;
                 ((DropDownList)row.FindControl("ddlStockUsedEdit")).Visible = true;
-
+                ((CheckBox)row.FindControl("cboxBreakageEdit")).Visible = true;
+                ((CheckBox)row.FindControl("cboxTyphoonEdit")).Visible = true;
+                if (((CheckBox)row.FindControl("cboxTyphoonEdit")).Checked)
+                {
+                    ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Visible = true;
+                }
+             
             }
-            if (e.CommandName == "mysave")
+                if (e.CommandName == "mysave")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                updatefunction(((Label)row.FindControl("idlbl")).Text,
-                        ((TextBox)row.FindControl("descriptiontbox")).Text,
-                        ((TextBox)row.FindControl("assessmenttbox")).Text,
-                        ((DropDownList)row.FindControl("progressddl")).Text,
-                        ((DropDownList)row.FindControl("ddlStockUsedEdit")).Text,
-                        ((TextBox)row.FindControl("tboxMeasurementEdit")).Text,
-                        ((TextBox)row.FindControl("tboxQuantityEdit")).Text);
+
+                if (((CheckBox)row.FindControl("cboxTyphoonEdit")).Checked && ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Text == "")
+                {
+                    CustomValidator err = new CustomValidator();
+                    err.ValidationGroup = "editVal" + ((Label)row.FindControl("idlbl")).Text;
+                    err.IsValid = false;
+                    err.ErrorMessage = "Please fill the typhoon name.";
+                    Page.Validators.Add(err);
+                }
+                else
+                {
+                    updatefunction(((Label)row.FindControl("idlbl")).Text,
+                      ((TextBox)row.FindControl("descriptiontbox")).Text,
+                      ((TextBox)row.FindControl("assessmenttbox")).Text,
+                      ((DropDownList)row.FindControl("progressddl")).Text,
+                      ((DropDownList)row.FindControl("ddlStockUsedEdit")).Text,
+                      ((TextBox)row.FindControl("tboxMeasurementEdit")).Text,
+                      ((TextBox)row.FindControl("tboxQuantityEdit")).Text,
+                       ((CheckBox)row.FindControl("cboxBreakageEdit")).Checked,
+                   ((CheckBox)row.FindControl("cboxTyphoonEdit")).Checked,
+                   ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Text);
+                }
+
+              
             }
             if (e.CommandName == "mydelete")
             {
@@ -169,6 +196,9 @@ namespace webaftersales.AFTERSALESPROJ
                 ((Label)row.FindControl("lblStockUsed")).Visible = true;
                 ((Label)row.FindControl("lblMeasurement")).Visible = true;
                 ((Label)row.FindControl("lblQuantity")).Visible = true;
+                ((Label)row.FindControl("lblBreakage")).Visible = true;
+                ((Label)row.FindControl("lblTyphoon")).Visible = true;
+                ((Label)row.FindControl("lblTyphoonName")).Visible = true;
 
                 ((LinkButton)row.FindControl("savebtn")).Visible = false;
                 ((LinkButton)row.FindControl("cancelbtn")).Visible = false;
@@ -178,28 +208,51 @@ namespace webaftersales.AFTERSALESPROJ
                 ((TextBox)row.FindControl("tboxQuantityEdit")).Visible = false;
                 ((TextBox)row.FindControl("tboxMeasurementEdit")).Visible = false;
                 ((DropDownList)row.FindControl("ddlStockUsedEdit")).Visible = false;
+                ((CheckBox)row.FindControl("cboxBreakageEdit")).Visible = false;
+                ((CheckBox)row.FindControl("cboxTyphoonEdit")).Visible = false;
+                ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Visible = false;
             }
 
         }
-        private void updatefunction(string id, string description, string assessment, 
-                                    string progressddl, string stock_used, string measurement, string quantity)
+        private void updatefunction(string id, string description, string assessment,
+                                    string progressddl, string stock_used, string measurement, string quantity,
+                                    bool breakage, bool typhoon,string typhoon_name)
         {
-            try
+            if (cboxTyphoon.Checked)
             {
-                string str = "update [TBLassessment] set assessment=@assessment," +
-                    "description=@description," +
-                    "progress=@progress," +
-                    "Stock_Used=@Stock_Used," +
-                    "Measurement=@Measurement," +
-                    "Quantity=@Quantity," +
-                    "date_modified=date_modified+char(10)+@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt') WHERE ([ID] = @ID)";
-
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                if (tboxTyphoonName.Text == "")
                 {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    CustomValidator err = new CustomValidator();
+                    err.ValidationGroup = "inputVal";
+                    err.IsValid = false;
+                    err.ErrorMessage = "Please fill the typhoon name.";
+                    Page.Validators.Add(err);
+                }
+                else
+                {
+                    UpdateQuery(id, description, assessment, progressddl, stock_used, measurement, quantity, breakage, typhoon, typhoon_name);
+                }
+            }
+            else
+            {
+                UpdateQuery(id, description, assessment, progressddl, stock_used, measurement, quantity, breakage, typhoon, typhoon_name);
+            }
+
+        }
+        private void UpdateQuery(string id, string description, string assessment,
+                                    string progressddl, string stock_used, string measurement, string quantity, bool breakage, bool typhoon,string typhoon_name)
+        {
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+            {
+                using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                {
+                    sqlcon.Open();
+                    try
                     {
-                        sqlcon.Open();
                         string date_modified = "updatted by " + fullname + " ";
+                        sqlcmd.CommandText = "TBLassessment_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Update");
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@description", description);
                         sqlcmd.Parameters.AddWithValue("@assessment", assessment);
@@ -208,17 +261,20 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Stock_Used", stock_used);
                         sqlcmd.Parameters.AddWithValue("@Measurement", measurement);
                         sqlcmd.Parameters.AddWithValue("@Quantity", quantity);
+                        sqlcmd.Parameters.AddWithValue("@Breakage", (breakage == true) ? 1 : 0);
+                        sqlcmd.Parameters.AddWithValue("@Typhoon", (typhoon == true) ? 1 : 0);
+                        sqlcmd.Parameters.AddWithValue("@Typhoon_Name", typhoon_name);
                         sqlcmd.ExecuteNonQuery();
                     }
+                    catch (Exception ex)
+                    {
+                        errorrmessage(ex.Message.ToString());
+                    }
+                    finally
+                    {
+                        getdata();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                errorrmessage(ex.Message.ToString());
-            }
-            finally
-            {
-                getdata();
             }
         }
         private void deletefunction(string id)
@@ -255,26 +311,40 @@ namespace webaftersales.AFTERSALESPROJ
 
         protected void newbtn_Click(object sender, EventArgs e)
         {
-            try
+            if (cboxTyphoon.Checked)
             {
-                string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from TBLassessment)" +
-                             " insert into [TBLassessment] (id,reportid,assessment,description,progress,date_modified,stock_used,measurement,quantity)" +
-                             " values(@id," +
-                             "@reportid," +
-                             "@assessment," +
-                             "@description," +
-                             "@progress," +
-                             "@date_modified+FORMAT(GETDATE(),'MMM-dd-yyyy hh:mm:ss tt')," +
-                             "@Stock_Used," +
-                             "@Measurement," +
-                             "@Quantity)";
-
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                if (tboxTyphoonName.Text == "")
                 {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    CustomValidator err = new CustomValidator();
+                    err.ValidationGroup = "inputVal";
+                    err.IsValid = false;
+                    err.ErrorMessage = "Please fill the typhoon name.";
+                    Page.Validators.Add(err);
+                }
+                else
+                {
+                    InsertQuery();
+                }
+            }
+            else
+            {
+                InsertQuery();
+            }
+
+        }
+        private void InsertQuery()
+        {
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+            {
+                using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                {
+                    sqlcon.Open();
+                    try
                     {
-                        sqlcon.Open();
                         string date_modified = "inputted by " + fullname + " ";
+                        sqlcmd.CommandText = "TBLassessment_Stp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Insert");
                         sqlcmd.Parameters.AddWithValue("@reportid", reportid);
                         sqlcmd.Parameters.AddWithValue("@description", newdescriptiontbox.Text);
                         sqlcmd.Parameters.AddWithValue("@assessment", newassessmenttbox.Text);
@@ -283,17 +353,20 @@ namespace webaftersales.AFTERSALESPROJ
                         sqlcmd.Parameters.AddWithValue("@Stock_Used", ddlStockUse.Text);
                         sqlcmd.Parameters.AddWithValue("@Measurement", tboxMeasurement.Text);
                         sqlcmd.Parameters.AddWithValue("@Quantity", tboxQuantity.Text);
+                        sqlcmd.Parameters.AddWithValue("@Breakage", (cboxBreakage.Checked) ? 1 : 0);
+                        sqlcmd.Parameters.AddWithValue("@Typhoon", (cboxTyphoon.Checked) ? 1 : 0);
+                        sqlcmd.Parameters.AddWithValue("@Typhoon_Name", (cboxTyphoon.Checked) ? tboxTyphoonName.Text : "");
                         sqlcmd.ExecuteNonQuery();
                     }
+                    catch (Exception ex)
+                    {
+                        errorrmessage(ex.Message.ToString());
+                    }
+                    finally
+                    {
+                        getdata();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                errorrmessage(ex.Message.ToString());
-            }
-            finally
-            {
-                getdata();
             }
         }
 
@@ -315,6 +388,33 @@ namespace webaftersales.AFTERSALESPROJ
                     GridView1.Columns[4].Visible = false;
                 }
 
+            }
+        }
+
+        protected void cboxTyphoon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cboxTyphoon.Checked)
+            {
+                tboxTyphoonName.Visible = true;
+            }
+            else
+            {
+                tboxTyphoonName.Visible = false;
+            }
+        }
+        protected void cboxTyphoonEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((CheckBox)sender).Checked)
+            {
+                int rowindex = ((GridViewRow)((CheckBox)sender).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Visible = true;
+            }
+            else
+            {
+                int rowindex = ((GridViewRow)((CheckBox)sender).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                ((TextBox)row.FindControl("tboxTyphoon_NameEdit")).Visible = false;
             }
         }
     }

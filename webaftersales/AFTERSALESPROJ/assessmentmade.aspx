@@ -26,7 +26,8 @@
         <ContentTemplate>
 
             <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
-                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both" OnRowDataBound="GridView1_RowDataBound">
+                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" 
+                    OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both" OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
 
                         <asp:TemplateField>
@@ -37,6 +38,28 @@
                                 <asp:LinkButton ID="cancelbtn" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="BREAKAGE">
+                            <ItemTemplate>
+                                <asp:CheckBox Text="Breakage" Visible="false" runat="server" ID="cboxBreakageEdit" Checked='<%# Eval("Breakage")  %>' /><br />
+                                <asp:Label runat="server" ID="lblBreakage" class='<%# Eval("Breakage").ToString() == "True" ? "glyphicon glyphicon-ok" : "" %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="TYPHOON">
+                            <ItemTemplate>
+                                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                    <ContentTemplate>
+                                        <div style="min-width: 150px;">
+                                            <asp:CheckBox Text="Typhoon" runat="server" AutoPostBack="true" OnCheckedChanged="cboxTyphoonEdit_CheckedChanged" ID="cboxTyphoonEdit" Visible="false" Checked='<%# Eval("Typhoon") %>' /><br />
+                                            <asp:Label runat="server" ID="lblTyphoon" class='<%# Eval("Typhoon").ToString() == "True" ? "glyphicon glyphicon-ok" : "" %>'></asp:Label>
+                                            <asp:Label runat="server" ID="lblTyphoonName" Visible="true" Text='<%# Bind("Typhoon_Name") %>'></asp:Label>
+                                            <asp:TextBox ID="tboxTyphoon_NameEdit" Visible="false" Text='<%# Eval("Typhoon_Name") %>' runat="server" CssClass="form-control" placeholder="enter typhoon name"></asp:TextBox>
+                                       
+                                            <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup='<%# "editVal"+Eval("Id").ToString() %>' CssClass="alert alert-danger" runat="server" />
+                                        </div>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Description">
                             <ItemTemplate>
                                 <asp:Label ID="idlbl" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
@@ -45,9 +68,9 @@
                                 <asp:TextBox ID="descriptiontbox" TextMode="MultiLine" Rows="10" Width="400" Visible="false" Text='<%# Eval("DESCRIPTION") %>' runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Assessment" ItemStyle-Wrap="true">
+                        <asp:TemplateField HeaderText="Assessment">
                             <ItemTemplate>
-                                <div style="white-space: normal; word-wrap: normal; min-width: 300px;">
+                                <div style="white-space:normal;text-wrap:normal;  max-width: 370px;min-width: 370px;">
                                     <asp:Label ID="assessmentlbl" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("ASSESSMENT").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                                 </div>
                                 <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
@@ -55,6 +78,9 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Stock Used">
                             <ItemTemplate>
+                                <div style="min-width:300px;">
+
+                                </div>
                                 <asp:Label ID="lblStockUsed" runat="server"><%# Eval("Stock_Used").ToString() %></asp:Label>
                                 <asp:DropDownList ID="ddlStockUsedEdit" Visible="false" runat="server" Style="min-width: 150px" CssClass="form-control" Text='<%# Bind("Stock_Used") %>'>
                                     <asp:ListItem Text="" Value=""></asp:ListItem>
@@ -86,6 +112,7 @@
                                 </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
+
                         <asp:TemplateField HeaderText="DATE MODIFIED">
                             <ItemTemplate>
                                 <div style="white-space: normal; text-wrap: normal"></div>
@@ -151,6 +178,21 @@
                         </asp:DropDownList><br />
                     </div>
                 </div>
+                <div>
+                    <span style="font:bold;">Assessment reason(s):</span>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <asp:CheckBox runat="server" ID="cboxBreakage" Text="Breakage" />
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
+                                    <asp:CheckBox runat="server" ID="cboxTyphoon" Text="Typhoon" AutoPostBack="true" OnCheckedChanged="cboxTyphoon_CheckedChanged" />
+                                    <asp:TextBox runat="server" ID="tboxTyphoonName" AutoPostBack="true" Visible="false" CssClass="form-control" placeholder="enter typhoon name"></asp:TextBox>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                    </div>
+                </div>
+
                 <br />
 
 

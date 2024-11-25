@@ -721,6 +721,40 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnSERVICING;
+            
+            private global::System.Data.DataColumn columnSDATE;
+            
+            private global::System.Data.DataColumn columnSID;
+            
+            private global::System.Data.DataColumn columnPROJECT_LABEL;
+            
+            private global::System.Data.DataColumn columnFULLADD;
+            
+            private global::System.Data.DataColumn columnPROFILE_FINISH;
+            
+            private global::System.Data.DataColumn columnINSPECTEDBY;
+            
+            private global::System.Data.DataColumn columnINSDATE;
+            
+            private global::System.Data.DataColumn columnMONITOREDBY;
+            
+            private global::System.Data.DataColumn columnMONDATE;
+            
+            private global::System.Data.DataColumn columnACCEPTEDBY;
+            
+            private global::System.Data.DataColumn columnACCEPTEDBYDATE;
+            
+            private global::System.Data.DataColumn columnCIN;
+            
+            private global::System.Data.DataColumn columnCDATE;
+            
+            private global::System.Data.DataColumn columnBreakage;
+            
+            private global::System.Data.DataColumn columnTyphoon;
+            
+            private global::System.Data.DataColumn columnTyphoon_Name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public REPORTTBDataTable() {
@@ -844,6 +878,142 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SERVICINGColumn {
+                get {
+                    return this.columnSERVICING;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SDATEColumn {
+                get {
+                    return this.columnSDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SIDColumn {
+                get {
+                    return this.columnSID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PROJECT_LABELColumn {
+                get {
+                    return this.columnPROJECT_LABEL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FULLADDColumn {
+                get {
+                    return this.columnFULLADD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PROFILE_FINISHColumn {
+                get {
+                    return this.columnPROFILE_FINISH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn INSPECTEDBYColumn {
+                get {
+                    return this.columnINSPECTEDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn INSDATEColumn {
+                get {
+                    return this.columnINSDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MONITOREDBYColumn {
+                get {
+                    return this.columnMONITOREDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MONDATEColumn {
+                get {
+                    return this.columnMONDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ACCEPTEDBYColumn {
+                get {
+                    return this.columnACCEPTEDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ACCEPTEDBYDATEColumn {
+                get {
+                    return this.columnACCEPTEDBYDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CINColumn {
+                get {
+                    return this.columnCIN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CDATEColumn {
+                get {
+                    return this.columnCDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BreakageColumn {
+                get {
+                    return this.columnBreakage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TyphoonColumn {
+                get {
+                    return this.columnTyphoon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Typhoon_NameColumn {
+                get {
+                    return this.columnTyphoon_Name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -879,7 +1049,35 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public REPORTTBRow AddREPORTTBRow(string kno, string itemno, string location, string specification, string reportid, string description, string assessment, string progress, string Stock_Used, string Measurement, string Quantity) {
+            public REPORTTBRow AddREPORTTBRow(
+                        string kno, 
+                        string itemno, 
+                        string location, 
+                        string specification, 
+                        string reportid, 
+                        string description, 
+                        string assessment, 
+                        string progress, 
+                        string Stock_Used, 
+                        string Measurement, 
+                        string Quantity, 
+                        string SERVICING, 
+                        string SDATE, 
+                        string SID, 
+                        string PROJECT_LABEL, 
+                        string FULLADD, 
+                        string PROFILE_FINISH, 
+                        string INSPECTEDBY, 
+                        string INSDATE, 
+                        string MONITOREDBY, 
+                        string MONDATE, 
+                        string ACCEPTEDBY, 
+                        string ACCEPTEDBYDATE, 
+                        string CIN, 
+                        string CDATE, 
+                        string Breakage, 
+                        string Typhoon, 
+                        string Typhoon_Name) {
                 REPORTTBRow rowREPORTTBRow = ((REPORTTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         kno,
@@ -892,7 +1090,24 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                         progress,
                         Stock_Used,
                         Measurement,
-                        Quantity};
+                        Quantity,
+                        SERVICING,
+                        SDATE,
+                        SID,
+                        PROJECT_LABEL,
+                        FULLADD,
+                        PROFILE_FINISH,
+                        INSPECTEDBY,
+                        INSDATE,
+                        MONITOREDBY,
+                        MONDATE,
+                        ACCEPTEDBY,
+                        ACCEPTEDBYDATE,
+                        CIN,
+                        CDATE,
+                        Breakage,
+                        Typhoon,
+                        Typhoon_Name};
                 rowREPORTTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowREPORTTBRow);
                 return rowREPORTTBRow;
@@ -926,6 +1141,23 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 this.columnStock_Used = base.Columns["Stock_Used"];
                 this.columnMeasurement = base.Columns["Measurement"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnSERVICING = base.Columns["SERVICING"];
+                this.columnSDATE = base.Columns["SDATE"];
+                this.columnSID = base.Columns["SID"];
+                this.columnPROJECT_LABEL = base.Columns["PROJECT_LABEL"];
+                this.columnFULLADD = base.Columns["FULLADD"];
+                this.columnPROFILE_FINISH = base.Columns["PROFILE_FINISH"];
+                this.columnINSPECTEDBY = base.Columns["INSPECTEDBY"];
+                this.columnINSDATE = base.Columns["INSDATE"];
+                this.columnMONITOREDBY = base.Columns["MONITOREDBY"];
+                this.columnMONDATE = base.Columns["MONDATE"];
+                this.columnACCEPTEDBY = base.Columns["ACCEPTEDBY"];
+                this.columnACCEPTEDBYDATE = base.Columns["ACCEPTEDBYDATE"];
+                this.columnCIN = base.Columns["CIN"];
+                this.columnCDATE = base.Columns["CDATE"];
+                this.columnBreakage = base.Columns["Breakage"];
+                this.columnTyphoon = base.Columns["Typhoon"];
+                this.columnTyphoon_Name = base.Columns["Typhoon_Name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -953,6 +1185,40 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
                 base.Columns.Add(this.columnMeasurement);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnSERVICING = new global::System.Data.DataColumn("SERVICING", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSERVICING);
+                this.columnSDATE = new global::System.Data.DataColumn("SDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSDATE);
+                this.columnSID = new global::System.Data.DataColumn("SID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSID);
+                this.columnPROJECT_LABEL = new global::System.Data.DataColumn("PROJECT_LABEL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPROJECT_LABEL);
+                this.columnFULLADD = new global::System.Data.DataColumn("FULLADD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFULLADD);
+                this.columnPROFILE_FINISH = new global::System.Data.DataColumn("PROFILE_FINISH", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPROFILE_FINISH);
+                this.columnINSPECTEDBY = new global::System.Data.DataColumn("INSPECTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnINSPECTEDBY);
+                this.columnINSDATE = new global::System.Data.DataColumn("INSDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnINSDATE);
+                this.columnMONITOREDBY = new global::System.Data.DataColumn("MONITOREDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMONITOREDBY);
+                this.columnMONDATE = new global::System.Data.DataColumn("MONDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMONDATE);
+                this.columnACCEPTEDBY = new global::System.Data.DataColumn("ACCEPTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACCEPTEDBY);
+                this.columnACCEPTEDBYDATE = new global::System.Data.DataColumn("ACCEPTEDBYDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACCEPTEDBYDATE);
+                this.columnCIN = new global::System.Data.DataColumn("CIN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCIN);
+                this.columnCDATE = new global::System.Data.DataColumn("CDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCDATE);
+                this.columnBreakage = new global::System.Data.DataColumn("Breakage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBreakage);
+                this.columnTyphoon = new global::System.Data.DataColumn("Typhoon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyphoon);
+                this.columnTyphoon_Name = new global::System.Data.DataColumn("Typhoon_Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyphoon_Name);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6164,6 +6430,278 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SERVICING {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.SERVICINGColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SERVICING\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.SERVICINGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.SDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SDATE\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.SDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SID {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.SIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SID\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.SIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PROJECT_LABEL {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.PROJECT_LABELColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PROJECT_LABEL\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.PROJECT_LABELColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FULLADD {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.FULLADDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FULLADD\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.FULLADDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PROFILE_FINISH {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.PROFILE_FINISHColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PROFILE_FINISH\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.PROFILE_FINISHColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string INSPECTEDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.INSPECTEDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'INSPECTEDBY\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.INSPECTEDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string INSDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.INSDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'INSDATE\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.INSDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MONITOREDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.MONITOREDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MONITOREDBY\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.MONITOREDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MONDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.MONDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MONDATE\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.MONDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ACCEPTEDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.ACCEPTEDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACCEPTEDBY\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.ACCEPTEDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ACCEPTEDBYDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.ACCEPTEDBYDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACCEPTEDBYDATE\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.ACCEPTEDBYDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CIN {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.CINColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CIN\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.CINColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.CDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CDATE\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.CDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Breakage {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.BreakageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Breakage\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.BreakageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Typhoon {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.TyphoonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Typhoon\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.TyphoonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Typhoon_Name {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTTB.Typhoon_NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Typhoon_Name\' in table \'REPORTTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTTB.Typhoon_NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsknoNull() {
                 return this.IsNull(this.tableREPORTTB.knoColumn);
             }
@@ -6292,6 +6830,210 @@ namespace webaftersales.AFTERSALESPROJ.datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableREPORTTB.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSERVICINGNull() {
+                return this.IsNull(this.tableREPORTTB.SERVICINGColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSERVICINGNull() {
+                this[this.tableREPORTTB.SERVICINGColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSDATENull() {
+                return this.IsNull(this.tableREPORTTB.SDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSDATENull() {
+                this[this.tableREPORTTB.SDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSIDNull() {
+                return this.IsNull(this.tableREPORTTB.SIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSIDNull() {
+                this[this.tableREPORTTB.SIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPROJECT_LABELNull() {
+                return this.IsNull(this.tableREPORTTB.PROJECT_LABELColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPROJECT_LABELNull() {
+                this[this.tableREPORTTB.PROJECT_LABELColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFULLADDNull() {
+                return this.IsNull(this.tableREPORTTB.FULLADDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFULLADDNull() {
+                this[this.tableREPORTTB.FULLADDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPROFILE_FINISHNull() {
+                return this.IsNull(this.tableREPORTTB.PROFILE_FINISHColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPROFILE_FINISHNull() {
+                this[this.tableREPORTTB.PROFILE_FINISHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsINSPECTEDBYNull() {
+                return this.IsNull(this.tableREPORTTB.INSPECTEDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetINSPECTEDBYNull() {
+                this[this.tableREPORTTB.INSPECTEDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsINSDATENull() {
+                return this.IsNull(this.tableREPORTTB.INSDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetINSDATENull() {
+                this[this.tableREPORTTB.INSDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMONITOREDBYNull() {
+                return this.IsNull(this.tableREPORTTB.MONITOREDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMONITOREDBYNull() {
+                this[this.tableREPORTTB.MONITOREDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMONDATENull() {
+                return this.IsNull(this.tableREPORTTB.MONDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMONDATENull() {
+                this[this.tableREPORTTB.MONDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsACCEPTEDBYNull() {
+                return this.IsNull(this.tableREPORTTB.ACCEPTEDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetACCEPTEDBYNull() {
+                this[this.tableREPORTTB.ACCEPTEDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsACCEPTEDBYDATENull() {
+                return this.IsNull(this.tableREPORTTB.ACCEPTEDBYDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetACCEPTEDBYDATENull() {
+                this[this.tableREPORTTB.ACCEPTEDBYDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCINNull() {
+                return this.IsNull(this.tableREPORTTB.CINColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCINNull() {
+                this[this.tableREPORTTB.CINColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCDATENull() {
+                return this.IsNull(this.tableREPORTTB.CDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCDATENull() {
+                this[this.tableREPORTTB.CDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBreakageNull() {
+                return this.IsNull(this.tableREPORTTB.BreakageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBreakageNull() {
+                this[this.tableREPORTTB.BreakageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTyphoonNull() {
+                return this.IsNull(this.tableREPORTTB.TyphoonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTyphoonNull() {
+                this[this.tableREPORTTB.TyphoonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTyphoon_NameNull() {
+                return this.IsNull(this.tableREPORTTB.Typhoon_NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTyphoon_NameNull() {
+                this[this.tableREPORTTB.Typhoon_NameColumn] = global::System.Convert.DBNull;
             }
         }
         
