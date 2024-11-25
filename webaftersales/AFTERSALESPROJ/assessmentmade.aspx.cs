@@ -99,8 +99,10 @@ namespace webaftersales.AFTERSALESPROJ
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(ds);
+
                         GridView1.DataSource = ds;
                         GridView1.DataBind();
+                      
                     }
                 }
             }
@@ -364,7 +366,9 @@ namespace webaftersales.AFTERSALESPROJ
                     }
                     finally
                     {
+                      
                         getdata();
+                      
                     }
                 }
             }

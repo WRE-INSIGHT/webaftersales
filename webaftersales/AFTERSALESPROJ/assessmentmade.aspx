@@ -26,7 +26,7 @@
         <ContentTemplate>
 
             <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
-                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="True" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand" 
+                <asp:GridView ID="GridView1" CssClass="table" AutoGenerateColumns="False" AllowPaging="false" runat="server" PageSize="5" OnRowCommand="GridView1_RowCommand"
                     OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Both" OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
 
@@ -53,7 +53,7 @@
                                             <asp:Label runat="server" ID="lblTyphoon" class='<%# Eval("Typhoon").ToString() == "True" ? "glyphicon glyphicon-ok" : "" %>'></asp:Label>
                                             <asp:Label runat="server" ID="lblTyphoonName" Visible="true" Text='<%# Bind("Typhoon_Name") %>'></asp:Label>
                                             <asp:TextBox ID="tboxTyphoon_NameEdit" Visible="false" Text='<%# Eval("Typhoon_Name") %>' runat="server" CssClass="form-control" placeholder="enter typhoon name"></asp:TextBox>
-                                       
+
                                             <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup='<%# "editVal"+Eval("Id").ToString() %>' CssClass="alert alert-danger" runat="server" />
                                         </div>
                                     </ContentTemplate>
@@ -70,7 +70,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Assessment">
                             <ItemTemplate>
-                                <div style="white-space:normal;text-wrap:normal;  max-width: 370px;min-width: 370px;">
+                                <div style="white-space: normal; text-wrap: normal; max-width: 370px; min-width: 370px;">
                                     <asp:Label ID="assessmentlbl" runat="server" Text='<%# Server.HtmlDecode(Regex.Replace(Eval("ASSESSMENT").ToString(), "\r\n|\r|\n", "<br>")) %>'></asp:Label>
                                 </div>
                                 <asp:TextBox ID="assessmenttbox" Visible="false" TextMode="MultiLine" Width="400" Rows="10" Text='<%# Eval("ASSESSMENT") %>' CssClass="form-control" runat="server"></asp:TextBox>
@@ -78,8 +78,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Stock Used">
                             <ItemTemplate>
-                                <div style="min-width:300px;">
-
+                                <div style="min-width: 300px;">
                                 </div>
                                 <asp:Label ID="lblStockUsed" runat="server"><%# Eval("Stock_Used").ToString() %></asp:Label>
                                 <asp:DropDownList ID="ddlStockUsedEdit" Visible="false" runat="server" Style="min-width: 150px" CssClass="form-control" Text='<%# Bind("Stock_Used") %>'>
@@ -144,6 +143,8 @@
 
         </ContentTemplate>
     </asp:UpdatePanel>
+    <%--  <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>--%>
     <div class="row">
         <div class="col-sm-2">
         </div>
@@ -179,30 +180,32 @@
                     </div>
                 </div>
                 <div>
-                    <span style="font:bold;">Assessment reason(s):</span>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <asp:CheckBox runat="server" ID="cboxBreakage" Text="Breakage" />
-                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                <ContentTemplate>
+                    <asp:UpdatePanel runat="server" ID="upnl3">
+                        <ContentTemplate>
+                            <span style="font: bold;">Assessment reason(s):</span>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <asp:CheckBox runat="server" ID="cboxBreakage" Text="Breakage" />
+                                    <br />
                                     <asp:CheckBox runat="server" ID="cboxTyphoon" Text="Typhoon" AutoPostBack="true" OnCheckedChanged="cboxTyphoon_CheckedChanged" />
                                     <asp:TextBox runat="server" ID="tboxTyphoonName" AutoPostBack="true" Visible="false" CssClass="form-control" placeholder="enter typhoon name"></asp:TextBox>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
-
                 <br />
-
-
-
                 <asp:Button ID="newbtn" CssClass="btn btn-primary" runat="server" Text="add" ValidationGroup="inputVal" OnClick="newbtn_Click" />
-                <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="inputVal" CssClass="alert alert-danger" runat="server" />
+                <asp:UpdatePanel runat="server" ID="UpdatePanel2">
+                    <ContentTemplate>
+                        <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="inputVal" CssClass="alert alert-danger" runat="server" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
         </div>
         <div class="col-sm-2">
         </div>
     </div>
-
+    <%--</ContentTemplate>
+    </asp:UpdatePanel>--%>
 </asp:Content>
